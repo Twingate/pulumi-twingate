@@ -1,3 +1,3 @@
-module github.com/pulumi/pulumi-xyz/examples
+module github.com/Twingate/pulumi-twingate/examples
 
 go 1.21

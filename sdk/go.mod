@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-xyz/sdk
+module github.com/Twingate/pulumi-twingate/sdk
 
 go 1.17
 
