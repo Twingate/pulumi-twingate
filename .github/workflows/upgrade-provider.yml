@@ -1,12 +1,11 @@
 name: Upgrade provider
 on:
   workflow_dispatch: {}
-# on:
-#   issues:
-#     types:
-#     - opened
-#   schedule:
-#     - cron: '0 5 * * *'
+  issues:
+    types:
+    - opened
+  schedule:
+    - cron: '0 5 * * *'
 
 permissions:
   contents: write
