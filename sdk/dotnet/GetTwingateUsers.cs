@@ -14,10 +14,9 @@ namespace Pulumi.Twingate
         /// <summary>
         /// Users in Twingate can be given access to Twingate Resources and may either be added manually or automatically synchronized with a 3rd party identity provider. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/users).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -30,8 +29,7 @@ namespace Pulumi.Twingate
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTwingateUsersResult> InvokeAsync(GetTwingateUsersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTwingateUsersResult>("twingate:index/getTwingateUsers:getTwingateUsers", args ?? new GetTwingateUsersArgs(), options.WithDefaults());
@@ -39,10 +37,9 @@ namespace Pulumi.Twingate
         /// <summary>
         /// Users in Twingate can be given access to Twingate Resources and may either be added manually or automatically synchronized with a 3rd party identity provider. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/users).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -55,8 +52,7 @@ namespace Pulumi.Twingate
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTwingateUsersResult> Invoke(GetTwingateUsersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTwingateUsersResult>("twingate:index/getTwingateUsers:getTwingateUsers", args ?? new GetTwingateUsersInvokeArgs(), options.WithDefaults());
@@ -65,12 +61,124 @@ namespace Pulumi.Twingate
 
     public sealed class GetTwingateUsersArgs : global::Pulumi.InvokeArgs
     {
-        [Input("users")]
-        private List<Inputs.GetTwingateUsersUserArgs>? _users;
-        public List<Inputs.GetTwingateUsersUserArgs> Users
+        /// <summary>
+        /// The email address of the User
+        /// </summary>
+        [Input("email")]
+        public string? Email { get; set; }
+
+        /// <summary>
+        /// Match when the value exist in the email of the user.
+        /// </summary>
+        [Input("emailContains")]
+        public string? EmailContains { get; set; }
+
+        /// <summary>
+        /// Match when the value does not exist in the email of the user.
+        /// </summary>
+        [Input("emailExclude")]
+        public string? EmailExclude { get; set; }
+
+        /// <summary>
+        /// The email of the user must start with the value.
+        /// </summary>
+        [Input("emailPrefix")]
+        public string? EmailPrefix { get; set; }
+
+        /// <summary>
+        /// The regular expression match of the email of the user.
+        /// </summary>
+        [Input("emailRegexp")]
+        public string? EmailRegexp { get; set; }
+
+        /// <summary>
+        /// The email of the user must end with the value.
+        /// </summary>
+        [Input("emailSuffix")]
+        public string? EmailSuffix { get; set; }
+
+        /// <summary>
+        /// The first name of the User
+        /// </summary>
+        [Input("firstName")]
+        public string? FirstName { get; set; }
+
+        /// <summary>
+        /// Match when the value exist in the first name of the user.
+        /// </summary>
+        [Input("firstNameContains")]
+        public string? FirstNameContains { get; set; }
+
+        /// <summary>
+        /// Match when the value does not exist in the first name of the user.
+        /// </summary>
+        [Input("firstNameExclude")]
+        public string? FirstNameExclude { get; set; }
+
+        /// <summary>
+        /// The first name of the user must start with the value.
+        /// </summary>
+        [Input("firstNamePrefix")]
+        public string? FirstNamePrefix { get; set; }
+
+        /// <summary>
+        /// The regular expression match of the first name of the user.
+        /// </summary>
+        [Input("firstNameRegexp")]
+        public string? FirstNameRegexp { get; set; }
+
+        /// <summary>
+        /// The first name of the user must end with the value.
+        /// </summary>
+        [Input("firstNameSuffix")]
+        public string? FirstNameSuffix { get; set; }
+
+        /// <summary>
+        /// The last name of the User
+        /// </summary>
+        [Input("lastName")]
+        public string? LastName { get; set; }
+
+        /// <summary>
+        /// Match when the value exist in the last name of the user.
+        /// </summary>
+        [Input("lastNameContains")]
+        public string? LastNameContains { get; set; }
+
+        /// <summary>
+        /// Match when the value does not exist in the last name of the user.
+        /// </summary>
+        [Input("lastNameExclude")]
+        public string? LastNameExclude { get; set; }
+
+        /// <summary>
+        /// The last name of the user must start with the value.
+        /// </summary>
+        [Input("lastNamePrefix")]
+        public string? LastNamePrefix { get; set; }
+
+        /// <summary>
+        /// The regular expression match of the last name of the user.
+        /// </summary>
+        [Input("lastNameRegexp")]
+        public string? LastNameRegexp { get; set; }
+
+        /// <summary>
+        /// The last name of the user must end with the value.
+        /// </summary>
+        [Input("lastNameSuffix")]
+        public string? LastNameSuffix { get; set; }
+
+        [Input("roles")]
+        private List<string>? _roles;
+
+        /// <summary>
+        /// Returns users that match a list of roles. Valid roles: `ADMIN`, `DEVOPS`, `SUPPORT`, `MEMBER`.
+        /// </summary>
+        public List<string> Roles
         {
-            get => _users ?? (_users = new List<Inputs.GetTwingateUsersUserArgs>());
-            set => _users = value;
+            get => _roles ?? (_roles = new List<string>());
+            set => _roles = value;
         }
 
         public GetTwingateUsersArgs()
@@ -81,12 +189,124 @@ namespace Pulumi.Twingate
 
     public sealed class GetTwingateUsersInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("users")]
-        private InputList<Inputs.GetTwingateUsersUserInputArgs>? _users;
-        public InputList<Inputs.GetTwingateUsersUserInputArgs> Users
+        /// <summary>
+        /// The email address of the User
+        /// </summary>
+        [Input("email")]
+        public Input<string>? Email { get; set; }
+
+        /// <summary>
+        /// Match when the value exist in the email of the user.
+        /// </summary>
+        [Input("emailContains")]
+        public Input<string>? EmailContains { get; set; }
+
+        /// <summary>
+        /// Match when the value does not exist in the email of the user.
+        /// </summary>
+        [Input("emailExclude")]
+        public Input<string>? EmailExclude { get; set; }
+
+        /// <summary>
+        /// The email of the user must start with the value.
+        /// </summary>
+        [Input("emailPrefix")]
+        public Input<string>? EmailPrefix { get; set; }
+
+        /// <summary>
+        /// The regular expression match of the email of the user.
+        /// </summary>
+        [Input("emailRegexp")]
+        public Input<string>? EmailRegexp { get; set; }
+
+        /// <summary>
+        /// The email of the user must end with the value.
+        /// </summary>
+        [Input("emailSuffix")]
+        public Input<string>? EmailSuffix { get; set; }
+
+        /// <summary>
+        /// The first name of the User
+        /// </summary>
+        [Input("firstName")]
+        public Input<string>? FirstName { get; set; }
+
+        /// <summary>
+        /// Match when the value exist in the first name of the user.
+        /// </summary>
+        [Input("firstNameContains")]
+        public Input<string>? FirstNameContains { get; set; }
+
+        /// <summary>
+        /// Match when the value does not exist in the first name of the user.
+        /// </summary>
+        [Input("firstNameExclude")]
+        public Input<string>? FirstNameExclude { get; set; }
+
+        /// <summary>
+        /// The first name of the user must start with the value.
+        /// </summary>
+        [Input("firstNamePrefix")]
+        public Input<string>? FirstNamePrefix { get; set; }
+
+        /// <summary>
+        /// The regular expression match of the first name of the user.
+        /// </summary>
+        [Input("firstNameRegexp")]
+        public Input<string>? FirstNameRegexp { get; set; }
+
+        /// <summary>
+        /// The first name of the user must end with the value.
+        /// </summary>
+        [Input("firstNameSuffix")]
+        public Input<string>? FirstNameSuffix { get; set; }
+
+        /// <summary>
+        /// The last name of the User
+        /// </summary>
+        [Input("lastName")]
+        public Input<string>? LastName { get; set; }
+
+        /// <summary>
+        /// Match when the value exist in the last name of the user.
+        /// </summary>
+        [Input("lastNameContains")]
+        public Input<string>? LastNameContains { get; set; }
+
+        /// <summary>
+        /// Match when the value does not exist in the last name of the user.
+        /// </summary>
+        [Input("lastNameExclude")]
+        public Input<string>? LastNameExclude { get; set; }
+
+        /// <summary>
+        /// The last name of the user must start with the value.
+        /// </summary>
+        [Input("lastNamePrefix")]
+        public Input<string>? LastNamePrefix { get; set; }
+
+        /// <summary>
+        /// The regular expression match of the last name of the user.
+        /// </summary>
+        [Input("lastNameRegexp")]
+        public Input<string>? LastNameRegexp { get; set; }
+
+        /// <summary>
+        /// The last name of the user must end with the value.
+        /// </summary>
+        [Input("lastNameSuffix")]
+        public Input<string>? LastNameSuffix { get; set; }
+
+        [Input("roles")]
+        private InputList<string>? _roles;
+
+        /// <summary>
+        /// Returns users that match a list of roles. Valid roles: `ADMIN`, `DEVOPS`, `SUPPORT`, `MEMBER`.
+        /// </summary>
+        public InputList<string> Roles
         {
-            get => _users ?? (_users = new InputList<Inputs.GetTwingateUsersUserInputArgs>());
-            set => _users = value;
+            get => _roles ?? (_roles = new InputList<string>());
+            set => _roles = value;
         }
 
         public GetTwingateUsersInvokeArgs()
@@ -100,18 +320,151 @@ namespace Pulumi.Twingate
     public sealed class GetTwingateUsersResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Returns only users that exactly match this email.
+        /// </summary>
+        public readonly string? Email;
+        /// <summary>
+        /// Match when the value exist in the email of the user.
+        /// </summary>
+        public readonly string? EmailContains;
+        /// <summary>
+        /// Match when the value does not exist in the email of the user.
+        /// </summary>
+        public readonly string? EmailExclude;
+        /// <summary>
+        /// The email of the user must start with the value.
+        /// </summary>
+        public readonly string? EmailPrefix;
+        /// <summary>
+        /// The regular expression match of the email of the user.
+        /// </summary>
+        public readonly string? EmailRegexp;
+        /// <summary>
+        /// The email of the user must end with the value.
+        /// </summary>
+        public readonly string? EmailSuffix;
+        /// <summary>
+        /// Returns only users that exactly match the first name.
+        /// </summary>
+        public readonly string? FirstName;
+        /// <summary>
+        /// Match when the value exist in the first name of the user.
+        /// </summary>
+        public readonly string? FirstNameContains;
+        /// <summary>
+        /// Match when the value does not exist in the first name of the user.
+        /// </summary>
+        public readonly string? FirstNameExclude;
+        /// <summary>
+        /// The first name of the user must start with the value.
+        /// </summary>
+        public readonly string? FirstNamePrefix;
+        /// <summary>
+        /// The regular expression match of the first name of the user.
+        /// </summary>
+        public readonly string? FirstNameRegexp;
+        /// <summary>
+        /// The first name of the user must end with the value.
+        /// </summary>
+        public readonly string? FirstNameSuffix;
+        /// <summary>
+        /// The ID of this resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Returns only users that exactly match the last name.
+        /// </summary>
+        public readonly string? LastName;
+        /// <summary>
+        /// Match when the value exist in the last name of the user.
+        /// </summary>
+        public readonly string? LastNameContains;
+        /// <summary>
+        /// Match when the value does not exist in the last name of the user.
+        /// </summary>
+        public readonly string? LastNameExclude;
+        /// <summary>
+        /// The last name of the user must start with the value.
+        /// </summary>
+        public readonly string? LastNamePrefix;
+        /// <summary>
+        /// The regular expression match of the last name of the user.
+        /// </summary>
+        public readonly string? LastNameRegexp;
+        /// <summary>
+        /// The last name of the user must end with the value.
+        /// </summary>
+        public readonly string? LastNameSuffix;
+        /// <summary>
+        /// Returns users that match a list of roles. Valid roles: `ADMIN`, `DEVOPS`, `SUPPORT`, `MEMBER`.
+        /// </summary>
+        public readonly ImmutableArray<string> Roles;
         public readonly ImmutableArray<Outputs.GetTwingateUsersUserResult> Users;
 
         [OutputConstructor]
         private GetTwingateUsersResult(
+            string? email,
+
+            string? emailContains,
+
+            string? emailExclude,
+
+            string? emailPrefix,
+
+            string? emailRegexp,
+
+            string? emailSuffix,
+
+            string? firstName,
+
+            string? firstNameContains,
+
+            string? firstNameExclude,
+
+            string? firstNamePrefix,
+
+            string? firstNameRegexp,
+
+            string? firstNameSuffix,
+
             string id,
+
+            string? lastName,
+
+            string? lastNameContains,
+
+            string? lastNameExclude,
+
+            string? lastNamePrefix,
+
+            string? lastNameRegexp,
+
+            string? lastNameSuffix,
+
+            ImmutableArray<string> roles,
 
             ImmutableArray<Outputs.GetTwingateUsersUserResult> users)
         {
+            Email = email;
+            EmailContains = emailContains;
+            EmailExclude = emailExclude;
+            EmailPrefix = emailPrefix;
+            EmailRegexp = emailRegexp;
+            EmailSuffix = emailSuffix;
+            FirstName = firstName;
+            FirstNameContains = firstNameContains;
+            FirstNameExclude = firstNameExclude;
+            FirstNamePrefix = firstNamePrefix;
+            FirstNameRegexp = firstNameRegexp;
+            FirstNameSuffix = firstNameSuffix;
             Id = id;
+            LastName = lastName;
+            LastNameContains = lastNameContains;
+            LastNameExclude = lastNameExclude;
+            LastNamePrefix = lastNamePrefix;
+            LastNameRegexp = lastNameRegexp;
+            LastNameSuffix = lastNameSuffix;
+            Roles = roles;
             Users = users;
         }
     }

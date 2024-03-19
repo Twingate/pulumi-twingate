@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetTwingateServiceAccounts(ctx *pulumi.Context, args *GetTwingateServiceAccountsArgs, opts ...pulumi.InvokeOption) (*GetTwingateServiceAccountsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTwingateServiceAccountsResult
@@ -52,16 +54,34 @@ func GetTwingateServiceAccounts(ctx *pulumi.Context, args *GetTwingateServiceAcc
 type GetTwingateServiceAccountsArgs struct {
 	// Name of the Service Account
 	Name *string `pulumi:"name"`
-	// List of Service Accounts
-	ServiceAccounts []GetTwingateServiceAccountsServiceAccount `pulumi:"serviceAccounts"`
+	// Match when the value exist in the name of the service account.
+	NameContains *string `pulumi:"nameContains"`
+	// Match when the exact value does not exist in the name of the service account.
+	NameExclude *string `pulumi:"nameExclude"`
+	// The name of the service account must start with the value.
+	NamePrefix *string `pulumi:"namePrefix"`
+	// The regular expression match of the name of the service account.
+	NameRegexp *string `pulumi:"nameRegexp"`
+	// The name of the service account must end with the value.
+	NameSuffix *string `pulumi:"nameSuffix"`
 }
 
 // A collection of values returned by getTwingateServiceAccounts.
 type GetTwingateServiceAccountsResult struct {
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this resource.
 	Id string `pulumi:"id"`
-	// Filter results by the name of the Service Account.
+	// Returns only service accounts that exactly match this name. If no options are passed it will return all service accounts. Only one option can be used at a time.
 	Name *string `pulumi:"name"`
+	// Match when the value exist in the name of the service account.
+	NameContains *string `pulumi:"nameContains"`
+	// Match when the exact value does not exist in the name of the service account.
+	NameExclude *string `pulumi:"nameExclude"`
+	// The name of the service account must start with the value.
+	NamePrefix *string `pulumi:"namePrefix"`
+	// The regular expression match of the name of the service account.
+	NameRegexp *string `pulumi:"nameRegexp"`
+	// The name of the service account must end with the value.
+	NameSuffix *string `pulumi:"nameSuffix"`
 	// List of Service Accounts
 	ServiceAccounts []GetTwingateServiceAccountsServiceAccount `pulumi:"serviceAccounts"`
 }
@@ -83,8 +103,16 @@ func GetTwingateServiceAccountsOutput(ctx *pulumi.Context, args GetTwingateServi
 type GetTwingateServiceAccountsOutputArgs struct {
 	// Name of the Service Account
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// List of Service Accounts
-	ServiceAccounts GetTwingateServiceAccountsServiceAccountArrayInput `pulumi:"serviceAccounts"`
+	// Match when the value exist in the name of the service account.
+	NameContains pulumi.StringPtrInput `pulumi:"nameContains"`
+	// Match when the exact value does not exist in the name of the service account.
+	NameExclude pulumi.StringPtrInput `pulumi:"nameExclude"`
+	// The name of the service account must start with the value.
+	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
+	// The regular expression match of the name of the service account.
+	NameRegexp pulumi.StringPtrInput `pulumi:"nameRegexp"`
+	// The name of the service account must end with the value.
+	NameSuffix pulumi.StringPtrInput `pulumi:"nameSuffix"`
 }
 
 func (GetTwingateServiceAccountsOutputArgs) ElementType() reflect.Type {
@@ -106,14 +134,39 @@ func (o GetTwingateServiceAccountsResultOutput) ToGetTwingateServiceAccountsResu
 	return o
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this resource.
 func (o GetTwingateServiceAccountsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTwingateServiceAccountsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Filter results by the name of the Service Account.
+// Returns only service accounts that exactly match this name. If no options are passed it will return all service accounts. Only one option can be used at a time.
 func (o GetTwingateServiceAccountsResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTwingateServiceAccountsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Match when the value exist in the name of the service account.
+func (o GetTwingateServiceAccountsResultOutput) NameContains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateServiceAccountsResult) *string { return v.NameContains }).(pulumi.StringPtrOutput)
+}
+
+// Match when the exact value does not exist in the name of the service account.
+func (o GetTwingateServiceAccountsResultOutput) NameExclude() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateServiceAccountsResult) *string { return v.NameExclude }).(pulumi.StringPtrOutput)
+}
+
+// The name of the service account must start with the value.
+func (o GetTwingateServiceAccountsResultOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateServiceAccountsResult) *string { return v.NamePrefix }).(pulumi.StringPtrOutput)
+}
+
+// The regular expression match of the name of the service account.
+func (o GetTwingateServiceAccountsResultOutput) NameRegexp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateServiceAccountsResult) *string { return v.NameRegexp }).(pulumi.StringPtrOutput)
+}
+
+// The name of the service account must end with the value.
+func (o GetTwingateServiceAccountsResultOutput) NameSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateServiceAccountsResult) *string { return v.NameSuffix }).(pulumi.StringPtrOutput)
 }
 
 // List of Service Accounts

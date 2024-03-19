@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -36,19 +37,18 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import twingate:index/twingateRemoteNetwork:TwingateRemoteNetwork network UmVtb3RlTmV0d29zaipgMKIkNg==
-//
+// $ pulumi import twingate:index/twingateRemoteNetwork:TwingateRemoteNetwork network UmVtb3RlTmV0d29zaipgMKIkNg==
 // ```
 type TwingateRemoteNetwork struct {
 	pulumi.CustomResourceState
 
 	// The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
-	Location pulumi.StringPtrOutput `pulumi:"location"`
+	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the Remote Network
 	Name pulumi.StringOutput `pulumi:"name"`
 }
@@ -203,8 +203,8 @@ func (o TwingateRemoteNetworkOutput) ToTwingateRemoteNetworkOutputWithContext(ct
 }
 
 // The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
-func (o TwingateRemoteNetworkOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TwingateRemoteNetwork) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
+func (o TwingateRemoteNetworkOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *TwingateRemoteNetwork) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // The name of the Remote Network

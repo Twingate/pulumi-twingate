@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupTwingateRemoteNetwork(ctx *pulumi.Context, args *LookupTwingateRemoteNetworkArgs, opts ...pulumi.InvokeOption) (*LookupTwingateRemoteNetworkResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTwingateRemoteNetworkResult

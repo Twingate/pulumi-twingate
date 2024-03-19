@@ -14,72 +14,10 @@ import (
 
 // Resources in Twingate represent servers on the private network that clients can connect to. Resources can be defined by IP, CIDR range, FQDN, or DNS zone. For more information, see the Twingate [documentation](https://docs.twingate.com/docs/resources-and-access-nodes).
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/Twingate/pulumi-twingate/sdk/go/twingate"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			awsNetwork, err := twingate.NewTwingateRemoteNetwork(ctx, "awsNetwork", nil)
-//			if err != nil {
-//				return err
-//			}
-//			aws, err := twingate.NewTwingateGroup(ctx, "aws", nil)
-//			if err != nil {
-//				return err
-//			}
-//			githubActionsProd, err := twingate.NewTwingateServiceAccount(ctx, "githubActionsProd", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = twingate.NewTwingateResource(ctx, "resource", &twingate.TwingateResourceArgs{
-//				Address:         pulumi.String("internal.int"),
-//				RemoteNetworkId: awsNetwork.ID(),
-//				Protocols: &twingate.TwingateResourceProtocolsArgs{
-//					AllowIcmp: pulumi.Bool(true),
-//					Tcp: &twingate.TwingateResourceProtocolsTcpArgs{
-//						Policy: pulumi.String("RESTRICTED"),
-//						Ports: pulumi.StringArray{
-//							pulumi.String("80"),
-//							pulumi.String("82-83"),
-//						},
-//					},
-//					Udp: &twingate.TwingateResourceProtocolsUdpArgs{
-//						Policy: pulumi.String("ALLOW_ALL"),
-//					},
-//				},
-//				Access: &twingate.TwingateResourceAccessArgs{
-//					GroupIds: pulumi.StringArray{
-//						aws.ID(),
-//					},
-//					ServiceAccountIds: pulumi.StringArray{
-//						githubActionsProd.ID(),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import twingate:index/twingateResource:TwingateResource resource UmVzb3VyY2U6MzQwNDQ3
-//
+// $ pulumi import twingate:index/twingateResource:TwingateResource resource UmVzb3VyY2U6MzQwNDQ3
 // ```
 type TwingateResource struct {
 	pulumi.CustomResourceState
@@ -90,19 +28,23 @@ type TwingateResource struct {
 	Address pulumi.StringOutput `pulumi:"address"`
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
 	Alias pulumi.StringPtrOutput `pulumi:"alias"`
+	// Set the resource as active or inactive. Default is `true`.
+	IsActive pulumi.BoolOutput `pulumi:"isActive"`
 	// Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to
 	// `false`, assignments made outside of Terraform will be ignored.
 	IsAuthoritative pulumi.BoolOutput `pulumi:"isAuthoritative"`
-	// Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client.
+	// Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
 	IsBrowserShortcutEnabled pulumi.BoolOutput `pulumi:"isBrowserShortcutEnabled"`
-	// Controls whether this Resource will be visible in the main Resource list in the Twingate Client.
+	// Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
 	IsVisible pulumi.BoolOutput `pulumi:"isVisible"`
 	// The name of the Resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-	Protocols TwingateResourceProtocolsPtrOutput `pulumi:"protocols"`
+	Protocols TwingateResourceProtocolsOutput `pulumi:"protocols"`
 	// Remote Network ID where the Resource lives
 	RemoteNetworkId pulumi.StringOutput `pulumi:"remoteNetworkId"`
+	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
+	SecurityPolicyId pulumi.StringOutput `pulumi:"securityPolicyId"`
 }
 
 // NewTwingateResource registers a new resource with the given unique name, arguments, and options.
@@ -147,12 +89,14 @@ type twingateResourceState struct {
 	Address *string `pulumi:"address"`
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
 	Alias *string `pulumi:"alias"`
+	// Set the resource as active or inactive. Default is `true`.
+	IsActive *bool `pulumi:"isActive"`
 	// Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to
 	// `false`, assignments made outside of Terraform will be ignored.
 	IsAuthoritative *bool `pulumi:"isAuthoritative"`
-	// Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client.
+	// Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
 	IsBrowserShortcutEnabled *bool `pulumi:"isBrowserShortcutEnabled"`
-	// Controls whether this Resource will be visible in the main Resource list in the Twingate Client.
+	// Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
 	IsVisible *bool `pulumi:"isVisible"`
 	// The name of the Resource
 	Name *string `pulumi:"name"`
@@ -160,6 +104,8 @@ type twingateResourceState struct {
 	Protocols *TwingateResourceProtocols `pulumi:"protocols"`
 	// Remote Network ID where the Resource lives
 	RemoteNetworkId *string `pulumi:"remoteNetworkId"`
+	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
+	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 }
 
 type TwingateResourceState struct {
@@ -169,12 +115,14 @@ type TwingateResourceState struct {
 	Address pulumi.StringPtrInput
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
 	Alias pulumi.StringPtrInput
+	// Set the resource as active or inactive. Default is `true`.
+	IsActive pulumi.BoolPtrInput
 	// Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to
 	// `false`, assignments made outside of Terraform will be ignored.
 	IsAuthoritative pulumi.BoolPtrInput
-	// Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client.
+	// Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
 	IsBrowserShortcutEnabled pulumi.BoolPtrInput
-	// Controls whether this Resource will be visible in the main Resource list in the Twingate Client.
+	// Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
 	IsVisible pulumi.BoolPtrInput
 	// The name of the Resource
 	Name pulumi.StringPtrInput
@@ -182,6 +130,8 @@ type TwingateResourceState struct {
 	Protocols TwingateResourceProtocolsPtrInput
 	// Remote Network ID where the Resource lives
 	RemoteNetworkId pulumi.StringPtrInput
+	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
+	SecurityPolicyId pulumi.StringPtrInput
 }
 
 func (TwingateResourceState) ElementType() reflect.Type {
@@ -195,12 +145,14 @@ type twingateResourceArgs struct {
 	Address string `pulumi:"address"`
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
 	Alias *string `pulumi:"alias"`
+	// Set the resource as active or inactive. Default is `true`.
+	IsActive *bool `pulumi:"isActive"`
 	// Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to
 	// `false`, assignments made outside of Terraform will be ignored.
 	IsAuthoritative *bool `pulumi:"isAuthoritative"`
-	// Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client.
+	// Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
 	IsBrowserShortcutEnabled *bool `pulumi:"isBrowserShortcutEnabled"`
-	// Controls whether this Resource will be visible in the main Resource list in the Twingate Client.
+	// Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
 	IsVisible *bool `pulumi:"isVisible"`
 	// The name of the Resource
 	Name *string `pulumi:"name"`
@@ -208,6 +160,8 @@ type twingateResourceArgs struct {
 	Protocols *TwingateResourceProtocols `pulumi:"protocols"`
 	// Remote Network ID where the Resource lives
 	RemoteNetworkId string `pulumi:"remoteNetworkId"`
+	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
+	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 }
 
 // The set of arguments for constructing a TwingateResource resource.
@@ -218,12 +172,14 @@ type TwingateResourceArgs struct {
 	Address pulumi.StringInput
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
 	Alias pulumi.StringPtrInput
+	// Set the resource as active or inactive. Default is `true`.
+	IsActive pulumi.BoolPtrInput
 	// Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to
 	// `false`, assignments made outside of Terraform will be ignored.
 	IsAuthoritative pulumi.BoolPtrInput
-	// Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client.
+	// Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
 	IsBrowserShortcutEnabled pulumi.BoolPtrInput
-	// Controls whether this Resource will be visible in the main Resource list in the Twingate Client.
+	// Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
 	IsVisible pulumi.BoolPtrInput
 	// The name of the Resource
 	Name pulumi.StringPtrInput
@@ -231,6 +187,8 @@ type TwingateResourceArgs struct {
 	Protocols TwingateResourceProtocolsPtrInput
 	// Remote Network ID where the Resource lives
 	RemoteNetworkId pulumi.StringInput
+	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
+	SecurityPolicyId pulumi.StringPtrInput
 }
 
 func (TwingateResourceArgs) ElementType() reflect.Type {
@@ -335,18 +293,23 @@ func (o TwingateResourceOutput) Alias() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TwingateResource) pulumi.StringPtrOutput { return v.Alias }).(pulumi.StringPtrOutput)
 }
 
+// Set the resource as active or inactive. Default is `true`.
+func (o TwingateResourceOutput) IsActive() pulumi.BoolOutput {
+	return o.ApplyT(func(v *TwingateResource) pulumi.BoolOutput { return v.IsActive }).(pulumi.BoolOutput)
+}
+
 // Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to
 // `false`, assignments made outside of Terraform will be ignored.
 func (o TwingateResourceOutput) IsAuthoritative() pulumi.BoolOutput {
 	return o.ApplyT(func(v *TwingateResource) pulumi.BoolOutput { return v.IsAuthoritative }).(pulumi.BoolOutput)
 }
 
-// Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client.
+// Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
 func (o TwingateResourceOutput) IsBrowserShortcutEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *TwingateResource) pulumi.BoolOutput { return v.IsBrowserShortcutEnabled }).(pulumi.BoolOutput)
 }
 
-// Controls whether this Resource will be visible in the main Resource list in the Twingate Client.
+// Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
 func (o TwingateResourceOutput) IsVisible() pulumi.BoolOutput {
 	return o.ApplyT(func(v *TwingateResource) pulumi.BoolOutput { return v.IsVisible }).(pulumi.BoolOutput)
 }
@@ -357,13 +320,18 @@ func (o TwingateResourceOutput) Name() pulumi.StringOutput {
 }
 
 // Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-func (o TwingateResourceOutput) Protocols() TwingateResourceProtocolsPtrOutput {
-	return o.ApplyT(func(v *TwingateResource) TwingateResourceProtocolsPtrOutput { return v.Protocols }).(TwingateResourceProtocolsPtrOutput)
+func (o TwingateResourceOutput) Protocols() TwingateResourceProtocolsOutput {
+	return o.ApplyT(func(v *TwingateResource) TwingateResourceProtocolsOutput { return v.Protocols }).(TwingateResourceProtocolsOutput)
 }
 
 // Remote Network ID where the Resource lives
 func (o TwingateResourceOutput) RemoteNetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TwingateResource) pulumi.StringOutput { return v.RemoteNetworkId }).(pulumi.StringOutput)
+}
+
+// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
+func (o TwingateResourceOutput) SecurityPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TwingateResource) pulumi.StringOutput { return v.SecurityPolicyId }).(pulumi.StringOutput)
 }
 
 type TwingateResourceArrayOutput struct{ *pulumi.OutputState }

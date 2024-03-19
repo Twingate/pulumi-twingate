@@ -9,17 +9,19 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as twingate from "@pulumi/twingate";
+ * import * as twingate from "@emailbob/twingate";
  *
  * const aws = new twingate.TwingateGroup("aws", {});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import twingate:index/twingateGroup:TwingateGroup aws R3JvdXA6MzQ4OTE=
+ * $ pulumi import twingate:index/twingateGroup:TwingateGroup aws R3JvdXA6MzQ4OTE=
  * ```
  */
 export class TwingateGroup extends pulumi.CustomResource {

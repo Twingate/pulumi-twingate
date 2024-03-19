@@ -14,7 +14,7 @@ namespace Pulumi.Twingate.Outputs
     public sealed class GetTwingateRemoteNetworksRemoteNetworkResult
     {
         /// <summary>
-        /// The ID of the Remote Network
+        /// The ID of the Remote Network.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -22,9 +22,9 @@ namespace Pulumi.Twingate.Outputs
         /// </summary>
         public readonly string Location;
         /// <summary>
-        /// The name of the Remote Network
+        /// The name of the Remote Network.
         /// </summary>
-        public readonly string Name;
+        public readonly string? Name;
 
         [OutputConstructor]
         private GetTwingateRemoteNetworksRemoteNetworkResult(
@@ -32,7 +32,7 @@ namespace Pulumi.Twingate.Outputs
 
             string location,
 
-            string name)
+            string? name)
         {
             Id = id;
             Location = location;

@@ -17,16 +17,16 @@ namespace Pulumi.Twingate.Outputs
         /// Whether to allow ICMP (ping) traffic
         /// </summary>
         public readonly bool? AllowIcmp;
-        public readonly Outputs.TwingateResourceProtocolsTcp Tcp;
-        public readonly Outputs.TwingateResourceProtocolsUdp Udp;
+        public readonly Outputs.TwingateResourceProtocolsTcp? Tcp;
+        public readonly Outputs.TwingateResourceProtocolsUdp? Udp;
 
         [OutputConstructor]
         private TwingateResourceProtocols(
             bool? allowIcmp,
 
-            Outputs.TwingateResourceProtocolsTcp tcp,
+            Outputs.TwingateResourceProtocolsTcp? tcp,
 
-            Outputs.TwingateResourceProtocolsUdp udp)
+            Outputs.TwingateResourceProtocolsUdp? udp)
         {
             AllowIcmp = allowIcmp;
             Tcp = tcp;

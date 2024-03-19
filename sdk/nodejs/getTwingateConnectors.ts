@@ -11,19 +11,28 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@pulumi/twingate";
  *
- * const all = twingate.getTwingateConnectors({});
+ * const all = twingate.getTwingateConnectors({
+ *     name: "<your connector's name>",
+ * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTwingateConnectors(args?: GetTwingateConnectorsArgs, opts?: pulumi.InvokeOptions): Promise<GetTwingateConnectorsResult> {
     args = args || {};
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("twingate:index/getTwingateConnectors:getTwingateConnectors", {
-        "connectors": args.connectors,
+        "name": args.name,
+        "nameContains": args.nameContains,
+        "nameExclude": args.nameExclude,
+        "namePrefix": args.namePrefix,
+        "nameRegexp": args.nameRegexp,
+        "nameSuffix": args.nameSuffix,
     }, opts);
 }
 
@@ -32,9 +41,29 @@ export function getTwingateConnectors(args?: GetTwingateConnectorsArgs, opts?: p
  */
 export interface GetTwingateConnectorsArgs {
     /**
-     * List of Connectors
+     * The Name of the Connector.
      */
-    connectors?: inputs.GetTwingateConnectorsConnector[];
+    name?: string;
+    /**
+     * Match when the value exist in the name of the connector.
+     */
+    nameContains?: string;
+    /**
+     * Match when the exact value does not exist in the name of the connector.
+     */
+    nameExclude?: string;
+    /**
+     * The name of the connector must start with the value.
+     */
+    namePrefix?: string;
+    /**
+     * The regular expression match of the name of the connector.
+     */
+    nameRegexp?: string;
+    /**
+     * The name of the connector must end with the value.
+     */
+    nameSuffix?: string;
 }
 
 /**
@@ -44,23 +73,51 @@ export interface GetTwingateConnectorsResult {
     /**
      * List of Connectors
      */
-    readonly connectors?: outputs.GetTwingateConnectorsConnector[];
+    readonly connectors: outputs.GetTwingateConnectorsConnector[];
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this resource.
      */
     readonly id: string;
+    /**
+     * Returns only connectors that exactly match this name. If no options are passed it will return all connectors. Only one option can be used at a time.
+     */
+    readonly name?: string;
+    /**
+     * Match when the value exist in the name of the connector.
+     */
+    readonly nameContains?: string;
+    /**
+     * Match when the exact value does not exist in the name of the connector.
+     */
+    readonly nameExclude?: string;
+    /**
+     * The name of the connector must start with the value.
+     */
+    readonly namePrefix?: string;
+    /**
+     * The regular expression match of the name of the connector.
+     */
+    readonly nameRegexp?: string;
+    /**
+     * The name of the connector must end with the value.
+     */
+    readonly nameSuffix?: string;
 }
 /**
  * Connectors provide connectivity to Remote Networks. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/understanding-access-nodes).
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@pulumi/twingate";
  *
- * const all = twingate.getTwingateConnectors({});
+ * const all = twingate.getTwingateConnectors({
+ *     name: "<your connector's name>",
+ * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTwingateConnectorsOutput(args?: GetTwingateConnectorsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateConnectorsResult> {
     return pulumi.output(args).apply((a: any) => getTwingateConnectors(a, opts))
@@ -71,7 +128,27 @@ export function getTwingateConnectorsOutput(args?: GetTwingateConnectorsOutputAr
  */
 export interface GetTwingateConnectorsOutputArgs {
     /**
-     * List of Connectors
+     * The Name of the Connector.
      */
-    connectors?: pulumi.Input<pulumi.Input<inputs.GetTwingateConnectorsConnectorArgs>[]>;
+    name?: pulumi.Input<string>;
+    /**
+     * Match when the value exist in the name of the connector.
+     */
+    nameContains?: pulumi.Input<string>;
+    /**
+     * Match when the exact value does not exist in the name of the connector.
+     */
+    nameExclude?: pulumi.Input<string>;
+    /**
+     * The name of the connector must start with the value.
+     */
+    namePrefix?: pulumi.Input<string>;
+    /**
+     * The regular expression match of the name of the connector.
+     */
+    nameRegexp?: pulumi.Input<string>;
+    /**
+     * The name of the connector must end with the value.
+     */
+    nameSuffix?: pulumi.Input<string>;
 }

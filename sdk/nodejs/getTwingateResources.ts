@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@pulumi/twingate";
@@ -19,13 +20,19 @@ import * as utilities from "./utilities";
  *     name: "<your resource's name>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
-export function getTwingateResources(args: GetTwingateResourcesArgs, opts?: pulumi.InvokeOptions): Promise<GetTwingateResourcesResult> {
+export function getTwingateResources(args?: GetTwingateResourcesArgs, opts?: pulumi.InvokeOptions): Promise<GetTwingateResourcesResult> {
+    args = args || {};
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("twingate:index/getTwingateResources:getTwingateResources", {
         "name": args.name,
-        "resources": args.resources,
+        "nameContains": args.nameContains,
+        "nameExclude": args.nameExclude,
+        "namePrefix": args.namePrefix,
+        "nameRegexp": args.nameRegexp,
+        "nameSuffix": args.nameSuffix,
     }, opts);
 }
 
@@ -36,11 +43,27 @@ export interface GetTwingateResourcesArgs {
     /**
      * The name of the Resource
      */
-    name: string;
+    name?: string;
     /**
-     * List of Resources
+     * Match when the value exist in the name of the resource.
      */
-    resources?: inputs.GetTwingateResourcesResource[];
+    nameContains?: string;
+    /**
+     * Match when the exact value does not exist in the name of the resource.
+     */
+    nameExclude?: string;
+    /**
+     * The name of the resource must start with the value.
+     */
+    namePrefix?: string;
+    /**
+     * The regular expression match of the name of the resource.
+     */
+    nameRegexp?: string;
+    /**
+     * The name of the resource must end with the value.
+     */
+    nameSuffix?: string;
 }
 
 /**
@@ -48,23 +71,44 @@ export interface GetTwingateResourcesArgs {
  */
 export interface GetTwingateResourcesResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this resource.
      */
     readonly id: string;
     /**
-     * The name of the Resource
+     * Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
      */
-    readonly name: string;
+    readonly name?: string;
+    /**
+     * Match when the value exist in the name of the resource.
+     */
+    readonly nameContains?: string;
+    /**
+     * Match when the exact value does not exist in the name of the resource.
+     */
+    readonly nameExclude?: string;
+    /**
+     * The name of the resource must start with the value.
+     */
+    readonly namePrefix?: string;
+    /**
+     * The regular expression match of the name of the resource.
+     */
+    readonly nameRegexp?: string;
+    /**
+     * The name of the resource must end with the value.
+     */
+    readonly nameSuffix?: string;
     /**
      * List of Resources
      */
-    readonly resources?: outputs.GetTwingateResourcesResource[];
+    readonly resources: outputs.GetTwingateResourcesResource[];
 }
 /**
  * Resources in Twingate represent servers on the private network that clients can connect to. Resources can be defined by IP, CIDR range, FQDN, or DNS zone. For more information, see the Twingate [documentation](https://docs.twingate.com/docs/resources-and-access-nodes).
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@pulumi/twingate";
@@ -73,8 +117,9 @@ export interface GetTwingateResourcesResult {
  *     name: "<your resource's name>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
-export function getTwingateResourcesOutput(args: GetTwingateResourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateResourcesResult> {
+export function getTwingateResourcesOutput(args?: GetTwingateResourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateResourcesResult> {
     return pulumi.output(args).apply((a: any) => getTwingateResources(a, opts))
 }
 
@@ -85,9 +130,25 @@ export interface GetTwingateResourcesOutputArgs {
     /**
      * The name of the Resource
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
-     * List of Resources
+     * Match when the value exist in the name of the resource.
      */
-    resources?: pulumi.Input<pulumi.Input<inputs.GetTwingateResourcesResourceArgs>[]>;
+    nameContains?: pulumi.Input<string>;
+    /**
+     * Match when the exact value does not exist in the name of the resource.
+     */
+    nameExclude?: pulumi.Input<string>;
+    /**
+     * The name of the resource must start with the value.
+     */
+    namePrefix?: pulumi.Input<string>;
+    /**
+     * The regular expression match of the name of the resource.
+     */
+    nameRegexp?: pulumi.Input<string>;
+    /**
+     * The name of the resource must end with the value.
+     */
+    nameSuffix?: pulumi.Input<string>;
 }

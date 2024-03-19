@@ -9,9 +9,10 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as twingate from "@pulumi/twingate";
+ * import * as twingate from "@emailbob/twingate";
  *
  * const user = new twingate.TwingateUser("user", {
  *     email: "sample@company.com",
@@ -21,6 +22,7 @@ import * as utilities from "./utilities";
  *     sendInvite: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class TwingateUser extends pulumi.CustomResource {
     /**

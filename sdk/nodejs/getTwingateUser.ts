@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@pulumi/twingate";
@@ -17,6 +18,7 @@ import * as utilities from "./utilities";
  *     id: "<your user's id>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTwingateUser(args: GetTwingateUserArgs, opts?: pulumi.InvokeOptions): Promise<GetTwingateUserResult> {
 
@@ -53,12 +55,6 @@ export interface GetTwingateUserResult {
      */
     readonly id: string;
     /**
-     * Indicates whether the User is an admin
-     *
-     * @deprecated This read-only Boolean value will be deprecated in a future release. You may use the `role` value instead.
-     */
-    readonly isAdmin: boolean;
-    /**
      * The last name of the User
      */
     readonly lastName: string;
@@ -76,6 +72,7 @@ export interface GetTwingateUserResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@pulumi/twingate";
@@ -84,6 +81,7 @@ export interface GetTwingateUserResult {
  *     id: "<your user's id>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTwingateUserOutput(args: GetTwingateUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateUserResult> {
     return pulumi.output(args).apply((a: any) => getTwingateUser(a, opts))

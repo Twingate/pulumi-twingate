@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@pulumi/twingate";
@@ -19,16 +20,21 @@ import * as utilities from "./utilities";
  *     name: "<your group's name>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTwingateGroups(args?: GetTwingateGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetTwingateGroupsResult> {
     args = args || {};
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("twingate:index/getTwingateGroups:getTwingateGroups", {
-        "groups": args.groups,
         "isActive": args.isActive,
         "name": args.name,
-        "type": args.type,
+        "nameContains": args.nameContains,
+        "nameExclude": args.nameExclude,
+        "namePrefix": args.namePrefix,
+        "nameRegexp": args.nameRegexp,
+        "nameSuffix": args.nameSuffix,
+        "types": args.types,
     }, opts);
 }
 
@@ -36,10 +42,6 @@ export function getTwingateGroups(args?: GetTwingateGroupsArgs, opts?: pulumi.In
  * A collection of arguments for invoking getTwingateGroups.
  */
 export interface GetTwingateGroupsArgs {
-    /**
-     * List of Groups
-     */
-    groups?: inputs.GetTwingateGroupsGroup[];
     /**
      * Indicates if the Group is active
      */
@@ -49,9 +51,29 @@ export interface GetTwingateGroupsArgs {
      */
     name?: string;
     /**
-     * The type of the Group
+     * Match when the value exist in the name of the group.
      */
-    type?: string;
+    nameContains?: string;
+    /**
+     * Match when the exact value does not exist in the name of the group.
+     */
+    nameExclude?: string;
+    /**
+     * The name of the group must start with the value.
+     */
+    namePrefix?: string;
+    /**
+     * The regular expression match of the name of the group.
+     */
+    nameRegexp?: string;
+    /**
+     * The name of the group must end with the value.
+     */
+    nameSuffix?: string;
+    /**
+     * Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.
+     */
+    types?: string[];
 }
 
 /**
@@ -61,9 +83,9 @@ export interface GetTwingateGroupsResult {
     /**
      * List of Groups
      */
-    readonly groups?: outputs.GetTwingateGroupsGroup[];
+    readonly groups: outputs.GetTwingateGroupsGroup[];
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this resource.
      */
     readonly id: string;
     /**
@@ -71,19 +93,40 @@ export interface GetTwingateGroupsResult {
      */
     readonly isActive?: boolean;
     /**
-     * Returns only Groups that exactly match this name.
+     * Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
      */
     readonly name?: string;
     /**
-     * Returns only Groups of the specified type (valid: `MANUAL`, `SYNCED`, `SYSTEM`).
+     * Match when the value exist in the name of the group.
      */
-    readonly type?: string;
+    readonly nameContains?: string;
+    /**
+     * Match when the exact value does not exist in the name of the group.
+     */
+    readonly nameExclude?: string;
+    /**
+     * The name of the group must start with the value.
+     */
+    readonly namePrefix?: string;
+    /**
+     * The regular expression match of the name of the group.
+     */
+    readonly nameRegexp?: string;
+    /**
+     * The name of the group must end with the value.
+     */
+    readonly nameSuffix?: string;
+    /**
+     * Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.
+     */
+    readonly types?: string[];
 }
 /**
  * Groups are how users are authorized to access Resources. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/groups).
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@pulumi/twingate";
@@ -92,6 +135,7 @@ export interface GetTwingateGroupsResult {
  *     name: "<your group's name>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTwingateGroupsOutput(args?: GetTwingateGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateGroupsResult> {
     return pulumi.output(args).apply((a: any) => getTwingateGroups(a, opts))
@@ -102,10 +146,6 @@ export function getTwingateGroupsOutput(args?: GetTwingateGroupsOutputArgs, opts
  */
 export interface GetTwingateGroupsOutputArgs {
     /**
-     * List of Groups
-     */
-    groups?: pulumi.Input<pulumi.Input<inputs.GetTwingateGroupsGroupArgs>[]>;
-    /**
      * Indicates if the Group is active
      */
     isActive?: pulumi.Input<boolean>;
@@ -114,7 +154,27 @@ export interface GetTwingateGroupsOutputArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The type of the Group
+     * Match when the value exist in the name of the group.
      */
-    type?: pulumi.Input<string>;
+    nameContains?: pulumi.Input<string>;
+    /**
+     * Match when the exact value does not exist in the name of the group.
+     */
+    nameExclude?: pulumi.Input<string>;
+    /**
+     * The name of the group must start with the value.
+     */
+    namePrefix?: pulumi.Input<string>;
+    /**
+     * The regular expression match of the name of the group.
+     */
+    nameRegexp?: pulumi.Input<string>;
+    /**
+     * The name of the group must end with the value.
+     */
+    nameSuffix?: pulumi.Input<string>;
+    /**
+     * Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.
+     */
+    types?: pulumi.Input<pulumi.Input<string>[]>;
 }

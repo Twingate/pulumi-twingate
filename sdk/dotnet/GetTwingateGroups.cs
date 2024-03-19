@@ -14,10 +14,9 @@ namespace Pulumi.Twingate
         /// <summary>
         /// Groups are how users are authorized to access Resources. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/groups).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,8 +32,7 @@ namespace Pulumi.Twingate
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTwingateGroupsResult> InvokeAsync(GetTwingateGroupsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTwingateGroupsResult>("twingate:index/getTwingateGroups:getTwingateGroups", args ?? new GetTwingateGroupsArgs(), options.WithDefaults());
@@ -42,10 +40,9 @@ namespace Pulumi.Twingate
         /// <summary>
         /// Groups are how users are authorized to access Resources. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/groups).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,8 +58,7 @@ namespace Pulumi.Twingate
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTwingateGroupsResult> Invoke(GetTwingateGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTwingateGroupsResult>("twingate:index/getTwingateGroups:getTwingateGroups", args ?? new GetTwingateGroupsInvokeArgs(), options.WithDefaults());
@@ -71,18 +67,6 @@ namespace Pulumi.Twingate
 
     public sealed class GetTwingateGroupsArgs : global::Pulumi.InvokeArgs
     {
-        [Input("groups")]
-        private List<Inputs.GetTwingateGroupsGroupArgs>? _groups;
-
-        /// <summary>
-        /// List of Groups
-        /// </summary>
-        public List<Inputs.GetTwingateGroupsGroupArgs> Groups
-        {
-            get => _groups ?? (_groups = new List<Inputs.GetTwingateGroupsGroupArgs>());
-            set => _groups = value;
-        }
-
         /// <summary>
         /// Indicates if the Group is active
         /// </summary>
@@ -96,10 +80,46 @@ namespace Pulumi.Twingate
         public string? Name { get; set; }
 
         /// <summary>
-        /// The type of the Group
+        /// Match when the value exist in the name of the group.
         /// </summary>
-        [Input("type")]
-        public string? Type { get; set; }
+        [Input("nameContains")]
+        public string? NameContains { get; set; }
+
+        /// <summary>
+        /// Match when the exact value does not exist in the name of the group.
+        /// </summary>
+        [Input("nameExclude")]
+        public string? NameExclude { get; set; }
+
+        /// <summary>
+        /// The name of the group must start with the value.
+        /// </summary>
+        [Input("namePrefix")]
+        public string? NamePrefix { get; set; }
+
+        /// <summary>
+        /// The regular expression match of the name of the group.
+        /// </summary>
+        [Input("nameRegexp")]
+        public string? NameRegexp { get; set; }
+
+        /// <summary>
+        /// The name of the group must end with the value.
+        /// </summary>
+        [Input("nameSuffix")]
+        public string? NameSuffix { get; set; }
+
+        [Input("types")]
+        private List<string>? _types;
+
+        /// <summary>
+        /// Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.
+        /// </summary>
+        public List<string> Types
+        {
+            get => _types ?? (_types = new List<string>());
+            set => _types = value;
+        }
 
         public GetTwingateGroupsArgs()
         {
@@ -109,18 +129,6 @@ namespace Pulumi.Twingate
 
     public sealed class GetTwingateGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("groups")]
-        private InputList<Inputs.GetTwingateGroupsGroupInputArgs>? _groups;
-
-        /// <summary>
-        /// List of Groups
-        /// </summary>
-        public InputList<Inputs.GetTwingateGroupsGroupInputArgs> Groups
-        {
-            get => _groups ?? (_groups = new InputList<Inputs.GetTwingateGroupsGroupInputArgs>());
-            set => _groups = value;
-        }
-
         /// <summary>
         /// Indicates if the Group is active
         /// </summary>
@@ -134,10 +142,46 @@ namespace Pulumi.Twingate
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The type of the Group
+        /// Match when the value exist in the name of the group.
         /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
+        [Input("nameContains")]
+        public Input<string>? NameContains { get; set; }
+
+        /// <summary>
+        /// Match when the exact value does not exist in the name of the group.
+        /// </summary>
+        [Input("nameExclude")]
+        public Input<string>? NameExclude { get; set; }
+
+        /// <summary>
+        /// The name of the group must start with the value.
+        /// </summary>
+        [Input("namePrefix")]
+        public Input<string>? NamePrefix { get; set; }
+
+        /// <summary>
+        /// The regular expression match of the name of the group.
+        /// </summary>
+        [Input("nameRegexp")]
+        public Input<string>? NameRegexp { get; set; }
+
+        /// <summary>
+        /// The name of the group must end with the value.
+        /// </summary>
+        [Input("nameSuffix")]
+        public Input<string>? NameSuffix { get; set; }
+
+        [Input("types")]
+        private InputList<string>? _types;
+
+        /// <summary>
+        /// Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.
+        /// </summary>
+        public InputList<string> Types
+        {
+            get => _types ?? (_types = new InputList<string>());
+            set => _types = value;
+        }
 
         public GetTwingateGroupsInvokeArgs()
         {
@@ -154,7 +198,7 @@ namespace Pulumi.Twingate
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTwingateGroupsGroupResult> Groups;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -162,13 +206,33 @@ namespace Pulumi.Twingate
         /// </summary>
         public readonly bool? IsActive;
         /// <summary>
-        /// Returns only Groups that exactly match this name.
+        /// Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Returns only Groups of the specified type (valid: `MANUAL`, `SYNCED`, `SYSTEM`).
+        /// Match when the value exist in the name of the group.
         /// </summary>
-        public readonly string? Type;
+        public readonly string? NameContains;
+        /// <summary>
+        /// Match when the exact value does not exist in the name of the group.
+        /// </summary>
+        public readonly string? NameExclude;
+        /// <summary>
+        /// The name of the group must start with the value.
+        /// </summary>
+        public readonly string? NamePrefix;
+        /// <summary>
+        /// The regular expression match of the name of the group.
+        /// </summary>
+        public readonly string? NameRegexp;
+        /// <summary>
+        /// The name of the group must end with the value.
+        /// </summary>
+        public readonly string? NameSuffix;
+        /// <summary>
+        /// Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.
+        /// </summary>
+        public readonly ImmutableArray<string> Types;
 
         [OutputConstructor]
         private GetTwingateGroupsResult(
@@ -180,13 +244,28 @@ namespace Pulumi.Twingate
 
             string? name,
 
-            string? type)
+            string? nameContains,
+
+            string? nameExclude,
+
+            string? namePrefix,
+
+            string? nameRegexp,
+
+            string? nameSuffix,
+
+            ImmutableArray<string> types)
         {
             Groups = groups;
             Id = id;
             IsActive = isActive;
             Name = name;
-            Type = type;
+            NameContains = nameContains;
+            NameExclude = nameExclude;
+            NamePrefix = namePrefix;
+            NameRegexp = nameRegexp;
+            NameSuffix = nameSuffix;
+            Types = types;
         }
     }
 }

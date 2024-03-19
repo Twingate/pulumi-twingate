@@ -14,10 +14,9 @@ namespace Pulumi.Twingate
         /// <summary>
         /// Security Policies are defined in the Twingate Admin Console and determine user and device authentication requirements for Resources.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,8 +32,7 @@ namespace Pulumi.Twingate
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTwingateSecurityPolicyResult> InvokeAsync(GetTwingateSecurityPolicyArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTwingateSecurityPolicyResult>("twingate:index/getTwingateSecurityPolicy:getTwingateSecurityPolicy", args ?? new GetTwingateSecurityPolicyArgs(), options.WithDefaults());
@@ -42,10 +40,9 @@ namespace Pulumi.Twingate
         /// <summary>
         /// Security Policies are defined in the Twingate Admin Console and determine user and device authentication requirements for Resources.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,8 +58,7 @@ namespace Pulumi.Twingate
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTwingateSecurityPolicyResult> Invoke(GetTwingateSecurityPolicyInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTwingateSecurityPolicyResult>("twingate:index/getTwingateSecurityPolicy:getTwingateSecurityPolicy", args ?? new GetTwingateSecurityPolicyInvokeArgs(), options.WithDefaults());

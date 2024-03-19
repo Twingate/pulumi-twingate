@@ -14,10 +14,9 @@ namespace Pulumi.Twingate
         /// <summary>
         /// Users in Twingate can be given access to Twingate Resources and may either be added manually or automatically synchronized with a 3rd party identity provider. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/users).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,8 +32,7 @@ namespace Pulumi.Twingate
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTwingateUserResult> InvokeAsync(GetTwingateUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTwingateUserResult>("twingate:index/getTwingateUser:getTwingateUser", args ?? new GetTwingateUserArgs(), options.WithDefaults());
@@ -42,10 +40,9 @@ namespace Pulumi.Twingate
         /// <summary>
         /// Users in Twingate can be given access to Twingate Resources and may either be added manually or automatically synchronized with a 3rd party identity provider. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/users).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,8 +58,7 @@ namespace Pulumi.Twingate
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTwingateUserResult> Invoke(GetTwingateUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTwingateUserResult>("twingate:index/getTwingateUser:getTwingateUser", args ?? new GetTwingateUserInvokeArgs(), options.WithDefaults());
@@ -114,10 +110,6 @@ namespace Pulumi.Twingate
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Indicates whether the User is an admin
-        /// </summary>
-        public readonly bool IsAdmin;
-        /// <summary>
         /// The last name of the User
         /// </summary>
         public readonly string LastName;
@@ -138,8 +130,6 @@ namespace Pulumi.Twingate
 
             string id,
 
-            bool isAdmin,
-
             string lastName,
 
             string role,
@@ -149,7 +139,6 @@ namespace Pulumi.Twingate
             Email = email;
             FirstName = firstName;
             Id = id;
-            IsAdmin = isAdmin;
             LastName = lastName;
             Role = role;
             Type = type;

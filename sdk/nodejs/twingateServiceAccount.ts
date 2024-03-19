@@ -9,12 +9,14 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as twingate from "@pulumi/twingate";
+ * import * as twingate from "@emailbob/twingate";
  *
  * const githubActionsProd = new twingate.TwingateServiceAccount("githubActionsProd", {});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class TwingateServiceAccount extends pulumi.CustomResource {
     /**

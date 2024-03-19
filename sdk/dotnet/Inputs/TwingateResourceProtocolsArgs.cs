@@ -18,11 +18,11 @@ namespace Pulumi.Twingate.Inputs
         [Input("allowIcmp")]
         public Input<bool>? AllowIcmp { get; set; }
 
-        [Input("tcp", required: true)]
-        public Input<Inputs.TwingateResourceProtocolsTcpArgs> Tcp { get; set; } = null!;
+        [Input("tcp")]
+        public Input<Inputs.TwingateResourceProtocolsTcpArgs>? Tcp { get; set; }
 
-        [Input("udp", required: true)]
-        public Input<Inputs.TwingateResourceProtocolsUdpArgs> Udp { get; set; } = null!;
+        [Input("udp")]
+        public Input<Inputs.TwingateResourceProtocolsUdpArgs>? Udp { get; set; }
 
         public TwingateResourceProtocolsArgs()
         {

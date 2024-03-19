@@ -1,0 +1,4 @@
+upstream-provider-name: terraform-provider-twingate
+upstream-provider-org: Twingate
+#target-version: v1.2.1
+allow-missing-docs: true

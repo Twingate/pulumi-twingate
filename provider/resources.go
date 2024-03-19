@@ -21,14 +21,14 @@ import (
 	// Allow embedding bridge-metadata.json in the provider.
 	_ "embed"
 
+	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
-	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 
 	// Replace this provider with the provider you are bridging.
-	twingate "github.com/Twingate/terraform-provider-twingate/twingate"
+	"github.com/Twingate/terraform-provider-twingate/v2/twingate"
 
 	"github.com/Twingate/pulumi-twingate/provider/pkg/version"
 )
@@ -56,10 +56,14 @@ var metadata []byte
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Create a Pulumi provider mapping
+
+	provider := twingate.New(fmt.Sprintf("%s-pulumi", version.Version))()
+
 	prov := tfbridge.ProviderInfo{
 		// Instantiate the Terraform provider
-		P:    shimv2.NewProvider(twingate.Provider(fmt.Sprintf("%s-pulumi", version.Version))),
-		Name: "twingate",
+		P:                       pf.ShimProvider(provider),
+		TFProviderModuleVersion: "v2",
+		Name:                    "twingate",
 		// DisplayName is a way to be able to change the casing of the provider
 		// name when being displayed on the Pulumi registry
 		DisplayName: "Twingate",
@@ -77,7 +81,7 @@ func Provider() tfbridge.ProviderInfo {
 		// PluginDownloadURL is an optional URL used to download the Provider
 		// for use in Pulumi programs
 		// e.g https://github.com/org/pulumi-provider-name/releases/
-		PluginDownloadURL: "",
+		PluginDownloadURL: "github://api.github.com/Twingate/pulumi-twingate",
 		Description:       "A Pulumi package for creating and managing twingate cloud resources.",
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
@@ -127,6 +131,7 @@ func Provider() tfbridge.ProviderInfo {
 			"twingate_security_policies": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getTwingateSecurityPolicies")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
+			PackageName: "@emailbob/twingate",
 			// List any npm dependencies and their versions
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^3.0.0",
@@ -141,6 +146,7 @@ func Provider() tfbridge.ProviderInfo {
 			//Overlay: &tfbridge.OverlayInfo{},
 		},
 		Python: &tfbridge.PythonInfo{
+			PackageName: "emailbob_twingate",
 			// List any Python dependencies and their version ranges
 			Requires: map[string]string{
 				"pulumi": ">=3.0.0,<4.0.0",
@@ -166,9 +172,15 @@ func Provider() tfbridge.ProviderInfo {
 	// tokens, and apply auto aliasing for full backwards compatibility.  For more
 	// information, please reference:
 	// https://pkg.go.dev/github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge#ProviderInfo.ComputeTokens
-	prov.MustComputeTokens(tokens.SingleModule("twingate_", mainMod,
-		tokens.MakeStandard(mainPkg)))
-	prov.MustApplyAutoAliases()
+	prov.MustComputeTokens(tokens.SingleModule("twingate_", mainMod, tokens.MakeStandard(mainPkg)))
+
+	// TODO: that func call panics
+	// panic: Set not supported - is it possible to treat this as immutable?
+	// probably there is issue with pulumi-terraform-bridge/pf library compatibility
+	// as problem with library method, and not with terraform provider itself
+	//
+	//prov.MustApplyAutoAliases()
+
 	prov.SetAutonaming(255, "-")
 
 	return prov

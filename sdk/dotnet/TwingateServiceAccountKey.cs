@@ -14,10 +14,12 @@ namespace Pulumi.Twingate
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
+    /// using Time = Pulumiverse.Time;
     /// using Twingate = Pulumi.Twingate;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -29,12 +31,41 @@ namespace Pulumi.Twingate
     ///         ServiceAccountId = githubActionsProd.Id,
     ///     });
     /// 
+    ///     // Key rotation using the time provider (see https://registry.terraform.io/providers/hashicorp/time/latest)
+    ///     var keyRotationRotating = new Time.Rotating("keyRotationRotating", new()
+    ///     {
+    ///         RotationDays = 30,
+    ///     });
+    /// 
+    ///     var keyRotationStatic = new Time.Static("keyRotationStatic", new()
+    ///     {
+    ///         Rfc3339 = keyRotationRotating.Rfc3339,
+    ///     });
+    /// 
+    ///     var githubKeyWithRotation = new Twingate.TwingateServiceAccountKey("githubKeyWithRotation", new()
+    ///     {
+    ///         ServiceAccountId = githubActionsProd.Id,
+    ///     });
+    /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [TwingateResourceType("twingate:index/twingateServiceAccountKey:TwingateServiceAccountKey")]
     public partial class TwingateServiceAccountKey : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Specifies how many days until a Service Account Key expires. This should be an integer between 0 and 365 representing the number of days until the Service Account Key will expire. Defaults to 0, meaning the key will never expire.
+        /// </summary>
+        [Output("expirationTime")]
+        public Output<int> ExpirationTime { get; private set; } = null!;
+
+        /// <summary>
+        /// If the value of this attribute changes to false, Terraform will destroy and recreate the resource.
+        /// </summary>
+        [Output("isActive")]
+        public Output<bool> IsActive { get; private set; } = null!;
+
         /// <summary>
         /// The name of the Service Key
         /// </summary>
@@ -76,6 +107,7 @@ namespace Pulumi.Twingate
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                PluginDownloadURL = "github://api.github.com/Twingate/pulumi-twingate",
                 AdditionalSecretOutputs =
                 {
                     "token",
@@ -104,6 +136,12 @@ namespace Pulumi.Twingate
     public sealed class TwingateServiceAccountKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies how many days until a Service Account Key expires. This should be an integer between 0 and 365 representing the number of days until the Service Account Key will expire. Defaults to 0, meaning the key will never expire.
+        /// </summary>
+        [Input("expirationTime")]
+        public Input<int>? ExpirationTime { get; set; }
+
+        /// <summary>
         /// The name of the Service Key
         /// </summary>
         [Input("name")]
@@ -123,6 +161,18 @@ namespace Pulumi.Twingate
 
     public sealed class TwingateServiceAccountKeyState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies how many days until a Service Account Key expires. This should be an integer between 0 and 365 representing the number of days until the Service Account Key will expire. Defaults to 0, meaning the key will never expire.
+        /// </summary>
+        [Input("expirationTime")]
+        public Input<int>? ExpirationTime { get; set; }
+
+        /// <summary>
+        /// If the value of this attribute changes to false, Terraform will destroy and recreate the resource.
+        /// </summary>
+        [Input("isActive")]
+        public Input<bool>? IsActive { get; set; }
+
         /// <summary>
         /// The name of the Service Key
         /// </summary>

@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetTwingateSecurityPolicy(ctx *pulumi.Context, args *GetTwingateSecurityPolicyArgs, opts ...pulumi.InvokeOption) (*GetTwingateSecurityPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTwingateSecurityPolicyResult

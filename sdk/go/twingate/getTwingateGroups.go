@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetTwingateGroups(ctx *pulumi.Context, args *GetTwingateGroupsArgs, opts ...pulumi.InvokeOption) (*GetTwingateGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTwingateGroupsResult
@@ -50,28 +52,46 @@ func GetTwingateGroups(ctx *pulumi.Context, args *GetTwingateGroupsArgs, opts ..
 
 // A collection of arguments for invoking getTwingateGroups.
 type GetTwingateGroupsArgs struct {
-	// List of Groups
-	Groups []GetTwingateGroupsGroup `pulumi:"groups"`
 	// Indicates if the Group is active
 	IsActive *bool `pulumi:"isActive"`
 	// The name of the Group
 	Name *string `pulumi:"name"`
-	// The type of the Group
-	Type *string `pulumi:"type"`
+	// Match when the value exist in the name of the group.
+	NameContains *string `pulumi:"nameContains"`
+	// Match when the exact value does not exist in the name of the group.
+	NameExclude *string `pulumi:"nameExclude"`
+	// The name of the group must start with the value.
+	NamePrefix *string `pulumi:"namePrefix"`
+	// The regular expression match of the name of the group.
+	NameRegexp *string `pulumi:"nameRegexp"`
+	// The name of the group must end with the value.
+	NameSuffix *string `pulumi:"nameSuffix"`
+	// Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.
+	Types []string `pulumi:"types"`
 }
 
 // A collection of values returned by getTwingateGroups.
 type GetTwingateGroupsResult struct {
 	// List of Groups
 	Groups []GetTwingateGroupsGroup `pulumi:"groups"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this resource.
 	Id string `pulumi:"id"`
 	// Returns only Groups matching the specified state.
 	IsActive *bool `pulumi:"isActive"`
-	// Returns only Groups that exactly match this name.
+	// Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
 	Name *string `pulumi:"name"`
-	// Returns only Groups of the specified type (valid: `MANUAL`, `SYNCED`, `SYSTEM`).
-	Type *string `pulumi:"type"`
+	// Match when the value exist in the name of the group.
+	NameContains *string `pulumi:"nameContains"`
+	// Match when the exact value does not exist in the name of the group.
+	NameExclude *string `pulumi:"nameExclude"`
+	// The name of the group must start with the value.
+	NamePrefix *string `pulumi:"namePrefix"`
+	// The regular expression match of the name of the group.
+	NameRegexp *string `pulumi:"nameRegexp"`
+	// The name of the group must end with the value.
+	NameSuffix *string `pulumi:"nameSuffix"`
+	// Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.
+	Types []string `pulumi:"types"`
 }
 
 func GetTwingateGroupsOutput(ctx *pulumi.Context, args GetTwingateGroupsOutputArgs, opts ...pulumi.InvokeOption) GetTwingateGroupsResultOutput {
@@ -89,14 +109,22 @@ func GetTwingateGroupsOutput(ctx *pulumi.Context, args GetTwingateGroupsOutputAr
 
 // A collection of arguments for invoking getTwingateGroups.
 type GetTwingateGroupsOutputArgs struct {
-	// List of Groups
-	Groups GetTwingateGroupsGroupArrayInput `pulumi:"groups"`
 	// Indicates if the Group is active
 	IsActive pulumi.BoolPtrInput `pulumi:"isActive"`
 	// The name of the Group
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The type of the Group
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Match when the value exist in the name of the group.
+	NameContains pulumi.StringPtrInput `pulumi:"nameContains"`
+	// Match when the exact value does not exist in the name of the group.
+	NameExclude pulumi.StringPtrInput `pulumi:"nameExclude"`
+	// The name of the group must start with the value.
+	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
+	// The regular expression match of the name of the group.
+	NameRegexp pulumi.StringPtrInput `pulumi:"nameRegexp"`
+	// The name of the group must end with the value.
+	NameSuffix pulumi.StringPtrInput `pulumi:"nameSuffix"`
+	// Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.
+	Types pulumi.StringArrayInput `pulumi:"types"`
 }
 
 func (GetTwingateGroupsOutputArgs) ElementType() reflect.Type {
@@ -123,7 +151,7 @@ func (o GetTwingateGroupsResultOutput) Groups() GetTwingateGroupsGroupArrayOutpu
 	return o.ApplyT(func(v GetTwingateGroupsResult) []GetTwingateGroupsGroup { return v.Groups }).(GetTwingateGroupsGroupArrayOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this resource.
 func (o GetTwingateGroupsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTwingateGroupsResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -133,14 +161,39 @@ func (o GetTwingateGroupsResultOutput) IsActive() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetTwingateGroupsResult) *bool { return v.IsActive }).(pulumi.BoolPtrOutput)
 }
 
-// Returns only Groups that exactly match this name.
+// Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
 func (o GetTwingateGroupsResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTwingateGroupsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Returns only Groups of the specified type (valid: `MANUAL`, `SYNCED`, `SYSTEM`).
-func (o GetTwingateGroupsResultOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetTwingateGroupsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
+// Match when the value exist in the name of the group.
+func (o GetTwingateGroupsResultOutput) NameContains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateGroupsResult) *string { return v.NameContains }).(pulumi.StringPtrOutput)
+}
+
+// Match when the exact value does not exist in the name of the group.
+func (o GetTwingateGroupsResultOutput) NameExclude() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateGroupsResult) *string { return v.NameExclude }).(pulumi.StringPtrOutput)
+}
+
+// The name of the group must start with the value.
+func (o GetTwingateGroupsResultOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateGroupsResult) *string { return v.NamePrefix }).(pulumi.StringPtrOutput)
+}
+
+// The regular expression match of the name of the group.
+func (o GetTwingateGroupsResultOutput) NameRegexp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateGroupsResult) *string { return v.NameRegexp }).(pulumi.StringPtrOutput)
+}
+
+// The name of the group must end with the value.
+func (o GetTwingateGroupsResultOutput) NameSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateGroupsResult) *string { return v.NameSuffix }).(pulumi.StringPtrOutput)
+}
+
+// Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.
+func (o GetTwingateGroupsResultOutput) Types() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTwingateGroupsResult) []string { return v.Types }).(pulumi.StringArrayOutput)
 }
 
 func init() {

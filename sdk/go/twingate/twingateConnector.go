@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -33,7 +34,8 @@ import (
 //				return err
 //			}
 //			_, err = twingate.NewTwingateConnector(ctx, "awsConnector", &twingate.TwingateConnectorArgs{
-//				RemoteNetworkId: awsNetwork.ID(),
+//				RemoteNetworkId:      awsNetwork.ID(),
+//				StatusUpdatesEnabled: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -43,13 +45,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import twingate:index/twingateConnector:TwingateConnector aws_connector Q29ubmVjdG9yOjI2NzM=
-//
+// $ pulumi import twingate:index/twingateConnector:TwingateConnector aws_connector Q29ubmVjdG9yOjI2NzM=
 // ```
 type TwingateConnector struct {
 	pulumi.CustomResourceState
@@ -58,7 +59,7 @@ type TwingateConnector struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the Remote Network the Connector is attached to.
 	RemoteNetworkId pulumi.StringOutput `pulumi:"remoteNetworkId"`
-	// Determines whether status notifications are enabled for the Connector.
+	// Determines whether status notifications are enabled for the Connector. Default is `true`.
 	StatusUpdatesEnabled pulumi.BoolOutput `pulumi:"statusUpdatesEnabled"`
 }
 
@@ -99,7 +100,7 @@ type twingateConnectorState struct {
 	Name *string `pulumi:"name"`
 	// The ID of the Remote Network the Connector is attached to.
 	RemoteNetworkId *string `pulumi:"remoteNetworkId"`
-	// Determines whether status notifications are enabled for the Connector.
+	// Determines whether status notifications are enabled for the Connector. Default is `true`.
 	StatusUpdatesEnabled *bool `pulumi:"statusUpdatesEnabled"`
 }
 
@@ -108,7 +109,7 @@ type TwingateConnectorState struct {
 	Name pulumi.StringPtrInput
 	// The ID of the Remote Network the Connector is attached to.
 	RemoteNetworkId pulumi.StringPtrInput
-	// Determines whether status notifications are enabled for the Connector.
+	// Determines whether status notifications are enabled for the Connector. Default is `true`.
 	StatusUpdatesEnabled pulumi.BoolPtrInput
 }
 
@@ -121,7 +122,7 @@ type twingateConnectorArgs struct {
 	Name *string `pulumi:"name"`
 	// The ID of the Remote Network the Connector is attached to.
 	RemoteNetworkId string `pulumi:"remoteNetworkId"`
-	// Determines whether status notifications are enabled for the Connector.
+	// Determines whether status notifications are enabled for the Connector. Default is `true`.
 	StatusUpdatesEnabled *bool `pulumi:"statusUpdatesEnabled"`
 }
 
@@ -131,7 +132,7 @@ type TwingateConnectorArgs struct {
 	Name pulumi.StringPtrInput
 	// The ID of the Remote Network the Connector is attached to.
 	RemoteNetworkId pulumi.StringInput
-	// Determines whether status notifications are enabled for the Connector.
+	// Determines whether status notifications are enabled for the Connector. Default is `true`.
 	StatusUpdatesEnabled pulumi.BoolPtrInput
 }
 
@@ -232,7 +233,7 @@ func (o TwingateConnectorOutput) RemoteNetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TwingateConnector) pulumi.StringOutput { return v.RemoteNetworkId }).(pulumi.StringOutput)
 }
 
-// Determines whether status notifications are enabled for the Connector.
+// Determines whether status notifications are enabled for the Connector. Default is `true`.
 func (o TwingateConnectorOutput) StatusUpdatesEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *TwingateConnector) pulumi.BoolOutput { return v.StatusUpdatesEnabled }).(pulumi.BoolOutput)
 }
