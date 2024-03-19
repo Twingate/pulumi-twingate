@@ -28,7 +28,7 @@ namespace Pulumi.Twingate.Outputs
         /// <summary>
         /// Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetTwingateResourcesResourceProtocolResult> Protocols;
+        public readonly Outputs.GetTwingateResourcesResourceProtocolsResult Protocols;
         /// <summary>
         /// Remote Network ID where the Resource lives
         /// </summary>
@@ -42,7 +42,7 @@ namespace Pulumi.Twingate.Outputs
 
             string name,
 
-            ImmutableArray<Outputs.GetTwingateResourcesResourceProtocolResult> protocols,
+            Outputs.GetTwingateResourcesResourceProtocolsResult protocols,
 
             string remoteNetworkId)
         {

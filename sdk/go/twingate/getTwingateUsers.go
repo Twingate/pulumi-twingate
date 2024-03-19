@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -36,6 +37,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetTwingateUsers(ctx *pulumi.Context, args *GetTwingateUsersArgs, opts ...pulumi.InvokeOption) (*GetTwingateUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTwingateUsersResult
@@ -48,13 +50,88 @@ func GetTwingateUsers(ctx *pulumi.Context, args *GetTwingateUsersArgs, opts ...p
 
 // A collection of arguments for invoking getTwingateUsers.
 type GetTwingateUsersArgs struct {
-	Users []GetTwingateUsersUser `pulumi:"users"`
+	// The email address of the User
+	Email *string `pulumi:"email"`
+	// Match when the value exist in the email of the user.
+	EmailContains *string `pulumi:"emailContains"`
+	// Match when the value does not exist in the email of the user.
+	EmailExclude *string `pulumi:"emailExclude"`
+	// The email of the user must start with the value.
+	EmailPrefix *string `pulumi:"emailPrefix"`
+	// The regular expression match of the email of the user.
+	EmailRegexp *string `pulumi:"emailRegexp"`
+	// The email of the user must end with the value.
+	EmailSuffix *string `pulumi:"emailSuffix"`
+	// The first name of the User
+	FirstName *string `pulumi:"firstName"`
+	// Match when the value exist in the first name of the user.
+	FirstNameContains *string `pulumi:"firstNameContains"`
+	// Match when the value does not exist in the first name of the user.
+	FirstNameExclude *string `pulumi:"firstNameExclude"`
+	// The first name of the user must start with the value.
+	FirstNamePrefix *string `pulumi:"firstNamePrefix"`
+	// The regular expression match of the first name of the user.
+	FirstNameRegexp *string `pulumi:"firstNameRegexp"`
+	// The first name of the user must end with the value.
+	FirstNameSuffix *string `pulumi:"firstNameSuffix"`
+	// The last name of the User
+	LastName *string `pulumi:"lastName"`
+	// Match when the value exist in the last name of the user.
+	LastNameContains *string `pulumi:"lastNameContains"`
+	// Match when the value does not exist in the last name of the user.
+	LastNameExclude *string `pulumi:"lastNameExclude"`
+	// The last name of the user must start with the value.
+	LastNamePrefix *string `pulumi:"lastNamePrefix"`
+	// The regular expression match of the last name of the user.
+	LastNameRegexp *string `pulumi:"lastNameRegexp"`
+	// The last name of the user must end with the value.
+	LastNameSuffix *string `pulumi:"lastNameSuffix"`
+	// Returns users that match a list of roles. Valid roles: `ADMIN`, `DEVOPS`, `SUPPORT`, `MEMBER`.
+	Roles []string `pulumi:"roles"`
 }
 
 // A collection of values returned by getTwingateUsers.
 type GetTwingateUsersResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id    string                 `pulumi:"id"`
+	// Returns only users that exactly match this email.
+	Email *string `pulumi:"email"`
+	// Match when the value exist in the email of the user.
+	EmailContains *string `pulumi:"emailContains"`
+	// Match when the value does not exist in the email of the user.
+	EmailExclude *string `pulumi:"emailExclude"`
+	// The email of the user must start with the value.
+	EmailPrefix *string `pulumi:"emailPrefix"`
+	// The regular expression match of the email of the user.
+	EmailRegexp *string `pulumi:"emailRegexp"`
+	// The email of the user must end with the value.
+	EmailSuffix *string `pulumi:"emailSuffix"`
+	// Returns only users that exactly match the first name.
+	FirstName *string `pulumi:"firstName"`
+	// Match when the value exist in the first name of the user.
+	FirstNameContains *string `pulumi:"firstNameContains"`
+	// Match when the value does not exist in the first name of the user.
+	FirstNameExclude *string `pulumi:"firstNameExclude"`
+	// The first name of the user must start with the value.
+	FirstNamePrefix *string `pulumi:"firstNamePrefix"`
+	// The regular expression match of the first name of the user.
+	FirstNameRegexp *string `pulumi:"firstNameRegexp"`
+	// The first name of the user must end with the value.
+	FirstNameSuffix *string `pulumi:"firstNameSuffix"`
+	// The ID of this resource.
+	Id string `pulumi:"id"`
+	// Returns only users that exactly match the last name.
+	LastName *string `pulumi:"lastName"`
+	// Match when the value exist in the last name of the user.
+	LastNameContains *string `pulumi:"lastNameContains"`
+	// Match when the value does not exist in the last name of the user.
+	LastNameExclude *string `pulumi:"lastNameExclude"`
+	// The last name of the user must start with the value.
+	LastNamePrefix *string `pulumi:"lastNamePrefix"`
+	// The regular expression match of the last name of the user.
+	LastNameRegexp *string `pulumi:"lastNameRegexp"`
+	// The last name of the user must end with the value.
+	LastNameSuffix *string `pulumi:"lastNameSuffix"`
+	// Returns users that match a list of roles. Valid roles: `ADMIN`, `DEVOPS`, `SUPPORT`, `MEMBER`.
+	Roles []string               `pulumi:"roles"`
 	Users []GetTwingateUsersUser `pulumi:"users"`
 }
 
@@ -73,7 +150,44 @@ func GetTwingateUsersOutput(ctx *pulumi.Context, args GetTwingateUsersOutputArgs
 
 // A collection of arguments for invoking getTwingateUsers.
 type GetTwingateUsersOutputArgs struct {
-	Users GetTwingateUsersUserArrayInput `pulumi:"users"`
+	// The email address of the User
+	Email pulumi.StringPtrInput `pulumi:"email"`
+	// Match when the value exist in the email of the user.
+	EmailContains pulumi.StringPtrInput `pulumi:"emailContains"`
+	// Match when the value does not exist in the email of the user.
+	EmailExclude pulumi.StringPtrInput `pulumi:"emailExclude"`
+	// The email of the user must start with the value.
+	EmailPrefix pulumi.StringPtrInput `pulumi:"emailPrefix"`
+	// The regular expression match of the email of the user.
+	EmailRegexp pulumi.StringPtrInput `pulumi:"emailRegexp"`
+	// The email of the user must end with the value.
+	EmailSuffix pulumi.StringPtrInput `pulumi:"emailSuffix"`
+	// The first name of the User
+	FirstName pulumi.StringPtrInput `pulumi:"firstName"`
+	// Match when the value exist in the first name of the user.
+	FirstNameContains pulumi.StringPtrInput `pulumi:"firstNameContains"`
+	// Match when the value does not exist in the first name of the user.
+	FirstNameExclude pulumi.StringPtrInput `pulumi:"firstNameExclude"`
+	// The first name of the user must start with the value.
+	FirstNamePrefix pulumi.StringPtrInput `pulumi:"firstNamePrefix"`
+	// The regular expression match of the first name of the user.
+	FirstNameRegexp pulumi.StringPtrInput `pulumi:"firstNameRegexp"`
+	// The first name of the user must end with the value.
+	FirstNameSuffix pulumi.StringPtrInput `pulumi:"firstNameSuffix"`
+	// The last name of the User
+	LastName pulumi.StringPtrInput `pulumi:"lastName"`
+	// Match when the value exist in the last name of the user.
+	LastNameContains pulumi.StringPtrInput `pulumi:"lastNameContains"`
+	// Match when the value does not exist in the last name of the user.
+	LastNameExclude pulumi.StringPtrInput `pulumi:"lastNameExclude"`
+	// The last name of the user must start with the value.
+	LastNamePrefix pulumi.StringPtrInput `pulumi:"lastNamePrefix"`
+	// The regular expression match of the last name of the user.
+	LastNameRegexp pulumi.StringPtrInput `pulumi:"lastNameRegexp"`
+	// The last name of the user must end with the value.
+	LastNameSuffix pulumi.StringPtrInput `pulumi:"lastNameSuffix"`
+	// Returns users that match a list of roles. Valid roles: `ADMIN`, `DEVOPS`, `SUPPORT`, `MEMBER`.
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
 }
 
 func (GetTwingateUsersOutputArgs) ElementType() reflect.Type {
@@ -95,9 +209,104 @@ func (o GetTwingateUsersResultOutput) ToGetTwingateUsersResultOutputWithContext(
 	return o
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Returns only users that exactly match this email.
+func (o GetTwingateUsersResultOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateUsersResult) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// Match when the value exist in the email of the user.
+func (o GetTwingateUsersResultOutput) EmailContains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateUsersResult) *string { return v.EmailContains }).(pulumi.StringPtrOutput)
+}
+
+// Match when the value does not exist in the email of the user.
+func (o GetTwingateUsersResultOutput) EmailExclude() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateUsersResult) *string { return v.EmailExclude }).(pulumi.StringPtrOutput)
+}
+
+// The email of the user must start with the value.
+func (o GetTwingateUsersResultOutput) EmailPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateUsersResult) *string { return v.EmailPrefix }).(pulumi.StringPtrOutput)
+}
+
+// The regular expression match of the email of the user.
+func (o GetTwingateUsersResultOutput) EmailRegexp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateUsersResult) *string { return v.EmailRegexp }).(pulumi.StringPtrOutput)
+}
+
+// The email of the user must end with the value.
+func (o GetTwingateUsersResultOutput) EmailSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateUsersResult) *string { return v.EmailSuffix }).(pulumi.StringPtrOutput)
+}
+
+// Returns only users that exactly match the first name.
+func (o GetTwingateUsersResultOutput) FirstName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateUsersResult) *string { return v.FirstName }).(pulumi.StringPtrOutput)
+}
+
+// Match when the value exist in the first name of the user.
+func (o GetTwingateUsersResultOutput) FirstNameContains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateUsersResult) *string { return v.FirstNameContains }).(pulumi.StringPtrOutput)
+}
+
+// Match when the value does not exist in the first name of the user.
+func (o GetTwingateUsersResultOutput) FirstNameExclude() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateUsersResult) *string { return v.FirstNameExclude }).(pulumi.StringPtrOutput)
+}
+
+// The first name of the user must start with the value.
+func (o GetTwingateUsersResultOutput) FirstNamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateUsersResult) *string { return v.FirstNamePrefix }).(pulumi.StringPtrOutput)
+}
+
+// The regular expression match of the first name of the user.
+func (o GetTwingateUsersResultOutput) FirstNameRegexp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateUsersResult) *string { return v.FirstNameRegexp }).(pulumi.StringPtrOutput)
+}
+
+// The first name of the user must end with the value.
+func (o GetTwingateUsersResultOutput) FirstNameSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateUsersResult) *string { return v.FirstNameSuffix }).(pulumi.StringPtrOutput)
+}
+
+// The ID of this resource.
 func (o GetTwingateUsersResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTwingateUsersResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Returns only users that exactly match the last name.
+func (o GetTwingateUsersResultOutput) LastName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateUsersResult) *string { return v.LastName }).(pulumi.StringPtrOutput)
+}
+
+// Match when the value exist in the last name of the user.
+func (o GetTwingateUsersResultOutput) LastNameContains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateUsersResult) *string { return v.LastNameContains }).(pulumi.StringPtrOutput)
+}
+
+// Match when the value does not exist in the last name of the user.
+func (o GetTwingateUsersResultOutput) LastNameExclude() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateUsersResult) *string { return v.LastNameExclude }).(pulumi.StringPtrOutput)
+}
+
+// The last name of the user must start with the value.
+func (o GetTwingateUsersResultOutput) LastNamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateUsersResult) *string { return v.LastNamePrefix }).(pulumi.StringPtrOutput)
+}
+
+// The regular expression match of the last name of the user.
+func (o GetTwingateUsersResultOutput) LastNameRegexp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateUsersResult) *string { return v.LastNameRegexp }).(pulumi.StringPtrOutput)
+}
+
+// The last name of the user must end with the value.
+func (o GetTwingateUsersResultOutput) LastNameSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateUsersResult) *string { return v.LastNameSuffix }).(pulumi.StringPtrOutput)
+}
+
+// Returns users that match a list of roles. Valid roles: `ADMIN`, `DEVOPS`, `SUPPORT`, `MEMBER`.
+func (o GetTwingateUsersResultOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTwingateUsersResult) []string { return v.Roles }).(pulumi.StringArrayOutput)
 }
 
 func (o GetTwingateUsersResultOutput) Users() GetTwingateUsersUserArrayOutput {

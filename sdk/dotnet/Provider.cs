@@ -58,6 +58,7 @@ namespace Pulumi.Twingate
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                PluginDownloadURL = "github://api.github.com/Twingate/pulumi-twingate",
                 AdditionalSecretOutputs =
                 {
                     "apiToken",
@@ -98,7 +99,7 @@ namespace Pulumi.Twingate
         public Input<int>? HttpMaxRetry { get; set; }
 
         /// <summary>
-        /// Specifies a time limit in seconds for the http requests made. The default value is 10 seconds. Alternatively, this can
+        /// Specifies a time limit in seconds for the http requests made. The default value is 35 seconds. Alternatively, this can
         /// be specified using the TWINGATE_HTTP_TIMEOUT environment variable
         /// </summary>
         [Input("httpTimeout", json: true)]

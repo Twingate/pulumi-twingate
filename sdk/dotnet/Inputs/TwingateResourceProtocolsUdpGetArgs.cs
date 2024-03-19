@@ -15,8 +15,8 @@ namespace Pulumi.Twingate.Inputs
         /// <summary>
         /// Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
         /// </summary>
-        [Input("policy", required: true)]
-        public Input<string> Policy { get; set; } = null!;
+        [Input("policy")]
+        public Input<string>? Policy { get; set; }
 
         [Input("ports")]
         private InputList<string>? _ports;

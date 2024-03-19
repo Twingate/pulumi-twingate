@@ -11,19 +11,39 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@pulumi/twingate";
  *
  * const all = twingate.getTwingateUsers({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTwingateUsers(args?: GetTwingateUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetTwingateUsersResult> {
     args = args || {};
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("twingate:index/getTwingateUsers:getTwingateUsers", {
-        "users": args.users,
+        "email": args.email,
+        "emailContains": args.emailContains,
+        "emailExclude": args.emailExclude,
+        "emailPrefix": args.emailPrefix,
+        "emailRegexp": args.emailRegexp,
+        "emailSuffix": args.emailSuffix,
+        "firstName": args.firstName,
+        "firstNameContains": args.firstNameContains,
+        "firstNameExclude": args.firstNameExclude,
+        "firstNamePrefix": args.firstNamePrefix,
+        "firstNameRegexp": args.firstNameRegexp,
+        "firstNameSuffix": args.firstNameSuffix,
+        "lastName": args.lastName,
+        "lastNameContains": args.lastNameContains,
+        "lastNameExclude": args.lastNameExclude,
+        "lastNamePrefix": args.lastNamePrefix,
+        "lastNameRegexp": args.lastNameRegexp,
+        "lastNameSuffix": args.lastNameSuffix,
+        "roles": args.roles,
     }, opts);
 }
 
@@ -31,7 +51,82 @@ export function getTwingateUsers(args?: GetTwingateUsersArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getTwingateUsers.
  */
 export interface GetTwingateUsersArgs {
-    users?: inputs.GetTwingateUsersUser[];
+    /**
+     * The email address of the User
+     */
+    email?: string;
+    /**
+     * Match when the value exist in the email of the user.
+     */
+    emailContains?: string;
+    /**
+     * Match when the value does not exist in the email of the user.
+     */
+    emailExclude?: string;
+    /**
+     * The email of the user must start with the value.
+     */
+    emailPrefix?: string;
+    /**
+     * The regular expression match of the email of the user.
+     */
+    emailRegexp?: string;
+    /**
+     * The email of the user must end with the value.
+     */
+    emailSuffix?: string;
+    /**
+     * The first name of the User
+     */
+    firstName?: string;
+    /**
+     * Match when the value exist in the first name of the user.
+     */
+    firstNameContains?: string;
+    /**
+     * Match when the value does not exist in the first name of the user.
+     */
+    firstNameExclude?: string;
+    /**
+     * The first name of the user must start with the value.
+     */
+    firstNamePrefix?: string;
+    /**
+     * The regular expression match of the first name of the user.
+     */
+    firstNameRegexp?: string;
+    /**
+     * The first name of the user must end with the value.
+     */
+    firstNameSuffix?: string;
+    /**
+     * The last name of the User
+     */
+    lastName?: string;
+    /**
+     * Match when the value exist in the last name of the user.
+     */
+    lastNameContains?: string;
+    /**
+     * Match when the value does not exist in the last name of the user.
+     */
+    lastNameExclude?: string;
+    /**
+     * The last name of the user must start with the value.
+     */
+    lastNamePrefix?: string;
+    /**
+     * The regular expression match of the last name of the user.
+     */
+    lastNameRegexp?: string;
+    /**
+     * The last name of the user must end with the value.
+     */
+    lastNameSuffix?: string;
+    /**
+     * Returns users that match a list of roles. Valid roles: `ADMIN`, `DEVOPS`, `SUPPORT`, `MEMBER`.
+     */
+    roles?: string[];
 }
 
 /**
@@ -39,22 +134,100 @@ export interface GetTwingateUsersArgs {
  */
 export interface GetTwingateUsersResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Returns only users that exactly match this email.
+     */
+    readonly email?: string;
+    /**
+     * Match when the value exist in the email of the user.
+     */
+    readonly emailContains?: string;
+    /**
+     * Match when the value does not exist in the email of the user.
+     */
+    readonly emailExclude?: string;
+    /**
+     * The email of the user must start with the value.
+     */
+    readonly emailPrefix?: string;
+    /**
+     * The regular expression match of the email of the user.
+     */
+    readonly emailRegexp?: string;
+    /**
+     * The email of the user must end with the value.
+     */
+    readonly emailSuffix?: string;
+    /**
+     * Returns only users that exactly match the first name.
+     */
+    readonly firstName?: string;
+    /**
+     * Match when the value exist in the first name of the user.
+     */
+    readonly firstNameContains?: string;
+    /**
+     * Match when the value does not exist in the first name of the user.
+     */
+    readonly firstNameExclude?: string;
+    /**
+     * The first name of the user must start with the value.
+     */
+    readonly firstNamePrefix?: string;
+    /**
+     * The regular expression match of the first name of the user.
+     */
+    readonly firstNameRegexp?: string;
+    /**
+     * The first name of the user must end with the value.
+     */
+    readonly firstNameSuffix?: string;
+    /**
+     * The ID of this resource.
      */
     readonly id: string;
-    readonly users?: outputs.GetTwingateUsersUser[];
+    /**
+     * Returns only users that exactly match the last name.
+     */
+    readonly lastName?: string;
+    /**
+     * Match when the value exist in the last name of the user.
+     */
+    readonly lastNameContains?: string;
+    /**
+     * Match when the value does not exist in the last name of the user.
+     */
+    readonly lastNameExclude?: string;
+    /**
+     * The last name of the user must start with the value.
+     */
+    readonly lastNamePrefix?: string;
+    /**
+     * The regular expression match of the last name of the user.
+     */
+    readonly lastNameRegexp?: string;
+    /**
+     * The last name of the user must end with the value.
+     */
+    readonly lastNameSuffix?: string;
+    /**
+     * Returns users that match a list of roles. Valid roles: `ADMIN`, `DEVOPS`, `SUPPORT`, `MEMBER`.
+     */
+    readonly roles?: string[];
+    readonly users: outputs.GetTwingateUsersUser[];
 }
 /**
  * Users in Twingate can be given access to Twingate Resources and may either be added manually or automatically synchronized with a 3rd party identity provider. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/users).
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@pulumi/twingate";
  *
  * const all = twingate.getTwingateUsers({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTwingateUsersOutput(args?: GetTwingateUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateUsersResult> {
     return pulumi.output(args).apply((a: any) => getTwingateUsers(a, opts))
@@ -64,5 +237,80 @@ export function getTwingateUsersOutput(args?: GetTwingateUsersOutputArgs, opts?:
  * A collection of arguments for invoking getTwingateUsers.
  */
 export interface GetTwingateUsersOutputArgs {
-    users?: pulumi.Input<pulumi.Input<inputs.GetTwingateUsersUserArgs>[]>;
+    /**
+     * The email address of the User
+     */
+    email?: pulumi.Input<string>;
+    /**
+     * Match when the value exist in the email of the user.
+     */
+    emailContains?: pulumi.Input<string>;
+    /**
+     * Match when the value does not exist in the email of the user.
+     */
+    emailExclude?: pulumi.Input<string>;
+    /**
+     * The email of the user must start with the value.
+     */
+    emailPrefix?: pulumi.Input<string>;
+    /**
+     * The regular expression match of the email of the user.
+     */
+    emailRegexp?: pulumi.Input<string>;
+    /**
+     * The email of the user must end with the value.
+     */
+    emailSuffix?: pulumi.Input<string>;
+    /**
+     * The first name of the User
+     */
+    firstName?: pulumi.Input<string>;
+    /**
+     * Match when the value exist in the first name of the user.
+     */
+    firstNameContains?: pulumi.Input<string>;
+    /**
+     * Match when the value does not exist in the first name of the user.
+     */
+    firstNameExclude?: pulumi.Input<string>;
+    /**
+     * The first name of the user must start with the value.
+     */
+    firstNamePrefix?: pulumi.Input<string>;
+    /**
+     * The regular expression match of the first name of the user.
+     */
+    firstNameRegexp?: pulumi.Input<string>;
+    /**
+     * The first name of the user must end with the value.
+     */
+    firstNameSuffix?: pulumi.Input<string>;
+    /**
+     * The last name of the User
+     */
+    lastName?: pulumi.Input<string>;
+    /**
+     * Match when the value exist in the last name of the user.
+     */
+    lastNameContains?: pulumi.Input<string>;
+    /**
+     * Match when the value does not exist in the last name of the user.
+     */
+    lastNameExclude?: pulumi.Input<string>;
+    /**
+     * The last name of the user must start with the value.
+     */
+    lastNamePrefix?: pulumi.Input<string>;
+    /**
+     * The regular expression match of the last name of the user.
+     */
+    lastNameRegexp?: pulumi.Input<string>;
+    /**
+     * The last name of the user must end with the value.
+     */
+    lastNameSuffix?: pulumi.Input<string>;
+    /**
+     * Returns users that match a list of roles. Valid roles: `ADMIN`, `DEVOPS`, `SUPPORT`, `MEMBER`.
+     */
+    roles?: pulumi.Input<pulumi.Input<string>[]>;
 }

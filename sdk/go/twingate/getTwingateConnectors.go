@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -27,7 +28,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := twingate.GetTwingateConnectors(ctx, nil, nil)
+//			_, err := twingate.GetTwingateConnectors(ctx, &twingate.GetTwingateConnectorsArgs{
+//				Name: pulumi.StringRef("<your connector's name>"),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -36,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetTwingateConnectors(ctx *pulumi.Context, args *GetTwingateConnectorsArgs, opts ...pulumi.InvokeOption) (*GetTwingateConnectorsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTwingateConnectorsResult
@@ -48,16 +52,38 @@ func GetTwingateConnectors(ctx *pulumi.Context, args *GetTwingateConnectorsArgs,
 
 // A collection of arguments for invoking getTwingateConnectors.
 type GetTwingateConnectorsArgs struct {
-	// List of Connectors
-	Connectors []GetTwingateConnectorsConnector `pulumi:"connectors"`
+	// The Name of the Connector.
+	Name *string `pulumi:"name"`
+	// Match when the value exist in the name of the connector.
+	NameContains *string `pulumi:"nameContains"`
+	// Match when the exact value does not exist in the name of the connector.
+	NameExclude *string `pulumi:"nameExclude"`
+	// The name of the connector must start with the value.
+	NamePrefix *string `pulumi:"namePrefix"`
+	// The regular expression match of the name of the connector.
+	NameRegexp *string `pulumi:"nameRegexp"`
+	// The name of the connector must end with the value.
+	NameSuffix *string `pulumi:"nameSuffix"`
 }
 
 // A collection of values returned by getTwingateConnectors.
 type GetTwingateConnectorsResult struct {
 	// List of Connectors
 	Connectors []GetTwingateConnectorsConnector `pulumi:"connectors"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this resource.
 	Id string `pulumi:"id"`
+	// Returns only connectors that exactly match this name. If no options are passed it will return all connectors. Only one option can be used at a time.
+	Name *string `pulumi:"name"`
+	// Match when the value exist in the name of the connector.
+	NameContains *string `pulumi:"nameContains"`
+	// Match when the exact value does not exist in the name of the connector.
+	NameExclude *string `pulumi:"nameExclude"`
+	// The name of the connector must start with the value.
+	NamePrefix *string `pulumi:"namePrefix"`
+	// The regular expression match of the name of the connector.
+	NameRegexp *string `pulumi:"nameRegexp"`
+	// The name of the connector must end with the value.
+	NameSuffix *string `pulumi:"nameSuffix"`
 }
 
 func GetTwingateConnectorsOutput(ctx *pulumi.Context, args GetTwingateConnectorsOutputArgs, opts ...pulumi.InvokeOption) GetTwingateConnectorsResultOutput {
@@ -75,8 +101,18 @@ func GetTwingateConnectorsOutput(ctx *pulumi.Context, args GetTwingateConnectors
 
 // A collection of arguments for invoking getTwingateConnectors.
 type GetTwingateConnectorsOutputArgs struct {
-	// List of Connectors
-	Connectors GetTwingateConnectorsConnectorArrayInput `pulumi:"connectors"`
+	// The Name of the Connector.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Match when the value exist in the name of the connector.
+	NameContains pulumi.StringPtrInput `pulumi:"nameContains"`
+	// Match when the exact value does not exist in the name of the connector.
+	NameExclude pulumi.StringPtrInput `pulumi:"nameExclude"`
+	// The name of the connector must start with the value.
+	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
+	// The regular expression match of the name of the connector.
+	NameRegexp pulumi.StringPtrInput `pulumi:"nameRegexp"`
+	// The name of the connector must end with the value.
+	NameSuffix pulumi.StringPtrInput `pulumi:"nameSuffix"`
 }
 
 func (GetTwingateConnectorsOutputArgs) ElementType() reflect.Type {
@@ -103,9 +139,39 @@ func (o GetTwingateConnectorsResultOutput) Connectors() GetTwingateConnectorsCon
 	return o.ApplyT(func(v GetTwingateConnectorsResult) []GetTwingateConnectorsConnector { return v.Connectors }).(GetTwingateConnectorsConnectorArrayOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this resource.
 func (o GetTwingateConnectorsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTwingateConnectorsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Returns only connectors that exactly match this name. If no options are passed it will return all connectors. Only one option can be used at a time.
+func (o GetTwingateConnectorsResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateConnectorsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Match when the value exist in the name of the connector.
+func (o GetTwingateConnectorsResultOutput) NameContains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateConnectorsResult) *string { return v.NameContains }).(pulumi.StringPtrOutput)
+}
+
+// Match when the exact value does not exist in the name of the connector.
+func (o GetTwingateConnectorsResultOutput) NameExclude() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateConnectorsResult) *string { return v.NameExclude }).(pulumi.StringPtrOutput)
+}
+
+// The name of the connector must start with the value.
+func (o GetTwingateConnectorsResultOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateConnectorsResult) *string { return v.NamePrefix }).(pulumi.StringPtrOutput)
+}
+
+// The regular expression match of the name of the connector.
+func (o GetTwingateConnectorsResultOutput) NameRegexp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateConnectorsResult) *string { return v.NameRegexp }).(pulumi.StringPtrOutput)
+}
+
+// The name of the connector must end with the value.
+func (o GetTwingateConnectorsResultOutput) NameSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateConnectorsResult) *string { return v.NameSuffix }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -9,18 +9,23 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as twingate from "@pulumi/twingate";
+ * import * as twingate from "@emailbob/twingate";
  *
  * const awsNetwork = new twingate.TwingateRemoteNetwork("awsNetwork", {});
- * const awsConnector = new twingate.TwingateConnector("awsConnector", {remoteNetworkId: awsNetwork.id});
+ * const awsConnector = new twingate.TwingateConnector("awsConnector", {
+ *     remoteNetworkId: awsNetwork.id,
+ *     statusUpdatesEnabled: true,
+ * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import twingate:index/twingateConnector:TwingateConnector aws_connector Q29ubmVjdG9yOjI2NzM=
+ * $ pulumi import twingate:index/twingateConnector:TwingateConnector aws_connector Q29ubmVjdG9yOjI2NzM=
  * ```
  */
 export class TwingateConnector extends pulumi.CustomResource {
@@ -60,7 +65,7 @@ export class TwingateConnector extends pulumi.CustomResource {
      */
     public readonly remoteNetworkId!: pulumi.Output<string>;
     /**
-     * Determines whether status notifications are enabled for the Connector.
+     * Determines whether status notifications are enabled for the Connector. Default is `true`.
      */
     public readonly statusUpdatesEnabled!: pulumi.Output<boolean>;
 
@@ -107,7 +112,7 @@ export interface TwingateConnectorState {
      */
     remoteNetworkId?: pulumi.Input<string>;
     /**
-     * Determines whether status notifications are enabled for the Connector.
+     * Determines whether status notifications are enabled for the Connector. Default is `true`.
      */
     statusUpdatesEnabled?: pulumi.Input<boolean>;
 }
@@ -125,7 +130,7 @@ export interface TwingateConnectorArgs {
      */
     remoteNetworkId: pulumi.Input<string>;
     /**
-     * Determines whether status notifications are enabled for the Connector.
+     * Determines whether status notifications are enabled for the Connector. Default is `true`.
      */
     statusUpdatesEnabled?: pulumi.Input<boolean>;
 }

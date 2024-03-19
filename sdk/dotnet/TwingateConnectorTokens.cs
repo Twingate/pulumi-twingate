@@ -14,6 +14,7 @@ namespace Pulumi.Twingate
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -36,6 +37,7 @@ namespace Pulumi.Twingate
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [TwingateResourceType("twingate:index/twingateConnectorTokens:TwingateConnectorTokens")]
     public partial class TwingateConnectorTokens : global::Pulumi.CustomResource
@@ -56,7 +58,7 @@ namespace Pulumi.Twingate
         /// Arbitrary map of values that, when changed, will trigger recreation of resource. Use this to automatically rotate Connector tokens on a schedule.
         /// </summary>
         [Output("keepers")]
-        public Output<ImmutableDictionary<string, object>?> Keepers { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Keepers { get; private set; } = null!;
 
         /// <summary>
         /// The Refresh Token of the parent Connector
@@ -87,6 +89,7 @@ namespace Pulumi.Twingate
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                PluginDownloadURL = "github://api.github.com/Twingate/pulumi-twingate",
                 AdditionalSecretOutputs =
                 {
                     "accessToken",
@@ -122,14 +125,14 @@ namespace Pulumi.Twingate
         public Input<string> ConnectorId { get; set; } = null!;
 
         [Input("keepers")]
-        private InputMap<object>? _keepers;
+        private InputMap<string>? _keepers;
 
         /// <summary>
         /// Arbitrary map of values that, when changed, will trigger recreation of resource. Use this to automatically rotate Connector tokens on a schedule.
         /// </summary>
-        public InputMap<object> Keepers
+        public InputMap<string> Keepers
         {
-            get => _keepers ?? (_keepers = new InputMap<object>());
+            get => _keepers ?? (_keepers = new InputMap<string>());
             set => _keepers = value;
         }
 
@@ -164,14 +167,14 @@ namespace Pulumi.Twingate
         public Input<string>? ConnectorId { get; set; }
 
         [Input("keepers")]
-        private InputMap<object>? _keepers;
+        private InputMap<string>? _keepers;
 
         /// <summary>
         /// Arbitrary map of values that, when changed, will trigger recreation of resource. Use this to automatically rotate Connector tokens on a schedule.
         /// </summary>
-        public InputMap<object> Keepers
+        public InputMap<string> Keepers
         {
-            get => _keepers ?? (_keepers = new InputMap<object>());
+            get => _keepers ?? (_keepers = new InputMap<string>());
             set => _keepers = value;
         }
 

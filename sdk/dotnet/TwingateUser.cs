@@ -14,6 +14,7 @@ namespace Pulumi.Twingate
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -33,6 +34,7 @@ namespace Pulumi.Twingate
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [TwingateResourceType("twingate:index/twingateUser:TwingateUser")]
     public partial class TwingateUser : global::Pulumi.CustomResource
@@ -102,6 +104,7 @@ namespace Pulumi.Twingate
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                PluginDownloadURL = "github://api.github.com/Twingate/pulumi-twingate",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

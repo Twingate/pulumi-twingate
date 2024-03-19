@@ -11,6 +11,7 @@
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`twingate` Terraform Provider](https://github.com/Twingate/terraform-provider-twingate).",
     "repository": "https://github.com/Twingate/pulumi-twingate",
+    "pluginDownloadURL": "github://api.github.com/Twingate/pulumi-twingate",
     "publisher": "Twingate",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
@@ -28,6 +29,7 @@
             "generateExtraInputTypes": true
         },
         "nodejs": {
+            "packageName": "@emailbob/twingate",
             "packageDescription": "A Pulumi package for creating and managing twingate cloud resources.",
             "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/Twingate/terraform-provider-twingate)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-twingate` repo](https://github.com/Twingate/pulumi-twingate/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-twingate` repo](https://github.com/Twingate/terraform-provider-twingate/issues).",
             "dependencies": {
@@ -41,6 +43,7 @@
             "disableUnionOutputTypes": true
         },
         "python": {
+            "packageName": "emailbob_twingate",
             "requires": {
                 "pulumi": "\u003e=3.0.0,\u003c4.0.0"
             },
@@ -62,7 +65,7 @@
             },
             "httpTimeout": {
                 "type": "integer",
-                "description": "Specifies a time limit in seconds for the http requests made. The default value is 10 seconds. Alternatively, this can\nbe specified using the TWINGATE_HTTP_TIMEOUT environment variable\n"
+                "description": "Specifies a time limit in seconds for the http requests made. The default value is 35 seconds. Alternatively, this can\nbe specified using the TWINGATE_HTTP_TIMEOUT environment variable\n"
             },
             "network": {
                 "type": "string",
@@ -92,7 +95,15 @@
                     "description": "List of Service Account IDs that will have permission to access the Resource.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "groupIds",
+                        "serviceAccountIds"
+                    ]
+                }
+            }
         },
         "twingate:index/TwingateResourceProtocols:TwingateResourceProtocols": {
             "properties": {
@@ -108,10 +119,15 @@
                 }
             },
             "type": "object",
-            "required": [
-                "tcp",
-                "udp"
-            ]
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "allowIcmp",
+                        "tcp",
+                        "udp"
+                    ]
+                }
+            }
         },
         "twingate:index/TwingateResourceProtocolsTcp:TwingateResourceProtocolsTcp": {
             "properties": {
@@ -128,9 +144,14 @@
                 }
             },
             "type": "object",
-            "required": [
-                "policy"
-            ]
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "policy",
+                        "ports"
+                    ]
+                }
+            }
         },
         "twingate:index/TwingateResourceProtocolsUdp:TwingateResourceProtocolsUdp": {
             "properties": {
@@ -147,9 +168,14 @@
                 }
             },
             "type": "object",
-            "required": [
-                "policy"
-            ]
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "policy",
+                        "ports"
+                    ]
+                }
+            }
         },
         "twingate:index/getTwingateConnectorsConnector:getTwingateConnectorsConnector": {
             "properties": {
@@ -224,7 +250,7 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "The ID of the Remote Network\n"
+                    "description": "The ID of the Remote Network.\n"
                 },
                 "location": {
                     "type": "string",
@@ -232,14 +258,13 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the Remote Network\n"
+                    "description": "The name of the Remote Network.\n"
                 }
             },
             "type": "object",
             "required": [
                 "id",
-                "location",
-                "name"
+                "location"
             ],
             "language": {
                 "nodejs": {
@@ -247,23 +272,17 @@
                 }
             }
         },
-        "twingate:index/getTwingateResourceProtocol:getTwingateResourceProtocol": {
+        "twingate:index/getTwingateResourceProtocols:getTwingateResourceProtocols": {
             "properties": {
                 "allowIcmp": {
                     "type": "boolean",
                     "description": "Whether to allow ICMP (ping) traffic\n"
                 },
-                "tcps": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/twingate:index/getTwingateResourceProtocolTcp:getTwingateResourceProtocolTcp"
-                    }
+                "tcp": {
+                    "$ref": "#/types/twingate:index/getTwingateResourceProtocolsTcp:getTwingateResourceProtocolsTcp"
                 },
-                "udps": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/twingate:index/getTwingateResourceProtocolUdp:getTwingateResourceProtocolUdp"
-                    }
+                "udp": {
+                    "$ref": "#/types/twingate:index/getTwingateResourceProtocolsUdp:getTwingateResourceProtocolsUdp"
                 }
             },
             "type": "object",
@@ -276,7 +295,7 @@
                 }
             }
         },
-        "twingate:index/getTwingateResourceProtocolTcp:getTwingateResourceProtocolTcp": {
+        "twingate:index/getTwingateResourceProtocolsTcp:getTwingateResourceProtocolsTcp": {
             "properties": {
                 "policy": {
                     "type": "string",
@@ -301,7 +320,7 @@
                 }
             }
         },
-        "twingate:index/getTwingateResourceProtocolUdp:getTwingateResourceProtocolUdp": {
+        "twingate:index/getTwingateResourceProtocolsUdp:getTwingateResourceProtocolsUdp": {
             "properties": {
                 "policy": {
                     "type": "string",
@@ -341,10 +360,7 @@
                     "description": "The name of the Resource\n"
                 },
                 "protocols": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/twingate:index/getTwingateResourcesResourceProtocol:getTwingateResourcesResourceProtocol"
-                    },
+                    "$ref": "#/types/twingate:index/getTwingateResourcesResourceProtocols:getTwingateResourcesResourceProtocols",
                     "description": "Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.\n"
                 },
                 "remoteNetworkId": {
@@ -357,6 +373,7 @@
                 "address",
                 "id",
                 "name",
+                "protocols",
                 "remoteNetworkId"
             ],
             "language": {
@@ -365,28 +382,24 @@
                 }
             }
         },
-        "twingate:index/getTwingateResourcesResourceProtocol:getTwingateResourcesResourceProtocol": {
+        "twingate:index/getTwingateResourcesResourceProtocols:getTwingateResourcesResourceProtocols": {
             "properties": {
                 "allowIcmp": {
                     "type": "boolean",
                     "description": "Whether to allow ICMP (ping) traffic\n"
                 },
-                "tcps": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/twingate:index/getTwingateResourcesResourceProtocolTcp:getTwingateResourcesResourceProtocolTcp"
-                    }
+                "tcp": {
+                    "$ref": "#/types/twingate:index/getTwingateResourcesResourceProtocolsTcp:getTwingateResourcesResourceProtocolsTcp"
                 },
-                "udps": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/twingate:index/getTwingateResourcesResourceProtocolUdp:getTwingateResourcesResourceProtocolUdp"
-                    }
+                "udp": {
+                    "$ref": "#/types/twingate:index/getTwingateResourcesResourceProtocolsUdp:getTwingateResourcesResourceProtocolsUdp"
                 }
             },
             "type": "object",
             "required": [
-                "allowIcmp"
+                "allowIcmp",
+                "tcp",
+                "udp"
             ],
             "language": {
                 "nodejs": {
@@ -394,7 +407,7 @@
                 }
             }
         },
-        "twingate:index/getTwingateResourcesResourceProtocolTcp:getTwingateResourcesResourceProtocolTcp": {
+        "twingate:index/getTwingateResourcesResourceProtocolsTcp:getTwingateResourcesResourceProtocolsTcp": {
             "properties": {
                 "policy": {
                     "type": "string",
@@ -419,7 +432,7 @@
                 }
             }
         },
-        "twingate:index/getTwingateResourcesResourceProtocolUdp:getTwingateResourcesResourceProtocolUdp": {
+        "twingate:index/getTwingateResourcesResourceProtocolsUdp:getTwingateResourcesResourceProtocolsUdp": {
             "properties": {
                 "policy": {
                     "type": "string",
@@ -518,11 +531,6 @@
                     "type": "string",
                     "description": "The ID of the User\n"
                 },
-                "isAdmin": {
-                    "type": "boolean",
-                    "description": "Indicates whether the User is an admin\n",
-                    "deprecationMessage": "This read-only Boolean value will be deprecated in a future release. You may use the `role` value instead."
-                },
                 "lastName": {
                     "type": "string",
                     "description": "The last name of the User\n"
@@ -541,7 +549,6 @@
                 "email",
                 "firstName",
                 "id",
-                "isAdmin",
                 "lastName",
                 "role",
                 "type"
@@ -567,7 +574,7 @@
             },
             "httpTimeout": {
                 "type": "integer",
-                "description": "Specifies a time limit in seconds for the http requests made. The default value is 10 seconds. Alternatively, this can\nbe specified using the TWINGATE_HTTP_TIMEOUT environment variable\n"
+                "description": "Specifies a time limit in seconds for the http requests made. The default value is 35 seconds. Alternatively, this can\nbe specified using the TWINGATE_HTTP_TIMEOUT environment variable\n"
             },
             "network": {
                 "type": "string",
@@ -590,7 +597,7 @@
             },
             "httpTimeout": {
                 "type": "integer",
-                "description": "Specifies a time limit in seconds for the http requests made. The default value is 10 seconds. Alternatively, this can\nbe specified using the TWINGATE_HTTP_TIMEOUT environment variable\n"
+                "description": "Specifies a time limit in seconds for the http requests made. The default value is 35 seconds. Alternatively, this can\nbe specified using the TWINGATE_HTTP_TIMEOUT environment variable\n"
             },
             "network": {
                 "type": "string",
@@ -604,7 +611,7 @@
     },
     "resources": {
         "twingate:index/twingateConnector:TwingateConnector": {
-            "description": "Connectors provide connectivity to Remote Networks. This resource type will create the Connector in the Twingate Admin Console, but in order to successfully deploy it, you must also generate Connector tokens that authenticate the Connector with Twingate. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/understanding-access-nodes).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst awsNetwork = new twingate.TwingateRemoteNetwork(\"awsNetwork\", {});\nconst awsConnector = new twingate.TwingateConnector(\"awsConnector\", {remoteNetworkId: awsNetwork.id});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\naws_network = twingate.TwingateRemoteNetwork(\"awsNetwork\")\naws_connector = twingate.TwingateConnector(\"awsConnector\", remote_network_id=aws_network.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var awsNetwork = new Twingate.TwingateRemoteNetwork(\"awsNetwork\");\n\n    var awsConnector = new Twingate.TwingateConnector(\"awsConnector\", new()\n    {\n        RemoteNetworkId = awsNetwork.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tawsNetwork, err := twingate.NewTwingateRemoteNetwork(ctx, \"awsNetwork\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = twingate.NewTwingateConnector(ctx, \"awsConnector\", \u0026twingate.TwingateConnectorArgs{\n\t\t\tRemoteNetworkId: awsNetwork.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateRemoteNetwork;\nimport com.pulumi.twingate.TwingateConnector;\nimport com.pulumi.twingate.TwingateConnectorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var awsNetwork = new TwingateRemoteNetwork(\"awsNetwork\");\n\n        var awsConnector = new TwingateConnector(\"awsConnector\", TwingateConnectorArgs.builder()        \n            .remoteNetworkId(awsNetwork.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  awsNetwork:\n    type: twingate:TwingateRemoteNetwork\n  awsConnector:\n    type: twingate:TwingateConnector\n    properties:\n      remoteNetworkId: ${awsNetwork.id}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import twingate:index/twingateConnector:TwingateConnector aws_connector Q29ubmVjdG9yOjI2NzM=\n```\n\n ",
+            "description": "Connectors provide connectivity to Remote Networks. This resource type will create the Connector in the Twingate Admin Console, but in order to successfully deploy it, you must also generate Connector tokens that authenticate the Connector with Twingate. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/understanding-access-nodes).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@emailbob/twingate\";\n\nconst awsNetwork = new twingate.TwingateRemoteNetwork(\"awsNetwork\", {});\nconst awsConnector = new twingate.TwingateConnector(\"awsConnector\", {\n    remoteNetworkId: awsNetwork.id,\n    statusUpdatesEnabled: true,\n});\n```\n```python\nimport pulumi\nimport emailbob_twingate as twingate\n\naws_network = twingate.TwingateRemoteNetwork(\"awsNetwork\")\naws_connector = twingate.TwingateConnector(\"awsConnector\",\n    remote_network_id=aws_network.id,\n    status_updates_enabled=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var awsNetwork = new Twingate.TwingateRemoteNetwork(\"awsNetwork\");\n\n    var awsConnector = new Twingate.TwingateConnector(\"awsConnector\", new()\n    {\n        RemoteNetworkId = awsNetwork.Id,\n        StatusUpdatesEnabled = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tawsNetwork, err := twingate.NewTwingateRemoteNetwork(ctx, \"awsNetwork\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = twingate.NewTwingateConnector(ctx, \"awsConnector\", \u0026twingate.TwingateConnectorArgs{\n\t\t\tRemoteNetworkId:      awsNetwork.ID(),\n\t\t\tStatusUpdatesEnabled: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateRemoteNetwork;\nimport com.pulumi.twingate.TwingateConnector;\nimport com.pulumi.twingate.TwingateConnectorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var awsNetwork = new TwingateRemoteNetwork(\"awsNetwork\");\n\n        var awsConnector = new TwingateConnector(\"awsConnector\", TwingateConnectorArgs.builder()        \n            .remoteNetworkId(awsNetwork.id())\n            .statusUpdatesEnabled(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  awsNetwork:\n    type: twingate:TwingateRemoteNetwork\n  awsConnector:\n    type: twingate:TwingateConnector\n    properties:\n      remoteNetworkId: ${awsNetwork.id}\n      statusUpdatesEnabled: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import twingate:index/twingateConnector:TwingateConnector aws_connector Q29ubmVjdG9yOjI2NzM=\n```\n\n",
             "properties": {
                 "name": {
                     "type": "string",
@@ -616,7 +623,7 @@
                 },
                 "statusUpdatesEnabled": {
                     "type": "boolean",
-                    "description": "Determines whether status notifications are enabled for the Connector.\n"
+                    "description": "Determines whether status notifications are enabled for the Connector. Default is `true`.\n"
                 }
             },
             "required": [
@@ -631,12 +638,11 @@
                 },
                 "remoteNetworkId": {
                     "type": "string",
-                    "description": "The ID of the Remote Network the Connector is attached to.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The ID of the Remote Network the Connector is attached to.\n"
                 },
                 "statusUpdatesEnabled": {
                     "type": "boolean",
-                    "description": "Determines whether status notifications are enabled for the Connector.\n"
+                    "description": "Determines whether status notifications are enabled for the Connector. Default is `true`.\n"
                 }
             },
             "requiredInputs": [
@@ -651,19 +657,18 @@
                     },
                     "remoteNetworkId": {
                         "type": "string",
-                        "description": "The ID of the Remote Network the Connector is attached to.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The ID of the Remote Network the Connector is attached to.\n"
                     },
                     "statusUpdatesEnabled": {
                         "type": "boolean",
-                        "description": "Determines whether status notifications are enabled for the Connector.\n"
+                        "description": "Determines whether status notifications are enabled for the Connector. Default is `true`.\n"
                     }
                 },
                 "type": "object"
             }
         },
         "twingate:index/twingateConnectorTokens:TwingateConnectorTokens": {
-            "description": "This resource type will generate tokens for a Connector, which are needed to successfully provision one on your network. The Connector itself has its own resource type and must be created before you can provision tokens.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst awsNetwork = new twingate.TwingateRemoteNetwork(\"awsNetwork\", {});\nconst awsConnector = new twingate.TwingateConnector(\"awsConnector\", {remoteNetworkId: awsNetwork.id});\nconst awsConnectorTokens = new twingate.TwingateConnectorTokens(\"awsConnectorTokens\", {connectorId: awsConnector.id});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\naws_network = twingate.TwingateRemoteNetwork(\"awsNetwork\")\naws_connector = twingate.TwingateConnector(\"awsConnector\", remote_network_id=aws_network.id)\naws_connector_tokens = twingate.TwingateConnectorTokens(\"awsConnectorTokens\", connector_id=aws_connector.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var awsNetwork = new Twingate.TwingateRemoteNetwork(\"awsNetwork\");\n\n    var awsConnector = new Twingate.TwingateConnector(\"awsConnector\", new()\n    {\n        RemoteNetworkId = awsNetwork.Id,\n    });\n\n    var awsConnectorTokens = new Twingate.TwingateConnectorTokens(\"awsConnectorTokens\", new()\n    {\n        ConnectorId = awsConnector.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tawsNetwork, err := twingate.NewTwingateRemoteNetwork(ctx, \"awsNetwork\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tawsConnector, err := twingate.NewTwingateConnector(ctx, \"awsConnector\", \u0026twingate.TwingateConnectorArgs{\n\t\t\tRemoteNetworkId: awsNetwork.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = twingate.NewTwingateConnectorTokens(ctx, \"awsConnectorTokens\", \u0026twingate.TwingateConnectorTokensArgs{\n\t\t\tConnectorId: awsConnector.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateRemoteNetwork;\nimport com.pulumi.twingate.TwingateConnector;\nimport com.pulumi.twingate.TwingateConnectorArgs;\nimport com.pulumi.twingate.TwingateConnectorTokens;\nimport com.pulumi.twingate.TwingateConnectorTokensArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var awsNetwork = new TwingateRemoteNetwork(\"awsNetwork\");\n\n        var awsConnector = new TwingateConnector(\"awsConnector\", TwingateConnectorArgs.builder()        \n            .remoteNetworkId(awsNetwork.id())\n            .build());\n\n        var awsConnectorTokens = new TwingateConnectorTokens(\"awsConnectorTokens\", TwingateConnectorTokensArgs.builder()        \n            .connectorId(awsConnector.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  awsNetwork:\n    type: twingate:TwingateRemoteNetwork\n  awsConnector:\n    type: twingate:TwingateConnector\n    properties:\n      remoteNetworkId: ${awsNetwork.id}\n  awsConnectorTokens:\n    type: twingate:TwingateConnectorTokens\n    properties:\n      connectorId: ${awsConnector.id}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "This resource type will generate tokens for a Connector, which are needed to successfully provision one on your network. The Connector itself has its own resource type and must be created before you can provision tokens.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@emailbob/twingate\";\n\nconst awsNetwork = new twingate.TwingateRemoteNetwork(\"awsNetwork\", {});\nconst awsConnector = new twingate.TwingateConnector(\"awsConnector\", {remoteNetworkId: awsNetwork.id});\nconst awsConnectorTokens = new twingate.TwingateConnectorTokens(\"awsConnectorTokens\", {connectorId: awsConnector.id});\n```\n```python\nimport pulumi\nimport emailbob_twingate as twingate\n\naws_network = twingate.TwingateRemoteNetwork(\"awsNetwork\")\naws_connector = twingate.TwingateConnector(\"awsConnector\", remote_network_id=aws_network.id)\naws_connector_tokens = twingate.TwingateConnectorTokens(\"awsConnectorTokens\", connector_id=aws_connector.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var awsNetwork = new Twingate.TwingateRemoteNetwork(\"awsNetwork\");\n\n    var awsConnector = new Twingate.TwingateConnector(\"awsConnector\", new()\n    {\n        RemoteNetworkId = awsNetwork.Id,\n    });\n\n    var awsConnectorTokens = new Twingate.TwingateConnectorTokens(\"awsConnectorTokens\", new()\n    {\n        ConnectorId = awsConnector.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tawsNetwork, err := twingate.NewTwingateRemoteNetwork(ctx, \"awsNetwork\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tawsConnector, err := twingate.NewTwingateConnector(ctx, \"awsConnector\", \u0026twingate.TwingateConnectorArgs{\n\t\t\tRemoteNetworkId: awsNetwork.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = twingate.NewTwingateConnectorTokens(ctx, \"awsConnectorTokens\", \u0026twingate.TwingateConnectorTokensArgs{\n\t\t\tConnectorId: awsConnector.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateRemoteNetwork;\nimport com.pulumi.twingate.TwingateConnector;\nimport com.pulumi.twingate.TwingateConnectorArgs;\nimport com.pulumi.twingate.TwingateConnectorTokens;\nimport com.pulumi.twingate.TwingateConnectorTokensArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var awsNetwork = new TwingateRemoteNetwork(\"awsNetwork\");\n\n        var awsConnector = new TwingateConnector(\"awsConnector\", TwingateConnectorArgs.builder()        \n            .remoteNetworkId(awsNetwork.id())\n            .build());\n\n        var awsConnectorTokens = new TwingateConnectorTokens(\"awsConnectorTokens\", TwingateConnectorTokensArgs.builder()        \n            .connectorId(awsConnector.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  awsNetwork:\n    type: twingate:TwingateRemoteNetwork\n  awsConnector:\n    type: twingate:TwingateConnector\n    properties:\n      remoteNetworkId: ${awsNetwork.id}\n  awsConnectorTokens:\n    type: twingate:TwingateConnectorTokens\n    properties:\n      connectorId: ${awsConnector.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "accessToken": {
                     "type": "string",
@@ -677,7 +682,7 @@
                 "keepers": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Arbitrary map of values that, when changed, will trigger recreation of resource. Use this to automatically rotate Connector tokens on a schedule.\n"
                 },
@@ -695,16 +700,14 @@
             "inputProperties": {
                 "connectorId": {
                     "type": "string",
-                    "description": "The ID of the parent Connector\n",
-                    "willReplaceOnChanges": true
+                    "description": "The ID of the parent Connector\n"
                 },
                 "keepers": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
-                    "description": "Arbitrary map of values that, when changed, will trigger recreation of resource. Use this to automatically rotate Connector tokens on a schedule.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Arbitrary map of values that, when changed, will trigger recreation of resource. Use this to automatically rotate Connector tokens on a schedule.\n"
                 }
             },
             "requiredInputs": [
@@ -720,16 +723,14 @@
                     },
                     "connectorId": {
                         "type": "string",
-                        "description": "The ID of the parent Connector\n",
-                        "willReplaceOnChanges": true
+                        "description": "The ID of the parent Connector\n"
                     },
                     "keepers": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
-                        "description": "Arbitrary map of values that, when changed, will trigger recreation of resource. Use this to automatically rotate Connector tokens on a schedule.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Arbitrary map of values that, when changed, will trigger recreation of resource. Use this to automatically rotate Connector tokens on a schedule.\n"
                     },
                     "refreshToken": {
                         "type": "string",
@@ -741,7 +742,7 @@
             }
         },
         "twingate:index/twingateGroup:TwingateGroup": {
-            "description": "Groups are how users are authorized to access Resources. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/groups).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst aws = new twingate.TwingateGroup(\"aws\", {});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\naws = twingate.TwingateGroup(\"aws\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var aws = new Twingate.TwingateGroup(\"aws\");\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.NewTwingateGroup(ctx, \"aws\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateGroup;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var aws = new TwingateGroup(\"aws\");\n\n    }\n}\n```\n```yaml\nresources:\n  aws:\n    type: twingate:TwingateGroup\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import twingate:index/twingateGroup:TwingateGroup aws R3JvdXA6MzQ4OTE=\n```\n\n ",
+            "description": "Groups are how users are authorized to access Resources. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/groups).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@emailbob/twingate\";\n\nconst aws = new twingate.TwingateGroup(\"aws\", {});\n```\n```python\nimport pulumi\nimport emailbob_twingate as twingate\n\naws = twingate.TwingateGroup(\"aws\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var aws = new Twingate.TwingateGroup(\"aws\");\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.NewTwingateGroup(ctx, \"aws\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateGroup;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var aws = new TwingateGroup(\"aws\");\n\n    }\n}\n```\n```yaml\nresources:\n  aws:\n    type: twingate:TwingateGroup\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import twingate:index/twingateGroup:TwingateGroup aws R3JvdXA6MzQ4OTE=\n```\n\n",
             "properties": {
                 "isAuthoritative": {
                     "type": "boolean",
@@ -816,7 +817,7 @@
             }
         },
         "twingate:index/twingateRemoteNetwork:TwingateRemoteNetwork": {
-            "description": "A Remote Network represents a single private network in Twingate that can have one or more Connectors and Resources assigned to it. You must create a Remote Network before creating Resources and Connectors that belong to it. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/remote-networks).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst awsNetwork = new twingate.TwingateRemoteNetwork(\"awsNetwork\", {});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\naws_network = twingate.TwingateRemoteNetwork(\"awsNetwork\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var awsNetwork = new Twingate.TwingateRemoteNetwork(\"awsNetwork\");\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.NewTwingateRemoteNetwork(ctx, \"awsNetwork\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateRemoteNetwork;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var awsNetwork = new TwingateRemoteNetwork(\"awsNetwork\");\n\n    }\n}\n```\n```yaml\nresources:\n  awsNetwork:\n    type: twingate:TwingateRemoteNetwork\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import twingate:index/twingateRemoteNetwork:TwingateRemoteNetwork network UmVtb3RlTmV0d29zaipgMKIkNg==\n```\n\n ",
+            "description": "A Remote Network represents a single private network in Twingate that can have one or more Connectors and Resources assigned to it. You must create a Remote Network before creating Resources and Connectors that belong to it. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/remote-networks).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@emailbob/twingate\";\n\nconst awsNetwork = new twingate.TwingateRemoteNetwork(\"awsNetwork\", {});\n```\n```python\nimport pulumi\nimport emailbob_twingate as twingate\n\naws_network = twingate.TwingateRemoteNetwork(\"awsNetwork\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var awsNetwork = new Twingate.TwingateRemoteNetwork(\"awsNetwork\");\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.NewTwingateRemoteNetwork(ctx, \"awsNetwork\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateRemoteNetwork;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var awsNetwork = new TwingateRemoteNetwork(\"awsNetwork\");\n\n    }\n}\n```\n```yaml\nresources:\n  awsNetwork:\n    type: twingate:TwingateRemoteNetwork\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import twingate:index/twingateRemoteNetwork:TwingateRemoteNetwork network UmVtb3RlTmV0d29zaipgMKIkNg==\n```\n\n",
             "properties": {
                 "location": {
                     "type": "string",
@@ -828,6 +829,7 @@
                 }
             },
             "required": [
+                "location",
                 "name"
             ],
             "inputProperties": {
@@ -856,7 +858,7 @@
             }
         },
         "twingate:index/twingateResource:TwingateResource": {
-            "description": "Resources in Twingate represent servers on the private network that clients can connect to. Resources can be defined by IP, CIDR range, FQDN, or DNS zone. For more information, see the Twingate [documentation](https://docs.twingate.com/docs/resources-and-access-nodes).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst awsNetwork = new twingate.TwingateRemoteNetwork(\"awsNetwork\", {});\nconst aws = new twingate.TwingateGroup(\"aws\", {});\nconst githubActionsProd = new twingate.TwingateServiceAccount(\"githubActionsProd\", {});\nconst resource = new twingate.TwingateResource(\"resource\", {\n    address: \"internal.int\",\n    remoteNetworkId: awsNetwork.id,\n    protocols: {\n        allowIcmp: true,\n        tcp: {\n            policy: \"RESTRICTED\",\n            ports: [\n                \"80\",\n                \"82-83\",\n            ],\n        },\n        udp: {\n            policy: \"ALLOW_ALL\",\n        },\n    },\n    access: {\n        groupIds: [aws.id],\n        serviceAccountIds: [githubActionsProd.id],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\naws_network = twingate.TwingateRemoteNetwork(\"awsNetwork\")\naws = twingate.TwingateGroup(\"aws\")\ngithub_actions_prod = twingate.TwingateServiceAccount(\"githubActionsProd\")\nresource = twingate.TwingateResource(\"resource\",\n    address=\"internal.int\",\n    remote_network_id=aws_network.id,\n    protocols=twingate.TwingateResourceProtocolsArgs(\n        allow_icmp=True,\n        tcp=twingate.TwingateResourceProtocolsTcpArgs(\n            policy=\"RESTRICTED\",\n            ports=[\n                \"80\",\n                \"82-83\",\n            ],\n        ),\n        udp=twingate.TwingateResourceProtocolsUdpArgs(\n            policy=\"ALLOW_ALL\",\n        ),\n    ),\n    access=twingate.TwingateResourceAccessArgs(\n        group_ids=[aws.id],\n        service_account_ids=[github_actions_prod.id],\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var awsNetwork = new Twingate.TwingateRemoteNetwork(\"awsNetwork\");\n\n    var aws = new Twingate.TwingateGroup(\"aws\");\n\n    var githubActionsProd = new Twingate.TwingateServiceAccount(\"githubActionsProd\");\n\n    var resource = new Twingate.TwingateResource(\"resource\", new()\n    {\n        Address = \"internal.int\",\n        RemoteNetworkId = awsNetwork.Id,\n        Protocols = new Twingate.Inputs.TwingateResourceProtocolsArgs\n        {\n            AllowIcmp = true,\n            Tcp = new Twingate.Inputs.TwingateResourceProtocolsTcpArgs\n            {\n                Policy = \"RESTRICTED\",\n                Ports = new[]\n                {\n                    \"80\",\n                    \"82-83\",\n                },\n            },\n            Udp = new Twingate.Inputs.TwingateResourceProtocolsUdpArgs\n            {\n                Policy = \"ALLOW_ALL\",\n            },\n        },\n        Access = new Twingate.Inputs.TwingateResourceAccessArgs\n        {\n            GroupIds = new[]\n            {\n                aws.Id,\n            },\n            ServiceAccountIds = new[]\n            {\n                githubActionsProd.Id,\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tawsNetwork, err := twingate.NewTwingateRemoteNetwork(ctx, \"awsNetwork\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\taws, err := twingate.NewTwingateGroup(ctx, \"aws\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tgithubActionsProd, err := twingate.NewTwingateServiceAccount(ctx, \"githubActionsProd\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = twingate.NewTwingateResource(ctx, \"resource\", \u0026twingate.TwingateResourceArgs{\n\t\t\tAddress:         pulumi.String(\"internal.int\"),\n\t\t\tRemoteNetworkId: awsNetwork.ID(),\n\t\t\tProtocols: \u0026twingate.TwingateResourceProtocolsArgs{\n\t\t\t\tAllowIcmp: pulumi.Bool(true),\n\t\t\t\tTcp: \u0026twingate.TwingateResourceProtocolsTcpArgs{\n\t\t\t\t\tPolicy: pulumi.String(\"RESTRICTED\"),\n\t\t\t\t\tPorts: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"80\"),\n\t\t\t\t\t\tpulumi.String(\"82-83\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tUdp: \u0026twingate.TwingateResourceProtocolsUdpArgs{\n\t\t\t\t\tPolicy: pulumi.String(\"ALLOW_ALL\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tAccess: \u0026twingate.TwingateResourceAccessArgs{\n\t\t\t\tGroupIds: pulumi.StringArray{\n\t\t\t\t\taws.ID(),\n\t\t\t\t},\n\t\t\t\tServiceAccountIds: pulumi.StringArray{\n\t\t\t\t\tgithubActionsProd.ID(),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateRemoteNetwork;\nimport com.pulumi.twingate.TwingateGroup;\nimport com.pulumi.twingate.TwingateServiceAccount;\nimport com.pulumi.twingate.TwingateResource;\nimport com.pulumi.twingate.TwingateResourceArgs;\nimport com.pulumi.twingate.inputs.TwingateResourceProtocolsArgs;\nimport com.pulumi.twingate.inputs.TwingateResourceProtocolsTcpArgs;\nimport com.pulumi.twingate.inputs.TwingateResourceProtocolsUdpArgs;\nimport com.pulumi.twingate.inputs.TwingateResourceAccessArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var awsNetwork = new TwingateRemoteNetwork(\"awsNetwork\");\n\n        var aws = new TwingateGroup(\"aws\");\n\n        var githubActionsProd = new TwingateServiceAccount(\"githubActionsProd\");\n\n        var resource = new TwingateResource(\"resource\", TwingateResourceArgs.builder()        \n            .address(\"internal.int\")\n            .remoteNetworkId(awsNetwork.id())\n            .protocols(TwingateResourceProtocolsArgs.builder()\n                .allowIcmp(true)\n                .tcp(TwingateResourceProtocolsTcpArgs.builder()\n                    .policy(\"RESTRICTED\")\n                    .ports(                    \n                        \"80\",\n                        \"82-83\")\n                    .build())\n                .udp(TwingateResourceProtocolsUdpArgs.builder()\n                    .policy(\"ALLOW_ALL\")\n                    .build())\n                .build())\n            .access(TwingateResourceAccessArgs.builder()\n                .groupIds(aws.id())\n                .serviceAccountIds(githubActionsProd.id())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  awsNetwork:\n    type: twingate:TwingateRemoteNetwork\n  aws:\n    type: twingate:TwingateGroup\n  githubActionsProd:\n    type: twingate:TwingateServiceAccount\n  resource:\n    type: twingate:TwingateResource\n    properties:\n      address: internal.int\n      remoteNetworkId: ${awsNetwork.id}\n      protocols:\n        allowIcmp: true\n        tcp:\n          policy: RESTRICTED\n          ports:\n            - '80'\n            - 82-83\n        udp:\n          policy: ALLOW_ALL\n      access:\n        groupIds:\n          - ${aws.id}\n        serviceAccountIds:\n          - ${githubActionsProd.id}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import twingate:index/twingateResource:TwingateResource resource UmVzb3VyY2U6MzQwNDQ3\n```\n\n ",
+            "description": "Resources in Twingate represent servers on the private network that clients can connect to. Resources can be defined by IP, CIDR range, FQDN, or DNS zone. For more information, see the Twingate [documentation](https://docs.twingate.com/docs/resources-and-access-nodes).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateRemoteNetwork;\nimport com.pulumi.twingate.TwingateGroup;\nimport com.pulumi.twingate.TwingateServiceAccount;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateSecurityPolicyArgs;\nimport com.pulumi.twingate.TwingateResource;\nimport com.pulumi.twingate.TwingateResourceArgs;\nimport com.pulumi.twingate.inputs.TwingateResourceProtocolsArgs;\nimport com.pulumi.twingate.inputs.TwingateResourceProtocolsTcpArgs;\nimport com.pulumi.twingate.inputs.TwingateResourceProtocolsUdpArgs;\nimport com.pulumi.twingate.inputs.TwingateResourceAccessArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var awsNetwork = new TwingateRemoteNetwork(\"awsNetwork\");\n\n        var aws = new TwingateGroup(\"aws\");\n\n        var githubActionsProd = new TwingateServiceAccount(\"githubActionsProd\");\n\n        final var testPolicy = TwingateFunctions.getTwingateSecurityPolicy(GetTwingateSecurityPolicyArgs.builder()\n            .name(\"Test Policy\")\n            .build());\n\n        var resource = new TwingateResource(\"resource\", TwingateResourceArgs.builder()        \n            .address(\"internal.int\")\n            .remoteNetworkId(awsNetwork.id())\n            .securityPolicyId(testPolicy.applyValue(getTwingateSecurityPolicyResult -\u003e getTwingateSecurityPolicyResult.id()))\n            .protocols(TwingateResourceProtocolsArgs.builder()\n                .allow_icmp(true)\n                .tcp(TwingateResourceProtocolsTcpArgs.builder()\n                    .policy(\"RESTRICTED\")\n                    .ports(                    \n                        \"80\",\n                        \"82-83\")\n                    .build())\n                .udp(TwingateResourceProtocolsUdpArgs.builder()\n                    .policy(\"ALLOW_ALL\")\n                    .build())\n                .build())\n            .access(TwingateResourceAccessArgs.builder()\n                .groupIds(aws.id())\n                .serviceAccountIds(githubActionsProd.id())\n                .build())\n            .isActive(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  awsNetwork:\n    type: twingate:TwingateRemoteNetwork\n  aws:\n    type: twingate:TwingateGroup\n  githubActionsProd:\n    type: twingate:TwingateServiceAccount\n  resource:\n    type: twingate:TwingateResource\n    properties:\n      address: internal.int\n      remoteNetworkId: ${awsNetwork.id}\n      securityPolicyId: ${testPolicy.id}\n      protocols:\n        allow_icmp: true\n        tcp:\n          policy: RESTRICTED\n          ports:\n            - '80'\n            - 82-83\n        udp:\n          policy: ALLOW_ALL\n      access:\n        groupIds:\n          - ${aws.id}\n        serviceAccountIds:\n          - ${githubActionsProd.id}\n      isActive: true\nvariables:\n  testPolicy:\n    fn::invoke:\n      Function: twingate:getTwingateSecurityPolicy\n      Arguments:\n        name: Test Policy\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import twingate:index/twingateResource:TwingateResource resource UmVzb3VyY2U6MzQwNDQ3\n```\n\n",
             "properties": {
                 "access": {
                     "$ref": "#/types/twingate:index/TwingateResourceAccess:TwingateResourceAccess",
@@ -870,17 +872,21 @@
                     "type": "string",
                     "description": "Set a DNS alias address for the Resource. Must be a DNS-valid name string.\n"
                 },
+                "isActive": {
+                    "type": "boolean",
+                    "description": "Set the resource as active or inactive. Default is `true`.\n"
+                },
                 "isAuthoritative": {
                     "type": "boolean",
                     "description": "Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to\n`false`, assignments made outside of Terraform will be ignored.\n"
                 },
                 "isBrowserShortcutEnabled": {
                     "type": "boolean",
-                    "description": "Controls whether an \"Open in Browser\" shortcut will be shown for this Resource in the Twingate Client.\n"
+                    "description": "Controls whether an \"Open in Browser\" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.\n"
                 },
                 "isVisible": {
                     "type": "boolean",
-                    "description": "Controls whether this Resource will be visible in the main Resource list in the Twingate Client.\n"
+                    "description": "Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.\n"
                 },
                 "name": {
                     "type": "string",
@@ -893,15 +899,22 @@
                 "remoteNetworkId": {
                     "type": "string",
                     "description": "Remote Network ID where the Resource lives\n"
+                },
+                "securityPolicyId": {
+                    "type": "string",
+                    "description": "The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.\n"
                 }
             },
             "required": [
                 "address",
+                "isActive",
                 "isAuthoritative",
                 "isBrowserShortcutEnabled",
                 "isVisible",
                 "name",
-                "remoteNetworkId"
+                "protocols",
+                "remoteNetworkId",
+                "securityPolicyId"
             ],
             "inputProperties": {
                 "access": {
@@ -916,17 +929,21 @@
                     "type": "string",
                     "description": "Set a DNS alias address for the Resource. Must be a DNS-valid name string.\n"
                 },
+                "isActive": {
+                    "type": "boolean",
+                    "description": "Set the resource as active or inactive. Default is `true`.\n"
+                },
                 "isAuthoritative": {
                     "type": "boolean",
                     "description": "Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to\n`false`, assignments made outside of Terraform will be ignored.\n"
                 },
                 "isBrowserShortcutEnabled": {
                     "type": "boolean",
-                    "description": "Controls whether an \"Open in Browser\" shortcut will be shown for this Resource in the Twingate Client.\n"
+                    "description": "Controls whether an \"Open in Browser\" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.\n"
                 },
                 "isVisible": {
                     "type": "boolean",
-                    "description": "Controls whether this Resource will be visible in the main Resource list in the Twingate Client.\n"
+                    "description": "Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.\n"
                 },
                 "name": {
                     "type": "string",
@@ -939,6 +956,10 @@
                 "remoteNetworkId": {
                     "type": "string",
                     "description": "Remote Network ID where the Resource lives\n"
+                },
+                "securityPolicyId": {
+                    "type": "string",
+                    "description": "The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.\n"
                 }
             },
             "requiredInputs": [
@@ -960,17 +981,21 @@
                         "type": "string",
                         "description": "Set a DNS alias address for the Resource. Must be a DNS-valid name string.\n"
                     },
+                    "isActive": {
+                        "type": "boolean",
+                        "description": "Set the resource as active or inactive. Default is `true`.\n"
+                    },
                     "isAuthoritative": {
                         "type": "boolean",
                         "description": "Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to\n`false`, assignments made outside of Terraform will be ignored.\n"
                     },
                     "isBrowserShortcutEnabled": {
                         "type": "boolean",
-                        "description": "Controls whether an \"Open in Browser\" shortcut will be shown for this Resource in the Twingate Client.\n"
+                        "description": "Controls whether an \"Open in Browser\" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.\n"
                     },
                     "isVisible": {
                         "type": "boolean",
-                        "description": "Controls whether this Resource will be visible in the main Resource list in the Twingate Client.\n"
+                        "description": "Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.\n"
                     },
                     "name": {
                         "type": "string",
@@ -983,13 +1008,17 @@
                     "remoteNetworkId": {
                         "type": "string",
                         "description": "Remote Network ID where the Resource lives\n"
+                    },
+                    "securityPolicyId": {
+                        "type": "string",
+                        "description": "The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.\n"
                     }
                 },
                 "type": "object"
             }
         },
         "twingate:index/twingateServiceAccount:TwingateServiceAccount": {
-            "description": "Service Accounts offer a way to provide programmatic, centrally-controlled, and consistent access controls.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst githubActionsProd = new twingate.TwingateServiceAccount(\"githubActionsProd\", {});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\ngithub_actions_prod = twingate.TwingateServiceAccount(\"githubActionsProd\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var githubActionsProd = new Twingate.TwingateServiceAccount(\"githubActionsProd\");\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.NewTwingateServiceAccount(ctx, \"githubActionsProd\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateServiceAccount;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var githubActionsProd = new TwingateServiceAccount(\"githubActionsProd\");\n\n    }\n}\n```\n```yaml\nresources:\n  githubActionsProd:\n    type: twingate:TwingateServiceAccount\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Service Accounts offer a way to provide programmatic, centrally-controlled, and consistent access controls.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@emailbob/twingate\";\n\nconst githubActionsProd = new twingate.TwingateServiceAccount(\"githubActionsProd\", {});\n```\n```python\nimport pulumi\nimport emailbob_twingate as twingate\n\ngithub_actions_prod = twingate.TwingateServiceAccount(\"githubActionsProd\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var githubActionsProd = new Twingate.TwingateServiceAccount(\"githubActionsProd\");\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.NewTwingateServiceAccount(ctx, \"githubActionsProd\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateServiceAccount;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var githubActionsProd = new TwingateServiceAccount(\"githubActionsProd\");\n\n    }\n}\n```\n```yaml\nresources:\n  githubActionsProd:\n    type: twingate:TwingateServiceAccount\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "name": {
                     "type": "string",
@@ -1017,8 +1046,16 @@
             }
         },
         "twingate:index/twingateServiceAccountKey:TwingateServiceAccountKey": {
-            "description": "A Service Key authorizes access to all Resources assigned to a Service Account.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst githubActionsProd = new twingate.TwingateServiceAccount(\"githubActionsProd\", {});\nconst githubKey = new twingate.TwingateServiceAccountKey(\"githubKey\", {serviceAccountId: githubActionsProd.id});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\ngithub_actions_prod = twingate.TwingateServiceAccount(\"githubActionsProd\")\ngithub_key = twingate.TwingateServiceAccountKey(\"githubKey\", service_account_id=github_actions_prod.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var githubActionsProd = new Twingate.TwingateServiceAccount(\"githubActionsProd\");\n\n    var githubKey = new Twingate.TwingateServiceAccountKey(\"githubKey\", new()\n    {\n        ServiceAccountId = githubActionsProd.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tgithubActionsProd, err := twingate.NewTwingateServiceAccount(ctx, \"githubActionsProd\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = twingate.NewTwingateServiceAccountKey(ctx, \"githubKey\", \u0026twingate.TwingateServiceAccountKeyArgs{\n\t\t\tServiceAccountId: githubActionsProd.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateServiceAccount;\nimport com.pulumi.twingate.TwingateServiceAccountKey;\nimport com.pulumi.twingate.TwingateServiceAccountKeyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var githubActionsProd = new TwingateServiceAccount(\"githubActionsProd\");\n\n        var githubKey = new TwingateServiceAccountKey(\"githubKey\", TwingateServiceAccountKeyArgs.builder()        \n            .serviceAccountId(githubActionsProd.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  githubActionsProd:\n    type: twingate:TwingateServiceAccount\n  githubKey:\n    type: twingate:TwingateServiceAccountKey\n    properties:\n      serviceAccountId: ${githubActionsProd.id}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "A Service Key authorizes access to all Resources assigned to a Service Account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as time from \"@pulumiverse/time\";\nimport * as twingate from \"@emailbob/twingate\";\n\nconst githubActionsProd = new twingate.TwingateServiceAccount(\"githubActionsProd\", {});\nconst githubKey = new twingate.TwingateServiceAccountKey(\"githubKey\", {serviceAccountId: githubActionsProd.id});\n// Key rotation using the time provider (see https://registry.terraform.io/providers/hashicorp/time/latest)\nconst keyRotationRotating = new time.Rotating(\"keyRotationRotating\", {rotationDays: 30});\nconst keyRotationStatic = new time.Static(\"keyRotationStatic\", {rfc3339: keyRotationRotating.rfc3339});\nconst githubKeyWithRotation = new twingate.TwingateServiceAccountKey(\"githubKeyWithRotation\", {serviceAccountId: githubActionsProd.id});\n```\n```python\nimport pulumi\nimport emailbob_twingate as twingate\nimport pulumiverse_time as time\n\ngithub_actions_prod = twingate.TwingateServiceAccount(\"githubActionsProd\")\ngithub_key = twingate.TwingateServiceAccountKey(\"githubKey\", service_account_id=github_actions_prod.id)\n# Key rotation using the time provider (see https://registry.terraform.io/providers/hashicorp/time/latest)\nkey_rotation_rotating = time.Rotating(\"keyRotationRotating\", rotation_days=30)\nkey_rotation_static = time.Static(\"keyRotationStatic\", rfc3339=key_rotation_rotating.rfc3339)\ngithub_key_with_rotation = twingate.TwingateServiceAccountKey(\"githubKeyWithRotation\", service_account_id=github_actions_prod.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Time = Pulumiverse.Time;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var githubActionsProd = new Twingate.TwingateServiceAccount(\"githubActionsProd\");\n\n    var githubKey = new Twingate.TwingateServiceAccountKey(\"githubKey\", new()\n    {\n        ServiceAccountId = githubActionsProd.Id,\n    });\n\n    // Key rotation using the time provider (see https://registry.terraform.io/providers/hashicorp/time/latest)\n    var keyRotationRotating = new Time.Rotating(\"keyRotationRotating\", new()\n    {\n        RotationDays = 30,\n    });\n\n    var keyRotationStatic = new Time.Static(\"keyRotationStatic\", new()\n    {\n        Rfc3339 = keyRotationRotating.Rfc3339,\n    });\n\n    var githubKeyWithRotation = new Twingate.TwingateServiceAccountKey(\"githubKeyWithRotation\", new()\n    {\n        ServiceAccountId = githubActionsProd.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-time/sdk/go/time\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tgithubActionsProd, err := twingate.NewTwingateServiceAccount(ctx, \"githubActionsProd\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = twingate.NewTwingateServiceAccountKey(ctx, \"githubKey\", \u0026twingate.TwingateServiceAccountKeyArgs{\n\t\t\tServiceAccountId: githubActionsProd.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tkeyRotationRotating, err := time.NewRotating(ctx, \"keyRotationRotating\", \u0026time.RotatingArgs{\n\t\t\tRotationDays: pulumi.Int(30),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = time.NewStatic(ctx, \"keyRotationStatic\", \u0026time.StaticArgs{\n\t\t\tRfc3339: keyRotationRotating.Rfc3339,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = twingate.NewTwingateServiceAccountKey(ctx, \"githubKeyWithRotation\", \u0026twingate.TwingateServiceAccountKeyArgs{\n\t\t\tServiceAccountId: githubActionsProd.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateServiceAccount;\nimport com.pulumi.twingate.TwingateServiceAccountKey;\nimport com.pulumi.twingate.TwingateServiceAccountKeyArgs;\nimport com.pulumi.time.Rotating;\nimport com.pulumi.time.RotatingArgs;\nimport com.pulumi.time.Static;\nimport com.pulumi.time.StaticArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var githubActionsProd = new TwingateServiceAccount(\"githubActionsProd\");\n\n        var githubKey = new TwingateServiceAccountKey(\"githubKey\", TwingateServiceAccountKeyArgs.builder()        \n            .serviceAccountId(githubActionsProd.id())\n            .build());\n\n        var keyRotationRotating = new Rotating(\"keyRotationRotating\", RotatingArgs.builder()        \n            .rotationDays(30)\n            .build());\n\n        var keyRotationStatic = new Static(\"keyRotationStatic\", StaticArgs.builder()        \n            .rfc3339(keyRotationRotating.rfc3339())\n            .build());\n\n        var githubKeyWithRotation = new TwingateServiceAccountKey(\"githubKeyWithRotation\", TwingateServiceAccountKeyArgs.builder()        \n            .serviceAccountId(githubActionsProd.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  githubActionsProd:\n    type: twingate:TwingateServiceAccount\n  githubKey: # Key rotation using the time provider (see https://registry.terraform.io/providers/hashicorp/time/latest)\n    type: twingate:TwingateServiceAccountKey\n    properties:\n      serviceAccountId: ${githubActionsProd.id}\n  keyRotationRotating:\n    type: time:Rotating\n    properties:\n      rotationDays: 30\n  keyRotationStatic:\n    type: time:Static\n    properties:\n      rfc3339: ${keyRotationRotating.rfc3339}\n  githubKeyWithRotation:\n    type: twingate:TwingateServiceAccountKey\n    properties:\n      serviceAccountId: ${githubActionsProd.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
+                "expirationTime": {
+                    "type": "integer",
+                    "description": "Specifies how many days until a Service Account Key expires. This should be an integer between 0 and 365 representing the number of days until the Service Account Key will expire. Defaults to 0, meaning the key will never expire.\n"
+                },
+                "isActive": {
+                    "type": "boolean",
+                    "description": "If the value of this attribute changes to false, Terraform will destroy and recreate the resource.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the Service Key\n"
@@ -1034,11 +1071,17 @@
                 }
             },
             "required": [
+                "expirationTime",
+                "isActive",
                 "name",
                 "serviceAccountId",
                 "token"
             ],
             "inputProperties": {
+                "expirationTime": {
+                    "type": "integer",
+                    "description": "Specifies how many days until a Service Account Key expires. This should be an integer between 0 and 365 representing the number of days until the Service Account Key will expire. Defaults to 0, meaning the key will never expire.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the Service Key\n"
@@ -1054,6 +1097,14 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering TwingateServiceAccountKey resources.\n",
                 "properties": {
+                    "expirationTime": {
+                        "type": "integer",
+                        "description": "Specifies how many days until a Service Account Key expires. This should be an integer between 0 and 365 representing the number of days until the Service Account Key will expire. Defaults to 0, meaning the key will never expire.\n"
+                    },
+                    "isActive": {
+                        "type": "boolean",
+                        "description": "If the value of this attribute changes to false, Terraform will destroy and recreate the resource.\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "The name of the Service Key\n"
@@ -1072,7 +1123,7 @@
             }
         },
         "twingate:index/twingateUser:TwingateUser": {
-            "description": "Users provides different levels of write capabilities across the Twingate Admin Console. For more information, see Twingate's [documentation](https://www.twingate.com/docs/users).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst user = new twingate.TwingateUser(\"user\", {\n    email: \"sample@company.com\",\n    firstName: \"Twin\",\n    lastName: \"Gate\",\n    role: \"DEVOPS\",\n    sendInvite: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nuser = twingate.TwingateUser(\"user\",\n    email=\"sample@company.com\",\n    first_name=\"Twin\",\n    last_name=\"Gate\",\n    role=\"DEVOPS\",\n    send_invite=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var user = new Twingate.TwingateUser(\"user\", new()\n    {\n        Email = \"sample@company.com\",\n        FirstName = \"Twin\",\n        LastName = \"Gate\",\n        Role = \"DEVOPS\",\n        SendInvite = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.NewTwingateUser(ctx, \"user\", \u0026twingate.TwingateUserArgs{\n\t\t\tEmail:      pulumi.String(\"sample@company.com\"),\n\t\t\tFirstName:  pulumi.String(\"Twin\"),\n\t\t\tLastName:   pulumi.String(\"Gate\"),\n\t\t\tRole:       pulumi.String(\"DEVOPS\"),\n\t\t\tSendInvite: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateUser;\nimport com.pulumi.twingate.TwingateUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var user = new TwingateUser(\"user\", TwingateUserArgs.builder()        \n            .email(\"sample@company.com\")\n            .firstName(\"Twin\")\n            .lastName(\"Gate\")\n            .role(\"DEVOPS\")\n            .sendInvite(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  user:\n    type: twingate:TwingateUser\n    properties:\n      email: sample@company.com\n      firstName: Twin\n      lastName: Gate\n      role: DEVOPS\n      sendInvite: true\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Users provides different levels of write capabilities across the Twingate Admin Console. For more information, see Twingate's [documentation](https://www.twingate.com/docs/users).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@emailbob/twingate\";\n\nconst user = new twingate.TwingateUser(\"user\", {\n    email: \"sample@company.com\",\n    firstName: \"Twin\",\n    lastName: \"Gate\",\n    role: \"DEVOPS\",\n    sendInvite: true,\n});\n```\n```python\nimport pulumi\nimport emailbob_twingate as twingate\n\nuser = twingate.TwingateUser(\"user\",\n    email=\"sample@company.com\",\n    first_name=\"Twin\",\n    last_name=\"Gate\",\n    role=\"DEVOPS\",\n    send_invite=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var user = new Twingate.TwingateUser(\"user\", new()\n    {\n        Email = \"sample@company.com\",\n        FirstName = \"Twin\",\n        LastName = \"Gate\",\n        Role = \"DEVOPS\",\n        SendInvite = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.NewTwingateUser(ctx, \"user\", \u0026twingate.TwingateUserArgs{\n\t\t\tEmail:      pulumi.String(\"sample@company.com\"),\n\t\t\tFirstName:  pulumi.String(\"Twin\"),\n\t\t\tLastName:   pulumi.String(\"Gate\"),\n\t\t\tRole:       pulumi.String(\"DEVOPS\"),\n\t\t\tSendInvite: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateUser;\nimport com.pulumi.twingate.TwingateUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var user = new TwingateUser(\"user\", TwingateUserArgs.builder()        \n            .email(\"sample@company.com\")\n            .firstName(\"Twin\")\n            .lastName(\"Gate\")\n            .role(\"DEVOPS\")\n            .sendInvite(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  user:\n    type: twingate:TwingateUser\n    properties:\n      email: sample@company.com\n      firstName: Twin\n      lastName: Gate\n      role: DEVOPS\n      sendInvite: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "email": {
                     "type": "string",
@@ -1115,8 +1166,7 @@
             "inputProperties": {
                 "email": {
                     "type": "string",
-                    "description": "The User's email address\n",
-                    "willReplaceOnChanges": true
+                    "description": "The User's email address\n"
                 },
                 "firstName": {
                     "type": "string",
@@ -1147,8 +1197,7 @@
                 "properties": {
                     "email": {
                         "type": "string",
-                        "description": "The User's email address\n",
-                        "willReplaceOnChanges": true
+                        "description": "The User's email address\n"
                     },
                     "firstName": {
                         "type": "string",
@@ -1181,7 +1230,7 @@
     },
     "functions": {
         "twingate:index/getTwingateConnector:getTwingateConnector": {
-            "description": "Connectors provide connectivity to Remote Networks. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/understanding-access-nodes).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst foo = twingate.getTwingateConnector({\n    id: \"\u003cyour connector's id\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nfoo = twingate.get_twingate_connector(id=\"\u003cyour connector's id\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = Twingate.GetTwingateConnector.Invoke(new()\n    {\n        Id = \"\u003cyour connector's id\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.LookupTwingateConnector(ctx, \u0026twingate.LookupTwingateConnectorArgs{\n\t\t\tId: \"\u003cyour connector's id\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateConnectorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = TwingateFunctions.getTwingateConnector(GetTwingateConnectorArgs.builder()\n            .id(\"\u003cyour connector's id\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      Function: twingate:getTwingateConnector\n      Arguments:\n        id: \u003cyour connector's id\u003e\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Connectors provide connectivity to Remote Networks. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/understanding-access-nodes).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst foo = twingate.getTwingateConnector({\n    id: \"\u003cyour connector's id\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nfoo = twingate.get_twingate_connector(id=\"\u003cyour connector's id\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = Twingate.GetTwingateConnector.Invoke(new()\n    {\n        Id = \"\u003cyour connector's id\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.LookupTwingateConnector(ctx, \u0026twingate.LookupTwingateConnectorArgs{\n\t\t\tId: \"\u003cyour connector's id\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateConnectorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = TwingateFunctions.getTwingateConnector(GetTwingateConnectorArgs.builder()\n            .id(\"\u003cyour connector's id\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      Function: twingate:getTwingateConnector\n      Arguments:\n        id: \u003cyour connector's id\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getTwingateConnector.\n",
                 "properties": {
@@ -1225,16 +1274,33 @@
             }
         },
         "twingate:index/getTwingateConnectors:getTwingateConnectors": {
-            "description": "Connectors provide connectivity to Remote Networks. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/understanding-access-nodes).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst all = twingate.getTwingateConnectors({});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nall = twingate.get_twingate_connectors()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Twingate.GetTwingateConnectors.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.GetTwingateConnectors(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateConnectorsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = TwingateFunctions.getTwingateConnectors();\n\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      Function: twingate:getTwingateConnectors\n      Arguments: {}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Connectors provide connectivity to Remote Networks. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/understanding-access-nodes).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst all = twingate.getTwingateConnectors({\n    name: \"\u003cyour connector's name\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nall = twingate.get_twingate_connectors(name=\"\u003cyour connector's name\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Twingate.GetTwingateConnectors.Invoke(new()\n    {\n        Name = \"\u003cyour connector's name\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.GetTwingateConnectors(ctx, \u0026twingate.GetTwingateConnectorsArgs{\n\t\t\tName: pulumi.StringRef(\"\u003cyour connector's name\u003e\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateConnectorsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = TwingateFunctions.getTwingateConnectors(GetTwingateConnectorsArgs.builder()\n            .name(\"\u003cyour connector's name\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      Function: twingate:getTwingateConnectors\n      Arguments:\n        name: \u003cyour connector's name\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getTwingateConnectors.\n",
                 "properties": {
-                    "connectors": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/twingate:index/getTwingateConnectorsConnector:getTwingateConnectorsConnector"
-                        },
-                        "description": "List of Connectors\n"
+                    "name": {
+                        "type": "string",
+                        "description": "The Name of the Connector.\n"
+                    },
+                    "nameContains": {
+                        "type": "string",
+                        "description": "Match when the value exist in the name of the connector.\n"
+                    },
+                    "nameExclude": {
+                        "type": "string",
+                        "description": "Match when the exact value does not exist in the name of the connector.\n"
+                    },
+                    "namePrefix": {
+                        "type": "string",
+                        "description": "The name of the connector must start with the value.\n"
+                    },
+                    "nameRegexp": {
+                        "type": "string",
+                        "description": "The regular expression match of the name of the connector.\n"
+                    },
+                    "nameSuffix": {
+                        "type": "string",
+                        "description": "The name of the connector must end with the value.\n"
                     }
                 },
                 "type": "object"
@@ -1251,17 +1317,42 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The ID of this resource.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Returns only connectors that exactly match this name. If no options are passed it will return all connectors. Only one option can be used at a time.\n"
+                    },
+                    "nameContains": {
+                        "type": "string",
+                        "description": "Match when the value exist in the name of the connector.\n"
+                    },
+                    "nameExclude": {
+                        "type": "string",
+                        "description": "Match when the exact value does not exist in the name of the connector.\n"
+                    },
+                    "namePrefix": {
+                        "type": "string",
+                        "description": "The name of the connector must start with the value.\n"
+                    },
+                    "nameRegexp": {
+                        "type": "string",
+                        "description": "The regular expression match of the name of the connector.\n"
+                    },
+                    "nameSuffix": {
+                        "type": "string",
+                        "description": "The name of the connector must end with the value.\n"
                     }
                 },
                 "type": "object",
                 "required": [
+                    "connectors",
                     "id"
                 ]
             }
         },
         "twingate:index/getTwingateGroup:getTwingateGroup": {
-            "description": "Groups are how users are authorized to access Resources. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/groups).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst foo = twingate.getTwingateGroup({\n    id: \"\u003cyour group's id\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nfoo = twingate.get_twingate_group(id=\"\u003cyour group's id\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = Twingate.GetTwingateGroup.Invoke(new()\n    {\n        Id = \"\u003cyour group's id\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.LookupTwingateGroup(ctx, \u0026twingate.LookupTwingateGroupArgs{\n\t\t\tId: \"\u003cyour group's id\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = TwingateFunctions.getTwingateGroup(GetTwingateGroupArgs.builder()\n            .id(\"\u003cyour group's id\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      Function: twingate:getTwingateGroup\n      Arguments:\n        id: \u003cyour group's id\u003e\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Groups are how users are authorized to access Resources. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/groups).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst foo = twingate.getTwingateGroup({\n    id: \"\u003cyour group's id\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nfoo = twingate.get_twingate_group(id=\"\u003cyour group's id\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = Twingate.GetTwingateGroup.Invoke(new()\n    {\n        Id = \"\u003cyour group's id\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.LookupTwingateGroup(ctx, \u0026twingate.LookupTwingateGroupArgs{\n\t\t\tId: \"\u003cyour group's id\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = TwingateFunctions.getTwingateGroup(GetTwingateGroupArgs.builder()\n            .id(\"\u003cyour group's id\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      Function: twingate:getTwingateGroup\n      Arguments:\n        id: \u003cyour group's id\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getTwingateGroup.\n",
                 "properties": {
@@ -1310,17 +1401,10 @@
             }
         },
         "twingate:index/getTwingateGroups:getTwingateGroups": {
-            "description": "Groups are how users are authorized to access Resources. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/groups).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst foo = twingate.getTwingateGroups({\n    name: \"\u003cyour group's name\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nfoo = twingate.get_twingate_groups(name=\"\u003cyour group's name\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = Twingate.GetTwingateGroups.Invoke(new()\n    {\n        Name = \"\u003cyour group's name\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.GetTwingateGroups(ctx, \u0026twingate.GetTwingateGroupsArgs{\n\t\t\tName: pulumi.StringRef(\"\u003cyour group's name\u003e\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateGroupsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = TwingateFunctions.getTwingateGroups(GetTwingateGroupsArgs.builder()\n            .name(\"\u003cyour group's name\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      Function: twingate:getTwingateGroups\n      Arguments:\n        name: \u003cyour group's name\u003e\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Groups are how users are authorized to access Resources. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/groups).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst foo = twingate.getTwingateGroups({\n    name: \"\u003cyour group's name\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nfoo = twingate.get_twingate_groups(name=\"\u003cyour group's name\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = Twingate.GetTwingateGroups.Invoke(new()\n    {\n        Name = \"\u003cyour group's name\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.GetTwingateGroups(ctx, \u0026twingate.GetTwingateGroupsArgs{\n\t\t\tName: pulumi.StringRef(\"\u003cyour group's name\u003e\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateGroupsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = TwingateFunctions.getTwingateGroups(GetTwingateGroupsArgs.builder()\n            .name(\"\u003cyour group's name\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      Function: twingate:getTwingateGroups\n      Arguments:\n        name: \u003cyour group's name\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getTwingateGroups.\n",
                 "properties": {
-                    "groups": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/twingate:index/getTwingateGroupsGroup:getTwingateGroupsGroup"
-                        },
-                        "description": "List of Groups\n"
-                    },
                     "isActive": {
                         "type": "boolean",
                         "description": "Indicates if the Group is active\n"
@@ -1329,9 +1413,32 @@
                         "type": "string",
                         "description": "The name of the Group\n"
                     },
-                    "type": {
+                    "nameContains": {
                         "type": "string",
-                        "description": "The type of the Group\n"
+                        "description": "Match when the value exist in the name of the group.\n"
+                    },
+                    "nameExclude": {
+                        "type": "string",
+                        "description": "Match when the exact value does not exist in the name of the group.\n"
+                    },
+                    "namePrefix": {
+                        "type": "string",
+                        "description": "The name of the group must start with the value.\n"
+                    },
+                    "nameRegexp": {
+                        "type": "string",
+                        "description": "The regular expression match of the name of the group.\n"
+                    },
+                    "nameSuffix": {
+                        "type": "string",
+                        "description": "The name of the group must end with the value.\n"
+                    },
+                    "types": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.\n"
                     }
                 },
                 "type": "object"
@@ -1348,7 +1455,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The ID of this resource.\n"
                     },
                     "isActive": {
                         "type": "boolean",
@@ -1356,21 +1463,45 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Returns only Groups that exactly match this name.\n"
+                        "description": "Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.\n"
                     },
-                    "type": {
+                    "nameContains": {
                         "type": "string",
-                        "description": "Returns only Groups of the specified type (valid: `MANUAL`, `SYNCED`, `SYSTEM`).\n"
+                        "description": "Match when the value exist in the name of the group.\n"
+                    },
+                    "nameExclude": {
+                        "type": "string",
+                        "description": "Match when the exact value does not exist in the name of the group.\n"
+                    },
+                    "namePrefix": {
+                        "type": "string",
+                        "description": "The name of the group must start with the value.\n"
+                    },
+                    "nameRegexp": {
+                        "type": "string",
+                        "description": "The regular expression match of the name of the group.\n"
+                    },
+                    "nameSuffix": {
+                        "type": "string",
+                        "description": "The name of the group must end with the value.\n"
+                    },
+                    "types": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.\n"
                     }
                 },
                 "type": "object",
                 "required": [
+                    "groups",
                     "id"
                 ]
             }
         },
         "twingate:index/getTwingateRemoteNetwork:getTwingateRemoteNetwork": {
-            "description": "A Remote Network represents a single private network in Twingate that can have one or more Connectors and Resources assigned to it. You must create a Remote Network before creating Resources and Connectors that belong to it. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/remote-networks).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst foo = twingate.getTwingateRemoteNetwork({\n    name: \"\u003cyour network's name\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nfoo = twingate.get_twingate_remote_network(name=\"\u003cyour network's name\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = Twingate.GetTwingateRemoteNetwork.Invoke(new()\n    {\n        Name = \"\u003cyour network's name\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.LookupTwingateRemoteNetwork(ctx, \u0026twingate.LookupTwingateRemoteNetworkArgs{\n\t\t\tName: pulumi.StringRef(\"\u003cyour network's name\u003e\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateRemoteNetworkArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = TwingateFunctions.getTwingateRemoteNetwork(GetTwingateRemoteNetworkArgs.builder()\n            .name(\"\u003cyour network's name\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      Function: twingate:getTwingateRemoteNetwork\n      Arguments:\n        name: \u003cyour network's name\u003e\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "A Remote Network represents a single private network in Twingate that can have one or more Connectors and Resources assigned to it. You must create a Remote Network before creating Resources and Connectors that belong to it. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/remote-networks).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst foo = twingate.getTwingateRemoteNetwork({\n    name: \"\u003cyour network's name\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nfoo = twingate.get_twingate_remote_network(name=\"\u003cyour network's name\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = Twingate.GetTwingateRemoteNetwork.Invoke(new()\n    {\n        Name = \"\u003cyour network's name\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.LookupTwingateRemoteNetwork(ctx, \u0026twingate.LookupTwingateRemoteNetworkArgs{\n\t\t\tName: pulumi.StringRef(\"\u003cyour network's name\u003e\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateRemoteNetworkArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = TwingateFunctions.getTwingateRemoteNetwork(GetTwingateRemoteNetworkArgs.builder()\n            .name(\"\u003cyour network's name\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      Function: twingate:getTwingateRemoteNetwork\n      Arguments:\n        name: \u003cyour network's name\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getTwingateRemoteNetwork.\n",
                 "properties": {
@@ -1408,16 +1539,33 @@
             }
         },
         "twingate:index/getTwingateRemoteNetworks:getTwingateRemoteNetworks": {
-            "description": "A Remote Network represents a single private network in Twingate that can have one or more Connectors and Resources assigned to it. You must create a Remote Network before creating Resources and Connectors that belong to it. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/remote-networks).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst all = twingate.getTwingateRemoteNetworks({});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nall = twingate.get_twingate_remote_networks()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Twingate.GetTwingateRemoteNetworks.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.GetTwingateRemoteNetworks(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateRemoteNetworksArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = TwingateFunctions.getTwingateRemoteNetworks();\n\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      Function: twingate:getTwingateRemoteNetworks\n      Arguments: {}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "A Remote Network represents a single private network in Twingate that can have one or more Connectors and Resources assigned to it. You must create a Remote Network before creating Resources and Connectors that belong to it. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/remote-networks).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst all = twingate.getTwingateRemoteNetworks({\n    name: \"\u003cyour network's name\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nall = twingate.get_twingate_remote_networks(name=\"\u003cyour network's name\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Twingate.GetTwingateRemoteNetworks.Invoke(new()\n    {\n        Name = \"\u003cyour network's name\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.GetTwingateRemoteNetworks(ctx, \u0026twingate.GetTwingateRemoteNetworksArgs{\n\t\t\tName: pulumi.StringRef(\"\u003cyour network's name\u003e\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateRemoteNetworksArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = TwingateFunctions.getTwingateRemoteNetworks(GetTwingateRemoteNetworksArgs.builder()\n            .name(\"\u003cyour network's name\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      Function: twingate:getTwingateRemoteNetworks\n      Arguments:\n        name: \u003cyour network's name\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getTwingateRemoteNetworks.\n",
                 "properties": {
-                    "remoteNetworks": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/twingate:index/getTwingateRemoteNetworksRemoteNetwork:getTwingateRemoteNetworksRemoteNetwork"
-                        },
-                        "description": "List of Remote Networks\n"
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the Remote Network.\n"
+                    },
+                    "nameContains": {
+                        "type": "string",
+                        "description": "Match when the value exist in the name of the remote network.\n"
+                    },
+                    "nameExclude": {
+                        "type": "string",
+                        "description": "Match when the exact value does not exist in the name of the remote network.\n"
+                    },
+                    "namePrefix": {
+                        "type": "string",
+                        "description": "The name of the remote network must start with the value.\n"
+                    },
+                    "nameRegexp": {
+                        "type": "string",
+                        "description": "The regular expression match of the name of the remote network.\n"
+                    },
+                    "nameSuffix": {
+                        "type": "string",
+                        "description": "The name of the remote network must end with the value.\n"
                     }
                 },
                 "type": "object"
@@ -1427,7 +1575,31 @@
                 "properties": {
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The ID of this resource.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Returns only remote networks that exactly match this name. If no options are passed it will return all remote networks. Only one option can be used at a time.\n"
+                    },
+                    "nameContains": {
+                        "type": "string",
+                        "description": "Match when the value exist in the name of the remote network.\n"
+                    },
+                    "nameExclude": {
+                        "type": "string",
+                        "description": "Match when the exact value does not exist in the name of the remote network.\n"
+                    },
+                    "namePrefix": {
+                        "type": "string",
+                        "description": "The name of the remote network must start with the value.\n"
+                    },
+                    "nameRegexp": {
+                        "type": "string",
+                        "description": "The regular expression match of the name of the remote network.\n"
+                    },
+                    "nameSuffix": {
+                        "type": "string",
+                        "description": "The name of the remote network must end with the value.\n"
                     },
                     "remoteNetworks": {
                         "type": "array",
@@ -1439,12 +1611,13 @@
                 },
                 "type": "object",
                 "required": [
-                    "id"
+                    "id",
+                    "remoteNetworks"
                 ]
             }
         },
         "twingate:index/getTwingateResource:getTwingateResource": {
-            "description": "Resources in Twingate represent any network destination address that you wish to provide private access to for users authorized via the Twingate Client application. Resources can be defined by either IP or DNS address, and all private DNS addresses will be automatically resolved with no client configuration changes. For more information, see the Twingate [documentation](https://docs.twingate.com/docs/resources-and-access-nodes).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst foo = twingate.getTwingateResource({\n    id: \"\u003cyour resource's id\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nfoo = twingate.get_twingate_resource(id=\"\u003cyour resource's id\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = Twingate.GetTwingateResource.Invoke(new()\n    {\n        Id = \"\u003cyour resource's id\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.LookupTwingateResource(ctx, \u0026twingate.LookupTwingateResourceArgs{\n\t\t\tId: \"\u003cyour resource's id\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateResourceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = TwingateFunctions.getTwingateResource(GetTwingateResourceArgs.builder()\n            .id(\"\u003cyour resource's id\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      Function: twingate:getTwingateResource\n      Arguments:\n        id: \u003cyour resource's id\u003e\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Resources in Twingate represent any network destination address that you wish to provide private access to for users authorized via the Twingate Client application. Resources can be defined by either IP or DNS address, and all private DNS addresses will be automatically resolved with no client configuration changes. For more information, see the Twingate [documentation](https://docs.twingate.com/docs/resources-and-access-nodes).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst foo = twingate.getTwingateResource({\n    id: \"\u003cyour resource's id\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nfoo = twingate.get_twingate_resource(id=\"\u003cyour resource's id\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = Twingate.GetTwingateResource.Invoke(new()\n    {\n        Id = \"\u003cyour resource's id\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.LookupTwingateResource(ctx, \u0026twingate.LookupTwingateResourceArgs{\n\t\t\tId: \"\u003cyour resource's id\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateResourceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = TwingateFunctions.getTwingateResource(GetTwingateResourceArgs.builder()\n            .id(\"\u003cyour resource's id\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      Function: twingate:getTwingateResource\n      Arguments:\n        id: \u003cyour resource's id\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getTwingateResource.\n",
                 "properties": {
@@ -1453,10 +1626,7 @@
                         "description": "The ID of the Resource. The ID for the Resource can be obtained from the Admin API or the URL string in the Admin Console.\n"
                     },
                     "protocols": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/twingate:index/getTwingateResourceProtocol:getTwingateResourceProtocol"
-                        },
+                        "$ref": "#/types/twingate:index/getTwingateResourceProtocols:getTwingateResourceProtocols",
                         "description": "By default (when this argument is not defined) no restriction is applied, and all protocols and ports are allowed.\n"
                     }
                 },
@@ -1481,10 +1651,7 @@
                         "description": "The name of the Resource\n"
                     },
                     "protocols": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/twingate:index/getTwingateResourceProtocol:getTwingateResourceProtocol"
-                        },
+                        "$ref": "#/types/twingate:index/getTwingateResourceProtocols:getTwingateResourceProtocols",
                         "description": "By default (when this argument is not defined) no restriction is applied, and all protocols and ports are allowed.\n"
                     },
                     "remoteNetworkId": {
@@ -1502,7 +1669,7 @@
             }
         },
         "twingate:index/getTwingateResources:getTwingateResources": {
-            "description": "Resources in Twingate represent servers on the private network that clients can connect to. Resources can be defined by IP, CIDR range, FQDN, or DNS zone. For more information, see the Twingate [documentation](https://docs.twingate.com/docs/resources-and-access-nodes).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst foo = twingate.getTwingateResources({\n    name: \"\u003cyour resource's name\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nfoo = twingate.get_twingate_resources(name=\"\u003cyour resource's name\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = Twingate.GetTwingateResources.Invoke(new()\n    {\n        Name = \"\u003cyour resource's name\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.GetTwingateResources(ctx, \u0026twingate.GetTwingateResourcesArgs{\n\t\t\tName: \"\u003cyour resource's name\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateResourcesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = TwingateFunctions.getTwingateResources(GetTwingateResourcesArgs.builder()\n            .name(\"\u003cyour resource's name\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      Function: twingate:getTwingateResources\n      Arguments:\n        name: \u003cyour resource's name\u003e\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Resources in Twingate represent servers on the private network that clients can connect to. Resources can be defined by IP, CIDR range, FQDN, or DNS zone. For more information, see the Twingate [documentation](https://docs.twingate.com/docs/resources-and-access-nodes).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst foo = twingate.getTwingateResources({\n    name: \"\u003cyour resource's name\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nfoo = twingate.get_twingate_resources(name=\"\u003cyour resource's name\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = Twingate.GetTwingateResources.Invoke(new()\n    {\n        Name = \"\u003cyour resource's name\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.GetTwingateResources(ctx, \u0026twingate.GetTwingateResourcesArgs{\n\t\t\tName: pulumi.StringRef(\"\u003cyour resource's name\u003e\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateResourcesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = TwingateFunctions.getTwingateResources(GetTwingateResourcesArgs.builder()\n            .name(\"\u003cyour resource's name\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      Function: twingate:getTwingateResources\n      Arguments:\n        name: \u003cyour resource's name\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getTwingateResources.\n",
                 "properties": {
@@ -1510,29 +1677,59 @@
                         "type": "string",
                         "description": "The name of the Resource\n"
                     },
-                    "resources": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/twingate:index/getTwingateResourcesResource:getTwingateResourcesResource"
-                        },
-                        "description": "List of Resources\n"
+                    "nameContains": {
+                        "type": "string",
+                        "description": "Match when the value exist in the name of the resource.\n"
+                    },
+                    "nameExclude": {
+                        "type": "string",
+                        "description": "Match when the exact value does not exist in the name of the resource.\n"
+                    },
+                    "namePrefix": {
+                        "type": "string",
+                        "description": "The name of the resource must start with the value.\n"
+                    },
+                    "nameRegexp": {
+                        "type": "string",
+                        "description": "The regular expression match of the name of the resource.\n"
+                    },
+                    "nameSuffix": {
+                        "type": "string",
+                        "description": "The name of the resource must end with the value.\n"
                     }
                 },
-                "type": "object",
-                "required": [
-                    "name"
-                ]
+                "type": "object"
             },
             "outputs": {
                 "description": "A collection of values returned by getTwingateResources.\n",
                 "properties": {
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The ID of this resource.\n"
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the Resource\n"
+                        "description": "Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.\n"
+                    },
+                    "nameContains": {
+                        "type": "string",
+                        "description": "Match when the value exist in the name of the resource.\n"
+                    },
+                    "nameExclude": {
+                        "type": "string",
+                        "description": "Match when the exact value does not exist in the name of the resource.\n"
+                    },
+                    "namePrefix": {
+                        "type": "string",
+                        "description": "The name of the resource must start with the value.\n"
+                    },
+                    "nameRegexp": {
+                        "type": "string",
+                        "description": "The regular expression match of the name of the resource.\n"
+                    },
+                    "nameSuffix": {
+                        "type": "string",
+                        "description": "The name of the resource must end with the value.\n"
                     },
                     "resources": {
                         "type": "array",
@@ -1544,21 +1741,39 @@
                 },
                 "type": "object",
                 "required": [
-                    "name",
-                    "id"
+                    "id",
+                    "resources"
                 ]
             }
         },
         "twingate:index/getTwingateSecurityPolicies:getTwingateSecurityPolicies": {
-            "description": "Security Policies are defined in the Twingate Admin Console and determine user and device authentication requirements for Resources.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst all = twingate.getTwingateSecurityPolicies({});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nall = twingate.get_twingate_security_policies()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Twingate.GetTwingateSecurityPolicies.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.GetTwingateSecurityPolicies(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateSecurityPoliciesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = TwingateFunctions.getTwingateSecurityPolicies();\n\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      Function: twingate:getTwingateSecurityPolicies\n      Arguments: {}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Security Policies are defined in the Twingate Admin Console and determine user and device authentication requirements for Resources.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst all = twingate.getTwingateSecurityPolicies({\n    name: \"\u003cyour security policy's name\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nall = twingate.get_twingate_security_policies(name=\"\u003cyour security policy's name\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Twingate.GetTwingateSecurityPolicies.Invoke(new()\n    {\n        Name = \"\u003cyour security policy's name\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.GetTwingateSecurityPolicies(ctx, \u0026twingate.GetTwingateSecurityPoliciesArgs{\n\t\t\tName: pulumi.StringRef(\"\u003cyour security policy's name\u003e\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateSecurityPoliciesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = TwingateFunctions.getTwingateSecurityPolicies(GetTwingateSecurityPoliciesArgs.builder()\n            .name(\"\u003cyour security policy's name\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      Function: twingate:getTwingateSecurityPolicies\n      Arguments:\n        name: \u003cyour security policy's name\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getTwingateSecurityPolicies.\n",
                 "properties": {
-                    "securityPolicies": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/twingate:index/getTwingateSecurityPoliciesSecurityPolicy:getTwingateSecurityPoliciesSecurityPolicy"
-                        }
+                    "name": {
+                        "type": "string",
+                        "description": "Return a Security Policy that exactly matches this name.\n"
+                    },
+                    "nameContains": {
+                        "type": "string",
+                        "description": "Match when the value exist in the name of the security policy.\n"
+                    },
+                    "nameExclude": {
+                        "type": "string",
+                        "description": "Match when the exact value does not exist in the name of the security policy.\n"
+                    },
+                    "namePrefix": {
+                        "type": "string",
+                        "description": "The name of the security policy must start with the value.\n"
+                    },
+                    "nameRegexp": {
+                        "type": "string",
+                        "description": "The regular expression match of the name of the security policy.\n"
+                    },
+                    "nameSuffix": {
+                        "type": "string",
+                        "description": "The name of the security policy must end with the value.\n"
                     }
                 },
                 "type": "object"
@@ -1568,7 +1783,31 @@
                 "properties": {
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The ID of this resource.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Returns only security policies that exactly match this name. If no options are passed it will return all security policies. Only one option can be used at a time.\n"
+                    },
+                    "nameContains": {
+                        "type": "string",
+                        "description": "Match when the value exist in the name of the security policy.\n"
+                    },
+                    "nameExclude": {
+                        "type": "string",
+                        "description": "Match when the exact value does not exist in the name of the security policy.\n"
+                    },
+                    "namePrefix": {
+                        "type": "string",
+                        "description": "The name of the security policy must start with the value.\n"
+                    },
+                    "nameRegexp": {
+                        "type": "string",
+                        "description": "The regular expression match of the name of the security policy.\n"
+                    },
+                    "nameSuffix": {
+                        "type": "string",
+                        "description": "The name of the security policy must end with the value.\n"
                     },
                     "securityPolicies": {
                         "type": "array",
@@ -1579,12 +1818,13 @@
                 },
                 "type": "object",
                 "required": [
-                    "id"
+                    "id",
+                    "securityPolicies"
                 ]
             }
         },
         "twingate:index/getTwingateSecurityPolicy:getTwingateSecurityPolicy": {
-            "description": "Security Policies are defined in the Twingate Admin Console and determine user and device authentication requirements for Resources.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst foo = twingate.getTwingateSecurityPolicy({\n    name: \"\u003cyour security policy name\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nfoo = twingate.get_twingate_security_policy(name=\"\u003cyour security policy name\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = Twingate.GetTwingateSecurityPolicy.Invoke(new()\n    {\n        Name = \"\u003cyour security policy name\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.GetTwingateSecurityPolicy(ctx, \u0026twingate.GetTwingateSecurityPolicyArgs{\n\t\t\tName: pulumi.StringRef(\"\u003cyour security policy name\u003e\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateSecurityPolicyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = TwingateFunctions.getTwingateSecurityPolicy(GetTwingateSecurityPolicyArgs.builder()\n            .name(\"\u003cyour security policy name\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      Function: twingate:getTwingateSecurityPolicy\n      Arguments:\n        name: \u003cyour security policy name\u003e\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Security Policies are defined in the Twingate Admin Console and determine user and device authentication requirements for Resources.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst foo = twingate.getTwingateSecurityPolicy({\n    name: \"\u003cyour security policy name\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nfoo = twingate.get_twingate_security_policy(name=\"\u003cyour security policy name\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = Twingate.GetTwingateSecurityPolicy.Invoke(new()\n    {\n        Name = \"\u003cyour security policy name\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.GetTwingateSecurityPolicy(ctx, \u0026twingate.GetTwingateSecurityPolicyArgs{\n\t\t\tName: pulumi.StringRef(\"\u003cyour security policy name\u003e\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateSecurityPolicyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = TwingateFunctions.getTwingateSecurityPolicy(GetTwingateSecurityPolicyArgs.builder()\n            .name(\"\u003cyour security policy name\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      Function: twingate:getTwingateSecurityPolicy\n      Arguments:\n        name: \u003cyour security policy name\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getTwingateSecurityPolicy.\n",
                 "properties": {
@@ -1615,7 +1855,7 @@
             }
         },
         "twingate:index/getTwingateServiceAccounts:getTwingateServiceAccounts": {
-            "description": "Service Accounts offer a way to provide programmatic, centrally-controlled, and consistent access controls.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst foo = twingate.getTwingateServiceAccounts({\n    name: \"\u003cyour service account's name\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nfoo = twingate.get_twingate_service_accounts(name=\"\u003cyour service account's name\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = Twingate.GetTwingateServiceAccounts.Invoke(new()\n    {\n        Name = \"\u003cyour service account's name\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.GetTwingateServiceAccounts(ctx, \u0026twingate.GetTwingateServiceAccountsArgs{\n\t\t\tName: pulumi.StringRef(\"\u003cyour service account's name\u003e\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateServiceAccountsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = TwingateFunctions.getTwingateServiceAccounts(GetTwingateServiceAccountsArgs.builder()\n            .name(\"\u003cyour service account's name\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      Function: twingate:getTwingateServiceAccounts\n      Arguments:\n        name: \u003cyour service account's name\u003e\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Service Accounts offer a way to provide programmatic, centrally-controlled, and consistent access controls.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst foo = twingate.getTwingateServiceAccounts({\n    name: \"\u003cyour service account's name\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nfoo = twingate.get_twingate_service_accounts(name=\"\u003cyour service account's name\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = Twingate.GetTwingateServiceAccounts.Invoke(new()\n    {\n        Name = \"\u003cyour service account's name\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.GetTwingateServiceAccounts(ctx, \u0026twingate.GetTwingateServiceAccountsArgs{\n\t\t\tName: pulumi.StringRef(\"\u003cyour service account's name\u003e\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateServiceAccountsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = TwingateFunctions.getTwingateServiceAccounts(GetTwingateServiceAccountsArgs.builder()\n            .name(\"\u003cyour service account's name\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      Function: twingate:getTwingateServiceAccounts\n      Arguments:\n        name: \u003cyour service account's name\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getTwingateServiceAccounts.\n",
                 "properties": {
@@ -1623,12 +1863,25 @@
                         "type": "string",
                         "description": "Name of the Service Account\n"
                     },
-                    "serviceAccounts": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/twingate:index/getTwingateServiceAccountsServiceAccount:getTwingateServiceAccountsServiceAccount"
-                        },
-                        "description": "List of Service Accounts\n"
+                    "nameContains": {
+                        "type": "string",
+                        "description": "Match when the value exist in the name of the service account.\n"
+                    },
+                    "nameExclude": {
+                        "type": "string",
+                        "description": "Match when the exact value does not exist in the name of the service account.\n"
+                    },
+                    "namePrefix": {
+                        "type": "string",
+                        "description": "The name of the service account must start with the value.\n"
+                    },
+                    "nameRegexp": {
+                        "type": "string",
+                        "description": "The regular expression match of the name of the service account.\n"
+                    },
+                    "nameSuffix": {
+                        "type": "string",
+                        "description": "The name of the service account must end with the value.\n"
                     }
                 },
                 "type": "object"
@@ -1638,11 +1891,31 @@
                 "properties": {
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The ID of this resource.\n"
                     },
                     "name": {
                         "type": "string",
-                        "description": "Filter results by the name of the Service Account.\n"
+                        "description": "Returns only service accounts that exactly match this name. If no options are passed it will return all service accounts. Only one option can be used at a time.\n"
+                    },
+                    "nameContains": {
+                        "type": "string",
+                        "description": "Match when the value exist in the name of the service account.\n"
+                    },
+                    "nameExclude": {
+                        "type": "string",
+                        "description": "Match when the exact value does not exist in the name of the service account.\n"
+                    },
+                    "namePrefix": {
+                        "type": "string",
+                        "description": "The name of the service account must start with the value.\n"
+                    },
+                    "nameRegexp": {
+                        "type": "string",
+                        "description": "The regular expression match of the name of the service account.\n"
+                    },
+                    "nameSuffix": {
+                        "type": "string",
+                        "description": "The name of the service account must end with the value.\n"
                     },
                     "serviceAccounts": {
                         "type": "array",
@@ -1654,12 +1927,13 @@
                 },
                 "type": "object",
                 "required": [
-                    "id"
+                    "id",
+                    "serviceAccounts"
                 ]
             }
         },
         "twingate:index/getTwingateUser:getTwingateUser": {
-            "description": "Users in Twingate can be given access to Twingate Resources and may either be added manually or automatically synchronized with a 3rd party identity provider. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/users).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst foo = twingate.getTwingateUser({\n    id: \"\u003cyour user's id\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nfoo = twingate.get_twingate_user(id=\"\u003cyour user's id\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = Twingate.GetTwingateUser.Invoke(new()\n    {\n        Id = \"\u003cyour user's id\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.LookupTwingateUser(ctx, \u0026twingate.LookupTwingateUserArgs{\n\t\t\tId: \"\u003cyour user's id\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = TwingateFunctions.getTwingateUser(GetTwingateUserArgs.builder()\n            .id(\"\u003cyour user's id\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      Function: twingate:getTwingateUser\n      Arguments:\n        id: \u003cyour user's id\u003e\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Users in Twingate can be given access to Twingate Resources and may either be added manually or automatically synchronized with a 3rd party identity provider. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/users).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst foo = twingate.getTwingateUser({\n    id: \"\u003cyour user's id\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nfoo = twingate.get_twingate_user(id=\"\u003cyour user's id\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = Twingate.GetTwingateUser.Invoke(new()\n    {\n        Id = \"\u003cyour user's id\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.LookupTwingateUser(ctx, \u0026twingate.LookupTwingateUserArgs{\n\t\t\tId: \"\u003cyour user's id\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = TwingateFunctions.getTwingateUser(GetTwingateUserArgs.builder()\n            .id(\"\u003cyour user's id\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      Function: twingate:getTwingateUser\n      Arguments:\n        id: \u003cyour user's id\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getTwingateUser.\n",
                 "properties": {
@@ -1688,11 +1962,6 @@
                         "type": "string",
                         "description": "The ID of the User. The ID for the User can be obtained from the Admin API or the URL string in the Admin Console.\n"
                     },
-                    "isAdmin": {
-                        "type": "boolean",
-                        "description": "Indicates whether the User is an admin\n",
-                        "deprecationMessage": "This read-only Boolean value will be deprecated in a future release. You may use the `role` value instead."
-                    },
                     "lastName": {
                         "type": "string",
                         "description": "The last name of the User\n"
@@ -1711,7 +1980,6 @@
                     "email",
                     "firstName",
                     "id",
-                    "isAdmin",
                     "lastName",
                     "role",
                     "type"
@@ -1719,15 +1987,88 @@
             }
         },
         "twingate:index/getTwingateUsers:getTwingateUsers": {
-            "description": "Users in Twingate can be given access to Twingate Resources and may either be added manually or automatically synchronized with a 3rd party identity provider. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/users).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst all = twingate.getTwingateUsers({});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nall = twingate.get_twingate_users()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Twingate.GetTwingateUsers.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.GetTwingateUsers(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateUsersArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = TwingateFunctions.getTwingateUsers();\n\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      Function: twingate:getTwingateUsers\n      Arguments: {}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Users in Twingate can be given access to Twingate Resources and may either be added manually or automatically synchronized with a 3rd party identity provider. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/users).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst all = twingate.getTwingateUsers({});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nall = twingate.get_twingate_users()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Twingate.GetTwingateUsers.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.GetTwingateUsers(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateUsersArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = TwingateFunctions.getTwingateUsers();\n\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      Function: twingate:getTwingateUsers\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getTwingateUsers.\n",
                 "properties": {
-                    "users": {
+                    "email": {
+                        "type": "string",
+                        "description": "The email address of the User\n"
+                    },
+                    "emailContains": {
+                        "type": "string",
+                        "description": "Match when the value exist in the email of the user.\n"
+                    },
+                    "emailExclude": {
+                        "type": "string",
+                        "description": "Match when the value does not exist in the email of the user.\n"
+                    },
+                    "emailPrefix": {
+                        "type": "string",
+                        "description": "The email of the user must start with the value.\n"
+                    },
+                    "emailRegexp": {
+                        "type": "string",
+                        "description": "The regular expression match of the email of the user.\n"
+                    },
+                    "emailSuffix": {
+                        "type": "string",
+                        "description": "The email of the user must end with the value.\n"
+                    },
+                    "firstName": {
+                        "type": "string",
+                        "description": "The first name of the User\n"
+                    },
+                    "firstNameContains": {
+                        "type": "string",
+                        "description": "Match when the value exist in the first name of the user.\n"
+                    },
+                    "firstNameExclude": {
+                        "type": "string",
+                        "description": "Match when the value does not exist in the first name of the user.\n"
+                    },
+                    "firstNamePrefix": {
+                        "type": "string",
+                        "description": "The first name of the user must start with the value.\n"
+                    },
+                    "firstNameRegexp": {
+                        "type": "string",
+                        "description": "The regular expression match of the first name of the user.\n"
+                    },
+                    "firstNameSuffix": {
+                        "type": "string",
+                        "description": "The first name of the user must end with the value.\n"
+                    },
+                    "lastName": {
+                        "type": "string",
+                        "description": "The last name of the User\n"
+                    },
+                    "lastNameContains": {
+                        "type": "string",
+                        "description": "Match when the value exist in the last name of the user.\n"
+                    },
+                    "lastNameExclude": {
+                        "type": "string",
+                        "description": "Match when the value does not exist in the last name of the user.\n"
+                    },
+                    "lastNamePrefix": {
+                        "type": "string",
+                        "description": "The last name of the user must start with the value.\n"
+                    },
+                    "lastNameRegexp": {
+                        "type": "string",
+                        "description": "The regular expression match of the last name of the user.\n"
+                    },
+                    "lastNameSuffix": {
+                        "type": "string",
+                        "description": "The last name of the user must end with the value.\n"
+                    },
+                    "roles": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/twingate:index/getTwingateUsersUser:getTwingateUsersUser"
-                        }
+                            "type": "string"
+                        },
+                        "description": "Returns users that match a list of roles. Valid roles: `ADMIN`, `DEVOPS`, `SUPPORT`, `MEMBER`.\n"
                     }
                 },
                 "type": "object"
@@ -1735,9 +2076,88 @@
             "outputs": {
                 "description": "A collection of values returned by getTwingateUsers.\n",
                 "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "Returns only users that exactly match this email.\n"
+                    },
+                    "emailContains": {
+                        "type": "string",
+                        "description": "Match when the value exist in the email of the user.\n"
+                    },
+                    "emailExclude": {
+                        "type": "string",
+                        "description": "Match when the value does not exist in the email of the user.\n"
+                    },
+                    "emailPrefix": {
+                        "type": "string",
+                        "description": "The email of the user must start with the value.\n"
+                    },
+                    "emailRegexp": {
+                        "type": "string",
+                        "description": "The regular expression match of the email of the user.\n"
+                    },
+                    "emailSuffix": {
+                        "type": "string",
+                        "description": "The email of the user must end with the value.\n"
+                    },
+                    "firstName": {
+                        "type": "string",
+                        "description": "Returns only users that exactly match the first name.\n"
+                    },
+                    "firstNameContains": {
+                        "type": "string",
+                        "description": "Match when the value exist in the first name of the user.\n"
+                    },
+                    "firstNameExclude": {
+                        "type": "string",
+                        "description": "Match when the value does not exist in the first name of the user.\n"
+                    },
+                    "firstNamePrefix": {
+                        "type": "string",
+                        "description": "The first name of the user must start with the value.\n"
+                    },
+                    "firstNameRegexp": {
+                        "type": "string",
+                        "description": "The regular expression match of the first name of the user.\n"
+                    },
+                    "firstNameSuffix": {
+                        "type": "string",
+                        "description": "The first name of the user must end with the value.\n"
+                    },
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The ID of this resource.\n"
+                    },
+                    "lastName": {
+                        "type": "string",
+                        "description": "Returns only users that exactly match the last name.\n"
+                    },
+                    "lastNameContains": {
+                        "type": "string",
+                        "description": "Match when the value exist in the last name of the user.\n"
+                    },
+                    "lastNameExclude": {
+                        "type": "string",
+                        "description": "Match when the value does not exist in the last name of the user.\n"
+                    },
+                    "lastNamePrefix": {
+                        "type": "string",
+                        "description": "The last name of the user must start with the value.\n"
+                    },
+                    "lastNameRegexp": {
+                        "type": "string",
+                        "description": "The regular expression match of the last name of the user.\n"
+                    },
+                    "lastNameSuffix": {
+                        "type": "string",
+                        "description": "The last name of the user must end with the value.\n"
+                    },
+                    "roles": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Returns users that match a list of roles. Valid roles: `ADMIN`, `DEVOPS`, `SUPPORT`, `MEMBER`.\n"
                     },
                     "users": {
                         "type": "array",
@@ -1748,7 +2168,8 @@
                 },
                 "type": "object",
                 "required": [
-                    "id"
+                    "id",
+                    "users"
                 ]
             }
         }

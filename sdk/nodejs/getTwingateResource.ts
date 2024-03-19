@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@pulumi/twingate";
@@ -19,6 +20,7 @@ import * as utilities from "./utilities";
  *     id: "<your resource's id>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTwingateResource(args: GetTwingateResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetTwingateResourceResult> {
 
@@ -40,7 +42,7 @@ export interface GetTwingateResourceArgs {
     /**
      * By default (when this argument is not defined) no restriction is applied, and all protocols and ports are allowed.
      */
-    protocols?: inputs.GetTwingateResourceProtocol[];
+    protocols?: inputs.GetTwingateResourceProtocols;
 }
 
 /**
@@ -62,7 +64,7 @@ export interface GetTwingateResourceResult {
     /**
      * By default (when this argument is not defined) no restriction is applied, and all protocols and ports are allowed.
      */
-    readonly protocols?: outputs.GetTwingateResourceProtocol[];
+    readonly protocols?: outputs.GetTwingateResourceProtocols;
     /**
      * The Remote Network ID that the Resource is associated with. Resources may only be associated with a single Remote Network.
      */
@@ -73,6 +75,7 @@ export interface GetTwingateResourceResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@pulumi/twingate";
@@ -81,6 +84,7 @@ export interface GetTwingateResourceResult {
  *     id: "<your resource's id>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTwingateResourceOutput(args: GetTwingateResourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateResourceResult> {
     return pulumi.output(args).apply((a: any) => getTwingateResource(a, opts))
@@ -97,5 +101,5 @@ export interface GetTwingateResourceOutputArgs {
     /**
      * By default (when this argument is not defined) no restriction is applied, and all protocols and ports are allowed.
      */
-    protocols?: pulumi.Input<pulumi.Input<inputs.GetTwingateResourceProtocolArgs>[]>;
+    protocols?: pulumi.Input<inputs.GetTwingateResourceProtocolsArgs>;
 }

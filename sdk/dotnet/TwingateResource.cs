@@ -12,63 +12,10 @@ namespace Pulumi.Twingate
     /// <summary>
     /// Resources in Twingate represent servers on the private network that clients can connect to. Resources can be defined by IP, CIDR range, FQDN, or DNS zone. For more information, see the Twingate [documentation](https://docs.twingate.com/docs/resources-and-access-nodes).
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Twingate = Pulumi.Twingate;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var awsNetwork = new Twingate.TwingateRemoteNetwork("awsNetwork");
-    /// 
-    ///     var aws = new Twingate.TwingateGroup("aws");
-    /// 
-    ///     var githubActionsProd = new Twingate.TwingateServiceAccount("githubActionsProd");
-    /// 
-    ///     var resource = new Twingate.TwingateResource("resource", new()
-    ///     {
-    ///         Address = "internal.int",
-    ///         RemoteNetworkId = awsNetwork.Id,
-    ///         Protocols = new Twingate.Inputs.TwingateResourceProtocolsArgs
-    ///         {
-    ///             AllowIcmp = true,
-    ///             Tcp = new Twingate.Inputs.TwingateResourceProtocolsTcpArgs
-    ///             {
-    ///                 Policy = "RESTRICTED",
-    ///                 Ports = new[]
-    ///                 {
-    ///                     "80",
-    ///                     "82-83",
-    ///                 },
-    ///             },
-    ///             Udp = new Twingate.Inputs.TwingateResourceProtocolsUdpArgs
-    ///             {
-    ///                 Policy = "ALLOW_ALL",
-    ///             },
-    ///         },
-    ///         Access = new Twingate.Inputs.TwingateResourceAccessArgs
-    ///         {
-    ///             GroupIds = new[]
-    ///             {
-    ///                 aws.Id,
-    ///             },
-    ///             ServiceAccountIds = new[]
-    ///             {
-    ///                 githubActionsProd.Id,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import twingate:index/twingateResource:TwingateResource resource UmVzb3VyY2U6MzQwNDQ3
+    /// $ pulumi import twingate:index/twingateResource:TwingateResource resource UmVzb3VyY2U6MzQwNDQ3
     /// ```
     /// </summary>
     [TwingateResourceType("twingate:index/twingateResource:TwingateResource")]
@@ -93,6 +40,12 @@ namespace Pulumi.Twingate
         public Output<string?> Alias { get; private set; } = null!;
 
         /// <summary>
+        /// Set the resource as active or inactive. Default is `true`.
+        /// </summary>
+        [Output("isActive")]
+        public Output<bool> IsActive { get; private set; } = null!;
+
+        /// <summary>
         /// Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to
         /// `false`, assignments made outside of Terraform will be ignored.
         /// </summary>
@@ -100,13 +53,13 @@ namespace Pulumi.Twingate
         public Output<bool> IsAuthoritative { get; private set; } = null!;
 
         /// <summary>
-        /// Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client.
+        /// Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
         /// </summary>
         [Output("isBrowserShortcutEnabled")]
         public Output<bool> IsBrowserShortcutEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Controls whether this Resource will be visible in the main Resource list in the Twingate Client.
+        /// Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
         /// </summary>
         [Output("isVisible")]
         public Output<bool> IsVisible { get; private set; } = null!;
@@ -121,13 +74,19 @@ namespace Pulumi.Twingate
         /// Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         /// </summary>
         [Output("protocols")]
-        public Output<Outputs.TwingateResourceProtocols?> Protocols { get; private set; } = null!;
+        public Output<Outputs.TwingateResourceProtocols> Protocols { get; private set; } = null!;
 
         /// <summary>
         /// Remote Network ID where the Resource lives
         /// </summary>
         [Output("remoteNetworkId")]
         public Output<string> RemoteNetworkId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
+        /// </summary>
+        [Output("securityPolicyId")]
+        public Output<string> SecurityPolicyId { get; private set; } = null!;
 
 
         /// <summary>
@@ -152,6 +111,7 @@ namespace Pulumi.Twingate
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                PluginDownloadURL = "github://api.github.com/Twingate/pulumi-twingate",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -194,6 +154,12 @@ namespace Pulumi.Twingate
         public Input<string>? Alias { get; set; }
 
         /// <summary>
+        /// Set the resource as active or inactive. Default is `true`.
+        /// </summary>
+        [Input("isActive")]
+        public Input<bool>? IsActive { get; set; }
+
+        /// <summary>
         /// Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to
         /// `false`, assignments made outside of Terraform will be ignored.
         /// </summary>
@@ -201,13 +167,13 @@ namespace Pulumi.Twingate
         public Input<bool>? IsAuthoritative { get; set; }
 
         /// <summary>
-        /// Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client.
+        /// Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
         /// </summary>
         [Input("isBrowserShortcutEnabled")]
         public Input<bool>? IsBrowserShortcutEnabled { get; set; }
 
         /// <summary>
-        /// Controls whether this Resource will be visible in the main Resource list in the Twingate Client.
+        /// Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
         /// </summary>
         [Input("isVisible")]
         public Input<bool>? IsVisible { get; set; }
@@ -229,6 +195,12 @@ namespace Pulumi.Twingate
         /// </summary>
         [Input("remoteNetworkId", required: true)]
         public Input<string> RemoteNetworkId { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
+        /// </summary>
+        [Input("securityPolicyId")]
+        public Input<string>? SecurityPolicyId { get; set; }
 
         public TwingateResourceArgs()
         {
@@ -257,6 +229,12 @@ namespace Pulumi.Twingate
         public Input<string>? Alias { get; set; }
 
         /// <summary>
+        /// Set the resource as active or inactive. Default is `true`.
+        /// </summary>
+        [Input("isActive")]
+        public Input<bool>? IsActive { get; set; }
+
+        /// <summary>
         /// Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to
         /// `false`, assignments made outside of Terraform will be ignored.
         /// </summary>
@@ -264,13 +242,13 @@ namespace Pulumi.Twingate
         public Input<bool>? IsAuthoritative { get; set; }
 
         /// <summary>
-        /// Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client.
+        /// Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
         /// </summary>
         [Input("isBrowserShortcutEnabled")]
         public Input<bool>? IsBrowserShortcutEnabled { get; set; }
 
         /// <summary>
-        /// Controls whether this Resource will be visible in the main Resource list in the Twingate Client.
+        /// Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
         /// </summary>
         [Input("isVisible")]
         public Input<bool>? IsVisible { get; set; }
@@ -292,6 +270,12 @@ namespace Pulumi.Twingate
         /// </summary>
         [Input("remoteNetworkId")]
         public Input<string>? RemoteNetworkId { get; set; }
+
+        /// <summary>
+        /// The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
+        /// </summary>
+        [Input("securityPolicyId")]
+        public Input<string>? SecurityPolicyId { get; set; }
 
         public TwingateResourceState()
         {

@@ -14,10 +14,9 @@ namespace Pulumi.Twingate
         /// <summary>
         /// Resources in Twingate represent any network destination address that you wish to provide private access to for users authorized via the Twingate Client application. Resources can be defined by either IP or DNS address, and all private DNS addresses will be automatically resolved with no client configuration changes. For more information, see the Twingate [documentation](https://docs.twingate.com/docs/resources-and-access-nodes).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,8 +32,7 @@ namespace Pulumi.Twingate
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTwingateResourceResult> InvokeAsync(GetTwingateResourceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTwingateResourceResult>("twingate:index/getTwingateResource:getTwingateResource", args ?? new GetTwingateResourceArgs(), options.WithDefaults());
@@ -42,10 +40,9 @@ namespace Pulumi.Twingate
         /// <summary>
         /// Resources in Twingate represent any network destination address that you wish to provide private access to for users authorized via the Twingate Client application. Resources can be defined by either IP or DNS address, and all private DNS addresses will be automatically resolved with no client configuration changes. For more information, see the Twingate [documentation](https://docs.twingate.com/docs/resources-and-access-nodes).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,8 +58,7 @@ namespace Pulumi.Twingate
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTwingateResourceResult> Invoke(GetTwingateResourceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTwingateResourceResult>("twingate:index/getTwingateResource:getTwingateResource", args ?? new GetTwingateResourceInvokeArgs(), options.WithDefaults());
@@ -77,17 +73,11 @@ namespace Pulumi.Twingate
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
-        [Input("protocols")]
-        private List<Inputs.GetTwingateResourceProtocolArgs>? _protocols;
-
         /// <summary>
         /// By default (when this argument is not defined) no restriction is applied, and all protocols and ports are allowed.
         /// </summary>
-        public List<Inputs.GetTwingateResourceProtocolArgs> Protocols
-        {
-            get => _protocols ?? (_protocols = new List<Inputs.GetTwingateResourceProtocolArgs>());
-            set => _protocols = value;
-        }
+        [Input("protocols")]
+        public Inputs.GetTwingateResourceProtocolsArgs? Protocols { get; set; }
 
         public GetTwingateResourceArgs()
         {
@@ -103,17 +93,11 @@ namespace Pulumi.Twingate
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
-        [Input("protocols")]
-        private InputList<Inputs.GetTwingateResourceProtocolInputArgs>? _protocols;
-
         /// <summary>
         /// By default (when this argument is not defined) no restriction is applied, and all protocols and ports are allowed.
         /// </summary>
-        public InputList<Inputs.GetTwingateResourceProtocolInputArgs> Protocols
-        {
-            get => _protocols ?? (_protocols = new InputList<Inputs.GetTwingateResourceProtocolInputArgs>());
-            set => _protocols = value;
-        }
+        [Input("protocols")]
+        public Input<Inputs.GetTwingateResourceProtocolsInputArgs>? Protocols { get; set; }
 
         public GetTwingateResourceInvokeArgs()
         {
@@ -140,7 +124,7 @@ namespace Pulumi.Twingate
         /// <summary>
         /// By default (when this argument is not defined) no restriction is applied, and all protocols and ports are allowed.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetTwingateResourceProtocolResult> Protocols;
+        public readonly Outputs.GetTwingateResourceProtocolsResult? Protocols;
         /// <summary>
         /// The Remote Network ID that the Resource is associated with. Resources may only be associated with a single Remote Network.
         /// </summary>
@@ -154,7 +138,7 @@ namespace Pulumi.Twingate
 
             string name,
 
-            ImmutableArray<Outputs.GetTwingateResourceProtocolResult> protocols,
+            Outputs.GetTwingateResourceProtocolsResult? protocols,
 
             string remoteNetworkId)
         {

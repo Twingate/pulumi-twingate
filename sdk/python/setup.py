@@ -3,12 +3,13 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import errno
+import os
 from setuptools import setup, find_packages
 from setuptools.command.install import install
 from subprocess import check_call
 
 
-VERSION = "0.0.0"
+VERSION = os.getenv("PULUMI_PYTHON_VERSION", "0.0.0")
 def readme():
     try:
         with open('README.md', encoding='utf-8') as f:
@@ -17,8 +18,8 @@ def readme():
         return "twingate Pulumi Package - Development Version"
 
 
-setup(name='pulumi_twingate',
-      python_requires='>=3.7',
+setup(name='emailbob_twingate',
+      python_requires='>=3.8',
       version=VERSION,
       description="A Pulumi package for creating and managing twingate cloud resources.",
       long_description=readme(),
@@ -31,7 +32,7 @@ setup(name='pulumi_twingate',
       license='Apache-2.0',
       packages=find_packages(),
       package_data={
-          'pulumi_twingate': [
+          'emailbob_twingate': [
               'py.typed',
               'pulumi-plugin.json',
           ]

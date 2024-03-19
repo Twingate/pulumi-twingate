@@ -14,6 +14,7 @@ namespace Pulumi.Twingate
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -27,15 +28,17 @@ namespace Pulumi.Twingate
     ///     var awsConnector = new Twingate.TwingateConnector("awsConnector", new()
     ///     {
     ///         RemoteNetworkId = awsNetwork.Id,
+    ///         StatusUpdatesEnabled = true,
     ///     });
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import twingate:index/twingateConnector:TwingateConnector aws_connector Q29ubmVjdG9yOjI2NzM=
+    /// $ pulumi import twingate:index/twingateConnector:TwingateConnector aws_connector Q29ubmVjdG9yOjI2NzM=
     /// ```
     /// </summary>
     [TwingateResourceType("twingate:index/twingateConnector:TwingateConnector")]
@@ -54,7 +57,7 @@ namespace Pulumi.Twingate
         public Output<string> RemoteNetworkId { get; private set; } = null!;
 
         /// <summary>
-        /// Determines whether status notifications are enabled for the Connector.
+        /// Determines whether status notifications are enabled for the Connector. Default is `true`.
         /// </summary>
         [Output("statusUpdatesEnabled")]
         public Output<bool> StatusUpdatesEnabled { get; private set; } = null!;
@@ -82,6 +85,7 @@ namespace Pulumi.Twingate
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                PluginDownloadURL = "github://api.github.com/Twingate/pulumi-twingate",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -118,7 +122,7 @@ namespace Pulumi.Twingate
         public Input<string> RemoteNetworkId { get; set; } = null!;
 
         /// <summary>
-        /// Determines whether status notifications are enabled for the Connector.
+        /// Determines whether status notifications are enabled for the Connector. Default is `true`.
         /// </summary>
         [Input("statusUpdatesEnabled")]
         public Input<bool>? StatusUpdatesEnabled { get; set; }
@@ -144,7 +148,7 @@ namespace Pulumi.Twingate
         public Input<string>? RemoteNetworkId { get; set; }
 
         /// <summary>
-        /// Determines whether status notifications are enabled for the Connector.
+        /// Determines whether status notifications are enabled for the Connector. Default is `true`.
         /// </summary>
         [Input("statusUpdatesEnabled")]
         public Input<bool>? StatusUpdatesEnabled { get; set; }

@@ -9,14 +9,16 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as twingate from "@pulumi/twingate";
+ * import * as twingate from "@emailbob/twingate";
  *
  * const awsNetwork = new twingate.TwingateRemoteNetwork("awsNetwork", {});
  * const awsConnector = new twingate.TwingateConnector("awsConnector", {remoteNetworkId: awsNetwork.id});
  * const awsConnectorTokens = new twingate.TwingateConnectorTokens("awsConnectorTokens", {connectorId: awsConnector.id});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class TwingateConnectorTokens extends pulumi.CustomResource {
     /**
@@ -57,7 +59,7 @@ export class TwingateConnectorTokens extends pulumi.CustomResource {
     /**
      * Arbitrary map of values that, when changed, will trigger recreation of resource. Use this to automatically rotate Connector tokens on a schedule.
      */
-    public readonly keepers!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly keepers!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The Refresh Token of the parent Connector
      */
@@ -112,7 +114,7 @@ export interface TwingateConnectorTokensState {
     /**
      * Arbitrary map of values that, when changed, will trigger recreation of resource. Use this to automatically rotate Connector tokens on a schedule.
      */
-    keepers?: pulumi.Input<{[key: string]: any}>;
+    keepers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The Refresh Token of the parent Connector
      */
@@ -130,5 +132,5 @@ export interface TwingateConnectorTokensArgs {
     /**
      * Arbitrary map of values that, when changed, will trigger recreation of resource. Use this to automatically rotate Connector tokens on a schedule.
      */
-    keepers?: pulumi.Input<{[key: string]: any}>;
+    keepers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

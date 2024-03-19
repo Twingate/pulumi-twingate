@@ -5,139 +5,25 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
-export interface GetTwingateConnectorsConnector {
-    /**
-     * The ID of the Connector.
-     */
-    id?: string;
-    /**
-     * The Name of the Connector.
-     */
-    name?: string;
-    /**
-     * The ID of the Remote Network attached to the Connector.
-     */
-    remoteNetworkId?: string;
-    /**
-     * Determines whether status notifications are enabled for the Connector.
-     */
-    statusUpdatesEnabled?: boolean;
-}
-
-export interface GetTwingateConnectorsConnectorArgs {
-    /**
-     * The ID of the Connector.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * The Name of the Connector.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * The ID of the Remote Network attached to the Connector.
-     */
-    remoteNetworkId?: pulumi.Input<string>;
-    /**
-     * Determines whether status notifications are enabled for the Connector.
-     */
-    statusUpdatesEnabled?: pulumi.Input<boolean>;
-}
-
-export interface GetTwingateGroupsGroup {
-    /**
-     * The ID of the Group
-     */
-    id?: string;
-    /**
-     * Indicates if the Group is active
-     */
-    isActive?: boolean;
-    /**
-     * The name of the Group
-     */
-    name?: string;
-    /**
-     * The Security Policy assigned to the Group.
-     */
-    securityPolicyId?: string;
-    /**
-     * The type of the Group
-     */
-    type?: string;
-}
-
-export interface GetTwingateGroupsGroupArgs {
-    /**
-     * The ID of the Group
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * Indicates if the Group is active
-     */
-    isActive?: pulumi.Input<boolean>;
-    /**
-     * The name of the Group
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * The Security Policy assigned to the Group.
-     */
-    securityPolicyId?: pulumi.Input<string>;
-    /**
-     * The type of the Group
-     */
-    type?: pulumi.Input<string>;
-}
-
-export interface GetTwingateRemoteNetworksRemoteNetwork {
-    /**
-     * The ID of the Remote Network
-     */
-    id?: string;
-    /**
-     * The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
-     */
-    location?: string;
-    /**
-     * The name of the Remote Network
-     */
-    name?: string;
-}
-
-export interface GetTwingateRemoteNetworksRemoteNetworkArgs {
-    /**
-     * The ID of the Remote Network
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
-     */
-    location?: pulumi.Input<string>;
-    /**
-     * The name of the Remote Network
-     */
-    name?: pulumi.Input<string>;
-}
-
-export interface GetTwingateResourceProtocol {
+export interface GetTwingateResourceProtocols {
     /**
      * Whether to allow ICMP (ping) traffic
      */
     allowIcmp?: boolean;
-    tcps?: inputs.GetTwingateResourceProtocolTcp[];
-    udps?: inputs.GetTwingateResourceProtocolUdp[];
+    tcp?: inputs.GetTwingateResourceProtocolsTcp;
+    udp?: inputs.GetTwingateResourceProtocolsUdp;
 }
 
-export interface GetTwingateResourceProtocolArgs {
+export interface GetTwingateResourceProtocolsArgs {
     /**
      * Whether to allow ICMP (ping) traffic
      */
     allowIcmp?: pulumi.Input<boolean>;
-    tcps?: pulumi.Input<pulumi.Input<inputs.GetTwingateResourceProtocolTcpArgs>[]>;
-    udps?: pulumi.Input<pulumi.Input<inputs.GetTwingateResourceProtocolUdpArgs>[]>;
+    tcp?: pulumi.Input<inputs.GetTwingateResourceProtocolsTcpArgs>;
+    udp?: pulumi.Input<inputs.GetTwingateResourceProtocolsUdpArgs>;
 }
 
-export interface GetTwingateResourceProtocolTcp {
+export interface GetTwingateResourceProtocolsTcp {
     /**
      * Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
      */
@@ -148,7 +34,7 @@ export interface GetTwingateResourceProtocolTcp {
     ports?: string[];
 }
 
-export interface GetTwingateResourceProtocolTcpArgs {
+export interface GetTwingateResourceProtocolsTcpArgs {
     /**
      * Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
      */
@@ -159,7 +45,7 @@ export interface GetTwingateResourceProtocolTcpArgs {
     ports?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetTwingateResourceProtocolUdp {
+export interface GetTwingateResourceProtocolsUdp {
     /**
      * Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
      */
@@ -170,7 +56,7 @@ export interface GetTwingateResourceProtocolUdp {
     ports?: string[];
 }
 
-export interface GetTwingateResourceProtocolUdpArgs {
+export interface GetTwingateResourceProtocolsUdpArgs {
     /**
      * Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
      */
@@ -179,240 +65,6 @@ export interface GetTwingateResourceProtocolUdpArgs {
      * List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
      */
     ports?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetTwingateResourcesResource {
-    /**
-     * The Resource's IP/CIDR or FQDN/DNS zone
-     */
-    address?: string;
-    /**
-     * The id of the Resource
-     */
-    id?: string;
-    /**
-     * The name of the Resource
-     */
-    name?: string;
-    /**
-     * Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-     */
-    protocols?: inputs.GetTwingateResourcesResourceProtocol[];
-    /**
-     * Remote Network ID where the Resource lives
-     */
-    remoteNetworkId?: string;
-}
-
-export interface GetTwingateResourcesResourceArgs {
-    /**
-     * The Resource's IP/CIDR or FQDN/DNS zone
-     */
-    address?: pulumi.Input<string>;
-    /**
-     * The id of the Resource
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * The name of the Resource
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-     */
-    protocols?: pulumi.Input<pulumi.Input<inputs.GetTwingateResourcesResourceProtocolArgs>[]>;
-    /**
-     * Remote Network ID where the Resource lives
-     */
-    remoteNetworkId?: pulumi.Input<string>;
-}
-
-export interface GetTwingateResourcesResourceProtocol {
-    /**
-     * Whether to allow ICMP (ping) traffic
-     */
-    allowIcmp?: boolean;
-    tcps?: inputs.GetTwingateResourcesResourceProtocolTcp[];
-    udps?: inputs.GetTwingateResourcesResourceProtocolUdp[];
-}
-
-export interface GetTwingateResourcesResourceProtocolArgs {
-    /**
-     * Whether to allow ICMP (ping) traffic
-     */
-    allowIcmp?: pulumi.Input<boolean>;
-    tcps?: pulumi.Input<pulumi.Input<inputs.GetTwingateResourcesResourceProtocolTcpArgs>[]>;
-    udps?: pulumi.Input<pulumi.Input<inputs.GetTwingateResourcesResourceProtocolUdpArgs>[]>;
-}
-
-export interface GetTwingateResourcesResourceProtocolTcp {
-    /**
-     * Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
-     */
-    policy?: string;
-    /**
-     * List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
-     */
-    ports?: string[];
-}
-
-export interface GetTwingateResourcesResourceProtocolTcpArgs {
-    /**
-     * Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
-     */
-    policy?: pulumi.Input<string>;
-    /**
-     * List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
-     */
-    ports?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetTwingateResourcesResourceProtocolUdp {
-    /**
-     * Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
-     */
-    policy?: string;
-    /**
-     * List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
-     */
-    ports?: string[];
-}
-
-export interface GetTwingateResourcesResourceProtocolUdpArgs {
-    /**
-     * Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
-     */
-    policy?: pulumi.Input<string>;
-    /**
-     * List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
-     */
-    ports?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetTwingateSecurityPoliciesSecurityPolicy {
-    /**
-     * Return a matching Security Policy by its ID. The ID for the Security Policy can be obtained from the Admin API or the URL string in the Admin Console.
-     */
-    id?: string;
-    /**
-     * Return a Security Policy that exactly matches this name.
-     */
-    name?: string;
-}
-
-export interface GetTwingateSecurityPoliciesSecurityPolicyArgs {
-    /**
-     * Return a matching Security Policy by its ID. The ID for the Security Policy can be obtained from the Admin API or the URL string in the Admin Console.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * Return a Security Policy that exactly matches this name.
-     */
-    name?: pulumi.Input<string>;
-}
-
-export interface GetTwingateServiceAccountsServiceAccount {
-    /**
-     * ID of the Service Account resource
-     */
-    id?: string;
-    /**
-     * List of twingate*service*account_key IDs that are assigned to the Service Account.
-     */
-    keyIds?: string[];
-    /**
-     * Name of the Service Account
-     */
-    name?: string;
-    /**
-     * List of twingate.TwingateResource IDs that the Service Account is assigned to.
-     */
-    resourceIds?: string[];
-}
-
-export interface GetTwingateServiceAccountsServiceAccountArgs {
-    /**
-     * ID of the Service Account resource
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * List of twingate*service*account_key IDs that are assigned to the Service Account.
-     */
-    keyIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Name of the Service Account
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * List of twingate.TwingateResource IDs that the Service Account is assigned to.
-     */
-    resourceIds?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetTwingateUsersUser {
-    /**
-     * The email address of the User
-     */
-    email?: string;
-    /**
-     * The first name of the User
-     */
-    firstName?: string;
-    /**
-     * The ID of the User
-     */
-    id?: string;
-    /**
-     * Indicates whether the User is an admin
-     *
-     * @deprecated This read-only Boolean value will be deprecated in a future release. You may use the `role` value instead.
-     */
-    isAdmin?: boolean;
-    /**
-     * The last name of the User
-     */
-    lastName?: string;
-    /**
-     * Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, or MEMBER.
-     */
-    role?: string;
-    /**
-     * Indicates the User's type. Either MANUAL or SYNCED.
-     */
-    type?: string;
-}
-
-export interface GetTwingateUsersUserArgs {
-    /**
-     * The email address of the User
-     */
-    email?: pulumi.Input<string>;
-    /**
-     * The first name of the User
-     */
-    firstName?: pulumi.Input<string>;
-    /**
-     * The ID of the User
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * Indicates whether the User is an admin
-     *
-     * @deprecated This read-only Boolean value will be deprecated in a future release. You may use the `role` value instead.
-     */
-    isAdmin?: pulumi.Input<boolean>;
-    /**
-     * The last name of the User
-     */
-    lastName?: pulumi.Input<string>;
-    /**
-     * Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, or MEMBER.
-     */
-    role?: pulumi.Input<string>;
-    /**
-     * Indicates the User's type. Either MANUAL or SYNCED.
-     */
-    type?: pulumi.Input<string>;
 }
 
 export interface TwingateResourceAccess {
@@ -431,15 +83,15 @@ export interface TwingateResourceProtocols {
      * Whether to allow ICMP (ping) traffic
      */
     allowIcmp?: pulumi.Input<boolean>;
-    tcp: pulumi.Input<inputs.TwingateResourceProtocolsTcp>;
-    udp: pulumi.Input<inputs.TwingateResourceProtocolsUdp>;
+    tcp?: pulumi.Input<inputs.TwingateResourceProtocolsTcp>;
+    udp?: pulumi.Input<inputs.TwingateResourceProtocolsUdp>;
 }
 
 export interface TwingateResourceProtocolsTcp {
     /**
      * Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
      */
-    policy: pulumi.Input<string>;
+    policy?: pulumi.Input<string>;
     /**
      * List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
      */
@@ -450,7 +102,7 @@ export interface TwingateResourceProtocolsUdp {
     /**
      * Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
      */
-    policy: pulumi.Input<string>;
+    policy?: pulumi.Input<string>;
     /**
      * List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
      */

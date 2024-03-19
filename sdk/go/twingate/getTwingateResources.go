@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -28,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := twingate.GetTwingateResources(ctx, &twingate.GetTwingateResourcesArgs{
-//				Name: "<your resource's name>",
+//				Name: pulumi.StringRef("<your resource's name>"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetTwingateResources(ctx *pulumi.Context, args *GetTwingateResourcesArgs, opts ...pulumi.InvokeOption) (*GetTwingateResourcesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTwingateResourcesResult
@@ -51,17 +53,35 @@ func GetTwingateResources(ctx *pulumi.Context, args *GetTwingateResourcesArgs, o
 // A collection of arguments for invoking getTwingateResources.
 type GetTwingateResourcesArgs struct {
 	// The name of the Resource
-	Name string `pulumi:"name"`
-	// List of Resources
-	Resources []GetTwingateResourcesResource `pulumi:"resources"`
+	Name *string `pulumi:"name"`
+	// Match when the value exist in the name of the resource.
+	NameContains *string `pulumi:"nameContains"`
+	// Match when the exact value does not exist in the name of the resource.
+	NameExclude *string `pulumi:"nameExclude"`
+	// The name of the resource must start with the value.
+	NamePrefix *string `pulumi:"namePrefix"`
+	// The regular expression match of the name of the resource.
+	NameRegexp *string `pulumi:"nameRegexp"`
+	// The name of the resource must end with the value.
+	NameSuffix *string `pulumi:"nameSuffix"`
 }
 
 // A collection of values returned by getTwingateResources.
 type GetTwingateResourcesResult struct {
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this resource.
 	Id string `pulumi:"id"`
-	// The name of the Resource
-	Name string `pulumi:"name"`
+	// Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+	Name *string `pulumi:"name"`
+	// Match when the value exist in the name of the resource.
+	NameContains *string `pulumi:"nameContains"`
+	// Match when the exact value does not exist in the name of the resource.
+	NameExclude *string `pulumi:"nameExclude"`
+	// The name of the resource must start with the value.
+	NamePrefix *string `pulumi:"namePrefix"`
+	// The regular expression match of the name of the resource.
+	NameRegexp *string `pulumi:"nameRegexp"`
+	// The name of the resource must end with the value.
+	NameSuffix *string `pulumi:"nameSuffix"`
 	// List of Resources
 	Resources []GetTwingateResourcesResource `pulumi:"resources"`
 }
@@ -82,9 +102,17 @@ func GetTwingateResourcesOutput(ctx *pulumi.Context, args GetTwingateResourcesOu
 // A collection of arguments for invoking getTwingateResources.
 type GetTwingateResourcesOutputArgs struct {
 	// The name of the Resource
-	Name pulumi.StringInput `pulumi:"name"`
-	// List of Resources
-	Resources GetTwingateResourcesResourceArrayInput `pulumi:"resources"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Match when the value exist in the name of the resource.
+	NameContains pulumi.StringPtrInput `pulumi:"nameContains"`
+	// Match when the exact value does not exist in the name of the resource.
+	NameExclude pulumi.StringPtrInput `pulumi:"nameExclude"`
+	// The name of the resource must start with the value.
+	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
+	// The regular expression match of the name of the resource.
+	NameRegexp pulumi.StringPtrInput `pulumi:"nameRegexp"`
+	// The name of the resource must end with the value.
+	NameSuffix pulumi.StringPtrInput `pulumi:"nameSuffix"`
 }
 
 func (GetTwingateResourcesOutputArgs) ElementType() reflect.Type {
@@ -106,14 +134,39 @@ func (o GetTwingateResourcesResultOutput) ToGetTwingateResourcesResultOutputWith
 	return o
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this resource.
 func (o GetTwingateResourcesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTwingateResourcesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the Resource
-func (o GetTwingateResourcesResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTwingateResourcesResult) string { return v.Name }).(pulumi.StringOutput)
+// Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+func (o GetTwingateResourcesResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateResourcesResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Match when the value exist in the name of the resource.
+func (o GetTwingateResourcesResultOutput) NameContains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateResourcesResult) *string { return v.NameContains }).(pulumi.StringPtrOutput)
+}
+
+// Match when the exact value does not exist in the name of the resource.
+func (o GetTwingateResourcesResultOutput) NameExclude() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateResourcesResult) *string { return v.NameExclude }).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource must start with the value.
+func (o GetTwingateResourcesResultOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateResourcesResult) *string { return v.NamePrefix }).(pulumi.StringPtrOutput)
+}
+
+// The regular expression match of the name of the resource.
+func (o GetTwingateResourcesResultOutput) NameRegexp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateResourcesResult) *string { return v.NameRegexp }).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource must end with the value.
+func (o GetTwingateResourcesResultOutput) NameSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTwingateResourcesResult) *string { return v.NameSuffix }).(pulumi.StringPtrOutput)
 }
 
 // List of Resources

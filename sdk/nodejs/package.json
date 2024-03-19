@@ -1,5 +1,5 @@
 {
-    "name": "@pulumi/twingate",
+    "name": "@emailbob/twingate",
     "version": "${VERSION}",
     "description": "A Pulumi package for creating and managing twingate cloud resources.",
     "keywords": [
@@ -23,6 +23,7 @@
     },
     "pulumi": {
         "resource": true,
-        "name": "twingate"
+        "name": "twingate",
+        "server": "github://api.github.com/Twingate/pulumi-twingate"
     }
 }
