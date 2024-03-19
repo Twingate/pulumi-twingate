@@ -1,4 +1,4 @@
-PROJECT_NAME := twingate Package
+PROJECT_NAME := Twingate Package
 
 SHELL            := /bin/bash
 PACK             := twingate
