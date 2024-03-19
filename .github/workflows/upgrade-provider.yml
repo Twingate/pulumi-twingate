@@ -1,0 +1,24 @@
+name: Upgrade provider
+on:
+  workflow_dispatch: {}
+# on:
+#   issues:
+#     types:
+#     - opened
+#   schedule:
+#     - cron: '0 5 * * *'
+
+permissions:
+  contents: write
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+jobs:
+  upgrade_provider:
+    name: upgrade-provider
+    runs-on: ubuntu-latest
+    steps:
+    - name: Call upgrade provider action
+      uses: pulumi/pulumi-upgrade-provider-action@main
+      with:
+        kind: all
