@@ -82,7 +82,7 @@ func Provider() tfbridge.ProviderInfo {
 		// for use in Pulumi programs
 		// e.g https://github.com/org/pulumi-provider-name/releases/
 		PluginDownloadURL: "github://api.github.com/Twingate/pulumi-twingate",
-		Description:       "A Pulumi package for creating and managing twingate cloud resources.",
+		Description:       "A Pulumi package for creating and managing Twingate cloud resources.",
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
