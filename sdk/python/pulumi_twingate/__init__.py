@@ -32,10 +32,10 @@ from . import outputs
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
-    import emailbob_twingate.config as __config
+    import pulumi_twingate.config as __config
     config = __config
 else:
-    config = _utilities.lazy_import('emailbob_twingate.config')
+    config = _utilities.lazy_import('pulumi_twingate.config')
 
 _utilities.register(
     resource_modules="""
@@ -43,7 +43,7 @@ _utilities.register(
  {
   "pkg": "twingate",
   "mod": "index/twingateConnector",
-  "fqn": "emailbob_twingate",
+  "fqn": "pulumi_twingate",
   "classes": {
    "twingate:index/twingateConnector:TwingateConnector": "TwingateConnector"
   }
@@ -51,7 +51,7 @@ _utilities.register(
  {
   "pkg": "twingate",
   "mod": "index/twingateConnectorTokens",
-  "fqn": "emailbob_twingate",
+  "fqn": "pulumi_twingate",
   "classes": {
    "twingate:index/twingateConnectorTokens:TwingateConnectorTokens": "TwingateConnectorTokens"
   }
@@ -59,7 +59,7 @@ _utilities.register(
  {
   "pkg": "twingate",
   "mod": "index/twingateGroup",
-  "fqn": "emailbob_twingate",
+  "fqn": "pulumi_twingate",
   "classes": {
    "twingate:index/twingateGroup:TwingateGroup": "TwingateGroup"
   }
@@ -67,7 +67,7 @@ _utilities.register(
  {
   "pkg": "twingate",
   "mod": "index/twingateRemoteNetwork",
-  "fqn": "emailbob_twingate",
+  "fqn": "pulumi_twingate",
   "classes": {
    "twingate:index/twingateRemoteNetwork:TwingateRemoteNetwork": "TwingateRemoteNetwork"
   }
@@ -75,7 +75,7 @@ _utilities.register(
  {
   "pkg": "twingate",
   "mod": "index/twingateResource",
-  "fqn": "emailbob_twingate",
+  "fqn": "pulumi_twingate",
   "classes": {
    "twingate:index/twingateResource:TwingateResource": "TwingateResource"
   }
@@ -83,7 +83,7 @@ _utilities.register(
  {
   "pkg": "twingate",
   "mod": "index/twingateServiceAccount",
-  "fqn": "emailbob_twingate",
+  "fqn": "pulumi_twingate",
   "classes": {
    "twingate:index/twingateServiceAccount:TwingateServiceAccount": "TwingateServiceAccount"
   }
@@ -91,7 +91,7 @@ _utilities.register(
  {
   "pkg": "twingate",
   "mod": "index/twingateServiceAccountKey",
-  "fqn": "emailbob_twingate",
+  "fqn": "pulumi_twingate",
   "classes": {
    "twingate:index/twingateServiceAccountKey:TwingateServiceAccountKey": "TwingateServiceAccountKey"
   }
@@ -99,7 +99,7 @@ _utilities.register(
  {
   "pkg": "twingate",
   "mod": "index/twingateUser",
-  "fqn": "emailbob_twingate",
+  "fqn": "pulumi_twingate",
   "classes": {
    "twingate:index/twingateUser:TwingateUser": "TwingateUser"
   }
@@ -111,7 +111,7 @@ _utilities.register(
  {
   "pkg": "twingate",
   "token": "pulumi:providers:twingate",
-  "fqn": "emailbob_twingate",
+  "fqn": "pulumi_twingate",
   "class": "Provider"
  }
 ]

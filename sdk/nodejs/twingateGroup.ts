@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as twingate from "@emailbob/twingate";
+ * import * as twingate from "@twingate/pulumi-twingate";
  *
  * const aws = new twingate.TwingateGroup("aws", {});
  * ```

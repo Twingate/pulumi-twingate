@@ -107,7 +107,7 @@ class TwingateRemoteNetwork(pulumi.CustomResource):
         <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
-        import emailbob_twingate as twingate
+        import pulumi_twingate as twingate
 
         aws_network = twingate.TwingateRemoteNetwork("awsNetwork")
         ```
@@ -138,7 +138,7 @@ class TwingateRemoteNetwork(pulumi.CustomResource):
         <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
-        import emailbob_twingate as twingate
+        import pulumi_twingate as twingate
 
         aws_network = twingate.TwingateRemoteNetwork("awsNetwork")
         ```

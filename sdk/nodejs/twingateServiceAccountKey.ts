@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as time from "@pulumiverse/time";
- * import * as twingate from "@emailbob/twingate";
+ * import * as twingate from "@twingate/pulumi-twingate";
  *
  * const githubActionsProd = new twingate.TwingateServiceAccount("githubActionsProd", {});
  * const githubKey = new twingate.TwingateServiceAccountKey("githubKey", {serviceAccountId: githubActionsProd.id});

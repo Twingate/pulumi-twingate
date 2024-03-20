@@ -254,7 +254,7 @@ class TwingateUser(pulumi.CustomResource):
         <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
-        import emailbob_twingate as twingate
+        import pulumi_twingate as twingate
 
         user = twingate.TwingateUser("user",
             email="sample@company.com",
@@ -288,7 +288,7 @@ class TwingateUser(pulumi.CustomResource):
         <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
-        import emailbob_twingate as twingate
+        import pulumi_twingate as twingate
 
         user = twingate.TwingateUser("user",
             email="sample@company.com",

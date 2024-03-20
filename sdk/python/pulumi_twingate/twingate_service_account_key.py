@@ -171,7 +171,7 @@ class TwingateServiceAccountKey(pulumi.CustomResource):
         <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
-        import emailbob_twingate as twingate
+        import pulumi_twingate as twingate
         import pulumiverse_time as time
 
         github_actions_prod = twingate.TwingateServiceAccount("githubActionsProd")
@@ -203,7 +203,7 @@ class TwingateServiceAccountKey(pulumi.CustomResource):
         <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
-        import emailbob_twingate as twingate
+        import pulumi_twingate as twingate
         import pulumiverse_time as time
 
         github_actions_prod = twingate.TwingateServiceAccount("githubActionsProd")

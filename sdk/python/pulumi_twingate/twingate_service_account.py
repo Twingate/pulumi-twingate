@@ -74,7 +74,7 @@ class TwingateServiceAccount(pulumi.CustomResource):
         <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
-        import emailbob_twingate as twingate
+        import pulumi_twingate as twingate
 
         github_actions_prod = twingate.TwingateServiceAccount("githubActionsProd")
         ```
@@ -98,7 +98,7 @@ class TwingateServiceAccount(pulumi.CustomResource):
         <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
-        import emailbob_twingate as twingate
+        import pulumi_twingate as twingate
 
         github_actions_prod = twingate.TwingateServiceAccount("githubActionsProd")
         ```

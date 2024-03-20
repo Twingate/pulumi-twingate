@@ -177,7 +177,7 @@ class TwingateGroup(pulumi.CustomResource):
         <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
-        import emailbob_twingate as twingate
+        import pulumi_twingate as twingate
 
         aws = twingate.TwingateGroup("aws")
         ```
@@ -211,7 +211,7 @@ class TwingateGroup(pulumi.CustomResource):
         <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
-        import emailbob_twingate as twingate
+        import pulumi_twingate as twingate
 
         aws = twingate.TwingateGroup("aws")
         ```
