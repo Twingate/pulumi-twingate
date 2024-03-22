@@ -64,6 +64,7 @@ func Provider() tfbridge.ProviderInfo {
 		P:                       pf.ShimProvider(provider),
 		TFProviderModuleVersion: "v2",
 		Name:                    "twingate",
+		Version:                 version.Version,
 		// DisplayName is a way to be able to change the casing of the provider
 		// name when being displayed on the Pulumi registry
 		DisplayName: "Twingate",

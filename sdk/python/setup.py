@@ -21,7 +21,7 @@ def readme():
 setup(name='pulumi_twingate',
       python_requires='>=3.8',
       version=VERSION,
-      description="A Pulumi package for creating and managing twingate cloud resources.",
+      description="A Pulumi package for creating and managing Twingate cloud resources.",
       long_description=readme(),
       long_description_content_type='text/markdown',
       keywords='pulumi twingate category/infrastructure',
