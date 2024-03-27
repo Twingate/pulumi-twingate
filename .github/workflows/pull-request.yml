@@ -11,7 +11,7 @@ on:
 
 jobs:
   build_sdk:
-    name: build_sdk
+    name: Build SDKs ${{ matrix.language }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: true
@@ -24,14 +24,11 @@ jobs:
           - 16.x
         pythonversion:
           - "3.9"
-        javaversion:
-          - "11"
         language:
           - nodejs
           - python
           - dotnet
           - go
-          # - java
 
     steps:
     - name: Checkout Repo
