@@ -11,7 +11,7 @@ VERSION_PATH     := ${PROVIDER_PATH}/pkg/version.Version
 
 TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}
-VERSION         := $(shell pulumictl get version)
+VERSION         := 2.1.2-1 #$(shell pulumictl get version)
 
 TESTPARALLELISM := 4
 
@@ -57,7 +57,7 @@ provider:: tfgen install_plugins # build the provider binary
 
 build_sdks:: install_plugins provider build_nodejs build_python build_go build_dotnet # build all the sdks
 
-build_nodejs:: VERSION := $(shell pulumictl get version --language javascript)
+build_nodejs:: VERSION := 2.1.2-1 #$(shell pulumictl get version --language javascript)
 build_nodejs:: install_plugins tfgen # build the node sdk
 	$(WORKING_DIR)/bin/$(TFGEN) nodejs --overlays provider/overlays/nodejs --out sdk/nodejs/
 	cd sdk/nodejs/ && \
@@ -66,7 +66,7 @@ build_nodejs:: install_plugins tfgen # build the node sdk
         cp ../../README.md ../../LICENSE package.json yarn.lock ./bin/ && \
 		sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json
 
-build_python:: PYPI_VERSION := $(shell pulumictl get version --language python)
+build_python:: PYPI_VERSION := 2.1.2-1 #$(shell pulumictl get version --language python)
 build_python:: install_plugins tfgen # build the python sdk
 	$(WORKING_DIR)/bin/$(TFGEN) python --overlays provider/overlays/python --out sdk/python/
 	cd sdk/python/ && \
@@ -77,9 +77,8 @@ build_python:: install_plugins tfgen # build the python sdk
         rm ./bin/setup.py.bak && \
         cd ./bin && python3 setup.py build sdist
 
-build_dotnet:: DOTNET_VERSION := $(shell pulumictl get version --language dotnet)
+build_dotnet:: DOTNET_VERSION := 2.1.2-1 #$(shell pulumictl get version --language dotnet)
 build_dotnet:: install_plugins tfgen # build the dotnet sdk
-	pulumictl get version --language dotnet
 	$(WORKING_DIR)/bin/$(TFGEN) dotnet --overlays provider/overlays/dotnet --out sdk/dotnet/
 	cd sdk/dotnet/ && \
 		echo "${DOTNET_VERSION}" >version.txt && \
