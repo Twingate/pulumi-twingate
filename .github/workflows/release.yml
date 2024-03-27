@@ -62,7 +62,7 @@ jobs:
           - 1.22.x
 
   publish_sdk:
-    name: Publish SDKs
+    name: Publish SDKs ${{ matrix.language }}
     runs-on: ubuntu-latest
     needs: publish_binary
     steps:
@@ -157,11 +157,8 @@ jobs:
           - 16.x
         pythonversion:
           - "3.9"
-        javaversion:
-          - "11"
         language:
           - nodejs
           - python
           - dotnet
           - go
-          # - java
