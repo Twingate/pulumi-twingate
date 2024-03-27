@@ -9,11 +9,11 @@ The Twingate provider must be configured with credentials to deploy and update r
 
 ## Example
 
-{{< chooser language "typescript,python,csharp" >}}
+{{< chooser language "typescript,python" >}}
 {{% choosable language typescript %}}
 
 ```typescript
-import * as tg from "@twingate-labs/pulumi-twingate"
+import * as tg from "@twingate/pulumi-twingate"
 import * as pulumi from "@pulumi/pulumi"
 
 const remoteNetwork = new tg.TwingateRemoteNetwork("test-network", {name: "Pulumi Test Network"})

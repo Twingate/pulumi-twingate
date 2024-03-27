@@ -1,3 +1,4 @@
 upstream-provider-name: terraform-provider-twingate
 upstream-provider-org: Twingate
 allow-missing-docs: true
+remove-plugins: true

@@ -64,6 +64,7 @@ func Provider() tfbridge.ProviderInfo {
 		P:                       pf.ShimProvider(provider),
 		TFProviderModuleVersion: "v2",
 		Name:                    "twingate",
+		Version:                 version.Version,
 		// DisplayName is a way to be able to change the casing of the provider
 		// name when being displayed on the Pulumi registry
 		DisplayName: "Twingate",
@@ -82,7 +83,7 @@ func Provider() tfbridge.ProviderInfo {
 		// for use in Pulumi programs
 		// e.g https://github.com/org/pulumi-provider-name/releases/
 		PluginDownloadURL: "github://api.github.com/Twingate/pulumi-twingate",
-		Description:       "A Pulumi package for creating and managing twingate cloud resources.",
+		Description:       "A Pulumi package for creating and managing Twingate cloud resources.",
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.

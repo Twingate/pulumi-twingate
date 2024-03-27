@@ -4,7 +4,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Twingate</Authors>
     <Company>Twingate</Company>
-    <Description>A Pulumi package for creating and managing twingate cloud resources.</Description>
+    <Description>A Pulumi package for creating and managing Twingate cloud resources.</Description>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://www.twingate.com</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Twingate/pulumi-twingate</RepositoryUrl>

@@ -1,1 +1,1 @@
-A Pulumi package for creating and managing twingate cloud resources.
+A Pulumi package for creating and managing Twingate cloud resources.
