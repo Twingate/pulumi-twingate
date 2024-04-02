@@ -16,14 +16,19 @@ builds:
       - darwin
       - windows
       - linux
+    hooks:
+      post:
+      - env GOOS={{ .Os }} GOARCH={{ .Arch }} go clean -cache
+      - env GOOS={{ .Os }} GOARCH={{ .Arch }} go clean -modcache
+    ignore: []
     ldflags:
       # The line below MUST align with the module in current provider/go.mod
       - -X github.com/Twingate/pulumi-twingate/provider/pkg/version.Version={{.Tag }}
     main: ./cmd/pulumi-resource-twingate/
 changelog:
-  skip: true
+  disable: true
 release:
   disable: false
-  prerelease: auto
 snapshot:
   name_template: '{{ .Tag }}-SNAPSHOT'
+project_name: "pulumi-twingate"
