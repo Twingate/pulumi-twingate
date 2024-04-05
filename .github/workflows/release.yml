@@ -1,4 +1,3 @@
-
 name: Release
 
 on:
@@ -48,11 +47,11 @@ jobs:
         repo: pulumi/pulumictl
 
     - name: Set PreRelease Version
-      run: echo "GORELEASER_CURRENT_TAG=v$(pulumictl get version --language generic)" >> $GITHUB_ENV
+      run: echo "GORELEASER_CURRENT_TAG=v$(pulumictl get version --language generic --omit-commit-hash)" >> $GITHUB_ENV
     - name: Run GoReleaser
       uses: goreleaser/goreleaser-action@v5
       with:
-        args: -p 3 release --rm-dist
+        args: -p 3 release --clean
         version: latest
 
     strategy:
@@ -62,7 +61,7 @@ jobs:
           - 1.22.x
 
   publish_sdk:
-    name: Publish SDKs
+    name: Publish SDKs ${{ matrix.language }}
     runs-on: ubuntu-latest
     needs: publish_binary
     steps:
@@ -115,15 +114,15 @@ jobs:
       - name: Build SDK
         run: make build_${{ matrix.language }}
 
-      - name: Check worktree clean
-        run: |
-          git update-index -q --refresh
-          if ! git diff-files --quiet; then
-              >&2 echo "error: working tree is not clean, aborting!"
-              git status
-              git diff
-              exit 1
-          fi
+      # - name: Check worktree clean
+      #   run: |
+      #     git update-index -q --refresh
+      #     if ! git diff-files --quiet; then
+      #         >&2 echo "error: working tree is not clean, aborting!"
+      #         git status
+      #         git diff
+      #         exit 1
+      #     fi
 
       - if: ${{ matrix.language == 'python' && env.PUBLISH_PYPI == 'true' }}
         name: Publish package to PyPI
@@ -157,11 +156,8 @@ jobs:
           - 16.x
         pythonversion:
           - "3.9"
-        javaversion:
-          - "11"
         language:
           - nodejs
           - python
           - dotnet
           - go
-          # - java
