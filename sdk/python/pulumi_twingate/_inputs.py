@@ -10,7 +10,8 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
-    'TwingateResourceAccessArgs',
+    'TwingateResourceAccessGroupArgs',
+    'TwingateResourceAccessServiceArgs',
     'TwingateResourceProtocolsArgs',
     'TwingateResourceProtocolsTcpArgs',
     'TwingateResourceProtocolsUdpArgs',
@@ -20,42 +21,65 @@ __all__ = [
 ]
 
 @pulumi.input_type
-class TwingateResourceAccessArgs:
+class TwingateResourceAccessGroupArgs:
     def __init__(__self__, *,
-                 group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 service_account_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 security_policy_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_ids: List of Group IDs that will have permission to access the Resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_account_ids: List of Service Account IDs that will have permission to access the Resource.
+        :param pulumi.Input[str] group_id: Group ID that will have permission to access the Resource.
+        :param pulumi.Input[str] security_policy_id: The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block.
         """
-        if group_ids is not None:
-            pulumi.set(__self__, "group_ids", group_ids)
-        if service_account_ids is not None:
-            pulumi.set(__self__, "service_account_ids", service_account_ids)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if security_policy_id is not None:
+            pulumi.set(__self__, "security_policy_id", security_policy_id)
 
     @property
-    @pulumi.getter(name="groupIds")
-    def group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        List of Group IDs that will have permission to access the Resource.
+        Group ID that will have permission to access the Resource.
         """
-        return pulumi.get(self, "group_ids")
+        return pulumi.get(self, "group_id")
 
-    @group_ids.setter
-    def group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "group_ids", value)
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_id", value)
 
     @property
-    @pulumi.getter(name="serviceAccountIds")
-    def service_account_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    @pulumi.getter(name="securityPolicyId")
+    def security_policy_id(self) -> Optional[pulumi.Input[str]]:
         """
-        List of Service Account IDs that will have permission to access the Resource.
+        The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block.
         """
-        return pulumi.get(self, "service_account_ids")
+        return pulumi.get(self, "security_policy_id")
 
-    @service_account_ids.setter
-    def service_account_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "service_account_ids", value)
+    @security_policy_id.setter
+    def security_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_policy_id", value)
+
+
+@pulumi.input_type
+class TwingateResourceAccessServiceArgs:
+    def __init__(__self__, *,
+                 service_account_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] service_account_id: The ID of the service account that should have access to this Resource.
+        """
+        if service_account_id is not None:
+            pulumi.set(__self__, "service_account_id", service_account_id)
+
+    @property
+    @pulumi.getter(name="serviceAccountId")
+    def service_account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the service account that should have access to this Resource.
+        """
+        return pulumi.get(self, "service_account_id")
+
+    @service_account_id.setter
+    def service_account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account_id", value)
 
 
 @pulumi.input_type

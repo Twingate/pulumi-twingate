@@ -44,9 +44,13 @@ export class TwingateResource extends pulumi.CustomResource {
     }
 
     /**
-     * Restrict access to certain groups or service accounts
+     * Restrict access to certain group
      */
-    public readonly access!: pulumi.Output<outputs.TwingateResourceAccess | undefined>;
+    public readonly accessGroups!: pulumi.Output<outputs.TwingateResourceAccessGroup[] | undefined>;
+    /**
+     * Restrict access to certain service account
+     */
+    public readonly accessServices!: pulumi.Output<outputs.TwingateResourceAccessService[] | undefined>;
     /**
      * The Resource's IP/CIDR or FQDN/DNS zone
      */
@@ -85,7 +89,7 @@ export class TwingateResource extends pulumi.CustomResource {
      */
     public readonly remoteNetworkId!: pulumi.Output<string>;
     /**
-     * The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
+     * The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
      */
     public readonly securityPolicyId!: pulumi.Output<string>;
 
@@ -102,7 +106,8 @@ export class TwingateResource extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TwingateResourceState | undefined;
-            resourceInputs["access"] = state ? state.access : undefined;
+            resourceInputs["accessGroups"] = state ? state.accessGroups : undefined;
+            resourceInputs["accessServices"] = state ? state.accessServices : undefined;
             resourceInputs["address"] = state ? state.address : undefined;
             resourceInputs["alias"] = state ? state.alias : undefined;
             resourceInputs["isActive"] = state ? state.isActive : undefined;
@@ -121,7 +126,8 @@ export class TwingateResource extends pulumi.CustomResource {
             if ((!args || args.remoteNetworkId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'remoteNetworkId'");
             }
-            resourceInputs["access"] = args ? args.access : undefined;
+            resourceInputs["accessGroups"] = args ? args.accessGroups : undefined;
+            resourceInputs["accessServices"] = args ? args.accessServices : undefined;
             resourceInputs["address"] = args ? args.address : undefined;
             resourceInputs["alias"] = args ? args.alias : undefined;
             resourceInputs["isActive"] = args ? args.isActive : undefined;
@@ -143,9 +149,13 @@ export class TwingateResource extends pulumi.CustomResource {
  */
 export interface TwingateResourceState {
     /**
-     * Restrict access to certain groups or service accounts
+     * Restrict access to certain group
      */
-    access?: pulumi.Input<inputs.TwingateResourceAccess>;
+    accessGroups?: pulumi.Input<pulumi.Input<inputs.TwingateResourceAccessGroup>[]>;
+    /**
+     * Restrict access to certain service account
+     */
+    accessServices?: pulumi.Input<pulumi.Input<inputs.TwingateResourceAccessService>[]>;
     /**
      * The Resource's IP/CIDR or FQDN/DNS zone
      */
@@ -184,7 +194,7 @@ export interface TwingateResourceState {
      */
     remoteNetworkId?: pulumi.Input<string>;
     /**
-     * The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
+     * The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
      */
     securityPolicyId?: pulumi.Input<string>;
 }
@@ -194,9 +204,13 @@ export interface TwingateResourceState {
  */
 export interface TwingateResourceArgs {
     /**
-     * Restrict access to certain groups or service accounts
+     * Restrict access to certain group
      */
-    access?: pulumi.Input<inputs.TwingateResourceAccess>;
+    accessGroups?: pulumi.Input<pulumi.Input<inputs.TwingateResourceAccessGroup>[]>;
+    /**
+     * Restrict access to certain service account
+     */
+    accessServices?: pulumi.Input<pulumi.Input<inputs.TwingateResourceAccessService>[]>;
     /**
      * The Resource's IP/CIDR or FQDN/DNS zone
      */
@@ -235,7 +249,7 @@ export interface TwingateResourceArgs {
      */
     remoteNetworkId: pulumi.Input<string>;
     /**
-     * The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
+     * The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
      */
     securityPolicyId?: pulumi.Input<string>;
 }

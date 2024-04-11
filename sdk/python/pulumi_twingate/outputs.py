@@ -11,7 +11,8 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
-    'TwingateResourceAccess',
+    'TwingateResourceAccessGroup',
+    'TwingateResourceAccessService',
     'TwingateResourceProtocols',
     'TwingateResourceProtocolsTcp',
     'TwingateResourceProtocolsUdp',
@@ -31,53 +32,89 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class TwingateResourceAccess(dict):
+class TwingateResourceAccessGroup(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "groupIds":
-            suggest = "group_ids"
-        elif key == "serviceAccountIds":
-            suggest = "service_account_ids"
+        if key == "groupId":
+            suggest = "group_id"
+        elif key == "securityPolicyId":
+            suggest = "security_policy_id"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TwingateResourceAccess. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in TwingateResourceAccessGroup. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        TwingateResourceAccess.__key_warning(key)
+        TwingateResourceAccessGroup.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        TwingateResourceAccess.__key_warning(key)
+        TwingateResourceAccessGroup.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 group_ids: Optional[Sequence[str]] = None,
-                 service_account_ids: Optional[Sequence[str]] = None):
+                 group_id: Optional[str] = None,
+                 security_policy_id: Optional[str] = None):
         """
-        :param Sequence[str] group_ids: List of Group IDs that will have permission to access the Resource.
-        :param Sequence[str] service_account_ids: List of Service Account IDs that will have permission to access the Resource.
+        :param str group_id: Group ID that will have permission to access the Resource.
+        :param str security_policy_id: The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block.
         """
-        if group_ids is not None:
-            pulumi.set(__self__, "group_ids", group_ids)
-        if service_account_ids is not None:
-            pulumi.set(__self__, "service_account_ids", service_account_ids)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if security_policy_id is not None:
+            pulumi.set(__self__, "security_policy_id", security_policy_id)
 
     @property
-    @pulumi.getter(name="groupIds")
-    def group_ids(self) -> Optional[Sequence[str]]:
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[str]:
         """
-        List of Group IDs that will have permission to access the Resource.
+        Group ID that will have permission to access the Resource.
         """
-        return pulumi.get(self, "group_ids")
+        return pulumi.get(self, "group_id")
 
     @property
-    @pulumi.getter(name="serviceAccountIds")
-    def service_account_ids(self) -> Optional[Sequence[str]]:
+    @pulumi.getter(name="securityPolicyId")
+    def security_policy_id(self) -> Optional[str]:
         """
-        List of Service Account IDs that will have permission to access the Resource.
+        The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block.
         """
-        return pulumi.get(self, "service_account_ids")
+        return pulumi.get(self, "security_policy_id")
+
+
+@pulumi.output_type
+class TwingateResourceAccessService(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccountId":
+            suggest = "service_account_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TwingateResourceAccessService. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TwingateResourceAccessService.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TwingateResourceAccessService.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_account_id: Optional[str] = None):
+        """
+        :param str service_account_id: The ID of the service account that should have access to this Resource.
+        """
+        if service_account_id is not None:
+            pulumi.set(__self__, "service_account_id", service_account_id)
+
+    @property
+    @pulumi.getter(name="serviceAccountId")
+    def service_account_id(self) -> Optional[str]:
+        """
+        The ID of the service account that should have access to this Resource.
+        """
+        return pulumi.get(self, "service_account_id")
 
 
 @pulumi.output_type

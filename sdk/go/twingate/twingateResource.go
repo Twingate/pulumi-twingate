@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/Twingate/pulumi-twingate/sdk/go/twingate/internal"
+	"github.com/Twingate/pulumi-twingate/sdk/v2/go/twingate/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,8 +22,10 @@ import (
 type TwingateResource struct {
 	pulumi.CustomResourceState
 
-	// Restrict access to certain groups or service accounts
-	Access TwingateResourceAccessPtrOutput `pulumi:"access"`
+	// Restrict access to certain group
+	AccessGroups TwingateResourceAccessGroupArrayOutput `pulumi:"accessGroups"`
+	// Restrict access to certain service account
+	AccessServices TwingateResourceAccessServiceArrayOutput `pulumi:"accessServices"`
 	// The Resource's IP/CIDR or FQDN/DNS zone
 	Address pulumi.StringOutput `pulumi:"address"`
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
@@ -43,7 +45,7 @@ type TwingateResource struct {
 	Protocols TwingateResourceProtocolsOutput `pulumi:"protocols"`
 	// Remote Network ID where the Resource lives
 	RemoteNetworkId pulumi.StringOutput `pulumi:"remoteNetworkId"`
-	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
+	// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
 	SecurityPolicyId pulumi.StringOutput `pulumi:"securityPolicyId"`
 }
 
@@ -83,8 +85,10 @@ func GetTwingateResource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TwingateResource resources.
 type twingateResourceState struct {
-	// Restrict access to certain groups or service accounts
-	Access *TwingateResourceAccess `pulumi:"access"`
+	// Restrict access to certain group
+	AccessGroups []TwingateResourceAccessGroup `pulumi:"accessGroups"`
+	// Restrict access to certain service account
+	AccessServices []TwingateResourceAccessService `pulumi:"accessServices"`
 	// The Resource's IP/CIDR or FQDN/DNS zone
 	Address *string `pulumi:"address"`
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
@@ -104,13 +108,15 @@ type twingateResourceState struct {
 	Protocols *TwingateResourceProtocols `pulumi:"protocols"`
 	// Remote Network ID where the Resource lives
 	RemoteNetworkId *string `pulumi:"remoteNetworkId"`
-	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
+	// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 }
 
 type TwingateResourceState struct {
-	// Restrict access to certain groups or service accounts
-	Access TwingateResourceAccessPtrInput
+	// Restrict access to certain group
+	AccessGroups TwingateResourceAccessGroupArrayInput
+	// Restrict access to certain service account
+	AccessServices TwingateResourceAccessServiceArrayInput
 	// The Resource's IP/CIDR or FQDN/DNS zone
 	Address pulumi.StringPtrInput
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
@@ -130,7 +136,7 @@ type TwingateResourceState struct {
 	Protocols TwingateResourceProtocolsPtrInput
 	// Remote Network ID where the Resource lives
 	RemoteNetworkId pulumi.StringPtrInput
-	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
+	// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
 	SecurityPolicyId pulumi.StringPtrInput
 }
 
@@ -139,8 +145,10 @@ func (TwingateResourceState) ElementType() reflect.Type {
 }
 
 type twingateResourceArgs struct {
-	// Restrict access to certain groups or service accounts
-	Access *TwingateResourceAccess `pulumi:"access"`
+	// Restrict access to certain group
+	AccessGroups []TwingateResourceAccessGroup `pulumi:"accessGroups"`
+	// Restrict access to certain service account
+	AccessServices []TwingateResourceAccessService `pulumi:"accessServices"`
 	// The Resource's IP/CIDR or FQDN/DNS zone
 	Address string `pulumi:"address"`
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
@@ -160,14 +168,16 @@ type twingateResourceArgs struct {
 	Protocols *TwingateResourceProtocols `pulumi:"protocols"`
 	// Remote Network ID where the Resource lives
 	RemoteNetworkId string `pulumi:"remoteNetworkId"`
-	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
+	// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 }
 
 // The set of arguments for constructing a TwingateResource resource.
 type TwingateResourceArgs struct {
-	// Restrict access to certain groups or service accounts
-	Access TwingateResourceAccessPtrInput
+	// Restrict access to certain group
+	AccessGroups TwingateResourceAccessGroupArrayInput
+	// Restrict access to certain service account
+	AccessServices TwingateResourceAccessServiceArrayInput
 	// The Resource's IP/CIDR or FQDN/DNS zone
 	Address pulumi.StringInput
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
@@ -187,7 +197,7 @@ type TwingateResourceArgs struct {
 	Protocols TwingateResourceProtocolsPtrInput
 	// Remote Network ID where the Resource lives
 	RemoteNetworkId pulumi.StringInput
-	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
+	// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
 	SecurityPolicyId pulumi.StringPtrInput
 }
 
@@ -278,9 +288,14 @@ func (o TwingateResourceOutput) ToTwingateResourceOutputWithContext(ctx context.
 	return o
 }
 
-// Restrict access to certain groups or service accounts
-func (o TwingateResourceOutput) Access() TwingateResourceAccessPtrOutput {
-	return o.ApplyT(func(v *TwingateResource) TwingateResourceAccessPtrOutput { return v.Access }).(TwingateResourceAccessPtrOutput)
+// Restrict access to certain group
+func (o TwingateResourceOutput) AccessGroups() TwingateResourceAccessGroupArrayOutput {
+	return o.ApplyT(func(v *TwingateResource) TwingateResourceAccessGroupArrayOutput { return v.AccessGroups }).(TwingateResourceAccessGroupArrayOutput)
+}
+
+// Restrict access to certain service account
+func (o TwingateResourceOutput) AccessServices() TwingateResourceAccessServiceArrayOutput {
+	return o.ApplyT(func(v *TwingateResource) TwingateResourceAccessServiceArrayOutput { return v.AccessServices }).(TwingateResourceAccessServiceArrayOutput)
 }
 
 // The Resource's IP/CIDR or FQDN/DNS zone
@@ -329,7 +344,7 @@ func (o TwingateResourceOutput) RemoteNetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TwingateResource) pulumi.StringOutput { return v.RemoteNetworkId }).(pulumi.StringOutput)
 }
 
-// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
+// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
 func (o TwingateResourceOutput) SecurityPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TwingateResource) pulumi.StringOutput { return v.SecurityPolicyId }).(pulumi.StringOutput)
 }

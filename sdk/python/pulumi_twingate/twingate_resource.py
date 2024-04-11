@@ -18,7 +18,8 @@ class TwingateResourceArgs:
     def __init__(__self__, *,
                  address: pulumi.Input[str],
                  remote_network_id: pulumi.Input[str],
-                 access: Optional[pulumi.Input['TwingateResourceAccessArgs']] = None,
+                 access_groups: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupArgs']]]] = None,
+                 access_services: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]]] = None,
                  alias: Optional[pulumi.Input[str]] = None,
                  is_active: Optional[pulumi.Input[bool]] = None,
                  is_authoritative: Optional[pulumi.Input[bool]] = None,
@@ -31,7 +32,8 @@ class TwingateResourceArgs:
         The set of arguments for constructing a TwingateResource resource.
         :param pulumi.Input[str] address: The Resource's IP/CIDR or FQDN/DNS zone
         :param pulumi.Input[str] remote_network_id: Remote Network ID where the Resource lives
-        :param pulumi.Input['TwingateResourceAccessArgs'] access: Restrict access to certain groups or service accounts
+        :param pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupArgs']]] access_groups: Restrict access to certain group
+        :param pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]] access_services: Restrict access to certain service account
         :param pulumi.Input[str] alias: Set a DNS alias address for the Resource. Must be a DNS-valid name string.
         :param pulumi.Input[bool] is_active: Set the resource as active or inactive. Default is `true`.
         :param pulumi.Input[bool] is_authoritative: Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to
@@ -40,12 +42,14 @@ class TwingateResourceArgs:
         :param pulumi.Input[bool] is_visible: Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
         :param pulumi.Input[str] name: The name of the Resource
         :param pulumi.Input['TwingateResourceProtocolsArgs'] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-        :param pulumi.Input[str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is `Default Policy`.
+        :param pulumi.Input[str] security_policy_id: The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "remote_network_id", remote_network_id)
-        if access is not None:
-            pulumi.set(__self__, "access", access)
+        if access_groups is not None:
+            pulumi.set(__self__, "access_groups", access_groups)
+        if access_services is not None:
+            pulumi.set(__self__, "access_services", access_services)
         if alias is not None:
             pulumi.set(__self__, "alias", alias)
         if is_active is not None:
@@ -88,16 +92,28 @@ class TwingateResourceArgs:
         pulumi.set(self, "remote_network_id", value)
 
     @property
-    @pulumi.getter
-    def access(self) -> Optional[pulumi.Input['TwingateResourceAccessArgs']]:
+    @pulumi.getter(name="accessGroups")
+    def access_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupArgs']]]]:
         """
-        Restrict access to certain groups or service accounts
+        Restrict access to certain group
         """
-        return pulumi.get(self, "access")
+        return pulumi.get(self, "access_groups")
 
-    @access.setter
-    def access(self, value: Optional[pulumi.Input['TwingateResourceAccessArgs']]):
-        pulumi.set(self, "access", value)
+    @access_groups.setter
+    def access_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupArgs']]]]):
+        pulumi.set(self, "access_groups", value)
+
+    @property
+    @pulumi.getter(name="accessServices")
+    def access_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]]]:
+        """
+        Restrict access to certain service account
+        """
+        return pulumi.get(self, "access_services")
+
+    @access_services.setter
+    def access_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]]]):
+        pulumi.set(self, "access_services", value)
 
     @property
     @pulumi.getter
@@ -188,7 +204,7 @@ class TwingateResourceArgs:
     @pulumi.getter(name="securityPolicyId")
     def security_policy_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is `Default Policy`.
+        The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block.
         """
         return pulumi.get(self, "security_policy_id")
 
@@ -200,7 +216,8 @@ class TwingateResourceArgs:
 @pulumi.input_type
 class _TwingateResourceState:
     def __init__(__self__, *,
-                 access: Optional[pulumi.Input['TwingateResourceAccessArgs']] = None,
+                 access_groups: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupArgs']]]] = None,
+                 access_services: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]]] = None,
                  address: Optional[pulumi.Input[str]] = None,
                  alias: Optional[pulumi.Input[str]] = None,
                  is_active: Optional[pulumi.Input[bool]] = None,
@@ -213,7 +230,8 @@ class _TwingateResourceState:
                  security_policy_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TwingateResource resources.
-        :param pulumi.Input['TwingateResourceAccessArgs'] access: Restrict access to certain groups or service accounts
+        :param pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupArgs']]] access_groups: Restrict access to certain group
+        :param pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]] access_services: Restrict access to certain service account
         :param pulumi.Input[str] address: The Resource's IP/CIDR or FQDN/DNS zone
         :param pulumi.Input[str] alias: Set a DNS alias address for the Resource. Must be a DNS-valid name string.
         :param pulumi.Input[bool] is_active: Set the resource as active or inactive. Default is `true`.
@@ -224,10 +242,12 @@ class _TwingateResourceState:
         :param pulumi.Input[str] name: The name of the Resource
         :param pulumi.Input['TwingateResourceProtocolsArgs'] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param pulumi.Input[str] remote_network_id: Remote Network ID where the Resource lives
-        :param pulumi.Input[str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is `Default Policy`.
+        :param pulumi.Input[str] security_policy_id: The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block.
         """
-        if access is not None:
-            pulumi.set(__self__, "access", access)
+        if access_groups is not None:
+            pulumi.set(__self__, "access_groups", access_groups)
+        if access_services is not None:
+            pulumi.set(__self__, "access_services", access_services)
         if address is not None:
             pulumi.set(__self__, "address", address)
         if alias is not None:
@@ -250,16 +270,28 @@ class _TwingateResourceState:
             pulumi.set(__self__, "security_policy_id", security_policy_id)
 
     @property
-    @pulumi.getter
-    def access(self) -> Optional[pulumi.Input['TwingateResourceAccessArgs']]:
+    @pulumi.getter(name="accessGroups")
+    def access_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupArgs']]]]:
         """
-        Restrict access to certain groups or service accounts
+        Restrict access to certain group
         """
-        return pulumi.get(self, "access")
+        return pulumi.get(self, "access_groups")
 
-    @access.setter
-    def access(self, value: Optional[pulumi.Input['TwingateResourceAccessArgs']]):
-        pulumi.set(self, "access", value)
+    @access_groups.setter
+    def access_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupArgs']]]]):
+        pulumi.set(self, "access_groups", value)
+
+    @property
+    @pulumi.getter(name="accessServices")
+    def access_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]]]:
+        """
+        Restrict access to certain service account
+        """
+        return pulumi.get(self, "access_services")
+
+    @access_services.setter
+    def access_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]]]):
+        pulumi.set(self, "access_services", value)
 
     @property
     @pulumi.getter
@@ -374,7 +406,7 @@ class _TwingateResourceState:
     @pulumi.getter(name="securityPolicyId")
     def security_policy_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is `Default Policy`.
+        The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block.
         """
         return pulumi.get(self, "security_policy_id")
 
@@ -388,7 +420,8 @@ class TwingateResource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access: Optional[pulumi.Input[pulumi.InputType['TwingateResourceAccessArgs']]] = None,
+                 access_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TwingateResourceAccessGroupArgs']]]]] = None,
+                 access_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TwingateResourceAccessServiceArgs']]]]] = None,
                  address: Optional[pulumi.Input[str]] = None,
                  alias: Optional[pulumi.Input[str]] = None,
                  is_active: Optional[pulumi.Input[bool]] = None,
@@ -411,7 +444,8 @@ class TwingateResource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['TwingateResourceAccessArgs']] access: Restrict access to certain groups or service accounts
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TwingateResourceAccessGroupArgs']]]] access_groups: Restrict access to certain group
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TwingateResourceAccessServiceArgs']]]] access_services: Restrict access to certain service account
         :param pulumi.Input[str] address: The Resource's IP/CIDR or FQDN/DNS zone
         :param pulumi.Input[str] alias: Set a DNS alias address for the Resource. Must be a DNS-valid name string.
         :param pulumi.Input[bool] is_active: Set the resource as active or inactive. Default is `true`.
@@ -422,7 +456,7 @@ class TwingateResource(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the Resource
         :param pulumi.Input[pulumi.InputType['TwingateResourceProtocolsArgs']] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param pulumi.Input[str] remote_network_id: Remote Network ID where the Resource lives
-        :param pulumi.Input[str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is `Default Policy`.
+        :param pulumi.Input[str] security_policy_id: The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block.
         """
         ...
     @overload
@@ -454,7 +488,8 @@ class TwingateResource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access: Optional[pulumi.Input[pulumi.InputType['TwingateResourceAccessArgs']]] = None,
+                 access_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TwingateResourceAccessGroupArgs']]]]] = None,
+                 access_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TwingateResourceAccessServiceArgs']]]]] = None,
                  address: Optional[pulumi.Input[str]] = None,
                  alias: Optional[pulumi.Input[str]] = None,
                  is_active: Optional[pulumi.Input[bool]] = None,
@@ -474,7 +509,8 @@ class TwingateResource(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TwingateResourceArgs.__new__(TwingateResourceArgs)
 
-            __props__.__dict__["access"] = access
+            __props__.__dict__["access_groups"] = access_groups
+            __props__.__dict__["access_services"] = access_services
             if address is None and not opts.urn:
                 raise TypeError("Missing required property 'address'")
             __props__.__dict__["address"] = address
@@ -499,7 +535,8 @@ class TwingateResource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access: Optional[pulumi.Input[pulumi.InputType['TwingateResourceAccessArgs']]] = None,
+            access_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TwingateResourceAccessGroupArgs']]]]] = None,
+            access_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TwingateResourceAccessServiceArgs']]]]] = None,
             address: Optional[pulumi.Input[str]] = None,
             alias: Optional[pulumi.Input[str]] = None,
             is_active: Optional[pulumi.Input[bool]] = None,
@@ -517,7 +554,8 @@ class TwingateResource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['TwingateResourceAccessArgs']] access: Restrict access to certain groups or service accounts
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TwingateResourceAccessGroupArgs']]]] access_groups: Restrict access to certain group
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TwingateResourceAccessServiceArgs']]]] access_services: Restrict access to certain service account
         :param pulumi.Input[str] address: The Resource's IP/CIDR or FQDN/DNS zone
         :param pulumi.Input[str] alias: Set a DNS alias address for the Resource. Must be a DNS-valid name string.
         :param pulumi.Input[bool] is_active: Set the resource as active or inactive. Default is `true`.
@@ -528,13 +566,14 @@ class TwingateResource(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the Resource
         :param pulumi.Input[pulumi.InputType['TwingateResourceProtocolsArgs']] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param pulumi.Input[str] remote_network_id: Remote Network ID where the Resource lives
-        :param pulumi.Input[str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is `Default Policy`.
+        :param pulumi.Input[str] security_policy_id: The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _TwingateResourceState.__new__(_TwingateResourceState)
 
-        __props__.__dict__["access"] = access
+        __props__.__dict__["access_groups"] = access_groups
+        __props__.__dict__["access_services"] = access_services
         __props__.__dict__["address"] = address
         __props__.__dict__["alias"] = alias
         __props__.__dict__["is_active"] = is_active
@@ -548,12 +587,20 @@ class TwingateResource(pulumi.CustomResource):
         return TwingateResource(resource_name, opts=opts, __props__=__props__)
 
     @property
-    @pulumi.getter
-    def access(self) -> pulumi.Output[Optional['outputs.TwingateResourceAccess']]:
+    @pulumi.getter(name="accessGroups")
+    def access_groups(self) -> pulumi.Output[Optional[Sequence['outputs.TwingateResourceAccessGroup']]]:
         """
-        Restrict access to certain groups or service accounts
+        Restrict access to certain group
         """
-        return pulumi.get(self, "access")
+        return pulumi.get(self, "access_groups")
+
+    @property
+    @pulumi.getter(name="accessServices")
+    def access_services(self) -> pulumi.Output[Optional[Sequence['outputs.TwingateResourceAccessService']]]:
+        """
+        Restrict access to certain service account
+        """
+        return pulumi.get(self, "access_services")
 
     @property
     @pulumi.getter
@@ -632,7 +679,7 @@ class TwingateResource(pulumi.CustomResource):
     @pulumi.getter(name="securityPolicyId")
     def security_policy_id(self) -> pulumi.Output[str]:
         """
-        The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is `Default Policy`.
+        The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block.
         """
         return pulumi.get(self, "security_policy_id")
 

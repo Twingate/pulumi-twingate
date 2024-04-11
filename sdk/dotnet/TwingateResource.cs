@@ -22,10 +22,16 @@ namespace Pulumi.Twingate
     public partial class TwingateResource : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Restrict access to certain groups or service accounts
+        /// Restrict access to certain group
         /// </summary>
-        [Output("access")]
-        public Output<Outputs.TwingateResourceAccess?> Access { get; private set; } = null!;
+        [Output("accessGroups")]
+        public Output<ImmutableArray<Outputs.TwingateResourceAccessGroup>> AccessGroups { get; private set; } = null!;
+
+        /// <summary>
+        /// Restrict access to certain service account
+        /// </summary>
+        [Output("accessServices")]
+        public Output<ImmutableArray<Outputs.TwingateResourceAccessService>> AccessServices { get; private set; } = null!;
 
         /// <summary>
         /// The Resource's IP/CIDR or FQDN/DNS zone
@@ -83,7 +89,7 @@ namespace Pulumi.Twingate
         public Output<string> RemoteNetworkId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
+        /// The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
         /// </summary>
         [Output("securityPolicyId")]
         public Output<string> SecurityPolicyId { get; private set; } = null!;
@@ -135,11 +141,29 @@ namespace Pulumi.Twingate
 
     public sealed class TwingateResourceArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accessGroups")]
+        private InputList<Inputs.TwingateResourceAccessGroupArgs>? _accessGroups;
+
         /// <summary>
-        /// Restrict access to certain groups or service accounts
+        /// Restrict access to certain group
         /// </summary>
-        [Input("access")]
-        public Input<Inputs.TwingateResourceAccessArgs>? Access { get; set; }
+        public InputList<Inputs.TwingateResourceAccessGroupArgs> AccessGroups
+        {
+            get => _accessGroups ?? (_accessGroups = new InputList<Inputs.TwingateResourceAccessGroupArgs>());
+            set => _accessGroups = value;
+        }
+
+        [Input("accessServices")]
+        private InputList<Inputs.TwingateResourceAccessServiceArgs>? _accessServices;
+
+        /// <summary>
+        /// Restrict access to certain service account
+        /// </summary>
+        public InputList<Inputs.TwingateResourceAccessServiceArgs> AccessServices
+        {
+            get => _accessServices ?? (_accessServices = new InputList<Inputs.TwingateResourceAccessServiceArgs>());
+            set => _accessServices = value;
+        }
 
         /// <summary>
         /// The Resource's IP/CIDR or FQDN/DNS zone
@@ -197,7 +221,7 @@ namespace Pulumi.Twingate
         public Input<string> RemoteNetworkId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
+        /// The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
         /// </summary>
         [Input("securityPolicyId")]
         public Input<string>? SecurityPolicyId { get; set; }
@@ -210,11 +234,29 @@ namespace Pulumi.Twingate
 
     public sealed class TwingateResourceState : global::Pulumi.ResourceArgs
     {
+        [Input("accessGroups")]
+        private InputList<Inputs.TwingateResourceAccessGroupGetArgs>? _accessGroups;
+
         /// <summary>
-        /// Restrict access to certain groups or service accounts
+        /// Restrict access to certain group
         /// </summary>
-        [Input("access")]
-        public Input<Inputs.TwingateResourceAccessGetArgs>? Access { get; set; }
+        public InputList<Inputs.TwingateResourceAccessGroupGetArgs> AccessGroups
+        {
+            get => _accessGroups ?? (_accessGroups = new InputList<Inputs.TwingateResourceAccessGroupGetArgs>());
+            set => _accessGroups = value;
+        }
+
+        [Input("accessServices")]
+        private InputList<Inputs.TwingateResourceAccessServiceGetArgs>? _accessServices;
+
+        /// <summary>
+        /// Restrict access to certain service account
+        /// </summary>
+        public InputList<Inputs.TwingateResourceAccessServiceGetArgs> AccessServices
+        {
+            get => _accessServices ?? (_accessServices = new InputList<Inputs.TwingateResourceAccessServiceGetArgs>());
+            set => _accessServices = value;
+        }
 
         /// <summary>
         /// The Resource's IP/CIDR or FQDN/DNS zone
@@ -272,7 +314,7 @@ namespace Pulumi.Twingate
         public Input<string>? RemoteNetworkId { get; set; }
 
         /// <summary>
-        /// The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
+        /// The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
         /// </summary>
         [Input("securityPolicyId")]
         public Input<string>? SecurityPolicyId { get; set; }

@@ -7,166 +7,213 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/Twingate/pulumi-twingate/sdk/go/twingate/internal"
+	"github.com/Twingate/pulumi-twingate/sdk/v2/go/twingate/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = internal.GetEnvOrDefault
 
-type TwingateResourceAccess struct {
-	// List of Group IDs that will have permission to access the Resource.
-	GroupIds []string `pulumi:"groupIds"`
-	// List of Service Account IDs that will have permission to access the Resource.
-	ServiceAccountIds []string `pulumi:"serviceAccountIds"`
+type TwingateResourceAccessGroup struct {
+	// Group ID that will have permission to access the Resource.
+	GroupId *string `pulumi:"groupId"`
+	// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
+	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 }
 
-// TwingateResourceAccessInput is an input type that accepts TwingateResourceAccessArgs and TwingateResourceAccessOutput values.
-// You can construct a concrete instance of `TwingateResourceAccessInput` via:
+// TwingateResourceAccessGroupInput is an input type that accepts TwingateResourceAccessGroupArgs and TwingateResourceAccessGroupOutput values.
+// You can construct a concrete instance of `TwingateResourceAccessGroupInput` via:
 //
-//	TwingateResourceAccessArgs{...}
-type TwingateResourceAccessInput interface {
+//	TwingateResourceAccessGroupArgs{...}
+type TwingateResourceAccessGroupInput interface {
 	pulumi.Input
 
-	ToTwingateResourceAccessOutput() TwingateResourceAccessOutput
-	ToTwingateResourceAccessOutputWithContext(context.Context) TwingateResourceAccessOutput
+	ToTwingateResourceAccessGroupOutput() TwingateResourceAccessGroupOutput
+	ToTwingateResourceAccessGroupOutputWithContext(context.Context) TwingateResourceAccessGroupOutput
 }
 
-type TwingateResourceAccessArgs struct {
-	// List of Group IDs that will have permission to access the Resource.
-	GroupIds pulumi.StringArrayInput `pulumi:"groupIds"`
-	// List of Service Account IDs that will have permission to access the Resource.
-	ServiceAccountIds pulumi.StringArrayInput `pulumi:"serviceAccountIds"`
+type TwingateResourceAccessGroupArgs struct {
+	// Group ID that will have permission to access the Resource.
+	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
+	// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
+	SecurityPolicyId pulumi.StringPtrInput `pulumi:"securityPolicyId"`
 }
 
-func (TwingateResourceAccessArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateResourceAccess)(nil)).Elem()
+func (TwingateResourceAccessGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateResourceAccessGroup)(nil)).Elem()
 }
 
-func (i TwingateResourceAccessArgs) ToTwingateResourceAccessOutput() TwingateResourceAccessOutput {
-	return i.ToTwingateResourceAccessOutputWithContext(context.Background())
+func (i TwingateResourceAccessGroupArgs) ToTwingateResourceAccessGroupOutput() TwingateResourceAccessGroupOutput {
+	return i.ToTwingateResourceAccessGroupOutputWithContext(context.Background())
 }
 
-func (i TwingateResourceAccessArgs) ToTwingateResourceAccessOutputWithContext(ctx context.Context) TwingateResourceAccessOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateResourceAccessOutput)
+func (i TwingateResourceAccessGroupArgs) ToTwingateResourceAccessGroupOutputWithContext(ctx context.Context) TwingateResourceAccessGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateResourceAccessGroupOutput)
 }
 
-func (i TwingateResourceAccessArgs) ToTwingateResourceAccessPtrOutput() TwingateResourceAccessPtrOutput {
-	return i.ToTwingateResourceAccessPtrOutputWithContext(context.Background())
-}
-
-func (i TwingateResourceAccessArgs) ToTwingateResourceAccessPtrOutputWithContext(ctx context.Context) TwingateResourceAccessPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateResourceAccessOutput).ToTwingateResourceAccessPtrOutputWithContext(ctx)
-}
-
-// TwingateResourceAccessPtrInput is an input type that accepts TwingateResourceAccessArgs, TwingateResourceAccessPtr and TwingateResourceAccessPtrOutput values.
-// You can construct a concrete instance of `TwingateResourceAccessPtrInput` via:
+// TwingateResourceAccessGroupArrayInput is an input type that accepts TwingateResourceAccessGroupArray and TwingateResourceAccessGroupArrayOutput values.
+// You can construct a concrete instance of `TwingateResourceAccessGroupArrayInput` via:
 //
-//	        TwingateResourceAccessArgs{...}
-//
-//	or:
-//
-//	        nil
-type TwingateResourceAccessPtrInput interface {
+//	TwingateResourceAccessGroupArray{ TwingateResourceAccessGroupArgs{...} }
+type TwingateResourceAccessGroupArrayInput interface {
 	pulumi.Input
 
-	ToTwingateResourceAccessPtrOutput() TwingateResourceAccessPtrOutput
-	ToTwingateResourceAccessPtrOutputWithContext(context.Context) TwingateResourceAccessPtrOutput
+	ToTwingateResourceAccessGroupArrayOutput() TwingateResourceAccessGroupArrayOutput
+	ToTwingateResourceAccessGroupArrayOutputWithContext(context.Context) TwingateResourceAccessGroupArrayOutput
 }
 
-type twingateResourceAccessPtrType TwingateResourceAccessArgs
+type TwingateResourceAccessGroupArray []TwingateResourceAccessGroupInput
 
-func TwingateResourceAccessPtr(v *TwingateResourceAccessArgs) TwingateResourceAccessPtrInput {
-	return (*twingateResourceAccessPtrType)(v)
+func (TwingateResourceAccessGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TwingateResourceAccessGroup)(nil)).Elem()
 }
 
-func (*twingateResourceAccessPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TwingateResourceAccess)(nil)).Elem()
+func (i TwingateResourceAccessGroupArray) ToTwingateResourceAccessGroupArrayOutput() TwingateResourceAccessGroupArrayOutput {
+	return i.ToTwingateResourceAccessGroupArrayOutputWithContext(context.Background())
 }
 
-func (i *twingateResourceAccessPtrType) ToTwingateResourceAccessPtrOutput() TwingateResourceAccessPtrOutput {
-	return i.ToTwingateResourceAccessPtrOutputWithContext(context.Background())
+func (i TwingateResourceAccessGroupArray) ToTwingateResourceAccessGroupArrayOutputWithContext(ctx context.Context) TwingateResourceAccessGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateResourceAccessGroupArrayOutput)
 }
 
-func (i *twingateResourceAccessPtrType) ToTwingateResourceAccessPtrOutputWithContext(ctx context.Context) TwingateResourceAccessPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateResourceAccessPtrOutput)
+type TwingateResourceAccessGroupOutput struct{ *pulumi.OutputState }
+
+func (TwingateResourceAccessGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateResourceAccessGroup)(nil)).Elem()
 }
 
-type TwingateResourceAccessOutput struct{ *pulumi.OutputState }
-
-func (TwingateResourceAccessOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateResourceAccess)(nil)).Elem()
-}
-
-func (o TwingateResourceAccessOutput) ToTwingateResourceAccessOutput() TwingateResourceAccessOutput {
+func (o TwingateResourceAccessGroupOutput) ToTwingateResourceAccessGroupOutput() TwingateResourceAccessGroupOutput {
 	return o
 }
 
-func (o TwingateResourceAccessOutput) ToTwingateResourceAccessOutputWithContext(ctx context.Context) TwingateResourceAccessOutput {
+func (o TwingateResourceAccessGroupOutput) ToTwingateResourceAccessGroupOutputWithContext(ctx context.Context) TwingateResourceAccessGroupOutput {
 	return o
 }
 
-func (o TwingateResourceAccessOutput) ToTwingateResourceAccessPtrOutput() TwingateResourceAccessPtrOutput {
-	return o.ToTwingateResourceAccessPtrOutputWithContext(context.Background())
+// Group ID that will have permission to access the Resource.
+func (o TwingateResourceAccessGroupOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TwingateResourceAccessGroup) *string { return v.GroupId }).(pulumi.StringPtrOutput)
 }
 
-func (o TwingateResourceAccessOutput) ToTwingateResourceAccessPtrOutputWithContext(ctx context.Context) TwingateResourceAccessPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TwingateResourceAccess) *TwingateResourceAccess {
-		return &v
-	}).(TwingateResourceAccessPtrOutput)
+// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
+func (o TwingateResourceAccessGroupOutput) SecurityPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TwingateResourceAccessGroup) *string { return v.SecurityPolicyId }).(pulumi.StringPtrOutput)
 }
 
-// List of Group IDs that will have permission to access the Resource.
-func (o TwingateResourceAccessOutput) GroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v TwingateResourceAccess) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
+type TwingateResourceAccessGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (TwingateResourceAccessGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TwingateResourceAccessGroup)(nil)).Elem()
 }
 
-// List of Service Account IDs that will have permission to access the Resource.
-func (o TwingateResourceAccessOutput) ServiceAccountIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v TwingateResourceAccess) []string { return v.ServiceAccountIds }).(pulumi.StringArrayOutput)
-}
-
-type TwingateResourceAccessPtrOutput struct{ *pulumi.OutputState }
-
-func (TwingateResourceAccessPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TwingateResourceAccess)(nil)).Elem()
-}
-
-func (o TwingateResourceAccessPtrOutput) ToTwingateResourceAccessPtrOutput() TwingateResourceAccessPtrOutput {
+func (o TwingateResourceAccessGroupArrayOutput) ToTwingateResourceAccessGroupArrayOutput() TwingateResourceAccessGroupArrayOutput {
 	return o
 }
 
-func (o TwingateResourceAccessPtrOutput) ToTwingateResourceAccessPtrOutputWithContext(ctx context.Context) TwingateResourceAccessPtrOutput {
+func (o TwingateResourceAccessGroupArrayOutput) ToTwingateResourceAccessGroupArrayOutputWithContext(ctx context.Context) TwingateResourceAccessGroupArrayOutput {
 	return o
 }
 
-func (o TwingateResourceAccessPtrOutput) Elem() TwingateResourceAccessOutput {
-	return o.ApplyT(func(v *TwingateResourceAccess) TwingateResourceAccess {
-		if v != nil {
-			return *v
-		}
-		var ret TwingateResourceAccess
-		return ret
-	}).(TwingateResourceAccessOutput)
+func (o TwingateResourceAccessGroupArrayOutput) Index(i pulumi.IntInput) TwingateResourceAccessGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TwingateResourceAccessGroup {
+		return vs[0].([]TwingateResourceAccessGroup)[vs[1].(int)]
+	}).(TwingateResourceAccessGroupOutput)
 }
 
-// List of Group IDs that will have permission to access the Resource.
-func (o TwingateResourceAccessPtrOutput) GroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TwingateResourceAccess) []string {
-		if v == nil {
-			return nil
-		}
-		return v.GroupIds
-	}).(pulumi.StringArrayOutput)
+type TwingateResourceAccessService struct {
+	// The ID of the service account that should have access to this Resource.
+	ServiceAccountId *string `pulumi:"serviceAccountId"`
 }
 
-// List of Service Account IDs that will have permission to access the Resource.
-func (o TwingateResourceAccessPtrOutput) ServiceAccountIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TwingateResourceAccess) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceAccountIds
-	}).(pulumi.StringArrayOutput)
+// TwingateResourceAccessServiceInput is an input type that accepts TwingateResourceAccessServiceArgs and TwingateResourceAccessServiceOutput values.
+// You can construct a concrete instance of `TwingateResourceAccessServiceInput` via:
+//
+//	TwingateResourceAccessServiceArgs{...}
+type TwingateResourceAccessServiceInput interface {
+	pulumi.Input
+
+	ToTwingateResourceAccessServiceOutput() TwingateResourceAccessServiceOutput
+	ToTwingateResourceAccessServiceOutputWithContext(context.Context) TwingateResourceAccessServiceOutput
+}
+
+type TwingateResourceAccessServiceArgs struct {
+	// The ID of the service account that should have access to this Resource.
+	ServiceAccountId pulumi.StringPtrInput `pulumi:"serviceAccountId"`
+}
+
+func (TwingateResourceAccessServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateResourceAccessService)(nil)).Elem()
+}
+
+func (i TwingateResourceAccessServiceArgs) ToTwingateResourceAccessServiceOutput() TwingateResourceAccessServiceOutput {
+	return i.ToTwingateResourceAccessServiceOutputWithContext(context.Background())
+}
+
+func (i TwingateResourceAccessServiceArgs) ToTwingateResourceAccessServiceOutputWithContext(ctx context.Context) TwingateResourceAccessServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateResourceAccessServiceOutput)
+}
+
+// TwingateResourceAccessServiceArrayInput is an input type that accepts TwingateResourceAccessServiceArray and TwingateResourceAccessServiceArrayOutput values.
+// You can construct a concrete instance of `TwingateResourceAccessServiceArrayInput` via:
+//
+//	TwingateResourceAccessServiceArray{ TwingateResourceAccessServiceArgs{...} }
+type TwingateResourceAccessServiceArrayInput interface {
+	pulumi.Input
+
+	ToTwingateResourceAccessServiceArrayOutput() TwingateResourceAccessServiceArrayOutput
+	ToTwingateResourceAccessServiceArrayOutputWithContext(context.Context) TwingateResourceAccessServiceArrayOutput
+}
+
+type TwingateResourceAccessServiceArray []TwingateResourceAccessServiceInput
+
+func (TwingateResourceAccessServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TwingateResourceAccessService)(nil)).Elem()
+}
+
+func (i TwingateResourceAccessServiceArray) ToTwingateResourceAccessServiceArrayOutput() TwingateResourceAccessServiceArrayOutput {
+	return i.ToTwingateResourceAccessServiceArrayOutputWithContext(context.Background())
+}
+
+func (i TwingateResourceAccessServiceArray) ToTwingateResourceAccessServiceArrayOutputWithContext(ctx context.Context) TwingateResourceAccessServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateResourceAccessServiceArrayOutput)
+}
+
+type TwingateResourceAccessServiceOutput struct{ *pulumi.OutputState }
+
+func (TwingateResourceAccessServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateResourceAccessService)(nil)).Elem()
+}
+
+func (o TwingateResourceAccessServiceOutput) ToTwingateResourceAccessServiceOutput() TwingateResourceAccessServiceOutput {
+	return o
+}
+
+func (o TwingateResourceAccessServiceOutput) ToTwingateResourceAccessServiceOutputWithContext(ctx context.Context) TwingateResourceAccessServiceOutput {
+	return o
+}
+
+// The ID of the service account that should have access to this Resource.
+func (o TwingateResourceAccessServiceOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TwingateResourceAccessService) *string { return v.ServiceAccountId }).(pulumi.StringPtrOutput)
+}
+
+type TwingateResourceAccessServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (TwingateResourceAccessServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TwingateResourceAccessService)(nil)).Elem()
+}
+
+func (o TwingateResourceAccessServiceArrayOutput) ToTwingateResourceAccessServiceArrayOutput() TwingateResourceAccessServiceArrayOutput {
+	return o
+}
+
+func (o TwingateResourceAccessServiceArrayOutput) ToTwingateResourceAccessServiceArrayOutputWithContext(ctx context.Context) TwingateResourceAccessServiceArrayOutput {
+	return o
+}
+
+func (o TwingateResourceAccessServiceArrayOutput) Index(i pulumi.IntInput) TwingateResourceAccessServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TwingateResourceAccessService {
+		return vs[0].([]TwingateResourceAccessService)[vs[1].(int)]
+	}).(TwingateResourceAccessServiceOutput)
 }
 
 type TwingateResourceProtocols struct {
@@ -2191,8 +2238,10 @@ func (o GetTwingateUsersUserArrayOutput) Index(i pulumi.IntInput) GetTwingateUse
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateResourceAccessInput)(nil)).Elem(), TwingateResourceAccessArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateResourceAccessPtrInput)(nil)).Elem(), TwingateResourceAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateResourceAccessGroupInput)(nil)).Elem(), TwingateResourceAccessGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateResourceAccessGroupArrayInput)(nil)).Elem(), TwingateResourceAccessGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateResourceAccessServiceInput)(nil)).Elem(), TwingateResourceAccessServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateResourceAccessServiceArrayInput)(nil)).Elem(), TwingateResourceAccessServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateResourceProtocolsInput)(nil)).Elem(), TwingateResourceProtocolsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateResourceProtocolsPtrInput)(nil)).Elem(), TwingateResourceProtocolsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateResourceProtocolsTcpInput)(nil)).Elem(), TwingateResourceProtocolsTcpArgs{})
@@ -2222,8 +2271,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTwingateServiceAccountsServiceAccountArrayInput)(nil)).Elem(), GetTwingateServiceAccountsServiceAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTwingateUsersUserInput)(nil)).Elem(), GetTwingateUsersUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTwingateUsersUserArrayInput)(nil)).Elem(), GetTwingateUsersUserArray{})
-	pulumi.RegisterOutputType(TwingateResourceAccessOutput{})
-	pulumi.RegisterOutputType(TwingateResourceAccessPtrOutput{})
+	pulumi.RegisterOutputType(TwingateResourceAccessGroupOutput{})
+	pulumi.RegisterOutputType(TwingateResourceAccessGroupArrayOutput{})
+	pulumi.RegisterOutputType(TwingateResourceAccessServiceOutput{})
+	pulumi.RegisterOutputType(TwingateResourceAccessServiceArrayOutput{})
 	pulumi.RegisterOutputType(TwingateResourceProtocolsOutput{})
 	pulumi.RegisterOutputType(TwingateResourceProtocolsPtrOutput{})
 	pulumi.RegisterOutputType(TwingateResourceProtocolsTcpOutput{})

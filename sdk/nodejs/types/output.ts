@@ -204,15 +204,22 @@ export interface GetTwingateUsersUser {
     type: string;
 }
 
-export interface TwingateResourceAccess {
+export interface TwingateResourceAccessGroup {
     /**
-     * List of Group IDs that will have permission to access the Resource.
+     * Group ID that will have permission to access the Resource.
      */
-    groupIds: string[];
+    groupId: string;
     /**
-     * List of Service Account IDs that will have permission to access the Resource.
+     * The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
      */
-    serviceAccountIds: string[];
+    securityPolicyId: string;
+}
+
+export interface TwingateResourceAccessService {
+    /**
+     * The ID of the service account that should have access to this Resource.
+     */
+    serviceAccountId: string;
 }
 
 export interface TwingateResourceProtocols {
