@@ -67,15 +67,22 @@ export interface GetTwingateResourceProtocolsUdpArgs {
     ports?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface TwingateResourceAccess {
+export interface TwingateResourceAccessGroup {
     /**
-     * List of Group IDs that will have permission to access the Resource.
+     * Group ID that will have permission to access the Resource.
      */
-    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    groupId?: pulumi.Input<string>;
     /**
-     * List of Service Account IDs that will have permission to access the Resource.
+     * The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
      */
-    serviceAccountIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityPolicyId?: pulumi.Input<string>;
+}
+
+export interface TwingateResourceAccessService {
+    /**
+     * The ID of the service account that should have access to this Resource.
+     */
+    serviceAccountId?: pulumi.Input<string>;
 }
 
 export interface TwingateResourceProtocols {

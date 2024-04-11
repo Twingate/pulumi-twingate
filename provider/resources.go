@@ -28,7 +28,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 
 	// Replace this provider with the provider you are bridging.
-	"github.com/Twingate/terraform-provider-twingate/v2/twingate"
+	"github.com/Twingate/terraform-provider-twingate/v3/twingate"
 
 	"github.com/Twingate/pulumi-twingate/provider/pkg/version"
 )
@@ -62,7 +62,7 @@ func Provider() tfbridge.ProviderInfo {
 	prov := tfbridge.ProviderInfo{
 		// Instantiate the Terraform provider
 		P:                       pf.ShimProvider(provider),
-		TFProviderModuleVersion: "v2",
+		TFProviderModuleVersion: "v3",
 		Name:                    "twingate",
 		Version:                 version.Version,
 		// DisplayName is a way to be able to change the casing of the provider
