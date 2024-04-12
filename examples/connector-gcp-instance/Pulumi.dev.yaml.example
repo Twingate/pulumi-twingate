@@ -9,6 +9,6 @@ config:
     subnet_name: subnet
     tg_remote_network: gcp-application-vpc
     vpc_name: gcp-application-vpc
-  gcp:project: twingate-labs
+  gcp:project: twingate-playground
   gcp:region: europe-west2
   gcp:zone: europe-west2-c

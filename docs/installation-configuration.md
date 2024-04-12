@@ -8,9 +8,9 @@ layout: package
 
 The Pulumi Twingate provider is available as a package in all Pulumi languages:
 
-* JavaScript/TypeScript: [`@twingate-labs/pulumi-twingate`](https://www.npmjs.com/package/@twingate-labs/pulumi-twingate)
+* JavaScript/TypeScript: [`@twingate/pulumi-twingate`](https://www.npmjs.com/package/@twingate/pulumi-twingate)
 * Python: [`pulumi_twingate`](https://pypi.org/project/pulumi-twingate/)
-* Go: [`github.com/Twingate-Labs/pulumi-twingate/sdk/go/twingate`](https://github.com/Twingate-Labs/pulumi-twingate/tree/master/sdk/go/twingate)
+* Go: [`github.com/Twingate/pulumi-twingate/sdk/go/twingate`](https://github.com/Twingate-Labs/pulumi-twingate/tree/master/sdk/go/twingate)
 * .NET: [`TwingateLabs.Twingate`](https://www.nuget.org/packages/TwingateLabs.Twingate)
 
 ### Provider Binary
@@ -18,7 +18,7 @@ The Pulumi Twingate provider is available as a package in all Pulumi languages:
 The Twingate provider binary is a third party binary, this should be installed automatically by package managers (e.g. Python Pip). It can be manually installed using the `pulumi plugin` command.
 
 ```bash
-pulumi plugin install resource twingate --server github://api.github.com/twingate-labs
+pulumi plugin install resource twingate --server github://api.github.com/Twingate/pulumi-twingate
 ```
 
 Replace the version string with your desired version.

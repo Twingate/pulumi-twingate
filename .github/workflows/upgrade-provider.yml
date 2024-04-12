@@ -4,8 +4,8 @@ on:
   issues:
     types:
     - opened
-  schedule:
-    - cron: '0 5 * * *'
+  # schedule:
+  #   - cron: '0 5 * * *'
 
 permissions:
   contents: write
