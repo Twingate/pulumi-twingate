@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/Twingate/pulumi-twingate/sdk/v2/go/twingate/internal"
+	"github.com/Twingate/pulumi-twingate/sdk/v3/go/twingate/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
