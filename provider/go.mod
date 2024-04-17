@@ -1,4 +1,4 @@
-module github.com/Twingate/pulumi-twingate/provider
+module github.com/Twingate/pulumi-twingate/provider/v3
 
 go 1.22
 

@@ -1,6 +1,6 @@
 module github.com/Twingate/pulumi-twingate/examples
 
-go 1.19
+go 1.22
 
 require github.com/pulumi/pulumi/pkg/v3 v3.36.0
 
