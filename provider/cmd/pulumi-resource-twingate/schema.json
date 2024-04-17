@@ -11,6 +11,7 @@
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`twingate` Terraform Provider](https://github.com/Twingate/terraform-provider-twingate).",
     "repository": "https://github.com/Twingate/pulumi-twingate",
+    "logoUrl": "https://raw.githubusercontent.com/Twingate/pulumi-twingate/main/docs/logo.png",
     "pluginDownloadURL": "github://api.github.com/Twingate/pulumi-twingate",
     "publisher": "Twingate",
     "meta": {
@@ -21,7 +22,8 @@
             "packageReferences": {
                 "Pulumi": "3.*"
             },
-            "compatibility": "tfbridge20"
+            "compatibility": "tfbridge20",
+            "rootNamespace": "Pulumi"
         },
         "go": {
             "importBasePath": "github.com/Twingate/pulumi-twingate/sdk/v3/go/twingate",
