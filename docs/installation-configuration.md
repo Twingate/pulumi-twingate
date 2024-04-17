@@ -62,10 +62,10 @@ $ export TWINGATE_NETWORK=<TWINGATE_NETWORK>
 
 If you prefer that they be stored alongside your Pulumi stack for easy multi-user access:
 
-    ```bash
-    $ pulumi config set twingate:apiToken XXXXXX --secret
-    $ pulumi config set twingate:network YYYYYY
-    ```
+```bash
+$ pulumi config set twingate:apiToken XXXXXX --secret
+$ pulumi config set twingate:network YYYYYY
+```
 
 The complete list of
 configuration parameters is in the [Twingate provider README](https://github.com/Twingate/pulumi-twingate/blob/main/README.md).
