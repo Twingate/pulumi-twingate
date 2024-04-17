@@ -1,5 +1,0 @@
-{
-  "resource": true,
-  "name": "twingate",
-  "server": "github://api.github.com/Twingate/pulumi-twingate"
-}

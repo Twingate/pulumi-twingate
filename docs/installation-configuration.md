@@ -10,8 +10,8 @@ The Pulumi Twingate provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@twingate/pulumi-twingate`](https://www.npmjs.com/package/@twingate/pulumi-twingate)
 * Python: [`pulumi_twingate`](https://pypi.org/project/pulumi-twingate/)
-* Go: [`github.com/Twingate/pulumi-twingate/sdk/go/twingate`](https://github.com/Twingate-Labs/pulumi-twingate/tree/master/sdk/go/twingate)
-* .NET: [`TwingateLabs.Twingate`](https://www.nuget.org/packages/TwingateLabs.Twingate)
+* Go: [`github.com/Twingate/pulumi-twingate/sdk/go/twingate`](https://github.com/Twingate/pulumi-twingate/tree/main/sdk/go/twingate)
+* .NET: [`Pulumi.Twingate`](https://www.nuget.org/packages/Pulumi.Twingate)
 
 ### Provider Binary
 
@@ -68,4 +68,4 @@ If you prefer that they be stored alongside your Pulumi stack for easy multi-use
     ```
 
 The complete list of
-configuration parameters is in the [Twingate provider README](https://github.com/Twingate-Labs/pulumi-twingate/blob/master/README.md).
+configuration parameters is in the [Twingate provider README](https://github.com/Twingate/pulumi-twingate/blob/main/README.md).
