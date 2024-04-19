@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Twingate
+namespace Twingate.Twingate
 {
     /// <summary>
     /// The provider type for the twingate package. By default, resources use package-wide configuration

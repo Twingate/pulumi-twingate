@@ -2,19 +2,19 @@ import pulumi
 import pulumi_twingate as tg
 
 # Create a Twingate remote network
-remote_network = tg.TwingateRemoteNetwork("test_network", name="Office")
+remote_network = tg.TwingateRemoteNetwork("test_network_py", name="Office PY")
 
 # Create a Twingate service account
-service_account = tg.TwingateServiceAccount("ci_cd_account", name="CI CD Service")
+service_account = tg.TwingateServiceAccount("ci_cd_account_py", name="CI CD Service PY")
 
 # Create a Twingate service key
-service_account_key = tg.TwingateServiceAccountKey("ci_cd_key", name="CI CD Key", service_account_id=service_account.id)
+service_account_key = tg.TwingateServiceAccountKey("ci_cd_key_py", name="CI CD Key PY", service_account_id=service_account.id)
 
 # Create a Twingate connector
-tggcp_connector = tg.TwingateConnector("twingateConnector", remote_network_id=remote_network.id)
+tggcp_connector = tg.TwingateConnector("twingateConnectorPY", remote_network_id=remote_network.id)
 
 # Create a Twingate group
-tg_group = tg.TwingateGroup("twingateGroup", name="demo group")
+tg_group = tg.TwingateGroup("twingateGroup", name="demo group PY")
 
 
 # To see service_account_key, execute command `pulumi stack output --show-secrets`
@@ -29,8 +29,8 @@ def get_group_id(group_name):
 
 # Create a Twingate Resource and configure resource permission
 twingate_resource = tg.TwingateResource(
-    "twingate_home_page",
-    name="Twingate Home Page",
+    "twingate_home_page_py",
+    name="Twingate Home Page PY",
     address="www.twingate.com",
     remote_network_id=remote_network.id,
     access_groups=[

@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Twingate
+namespace Twingate.Twingate
 {
     /// <summary>
     /// A Remote Network represents a single private network in Twingate that can have one or more Connectors and Resources assigned to it. You must create a Remote Network before creating Resources and Connectors that belong to it. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/remote-networks).
@@ -19,7 +20,7 @@ namespace Pulumi.Twingate
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Twingate = Pulumi.Twingate;
+    /// using Twingate = Twingate.Twingate;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {

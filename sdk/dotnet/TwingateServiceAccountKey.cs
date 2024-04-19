@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Twingate
+namespace Twingate.Twingate
 {
     /// <summary>
     /// A Service Key authorizes access to all Resources assigned to a Service Account.
@@ -20,7 +21,7 @@ namespace Pulumi.Twingate
     /// using System.Linq;
     /// using Pulumi;
     /// using Time = Pulumiverse.Time;
-    /// using Twingate = Pulumi.Twingate;
+    /// using Twingate = Twingate.Twingate;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
