@@ -4,7 +4,7 @@ go 1.22.0
 
 require (
 	github.com/Twingate/pulumi-twingate/sdk/v3 v3.0.1
-	github.com/pulumi/pulumi/sdk/v3 v3.113.0
+	github.com/pulumi/pulumi/sdk/v3 v3.113.1
 )
 
 replace github.com/Twingate/pulumi-twingate/sdk/v3 v3.0.1 => ../../sdk

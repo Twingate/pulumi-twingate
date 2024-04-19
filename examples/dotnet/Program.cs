@@ -1,8 +1,8 @@
 ﻿using System;
 using Pulumi;
-using Pulumi.Twingate;
-using Pulumi.Twingate.Inputs;
-using Pulumi.Twingate.Outputs;
+using Twingate.Twingate;
+using Twingate.Twingate.Inputs;
+using Twingate.Twingate.Outputs;
 
 await Deployment.RunAsync(() =>
 {
