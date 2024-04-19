@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Twingate
+namespace Twingate.Twingate
 {
     /// <summary>
     /// Groups are how users are authorized to access Resources. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/groups).
@@ -19,7 +20,7 @@ namespace Pulumi.Twingate
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Twingate = Pulumi.Twingate;
+    /// using Twingate = Twingate.Twingate;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {

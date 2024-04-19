@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Twingate
+namespace Twingate.Twingate
 {
     /// <summary>
     /// Connectors provide connectivity to Remote Networks. This resource type will create the Connector in the Twingate Admin Console, but in order to successfully deploy it, you must also generate Connector tokens that authenticate the Connector with Twingate. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/understanding-access-nodes).
@@ -19,7 +20,7 @@ namespace Pulumi.Twingate
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Twingate = Pulumi.Twingate;
+    /// using Twingate = Twingate.Twingate;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
