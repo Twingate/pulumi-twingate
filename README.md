@@ -41,7 +41,7 @@ go get github.com/pulumi/pulumi-twingate/sdk/go/...
 To use from .NET, install using `dotnet add package`:
 
 ```bash
-dotnet add package Pulumi.Twingate
+dotnet add package Twingate.Twingate
 ```
 
 ## Configuration

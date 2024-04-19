@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Twingate
+namespace Twingate.Twingate
 {
     /// <summary>
     /// Service Accounts offer a way to provide programmatic, centrally-controlled, and consistent access controls.
@@ -19,7 +20,7 @@ namespace Pulumi.Twingate
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Twingate = Pulumi.Twingate;
+    /// using Twingate = Twingate.Twingate;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {

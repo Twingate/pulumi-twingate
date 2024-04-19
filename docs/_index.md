@@ -9,7 +9,8 @@ The Twingate provider must be configured with credentials to deploy and update r
 
 ## Example
 
-{{< chooser language "typescript,python" >}}
+{{< chooser language "typescript,python,go,csharp" >}}
+
 {{% choosable language typescript %}}
 
 ```typescript
@@ -80,6 +81,7 @@ result.then((value) => {
 ```
 
 {{% /choosable %}}
+
 {{% choosable language python %}}
 
 ```python
@@ -152,4 +154,220 @@ for connector in connectors:
 ```
 
 {{% /choosable %}}
+
+{{% choosable language go %}}
+```go
+package main
+
+import (
+	"github.com/Twingate/pulumi-twingate/sdk/v3/go/twingate"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+)
+
+func main() {
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		// Create a Twingate remote network
+		remoteNetwork, err := twingate.NewTwingateRemoteNetwork(ctx, "test_network_go", &twingate.TwingateRemoteNetworkArgs{
+			Name: pulumi.StringPtr("Office Go"),
+		})
+		if err != nil {
+			return err
+		}
+
+		// Create a Twingate service account
+		serviceAccount, err := twingate.NewTwingateServiceAccount(ctx, "ci_cd_account_go", &twingate.TwingateServiceAccountArgs{
+			Name: pulumi.StringPtr("CI CD Service Go"),
+		})
+		if err != nil {
+			return err
+		}
+
+		// Create a Twingate service key
+		serviceAccountKey, err := twingate.NewTwingateServiceAccountKey(ctx, "ci_cd_key_go", &twingate.TwingateServiceAccountKeyArgs{
+			Name:             pulumi.StringPtr("CI CD key Go"),
+			ServiceAccountId: serviceAccount.ID(),
+		})
+		if err != nil {
+			return err
+		}
+
+		// Create a Twingate connector
+		connector, err := twingate.NewTwingateConnector(ctx, "test_connector_go", &twingate.TwingateConnectorArgs{
+			RemoteNetworkId: remoteNetwork.ID(),
+		})
+		if err != nil {
+			return err
+		}
+
+		ctx.Export("connector_id", connector.ID())
+
+		// Create a Twingate group
+		group, err := twingate.NewTwingateGroup(ctx, "twingate_group_go", &twingate.TwingateGroupArgs{
+			Name: pulumi.StringPtr("Demo Group Go"),
+		})
+
+		// To see service_account_key, execute command `pulumi stack output --show-secrets`
+		ctx.Export("service_account_key", pulumi.ToSecret(serviceAccountKey.Token))
+
+		resource, err := twingate.NewTwingateResource(ctx, "twingate_home_page_go", &twingate.TwingateResourceArgs{
+			Name:            pulumi.StringPtr("Twingate Home Page Go"),
+			Address:         pulumi.String("www.twingate.com"),
+			RemoteNetworkId: remoteNetwork.ID(),
+			AccessGroups: &twingate.TwingateResourceAccessGroupArray{
+				&twingate.TwingateResourceAccessGroupArgs{
+					GroupId: group.ID(),
+				},
+			},
+			AccessServices: &twingate.TwingateResourceAccessServiceArray{
+				&twingate.TwingateResourceAccessServiceArgs{
+					ServiceAccountId: serviceAccount.ID(),
+				},
+			},
+			Protocols: &twingate.TwingateResourceProtocolsArgs{
+				AllowIcmp: pulumi.BoolPtr(true),
+				Tcp: &twingate.TwingateResourceProtocolsTcpArgs{
+					Policy: pulumi.StringPtr("RESTRICTED"),
+					Ports: pulumi.StringArray{
+						pulumi.String("80"),
+					},
+				},
+				Udp: &twingate.TwingateResourceProtocolsUdpArgs{
+					Policy: pulumi.StringPtr("ALLOW_ALL"),
+				},
+			},
+		})
+		if err != nil {
+			return err
+		}
+
+		ctx.Export("resource_id", resource.ID())
+
+		return nil
+	})
+}
+
+```
+
+{{% /choosable %}}
+
+{{% choosable language csharp %}}
+
+```csharp
+using System;
+using Pulumi;
+using Twingate.Twingate;
+using Twingate.Twingate.Inputs;
+using Twingate.Twingate.Outputs;
+
+await Deployment.RunAsync(() =>
+{
+    // Create a Twingate remote network
+    var remoteNetwork = new TwingateRemoteNetwork("test_network_cs", new TwingateRemoteNetworkArgs
+    {
+        Name = "Office CS",
+    });
+
+    // Create a Twingate service account
+    var serviceAccount = new TwingateServiceAccount("ci_cd_account_cs", new TwingateServiceAccountArgs
+    {
+        Name = "CI CD Service CS",
+    });
+
+    // Create a Twingate service key
+    var serviceAccountKey = new TwingateServiceAccountKey("ci_cd_key_cs", new TwingateServiceAccountKeyArgs
+    {
+        Name = "CI CD Key CS",
+        ServiceAccountId = serviceAccount.Id,
+    });
+
+    // Create a Twingate connector
+    var tggcpConnector = new TwingateConnector("twingateConnectorCS", new TwingateConnectorArgs
+    {
+        RemoteNetworkId = remoteNetwork.Id,
+    });
+
+    // Create a Twingate group
+    var tgGroup = new TwingateGroup("twingateGroup", new TwingateGroupArgs
+    {
+        Name = "demo group CS",
+    });
+
+    // Create a Twingate Resource and configure resource permission
+    var twingateResource = new TwingateResource("twingate_home_page_cs", new TwingateResourceArgs
+    {
+        Name = "Twingate Home Page CS",
+        Address = "www.twingate.com",
+        RemoteNetworkId = remoteNetwork.Id,
+        AccessGroups = new TwingateResourceAccessGroupArgs
+        {
+            GroupId = tgGroup.Id,
+        },
+        AccessServices = new TwingateResourceAccessServiceArgs
+        {
+            ServiceAccountId = serviceAccount.Id,
+        },
+        Protocols = new TwingateResourceProtocolsArgs
+        {
+            AllowIcmp = true,
+            Tcp = new TwingateResourceProtocolsTcpArgs
+            {
+                Policy = "RESTRICTED",
+                Ports = { "80" },
+            },
+            Udp = new TwingateResourceProtocolsUdpArgs
+            {
+                Policy = "ALLOW_ALL",
+            },
+        },
+    });
+
+    // Specify the additional criteria to filter the Twingate groups
+    var groupsArgs = new GetTwingateGroupsArgs
+    {
+        NameContains = "Everyone",
+        IsActive = true,
+    };
+
+    // Invoke the GetTwingateGroups function asynchronously with the specified criteria
+    var groupsResultTask = GetTwingateGroups.InvokeAsync(groupsArgs);
+
+    // Wait for the task to complete and get the result synchronously
+    var groupsResult = groupsResultTask.Result;
+
+    // Access the properties of the groups result
+    foreach (var group in groupsResult.Groups)
+    {
+        Console.WriteLine($"Group ID: {group.Id}");
+        Console.WriteLine($"Group Name: {group.Name}");
+        Console.WriteLine($"Group Active: {group.IsActive}");
+        Console.WriteLine($"Group Security Policy ID: {group.SecurityPolicyId}");
+        Console.WriteLine($"Group Type: {group.Type}");
+        Console.WriteLine();
+    }
+
+    // Specify the additional criteria to filter the Twingate connectors
+    var connectorArgs = new GetTwingateConnectorsArgs
+    {
+        NameContains = "t",
+    };
+
+    // Invoke the GetTwingateGroups function asynchronously with the specified criteria
+    var connectorsResultTask = GetTwingateConnectors.InvokeAsync(connectorArgs);
+
+    // Wait for the task to complete and get the result synchronously
+    var connectorResult = connectorsResultTask.Result;
+
+    // Access the properties of the connector result
+    foreach (var connector in connectorResult.Connectors)
+    {
+        Console.WriteLine($"Connector Name: {connector.Name}");
+        Console.WriteLine($"Connector Remote Network ID: {connector.RemoteNetworkId}");
+        Console.WriteLine($"Connector Status Updates: {connector.StatusUpdatesEnabled}");
+        Console.WriteLine();
+    }
+});
+```
+
+{{% /choosable %}}
+
 {{< /chooser >}}

@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Twingate.Inputs
+namespace Twingate.Twingate.Inputs
 {
 
     public sealed class TwingateResourceAccessServiceArgs : global::Pulumi.ResourceArgs

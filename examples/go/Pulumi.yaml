@@ -1,0 +1,3 @@
+name: twingate-example-go
+runtime: go
+description: Go example for twingate
