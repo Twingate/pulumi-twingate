@@ -40,6 +40,8 @@ class TwingateResourceAccessGroup(dict):
             suggest = "group_id"
         elif key == "securityPolicyId":
             suggest = "security_policy_id"
+        elif key == "usageBasedAutolockDurationDays":
+            suggest = "usage_based_autolock_duration_days"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in TwingateResourceAccessGroup. Access the value via the '{suggest}' property getter instead.")
@@ -54,15 +56,19 @@ class TwingateResourceAccessGroup(dict):
 
     def __init__(__self__, *,
                  group_id: Optional[str] = None,
-                 security_policy_id: Optional[str] = None):
+                 security_policy_id: Optional[str] = None,
+                 usage_based_autolock_duration_days: Optional[int] = None):
         """
         :param str group_id: Group ID that will have permission to access the Resource.
         :param str security_policy_id: The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block.
+        :param int usage_based_autolock_duration_days: The usage-based auto-lock duration configured on the edge (in days).
         """
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
         if security_policy_id is not None:
             pulumi.set(__self__, "security_policy_id", security_policy_id)
+        if usage_based_autolock_duration_days is not None:
+            pulumi.set(__self__, "usage_based_autolock_duration_days", usage_based_autolock_duration_days)
 
     @property
     @pulumi.getter(name="groupId")
@@ -79,6 +85,14 @@ class TwingateResourceAccessGroup(dict):
         The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block.
         """
         return pulumi.get(self, "security_policy_id")
+
+    @property
+    @pulumi.getter(name="usageBasedAutolockDurationDays")
+    def usage_based_autolock_duration_days(self) -> Optional[int]:
+        """
+        The usage-based auto-lock duration configured on the edge (in days).
+        """
+        return pulumi.get(self, "usage_based_autolock_duration_days")
 
 
 @pulumi.output_type

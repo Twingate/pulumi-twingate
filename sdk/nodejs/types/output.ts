@@ -213,6 +213,10 @@ export interface TwingateResourceAccessGroup {
      * The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
      */
     securityPolicyId: string;
+    /**
+     * The usage-based auto-lock duration configured on the edge (in days).
+     */
+    usageBasedAutolockDurationDays: number;
 }
 
 export interface TwingateResourceAccessService {

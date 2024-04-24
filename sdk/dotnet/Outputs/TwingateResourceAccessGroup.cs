@@ -22,15 +22,22 @@ namespace Twingate.Twingate.Outputs
         /// The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
         /// </summary>
         public readonly string? SecurityPolicyId;
+        /// <summary>
+        /// The usage-based auto-lock duration configured on the edge (in days).
+        /// </summary>
+        public readonly int? UsageBasedAutolockDurationDays;
 
         [OutputConstructor]
         private TwingateResourceAccessGroup(
             string? groupId,
 
-            string? securityPolicyId)
+            string? securityPolicyId,
+
+            int? usageBasedAutolockDurationDays)
         {
             GroupId = groupId;
             SecurityPolicyId = securityPolicyId;
+            UsageBasedAutolockDurationDays = usageBasedAutolockDurationDays;
         }
     }
 }
