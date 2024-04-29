@@ -24,15 +24,19 @@ __all__ = [
 class TwingateResourceAccessGroupArgs:
     def __init__(__self__, *,
                  group_id: Optional[pulumi.Input[str]] = None,
-                 security_policy_id: Optional[pulumi.Input[str]] = None):
+                 security_policy_id: Optional[pulumi.Input[str]] = None,
+                 usage_based_autolock_duration_days: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] group_id: Group ID that will have permission to access the Resource.
         :param pulumi.Input[str] security_policy_id: The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block.
+        :param pulumi.Input[int] usage_based_autolock_duration_days: The usage-based auto-lock duration configured on the edge (in days).
         """
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
         if security_policy_id is not None:
             pulumi.set(__self__, "security_policy_id", security_policy_id)
+        if usage_based_autolock_duration_days is not None:
+            pulumi.set(__self__, "usage_based_autolock_duration_days", usage_based_autolock_duration_days)
 
     @property
     @pulumi.getter(name="groupId")
@@ -57,6 +61,18 @@ class TwingateResourceAccessGroupArgs:
     @security_policy_id.setter
     def security_policy_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "security_policy_id", value)
+
+    @property
+    @pulumi.getter(name="usageBasedAutolockDurationDays")
+    def usage_based_autolock_duration_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        The usage-based auto-lock duration configured on the edge (in days).
+        """
+        return pulumi.get(self, "usage_based_autolock_duration_days")
+
+    @usage_based_autolock_duration_days.setter
+    def usage_based_autolock_duration_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "usage_based_autolock_duration_days", value)
 
 
 @pulumi.input_type

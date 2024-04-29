@@ -18,6 +18,8 @@ type TwingateResourceAccessGroup struct {
 	GroupId *string `pulumi:"groupId"`
 	// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
+	// The usage-based auto-lock duration configured on the edge (in days).
+	UsageBasedAutolockDurationDays *int `pulumi:"usageBasedAutolockDurationDays"`
 }
 
 // TwingateResourceAccessGroupInput is an input type that accepts TwingateResourceAccessGroupArgs and TwingateResourceAccessGroupOutput values.
@@ -36,6 +38,8 @@ type TwingateResourceAccessGroupArgs struct {
 	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
 	// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
 	SecurityPolicyId pulumi.StringPtrInput `pulumi:"securityPolicyId"`
+	// The usage-based auto-lock duration configured on the edge (in days).
+	UsageBasedAutolockDurationDays pulumi.IntPtrInput `pulumi:"usageBasedAutolockDurationDays"`
 }
 
 func (TwingateResourceAccessGroupArgs) ElementType() reflect.Type {
@@ -97,6 +101,11 @@ func (o TwingateResourceAccessGroupOutput) GroupId() pulumi.StringPtrOutput {
 // The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
 func (o TwingateResourceAccessGroupOutput) SecurityPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TwingateResourceAccessGroup) *string { return v.SecurityPolicyId }).(pulumi.StringPtrOutput)
+}
+
+// The usage-based auto-lock duration configured on the edge (in days).
+func (o TwingateResourceAccessGroupOutput) UsageBasedAutolockDurationDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TwingateResourceAccessGroup) *int { return v.UsageBasedAutolockDurationDays }).(pulumi.IntPtrOutput)
 }
 
 type TwingateResourceAccessGroupArrayOutput struct{ *pulumi.OutputState }
