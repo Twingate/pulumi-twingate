@@ -76,6 +76,10 @@ export interface TwingateResourceAccessGroup {
      * The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
      */
     securityPolicyId?: pulumi.Input<string>;
+    /**
+     * The usage-based auto-lock duration configured on the edge (in days).
+     */
+    usageBasedAutolockDurationDays?: pulumi.Input<number>;
 }
 
 export interface TwingateResourceAccessService {
