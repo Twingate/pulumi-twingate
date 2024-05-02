@@ -136,7 +136,6 @@ class TwingateConnector(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_twingate as twingate
@@ -146,7 +145,6 @@ class TwingateConnector(pulumi.CustomResource):
             remote_network_id=aws_network.id,
             status_updates_enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -171,7 +169,6 @@ class TwingateConnector(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_twingate as twingate
@@ -181,7 +178,6 @@ class TwingateConnector(pulumi.CustomResource):
             remote_network_id=aws_network.id,
             status_updates_enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as time from "@pulumiverse/time";
@@ -22,7 +21,6 @@ import * as utilities from "./utilities";
  * const keyRotationStatic = new time.Static("keyRotationStatic", {rfc3339: keyRotationRotating.rfc3339});
  * const githubKeyWithRotation = new twingate.TwingateServiceAccountKey("githubKeyWithRotation", {serviceAccountId: githubActionsProd.id});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class TwingateServiceAccountKey extends pulumi.CustomResource {
     /**

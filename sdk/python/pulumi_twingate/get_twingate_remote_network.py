@@ -76,14 +76,12 @@ def get_twingate_remote_network(id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_twingate as twingate
 
     foo = twingate.get_twingate_remote_network(name="<your network's name>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: The ID of the Remote Network
@@ -110,14 +108,12 @@ def get_twingate_remote_network_output(id: Optional[pulumi.Input[Optional[str]]]
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_twingate as twingate
 
     foo = twingate.get_twingate_remote_network(name="<your network's name>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: The ID of the Remote Network

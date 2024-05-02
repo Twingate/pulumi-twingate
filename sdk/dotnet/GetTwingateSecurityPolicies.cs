@@ -17,7 +17,6 @@ namespace Twingate.Twingate
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Twingate.Twingate
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTwingateSecurityPoliciesResult> InvokeAsync(GetTwingateSecurityPoliciesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTwingateSecurityPoliciesResult>("twingate:index/getTwingateSecurityPolicies:getTwingateSecurityPolicies", args ?? new GetTwingateSecurityPoliciesArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Twingate.Twingate
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -59,7 +56,6 @@ namespace Twingate.Twingate
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTwingateSecurityPoliciesResult> Invoke(GetTwingateSecurityPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTwingateSecurityPoliciesResult>("twingate:index/getTwingateSecurityPolicies:getTwingateSecurityPolicies", args ?? new GetTwingateSecurityPoliciesInvokeArgs(), options.WithDefaults());
@@ -69,7 +65,7 @@ namespace Twingate.Twingate
     public sealed class GetTwingateSecurityPoliciesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Return a Security Policy that exactly matches this name.
+        /// Returns only security policies that exactly match this name. If no options are passed it will return all security policies. Only one option can be used at a time.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -113,7 +109,7 @@ namespace Twingate.Twingate
     public sealed class GetTwingateSecurityPoliciesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Return a Security Policy that exactly matches this name.
+        /// Returns only security policies that exactly match this name. If no options are passed it will return all security policies. Only one option can be used at a time.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,7 +38,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetTwingateSecurityPolicies(ctx *pulumi.Context, args *GetTwingateSecurityPoliciesArgs, opts ...pulumi.InvokeOption) (*GetTwingateSecurityPoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTwingateSecurityPoliciesResult
@@ -52,7 +50,7 @@ func GetTwingateSecurityPolicies(ctx *pulumi.Context, args *GetTwingateSecurityP
 
 // A collection of arguments for invoking getTwingateSecurityPolicies.
 type GetTwingateSecurityPoliciesArgs struct {
-	// Return a Security Policy that exactly matches this name.
+	// Returns only security policies that exactly match this name. If no options are passed it will return all security policies. Only one option can be used at a time.
 	Name *string `pulumi:"name"`
 	// Match when the value exist in the name of the security policy.
 	NameContains *string `pulumi:"nameContains"`
@@ -100,7 +98,7 @@ func GetTwingateSecurityPoliciesOutput(ctx *pulumi.Context, args GetTwingateSecu
 
 // A collection of arguments for invoking getTwingateSecurityPolicies.
 type GetTwingateSecurityPoliciesOutputArgs struct {
-	// Return a Security Policy that exactly matches this name.
+	// Returns only security policies that exactly match this name. If no options are passed it will return all security policies. Only one option can be used at a time.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Match when the value exist in the name of the security policy.
 	NameContains pulumi.StringPtrInput `pulumi:"nameContains"`

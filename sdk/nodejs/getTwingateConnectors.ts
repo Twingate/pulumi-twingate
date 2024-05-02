@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@pulumi/twingate";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     name: "<your connector's name>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTwingateConnectors(args?: GetTwingateConnectorsArgs, opts?: pulumi.InvokeOptions): Promise<GetTwingateConnectorsResult> {
     args = args || {};
@@ -41,7 +39,7 @@ export function getTwingateConnectors(args?: GetTwingateConnectorsArgs, opts?: p
  */
 export interface GetTwingateConnectorsArgs {
     /**
-     * The Name of the Connector.
+     * Returns only connectors that exactly match this name. If no options are passed it will return all connectors. Only one option can be used at a time.
      */
     name?: string;
     /**
@@ -108,7 +106,6 @@ export interface GetTwingateConnectorsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@pulumi/twingate";
@@ -117,7 +114,6 @@ export interface GetTwingateConnectorsResult {
  *     name: "<your connector's name>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTwingateConnectorsOutput(args?: GetTwingateConnectorsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateConnectorsResult> {
     return pulumi.output(args).apply((a: any) => getTwingateConnectors(a, opts))
@@ -128,7 +124,7 @@ export function getTwingateConnectorsOutput(args?: GetTwingateConnectorsOutputAr
  */
 export interface GetTwingateConnectorsOutputArgs {
     /**
-     * The Name of the Connector.
+     * Returns only connectors that exactly match this name. If no options are passed it will return all connectors. Only one option can be used at a time.
      */
     name?: pulumi.Input<string>;
     /**

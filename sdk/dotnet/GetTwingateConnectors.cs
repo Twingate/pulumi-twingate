@@ -17,7 +17,6 @@ namespace Twingate.Twingate
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Twingate.Twingate
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTwingateConnectorsResult> InvokeAsync(GetTwingateConnectorsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTwingateConnectorsResult>("twingate:index/getTwingateConnectors:getTwingateConnectors", args ?? new GetTwingateConnectorsArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Twingate.Twingate
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -59,7 +56,6 @@ namespace Twingate.Twingate
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTwingateConnectorsResult> Invoke(GetTwingateConnectorsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTwingateConnectorsResult>("twingate:index/getTwingateConnectors:getTwingateConnectors", args ?? new GetTwingateConnectorsInvokeArgs(), options.WithDefaults());
@@ -69,7 +65,7 @@ namespace Twingate.Twingate
     public sealed class GetTwingateConnectorsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The Name of the Connector.
+        /// Returns only connectors that exactly match this name. If no options are passed it will return all connectors. Only one option can be used at a time.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -113,7 +109,7 @@ namespace Twingate.Twingate
     public sealed class GetTwingateConnectorsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The Name of the Connector.
+        /// Returns only connectors that exactly match this name. If no options are passed it will return all connectors. Only one option can be used at a time.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

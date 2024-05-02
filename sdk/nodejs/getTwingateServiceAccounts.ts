@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@pulumi/twingate";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     name: "<your service account's name>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTwingateServiceAccounts(args?: GetTwingateServiceAccountsArgs, opts?: pulumi.InvokeOptions): Promise<GetTwingateServiceAccountsResult> {
     args = args || {};
@@ -41,7 +39,7 @@ export function getTwingateServiceAccounts(args?: GetTwingateServiceAccountsArgs
  */
 export interface GetTwingateServiceAccountsArgs {
     /**
-     * Name of the Service Account
+     * Returns only service accounts that exactly match this name. If no options are passed it will return all service accounts. Only one option can be used at a time.
      */
     name?: string;
     /**
@@ -108,7 +106,6 @@ export interface GetTwingateServiceAccountsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@pulumi/twingate";
@@ -117,7 +114,6 @@ export interface GetTwingateServiceAccountsResult {
  *     name: "<your service account's name>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTwingateServiceAccountsOutput(args?: GetTwingateServiceAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateServiceAccountsResult> {
     return pulumi.output(args).apply((a: any) => getTwingateServiceAccounts(a, opts))
@@ -128,7 +124,7 @@ export function getTwingateServiceAccountsOutput(args?: GetTwingateServiceAccoun
  */
 export interface GetTwingateServiceAccountsOutputArgs {
     /**
-     * Name of the Service Account
+     * Returns only service accounts that exactly match this name. If no options are passed it will return all service accounts. Only one option can be used at a time.
      */
     name?: pulumi.Input<string>;
     /**

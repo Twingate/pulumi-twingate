@@ -87,14 +87,12 @@ def get_twingate_connector(id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_twingate as twingate
 
     foo = twingate.get_twingate_connector(id="<your connector's id>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: The ID of the Connector. The ID for the Connector can be obtained from the Admin API or the URL string in the Admin Console.
@@ -119,14 +117,12 @@ def get_twingate_connector_output(id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_twingate as twingate
 
     foo = twingate.get_twingate_connector(id="<your connector's id>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: The ID of the Connector. The ID for the Connector can be obtained from the Admin API or the URL string in the Admin Console.

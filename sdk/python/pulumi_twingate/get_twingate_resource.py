@@ -102,14 +102,12 @@ def get_twingate_resource(id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_twingate as twingate
 
     foo = twingate.get_twingate_resource(id="<your resource's id>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: The ID of the Resource. The ID for the Resource can be obtained from the Admin API or the URL string in the Admin Console.
@@ -138,14 +136,12 @@ def get_twingate_resource_output(id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_twingate as twingate
 
     foo = twingate.get_twingate_resource(id="<your resource's id>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: The ID of the Resource. The ID for the Resource can be obtained from the Admin API or the URL string in the Admin Console.

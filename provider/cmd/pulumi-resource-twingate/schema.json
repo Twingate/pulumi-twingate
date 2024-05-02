@@ -929,7 +929,7 @@
                 },
                 "securityPolicyId": {
                     "type": "string",
-                    "description": "The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.\n"
+                    "description": "The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.\n"
                 }
             },
             "required": [
@@ -996,7 +996,7 @@
                 },
                 "securityPolicyId": {
                     "type": "string",
-                    "description": "The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.\n"
+                    "description": "The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.\n"
                 }
             },
             "requiredInputs": [
@@ -1058,7 +1058,7 @@
                     },
                     "securityPolicyId": {
                         "type": "string",
-                        "description": "The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.\n"
+                        "description": "The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.\n"
                     }
                 },
                 "type": "object"
@@ -1327,7 +1327,7 @@
                 "properties": {
                     "name": {
                         "type": "string",
-                        "description": "The Name of the Connector.\n"
+                        "description": "Returns only connectors that exactly match this name. If no options are passed it will return all connectors. Only one option can be used at a time.\n"
                     },
                     "nameContains": {
                         "type": "string",
@@ -1454,11 +1454,11 @@
                 "properties": {
                     "isActive": {
                         "type": "boolean",
-                        "description": "Indicates if the Group is active\n"
+                        "description": "Returns only Groups matching the specified state.\n"
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the Group\n"
+                        "description": "Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.\n"
                     },
                     "nameContains": {
                         "type": "string",
@@ -1592,7 +1592,7 @@
                 "properties": {
                     "name": {
                         "type": "string",
-                        "description": "The name of the Remote Network.\n"
+                        "description": "Returns only remote networks that exactly match this name. If no options are passed it will return all remote networks. Only one option can be used at a time.\n"
                     },
                     "nameContains": {
                         "type": "string",
@@ -1722,7 +1722,7 @@
                 "properties": {
                     "name": {
                         "type": "string",
-                        "description": "The name of the Resource\n"
+                        "description": "Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.\n"
                     },
                     "nameContains": {
                         "type": "string",
@@ -1800,7 +1800,7 @@
                 "properties": {
                     "name": {
                         "type": "string",
-                        "description": "Return a Security Policy that exactly matches this name.\n"
+                        "description": "Returns only security policies that exactly match this name. If no options are passed it will return all security policies. Only one option can be used at a time.\n"
                     },
                     "nameContains": {
                         "type": "string",
@@ -1908,7 +1908,7 @@
                 "properties": {
                     "name": {
                         "type": "string",
-                        "description": "Name of the Service Account\n"
+                        "description": "Returns only service accounts that exactly match this name. If no options are passed it will return all service accounts. Only one option can be used at a time.\n"
                     },
                     "nameContains": {
                         "type": "string",
@@ -2040,7 +2040,7 @@
                 "properties": {
                     "email": {
                         "type": "string",
-                        "description": "The email address of the User\n"
+                        "description": "Returns only users that exactly match this email.\n"
                     },
                     "emailContains": {
                         "type": "string",
@@ -2064,7 +2064,7 @@
                     },
                     "firstName": {
                         "type": "string",
-                        "description": "The first name of the User\n"
+                        "description": "Returns only users that exactly match the first name.\n"
                     },
                     "firstNameContains": {
                         "type": "string",
@@ -2088,7 +2088,7 @@
                     },
                     "lastName": {
                         "type": "string",
-                        "description": "The last name of the User\n"
+                        "description": "Returns only users that exactly match the last name.\n"
                     },
                     "lastNameContains": {
                         "type": "string",

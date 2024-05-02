@@ -17,7 +17,6 @@ namespace Twingate.Twingate
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Twingate.Twingate
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTwingateServiceAccountsResult> InvokeAsync(GetTwingateServiceAccountsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTwingateServiceAccountsResult>("twingate:index/getTwingateServiceAccounts:getTwingateServiceAccounts", args ?? new GetTwingateServiceAccountsArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Twingate.Twingate
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -59,7 +56,6 @@ namespace Twingate.Twingate
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTwingateServiceAccountsResult> Invoke(GetTwingateServiceAccountsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTwingateServiceAccountsResult>("twingate:index/getTwingateServiceAccounts:getTwingateServiceAccounts", args ?? new GetTwingateServiceAccountsInvokeArgs(), options.WithDefaults());
@@ -69,7 +65,7 @@ namespace Twingate.Twingate
     public sealed class GetTwingateServiceAccountsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Name of the Service Account
+        /// Returns only service accounts that exactly match this name. If no options are passed it will return all service accounts. Only one option can be used at a time.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -113,7 +109,7 @@ namespace Twingate.Twingate
     public sealed class GetTwingateServiceAccountsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Name of the Service Account
+        /// Returns only service accounts that exactly match this name. If no options are passed it will return all service accounts. Only one option can be used at a time.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

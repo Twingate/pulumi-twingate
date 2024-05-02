@@ -167,18 +167,16 @@ def get_twingate_groups(is_active: Optional[bool] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_twingate as twingate
 
     foo = twingate.get_twingate_groups(name="<your group's name>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param bool is_active: Indicates if the Group is active
-    :param str name: The name of the Group
+    :param bool is_active: Returns only Groups matching the specified state.
+    :param str name: Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
     :param str name_contains: Match when the value exist in the name of the group.
     :param str name_exclude: Match when the exact value does not exist in the name of the group.
     :param str name_prefix: The name of the group must start with the value.
@@ -226,18 +224,16 @@ def get_twingate_groups_output(is_active: Optional[pulumi.Input[Optional[bool]]]
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_twingate as twingate
 
     foo = twingate.get_twingate_groups(name="<your group's name>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param bool is_active: Indicates if the Group is active
-    :param str name: The name of the Group
+    :param bool is_active: Returns only Groups matching the specified state.
+    :param str name: Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
     :param str name_contains: Match when the value exist in the name of the group.
     :param str name_exclude: Match when the exact value does not exist in the name of the group.
     :param str name_prefix: The name of the group must start with the value.

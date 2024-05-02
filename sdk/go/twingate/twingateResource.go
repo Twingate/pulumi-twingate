@@ -45,7 +45,7 @@ type TwingateResource struct {
 	Protocols TwingateResourceProtocolsOutput `pulumi:"protocols"`
 	// Remote Network ID where the Resource lives
 	RemoteNetworkId pulumi.StringOutput `pulumi:"remoteNetworkId"`
-	// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
+	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
 	SecurityPolicyId pulumi.StringOutput `pulumi:"securityPolicyId"`
 }
 
@@ -108,7 +108,7 @@ type twingateResourceState struct {
 	Protocols *TwingateResourceProtocols `pulumi:"protocols"`
 	// Remote Network ID where the Resource lives
 	RemoteNetworkId *string `pulumi:"remoteNetworkId"`
-	// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
+	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 }
 
@@ -136,7 +136,7 @@ type TwingateResourceState struct {
 	Protocols TwingateResourceProtocolsPtrInput
 	// Remote Network ID where the Resource lives
 	RemoteNetworkId pulumi.StringPtrInput
-	// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
+	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
 	SecurityPolicyId pulumi.StringPtrInput
 }
 
@@ -168,7 +168,7 @@ type twingateResourceArgs struct {
 	Protocols *TwingateResourceProtocols `pulumi:"protocols"`
 	// Remote Network ID where the Resource lives
 	RemoteNetworkId string `pulumi:"remoteNetworkId"`
-	// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
+	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 }
 
@@ -197,7 +197,7 @@ type TwingateResourceArgs struct {
 	Protocols TwingateResourceProtocolsPtrInput
 	// Remote Network ID where the Resource lives
 	RemoteNetworkId pulumi.StringInput
-	// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
+	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
 	SecurityPolicyId pulumi.StringPtrInput
 }
 
@@ -344,7 +344,7 @@ func (o TwingateResourceOutput) RemoteNetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TwingateResource) pulumi.StringOutput { return v.RemoteNetworkId }).(pulumi.StringOutput)
 }
 
-// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
+// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
 func (o TwingateResourceOutput) SecurityPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TwingateResource) pulumi.StringOutput { return v.SecurityPolicyId }).(pulumi.StringOutput)
 }
