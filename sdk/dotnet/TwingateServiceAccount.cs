@@ -15,7 +15,6 @@ namespace Twingate.Twingate
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -28,7 +27,6 @@ namespace Twingate.Twingate
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [TwingateResourceType("twingate:index/twingateServiceAccount:TwingateServiceAccount")]
     public partial class TwingateServiceAccount : global::Pulumi.CustomResource

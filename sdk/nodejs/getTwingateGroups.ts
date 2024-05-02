@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@pulumi/twingate";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     name: "<your group's name>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTwingateGroups(args?: GetTwingateGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetTwingateGroupsResult> {
     args = args || {};
@@ -43,11 +41,11 @@ export function getTwingateGroups(args?: GetTwingateGroupsArgs, opts?: pulumi.In
  */
 export interface GetTwingateGroupsArgs {
     /**
-     * Indicates if the Group is active
+     * Returns only Groups matching the specified state.
      */
     isActive?: boolean;
     /**
-     * The name of the Group
+     * Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
      */
     name?: string;
     /**
@@ -126,7 +124,6 @@ export interface GetTwingateGroupsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@pulumi/twingate";
@@ -135,7 +132,6 @@ export interface GetTwingateGroupsResult {
  *     name: "<your group's name>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTwingateGroupsOutput(args?: GetTwingateGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateGroupsResult> {
     return pulumi.output(args).apply((a: any) => getTwingateGroups(a, opts))
@@ -146,11 +142,11 @@ export function getTwingateGroupsOutput(args?: GetTwingateGroupsOutputArgs, opts
  */
 export interface GetTwingateGroupsOutputArgs {
     /**
-     * Indicates if the Group is active
+     * Returns only Groups matching the specified state.
      */
     isActive?: pulumi.Input<boolean>;
     /**
-     * The name of the Group
+     * Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
      */
     name?: pulumi.Input<string>;
     /**

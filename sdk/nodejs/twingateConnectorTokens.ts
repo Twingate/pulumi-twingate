@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@twingate/pulumi-twingate";
@@ -18,7 +17,6 @@ import * as utilities from "./utilities";
  * const awsConnector = new twingate.TwingateConnector("awsConnector", {remoteNetworkId: awsNetwork.id});
  * const awsConnectorTokens = new twingate.TwingateConnectorTokens("awsConnectorTokens", {connectorId: awsConnector.id});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class TwingateConnectorTokens extends pulumi.CustomResource {
     /**

@@ -17,7 +17,6 @@ namespace Twingate.Twingate
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -30,7 +29,6 @@ namespace Twingate.Twingate
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTwingateUsersResult> InvokeAsync(GetTwingateUsersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTwingateUsersResult>("twingate:index/getTwingateUsers:getTwingateUsers", args ?? new GetTwingateUsersArgs(), options.WithDefaults());
@@ -40,7 +38,6 @@ namespace Twingate.Twingate
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -53,7 +50,6 @@ namespace Twingate.Twingate
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTwingateUsersResult> Invoke(GetTwingateUsersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTwingateUsersResult>("twingate:index/getTwingateUsers:getTwingateUsers", args ?? new GetTwingateUsersInvokeArgs(), options.WithDefaults());
@@ -63,7 +59,7 @@ namespace Twingate.Twingate
     public sealed class GetTwingateUsersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The email address of the User
+        /// Returns only users that exactly match this email.
         /// </summary>
         [Input("email")]
         public string? Email { get; set; }
@@ -99,7 +95,7 @@ namespace Twingate.Twingate
         public string? EmailSuffix { get; set; }
 
         /// <summary>
-        /// The first name of the User
+        /// Returns only users that exactly match the first name.
         /// </summary>
         [Input("firstName")]
         public string? FirstName { get; set; }
@@ -135,7 +131,7 @@ namespace Twingate.Twingate
         public string? FirstNameSuffix { get; set; }
 
         /// <summary>
-        /// The last name of the User
+        /// Returns only users that exactly match the last name.
         /// </summary>
         [Input("lastName")]
         public string? LastName { get; set; }
@@ -191,7 +187,7 @@ namespace Twingate.Twingate
     public sealed class GetTwingateUsersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The email address of the User
+        /// Returns only users that exactly match this email.
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
@@ -227,7 +223,7 @@ namespace Twingate.Twingate
         public Input<string>? EmailSuffix { get; set; }
 
         /// <summary>
-        /// The first name of the User
+        /// Returns only users that exactly match the first name.
         /// </summary>
         [Input("firstName")]
         public Input<string>? FirstName { get; set; }
@@ -263,7 +259,7 @@ namespace Twingate.Twingate
         public Input<string>? FirstNameSuffix { get; set; }
 
         /// <summary>
-        /// The last name of the User
+        /// Returns only users that exactly match the last name.
         /// </summary>
         [Input("lastName")]
         public Input<string>? LastName { get; set; }

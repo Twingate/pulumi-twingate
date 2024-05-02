@@ -307,29 +307,27 @@ def get_twingate_users(email: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_twingate as twingate
 
     all = twingate.get_twingate_users()
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str email: The email address of the User
+    :param str email: Returns only users that exactly match this email.
     :param str email_contains: Match when the value exist in the email of the user.
     :param str email_exclude: Match when the value does not exist in the email of the user.
     :param str email_prefix: The email of the user must start with the value.
     :param str email_regexp: The regular expression match of the email of the user.
     :param str email_suffix: The email of the user must end with the value.
-    :param str first_name: The first name of the User
+    :param str first_name: Returns only users that exactly match the first name.
     :param str first_name_contains: Match when the value exist in the first name of the user.
     :param str first_name_exclude: Match when the value does not exist in the first name of the user.
     :param str first_name_prefix: The first name of the user must start with the value.
     :param str first_name_regexp: The regular expression match of the first name of the user.
     :param str first_name_suffix: The first name of the user must end with the value.
-    :param str last_name: The last name of the User
+    :param str last_name: Returns only users that exactly match the last name.
     :param str last_name_contains: Match when the value exist in the last name of the user.
     :param str last_name_exclude: Match when the value does not exist in the last name of the user.
     :param str last_name_prefix: The last name of the user must start with the value.
@@ -410,29 +408,27 @@ def get_twingate_users_output(email: Optional[pulumi.Input[Optional[str]]] = Non
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_twingate as twingate
 
     all = twingate.get_twingate_users()
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str email: The email address of the User
+    :param str email: Returns only users that exactly match this email.
     :param str email_contains: Match when the value exist in the email of the user.
     :param str email_exclude: Match when the value does not exist in the email of the user.
     :param str email_prefix: The email of the user must start with the value.
     :param str email_regexp: The regular expression match of the email of the user.
     :param str email_suffix: The email of the user must end with the value.
-    :param str first_name: The first name of the User
+    :param str first_name: Returns only users that exactly match the first name.
     :param str first_name_contains: Match when the value exist in the first name of the user.
     :param str first_name_exclude: Match when the value does not exist in the first name of the user.
     :param str first_name_prefix: The first name of the user must start with the value.
     :param str first_name_regexp: The regular expression match of the first name of the user.
     :param str first_name_suffix: The first name of the user must end with the value.
-    :param str last_name: The last name of the User
+    :param str last_name: Returns only users that exactly match the last name.
     :param str last_name_contains: Match when the value exist in the last name of the user.
     :param str last_name_exclude: Match when the value does not exist in the last name of the user.
     :param str last_name_prefix: The last name of the user must start with the value.

@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@pulumi/twingate";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     name: "<your network's name>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTwingateRemoteNetworks(args?: GetTwingateRemoteNetworksArgs, opts?: pulumi.InvokeOptions): Promise<GetTwingateRemoteNetworksResult> {
     args = args || {};
@@ -41,7 +39,7 @@ export function getTwingateRemoteNetworks(args?: GetTwingateRemoteNetworksArgs, 
  */
 export interface GetTwingateRemoteNetworksArgs {
     /**
-     * The name of the Remote Network.
+     * Returns only remote networks that exactly match this name. If no options are passed it will return all remote networks. Only one option can be used at a time.
      */
     name?: string;
     /**
@@ -108,7 +106,6 @@ export interface GetTwingateRemoteNetworksResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@pulumi/twingate";
@@ -117,7 +114,6 @@ export interface GetTwingateRemoteNetworksResult {
  *     name: "<your network's name>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTwingateRemoteNetworksOutput(args?: GetTwingateRemoteNetworksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateRemoteNetworksResult> {
     return pulumi.output(args).apply((a: any) => getTwingateRemoteNetworks(a, opts))
@@ -128,7 +124,7 @@ export function getTwingateRemoteNetworksOutput(args?: GetTwingateRemoteNetworks
  */
 export interface GetTwingateRemoteNetworksOutputArgs {
     /**
-     * The name of the Remote Network.
+     * Returns only remote networks that exactly match this name. If no options are passed it will return all remote networks. Only one option can be used at a time.
      */
     name?: pulumi.Input<string>;
     /**

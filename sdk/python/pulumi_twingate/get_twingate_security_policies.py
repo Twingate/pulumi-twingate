@@ -138,17 +138,15 @@ def get_twingate_security_policies(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_twingate as twingate
 
     all = twingate.get_twingate_security_policies(name="<your security policy's name>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str name: Return a Security Policy that exactly matches this name.
+    :param str name: Returns only security policies that exactly match this name. If no options are passed it will return all security policies. Only one option can be used at a time.
     :param str name_contains: Match when the value exist in the name of the security policy.
     :param str name_exclude: Match when the exact value does not exist in the name of the security policy.
     :param str name_prefix: The name of the security policy must start with the value.
@@ -189,17 +187,15 @@ def get_twingate_security_policies_output(name: Optional[pulumi.Input[Optional[s
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_twingate as twingate
 
     all = twingate.get_twingate_security_policies(name="<your security policy's name>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str name: Return a Security Policy that exactly matches this name.
+    :param str name: Returns only security policies that exactly match this name. If no options are passed it will return all security policies. Only one option can be used at a time.
     :param str name_contains: Match when the value exist in the name of the security policy.
     :param str name_exclude: Match when the exact value does not exist in the name of the security policy.
     :param str name_prefix: The name of the security policy must start with the value.

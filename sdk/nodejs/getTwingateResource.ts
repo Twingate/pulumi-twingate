@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@pulumi/twingate";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     id: "<your resource's id>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTwingateResource(args: GetTwingateResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetTwingateResourceResult> {
 
@@ -75,7 +73,6 @@ export interface GetTwingateResourceResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@pulumi/twingate";
@@ -84,7 +81,6 @@ export interface GetTwingateResourceResult {
  *     id: "<your resource's id>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTwingateResourceOutput(args: GetTwingateResourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateResourceResult> {
     return pulumi.output(args).apply((a: any) => getTwingateResource(a, opts))

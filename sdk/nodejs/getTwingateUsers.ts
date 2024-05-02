@@ -11,14 +11,12 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@pulumi/twingate";
  *
  * const all = twingate.getTwingateUsers({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTwingateUsers(args?: GetTwingateUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetTwingateUsersResult> {
     args = args || {};
@@ -52,7 +50,7 @@ export function getTwingateUsers(args?: GetTwingateUsersArgs, opts?: pulumi.Invo
  */
 export interface GetTwingateUsersArgs {
     /**
-     * The email address of the User
+     * Returns only users that exactly match this email.
      */
     email?: string;
     /**
@@ -76,7 +74,7 @@ export interface GetTwingateUsersArgs {
      */
     emailSuffix?: string;
     /**
-     * The first name of the User
+     * Returns only users that exactly match the first name.
      */
     firstName?: string;
     /**
@@ -100,7 +98,7 @@ export interface GetTwingateUsersArgs {
      */
     firstNameSuffix?: string;
     /**
-     * The last name of the User
+     * Returns only users that exactly match the last name.
      */
     lastName?: string;
     /**
@@ -220,14 +218,12 @@ export interface GetTwingateUsersResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@pulumi/twingate";
  *
  * const all = twingate.getTwingateUsers({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTwingateUsersOutput(args?: GetTwingateUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateUsersResult> {
     return pulumi.output(args).apply((a: any) => getTwingateUsers(a, opts))
@@ -238,7 +234,7 @@ export function getTwingateUsersOutput(args?: GetTwingateUsersOutputArgs, opts?:
  */
 export interface GetTwingateUsersOutputArgs {
     /**
-     * The email address of the User
+     * Returns only users that exactly match this email.
      */
     email?: pulumi.Input<string>;
     /**
@@ -262,7 +258,7 @@ export interface GetTwingateUsersOutputArgs {
      */
     emailSuffix?: pulumi.Input<string>;
     /**
-     * The first name of the User
+     * Returns only users that exactly match the first name.
      */
     firstName?: pulumi.Input<string>;
     /**
@@ -286,7 +282,7 @@ export interface GetTwingateUsersOutputArgs {
      */
     firstNameSuffix?: pulumi.Input<string>;
     /**
-     * The last name of the User
+     * Returns only users that exactly match the last name.
      */
     lastName?: pulumi.Input<string>;
     /**

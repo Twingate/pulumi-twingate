@@ -17,7 +17,6 @@ namespace Twingate.Twingate
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Twingate.Twingate
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTwingateRemoteNetworksResult> InvokeAsync(GetTwingateRemoteNetworksArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTwingateRemoteNetworksResult>("twingate:index/getTwingateRemoteNetworks:getTwingateRemoteNetworks", args ?? new GetTwingateRemoteNetworksArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Twingate.Twingate
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -59,7 +56,6 @@ namespace Twingate.Twingate
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTwingateRemoteNetworksResult> Invoke(GetTwingateRemoteNetworksInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTwingateRemoteNetworksResult>("twingate:index/getTwingateRemoteNetworks:getTwingateRemoteNetworks", args ?? new GetTwingateRemoteNetworksInvokeArgs(), options.WithDefaults());
@@ -69,7 +65,7 @@ namespace Twingate.Twingate
     public sealed class GetTwingateRemoteNetworksArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the Remote Network.
+        /// Returns only remote networks that exactly match this name. If no options are passed it will return all remote networks. Only one option can be used at a time.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -113,7 +109,7 @@ namespace Twingate.Twingate
     public sealed class GetTwingateRemoteNetworksInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the Remote Network.
+        /// Returns only remote networks that exactly match this name. If no options are passed it will return all remote networks. Only one option can be used at a time.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -141,17 +141,15 @@ def get_twingate_service_accounts(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_twingate as twingate
 
     foo = twingate.get_twingate_service_accounts(name="<your service account's name>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str name: Name of the Service Account
+    :param str name: Returns only service accounts that exactly match this name. If no options are passed it will return all service accounts. Only one option can be used at a time.
     :param str name_contains: Match when the value exist in the name of the service account.
     :param str name_exclude: Match when the exact value does not exist in the name of the service account.
     :param str name_prefix: The name of the service account must start with the value.
@@ -192,17 +190,15 @@ def get_twingate_service_accounts_output(name: Optional[pulumi.Input[Optional[st
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_twingate as twingate
 
     foo = twingate.get_twingate_service_accounts(name="<your service account's name>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str name: Name of the Service Account
+    :param str name: Returns only service accounts that exactly match this name. If no options are passed it will return all service accounts. Only one option can be used at a time.
     :param str name_contains: Match when the value exist in the name of the service account.
     :param str name_exclude: Match when the exact value does not exist in the name of the service account.
     :param str name_prefix: The name of the service account must start with the value.

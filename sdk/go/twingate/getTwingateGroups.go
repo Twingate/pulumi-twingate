@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,7 +38,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetTwingateGroups(ctx *pulumi.Context, args *GetTwingateGroupsArgs, opts ...pulumi.InvokeOption) (*GetTwingateGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTwingateGroupsResult
@@ -52,9 +50,9 @@ func GetTwingateGroups(ctx *pulumi.Context, args *GetTwingateGroupsArgs, opts ..
 
 // A collection of arguments for invoking getTwingateGroups.
 type GetTwingateGroupsArgs struct {
-	// Indicates if the Group is active
+	// Returns only Groups matching the specified state.
 	IsActive *bool `pulumi:"isActive"`
-	// The name of the Group
+	// Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
 	Name *string `pulumi:"name"`
 	// Match when the value exist in the name of the group.
 	NameContains *string `pulumi:"nameContains"`
@@ -109,9 +107,9 @@ func GetTwingateGroupsOutput(ctx *pulumi.Context, args GetTwingateGroupsOutputAr
 
 // A collection of arguments for invoking getTwingateGroups.
 type GetTwingateGroupsOutputArgs struct {
-	// Indicates if the Group is active
+	// Returns only Groups matching the specified state.
 	IsActive pulumi.BoolPtrInput `pulumi:"isActive"`
-	// The name of the Group
+	// Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Match when the value exist in the name of the group.
 	NameContains pulumi.StringPtrInput `pulumi:"nameContains"`

@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@pulumi/twingate";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     name: "<your security policy's name>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTwingateSecurityPolicies(args?: GetTwingateSecurityPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetTwingateSecurityPoliciesResult> {
     args = args || {};
@@ -41,7 +39,7 @@ export function getTwingateSecurityPolicies(args?: GetTwingateSecurityPoliciesAr
  */
 export interface GetTwingateSecurityPoliciesArgs {
     /**
-     * Return a Security Policy that exactly matches this name.
+     * Returns only security policies that exactly match this name. If no options are passed it will return all security policies. Only one option can be used at a time.
      */
     name?: string;
     /**
@@ -105,7 +103,6 @@ export interface GetTwingateSecurityPoliciesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@pulumi/twingate";
@@ -114,7 +111,6 @@ export interface GetTwingateSecurityPoliciesResult {
  *     name: "<your security policy's name>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTwingateSecurityPoliciesOutput(args?: GetTwingateSecurityPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateSecurityPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getTwingateSecurityPolicies(a, opts))
@@ -125,7 +121,7 @@ export function getTwingateSecurityPoliciesOutput(args?: GetTwingateSecurityPoli
  */
 export interface GetTwingateSecurityPoliciesOutputArgs {
     /**
-     * Return a Security Policy that exactly matches this name.
+     * Returns only security policies that exactly match this name. If no options are passed it will return all security policies. Only one option can be used at a time.
      */
     name?: pulumi.Input<string>;
     /**

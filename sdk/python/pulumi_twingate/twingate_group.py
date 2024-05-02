@@ -174,14 +174,12 @@ class TwingateGroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_twingate as twingate
 
         aws = twingate.TwingateGroup("aws")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -208,14 +206,12 @@ class TwingateGroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_twingate as twingate
 
         aws = twingate.TwingateGroup("aws")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
