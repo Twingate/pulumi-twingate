@@ -17,7 +17,6 @@ namespace Twingate.Twingate
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Twingate.Twingate
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTwingateResourceResult> InvokeAsync(GetTwingateResourceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTwingateResourceResult>("twingate:index/getTwingateResource:getTwingateResource", args ?? new GetTwingateResourceArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Twingate.Twingate
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -59,7 +56,6 @@ namespace Twingate.Twingate
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTwingateResourceResult> Invoke(GetTwingateResourceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTwingateResourceResult>("twingate:index/getTwingateResource:getTwingateResource", args ?? new GetTwingateResourceInvokeArgs(), options.WithDefaults());

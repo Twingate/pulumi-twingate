@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -37,7 +36,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetTwingateUsers(ctx *pulumi.Context, args *GetTwingateUsersArgs, opts ...pulumi.InvokeOption) (*GetTwingateUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTwingateUsersResult
@@ -50,7 +48,7 @@ func GetTwingateUsers(ctx *pulumi.Context, args *GetTwingateUsersArgs, opts ...p
 
 // A collection of arguments for invoking getTwingateUsers.
 type GetTwingateUsersArgs struct {
-	// The email address of the User
+	// Returns only users that exactly match this email.
 	Email *string `pulumi:"email"`
 	// Match when the value exist in the email of the user.
 	EmailContains *string `pulumi:"emailContains"`
@@ -62,7 +60,7 @@ type GetTwingateUsersArgs struct {
 	EmailRegexp *string `pulumi:"emailRegexp"`
 	// The email of the user must end with the value.
 	EmailSuffix *string `pulumi:"emailSuffix"`
-	// The first name of the User
+	// Returns only users that exactly match the first name.
 	FirstName *string `pulumi:"firstName"`
 	// Match when the value exist in the first name of the user.
 	FirstNameContains *string `pulumi:"firstNameContains"`
@@ -74,7 +72,7 @@ type GetTwingateUsersArgs struct {
 	FirstNameRegexp *string `pulumi:"firstNameRegexp"`
 	// The first name of the user must end with the value.
 	FirstNameSuffix *string `pulumi:"firstNameSuffix"`
-	// The last name of the User
+	// Returns only users that exactly match the last name.
 	LastName *string `pulumi:"lastName"`
 	// Match when the value exist in the last name of the user.
 	LastNameContains *string `pulumi:"lastNameContains"`
@@ -150,7 +148,7 @@ func GetTwingateUsersOutput(ctx *pulumi.Context, args GetTwingateUsersOutputArgs
 
 // A collection of arguments for invoking getTwingateUsers.
 type GetTwingateUsersOutputArgs struct {
-	// The email address of the User
+	// Returns only users that exactly match this email.
 	Email pulumi.StringPtrInput `pulumi:"email"`
 	// Match when the value exist in the email of the user.
 	EmailContains pulumi.StringPtrInput `pulumi:"emailContains"`
@@ -162,7 +160,7 @@ type GetTwingateUsersOutputArgs struct {
 	EmailRegexp pulumi.StringPtrInput `pulumi:"emailRegexp"`
 	// The email of the user must end with the value.
 	EmailSuffix pulumi.StringPtrInput `pulumi:"emailSuffix"`
-	// The first name of the User
+	// Returns only users that exactly match the first name.
 	FirstName pulumi.StringPtrInput `pulumi:"firstName"`
 	// Match when the value exist in the first name of the user.
 	FirstNameContains pulumi.StringPtrInput `pulumi:"firstNameContains"`
@@ -174,7 +172,7 @@ type GetTwingateUsersOutputArgs struct {
 	FirstNameRegexp pulumi.StringPtrInput `pulumi:"firstNameRegexp"`
 	// The first name of the user must end with the value.
 	FirstNameSuffix pulumi.StringPtrInput `pulumi:"firstNameSuffix"`
-	// The last name of the User
+	// Returns only users that exactly match the last name.
 	LastName pulumi.StringPtrInput `pulumi:"lastName"`
 	// Match when the value exist in the last name of the user.
 	LastNameContains pulumi.StringPtrInput `pulumi:"lastNameContains"`

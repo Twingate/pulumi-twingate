@@ -89,7 +89,7 @@ export class TwingateResource extends pulumi.CustomResource {
      */
     public readonly remoteNetworkId!: pulumi.Output<string>;
     /**
-     * The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
+     * The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
      */
     public readonly securityPolicyId!: pulumi.Output<string>;
 
@@ -194,7 +194,7 @@ export interface TwingateResourceState {
      */
     remoteNetworkId?: pulumi.Input<string>;
     /**
-     * The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
+     * The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
      */
     securityPolicyId?: pulumi.Input<string>;
 }
@@ -249,7 +249,7 @@ export interface TwingateResourceArgs {
      */
     remoteNetworkId: pulumi.Input<string>;
     /**
-     * The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
+     * The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
      */
     securityPolicyId?: pulumi.Input<string>;
 }

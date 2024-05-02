@@ -17,7 +17,6 @@ namespace Twingate.Twingate
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Twingate.Twingate
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTwingateGroupsResult> InvokeAsync(GetTwingateGroupsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTwingateGroupsResult>("twingate:index/getTwingateGroups:getTwingateGroups", args ?? new GetTwingateGroupsArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Twingate.Twingate
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -59,7 +56,6 @@ namespace Twingate.Twingate
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTwingateGroupsResult> Invoke(GetTwingateGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTwingateGroupsResult>("twingate:index/getTwingateGroups:getTwingateGroups", args ?? new GetTwingateGroupsInvokeArgs(), options.WithDefaults());
@@ -69,13 +65,13 @@ namespace Twingate.Twingate
     public sealed class GetTwingateGroupsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Indicates if the Group is active
+        /// Returns only Groups matching the specified state.
         /// </summary>
         [Input("isActive")]
         public bool? IsActive { get; set; }
 
         /// <summary>
-        /// The name of the Group
+        /// Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -131,13 +127,13 @@ namespace Twingate.Twingate
     public sealed class GetTwingateGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Indicates if the Group is active
+        /// Returns only Groups matching the specified state.
         /// </summary>
         [Input("isActive")]
         public Input<bool>? IsActive { get; set; }
 
         /// <summary>
-        /// The name of the Group
+        /// Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

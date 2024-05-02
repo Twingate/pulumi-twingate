@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,7 +38,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetTwingateServiceAccounts(ctx *pulumi.Context, args *GetTwingateServiceAccountsArgs, opts ...pulumi.InvokeOption) (*GetTwingateServiceAccountsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTwingateServiceAccountsResult
@@ -52,7 +50,7 @@ func GetTwingateServiceAccounts(ctx *pulumi.Context, args *GetTwingateServiceAcc
 
 // A collection of arguments for invoking getTwingateServiceAccounts.
 type GetTwingateServiceAccountsArgs struct {
-	// Name of the Service Account
+	// Returns only service accounts that exactly match this name. If no options are passed it will return all service accounts. Only one option can be used at a time.
 	Name *string `pulumi:"name"`
 	// Match when the value exist in the name of the service account.
 	NameContains *string `pulumi:"nameContains"`
@@ -101,7 +99,7 @@ func GetTwingateServiceAccountsOutput(ctx *pulumi.Context, args GetTwingateServi
 
 // A collection of arguments for invoking getTwingateServiceAccounts.
 type GetTwingateServiceAccountsOutputArgs struct {
-	// Name of the Service Account
+	// Returns only service accounts that exactly match this name. If no options are passed it will return all service accounts. Only one option can be used at a time.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Match when the value exist in the name of the service account.
 	NameContains pulumi.StringPtrInput `pulumi:"nameContains"`

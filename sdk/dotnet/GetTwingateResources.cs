@@ -17,7 +17,6 @@ namespace Twingate.Twingate
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Twingate.Twingate
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTwingateResourcesResult> InvokeAsync(GetTwingateResourcesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTwingateResourcesResult>("twingate:index/getTwingateResources:getTwingateResources", args ?? new GetTwingateResourcesArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Twingate.Twingate
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -59,7 +56,6 @@ namespace Twingate.Twingate
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTwingateResourcesResult> Invoke(GetTwingateResourcesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTwingateResourcesResult>("twingate:index/getTwingateResources:getTwingateResources", args ?? new GetTwingateResourcesInvokeArgs(), options.WithDefaults());
@@ -69,7 +65,7 @@ namespace Twingate.Twingate
     public sealed class GetTwingateResourcesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the Resource
+        /// Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -113,7 +109,7 @@ namespace Twingate.Twingate
     public sealed class GetTwingateResourcesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the Resource
+        /// Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

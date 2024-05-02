@@ -64,14 +64,12 @@ def get_twingate_security_policy(id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_twingate as twingate
 
     foo = twingate.get_twingate_security_policy(name="<your security policy name>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: Return a Security Policy by its ID. The ID for the Security Policy can be obtained from the Admin API or the URL string in the Admin Console.
@@ -97,14 +95,12 @@ def get_twingate_security_policy_output(id: Optional[pulumi.Input[Optional[str]]
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_twingate as twingate
 
     foo = twingate.get_twingate_security_policy(name="<your security policy name>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: Return a Security Policy by its ID. The ID for the Security Policy can be obtained from the Admin API or the URL string in the Admin Console.

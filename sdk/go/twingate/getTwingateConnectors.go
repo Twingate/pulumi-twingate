@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,7 +38,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetTwingateConnectors(ctx *pulumi.Context, args *GetTwingateConnectorsArgs, opts ...pulumi.InvokeOption) (*GetTwingateConnectorsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTwingateConnectorsResult
@@ -52,7 +50,7 @@ func GetTwingateConnectors(ctx *pulumi.Context, args *GetTwingateConnectorsArgs,
 
 // A collection of arguments for invoking getTwingateConnectors.
 type GetTwingateConnectorsArgs struct {
-	// The Name of the Connector.
+	// Returns only connectors that exactly match this name. If no options are passed it will return all connectors. Only one option can be used at a time.
 	Name *string `pulumi:"name"`
 	// Match when the value exist in the name of the connector.
 	NameContains *string `pulumi:"nameContains"`
@@ -101,7 +99,7 @@ func GetTwingateConnectorsOutput(ctx *pulumi.Context, args GetTwingateConnectors
 
 // A collection of arguments for invoking getTwingateConnectors.
 type GetTwingateConnectorsOutputArgs struct {
-	// The Name of the Connector.
+	// Returns only connectors that exactly match this name. If no options are passed it will return all connectors. Only one option can be used at a time.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Match when the value exist in the name of the connector.
 	NameContains pulumi.StringPtrInput `pulumi:"nameContains"`

@@ -42,7 +42,7 @@ class TwingateResourceArgs:
         :param pulumi.Input[bool] is_visible: Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
         :param pulumi.Input[str] name: The name of the Resource
         :param pulumi.Input['TwingateResourceProtocolsArgs'] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-        :param pulumi.Input[str] security_policy_id: The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block.
+        :param pulumi.Input[str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is `Default Policy`.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "remote_network_id", remote_network_id)
@@ -204,7 +204,7 @@ class TwingateResourceArgs:
     @pulumi.getter(name="securityPolicyId")
     def security_policy_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block.
+        The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is `Default Policy`.
         """
         return pulumi.get(self, "security_policy_id")
 
@@ -242,7 +242,7 @@ class _TwingateResourceState:
         :param pulumi.Input[str] name: The name of the Resource
         :param pulumi.Input['TwingateResourceProtocolsArgs'] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param pulumi.Input[str] remote_network_id: Remote Network ID where the Resource lives
-        :param pulumi.Input[str] security_policy_id: The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block.
+        :param pulumi.Input[str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is `Default Policy`.
         """
         if access_groups is not None:
             pulumi.set(__self__, "access_groups", access_groups)
@@ -406,7 +406,7 @@ class _TwingateResourceState:
     @pulumi.getter(name="securityPolicyId")
     def security_policy_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block.
+        The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is `Default Policy`.
         """
         return pulumi.get(self, "security_policy_id")
 
@@ -456,7 +456,7 @@ class TwingateResource(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the Resource
         :param pulumi.Input[pulumi.InputType['TwingateResourceProtocolsArgs']] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param pulumi.Input[str] remote_network_id: Remote Network ID where the Resource lives
-        :param pulumi.Input[str] security_policy_id: The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block.
+        :param pulumi.Input[str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is `Default Policy`.
         """
         ...
     @overload
@@ -566,7 +566,7 @@ class TwingateResource(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the Resource
         :param pulumi.Input[pulumi.InputType['TwingateResourceProtocolsArgs']] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param pulumi.Input[str] remote_network_id: Remote Network ID where the Resource lives
-        :param pulumi.Input[str] security_policy_id: The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block.
+        :param pulumi.Input[str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is `Default Policy`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -679,7 +679,7 @@ class TwingateResource(pulumi.CustomResource):
     @pulumi.getter(name="securityPolicyId")
     def security_policy_id(self) -> pulumi.Output[str]:
         """
-        The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block.
+        The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is `Default Policy`.
         """
         return pulumi.get(self, "security_policy_id")
 

@@ -104,14 +104,12 @@ class TwingateRemoteNetwork(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_twingate as twingate
 
         aws_network = twingate.TwingateRemoteNetwork("awsNetwork")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -135,14 +133,12 @@ class TwingateRemoteNetwork(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_twingate as twingate
 
         aws_network = twingate.TwingateRemoteNetwork("awsNetwork")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

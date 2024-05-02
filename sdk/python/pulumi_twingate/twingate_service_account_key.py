@@ -168,7 +168,6 @@ class TwingateServiceAccountKey(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_twingate as twingate
@@ -181,7 +180,6 @@ class TwingateServiceAccountKey(pulumi.CustomResource):
         key_rotation_static = time.Static("keyRotationStatic", rfc3339=key_rotation_rotating.rfc3339)
         github_key_with_rotation = twingate.TwingateServiceAccountKey("githubKeyWithRotation", service_account_id=github_actions_prod.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -200,7 +198,6 @@ class TwingateServiceAccountKey(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_twingate as twingate
@@ -213,7 +210,6 @@ class TwingateServiceAccountKey(pulumi.CustomResource):
         key_rotation_static = time.Static("keyRotationStatic", rfc3339=key_rotation_rotating.rfc3339)
         github_key_with_rotation = twingate.TwingateServiceAccountKey("githubKeyWithRotation", service_account_id=github_actions_prod.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param TwingateServiceAccountKeyArgs args: The arguments to use to populate this resource's properties.

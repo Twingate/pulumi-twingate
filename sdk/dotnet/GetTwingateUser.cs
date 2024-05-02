@@ -17,7 +17,6 @@ namespace Twingate.Twingate
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Twingate.Twingate
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTwingateUserResult> InvokeAsync(GetTwingateUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTwingateUserResult>("twingate:index/getTwingateUser:getTwingateUser", args ?? new GetTwingateUserArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Twingate.Twingate
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -59,7 +56,6 @@ namespace Twingate.Twingate
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTwingateUserResult> Invoke(GetTwingateUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTwingateUserResult>("twingate:index/getTwingateUser:getTwingateUser", args ?? new GetTwingateUserInvokeArgs(), options.WithDefaults());

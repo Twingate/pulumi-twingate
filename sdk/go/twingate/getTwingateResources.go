@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,7 +38,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetTwingateResources(ctx *pulumi.Context, args *GetTwingateResourcesArgs, opts ...pulumi.InvokeOption) (*GetTwingateResourcesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTwingateResourcesResult
@@ -52,7 +50,7 @@ func GetTwingateResources(ctx *pulumi.Context, args *GetTwingateResourcesArgs, o
 
 // A collection of arguments for invoking getTwingateResources.
 type GetTwingateResourcesArgs struct {
-	// The name of the Resource
+	// Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
 	Name *string `pulumi:"name"`
 	// Match when the value exist in the name of the resource.
 	NameContains *string `pulumi:"nameContains"`
@@ -101,7 +99,7 @@ func GetTwingateResourcesOutput(ctx *pulumi.Context, args GetTwingateResourcesOu
 
 // A collection of arguments for invoking getTwingateResources.
 type GetTwingateResourcesOutputArgs struct {
-	// The name of the Resource
+	// Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Match when the value exist in the name of the resource.
 	NameContains pulumi.StringPtrInput `pulumi:"nameContains"`

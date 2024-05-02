@@ -17,7 +17,6 @@ namespace Twingate.Twingate
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Twingate.Twingate
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTwingateConnectorResult> InvokeAsync(GetTwingateConnectorArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTwingateConnectorResult>("twingate:index/getTwingateConnector:getTwingateConnector", args ?? new GetTwingateConnectorArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Twingate.Twingate
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -59,7 +56,6 @@ namespace Twingate.Twingate
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTwingateConnectorResult> Invoke(GetTwingateConnectorInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTwingateConnectorResult>("twingate:index/getTwingateConnector:getTwingateConnector", args ?? new GetTwingateConnectorInvokeArgs(), options.WithDefaults());
