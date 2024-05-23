@@ -15,11 +15,10 @@
 package twingate
 
 import (
-	"fmt"
-	"path"
-
 	// Allow embedding bridge-metadata.json in the provider.
 	_ "embed"
+	"fmt"
+	"path"
 
 	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
@@ -57,7 +56,7 @@ var metadata []byte
 func Provider() tfbridge.ProviderInfo {
 	// Create a Pulumi provider mapping
 
-	provider := twingate.New(fmt.Sprintf("%s-pulumi", version.Version))()
+	provider := twingate.New("Pulumi", version.Version)()
 
 	prov := tfbridge.ProviderInfo{
 		// Instantiate the Terraform provider
