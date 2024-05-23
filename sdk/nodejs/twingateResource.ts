@@ -63,10 +63,6 @@ export class TwingateResource extends pulumi.CustomResource {
      * Set the resource as active or inactive. Default is `true`.
      */
     public readonly isActive!: pulumi.Output<boolean>;
-    /**
-     * Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to
-     * `false`, assignments made outside of Terraform will be ignored.
-     */
     public readonly isAuthoritative!: pulumi.Output<boolean>;
     /**
      * Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
@@ -168,10 +164,6 @@ export interface TwingateResourceState {
      * Set the resource as active or inactive. Default is `true`.
      */
     isActive?: pulumi.Input<boolean>;
-    /**
-     * Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to
-     * `false`, assignments made outside of Terraform will be ignored.
-     */
     isAuthoritative?: pulumi.Input<boolean>;
     /**
      * Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
@@ -223,10 +215,6 @@ export interface TwingateResourceArgs {
      * Set the resource as active or inactive. Default is `true`.
      */
     isActive?: pulumi.Input<boolean>;
-    /**
-     * Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to
-     * `false`, assignments made outside of Terraform will be ignored.
-     */
     isAuthoritative?: pulumi.Input<boolean>;
     /**
      * Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.

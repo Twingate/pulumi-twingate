@@ -66,9 +66,8 @@ type TwingateServiceAccountKey struct {
 	pulumi.CustomResourceState
 
 	// Specifies how many days until a Service Account Key expires. This should be an integer between 0 and 365 representing the number of days until the Service Account Key will expire. Defaults to 0, meaning the key will never expire.
-	ExpirationTime pulumi.IntOutput `pulumi:"expirationTime"`
-	// If the value of this attribute changes to false, Terraform will destroy and recreate the resource.
-	IsActive pulumi.BoolOutput `pulumi:"isActive"`
+	ExpirationTime pulumi.IntOutput  `pulumi:"expirationTime"`
+	IsActive       pulumi.BoolOutput `pulumi:"isActive"`
 	// The name of the Service Key
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The id of the Service Account
@@ -115,9 +114,8 @@ func GetTwingateServiceAccountKey(ctx *pulumi.Context,
 // Input properties used for looking up and filtering TwingateServiceAccountKey resources.
 type twingateServiceAccountKeyState struct {
 	// Specifies how many days until a Service Account Key expires. This should be an integer between 0 and 365 representing the number of days until the Service Account Key will expire. Defaults to 0, meaning the key will never expire.
-	ExpirationTime *int `pulumi:"expirationTime"`
-	// If the value of this attribute changes to false, Terraform will destroy and recreate the resource.
-	IsActive *bool `pulumi:"isActive"`
+	ExpirationTime *int  `pulumi:"expirationTime"`
+	IsActive       *bool `pulumi:"isActive"`
 	// The name of the Service Key
 	Name *string `pulumi:"name"`
 	// The id of the Service Account
@@ -129,8 +127,7 @@ type twingateServiceAccountKeyState struct {
 type TwingateServiceAccountKeyState struct {
 	// Specifies how many days until a Service Account Key expires. This should be an integer between 0 and 365 representing the number of days until the Service Account Key will expire. Defaults to 0, meaning the key will never expire.
 	ExpirationTime pulumi.IntPtrInput
-	// If the value of this attribute changes to false, Terraform will destroy and recreate the resource.
-	IsActive pulumi.BoolPtrInput
+	IsActive       pulumi.BoolPtrInput
 	// The name of the Service Key
 	Name pulumi.StringPtrInput
 	// The id of the Service Account
@@ -254,7 +251,6 @@ func (o TwingateServiceAccountKeyOutput) ExpirationTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *TwingateServiceAccountKey) pulumi.IntOutput { return v.ExpirationTime }).(pulumi.IntOutput)
 }
 
-// If the value of this attribute changes to false, Terraform will destroy and recreate the resource.
 func (o TwingateServiceAccountKeyOutput) IsActive() pulumi.BoolOutput {
 	return o.ApplyT(func(v *TwingateServiceAccountKey) pulumi.BoolOutput { return v.IsActive }).(pulumi.BoolOutput)
 }
