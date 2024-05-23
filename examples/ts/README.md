@@ -8,6 +8,7 @@ This example demonstrate how Twingate remote network, service account, service k
 ## How to Use
 * Clone the repository
 * `cd /path/to/repo/examples/ts`
+* `npm install pulumi`
 * Setup Pulumi-Twingate Provider, see configuration section [here](../../README.md)
 * `pulumi up`
 
