@@ -54,9 +54,6 @@ export class TwingateServiceAccountKey extends pulumi.CustomResource {
      * Specifies how many days until a Service Account Key expires. This should be an integer between 0 and 365 representing the number of days until the Service Account Key will expire. Defaults to 0, meaning the key will never expire.
      */
     public readonly expirationTime!: pulumi.Output<number>;
-    /**
-     * If the value of this attribute changes to false, Terraform will destroy and recreate the resource.
-     */
     public /*out*/ readonly isActive!: pulumi.Output<boolean>;
     /**
      * The name of the Service Key
@@ -115,9 +112,6 @@ export interface TwingateServiceAccountKeyState {
      * Specifies how many days until a Service Account Key expires. This should be an integer between 0 and 365 representing the number of days until the Service Account Key will expire. Defaults to 0, meaning the key will never expire.
      */
     expirationTime?: pulumi.Input<number>;
-    /**
-     * If the value of this attribute changes to false, Terraform will destroy and recreate the resource.
-     */
     isActive?: pulumi.Input<boolean>;
     /**
      * The name of the Service Key
