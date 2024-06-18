@@ -36,8 +36,6 @@ class TwingateResourceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]] access_services: Restrict access to certain service account
         :param pulumi.Input[str] alias: Set a DNS alias address for the Resource. Must be a DNS-valid name string.
         :param pulumi.Input[bool] is_active: Set the resource as active or inactive. Default is `true`.
-        :param pulumi.Input[bool] is_authoritative: Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to
-               `false`, assignments made outside of Terraform will be ignored.
         :param pulumi.Input[bool] is_browser_shortcut_enabled: Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
         :param pulumi.Input[bool] is_visible: Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
         :param pulumi.Input[str] name: The name of the Resource
@@ -142,10 +140,6 @@ class TwingateResourceArgs:
     @property
     @pulumi.getter(name="isAuthoritative")
     def is_authoritative(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to
-        `false`, assignments made outside of Terraform will be ignored.
-        """
         return pulumi.get(self, "is_authoritative")
 
     @is_authoritative.setter
@@ -235,8 +229,6 @@ class _TwingateResourceState:
         :param pulumi.Input[str] address: The Resource's IP/CIDR or FQDN/DNS zone
         :param pulumi.Input[str] alias: Set a DNS alias address for the Resource. Must be a DNS-valid name string.
         :param pulumi.Input[bool] is_active: Set the resource as active or inactive. Default is `true`.
-        :param pulumi.Input[bool] is_authoritative: Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to
-               `false`, assignments made outside of Terraform will be ignored.
         :param pulumi.Input[bool] is_browser_shortcut_enabled: Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
         :param pulumi.Input[bool] is_visible: Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
         :param pulumi.Input[str] name: The name of the Resource
@@ -332,10 +324,6 @@ class _TwingateResourceState:
     @property
     @pulumi.getter(name="isAuthoritative")
     def is_authoritative(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to
-        `false`, assignments made outside of Terraform will be ignored.
-        """
         return pulumi.get(self, "is_authoritative")
 
     @is_authoritative.setter
@@ -449,8 +437,6 @@ class TwingateResource(pulumi.CustomResource):
         :param pulumi.Input[str] address: The Resource's IP/CIDR or FQDN/DNS zone
         :param pulumi.Input[str] alias: Set a DNS alias address for the Resource. Must be a DNS-valid name string.
         :param pulumi.Input[bool] is_active: Set the resource as active or inactive. Default is `true`.
-        :param pulumi.Input[bool] is_authoritative: Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to
-               `false`, assignments made outside of Terraform will be ignored.
         :param pulumi.Input[bool] is_browser_shortcut_enabled: Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
         :param pulumi.Input[bool] is_visible: Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
         :param pulumi.Input[str] name: The name of the Resource
@@ -559,8 +545,6 @@ class TwingateResource(pulumi.CustomResource):
         :param pulumi.Input[str] address: The Resource's IP/CIDR or FQDN/DNS zone
         :param pulumi.Input[str] alias: Set a DNS alias address for the Resource. Must be a DNS-valid name string.
         :param pulumi.Input[bool] is_active: Set the resource as active or inactive. Default is `true`.
-        :param pulumi.Input[bool] is_authoritative: Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to
-               `false`, assignments made outside of Terraform will be ignored.
         :param pulumi.Input[bool] is_browser_shortcut_enabled: Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
         :param pulumi.Input[bool] is_visible: Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
         :param pulumi.Input[str] name: The name of the Resource
@@ -629,10 +613,6 @@ class TwingateResource(pulumi.CustomResource):
     @property
     @pulumi.getter(name="isAuthoritative")
     def is_authoritative(self) -> pulumi.Output[bool]:
-        """
-        Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to
-        `false`, assignments made outside of Terraform will be ignored.
-        """
         return pulumi.get(self, "is_authoritative")
 
     @property

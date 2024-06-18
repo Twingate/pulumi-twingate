@@ -37,10 +37,6 @@ namespace Twingate.Twingate
     [TwingateResourceType("twingate:index/twingateGroup:TwingateGroup")]
     public partial class TwingateGroup : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Determines whether User assignments to this Group will override any existing assignments. Default is `true`. If set to
-        /// `false`, assignments made outside of Terraform will be ignored.
-        /// </summary>
         [Output("isAuthoritative")]
         public Output<bool> IsAuthoritative { get; private set; } = null!;
 
@@ -109,10 +105,6 @@ namespace Twingate.Twingate
 
     public sealed class TwingateGroupArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Determines whether User assignments to this Group will override any existing assignments. Default is `true`. If set to
-        /// `false`, assignments made outside of Terraform will be ignored.
-        /// </summary>
         [Input("isAuthoritative")]
         public Input<bool>? IsAuthoritative { get; set; }
 
@@ -148,10 +140,6 @@ namespace Twingate.Twingate
 
     public sealed class TwingateGroupState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Determines whether User assignments to this Group will override any existing assignments. Default is `true`. If set to
-        /// `false`, assignments made outside of Terraform will be ignored.
-        /// </summary>
         [Input("isAuthoritative")]
         public Input<bool>? IsAuthoritative { get; set; }
 
