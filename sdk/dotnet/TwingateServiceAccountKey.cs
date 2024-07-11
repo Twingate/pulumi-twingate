@@ -59,9 +59,6 @@ namespace Twingate.Twingate
         [Output("expirationTime")]
         public Output<int> ExpirationTime { get; private set; } = null!;
 
-        /// <summary>
-        /// If the value of this attribute changes to false, Terraform will destroy and recreate the resource.
-        /// </summary>
         [Output("isActive")]
         public Output<bool> IsActive { get; private set; } = null!;
 
@@ -166,9 +163,6 @@ namespace Twingate.Twingate
         [Input("expirationTime")]
         public Input<int>? ExpirationTime { get; set; }
 
-        /// <summary>
-        /// If the value of this attribute changes to false, Terraform will destroy and recreate the resource.
-        /// </summary>
         [Input("isActive")]
         public Input<bool>? IsActive { get; set; }
 

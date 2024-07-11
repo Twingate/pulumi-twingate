@@ -20,8 +20,6 @@ class TwingateGroupArgs:
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a TwingateGroup resource.
-        :param pulumi.Input[bool] is_authoritative: Determines whether User assignments to this Group will override any existing assignments. Default is `true`. If set to
-               `false`, assignments made outside of Terraform will be ignored.
         :param pulumi.Input[str] name: The name of the group
         :param pulumi.Input[str] security_policy_id: Defines which Security Policy applies to this Group. The Security Policy ID can be obtained from the `get_twingate_security_policy` and `get_twingate_security_policies` data sources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_ids: List of User IDs that have permission to access the Group.
@@ -38,10 +36,6 @@ class TwingateGroupArgs:
     @property
     @pulumi.getter(name="isAuthoritative")
     def is_authoritative(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Determines whether User assignments to this Group will override any existing assignments. Default is `true`. If set to
-        `false`, assignments made outside of Terraform will be ignored.
-        """
         return pulumi.get(self, "is_authoritative")
 
     @is_authoritative.setter
@@ -94,8 +88,6 @@ class _TwingateGroupState:
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering TwingateGroup resources.
-        :param pulumi.Input[bool] is_authoritative: Determines whether User assignments to this Group will override any existing assignments. Default is `true`. If set to
-               `false`, assignments made outside of Terraform will be ignored.
         :param pulumi.Input[str] name: The name of the group
         :param pulumi.Input[str] security_policy_id: Defines which Security Policy applies to this Group. The Security Policy ID can be obtained from the `get_twingate_security_policy` and `get_twingate_security_policies` data sources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_ids: List of User IDs that have permission to access the Group.
@@ -112,10 +104,6 @@ class _TwingateGroupState:
     @property
     @pulumi.getter(name="isAuthoritative")
     def is_authoritative(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Determines whether User assignments to this Group will override any existing assignments. Default is `true`. If set to
-        `false`, assignments made outside of Terraform will be ignored.
-        """
         return pulumi.get(self, "is_authoritative")
 
     @is_authoritative.setter
@@ -189,8 +177,6 @@ class TwingateGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] is_authoritative: Determines whether User assignments to this Group will override any existing assignments. Default is `true`. If set to
-               `false`, assignments made outside of Terraform will be ignored.
         :param pulumi.Input[str] name: The name of the group
         :param pulumi.Input[str] security_policy_id: Defines which Security Policy applies to this Group. The Security Policy ID can be obtained from the `get_twingate_security_policy` and `get_twingate_security_policies` data sources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_ids: List of User IDs that have permission to access the Group.
@@ -272,8 +258,6 @@ class TwingateGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] is_authoritative: Determines whether User assignments to this Group will override any existing assignments. Default is `true`. If set to
-               `false`, assignments made outside of Terraform will be ignored.
         :param pulumi.Input[str] name: The name of the group
         :param pulumi.Input[str] security_policy_id: Defines which Security Policy applies to this Group. The Security Policy ID can be obtained from the `get_twingate_security_policy` and `get_twingate_security_policies` data sources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_ids: List of User IDs that have permission to access the Group.
@@ -291,10 +275,6 @@ class TwingateGroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="isAuthoritative")
     def is_authoritative(self) -> pulumi.Output[bool]:
-        """
-        Determines whether User assignments to this Group will override any existing assignments. Default is `true`. If set to
-        `false`, assignments made outside of Terraform will be ignored.
-        """
         return pulumi.get(self, "is_authoritative")
 
     @property

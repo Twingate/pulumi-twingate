@@ -52,10 +52,6 @@ namespace Twingate.Twingate
         [Output("isActive")]
         public Output<bool> IsActive { get; private set; } = null!;
 
-        /// <summary>
-        /// Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to
-        /// `false`, assignments made outside of Terraform will be ignored.
-        /// </summary>
         [Output("isAuthoritative")]
         public Output<bool> IsAuthoritative { get; private set; } = null!;
 
@@ -184,10 +180,6 @@ namespace Twingate.Twingate
         [Input("isActive")]
         public Input<bool>? IsActive { get; set; }
 
-        /// <summary>
-        /// Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to
-        /// `false`, assignments made outside of Terraform will be ignored.
-        /// </summary>
         [Input("isAuthoritative")]
         public Input<bool>? IsAuthoritative { get; set; }
 
@@ -277,10 +269,6 @@ namespace Twingate.Twingate
         [Input("isActive")]
         public Input<bool>? IsActive { get; set; }
 
-        /// <summary>
-        /// Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to
-        /// `false`, assignments made outside of Terraform will be ignored.
-        /// </summary>
         [Input("isAuthoritative")]
         public Input<bool>? IsAuthoritative { get; set; }
 
