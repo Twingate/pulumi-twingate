@@ -230,8 +230,8 @@ github.com/Microsoft/go-winio v0.6.1/go.mod h1:LRdKpFKfdobln8UmuiYcKPot9D2v6svN5
 github.com/OneOfOne/xxhash v1.2.2/go.mod h1:HSdplMjZKSmBqAxg5vPj2TmRDmfkzw+cTzAElWljhcU=
 github.com/ProtonMail/go-crypto v1.1.0-alpha.2 h1:bkyFVUP+ROOARdgCiJzNQo2V2kiB97LyUpzH9P6Hrlg=
 github.com/ProtonMail/go-crypto v1.1.0-alpha.2/go.mod h1:rA3QumHc/FZ8pAHreoekgiAbzpNsfQAosU5td4SnOrE=
-github.com/Twingate/terraform-provider-twingate/v3 v3.0.7 h1:Pw3qzQrXZ6Tn79J6W5xfP/JgMmGZlMPp+qZkIZbPrq0=
-github.com/Twingate/terraform-provider-twingate/v3 v3.0.7/go.mod h1:rCIhJOrr3ySQgJ5yXyDliyjdxODtog/4C/qnKxbbVFE=
+github.com/Twingate/terraform-provider-twingate/v3 v3.0.8 h1:ekzy3FbjbLu7CXEZVWsu6NGnhEFwr50POsSDzFapS2c=
+github.com/Twingate/terraform-provider-twingate/v3 v3.0.8/go.mod h1:rCIhJOrr3ySQgJ5yXyDliyjdxODtog/4C/qnKxbbVFE=
 github.com/aead/chacha20 v0.0.0-20180709150244-8b13a72661da h1:KjTM2ks9d14ZYCvmHS9iAKVt9AyzRSqNU1qabPih5BY=
 github.com/aead/chacha20 v0.0.0-20180709150244-8b13a72661da/go.mod h1:eHEWzANqSiWQsof+nXEI9bUVUyV6F53Fp89EuCh2EAA=
 github.com/agext/levenshtein v1.2.3 h1:YB2fHEn0UJagG8T1rrWknE3ZQzWM06O8AMAatNn7lmo=
