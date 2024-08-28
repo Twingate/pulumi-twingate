@@ -24,6 +24,113 @@ export interface GetTwingateConnectorsConnector {
     statusUpdatesEnabled: boolean;
 }
 
+export interface GetTwingateDNSFilteringProfileAllowedDomains {
+    /**
+     * A set of allowed domains.
+     */
+    domains: string[];
+}
+
+export interface GetTwingateDNSFilteringProfileContentCategories {
+    /**
+     * Whether to block adult content.
+     */
+    blockAdultContent: boolean;
+    /**
+     * Whether to block dating content.
+     */
+    blockDating: boolean;
+    /**
+     * Whether to block gambling content.
+     */
+    blockGambling: boolean;
+    /**
+     * Whether to block games.
+     */
+    blockGames: boolean;
+    /**
+     * Whether to block piracy sites.
+     */
+    blockPiracy: boolean;
+    /**
+     * Whether to block social media.
+     */
+    blockSocialMedia: boolean;
+    /**
+     * Whether to block streaming content.
+     */
+    blockStreaming: boolean;
+    /**
+     * Whether to force safe search.
+     */
+    enableSafesearch: boolean;
+    /**
+     * Whether to force YouTube to use restricted mode.
+     */
+    enableYoutubeRestrictedMode: boolean;
+}
+
+export interface GetTwingateDNSFilteringProfileDeniedDomains {
+    /**
+     * A set of denied domains.
+     */
+    domains: string[];
+}
+
+export interface GetTwingateDNSFilteringProfilePrivacyCategories {
+    /**
+     * Whether to block ads and trackers.
+     */
+    blockAdsAndTrackers: boolean;
+    /**
+     * Whether to block affiliate links.
+     */
+    blockAffiliateLinks: boolean;
+    /**
+     * Whether to block disguised third party trackers.
+     */
+    blockDisguisedTrackers: boolean;
+}
+
+export interface GetTwingateDNSFilteringProfileSecurityCategories {
+    /**
+     * Whether to block cryptojacking sites.
+     */
+    blockCryptojacking: boolean;
+    /**
+     * Blocks public DNS entries from returning private IP addresses.
+     */
+    blockDnsRebinding: boolean;
+    /**
+     * Blocks DGA domains.
+     */
+    blockDomainGenerationAlgorithms: boolean;
+    /**
+     * Whether to block homoglyph attacks.
+     */
+    blockIdnHomoglyph: boolean;
+    /**
+     * Blocks newly registered domains.
+     */
+    blockNewlyRegisteredDomains: boolean;
+    /**
+     * Block parked domains.
+     */
+    blockParkedDomains: boolean;
+    /**
+     * Blocks typosquatted domains.
+     */
+    blockTyposquatting: boolean;
+    /**
+     * Whether to use Google Safe browsing lists to block content.
+     */
+    enableGoogleSafeBrowsing: boolean;
+    /**
+     * Whether to filter content using threat intelligence feeds.
+     */
+    enableThreatIntelligenceFeeds: boolean;
+}
+
 export interface GetTwingateGroupsGroup {
     /**
      * The ID of the Group
@@ -202,6 +309,115 @@ export interface GetTwingateUsersUser {
      * Indicates the User's type. Either MANUAL or SYNCED.
      */
     type: string;
+}
+
+export interface TwingateDNSFilteringProfileAllowedDomains {
+    /**
+     * A set of allowed domains. Defaults to an empty set.
+     */
+    domains: string[];
+    isAuthoritative: boolean;
+}
+
+export interface TwingateDNSFilteringProfileContentCategories {
+    /**
+     * Whether to block adult content. Defaults to false.
+     */
+    blockAdultContent: boolean;
+    /**
+     * Whether to block dating content. Defaults to false.
+     */
+    blockDating: boolean;
+    /**
+     * Whether to block gambling content. Defaults to false.
+     */
+    blockGambling: boolean;
+    /**
+     * Whether to block games. Defaults to false.
+     */
+    blockGames: boolean;
+    /**
+     * Whether to block piracy sites. Defaults to false.
+     */
+    blockPiracy: boolean;
+    /**
+     * Whether to block social media. Defaults to false.
+     */
+    blockSocialMedia: boolean;
+    /**
+     * Whether to block streaming content. Defaults to false.
+     */
+    blockStreaming: boolean;
+    /**
+     * Whether to force safe search. Defaults to false.
+     */
+    enableSafesearch: boolean;
+    /**
+     * Whether to force YouTube to use restricted mode. Defaults to false.
+     */
+    enableYoutubeRestrictedMode: boolean;
+}
+
+export interface TwingateDNSFilteringProfileDeniedDomains {
+    /**
+     * A set of denied domains. Defaults to an empty set.
+     */
+    domains: string[];
+    isAuthoritative: boolean;
+}
+
+export interface TwingateDNSFilteringProfilePrivacyCategories {
+    /**
+     * Whether to block ads and trackers. Defaults to false.
+     */
+    blockAdsAndTrackers: boolean;
+    /**
+     * Whether to block affiliate links. Defaults to false.
+     */
+    blockAffiliateLinks: boolean;
+    /**
+     * Whether to block disguised third party trackers. Defaults to false.
+     */
+    blockDisguisedTrackers: boolean;
+}
+
+export interface TwingateDNSFilteringProfileSecurityCategories {
+    /**
+     * Whether to block cryptojacking sites. Defaults to true.
+     */
+    blockCryptojacking: boolean;
+    /**
+     * Blocks public DNS entries from returning private IP addresses. Defaults to true.
+     */
+    blockDnsRebinding: boolean;
+    /**
+     * Blocks DGA domains. Defaults to true.
+     */
+    blockDomainGenerationAlgorithms: boolean;
+    /**
+     * Whether to block homoglyph attacks. Defaults to true.
+     */
+    blockIdnHomoglyph: boolean;
+    /**
+     * Blocks newly registered domains. Defaults to true.
+     */
+    blockNewlyRegisteredDomains: boolean;
+    /**
+     * Block parked domains. Defaults to true.
+     */
+    blockParkedDomains: boolean;
+    /**
+     * Blocks typosquatted domains. Defaults to true.
+     */
+    blockTyposquatting: boolean;
+    /**
+     * Whether to use Google Safe browsing lists to block content. Defaults to true.
+     */
+    enableGoogleSafeBrowsing: boolean;
+    /**
+     * Whether to filter content using threat intelligence feeds. Defaults to true.
+     */
+    enableThreatIntelligenceFeeds: boolean;
 }
 
 export interface TwingateResourceAccessGroup {

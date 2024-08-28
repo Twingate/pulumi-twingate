@@ -15,6 +15,11 @@ export const getTwingateConnectors: typeof import("./getTwingateConnectors").get
 export const getTwingateConnectorsOutput: typeof import("./getTwingateConnectors").getTwingateConnectorsOutput = null as any;
 utilities.lazyLoad(exports, ["getTwingateConnectors","getTwingateConnectorsOutput"], () => require("./getTwingateConnectors"));
 
+export { GetTwingateDNSFilteringProfileArgs, GetTwingateDNSFilteringProfileResult, GetTwingateDNSFilteringProfileOutputArgs } from "./getTwingateDNSFilteringProfile";
+export const getTwingateDNSFilteringProfile: typeof import("./getTwingateDNSFilteringProfile").getTwingateDNSFilteringProfile = null as any;
+export const getTwingateDNSFilteringProfileOutput: typeof import("./getTwingateDNSFilteringProfile").getTwingateDNSFilteringProfileOutput = null as any;
+utilities.lazyLoad(exports, ["getTwingateDNSFilteringProfile","getTwingateDNSFilteringProfileOutput"], () => require("./getTwingateDNSFilteringProfile"));
+
 export { GetTwingateGroupArgs, GetTwingateGroupResult, GetTwingateGroupOutputArgs } from "./getTwingateGroup";
 export const getTwingateGroup: typeof import("./getTwingateGroup").getTwingateGroup = null as any;
 export const getTwingateGroupOutput: typeof import("./getTwingateGroup").getTwingateGroupOutput = null as any;
@@ -85,6 +90,11 @@ export type TwingateConnectorTokens = import("./twingateConnectorTokens").Twinga
 export const TwingateConnectorTokens: typeof import("./twingateConnectorTokens").TwingateConnectorTokens = null as any;
 utilities.lazyLoad(exports, ["TwingateConnectorTokens"], () => require("./twingateConnectorTokens"));
 
+export { TwingateDNSFilteringProfileArgs, TwingateDNSFilteringProfileState } from "./twingateDNSFilteringProfile";
+export type TwingateDNSFilteringProfile = import("./twingateDNSFilteringProfile").TwingateDNSFilteringProfile;
+export const TwingateDNSFilteringProfile: typeof import("./twingateDNSFilteringProfile").TwingateDNSFilteringProfile = null as any;
+utilities.lazyLoad(exports, ["TwingateDNSFilteringProfile"], () => require("./twingateDNSFilteringProfile"));
+
 export { TwingateGroupArgs, TwingateGroupState } from "./twingateGroup";
 export type TwingateGroup = import("./twingateGroup").TwingateGroup;
 export const TwingateGroup: typeof import("./twingateGroup").TwingateGroup = null as any;
@@ -133,6 +143,8 @@ const _module = {
                 return new TwingateConnector(name, <any>undefined, { urn })
             case "twingate:index/twingateConnectorTokens:TwingateConnectorTokens":
                 return new TwingateConnectorTokens(name, <any>undefined, { urn })
+            case "twingate:index/twingateDNSFilteringProfile:TwingateDNSFilteringProfile":
+                return new TwingateDNSFilteringProfile(name, <any>undefined, { urn })
             case "twingate:index/twingateGroup:TwingateGroup":
                 return new TwingateGroup(name, <any>undefined, { urn })
             case "twingate:index/twingateRemoteNetwork:TwingateRemoteNetwork":
@@ -152,6 +164,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("twingate", "index/twingateConnector", _module)
 pulumi.runtime.registerResourceModule("twingate", "index/twingateConnectorTokens", _module)
+pulumi.runtime.registerResourceModule("twingate", "index/twingateDNSFilteringProfile", _module)
 pulumi.runtime.registerResourceModule("twingate", "index/twingateGroup", _module)
 pulumi.runtime.registerResourceModule("twingate", "index/twingateRemoteNetwork", _module)
 pulumi.runtime.registerResourceModule("twingate", "index/twingateResource", _module)

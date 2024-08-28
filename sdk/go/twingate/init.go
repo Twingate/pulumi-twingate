@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TwingateConnector{}
 	case "twingate:index/twingateConnectorTokens:TwingateConnectorTokens":
 		r = &TwingateConnectorTokens{}
+	case "twingate:index/twingateDNSFilteringProfile:TwingateDNSFilteringProfile":
+		r = &TwingateDNSFilteringProfile{}
 	case "twingate:index/twingateGroup:TwingateGroup":
 		r = &TwingateGroup{}
 	case "twingate:index/twingateRemoteNetwork:TwingateRemoteNetwork":
@@ -76,6 +78,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"twingate",
 		"index/twingateConnectorTokens",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"twingate",
+		"index/twingateDNSFilteringProfile",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
