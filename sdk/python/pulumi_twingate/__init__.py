@@ -7,6 +7,7 @@ import typing
 # Export this package's modules as members:
 from .get_twingate_connector import *
 from .get_twingate_connectors import *
+from .get_twingate_dns_filtering_profile import *
 from .get_twingate_group import *
 from .get_twingate_groups import *
 from .get_twingate_remote_network import *
@@ -21,6 +22,7 @@ from .get_twingate_users import *
 from .provider import *
 from .twingate_connector import *
 from .twingate_connector_tokens import *
+from .twingate_dns_filtering_profile import *
 from .twingate_group import *
 from .twingate_remote_network import *
 from .twingate_resource import *
@@ -54,6 +56,14 @@ _utilities.register(
   "fqn": "pulumi_twingate",
   "classes": {
    "twingate:index/twingateConnectorTokens:TwingateConnectorTokens": "TwingateConnectorTokens"
+  }
+ },
+ {
+  "pkg": "twingate",
+  "mod": "index/twingateDNSFilteringProfile",
+  "fqn": "pulumi_twingate",
+  "classes": {
+   "twingate:index/twingateDNSFilteringProfile:TwingateDNSFilteringProfile": "TwingateDNSFilteringProfile"
   }
  },
  {

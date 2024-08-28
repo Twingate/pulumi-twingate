@@ -80,6 +80,190 @@
         }
     },
     "types": {
+        "twingate:index/TwingateDNSFilteringProfileAllowedDomains:TwingateDNSFilteringProfileAllowedDomains": {
+            "properties": {
+                "domains": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A set of allowed domains. Defaults to an empty set.\n"
+                },
+                "isAuthoritative": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "domains",
+                        "isAuthoritative"
+                    ]
+                }
+            }
+        },
+        "twingate:index/TwingateDNSFilteringProfileContentCategories:TwingateDNSFilteringProfileContentCategories": {
+            "properties": {
+                "blockAdultContent": {
+                    "type": "boolean",
+                    "description": "Whether to block adult content. Defaults to false.\n"
+                },
+                "blockDating": {
+                    "type": "boolean",
+                    "description": "Whether to block dating content. Defaults to false.\n"
+                },
+                "blockGambling": {
+                    "type": "boolean",
+                    "description": "Whether to block gambling content. Defaults to false.\n"
+                },
+                "blockGames": {
+                    "type": "boolean",
+                    "description": "Whether to block games. Defaults to false.\n"
+                },
+                "blockPiracy": {
+                    "type": "boolean",
+                    "description": "Whether to block piracy sites. Defaults to false.\n"
+                },
+                "blockSocialMedia": {
+                    "type": "boolean",
+                    "description": "Whether to block social media. Defaults to false.\n"
+                },
+                "blockStreaming": {
+                    "type": "boolean",
+                    "description": "Whether to block streaming content. Defaults to false.\n"
+                },
+                "enableSafesearch": {
+                    "type": "boolean",
+                    "description": "Whether to force safe search. Defaults to false.\n"
+                },
+                "enableYoutubeRestrictedMode": {
+                    "type": "boolean",
+                    "description": "Whether to force YouTube to use restricted mode. Defaults to false.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "blockAdultContent",
+                        "blockDating",
+                        "blockGambling",
+                        "blockGames",
+                        "blockPiracy",
+                        "blockSocialMedia",
+                        "blockStreaming",
+                        "enableSafesearch",
+                        "enableYoutubeRestrictedMode"
+                    ]
+                }
+            }
+        },
+        "twingate:index/TwingateDNSFilteringProfileDeniedDomains:TwingateDNSFilteringProfileDeniedDomains": {
+            "properties": {
+                "domains": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A set of denied domains. Defaults to an empty set.\n"
+                },
+                "isAuthoritative": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "domains",
+                        "isAuthoritative"
+                    ]
+                }
+            }
+        },
+        "twingate:index/TwingateDNSFilteringProfilePrivacyCategories:TwingateDNSFilteringProfilePrivacyCategories": {
+            "properties": {
+                "blockAdsAndTrackers": {
+                    "type": "boolean",
+                    "description": "Whether to block ads and trackers. Defaults to false.\n"
+                },
+                "blockAffiliateLinks": {
+                    "type": "boolean",
+                    "description": "Whether to block affiliate links. Defaults to false.\n"
+                },
+                "blockDisguisedTrackers": {
+                    "type": "boolean",
+                    "description": "Whether to block disguised third party trackers. Defaults to false.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "blockAdsAndTrackers",
+                        "blockAffiliateLinks",
+                        "blockDisguisedTrackers"
+                    ]
+                }
+            }
+        },
+        "twingate:index/TwingateDNSFilteringProfileSecurityCategories:TwingateDNSFilteringProfileSecurityCategories": {
+            "properties": {
+                "blockCryptojacking": {
+                    "type": "boolean",
+                    "description": "Whether to block cryptojacking sites. Defaults to true.\n"
+                },
+                "blockDnsRebinding": {
+                    "type": "boolean",
+                    "description": "Blocks public DNS entries from returning private IP addresses. Defaults to true.\n"
+                },
+                "blockDomainGenerationAlgorithms": {
+                    "type": "boolean",
+                    "description": "Blocks DGA domains. Defaults to true.\n"
+                },
+                "blockIdnHomoglyph": {
+                    "type": "boolean",
+                    "description": "Whether to block homoglyph attacks. Defaults to true.\n"
+                },
+                "blockNewlyRegisteredDomains": {
+                    "type": "boolean",
+                    "description": "Blocks newly registered domains. Defaults to true.\n"
+                },
+                "blockParkedDomains": {
+                    "type": "boolean",
+                    "description": "Block parked domains. Defaults to true.\n"
+                },
+                "blockTyposquatting": {
+                    "type": "boolean",
+                    "description": "Blocks typosquatted domains. Defaults to true.\n"
+                },
+                "enableGoogleSafeBrowsing": {
+                    "type": "boolean",
+                    "description": "Whether to use Google Safe browsing lists to block content. Defaults to true.\n"
+                },
+                "enableThreatIntelligenceFeeds": {
+                    "type": "boolean",
+                    "description": "Whether to filter content using threat intelligence feeds. Defaults to true.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "blockCryptojacking",
+                        "blockDnsRebinding",
+                        "blockDomainGenerationAlgorithms",
+                        "blockIdnHomoglyph",
+                        "blockNewlyRegisteredDomains",
+                        "blockParkedDomains",
+                        "blockTyposquatting",
+                        "enableGoogleSafeBrowsing",
+                        "enableThreatIntelligenceFeeds"
+                    ]
+                }
+            }
+        },
         "twingate:index/TwingateResourceAccessGroup:TwingateResourceAccessGroup": {
             "properties": {
                 "groupId": {
@@ -219,6 +403,187 @@
                 "name",
                 "remoteNetworkId",
                 "statusUpdatesEnabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "twingate:index/getTwingateDNSFilteringProfileAllowedDomains:getTwingateDNSFilteringProfileAllowedDomains": {
+            "properties": {
+                "domains": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A set of allowed domains.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "domains"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "twingate:index/getTwingateDNSFilteringProfileContentCategories:getTwingateDNSFilteringProfileContentCategories": {
+            "properties": {
+                "blockAdultContent": {
+                    "type": "boolean",
+                    "description": "Whether to block adult content.\n"
+                },
+                "blockDating": {
+                    "type": "boolean",
+                    "description": "Whether to block dating content.\n"
+                },
+                "blockGambling": {
+                    "type": "boolean",
+                    "description": "Whether to block gambling content.\n"
+                },
+                "blockGames": {
+                    "type": "boolean",
+                    "description": "Whether to block games.\n"
+                },
+                "blockPiracy": {
+                    "type": "boolean",
+                    "description": "Whether to block piracy sites.\n"
+                },
+                "blockSocialMedia": {
+                    "type": "boolean",
+                    "description": "Whether to block social media.\n"
+                },
+                "blockStreaming": {
+                    "type": "boolean",
+                    "description": "Whether to block streaming content.\n"
+                },
+                "enableSafesearch": {
+                    "type": "boolean",
+                    "description": "Whether to force safe search.\n"
+                },
+                "enableYoutubeRestrictedMode": {
+                    "type": "boolean",
+                    "description": "Whether to force YouTube to use restricted mode.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "blockAdultContent",
+                "blockDating",
+                "blockGambling",
+                "blockGames",
+                "blockPiracy",
+                "blockSocialMedia",
+                "blockStreaming",
+                "enableSafesearch",
+                "enableYoutubeRestrictedMode"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "twingate:index/getTwingateDNSFilteringProfileDeniedDomains:getTwingateDNSFilteringProfileDeniedDomains": {
+            "properties": {
+                "domains": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A set of denied domains.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "domains"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "twingate:index/getTwingateDNSFilteringProfilePrivacyCategories:getTwingateDNSFilteringProfilePrivacyCategories": {
+            "properties": {
+                "blockAdsAndTrackers": {
+                    "type": "boolean",
+                    "description": "Whether to block ads and trackers.\n"
+                },
+                "blockAffiliateLinks": {
+                    "type": "boolean",
+                    "description": "Whether to block affiliate links.\n"
+                },
+                "blockDisguisedTrackers": {
+                    "type": "boolean",
+                    "description": "Whether to block disguised third party trackers.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "blockAdsAndTrackers",
+                "blockAffiliateLinks",
+                "blockDisguisedTrackers"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "twingate:index/getTwingateDNSFilteringProfileSecurityCategories:getTwingateDNSFilteringProfileSecurityCategories": {
+            "properties": {
+                "blockCryptojacking": {
+                    "type": "boolean",
+                    "description": "Whether to block cryptojacking sites.\n"
+                },
+                "blockDnsRebinding": {
+                    "type": "boolean",
+                    "description": "Blocks public DNS entries from returning private IP addresses.\n"
+                },
+                "blockDomainGenerationAlgorithms": {
+                    "type": "boolean",
+                    "description": "Blocks DGA domains.\n"
+                },
+                "blockIdnHomoglyph": {
+                    "type": "boolean",
+                    "description": "Whether to block homoglyph attacks.\n"
+                },
+                "blockNewlyRegisteredDomains": {
+                    "type": "boolean",
+                    "description": "Blocks newly registered domains.\n"
+                },
+                "blockParkedDomains": {
+                    "type": "boolean",
+                    "description": "Block parked domains.\n"
+                },
+                "blockTyposquatting": {
+                    "type": "boolean",
+                    "description": "Blocks typosquatted domains.\n"
+                },
+                "enableGoogleSafeBrowsing": {
+                    "type": "boolean",
+                    "description": "Whether to use Google Safe browsing lists to block content.\n"
+                },
+                "enableThreatIntelligenceFeeds": {
+                    "type": "boolean",
+                    "description": "Whether to filter content using threat intelligence feeds.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "blockCryptojacking",
+                "blockDnsRebinding",
+                "blockDomainGenerationAlgorithms",
+                "blockIdnHomoglyph",
+                "blockNewlyRegisteredDomains",
+                "blockParkedDomains",
+                "blockTyposquatting",
+                "enableGoogleSafeBrowsing",
+                "enableThreatIntelligenceFeeds"
             ],
             "language": {
                 "nodejs": {
@@ -753,6 +1118,145 @@
                         "type": "string",
                         "description": "The Refresh Token of the parent Connector\n",
                         "secret": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "twingate:index/twingateDNSFilteringProfile:TwingateDNSFilteringProfile": {
+            "description": "DNS filtering gives you the ability to control what websites your users can access. DNS filtering is only available on certain plans. For more information, see Twingate's [documentation](https://www.twingate.com/docs/dns-filtering). DNS filtering must be enabled for this resources to work. If DNS filtering isn't enabled, the provider will throw an error.\n\n",
+            "properties": {
+                "allowedDomains": {
+                    "$ref": "#/types/twingate:index/TwingateDNSFilteringProfileAllowedDomains:TwingateDNSFilteringProfileAllowedDomains",
+                    "description": "A block with the following attributes.\n"
+                },
+                "contentCategories": {
+                    "$ref": "#/types/twingate:index/TwingateDNSFilteringProfileContentCategories:TwingateDNSFilteringProfileContentCategories",
+                    "description": "A block with the following attributes.\n"
+                },
+                "deniedDomains": {
+                    "$ref": "#/types/twingate:index/TwingateDNSFilteringProfileDeniedDomains:TwingateDNSFilteringProfileDeniedDomains",
+                    "description": "A block with the following attributes.\n"
+                },
+                "fallbackMethod": {
+                    "type": "string",
+                    "description": "The DNS filtering profile's fallback method. One of \"AUTO\" or \"STRICT\". Defaults to \"STRICT\".\n"
+                },
+                "groups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A set of group IDs that have this as their DNS filtering profile. Defaults to an empty set.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The DNS filtering profile's name.\n"
+                },
+                "priority": {
+                    "type": "number",
+                    "description": "A floating point number representing the profile's priority.\n"
+                },
+                "privacyCategories": {
+                    "$ref": "#/types/twingate:index/TwingateDNSFilteringProfilePrivacyCategories:TwingateDNSFilteringProfilePrivacyCategories",
+                    "description": "A block with the following attributes.\n"
+                },
+                "securityCategories": {
+                    "$ref": "#/types/twingate:index/TwingateDNSFilteringProfileSecurityCategories:TwingateDNSFilteringProfileSecurityCategories",
+                    "description": "A block with the following attributes.\n"
+                }
+            },
+            "required": [
+                "fallbackMethod",
+                "groups",
+                "name",
+                "priority"
+            ],
+            "inputProperties": {
+                "allowedDomains": {
+                    "$ref": "#/types/twingate:index/TwingateDNSFilteringProfileAllowedDomains:TwingateDNSFilteringProfileAllowedDomains",
+                    "description": "A block with the following attributes.\n"
+                },
+                "contentCategories": {
+                    "$ref": "#/types/twingate:index/TwingateDNSFilteringProfileContentCategories:TwingateDNSFilteringProfileContentCategories",
+                    "description": "A block with the following attributes.\n"
+                },
+                "deniedDomains": {
+                    "$ref": "#/types/twingate:index/TwingateDNSFilteringProfileDeniedDomains:TwingateDNSFilteringProfileDeniedDomains",
+                    "description": "A block with the following attributes.\n"
+                },
+                "fallbackMethod": {
+                    "type": "string",
+                    "description": "The DNS filtering profile's fallback method. One of \"AUTO\" or \"STRICT\". Defaults to \"STRICT\".\n"
+                },
+                "groups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A set of group IDs that have this as their DNS filtering profile. Defaults to an empty set.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The DNS filtering profile's name.\n"
+                },
+                "priority": {
+                    "type": "number",
+                    "description": "A floating point number representing the profile's priority.\n"
+                },
+                "privacyCategories": {
+                    "$ref": "#/types/twingate:index/TwingateDNSFilteringProfilePrivacyCategories:TwingateDNSFilteringProfilePrivacyCategories",
+                    "description": "A block with the following attributes.\n"
+                },
+                "securityCategories": {
+                    "$ref": "#/types/twingate:index/TwingateDNSFilteringProfileSecurityCategories:TwingateDNSFilteringProfileSecurityCategories",
+                    "description": "A block with the following attributes.\n"
+                }
+            },
+            "requiredInputs": [
+                "priority"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering TwingateDNSFilteringProfile resources.\n",
+                "properties": {
+                    "allowedDomains": {
+                        "$ref": "#/types/twingate:index/TwingateDNSFilteringProfileAllowedDomains:TwingateDNSFilteringProfileAllowedDomains",
+                        "description": "A block with the following attributes.\n"
+                    },
+                    "contentCategories": {
+                        "$ref": "#/types/twingate:index/TwingateDNSFilteringProfileContentCategories:TwingateDNSFilteringProfileContentCategories",
+                        "description": "A block with the following attributes.\n"
+                    },
+                    "deniedDomains": {
+                        "$ref": "#/types/twingate:index/TwingateDNSFilteringProfileDeniedDomains:TwingateDNSFilteringProfileDeniedDomains",
+                        "description": "A block with the following attributes.\n"
+                    },
+                    "fallbackMethod": {
+                        "type": "string",
+                        "description": "The DNS filtering profile's fallback method. One of \"AUTO\" or \"STRICT\". Defaults to \"STRICT\".\n"
+                    },
+                    "groups": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A set of group IDs that have this as their DNS filtering profile. Defaults to an empty set.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The DNS filtering profile's name.\n"
+                    },
+                    "priority": {
+                        "type": "number",
+                        "description": "A floating point number representing the profile's priority.\n"
+                    },
+                    "privacyCategories": {
+                        "$ref": "#/types/twingate:index/TwingateDNSFilteringProfilePrivacyCategories:TwingateDNSFilteringProfilePrivacyCategories",
+                        "description": "A block with the following attributes.\n"
+                    },
+                    "securityCategories": {
+                        "$ref": "#/types/twingate:index/TwingateDNSFilteringProfileSecurityCategories:TwingateDNSFilteringProfileSecurityCategories",
+                        "description": "A block with the following attributes.\n"
                     }
                 },
                 "type": "object"
@@ -1387,6 +1891,98 @@
                 "required": [
                     "connectors",
                     "id"
+                ]
+            }
+        },
+        "twingate:index/getTwingateDNSFilteringProfile:getTwingateDNSFilteringProfile": {
+            "description": "DNS filtering gives you the ability to control what websites your users can access. DNS filtering is only available on certain plans. For more information, see Twingate's [documentation](https://www.twingate.com/docs/dns-filtering). DNS filtering must be enabled for this data source to work. If DNS filtering isn't enabled, the provider will throw an error.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst example = twingate.getTwingateDNSFilteringProfile({\n    id: \"\u003cyour dns profile's id\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nexample = twingate.get_twingate_dns_filtering_profile(id=\"\u003cyour dns profile's id\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Twingate.GetTwingateDNSFilteringProfile.Invoke(new()\n    {\n        Id = \"\u003cyour dns profile's id\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/v3/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.LookupTwingateDNSFilteringProfile(ctx, \u0026twingate.LookupTwingateDNSFilteringProfileArgs{\n\t\t\tId: \"\u003cyour dns profile's id\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateDNSFilteringProfileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = TwingateFunctions.getTwingateDNSFilteringProfile(GetTwingateDNSFilteringProfileArgs.builder()\n            .id(\"\u003cyour dns profile's id\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: twingate:getTwingateDNSFilteringProfile\n      Arguments:\n        id: \u003cyour dns profile's id\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getTwingateDNSFilteringProfile.\n",
+                "properties": {
+                    "allowedDomains": {
+                        "$ref": "#/types/twingate:index/getTwingateDNSFilteringProfileAllowedDomains:getTwingateDNSFilteringProfileAllowedDomains",
+                        "description": "A block with the following attributes.\n"
+                    },
+                    "contentCategories": {
+                        "$ref": "#/types/twingate:index/getTwingateDNSFilteringProfileContentCategories:getTwingateDNSFilteringProfileContentCategories",
+                        "description": "A block with the following attributes.\n"
+                    },
+                    "deniedDomains": {
+                        "$ref": "#/types/twingate:index/getTwingateDNSFilteringProfileDeniedDomains:getTwingateDNSFilteringProfileDeniedDomains",
+                        "description": "A block with the following attributes.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The DNS filtering profile's ID.\n"
+                    },
+                    "privacyCategories": {
+                        "$ref": "#/types/twingate:index/getTwingateDNSFilteringProfilePrivacyCategories:getTwingateDNSFilteringProfilePrivacyCategories",
+                        "description": "A block with the following attributes.\n"
+                    },
+                    "securityCategories": {
+                        "$ref": "#/types/twingate:index/getTwingateDNSFilteringProfileSecurityCategories:getTwingateDNSFilteringProfileSecurityCategories",
+                        "description": "A block with the following attributes.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getTwingateDNSFilteringProfile.\n",
+                "properties": {
+                    "allowedDomains": {
+                        "$ref": "#/types/twingate:index/getTwingateDNSFilteringProfileAllowedDomains:getTwingateDNSFilteringProfileAllowedDomains",
+                        "description": "A block with the following attributes.\n"
+                    },
+                    "contentCategories": {
+                        "$ref": "#/types/twingate:index/getTwingateDNSFilteringProfileContentCategories:getTwingateDNSFilteringProfileContentCategories",
+                        "description": "A block with the following attributes.\n"
+                    },
+                    "deniedDomains": {
+                        "$ref": "#/types/twingate:index/getTwingateDNSFilteringProfileDeniedDomains:getTwingateDNSFilteringProfileDeniedDomains",
+                        "description": "A block with the following attributes.\n"
+                    },
+                    "fallbackMethod": {
+                        "type": "string",
+                        "description": "The DNS filtering profile's fallback method. One of AUTOMATIC or STRICT.\n"
+                    },
+                    "groups": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A set of group IDs that have this as their DNS filtering profile. Defaults to an empty set.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The DNS filtering profile's ID.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The DNS filtering profile's name.\n"
+                    },
+                    "priority": {
+                        "type": "number",
+                        "description": "A floating point number representing the profile's priority.\n"
+                    },
+                    "privacyCategories": {
+                        "$ref": "#/types/twingate:index/getTwingateDNSFilteringProfilePrivacyCategories:getTwingateDNSFilteringProfilePrivacyCategories",
+                        "description": "A block with the following attributes.\n"
+                    },
+                    "securityCategories": {
+                        "$ref": "#/types/twingate:index/getTwingateDNSFilteringProfileSecurityCategories:getTwingateDNSFilteringProfileSecurityCategories",
+                        "description": "A block with the following attributes.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "fallbackMethod",
+                    "groups",
+                    "id",
+                    "name",
+                    "priority"
                 ]
             }
         },

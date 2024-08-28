@@ -13,6 +13,1063 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type TwingateDNSFilteringProfileAllowedDomains struct {
+	// A set of allowed domains. Defaults to an empty set.
+	Domains         []string `pulumi:"domains"`
+	IsAuthoritative *bool    `pulumi:"isAuthoritative"`
+}
+
+// TwingateDNSFilteringProfileAllowedDomainsInput is an input type that accepts TwingateDNSFilteringProfileAllowedDomainsArgs and TwingateDNSFilteringProfileAllowedDomainsOutput values.
+// You can construct a concrete instance of `TwingateDNSFilteringProfileAllowedDomainsInput` via:
+//
+//	TwingateDNSFilteringProfileAllowedDomainsArgs{...}
+type TwingateDNSFilteringProfileAllowedDomainsInput interface {
+	pulumi.Input
+
+	ToTwingateDNSFilteringProfileAllowedDomainsOutput() TwingateDNSFilteringProfileAllowedDomainsOutput
+	ToTwingateDNSFilteringProfileAllowedDomainsOutputWithContext(context.Context) TwingateDNSFilteringProfileAllowedDomainsOutput
+}
+
+type TwingateDNSFilteringProfileAllowedDomainsArgs struct {
+	// A set of allowed domains. Defaults to an empty set.
+	Domains         pulumi.StringArrayInput `pulumi:"domains"`
+	IsAuthoritative pulumi.BoolPtrInput     `pulumi:"isAuthoritative"`
+}
+
+func (TwingateDNSFilteringProfileAllowedDomainsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateDNSFilteringProfileAllowedDomains)(nil)).Elem()
+}
+
+func (i TwingateDNSFilteringProfileAllowedDomainsArgs) ToTwingateDNSFilteringProfileAllowedDomainsOutput() TwingateDNSFilteringProfileAllowedDomainsOutput {
+	return i.ToTwingateDNSFilteringProfileAllowedDomainsOutputWithContext(context.Background())
+}
+
+func (i TwingateDNSFilteringProfileAllowedDomainsArgs) ToTwingateDNSFilteringProfileAllowedDomainsOutputWithContext(ctx context.Context) TwingateDNSFilteringProfileAllowedDomainsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateDNSFilteringProfileAllowedDomainsOutput)
+}
+
+func (i TwingateDNSFilteringProfileAllowedDomainsArgs) ToTwingateDNSFilteringProfileAllowedDomainsPtrOutput() TwingateDNSFilteringProfileAllowedDomainsPtrOutput {
+	return i.ToTwingateDNSFilteringProfileAllowedDomainsPtrOutputWithContext(context.Background())
+}
+
+func (i TwingateDNSFilteringProfileAllowedDomainsArgs) ToTwingateDNSFilteringProfileAllowedDomainsPtrOutputWithContext(ctx context.Context) TwingateDNSFilteringProfileAllowedDomainsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateDNSFilteringProfileAllowedDomainsOutput).ToTwingateDNSFilteringProfileAllowedDomainsPtrOutputWithContext(ctx)
+}
+
+// TwingateDNSFilteringProfileAllowedDomainsPtrInput is an input type that accepts TwingateDNSFilteringProfileAllowedDomainsArgs, TwingateDNSFilteringProfileAllowedDomainsPtr and TwingateDNSFilteringProfileAllowedDomainsPtrOutput values.
+// You can construct a concrete instance of `TwingateDNSFilteringProfileAllowedDomainsPtrInput` via:
+//
+//	        TwingateDNSFilteringProfileAllowedDomainsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TwingateDNSFilteringProfileAllowedDomainsPtrInput interface {
+	pulumi.Input
+
+	ToTwingateDNSFilteringProfileAllowedDomainsPtrOutput() TwingateDNSFilteringProfileAllowedDomainsPtrOutput
+	ToTwingateDNSFilteringProfileAllowedDomainsPtrOutputWithContext(context.Context) TwingateDNSFilteringProfileAllowedDomainsPtrOutput
+}
+
+type twingateDNSFilteringProfileAllowedDomainsPtrType TwingateDNSFilteringProfileAllowedDomainsArgs
+
+func TwingateDNSFilteringProfileAllowedDomainsPtr(v *TwingateDNSFilteringProfileAllowedDomainsArgs) TwingateDNSFilteringProfileAllowedDomainsPtrInput {
+	return (*twingateDNSFilteringProfileAllowedDomainsPtrType)(v)
+}
+
+func (*twingateDNSFilteringProfileAllowedDomainsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TwingateDNSFilteringProfileAllowedDomains)(nil)).Elem()
+}
+
+func (i *twingateDNSFilteringProfileAllowedDomainsPtrType) ToTwingateDNSFilteringProfileAllowedDomainsPtrOutput() TwingateDNSFilteringProfileAllowedDomainsPtrOutput {
+	return i.ToTwingateDNSFilteringProfileAllowedDomainsPtrOutputWithContext(context.Background())
+}
+
+func (i *twingateDNSFilteringProfileAllowedDomainsPtrType) ToTwingateDNSFilteringProfileAllowedDomainsPtrOutputWithContext(ctx context.Context) TwingateDNSFilteringProfileAllowedDomainsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateDNSFilteringProfileAllowedDomainsPtrOutput)
+}
+
+type TwingateDNSFilteringProfileAllowedDomainsOutput struct{ *pulumi.OutputState }
+
+func (TwingateDNSFilteringProfileAllowedDomainsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateDNSFilteringProfileAllowedDomains)(nil)).Elem()
+}
+
+func (o TwingateDNSFilteringProfileAllowedDomainsOutput) ToTwingateDNSFilteringProfileAllowedDomainsOutput() TwingateDNSFilteringProfileAllowedDomainsOutput {
+	return o
+}
+
+func (o TwingateDNSFilteringProfileAllowedDomainsOutput) ToTwingateDNSFilteringProfileAllowedDomainsOutputWithContext(ctx context.Context) TwingateDNSFilteringProfileAllowedDomainsOutput {
+	return o
+}
+
+func (o TwingateDNSFilteringProfileAllowedDomainsOutput) ToTwingateDNSFilteringProfileAllowedDomainsPtrOutput() TwingateDNSFilteringProfileAllowedDomainsPtrOutput {
+	return o.ToTwingateDNSFilteringProfileAllowedDomainsPtrOutputWithContext(context.Background())
+}
+
+func (o TwingateDNSFilteringProfileAllowedDomainsOutput) ToTwingateDNSFilteringProfileAllowedDomainsPtrOutputWithContext(ctx context.Context) TwingateDNSFilteringProfileAllowedDomainsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TwingateDNSFilteringProfileAllowedDomains) *TwingateDNSFilteringProfileAllowedDomains {
+		return &v
+	}).(TwingateDNSFilteringProfileAllowedDomainsPtrOutput)
+}
+
+// A set of allowed domains. Defaults to an empty set.
+func (o TwingateDNSFilteringProfileAllowedDomainsOutput) Domains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TwingateDNSFilteringProfileAllowedDomains) []string { return v.Domains }).(pulumi.StringArrayOutput)
+}
+
+func (o TwingateDNSFilteringProfileAllowedDomainsOutput) IsAuthoritative() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TwingateDNSFilteringProfileAllowedDomains) *bool { return v.IsAuthoritative }).(pulumi.BoolPtrOutput)
+}
+
+type TwingateDNSFilteringProfileAllowedDomainsPtrOutput struct{ *pulumi.OutputState }
+
+func (TwingateDNSFilteringProfileAllowedDomainsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TwingateDNSFilteringProfileAllowedDomains)(nil)).Elem()
+}
+
+func (o TwingateDNSFilteringProfileAllowedDomainsPtrOutput) ToTwingateDNSFilteringProfileAllowedDomainsPtrOutput() TwingateDNSFilteringProfileAllowedDomainsPtrOutput {
+	return o
+}
+
+func (o TwingateDNSFilteringProfileAllowedDomainsPtrOutput) ToTwingateDNSFilteringProfileAllowedDomainsPtrOutputWithContext(ctx context.Context) TwingateDNSFilteringProfileAllowedDomainsPtrOutput {
+	return o
+}
+
+func (o TwingateDNSFilteringProfileAllowedDomainsPtrOutput) Elem() TwingateDNSFilteringProfileAllowedDomainsOutput {
+	return o.ApplyT(func(v *TwingateDNSFilteringProfileAllowedDomains) TwingateDNSFilteringProfileAllowedDomains {
+		if v != nil {
+			return *v
+		}
+		var ret TwingateDNSFilteringProfileAllowedDomains
+		return ret
+	}).(TwingateDNSFilteringProfileAllowedDomainsOutput)
+}
+
+// A set of allowed domains. Defaults to an empty set.
+func (o TwingateDNSFilteringProfileAllowedDomainsPtrOutput) Domains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TwingateDNSFilteringProfileAllowedDomains) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Domains
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o TwingateDNSFilteringProfileAllowedDomainsPtrOutput) IsAuthoritative() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TwingateDNSFilteringProfileAllowedDomains) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsAuthoritative
+	}).(pulumi.BoolPtrOutput)
+}
+
+type TwingateDNSFilteringProfileContentCategories struct {
+	// Whether to block adult content. Defaults to false.
+	BlockAdultContent *bool `pulumi:"blockAdultContent"`
+	// Whether to block dating content. Defaults to false.
+	BlockDating *bool `pulumi:"blockDating"`
+	// Whether to block gambling content. Defaults to false.
+	BlockGambling *bool `pulumi:"blockGambling"`
+	// Whether to block games. Defaults to false.
+	BlockGames *bool `pulumi:"blockGames"`
+	// Whether to block piracy sites. Defaults to false.
+	BlockPiracy *bool `pulumi:"blockPiracy"`
+	// Whether to block social media. Defaults to false.
+	BlockSocialMedia *bool `pulumi:"blockSocialMedia"`
+	// Whether to block streaming content. Defaults to false.
+	BlockStreaming *bool `pulumi:"blockStreaming"`
+	// Whether to force safe search. Defaults to false.
+	EnableSafesearch *bool `pulumi:"enableSafesearch"`
+	// Whether to force YouTube to use restricted mode. Defaults to false.
+	EnableYoutubeRestrictedMode *bool `pulumi:"enableYoutubeRestrictedMode"`
+}
+
+// TwingateDNSFilteringProfileContentCategoriesInput is an input type that accepts TwingateDNSFilteringProfileContentCategoriesArgs and TwingateDNSFilteringProfileContentCategoriesOutput values.
+// You can construct a concrete instance of `TwingateDNSFilteringProfileContentCategoriesInput` via:
+//
+//	TwingateDNSFilteringProfileContentCategoriesArgs{...}
+type TwingateDNSFilteringProfileContentCategoriesInput interface {
+	pulumi.Input
+
+	ToTwingateDNSFilteringProfileContentCategoriesOutput() TwingateDNSFilteringProfileContentCategoriesOutput
+	ToTwingateDNSFilteringProfileContentCategoriesOutputWithContext(context.Context) TwingateDNSFilteringProfileContentCategoriesOutput
+}
+
+type TwingateDNSFilteringProfileContentCategoriesArgs struct {
+	// Whether to block adult content. Defaults to false.
+	BlockAdultContent pulumi.BoolPtrInput `pulumi:"blockAdultContent"`
+	// Whether to block dating content. Defaults to false.
+	BlockDating pulumi.BoolPtrInput `pulumi:"blockDating"`
+	// Whether to block gambling content. Defaults to false.
+	BlockGambling pulumi.BoolPtrInput `pulumi:"blockGambling"`
+	// Whether to block games. Defaults to false.
+	BlockGames pulumi.BoolPtrInput `pulumi:"blockGames"`
+	// Whether to block piracy sites. Defaults to false.
+	BlockPiracy pulumi.BoolPtrInput `pulumi:"blockPiracy"`
+	// Whether to block social media. Defaults to false.
+	BlockSocialMedia pulumi.BoolPtrInput `pulumi:"blockSocialMedia"`
+	// Whether to block streaming content. Defaults to false.
+	BlockStreaming pulumi.BoolPtrInput `pulumi:"blockStreaming"`
+	// Whether to force safe search. Defaults to false.
+	EnableSafesearch pulumi.BoolPtrInput `pulumi:"enableSafesearch"`
+	// Whether to force YouTube to use restricted mode. Defaults to false.
+	EnableYoutubeRestrictedMode pulumi.BoolPtrInput `pulumi:"enableYoutubeRestrictedMode"`
+}
+
+func (TwingateDNSFilteringProfileContentCategoriesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateDNSFilteringProfileContentCategories)(nil)).Elem()
+}
+
+func (i TwingateDNSFilteringProfileContentCategoriesArgs) ToTwingateDNSFilteringProfileContentCategoriesOutput() TwingateDNSFilteringProfileContentCategoriesOutput {
+	return i.ToTwingateDNSFilteringProfileContentCategoriesOutputWithContext(context.Background())
+}
+
+func (i TwingateDNSFilteringProfileContentCategoriesArgs) ToTwingateDNSFilteringProfileContentCategoriesOutputWithContext(ctx context.Context) TwingateDNSFilteringProfileContentCategoriesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateDNSFilteringProfileContentCategoriesOutput)
+}
+
+func (i TwingateDNSFilteringProfileContentCategoriesArgs) ToTwingateDNSFilteringProfileContentCategoriesPtrOutput() TwingateDNSFilteringProfileContentCategoriesPtrOutput {
+	return i.ToTwingateDNSFilteringProfileContentCategoriesPtrOutputWithContext(context.Background())
+}
+
+func (i TwingateDNSFilteringProfileContentCategoriesArgs) ToTwingateDNSFilteringProfileContentCategoriesPtrOutputWithContext(ctx context.Context) TwingateDNSFilteringProfileContentCategoriesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateDNSFilteringProfileContentCategoriesOutput).ToTwingateDNSFilteringProfileContentCategoriesPtrOutputWithContext(ctx)
+}
+
+// TwingateDNSFilteringProfileContentCategoriesPtrInput is an input type that accepts TwingateDNSFilteringProfileContentCategoriesArgs, TwingateDNSFilteringProfileContentCategoriesPtr and TwingateDNSFilteringProfileContentCategoriesPtrOutput values.
+// You can construct a concrete instance of `TwingateDNSFilteringProfileContentCategoriesPtrInput` via:
+//
+//	        TwingateDNSFilteringProfileContentCategoriesArgs{...}
+//
+//	or:
+//
+//	        nil
+type TwingateDNSFilteringProfileContentCategoriesPtrInput interface {
+	pulumi.Input
+
+	ToTwingateDNSFilteringProfileContentCategoriesPtrOutput() TwingateDNSFilteringProfileContentCategoriesPtrOutput
+	ToTwingateDNSFilteringProfileContentCategoriesPtrOutputWithContext(context.Context) TwingateDNSFilteringProfileContentCategoriesPtrOutput
+}
+
+type twingateDNSFilteringProfileContentCategoriesPtrType TwingateDNSFilteringProfileContentCategoriesArgs
+
+func TwingateDNSFilteringProfileContentCategoriesPtr(v *TwingateDNSFilteringProfileContentCategoriesArgs) TwingateDNSFilteringProfileContentCategoriesPtrInput {
+	return (*twingateDNSFilteringProfileContentCategoriesPtrType)(v)
+}
+
+func (*twingateDNSFilteringProfileContentCategoriesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TwingateDNSFilteringProfileContentCategories)(nil)).Elem()
+}
+
+func (i *twingateDNSFilteringProfileContentCategoriesPtrType) ToTwingateDNSFilteringProfileContentCategoriesPtrOutput() TwingateDNSFilteringProfileContentCategoriesPtrOutput {
+	return i.ToTwingateDNSFilteringProfileContentCategoriesPtrOutputWithContext(context.Background())
+}
+
+func (i *twingateDNSFilteringProfileContentCategoriesPtrType) ToTwingateDNSFilteringProfileContentCategoriesPtrOutputWithContext(ctx context.Context) TwingateDNSFilteringProfileContentCategoriesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateDNSFilteringProfileContentCategoriesPtrOutput)
+}
+
+type TwingateDNSFilteringProfileContentCategoriesOutput struct{ *pulumi.OutputState }
+
+func (TwingateDNSFilteringProfileContentCategoriesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateDNSFilteringProfileContentCategories)(nil)).Elem()
+}
+
+func (o TwingateDNSFilteringProfileContentCategoriesOutput) ToTwingateDNSFilteringProfileContentCategoriesOutput() TwingateDNSFilteringProfileContentCategoriesOutput {
+	return o
+}
+
+func (o TwingateDNSFilteringProfileContentCategoriesOutput) ToTwingateDNSFilteringProfileContentCategoriesOutputWithContext(ctx context.Context) TwingateDNSFilteringProfileContentCategoriesOutput {
+	return o
+}
+
+func (o TwingateDNSFilteringProfileContentCategoriesOutput) ToTwingateDNSFilteringProfileContentCategoriesPtrOutput() TwingateDNSFilteringProfileContentCategoriesPtrOutput {
+	return o.ToTwingateDNSFilteringProfileContentCategoriesPtrOutputWithContext(context.Background())
+}
+
+func (o TwingateDNSFilteringProfileContentCategoriesOutput) ToTwingateDNSFilteringProfileContentCategoriesPtrOutputWithContext(ctx context.Context) TwingateDNSFilteringProfileContentCategoriesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TwingateDNSFilteringProfileContentCategories) *TwingateDNSFilteringProfileContentCategories {
+		return &v
+	}).(TwingateDNSFilteringProfileContentCategoriesPtrOutput)
+}
+
+// Whether to block adult content. Defaults to false.
+func (o TwingateDNSFilteringProfileContentCategoriesOutput) BlockAdultContent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TwingateDNSFilteringProfileContentCategories) *bool { return v.BlockAdultContent }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to block dating content. Defaults to false.
+func (o TwingateDNSFilteringProfileContentCategoriesOutput) BlockDating() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TwingateDNSFilteringProfileContentCategories) *bool { return v.BlockDating }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to block gambling content. Defaults to false.
+func (o TwingateDNSFilteringProfileContentCategoriesOutput) BlockGambling() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TwingateDNSFilteringProfileContentCategories) *bool { return v.BlockGambling }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to block games. Defaults to false.
+func (o TwingateDNSFilteringProfileContentCategoriesOutput) BlockGames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TwingateDNSFilteringProfileContentCategories) *bool { return v.BlockGames }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to block piracy sites. Defaults to false.
+func (o TwingateDNSFilteringProfileContentCategoriesOutput) BlockPiracy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TwingateDNSFilteringProfileContentCategories) *bool { return v.BlockPiracy }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to block social media. Defaults to false.
+func (o TwingateDNSFilteringProfileContentCategoriesOutput) BlockSocialMedia() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TwingateDNSFilteringProfileContentCategories) *bool { return v.BlockSocialMedia }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to block streaming content. Defaults to false.
+func (o TwingateDNSFilteringProfileContentCategoriesOutput) BlockStreaming() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TwingateDNSFilteringProfileContentCategories) *bool { return v.BlockStreaming }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to force safe search. Defaults to false.
+func (o TwingateDNSFilteringProfileContentCategoriesOutput) EnableSafesearch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TwingateDNSFilteringProfileContentCategories) *bool { return v.EnableSafesearch }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to force YouTube to use restricted mode. Defaults to false.
+func (o TwingateDNSFilteringProfileContentCategoriesOutput) EnableYoutubeRestrictedMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TwingateDNSFilteringProfileContentCategories) *bool { return v.EnableYoutubeRestrictedMode }).(pulumi.BoolPtrOutput)
+}
+
+type TwingateDNSFilteringProfileContentCategoriesPtrOutput struct{ *pulumi.OutputState }
+
+func (TwingateDNSFilteringProfileContentCategoriesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TwingateDNSFilteringProfileContentCategories)(nil)).Elem()
+}
+
+func (o TwingateDNSFilteringProfileContentCategoriesPtrOutput) ToTwingateDNSFilteringProfileContentCategoriesPtrOutput() TwingateDNSFilteringProfileContentCategoriesPtrOutput {
+	return o
+}
+
+func (o TwingateDNSFilteringProfileContentCategoriesPtrOutput) ToTwingateDNSFilteringProfileContentCategoriesPtrOutputWithContext(ctx context.Context) TwingateDNSFilteringProfileContentCategoriesPtrOutput {
+	return o
+}
+
+func (o TwingateDNSFilteringProfileContentCategoriesPtrOutput) Elem() TwingateDNSFilteringProfileContentCategoriesOutput {
+	return o.ApplyT(func(v *TwingateDNSFilteringProfileContentCategories) TwingateDNSFilteringProfileContentCategories {
+		if v != nil {
+			return *v
+		}
+		var ret TwingateDNSFilteringProfileContentCategories
+		return ret
+	}).(TwingateDNSFilteringProfileContentCategoriesOutput)
+}
+
+// Whether to block adult content. Defaults to false.
+func (o TwingateDNSFilteringProfileContentCategoriesPtrOutput) BlockAdultContent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TwingateDNSFilteringProfileContentCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BlockAdultContent
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to block dating content. Defaults to false.
+func (o TwingateDNSFilteringProfileContentCategoriesPtrOutput) BlockDating() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TwingateDNSFilteringProfileContentCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BlockDating
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to block gambling content. Defaults to false.
+func (o TwingateDNSFilteringProfileContentCategoriesPtrOutput) BlockGambling() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TwingateDNSFilteringProfileContentCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BlockGambling
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to block games. Defaults to false.
+func (o TwingateDNSFilteringProfileContentCategoriesPtrOutput) BlockGames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TwingateDNSFilteringProfileContentCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BlockGames
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to block piracy sites. Defaults to false.
+func (o TwingateDNSFilteringProfileContentCategoriesPtrOutput) BlockPiracy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TwingateDNSFilteringProfileContentCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BlockPiracy
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to block social media. Defaults to false.
+func (o TwingateDNSFilteringProfileContentCategoriesPtrOutput) BlockSocialMedia() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TwingateDNSFilteringProfileContentCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BlockSocialMedia
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to block streaming content. Defaults to false.
+func (o TwingateDNSFilteringProfileContentCategoriesPtrOutput) BlockStreaming() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TwingateDNSFilteringProfileContentCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BlockStreaming
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to force safe search. Defaults to false.
+func (o TwingateDNSFilteringProfileContentCategoriesPtrOutput) EnableSafesearch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TwingateDNSFilteringProfileContentCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSafesearch
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to force YouTube to use restricted mode. Defaults to false.
+func (o TwingateDNSFilteringProfileContentCategoriesPtrOutput) EnableYoutubeRestrictedMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TwingateDNSFilteringProfileContentCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableYoutubeRestrictedMode
+	}).(pulumi.BoolPtrOutput)
+}
+
+type TwingateDNSFilteringProfileDeniedDomains struct {
+	// A set of denied domains. Defaults to an empty set.
+	Domains         []string `pulumi:"domains"`
+	IsAuthoritative *bool    `pulumi:"isAuthoritative"`
+}
+
+// TwingateDNSFilteringProfileDeniedDomainsInput is an input type that accepts TwingateDNSFilteringProfileDeniedDomainsArgs and TwingateDNSFilteringProfileDeniedDomainsOutput values.
+// You can construct a concrete instance of `TwingateDNSFilteringProfileDeniedDomainsInput` via:
+//
+//	TwingateDNSFilteringProfileDeniedDomainsArgs{...}
+type TwingateDNSFilteringProfileDeniedDomainsInput interface {
+	pulumi.Input
+
+	ToTwingateDNSFilteringProfileDeniedDomainsOutput() TwingateDNSFilteringProfileDeniedDomainsOutput
+	ToTwingateDNSFilteringProfileDeniedDomainsOutputWithContext(context.Context) TwingateDNSFilteringProfileDeniedDomainsOutput
+}
+
+type TwingateDNSFilteringProfileDeniedDomainsArgs struct {
+	// A set of denied domains. Defaults to an empty set.
+	Domains         pulumi.StringArrayInput `pulumi:"domains"`
+	IsAuthoritative pulumi.BoolPtrInput     `pulumi:"isAuthoritative"`
+}
+
+func (TwingateDNSFilteringProfileDeniedDomainsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateDNSFilteringProfileDeniedDomains)(nil)).Elem()
+}
+
+func (i TwingateDNSFilteringProfileDeniedDomainsArgs) ToTwingateDNSFilteringProfileDeniedDomainsOutput() TwingateDNSFilteringProfileDeniedDomainsOutput {
+	return i.ToTwingateDNSFilteringProfileDeniedDomainsOutputWithContext(context.Background())
+}
+
+func (i TwingateDNSFilteringProfileDeniedDomainsArgs) ToTwingateDNSFilteringProfileDeniedDomainsOutputWithContext(ctx context.Context) TwingateDNSFilteringProfileDeniedDomainsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateDNSFilteringProfileDeniedDomainsOutput)
+}
+
+func (i TwingateDNSFilteringProfileDeniedDomainsArgs) ToTwingateDNSFilteringProfileDeniedDomainsPtrOutput() TwingateDNSFilteringProfileDeniedDomainsPtrOutput {
+	return i.ToTwingateDNSFilteringProfileDeniedDomainsPtrOutputWithContext(context.Background())
+}
+
+func (i TwingateDNSFilteringProfileDeniedDomainsArgs) ToTwingateDNSFilteringProfileDeniedDomainsPtrOutputWithContext(ctx context.Context) TwingateDNSFilteringProfileDeniedDomainsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateDNSFilteringProfileDeniedDomainsOutput).ToTwingateDNSFilteringProfileDeniedDomainsPtrOutputWithContext(ctx)
+}
+
+// TwingateDNSFilteringProfileDeniedDomainsPtrInput is an input type that accepts TwingateDNSFilteringProfileDeniedDomainsArgs, TwingateDNSFilteringProfileDeniedDomainsPtr and TwingateDNSFilteringProfileDeniedDomainsPtrOutput values.
+// You can construct a concrete instance of `TwingateDNSFilteringProfileDeniedDomainsPtrInput` via:
+//
+//	        TwingateDNSFilteringProfileDeniedDomainsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TwingateDNSFilteringProfileDeniedDomainsPtrInput interface {
+	pulumi.Input
+
+	ToTwingateDNSFilteringProfileDeniedDomainsPtrOutput() TwingateDNSFilteringProfileDeniedDomainsPtrOutput
+	ToTwingateDNSFilteringProfileDeniedDomainsPtrOutputWithContext(context.Context) TwingateDNSFilteringProfileDeniedDomainsPtrOutput
+}
+
+type twingateDNSFilteringProfileDeniedDomainsPtrType TwingateDNSFilteringProfileDeniedDomainsArgs
+
+func TwingateDNSFilteringProfileDeniedDomainsPtr(v *TwingateDNSFilteringProfileDeniedDomainsArgs) TwingateDNSFilteringProfileDeniedDomainsPtrInput {
+	return (*twingateDNSFilteringProfileDeniedDomainsPtrType)(v)
+}
+
+func (*twingateDNSFilteringProfileDeniedDomainsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TwingateDNSFilteringProfileDeniedDomains)(nil)).Elem()
+}
+
+func (i *twingateDNSFilteringProfileDeniedDomainsPtrType) ToTwingateDNSFilteringProfileDeniedDomainsPtrOutput() TwingateDNSFilteringProfileDeniedDomainsPtrOutput {
+	return i.ToTwingateDNSFilteringProfileDeniedDomainsPtrOutputWithContext(context.Background())
+}
+
+func (i *twingateDNSFilteringProfileDeniedDomainsPtrType) ToTwingateDNSFilteringProfileDeniedDomainsPtrOutputWithContext(ctx context.Context) TwingateDNSFilteringProfileDeniedDomainsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateDNSFilteringProfileDeniedDomainsPtrOutput)
+}
+
+type TwingateDNSFilteringProfileDeniedDomainsOutput struct{ *pulumi.OutputState }
+
+func (TwingateDNSFilteringProfileDeniedDomainsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateDNSFilteringProfileDeniedDomains)(nil)).Elem()
+}
+
+func (o TwingateDNSFilteringProfileDeniedDomainsOutput) ToTwingateDNSFilteringProfileDeniedDomainsOutput() TwingateDNSFilteringProfileDeniedDomainsOutput {
+	return o
+}
+
+func (o TwingateDNSFilteringProfileDeniedDomainsOutput) ToTwingateDNSFilteringProfileDeniedDomainsOutputWithContext(ctx context.Context) TwingateDNSFilteringProfileDeniedDomainsOutput {
+	return o
+}
+
+func (o TwingateDNSFilteringProfileDeniedDomainsOutput) ToTwingateDNSFilteringProfileDeniedDomainsPtrOutput() TwingateDNSFilteringProfileDeniedDomainsPtrOutput {
+	return o.ToTwingateDNSFilteringProfileDeniedDomainsPtrOutputWithContext(context.Background())
+}
+
+func (o TwingateDNSFilteringProfileDeniedDomainsOutput) ToTwingateDNSFilteringProfileDeniedDomainsPtrOutputWithContext(ctx context.Context) TwingateDNSFilteringProfileDeniedDomainsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TwingateDNSFilteringProfileDeniedDomains) *TwingateDNSFilteringProfileDeniedDomains {
+		return &v
+	}).(TwingateDNSFilteringProfileDeniedDomainsPtrOutput)
+}
+
+// A set of denied domains. Defaults to an empty set.
+func (o TwingateDNSFilteringProfileDeniedDomainsOutput) Domains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TwingateDNSFilteringProfileDeniedDomains) []string { return v.Domains }).(pulumi.StringArrayOutput)
+}
+
+func (o TwingateDNSFilteringProfileDeniedDomainsOutput) IsAuthoritative() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TwingateDNSFilteringProfileDeniedDomains) *bool { return v.IsAuthoritative }).(pulumi.BoolPtrOutput)
+}
+
+type TwingateDNSFilteringProfileDeniedDomainsPtrOutput struct{ *pulumi.OutputState }
+
+func (TwingateDNSFilteringProfileDeniedDomainsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TwingateDNSFilteringProfileDeniedDomains)(nil)).Elem()
+}
+
+func (o TwingateDNSFilteringProfileDeniedDomainsPtrOutput) ToTwingateDNSFilteringProfileDeniedDomainsPtrOutput() TwingateDNSFilteringProfileDeniedDomainsPtrOutput {
+	return o
+}
+
+func (o TwingateDNSFilteringProfileDeniedDomainsPtrOutput) ToTwingateDNSFilteringProfileDeniedDomainsPtrOutputWithContext(ctx context.Context) TwingateDNSFilteringProfileDeniedDomainsPtrOutput {
+	return o
+}
+
+func (o TwingateDNSFilteringProfileDeniedDomainsPtrOutput) Elem() TwingateDNSFilteringProfileDeniedDomainsOutput {
+	return o.ApplyT(func(v *TwingateDNSFilteringProfileDeniedDomains) TwingateDNSFilteringProfileDeniedDomains {
+		if v != nil {
+			return *v
+		}
+		var ret TwingateDNSFilteringProfileDeniedDomains
+		return ret
+	}).(TwingateDNSFilteringProfileDeniedDomainsOutput)
+}
+
+// A set of denied domains. Defaults to an empty set.
+func (o TwingateDNSFilteringProfileDeniedDomainsPtrOutput) Domains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TwingateDNSFilteringProfileDeniedDomains) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Domains
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o TwingateDNSFilteringProfileDeniedDomainsPtrOutput) IsAuthoritative() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TwingateDNSFilteringProfileDeniedDomains) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsAuthoritative
+	}).(pulumi.BoolPtrOutput)
+}
+
+type TwingateDNSFilteringProfilePrivacyCategories struct {
+	// Whether to block ads and trackers. Defaults to false.
+	BlockAdsAndTrackers *bool `pulumi:"blockAdsAndTrackers"`
+	// Whether to block affiliate links. Defaults to false.
+	BlockAffiliateLinks *bool `pulumi:"blockAffiliateLinks"`
+	// Whether to block disguised third party trackers. Defaults to false.
+	BlockDisguisedTrackers *bool `pulumi:"blockDisguisedTrackers"`
+}
+
+// TwingateDNSFilteringProfilePrivacyCategoriesInput is an input type that accepts TwingateDNSFilteringProfilePrivacyCategoriesArgs and TwingateDNSFilteringProfilePrivacyCategoriesOutput values.
+// You can construct a concrete instance of `TwingateDNSFilteringProfilePrivacyCategoriesInput` via:
+//
+//	TwingateDNSFilteringProfilePrivacyCategoriesArgs{...}
+type TwingateDNSFilteringProfilePrivacyCategoriesInput interface {
+	pulumi.Input
+
+	ToTwingateDNSFilteringProfilePrivacyCategoriesOutput() TwingateDNSFilteringProfilePrivacyCategoriesOutput
+	ToTwingateDNSFilteringProfilePrivacyCategoriesOutputWithContext(context.Context) TwingateDNSFilteringProfilePrivacyCategoriesOutput
+}
+
+type TwingateDNSFilteringProfilePrivacyCategoriesArgs struct {
+	// Whether to block ads and trackers. Defaults to false.
+	BlockAdsAndTrackers pulumi.BoolPtrInput `pulumi:"blockAdsAndTrackers"`
+	// Whether to block affiliate links. Defaults to false.
+	BlockAffiliateLinks pulumi.BoolPtrInput `pulumi:"blockAffiliateLinks"`
+	// Whether to block disguised third party trackers. Defaults to false.
+	BlockDisguisedTrackers pulumi.BoolPtrInput `pulumi:"blockDisguisedTrackers"`
+}
+
+func (TwingateDNSFilteringProfilePrivacyCategoriesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateDNSFilteringProfilePrivacyCategories)(nil)).Elem()
+}
+
+func (i TwingateDNSFilteringProfilePrivacyCategoriesArgs) ToTwingateDNSFilteringProfilePrivacyCategoriesOutput() TwingateDNSFilteringProfilePrivacyCategoriesOutput {
+	return i.ToTwingateDNSFilteringProfilePrivacyCategoriesOutputWithContext(context.Background())
+}
+
+func (i TwingateDNSFilteringProfilePrivacyCategoriesArgs) ToTwingateDNSFilteringProfilePrivacyCategoriesOutputWithContext(ctx context.Context) TwingateDNSFilteringProfilePrivacyCategoriesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateDNSFilteringProfilePrivacyCategoriesOutput)
+}
+
+func (i TwingateDNSFilteringProfilePrivacyCategoriesArgs) ToTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput() TwingateDNSFilteringProfilePrivacyCategoriesPtrOutput {
+	return i.ToTwingateDNSFilteringProfilePrivacyCategoriesPtrOutputWithContext(context.Background())
+}
+
+func (i TwingateDNSFilteringProfilePrivacyCategoriesArgs) ToTwingateDNSFilteringProfilePrivacyCategoriesPtrOutputWithContext(ctx context.Context) TwingateDNSFilteringProfilePrivacyCategoriesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateDNSFilteringProfilePrivacyCategoriesOutput).ToTwingateDNSFilteringProfilePrivacyCategoriesPtrOutputWithContext(ctx)
+}
+
+// TwingateDNSFilteringProfilePrivacyCategoriesPtrInput is an input type that accepts TwingateDNSFilteringProfilePrivacyCategoriesArgs, TwingateDNSFilteringProfilePrivacyCategoriesPtr and TwingateDNSFilteringProfilePrivacyCategoriesPtrOutput values.
+// You can construct a concrete instance of `TwingateDNSFilteringProfilePrivacyCategoriesPtrInput` via:
+//
+//	        TwingateDNSFilteringProfilePrivacyCategoriesArgs{...}
+//
+//	or:
+//
+//	        nil
+type TwingateDNSFilteringProfilePrivacyCategoriesPtrInput interface {
+	pulumi.Input
+
+	ToTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput() TwingateDNSFilteringProfilePrivacyCategoriesPtrOutput
+	ToTwingateDNSFilteringProfilePrivacyCategoriesPtrOutputWithContext(context.Context) TwingateDNSFilteringProfilePrivacyCategoriesPtrOutput
+}
+
+type twingateDNSFilteringProfilePrivacyCategoriesPtrType TwingateDNSFilteringProfilePrivacyCategoriesArgs
+
+func TwingateDNSFilteringProfilePrivacyCategoriesPtr(v *TwingateDNSFilteringProfilePrivacyCategoriesArgs) TwingateDNSFilteringProfilePrivacyCategoriesPtrInput {
+	return (*twingateDNSFilteringProfilePrivacyCategoriesPtrType)(v)
+}
+
+func (*twingateDNSFilteringProfilePrivacyCategoriesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TwingateDNSFilteringProfilePrivacyCategories)(nil)).Elem()
+}
+
+func (i *twingateDNSFilteringProfilePrivacyCategoriesPtrType) ToTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput() TwingateDNSFilteringProfilePrivacyCategoriesPtrOutput {
+	return i.ToTwingateDNSFilteringProfilePrivacyCategoriesPtrOutputWithContext(context.Background())
+}
+
+func (i *twingateDNSFilteringProfilePrivacyCategoriesPtrType) ToTwingateDNSFilteringProfilePrivacyCategoriesPtrOutputWithContext(ctx context.Context) TwingateDNSFilteringProfilePrivacyCategoriesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateDNSFilteringProfilePrivacyCategoriesPtrOutput)
+}
+
+type TwingateDNSFilteringProfilePrivacyCategoriesOutput struct{ *pulumi.OutputState }
+
+func (TwingateDNSFilteringProfilePrivacyCategoriesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateDNSFilteringProfilePrivacyCategories)(nil)).Elem()
+}
+
+func (o TwingateDNSFilteringProfilePrivacyCategoriesOutput) ToTwingateDNSFilteringProfilePrivacyCategoriesOutput() TwingateDNSFilteringProfilePrivacyCategoriesOutput {
+	return o
+}
+
+func (o TwingateDNSFilteringProfilePrivacyCategoriesOutput) ToTwingateDNSFilteringProfilePrivacyCategoriesOutputWithContext(ctx context.Context) TwingateDNSFilteringProfilePrivacyCategoriesOutput {
+	return o
+}
+
+func (o TwingateDNSFilteringProfilePrivacyCategoriesOutput) ToTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput() TwingateDNSFilteringProfilePrivacyCategoriesPtrOutput {
+	return o.ToTwingateDNSFilteringProfilePrivacyCategoriesPtrOutputWithContext(context.Background())
+}
+
+func (o TwingateDNSFilteringProfilePrivacyCategoriesOutput) ToTwingateDNSFilteringProfilePrivacyCategoriesPtrOutputWithContext(ctx context.Context) TwingateDNSFilteringProfilePrivacyCategoriesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TwingateDNSFilteringProfilePrivacyCategories) *TwingateDNSFilteringProfilePrivacyCategories {
+		return &v
+	}).(TwingateDNSFilteringProfilePrivacyCategoriesPtrOutput)
+}
+
+// Whether to block ads and trackers. Defaults to false.
+func (o TwingateDNSFilteringProfilePrivacyCategoriesOutput) BlockAdsAndTrackers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TwingateDNSFilteringProfilePrivacyCategories) *bool { return v.BlockAdsAndTrackers }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to block affiliate links. Defaults to false.
+func (o TwingateDNSFilteringProfilePrivacyCategoriesOutput) BlockAffiliateLinks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TwingateDNSFilteringProfilePrivacyCategories) *bool { return v.BlockAffiliateLinks }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to block disguised third party trackers. Defaults to false.
+func (o TwingateDNSFilteringProfilePrivacyCategoriesOutput) BlockDisguisedTrackers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TwingateDNSFilteringProfilePrivacyCategories) *bool { return v.BlockDisguisedTrackers }).(pulumi.BoolPtrOutput)
+}
+
+type TwingateDNSFilteringProfilePrivacyCategoriesPtrOutput struct{ *pulumi.OutputState }
+
+func (TwingateDNSFilteringProfilePrivacyCategoriesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TwingateDNSFilteringProfilePrivacyCategories)(nil)).Elem()
+}
+
+func (o TwingateDNSFilteringProfilePrivacyCategoriesPtrOutput) ToTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput() TwingateDNSFilteringProfilePrivacyCategoriesPtrOutput {
+	return o
+}
+
+func (o TwingateDNSFilteringProfilePrivacyCategoriesPtrOutput) ToTwingateDNSFilteringProfilePrivacyCategoriesPtrOutputWithContext(ctx context.Context) TwingateDNSFilteringProfilePrivacyCategoriesPtrOutput {
+	return o
+}
+
+func (o TwingateDNSFilteringProfilePrivacyCategoriesPtrOutput) Elem() TwingateDNSFilteringProfilePrivacyCategoriesOutput {
+	return o.ApplyT(func(v *TwingateDNSFilteringProfilePrivacyCategories) TwingateDNSFilteringProfilePrivacyCategories {
+		if v != nil {
+			return *v
+		}
+		var ret TwingateDNSFilteringProfilePrivacyCategories
+		return ret
+	}).(TwingateDNSFilteringProfilePrivacyCategoriesOutput)
+}
+
+// Whether to block ads and trackers. Defaults to false.
+func (o TwingateDNSFilteringProfilePrivacyCategoriesPtrOutput) BlockAdsAndTrackers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TwingateDNSFilteringProfilePrivacyCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BlockAdsAndTrackers
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to block affiliate links. Defaults to false.
+func (o TwingateDNSFilteringProfilePrivacyCategoriesPtrOutput) BlockAffiliateLinks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TwingateDNSFilteringProfilePrivacyCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BlockAffiliateLinks
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to block disguised third party trackers. Defaults to false.
+func (o TwingateDNSFilteringProfilePrivacyCategoriesPtrOutput) BlockDisguisedTrackers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TwingateDNSFilteringProfilePrivacyCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BlockDisguisedTrackers
+	}).(pulumi.BoolPtrOutput)
+}
+
+type TwingateDNSFilteringProfileSecurityCategories struct {
+	// Whether to block cryptojacking sites. Defaults to true.
+	BlockCryptojacking *bool `pulumi:"blockCryptojacking"`
+	// Blocks public DNS entries from returning private IP addresses. Defaults to true.
+	BlockDnsRebinding *bool `pulumi:"blockDnsRebinding"`
+	// Blocks DGA domains. Defaults to true.
+	BlockDomainGenerationAlgorithms *bool `pulumi:"blockDomainGenerationAlgorithms"`
+	// Whether to block homoglyph attacks. Defaults to true.
+	BlockIdnHomoglyph *bool `pulumi:"blockIdnHomoglyph"`
+	// Blocks newly registered domains. Defaults to true.
+	BlockNewlyRegisteredDomains *bool `pulumi:"blockNewlyRegisteredDomains"`
+	// Block parked domains. Defaults to true.
+	BlockParkedDomains *bool `pulumi:"blockParkedDomains"`
+	// Blocks typosquatted domains. Defaults to true.
+	BlockTyposquatting *bool `pulumi:"blockTyposquatting"`
+	// Whether to use Google Safe browsing lists to block content. Defaults to true.
+	EnableGoogleSafeBrowsing *bool `pulumi:"enableGoogleSafeBrowsing"`
+	// Whether to filter content using threat intelligence feeds. Defaults to true.
+	EnableThreatIntelligenceFeeds *bool `pulumi:"enableThreatIntelligenceFeeds"`
+}
+
+// TwingateDNSFilteringProfileSecurityCategoriesInput is an input type that accepts TwingateDNSFilteringProfileSecurityCategoriesArgs and TwingateDNSFilteringProfileSecurityCategoriesOutput values.
+// You can construct a concrete instance of `TwingateDNSFilteringProfileSecurityCategoriesInput` via:
+//
+//	TwingateDNSFilteringProfileSecurityCategoriesArgs{...}
+type TwingateDNSFilteringProfileSecurityCategoriesInput interface {
+	pulumi.Input
+
+	ToTwingateDNSFilteringProfileSecurityCategoriesOutput() TwingateDNSFilteringProfileSecurityCategoriesOutput
+	ToTwingateDNSFilteringProfileSecurityCategoriesOutputWithContext(context.Context) TwingateDNSFilteringProfileSecurityCategoriesOutput
+}
+
+type TwingateDNSFilteringProfileSecurityCategoriesArgs struct {
+	// Whether to block cryptojacking sites. Defaults to true.
+	BlockCryptojacking pulumi.BoolPtrInput `pulumi:"blockCryptojacking"`
+	// Blocks public DNS entries from returning private IP addresses. Defaults to true.
+	BlockDnsRebinding pulumi.BoolPtrInput `pulumi:"blockDnsRebinding"`
+	// Blocks DGA domains. Defaults to true.
+	BlockDomainGenerationAlgorithms pulumi.BoolPtrInput `pulumi:"blockDomainGenerationAlgorithms"`
+	// Whether to block homoglyph attacks. Defaults to true.
+	BlockIdnHomoglyph pulumi.BoolPtrInput `pulumi:"blockIdnHomoglyph"`
+	// Blocks newly registered domains. Defaults to true.
+	BlockNewlyRegisteredDomains pulumi.BoolPtrInput `pulumi:"blockNewlyRegisteredDomains"`
+	// Block parked domains. Defaults to true.
+	BlockParkedDomains pulumi.BoolPtrInput `pulumi:"blockParkedDomains"`
+	// Blocks typosquatted domains. Defaults to true.
+	BlockTyposquatting pulumi.BoolPtrInput `pulumi:"blockTyposquatting"`
+	// Whether to use Google Safe browsing lists to block content. Defaults to true.
+	EnableGoogleSafeBrowsing pulumi.BoolPtrInput `pulumi:"enableGoogleSafeBrowsing"`
+	// Whether to filter content using threat intelligence feeds. Defaults to true.
+	EnableThreatIntelligenceFeeds pulumi.BoolPtrInput `pulumi:"enableThreatIntelligenceFeeds"`
+}
+
+func (TwingateDNSFilteringProfileSecurityCategoriesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateDNSFilteringProfileSecurityCategories)(nil)).Elem()
+}
+
+func (i TwingateDNSFilteringProfileSecurityCategoriesArgs) ToTwingateDNSFilteringProfileSecurityCategoriesOutput() TwingateDNSFilteringProfileSecurityCategoriesOutput {
+	return i.ToTwingateDNSFilteringProfileSecurityCategoriesOutputWithContext(context.Background())
+}
+
+func (i TwingateDNSFilteringProfileSecurityCategoriesArgs) ToTwingateDNSFilteringProfileSecurityCategoriesOutputWithContext(ctx context.Context) TwingateDNSFilteringProfileSecurityCategoriesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateDNSFilteringProfileSecurityCategoriesOutput)
+}
+
+func (i TwingateDNSFilteringProfileSecurityCategoriesArgs) ToTwingateDNSFilteringProfileSecurityCategoriesPtrOutput() TwingateDNSFilteringProfileSecurityCategoriesPtrOutput {
+	return i.ToTwingateDNSFilteringProfileSecurityCategoriesPtrOutputWithContext(context.Background())
+}
+
+func (i TwingateDNSFilteringProfileSecurityCategoriesArgs) ToTwingateDNSFilteringProfileSecurityCategoriesPtrOutputWithContext(ctx context.Context) TwingateDNSFilteringProfileSecurityCategoriesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateDNSFilteringProfileSecurityCategoriesOutput).ToTwingateDNSFilteringProfileSecurityCategoriesPtrOutputWithContext(ctx)
+}
+
+// TwingateDNSFilteringProfileSecurityCategoriesPtrInput is an input type that accepts TwingateDNSFilteringProfileSecurityCategoriesArgs, TwingateDNSFilteringProfileSecurityCategoriesPtr and TwingateDNSFilteringProfileSecurityCategoriesPtrOutput values.
+// You can construct a concrete instance of `TwingateDNSFilteringProfileSecurityCategoriesPtrInput` via:
+//
+//	        TwingateDNSFilteringProfileSecurityCategoriesArgs{...}
+//
+//	or:
+//
+//	        nil
+type TwingateDNSFilteringProfileSecurityCategoriesPtrInput interface {
+	pulumi.Input
+
+	ToTwingateDNSFilteringProfileSecurityCategoriesPtrOutput() TwingateDNSFilteringProfileSecurityCategoriesPtrOutput
+	ToTwingateDNSFilteringProfileSecurityCategoriesPtrOutputWithContext(context.Context) TwingateDNSFilteringProfileSecurityCategoriesPtrOutput
+}
+
+type twingateDNSFilteringProfileSecurityCategoriesPtrType TwingateDNSFilteringProfileSecurityCategoriesArgs
+
+func TwingateDNSFilteringProfileSecurityCategoriesPtr(v *TwingateDNSFilteringProfileSecurityCategoriesArgs) TwingateDNSFilteringProfileSecurityCategoriesPtrInput {
+	return (*twingateDNSFilteringProfileSecurityCategoriesPtrType)(v)
+}
+
+func (*twingateDNSFilteringProfileSecurityCategoriesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TwingateDNSFilteringProfileSecurityCategories)(nil)).Elem()
+}
+
+func (i *twingateDNSFilteringProfileSecurityCategoriesPtrType) ToTwingateDNSFilteringProfileSecurityCategoriesPtrOutput() TwingateDNSFilteringProfileSecurityCategoriesPtrOutput {
+	return i.ToTwingateDNSFilteringProfileSecurityCategoriesPtrOutputWithContext(context.Background())
+}
+
+func (i *twingateDNSFilteringProfileSecurityCategoriesPtrType) ToTwingateDNSFilteringProfileSecurityCategoriesPtrOutputWithContext(ctx context.Context) TwingateDNSFilteringProfileSecurityCategoriesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateDNSFilteringProfileSecurityCategoriesPtrOutput)
+}
+
+type TwingateDNSFilteringProfileSecurityCategoriesOutput struct{ *pulumi.OutputState }
+
+func (TwingateDNSFilteringProfileSecurityCategoriesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateDNSFilteringProfileSecurityCategories)(nil)).Elem()
+}
+
+func (o TwingateDNSFilteringProfileSecurityCategoriesOutput) ToTwingateDNSFilteringProfileSecurityCategoriesOutput() TwingateDNSFilteringProfileSecurityCategoriesOutput {
+	return o
+}
+
+func (o TwingateDNSFilteringProfileSecurityCategoriesOutput) ToTwingateDNSFilteringProfileSecurityCategoriesOutputWithContext(ctx context.Context) TwingateDNSFilteringProfileSecurityCategoriesOutput {
+	return o
+}
+
+func (o TwingateDNSFilteringProfileSecurityCategoriesOutput) ToTwingateDNSFilteringProfileSecurityCategoriesPtrOutput() TwingateDNSFilteringProfileSecurityCategoriesPtrOutput {
+	return o.ToTwingateDNSFilteringProfileSecurityCategoriesPtrOutputWithContext(context.Background())
+}
+
+func (o TwingateDNSFilteringProfileSecurityCategoriesOutput) ToTwingateDNSFilteringProfileSecurityCategoriesPtrOutputWithContext(ctx context.Context) TwingateDNSFilteringProfileSecurityCategoriesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TwingateDNSFilteringProfileSecurityCategories) *TwingateDNSFilteringProfileSecurityCategories {
+		return &v
+	}).(TwingateDNSFilteringProfileSecurityCategoriesPtrOutput)
+}
+
+// Whether to block cryptojacking sites. Defaults to true.
+func (o TwingateDNSFilteringProfileSecurityCategoriesOutput) BlockCryptojacking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TwingateDNSFilteringProfileSecurityCategories) *bool { return v.BlockCryptojacking }).(pulumi.BoolPtrOutput)
+}
+
+// Blocks public DNS entries from returning private IP addresses. Defaults to true.
+func (o TwingateDNSFilteringProfileSecurityCategoriesOutput) BlockDnsRebinding() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TwingateDNSFilteringProfileSecurityCategories) *bool { return v.BlockDnsRebinding }).(pulumi.BoolPtrOutput)
+}
+
+// Blocks DGA domains. Defaults to true.
+func (o TwingateDNSFilteringProfileSecurityCategoriesOutput) BlockDomainGenerationAlgorithms() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TwingateDNSFilteringProfileSecurityCategories) *bool { return v.BlockDomainGenerationAlgorithms }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to block homoglyph attacks. Defaults to true.
+func (o TwingateDNSFilteringProfileSecurityCategoriesOutput) BlockIdnHomoglyph() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TwingateDNSFilteringProfileSecurityCategories) *bool { return v.BlockIdnHomoglyph }).(pulumi.BoolPtrOutput)
+}
+
+// Blocks newly registered domains. Defaults to true.
+func (o TwingateDNSFilteringProfileSecurityCategoriesOutput) BlockNewlyRegisteredDomains() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TwingateDNSFilteringProfileSecurityCategories) *bool { return v.BlockNewlyRegisteredDomains }).(pulumi.BoolPtrOutput)
+}
+
+// Block parked domains. Defaults to true.
+func (o TwingateDNSFilteringProfileSecurityCategoriesOutput) BlockParkedDomains() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TwingateDNSFilteringProfileSecurityCategories) *bool { return v.BlockParkedDomains }).(pulumi.BoolPtrOutput)
+}
+
+// Blocks typosquatted domains. Defaults to true.
+func (o TwingateDNSFilteringProfileSecurityCategoriesOutput) BlockTyposquatting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TwingateDNSFilteringProfileSecurityCategories) *bool { return v.BlockTyposquatting }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to use Google Safe browsing lists to block content. Defaults to true.
+func (o TwingateDNSFilteringProfileSecurityCategoriesOutput) EnableGoogleSafeBrowsing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TwingateDNSFilteringProfileSecurityCategories) *bool { return v.EnableGoogleSafeBrowsing }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to filter content using threat intelligence feeds. Defaults to true.
+func (o TwingateDNSFilteringProfileSecurityCategoriesOutput) EnableThreatIntelligenceFeeds() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TwingateDNSFilteringProfileSecurityCategories) *bool { return v.EnableThreatIntelligenceFeeds }).(pulumi.BoolPtrOutput)
+}
+
+type TwingateDNSFilteringProfileSecurityCategoriesPtrOutput struct{ *pulumi.OutputState }
+
+func (TwingateDNSFilteringProfileSecurityCategoriesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TwingateDNSFilteringProfileSecurityCategories)(nil)).Elem()
+}
+
+func (o TwingateDNSFilteringProfileSecurityCategoriesPtrOutput) ToTwingateDNSFilteringProfileSecurityCategoriesPtrOutput() TwingateDNSFilteringProfileSecurityCategoriesPtrOutput {
+	return o
+}
+
+func (o TwingateDNSFilteringProfileSecurityCategoriesPtrOutput) ToTwingateDNSFilteringProfileSecurityCategoriesPtrOutputWithContext(ctx context.Context) TwingateDNSFilteringProfileSecurityCategoriesPtrOutput {
+	return o
+}
+
+func (o TwingateDNSFilteringProfileSecurityCategoriesPtrOutput) Elem() TwingateDNSFilteringProfileSecurityCategoriesOutput {
+	return o.ApplyT(func(v *TwingateDNSFilteringProfileSecurityCategories) TwingateDNSFilteringProfileSecurityCategories {
+		if v != nil {
+			return *v
+		}
+		var ret TwingateDNSFilteringProfileSecurityCategories
+		return ret
+	}).(TwingateDNSFilteringProfileSecurityCategoriesOutput)
+}
+
+// Whether to block cryptojacking sites. Defaults to true.
+func (o TwingateDNSFilteringProfileSecurityCategoriesPtrOutput) BlockCryptojacking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TwingateDNSFilteringProfileSecurityCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BlockCryptojacking
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Blocks public DNS entries from returning private IP addresses. Defaults to true.
+func (o TwingateDNSFilteringProfileSecurityCategoriesPtrOutput) BlockDnsRebinding() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TwingateDNSFilteringProfileSecurityCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BlockDnsRebinding
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Blocks DGA domains. Defaults to true.
+func (o TwingateDNSFilteringProfileSecurityCategoriesPtrOutput) BlockDomainGenerationAlgorithms() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TwingateDNSFilteringProfileSecurityCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BlockDomainGenerationAlgorithms
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to block homoglyph attacks. Defaults to true.
+func (o TwingateDNSFilteringProfileSecurityCategoriesPtrOutput) BlockIdnHomoglyph() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TwingateDNSFilteringProfileSecurityCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BlockIdnHomoglyph
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Blocks newly registered domains. Defaults to true.
+func (o TwingateDNSFilteringProfileSecurityCategoriesPtrOutput) BlockNewlyRegisteredDomains() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TwingateDNSFilteringProfileSecurityCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BlockNewlyRegisteredDomains
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Block parked domains. Defaults to true.
+func (o TwingateDNSFilteringProfileSecurityCategoriesPtrOutput) BlockParkedDomains() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TwingateDNSFilteringProfileSecurityCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BlockParkedDomains
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Blocks typosquatted domains. Defaults to true.
+func (o TwingateDNSFilteringProfileSecurityCategoriesPtrOutput) BlockTyposquatting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TwingateDNSFilteringProfileSecurityCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BlockTyposquatting
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to use Google Safe browsing lists to block content. Defaults to true.
+func (o TwingateDNSFilteringProfileSecurityCategoriesPtrOutput) EnableGoogleSafeBrowsing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TwingateDNSFilteringProfileSecurityCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableGoogleSafeBrowsing
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to filter content using threat intelligence feeds. Defaults to true.
+func (o TwingateDNSFilteringProfileSecurityCategoriesPtrOutput) EnableThreatIntelligenceFeeds() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TwingateDNSFilteringProfileSecurityCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableThreatIntelligenceFeeds
+	}).(pulumi.BoolPtrOutput)
+}
+
 type TwingateResourceAccessGroup struct {
 	// Group ID that will have permission to access the Resource.
 	GroupId *string `pulumi:"groupId"`
@@ -826,6 +1883,1035 @@ func (o GetTwingateConnectorsConnectorArrayOutput) Index(i pulumi.IntInput) GetT
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTwingateConnectorsConnector {
 		return vs[0].([]GetTwingateConnectorsConnector)[vs[1].(int)]
 	}).(GetTwingateConnectorsConnectorOutput)
+}
+
+type GetTwingateDNSFilteringProfileAllowedDomains struct {
+	// A set of allowed domains.
+	Domains []string `pulumi:"domains"`
+}
+
+// GetTwingateDNSFilteringProfileAllowedDomainsInput is an input type that accepts GetTwingateDNSFilteringProfileAllowedDomainsArgs and GetTwingateDNSFilteringProfileAllowedDomainsOutput values.
+// You can construct a concrete instance of `GetTwingateDNSFilteringProfileAllowedDomainsInput` via:
+//
+//	GetTwingateDNSFilteringProfileAllowedDomainsArgs{...}
+type GetTwingateDNSFilteringProfileAllowedDomainsInput interface {
+	pulumi.Input
+
+	ToGetTwingateDNSFilteringProfileAllowedDomainsOutput() GetTwingateDNSFilteringProfileAllowedDomainsOutput
+	ToGetTwingateDNSFilteringProfileAllowedDomainsOutputWithContext(context.Context) GetTwingateDNSFilteringProfileAllowedDomainsOutput
+}
+
+type GetTwingateDNSFilteringProfileAllowedDomainsArgs struct {
+	// A set of allowed domains.
+	Domains pulumi.StringArrayInput `pulumi:"domains"`
+}
+
+func (GetTwingateDNSFilteringProfileAllowedDomainsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTwingateDNSFilteringProfileAllowedDomains)(nil)).Elem()
+}
+
+func (i GetTwingateDNSFilteringProfileAllowedDomainsArgs) ToGetTwingateDNSFilteringProfileAllowedDomainsOutput() GetTwingateDNSFilteringProfileAllowedDomainsOutput {
+	return i.ToGetTwingateDNSFilteringProfileAllowedDomainsOutputWithContext(context.Background())
+}
+
+func (i GetTwingateDNSFilteringProfileAllowedDomainsArgs) ToGetTwingateDNSFilteringProfileAllowedDomainsOutputWithContext(ctx context.Context) GetTwingateDNSFilteringProfileAllowedDomainsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTwingateDNSFilteringProfileAllowedDomainsOutput)
+}
+
+func (i GetTwingateDNSFilteringProfileAllowedDomainsArgs) ToGetTwingateDNSFilteringProfileAllowedDomainsPtrOutput() GetTwingateDNSFilteringProfileAllowedDomainsPtrOutput {
+	return i.ToGetTwingateDNSFilteringProfileAllowedDomainsPtrOutputWithContext(context.Background())
+}
+
+func (i GetTwingateDNSFilteringProfileAllowedDomainsArgs) ToGetTwingateDNSFilteringProfileAllowedDomainsPtrOutputWithContext(ctx context.Context) GetTwingateDNSFilteringProfileAllowedDomainsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTwingateDNSFilteringProfileAllowedDomainsOutput).ToGetTwingateDNSFilteringProfileAllowedDomainsPtrOutputWithContext(ctx)
+}
+
+// GetTwingateDNSFilteringProfileAllowedDomainsPtrInput is an input type that accepts GetTwingateDNSFilteringProfileAllowedDomainsArgs, GetTwingateDNSFilteringProfileAllowedDomainsPtr and GetTwingateDNSFilteringProfileAllowedDomainsPtrOutput values.
+// You can construct a concrete instance of `GetTwingateDNSFilteringProfileAllowedDomainsPtrInput` via:
+//
+//	        GetTwingateDNSFilteringProfileAllowedDomainsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetTwingateDNSFilteringProfileAllowedDomainsPtrInput interface {
+	pulumi.Input
+
+	ToGetTwingateDNSFilteringProfileAllowedDomainsPtrOutput() GetTwingateDNSFilteringProfileAllowedDomainsPtrOutput
+	ToGetTwingateDNSFilteringProfileAllowedDomainsPtrOutputWithContext(context.Context) GetTwingateDNSFilteringProfileAllowedDomainsPtrOutput
+}
+
+type getTwingateDNSFilteringProfileAllowedDomainsPtrType GetTwingateDNSFilteringProfileAllowedDomainsArgs
+
+func GetTwingateDNSFilteringProfileAllowedDomainsPtr(v *GetTwingateDNSFilteringProfileAllowedDomainsArgs) GetTwingateDNSFilteringProfileAllowedDomainsPtrInput {
+	return (*getTwingateDNSFilteringProfileAllowedDomainsPtrType)(v)
+}
+
+func (*getTwingateDNSFilteringProfileAllowedDomainsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetTwingateDNSFilteringProfileAllowedDomains)(nil)).Elem()
+}
+
+func (i *getTwingateDNSFilteringProfileAllowedDomainsPtrType) ToGetTwingateDNSFilteringProfileAllowedDomainsPtrOutput() GetTwingateDNSFilteringProfileAllowedDomainsPtrOutput {
+	return i.ToGetTwingateDNSFilteringProfileAllowedDomainsPtrOutputWithContext(context.Background())
+}
+
+func (i *getTwingateDNSFilteringProfileAllowedDomainsPtrType) ToGetTwingateDNSFilteringProfileAllowedDomainsPtrOutputWithContext(ctx context.Context) GetTwingateDNSFilteringProfileAllowedDomainsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTwingateDNSFilteringProfileAllowedDomainsPtrOutput)
+}
+
+type GetTwingateDNSFilteringProfileAllowedDomainsOutput struct{ *pulumi.OutputState }
+
+func (GetTwingateDNSFilteringProfileAllowedDomainsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTwingateDNSFilteringProfileAllowedDomains)(nil)).Elem()
+}
+
+func (o GetTwingateDNSFilteringProfileAllowedDomainsOutput) ToGetTwingateDNSFilteringProfileAllowedDomainsOutput() GetTwingateDNSFilteringProfileAllowedDomainsOutput {
+	return o
+}
+
+func (o GetTwingateDNSFilteringProfileAllowedDomainsOutput) ToGetTwingateDNSFilteringProfileAllowedDomainsOutputWithContext(ctx context.Context) GetTwingateDNSFilteringProfileAllowedDomainsOutput {
+	return o
+}
+
+func (o GetTwingateDNSFilteringProfileAllowedDomainsOutput) ToGetTwingateDNSFilteringProfileAllowedDomainsPtrOutput() GetTwingateDNSFilteringProfileAllowedDomainsPtrOutput {
+	return o.ToGetTwingateDNSFilteringProfileAllowedDomainsPtrOutputWithContext(context.Background())
+}
+
+func (o GetTwingateDNSFilteringProfileAllowedDomainsOutput) ToGetTwingateDNSFilteringProfileAllowedDomainsPtrOutputWithContext(ctx context.Context) GetTwingateDNSFilteringProfileAllowedDomainsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetTwingateDNSFilteringProfileAllowedDomains) *GetTwingateDNSFilteringProfileAllowedDomains {
+		return &v
+	}).(GetTwingateDNSFilteringProfileAllowedDomainsPtrOutput)
+}
+
+// A set of allowed domains.
+func (o GetTwingateDNSFilteringProfileAllowedDomainsOutput) Domains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTwingateDNSFilteringProfileAllowedDomains) []string { return v.Domains }).(pulumi.StringArrayOutput)
+}
+
+type GetTwingateDNSFilteringProfileAllowedDomainsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetTwingateDNSFilteringProfileAllowedDomainsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetTwingateDNSFilteringProfileAllowedDomains)(nil)).Elem()
+}
+
+func (o GetTwingateDNSFilteringProfileAllowedDomainsPtrOutput) ToGetTwingateDNSFilteringProfileAllowedDomainsPtrOutput() GetTwingateDNSFilteringProfileAllowedDomainsPtrOutput {
+	return o
+}
+
+func (o GetTwingateDNSFilteringProfileAllowedDomainsPtrOutput) ToGetTwingateDNSFilteringProfileAllowedDomainsPtrOutputWithContext(ctx context.Context) GetTwingateDNSFilteringProfileAllowedDomainsPtrOutput {
+	return o
+}
+
+func (o GetTwingateDNSFilteringProfileAllowedDomainsPtrOutput) Elem() GetTwingateDNSFilteringProfileAllowedDomainsOutput {
+	return o.ApplyT(func(v *GetTwingateDNSFilteringProfileAllowedDomains) GetTwingateDNSFilteringProfileAllowedDomains {
+		if v != nil {
+			return *v
+		}
+		var ret GetTwingateDNSFilteringProfileAllowedDomains
+		return ret
+	}).(GetTwingateDNSFilteringProfileAllowedDomainsOutput)
+}
+
+// A set of allowed domains.
+func (o GetTwingateDNSFilteringProfileAllowedDomainsPtrOutput) Domains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetTwingateDNSFilteringProfileAllowedDomains) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Domains
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetTwingateDNSFilteringProfileContentCategories struct {
+	// Whether to block adult content.
+	BlockAdultContent bool `pulumi:"blockAdultContent"`
+	// Whether to block dating content.
+	BlockDating bool `pulumi:"blockDating"`
+	// Whether to block gambling content.
+	BlockGambling bool `pulumi:"blockGambling"`
+	// Whether to block games.
+	BlockGames bool `pulumi:"blockGames"`
+	// Whether to block piracy sites.
+	BlockPiracy bool `pulumi:"blockPiracy"`
+	// Whether to block social media.
+	BlockSocialMedia bool `pulumi:"blockSocialMedia"`
+	// Whether to block streaming content.
+	BlockStreaming bool `pulumi:"blockStreaming"`
+	// Whether to force safe search.
+	EnableSafesearch bool `pulumi:"enableSafesearch"`
+	// Whether to force YouTube to use restricted mode.
+	EnableYoutubeRestrictedMode bool `pulumi:"enableYoutubeRestrictedMode"`
+}
+
+// GetTwingateDNSFilteringProfileContentCategoriesInput is an input type that accepts GetTwingateDNSFilteringProfileContentCategoriesArgs and GetTwingateDNSFilteringProfileContentCategoriesOutput values.
+// You can construct a concrete instance of `GetTwingateDNSFilteringProfileContentCategoriesInput` via:
+//
+//	GetTwingateDNSFilteringProfileContentCategoriesArgs{...}
+type GetTwingateDNSFilteringProfileContentCategoriesInput interface {
+	pulumi.Input
+
+	ToGetTwingateDNSFilteringProfileContentCategoriesOutput() GetTwingateDNSFilteringProfileContentCategoriesOutput
+	ToGetTwingateDNSFilteringProfileContentCategoriesOutputWithContext(context.Context) GetTwingateDNSFilteringProfileContentCategoriesOutput
+}
+
+type GetTwingateDNSFilteringProfileContentCategoriesArgs struct {
+	// Whether to block adult content.
+	BlockAdultContent pulumi.BoolInput `pulumi:"blockAdultContent"`
+	// Whether to block dating content.
+	BlockDating pulumi.BoolInput `pulumi:"blockDating"`
+	// Whether to block gambling content.
+	BlockGambling pulumi.BoolInput `pulumi:"blockGambling"`
+	// Whether to block games.
+	BlockGames pulumi.BoolInput `pulumi:"blockGames"`
+	// Whether to block piracy sites.
+	BlockPiracy pulumi.BoolInput `pulumi:"blockPiracy"`
+	// Whether to block social media.
+	BlockSocialMedia pulumi.BoolInput `pulumi:"blockSocialMedia"`
+	// Whether to block streaming content.
+	BlockStreaming pulumi.BoolInput `pulumi:"blockStreaming"`
+	// Whether to force safe search.
+	EnableSafesearch pulumi.BoolInput `pulumi:"enableSafesearch"`
+	// Whether to force YouTube to use restricted mode.
+	EnableYoutubeRestrictedMode pulumi.BoolInput `pulumi:"enableYoutubeRestrictedMode"`
+}
+
+func (GetTwingateDNSFilteringProfileContentCategoriesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTwingateDNSFilteringProfileContentCategories)(nil)).Elem()
+}
+
+func (i GetTwingateDNSFilteringProfileContentCategoriesArgs) ToGetTwingateDNSFilteringProfileContentCategoriesOutput() GetTwingateDNSFilteringProfileContentCategoriesOutput {
+	return i.ToGetTwingateDNSFilteringProfileContentCategoriesOutputWithContext(context.Background())
+}
+
+func (i GetTwingateDNSFilteringProfileContentCategoriesArgs) ToGetTwingateDNSFilteringProfileContentCategoriesOutputWithContext(ctx context.Context) GetTwingateDNSFilteringProfileContentCategoriesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTwingateDNSFilteringProfileContentCategoriesOutput)
+}
+
+func (i GetTwingateDNSFilteringProfileContentCategoriesArgs) ToGetTwingateDNSFilteringProfileContentCategoriesPtrOutput() GetTwingateDNSFilteringProfileContentCategoriesPtrOutput {
+	return i.ToGetTwingateDNSFilteringProfileContentCategoriesPtrOutputWithContext(context.Background())
+}
+
+func (i GetTwingateDNSFilteringProfileContentCategoriesArgs) ToGetTwingateDNSFilteringProfileContentCategoriesPtrOutputWithContext(ctx context.Context) GetTwingateDNSFilteringProfileContentCategoriesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTwingateDNSFilteringProfileContentCategoriesOutput).ToGetTwingateDNSFilteringProfileContentCategoriesPtrOutputWithContext(ctx)
+}
+
+// GetTwingateDNSFilteringProfileContentCategoriesPtrInput is an input type that accepts GetTwingateDNSFilteringProfileContentCategoriesArgs, GetTwingateDNSFilteringProfileContentCategoriesPtr and GetTwingateDNSFilteringProfileContentCategoriesPtrOutput values.
+// You can construct a concrete instance of `GetTwingateDNSFilteringProfileContentCategoriesPtrInput` via:
+//
+//	        GetTwingateDNSFilteringProfileContentCategoriesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetTwingateDNSFilteringProfileContentCategoriesPtrInput interface {
+	pulumi.Input
+
+	ToGetTwingateDNSFilteringProfileContentCategoriesPtrOutput() GetTwingateDNSFilteringProfileContentCategoriesPtrOutput
+	ToGetTwingateDNSFilteringProfileContentCategoriesPtrOutputWithContext(context.Context) GetTwingateDNSFilteringProfileContentCategoriesPtrOutput
+}
+
+type getTwingateDNSFilteringProfileContentCategoriesPtrType GetTwingateDNSFilteringProfileContentCategoriesArgs
+
+func GetTwingateDNSFilteringProfileContentCategoriesPtr(v *GetTwingateDNSFilteringProfileContentCategoriesArgs) GetTwingateDNSFilteringProfileContentCategoriesPtrInput {
+	return (*getTwingateDNSFilteringProfileContentCategoriesPtrType)(v)
+}
+
+func (*getTwingateDNSFilteringProfileContentCategoriesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetTwingateDNSFilteringProfileContentCategories)(nil)).Elem()
+}
+
+func (i *getTwingateDNSFilteringProfileContentCategoriesPtrType) ToGetTwingateDNSFilteringProfileContentCategoriesPtrOutput() GetTwingateDNSFilteringProfileContentCategoriesPtrOutput {
+	return i.ToGetTwingateDNSFilteringProfileContentCategoriesPtrOutputWithContext(context.Background())
+}
+
+func (i *getTwingateDNSFilteringProfileContentCategoriesPtrType) ToGetTwingateDNSFilteringProfileContentCategoriesPtrOutputWithContext(ctx context.Context) GetTwingateDNSFilteringProfileContentCategoriesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTwingateDNSFilteringProfileContentCategoriesPtrOutput)
+}
+
+type GetTwingateDNSFilteringProfileContentCategoriesOutput struct{ *pulumi.OutputState }
+
+func (GetTwingateDNSFilteringProfileContentCategoriesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTwingateDNSFilteringProfileContentCategories)(nil)).Elem()
+}
+
+func (o GetTwingateDNSFilteringProfileContentCategoriesOutput) ToGetTwingateDNSFilteringProfileContentCategoriesOutput() GetTwingateDNSFilteringProfileContentCategoriesOutput {
+	return o
+}
+
+func (o GetTwingateDNSFilteringProfileContentCategoriesOutput) ToGetTwingateDNSFilteringProfileContentCategoriesOutputWithContext(ctx context.Context) GetTwingateDNSFilteringProfileContentCategoriesOutput {
+	return o
+}
+
+func (o GetTwingateDNSFilteringProfileContentCategoriesOutput) ToGetTwingateDNSFilteringProfileContentCategoriesPtrOutput() GetTwingateDNSFilteringProfileContentCategoriesPtrOutput {
+	return o.ToGetTwingateDNSFilteringProfileContentCategoriesPtrOutputWithContext(context.Background())
+}
+
+func (o GetTwingateDNSFilteringProfileContentCategoriesOutput) ToGetTwingateDNSFilteringProfileContentCategoriesPtrOutputWithContext(ctx context.Context) GetTwingateDNSFilteringProfileContentCategoriesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetTwingateDNSFilteringProfileContentCategories) *GetTwingateDNSFilteringProfileContentCategories {
+		return &v
+	}).(GetTwingateDNSFilteringProfileContentCategoriesPtrOutput)
+}
+
+// Whether to block adult content.
+func (o GetTwingateDNSFilteringProfileContentCategoriesOutput) BlockAdultContent() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTwingateDNSFilteringProfileContentCategories) bool { return v.BlockAdultContent }).(pulumi.BoolOutput)
+}
+
+// Whether to block dating content.
+func (o GetTwingateDNSFilteringProfileContentCategoriesOutput) BlockDating() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTwingateDNSFilteringProfileContentCategories) bool { return v.BlockDating }).(pulumi.BoolOutput)
+}
+
+// Whether to block gambling content.
+func (o GetTwingateDNSFilteringProfileContentCategoriesOutput) BlockGambling() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTwingateDNSFilteringProfileContentCategories) bool { return v.BlockGambling }).(pulumi.BoolOutput)
+}
+
+// Whether to block games.
+func (o GetTwingateDNSFilteringProfileContentCategoriesOutput) BlockGames() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTwingateDNSFilteringProfileContentCategories) bool { return v.BlockGames }).(pulumi.BoolOutput)
+}
+
+// Whether to block piracy sites.
+func (o GetTwingateDNSFilteringProfileContentCategoriesOutput) BlockPiracy() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTwingateDNSFilteringProfileContentCategories) bool { return v.BlockPiracy }).(pulumi.BoolOutput)
+}
+
+// Whether to block social media.
+func (o GetTwingateDNSFilteringProfileContentCategoriesOutput) BlockSocialMedia() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTwingateDNSFilteringProfileContentCategories) bool { return v.BlockSocialMedia }).(pulumi.BoolOutput)
+}
+
+// Whether to block streaming content.
+func (o GetTwingateDNSFilteringProfileContentCategoriesOutput) BlockStreaming() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTwingateDNSFilteringProfileContentCategories) bool { return v.BlockStreaming }).(pulumi.BoolOutput)
+}
+
+// Whether to force safe search.
+func (o GetTwingateDNSFilteringProfileContentCategoriesOutput) EnableSafesearch() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTwingateDNSFilteringProfileContentCategories) bool { return v.EnableSafesearch }).(pulumi.BoolOutput)
+}
+
+// Whether to force YouTube to use restricted mode.
+func (o GetTwingateDNSFilteringProfileContentCategoriesOutput) EnableYoutubeRestrictedMode() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTwingateDNSFilteringProfileContentCategories) bool { return v.EnableYoutubeRestrictedMode }).(pulumi.BoolOutput)
+}
+
+type GetTwingateDNSFilteringProfileContentCategoriesPtrOutput struct{ *pulumi.OutputState }
+
+func (GetTwingateDNSFilteringProfileContentCategoriesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetTwingateDNSFilteringProfileContentCategories)(nil)).Elem()
+}
+
+func (o GetTwingateDNSFilteringProfileContentCategoriesPtrOutput) ToGetTwingateDNSFilteringProfileContentCategoriesPtrOutput() GetTwingateDNSFilteringProfileContentCategoriesPtrOutput {
+	return o
+}
+
+func (o GetTwingateDNSFilteringProfileContentCategoriesPtrOutput) ToGetTwingateDNSFilteringProfileContentCategoriesPtrOutputWithContext(ctx context.Context) GetTwingateDNSFilteringProfileContentCategoriesPtrOutput {
+	return o
+}
+
+func (o GetTwingateDNSFilteringProfileContentCategoriesPtrOutput) Elem() GetTwingateDNSFilteringProfileContentCategoriesOutput {
+	return o.ApplyT(func(v *GetTwingateDNSFilteringProfileContentCategories) GetTwingateDNSFilteringProfileContentCategories {
+		if v != nil {
+			return *v
+		}
+		var ret GetTwingateDNSFilteringProfileContentCategories
+		return ret
+	}).(GetTwingateDNSFilteringProfileContentCategoriesOutput)
+}
+
+// Whether to block adult content.
+func (o GetTwingateDNSFilteringProfileContentCategoriesPtrOutput) BlockAdultContent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetTwingateDNSFilteringProfileContentCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.BlockAdultContent
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to block dating content.
+func (o GetTwingateDNSFilteringProfileContentCategoriesPtrOutput) BlockDating() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetTwingateDNSFilteringProfileContentCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.BlockDating
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to block gambling content.
+func (o GetTwingateDNSFilteringProfileContentCategoriesPtrOutput) BlockGambling() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetTwingateDNSFilteringProfileContentCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.BlockGambling
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to block games.
+func (o GetTwingateDNSFilteringProfileContentCategoriesPtrOutput) BlockGames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetTwingateDNSFilteringProfileContentCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.BlockGames
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to block piracy sites.
+func (o GetTwingateDNSFilteringProfileContentCategoriesPtrOutput) BlockPiracy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetTwingateDNSFilteringProfileContentCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.BlockPiracy
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to block social media.
+func (o GetTwingateDNSFilteringProfileContentCategoriesPtrOutput) BlockSocialMedia() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetTwingateDNSFilteringProfileContentCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.BlockSocialMedia
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to block streaming content.
+func (o GetTwingateDNSFilteringProfileContentCategoriesPtrOutput) BlockStreaming() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetTwingateDNSFilteringProfileContentCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.BlockStreaming
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to force safe search.
+func (o GetTwingateDNSFilteringProfileContentCategoriesPtrOutput) EnableSafesearch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetTwingateDNSFilteringProfileContentCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableSafesearch
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to force YouTube to use restricted mode.
+func (o GetTwingateDNSFilteringProfileContentCategoriesPtrOutput) EnableYoutubeRestrictedMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetTwingateDNSFilteringProfileContentCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableYoutubeRestrictedMode
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetTwingateDNSFilteringProfileDeniedDomains struct {
+	// A set of denied domains.
+	Domains []string `pulumi:"domains"`
+}
+
+// GetTwingateDNSFilteringProfileDeniedDomainsInput is an input type that accepts GetTwingateDNSFilteringProfileDeniedDomainsArgs and GetTwingateDNSFilteringProfileDeniedDomainsOutput values.
+// You can construct a concrete instance of `GetTwingateDNSFilteringProfileDeniedDomainsInput` via:
+//
+//	GetTwingateDNSFilteringProfileDeniedDomainsArgs{...}
+type GetTwingateDNSFilteringProfileDeniedDomainsInput interface {
+	pulumi.Input
+
+	ToGetTwingateDNSFilteringProfileDeniedDomainsOutput() GetTwingateDNSFilteringProfileDeniedDomainsOutput
+	ToGetTwingateDNSFilteringProfileDeniedDomainsOutputWithContext(context.Context) GetTwingateDNSFilteringProfileDeniedDomainsOutput
+}
+
+type GetTwingateDNSFilteringProfileDeniedDomainsArgs struct {
+	// A set of denied domains.
+	Domains pulumi.StringArrayInput `pulumi:"domains"`
+}
+
+func (GetTwingateDNSFilteringProfileDeniedDomainsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTwingateDNSFilteringProfileDeniedDomains)(nil)).Elem()
+}
+
+func (i GetTwingateDNSFilteringProfileDeniedDomainsArgs) ToGetTwingateDNSFilteringProfileDeniedDomainsOutput() GetTwingateDNSFilteringProfileDeniedDomainsOutput {
+	return i.ToGetTwingateDNSFilteringProfileDeniedDomainsOutputWithContext(context.Background())
+}
+
+func (i GetTwingateDNSFilteringProfileDeniedDomainsArgs) ToGetTwingateDNSFilteringProfileDeniedDomainsOutputWithContext(ctx context.Context) GetTwingateDNSFilteringProfileDeniedDomainsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTwingateDNSFilteringProfileDeniedDomainsOutput)
+}
+
+func (i GetTwingateDNSFilteringProfileDeniedDomainsArgs) ToGetTwingateDNSFilteringProfileDeniedDomainsPtrOutput() GetTwingateDNSFilteringProfileDeniedDomainsPtrOutput {
+	return i.ToGetTwingateDNSFilteringProfileDeniedDomainsPtrOutputWithContext(context.Background())
+}
+
+func (i GetTwingateDNSFilteringProfileDeniedDomainsArgs) ToGetTwingateDNSFilteringProfileDeniedDomainsPtrOutputWithContext(ctx context.Context) GetTwingateDNSFilteringProfileDeniedDomainsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTwingateDNSFilteringProfileDeniedDomainsOutput).ToGetTwingateDNSFilteringProfileDeniedDomainsPtrOutputWithContext(ctx)
+}
+
+// GetTwingateDNSFilteringProfileDeniedDomainsPtrInput is an input type that accepts GetTwingateDNSFilteringProfileDeniedDomainsArgs, GetTwingateDNSFilteringProfileDeniedDomainsPtr and GetTwingateDNSFilteringProfileDeniedDomainsPtrOutput values.
+// You can construct a concrete instance of `GetTwingateDNSFilteringProfileDeniedDomainsPtrInput` via:
+//
+//	        GetTwingateDNSFilteringProfileDeniedDomainsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetTwingateDNSFilteringProfileDeniedDomainsPtrInput interface {
+	pulumi.Input
+
+	ToGetTwingateDNSFilteringProfileDeniedDomainsPtrOutput() GetTwingateDNSFilteringProfileDeniedDomainsPtrOutput
+	ToGetTwingateDNSFilteringProfileDeniedDomainsPtrOutputWithContext(context.Context) GetTwingateDNSFilteringProfileDeniedDomainsPtrOutput
+}
+
+type getTwingateDNSFilteringProfileDeniedDomainsPtrType GetTwingateDNSFilteringProfileDeniedDomainsArgs
+
+func GetTwingateDNSFilteringProfileDeniedDomainsPtr(v *GetTwingateDNSFilteringProfileDeniedDomainsArgs) GetTwingateDNSFilteringProfileDeniedDomainsPtrInput {
+	return (*getTwingateDNSFilteringProfileDeniedDomainsPtrType)(v)
+}
+
+func (*getTwingateDNSFilteringProfileDeniedDomainsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetTwingateDNSFilteringProfileDeniedDomains)(nil)).Elem()
+}
+
+func (i *getTwingateDNSFilteringProfileDeniedDomainsPtrType) ToGetTwingateDNSFilteringProfileDeniedDomainsPtrOutput() GetTwingateDNSFilteringProfileDeniedDomainsPtrOutput {
+	return i.ToGetTwingateDNSFilteringProfileDeniedDomainsPtrOutputWithContext(context.Background())
+}
+
+func (i *getTwingateDNSFilteringProfileDeniedDomainsPtrType) ToGetTwingateDNSFilteringProfileDeniedDomainsPtrOutputWithContext(ctx context.Context) GetTwingateDNSFilteringProfileDeniedDomainsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTwingateDNSFilteringProfileDeniedDomainsPtrOutput)
+}
+
+type GetTwingateDNSFilteringProfileDeniedDomainsOutput struct{ *pulumi.OutputState }
+
+func (GetTwingateDNSFilteringProfileDeniedDomainsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTwingateDNSFilteringProfileDeniedDomains)(nil)).Elem()
+}
+
+func (o GetTwingateDNSFilteringProfileDeniedDomainsOutput) ToGetTwingateDNSFilteringProfileDeniedDomainsOutput() GetTwingateDNSFilteringProfileDeniedDomainsOutput {
+	return o
+}
+
+func (o GetTwingateDNSFilteringProfileDeniedDomainsOutput) ToGetTwingateDNSFilteringProfileDeniedDomainsOutputWithContext(ctx context.Context) GetTwingateDNSFilteringProfileDeniedDomainsOutput {
+	return o
+}
+
+func (o GetTwingateDNSFilteringProfileDeniedDomainsOutput) ToGetTwingateDNSFilteringProfileDeniedDomainsPtrOutput() GetTwingateDNSFilteringProfileDeniedDomainsPtrOutput {
+	return o.ToGetTwingateDNSFilteringProfileDeniedDomainsPtrOutputWithContext(context.Background())
+}
+
+func (o GetTwingateDNSFilteringProfileDeniedDomainsOutput) ToGetTwingateDNSFilteringProfileDeniedDomainsPtrOutputWithContext(ctx context.Context) GetTwingateDNSFilteringProfileDeniedDomainsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetTwingateDNSFilteringProfileDeniedDomains) *GetTwingateDNSFilteringProfileDeniedDomains {
+		return &v
+	}).(GetTwingateDNSFilteringProfileDeniedDomainsPtrOutput)
+}
+
+// A set of denied domains.
+func (o GetTwingateDNSFilteringProfileDeniedDomainsOutput) Domains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTwingateDNSFilteringProfileDeniedDomains) []string { return v.Domains }).(pulumi.StringArrayOutput)
+}
+
+type GetTwingateDNSFilteringProfileDeniedDomainsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetTwingateDNSFilteringProfileDeniedDomainsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetTwingateDNSFilteringProfileDeniedDomains)(nil)).Elem()
+}
+
+func (o GetTwingateDNSFilteringProfileDeniedDomainsPtrOutput) ToGetTwingateDNSFilteringProfileDeniedDomainsPtrOutput() GetTwingateDNSFilteringProfileDeniedDomainsPtrOutput {
+	return o
+}
+
+func (o GetTwingateDNSFilteringProfileDeniedDomainsPtrOutput) ToGetTwingateDNSFilteringProfileDeniedDomainsPtrOutputWithContext(ctx context.Context) GetTwingateDNSFilteringProfileDeniedDomainsPtrOutput {
+	return o
+}
+
+func (o GetTwingateDNSFilteringProfileDeniedDomainsPtrOutput) Elem() GetTwingateDNSFilteringProfileDeniedDomainsOutput {
+	return o.ApplyT(func(v *GetTwingateDNSFilteringProfileDeniedDomains) GetTwingateDNSFilteringProfileDeniedDomains {
+		if v != nil {
+			return *v
+		}
+		var ret GetTwingateDNSFilteringProfileDeniedDomains
+		return ret
+	}).(GetTwingateDNSFilteringProfileDeniedDomainsOutput)
+}
+
+// A set of denied domains.
+func (o GetTwingateDNSFilteringProfileDeniedDomainsPtrOutput) Domains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetTwingateDNSFilteringProfileDeniedDomains) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Domains
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetTwingateDNSFilteringProfilePrivacyCategories struct {
+	// Whether to block ads and trackers.
+	BlockAdsAndTrackers bool `pulumi:"blockAdsAndTrackers"`
+	// Whether to block affiliate links.
+	BlockAffiliateLinks bool `pulumi:"blockAffiliateLinks"`
+	// Whether to block disguised third party trackers.
+	BlockDisguisedTrackers bool `pulumi:"blockDisguisedTrackers"`
+}
+
+// GetTwingateDNSFilteringProfilePrivacyCategoriesInput is an input type that accepts GetTwingateDNSFilteringProfilePrivacyCategoriesArgs and GetTwingateDNSFilteringProfilePrivacyCategoriesOutput values.
+// You can construct a concrete instance of `GetTwingateDNSFilteringProfilePrivacyCategoriesInput` via:
+//
+//	GetTwingateDNSFilteringProfilePrivacyCategoriesArgs{...}
+type GetTwingateDNSFilteringProfilePrivacyCategoriesInput interface {
+	pulumi.Input
+
+	ToGetTwingateDNSFilteringProfilePrivacyCategoriesOutput() GetTwingateDNSFilteringProfilePrivacyCategoriesOutput
+	ToGetTwingateDNSFilteringProfilePrivacyCategoriesOutputWithContext(context.Context) GetTwingateDNSFilteringProfilePrivacyCategoriesOutput
+}
+
+type GetTwingateDNSFilteringProfilePrivacyCategoriesArgs struct {
+	// Whether to block ads and trackers.
+	BlockAdsAndTrackers pulumi.BoolInput `pulumi:"blockAdsAndTrackers"`
+	// Whether to block affiliate links.
+	BlockAffiliateLinks pulumi.BoolInput `pulumi:"blockAffiliateLinks"`
+	// Whether to block disguised third party trackers.
+	BlockDisguisedTrackers pulumi.BoolInput `pulumi:"blockDisguisedTrackers"`
+}
+
+func (GetTwingateDNSFilteringProfilePrivacyCategoriesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTwingateDNSFilteringProfilePrivacyCategories)(nil)).Elem()
+}
+
+func (i GetTwingateDNSFilteringProfilePrivacyCategoriesArgs) ToGetTwingateDNSFilteringProfilePrivacyCategoriesOutput() GetTwingateDNSFilteringProfilePrivacyCategoriesOutput {
+	return i.ToGetTwingateDNSFilteringProfilePrivacyCategoriesOutputWithContext(context.Background())
+}
+
+func (i GetTwingateDNSFilteringProfilePrivacyCategoriesArgs) ToGetTwingateDNSFilteringProfilePrivacyCategoriesOutputWithContext(ctx context.Context) GetTwingateDNSFilteringProfilePrivacyCategoriesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTwingateDNSFilteringProfilePrivacyCategoriesOutput)
+}
+
+func (i GetTwingateDNSFilteringProfilePrivacyCategoriesArgs) ToGetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput() GetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput {
+	return i.ToGetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutputWithContext(context.Background())
+}
+
+func (i GetTwingateDNSFilteringProfilePrivacyCategoriesArgs) ToGetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutputWithContext(ctx context.Context) GetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTwingateDNSFilteringProfilePrivacyCategoriesOutput).ToGetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutputWithContext(ctx)
+}
+
+// GetTwingateDNSFilteringProfilePrivacyCategoriesPtrInput is an input type that accepts GetTwingateDNSFilteringProfilePrivacyCategoriesArgs, GetTwingateDNSFilteringProfilePrivacyCategoriesPtr and GetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput values.
+// You can construct a concrete instance of `GetTwingateDNSFilteringProfilePrivacyCategoriesPtrInput` via:
+//
+//	        GetTwingateDNSFilteringProfilePrivacyCategoriesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetTwingateDNSFilteringProfilePrivacyCategoriesPtrInput interface {
+	pulumi.Input
+
+	ToGetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput() GetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput
+	ToGetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutputWithContext(context.Context) GetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput
+}
+
+type getTwingateDNSFilteringProfilePrivacyCategoriesPtrType GetTwingateDNSFilteringProfilePrivacyCategoriesArgs
+
+func GetTwingateDNSFilteringProfilePrivacyCategoriesPtr(v *GetTwingateDNSFilteringProfilePrivacyCategoriesArgs) GetTwingateDNSFilteringProfilePrivacyCategoriesPtrInput {
+	return (*getTwingateDNSFilteringProfilePrivacyCategoriesPtrType)(v)
+}
+
+func (*getTwingateDNSFilteringProfilePrivacyCategoriesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetTwingateDNSFilteringProfilePrivacyCategories)(nil)).Elem()
+}
+
+func (i *getTwingateDNSFilteringProfilePrivacyCategoriesPtrType) ToGetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput() GetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput {
+	return i.ToGetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutputWithContext(context.Background())
+}
+
+func (i *getTwingateDNSFilteringProfilePrivacyCategoriesPtrType) ToGetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutputWithContext(ctx context.Context) GetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput)
+}
+
+type GetTwingateDNSFilteringProfilePrivacyCategoriesOutput struct{ *pulumi.OutputState }
+
+func (GetTwingateDNSFilteringProfilePrivacyCategoriesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTwingateDNSFilteringProfilePrivacyCategories)(nil)).Elem()
+}
+
+func (o GetTwingateDNSFilteringProfilePrivacyCategoriesOutput) ToGetTwingateDNSFilteringProfilePrivacyCategoriesOutput() GetTwingateDNSFilteringProfilePrivacyCategoriesOutput {
+	return o
+}
+
+func (o GetTwingateDNSFilteringProfilePrivacyCategoriesOutput) ToGetTwingateDNSFilteringProfilePrivacyCategoriesOutputWithContext(ctx context.Context) GetTwingateDNSFilteringProfilePrivacyCategoriesOutput {
+	return o
+}
+
+func (o GetTwingateDNSFilteringProfilePrivacyCategoriesOutput) ToGetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput() GetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput {
+	return o.ToGetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutputWithContext(context.Background())
+}
+
+func (o GetTwingateDNSFilteringProfilePrivacyCategoriesOutput) ToGetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutputWithContext(ctx context.Context) GetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetTwingateDNSFilteringProfilePrivacyCategories) *GetTwingateDNSFilteringProfilePrivacyCategories {
+		return &v
+	}).(GetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput)
+}
+
+// Whether to block ads and trackers.
+func (o GetTwingateDNSFilteringProfilePrivacyCategoriesOutput) BlockAdsAndTrackers() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTwingateDNSFilteringProfilePrivacyCategories) bool { return v.BlockAdsAndTrackers }).(pulumi.BoolOutput)
+}
+
+// Whether to block affiliate links.
+func (o GetTwingateDNSFilteringProfilePrivacyCategoriesOutput) BlockAffiliateLinks() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTwingateDNSFilteringProfilePrivacyCategories) bool { return v.BlockAffiliateLinks }).(pulumi.BoolOutput)
+}
+
+// Whether to block disguised third party trackers.
+func (o GetTwingateDNSFilteringProfilePrivacyCategoriesOutput) BlockDisguisedTrackers() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTwingateDNSFilteringProfilePrivacyCategories) bool { return v.BlockDisguisedTrackers }).(pulumi.BoolOutput)
+}
+
+type GetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput struct{ *pulumi.OutputState }
+
+func (GetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetTwingateDNSFilteringProfilePrivacyCategories)(nil)).Elem()
+}
+
+func (o GetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput) ToGetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput() GetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput {
+	return o
+}
+
+func (o GetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput) ToGetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutputWithContext(ctx context.Context) GetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput {
+	return o
+}
+
+func (o GetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput) Elem() GetTwingateDNSFilteringProfilePrivacyCategoriesOutput {
+	return o.ApplyT(func(v *GetTwingateDNSFilteringProfilePrivacyCategories) GetTwingateDNSFilteringProfilePrivacyCategories {
+		if v != nil {
+			return *v
+		}
+		var ret GetTwingateDNSFilteringProfilePrivacyCategories
+		return ret
+	}).(GetTwingateDNSFilteringProfilePrivacyCategoriesOutput)
+}
+
+// Whether to block ads and trackers.
+func (o GetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput) BlockAdsAndTrackers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetTwingateDNSFilteringProfilePrivacyCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.BlockAdsAndTrackers
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to block affiliate links.
+func (o GetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput) BlockAffiliateLinks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetTwingateDNSFilteringProfilePrivacyCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.BlockAffiliateLinks
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to block disguised third party trackers.
+func (o GetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput) BlockDisguisedTrackers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetTwingateDNSFilteringProfilePrivacyCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.BlockDisguisedTrackers
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetTwingateDNSFilteringProfileSecurityCategories struct {
+	// Whether to block cryptojacking sites.
+	BlockCryptojacking bool `pulumi:"blockCryptojacking"`
+	// Blocks public DNS entries from returning private IP addresses.
+	BlockDnsRebinding bool `pulumi:"blockDnsRebinding"`
+	// Blocks DGA domains.
+	BlockDomainGenerationAlgorithms bool `pulumi:"blockDomainGenerationAlgorithms"`
+	// Whether to block homoglyph attacks.
+	BlockIdnHomoglyph bool `pulumi:"blockIdnHomoglyph"`
+	// Blocks newly registered domains.
+	BlockNewlyRegisteredDomains bool `pulumi:"blockNewlyRegisteredDomains"`
+	// Block parked domains.
+	BlockParkedDomains bool `pulumi:"blockParkedDomains"`
+	// Blocks typosquatted domains.
+	BlockTyposquatting bool `pulumi:"blockTyposquatting"`
+	// Whether to use Google Safe browsing lists to block content.
+	EnableGoogleSafeBrowsing bool `pulumi:"enableGoogleSafeBrowsing"`
+	// Whether to filter content using threat intelligence feeds.
+	EnableThreatIntelligenceFeeds bool `pulumi:"enableThreatIntelligenceFeeds"`
+}
+
+// GetTwingateDNSFilteringProfileSecurityCategoriesInput is an input type that accepts GetTwingateDNSFilteringProfileSecurityCategoriesArgs and GetTwingateDNSFilteringProfileSecurityCategoriesOutput values.
+// You can construct a concrete instance of `GetTwingateDNSFilteringProfileSecurityCategoriesInput` via:
+//
+//	GetTwingateDNSFilteringProfileSecurityCategoriesArgs{...}
+type GetTwingateDNSFilteringProfileSecurityCategoriesInput interface {
+	pulumi.Input
+
+	ToGetTwingateDNSFilteringProfileSecurityCategoriesOutput() GetTwingateDNSFilteringProfileSecurityCategoriesOutput
+	ToGetTwingateDNSFilteringProfileSecurityCategoriesOutputWithContext(context.Context) GetTwingateDNSFilteringProfileSecurityCategoriesOutput
+}
+
+type GetTwingateDNSFilteringProfileSecurityCategoriesArgs struct {
+	// Whether to block cryptojacking sites.
+	BlockCryptojacking pulumi.BoolInput `pulumi:"blockCryptojacking"`
+	// Blocks public DNS entries from returning private IP addresses.
+	BlockDnsRebinding pulumi.BoolInput `pulumi:"blockDnsRebinding"`
+	// Blocks DGA domains.
+	BlockDomainGenerationAlgorithms pulumi.BoolInput `pulumi:"blockDomainGenerationAlgorithms"`
+	// Whether to block homoglyph attacks.
+	BlockIdnHomoglyph pulumi.BoolInput `pulumi:"blockIdnHomoglyph"`
+	// Blocks newly registered domains.
+	BlockNewlyRegisteredDomains pulumi.BoolInput `pulumi:"blockNewlyRegisteredDomains"`
+	// Block parked domains.
+	BlockParkedDomains pulumi.BoolInput `pulumi:"blockParkedDomains"`
+	// Blocks typosquatted domains.
+	BlockTyposquatting pulumi.BoolInput `pulumi:"blockTyposquatting"`
+	// Whether to use Google Safe browsing lists to block content.
+	EnableGoogleSafeBrowsing pulumi.BoolInput `pulumi:"enableGoogleSafeBrowsing"`
+	// Whether to filter content using threat intelligence feeds.
+	EnableThreatIntelligenceFeeds pulumi.BoolInput `pulumi:"enableThreatIntelligenceFeeds"`
+}
+
+func (GetTwingateDNSFilteringProfileSecurityCategoriesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTwingateDNSFilteringProfileSecurityCategories)(nil)).Elem()
+}
+
+func (i GetTwingateDNSFilteringProfileSecurityCategoriesArgs) ToGetTwingateDNSFilteringProfileSecurityCategoriesOutput() GetTwingateDNSFilteringProfileSecurityCategoriesOutput {
+	return i.ToGetTwingateDNSFilteringProfileSecurityCategoriesOutputWithContext(context.Background())
+}
+
+func (i GetTwingateDNSFilteringProfileSecurityCategoriesArgs) ToGetTwingateDNSFilteringProfileSecurityCategoriesOutputWithContext(ctx context.Context) GetTwingateDNSFilteringProfileSecurityCategoriesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTwingateDNSFilteringProfileSecurityCategoriesOutput)
+}
+
+func (i GetTwingateDNSFilteringProfileSecurityCategoriesArgs) ToGetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput() GetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput {
+	return i.ToGetTwingateDNSFilteringProfileSecurityCategoriesPtrOutputWithContext(context.Background())
+}
+
+func (i GetTwingateDNSFilteringProfileSecurityCategoriesArgs) ToGetTwingateDNSFilteringProfileSecurityCategoriesPtrOutputWithContext(ctx context.Context) GetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTwingateDNSFilteringProfileSecurityCategoriesOutput).ToGetTwingateDNSFilteringProfileSecurityCategoriesPtrOutputWithContext(ctx)
+}
+
+// GetTwingateDNSFilteringProfileSecurityCategoriesPtrInput is an input type that accepts GetTwingateDNSFilteringProfileSecurityCategoriesArgs, GetTwingateDNSFilteringProfileSecurityCategoriesPtr and GetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput values.
+// You can construct a concrete instance of `GetTwingateDNSFilteringProfileSecurityCategoriesPtrInput` via:
+//
+//	        GetTwingateDNSFilteringProfileSecurityCategoriesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetTwingateDNSFilteringProfileSecurityCategoriesPtrInput interface {
+	pulumi.Input
+
+	ToGetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput() GetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput
+	ToGetTwingateDNSFilteringProfileSecurityCategoriesPtrOutputWithContext(context.Context) GetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput
+}
+
+type getTwingateDNSFilteringProfileSecurityCategoriesPtrType GetTwingateDNSFilteringProfileSecurityCategoriesArgs
+
+func GetTwingateDNSFilteringProfileSecurityCategoriesPtr(v *GetTwingateDNSFilteringProfileSecurityCategoriesArgs) GetTwingateDNSFilteringProfileSecurityCategoriesPtrInput {
+	return (*getTwingateDNSFilteringProfileSecurityCategoriesPtrType)(v)
+}
+
+func (*getTwingateDNSFilteringProfileSecurityCategoriesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetTwingateDNSFilteringProfileSecurityCategories)(nil)).Elem()
+}
+
+func (i *getTwingateDNSFilteringProfileSecurityCategoriesPtrType) ToGetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput() GetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput {
+	return i.ToGetTwingateDNSFilteringProfileSecurityCategoriesPtrOutputWithContext(context.Background())
+}
+
+func (i *getTwingateDNSFilteringProfileSecurityCategoriesPtrType) ToGetTwingateDNSFilteringProfileSecurityCategoriesPtrOutputWithContext(ctx context.Context) GetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput)
+}
+
+type GetTwingateDNSFilteringProfileSecurityCategoriesOutput struct{ *pulumi.OutputState }
+
+func (GetTwingateDNSFilteringProfileSecurityCategoriesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTwingateDNSFilteringProfileSecurityCategories)(nil)).Elem()
+}
+
+func (o GetTwingateDNSFilteringProfileSecurityCategoriesOutput) ToGetTwingateDNSFilteringProfileSecurityCategoriesOutput() GetTwingateDNSFilteringProfileSecurityCategoriesOutput {
+	return o
+}
+
+func (o GetTwingateDNSFilteringProfileSecurityCategoriesOutput) ToGetTwingateDNSFilteringProfileSecurityCategoriesOutputWithContext(ctx context.Context) GetTwingateDNSFilteringProfileSecurityCategoriesOutput {
+	return o
+}
+
+func (o GetTwingateDNSFilteringProfileSecurityCategoriesOutput) ToGetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput() GetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput {
+	return o.ToGetTwingateDNSFilteringProfileSecurityCategoriesPtrOutputWithContext(context.Background())
+}
+
+func (o GetTwingateDNSFilteringProfileSecurityCategoriesOutput) ToGetTwingateDNSFilteringProfileSecurityCategoriesPtrOutputWithContext(ctx context.Context) GetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetTwingateDNSFilteringProfileSecurityCategories) *GetTwingateDNSFilteringProfileSecurityCategories {
+		return &v
+	}).(GetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput)
+}
+
+// Whether to block cryptojacking sites.
+func (o GetTwingateDNSFilteringProfileSecurityCategoriesOutput) BlockCryptojacking() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTwingateDNSFilteringProfileSecurityCategories) bool { return v.BlockCryptojacking }).(pulumi.BoolOutput)
+}
+
+// Blocks public DNS entries from returning private IP addresses.
+func (o GetTwingateDNSFilteringProfileSecurityCategoriesOutput) BlockDnsRebinding() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTwingateDNSFilteringProfileSecurityCategories) bool { return v.BlockDnsRebinding }).(pulumi.BoolOutput)
+}
+
+// Blocks DGA domains.
+func (o GetTwingateDNSFilteringProfileSecurityCategoriesOutput) BlockDomainGenerationAlgorithms() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTwingateDNSFilteringProfileSecurityCategories) bool {
+		return v.BlockDomainGenerationAlgorithms
+	}).(pulumi.BoolOutput)
+}
+
+// Whether to block homoglyph attacks.
+func (o GetTwingateDNSFilteringProfileSecurityCategoriesOutput) BlockIdnHomoglyph() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTwingateDNSFilteringProfileSecurityCategories) bool { return v.BlockIdnHomoglyph }).(pulumi.BoolOutput)
+}
+
+// Blocks newly registered domains.
+func (o GetTwingateDNSFilteringProfileSecurityCategoriesOutput) BlockNewlyRegisteredDomains() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTwingateDNSFilteringProfileSecurityCategories) bool { return v.BlockNewlyRegisteredDomains }).(pulumi.BoolOutput)
+}
+
+// Block parked domains.
+func (o GetTwingateDNSFilteringProfileSecurityCategoriesOutput) BlockParkedDomains() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTwingateDNSFilteringProfileSecurityCategories) bool { return v.BlockParkedDomains }).(pulumi.BoolOutput)
+}
+
+// Blocks typosquatted domains.
+func (o GetTwingateDNSFilteringProfileSecurityCategoriesOutput) BlockTyposquatting() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTwingateDNSFilteringProfileSecurityCategories) bool { return v.BlockTyposquatting }).(pulumi.BoolOutput)
+}
+
+// Whether to use Google Safe browsing lists to block content.
+func (o GetTwingateDNSFilteringProfileSecurityCategoriesOutput) EnableGoogleSafeBrowsing() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTwingateDNSFilteringProfileSecurityCategories) bool { return v.EnableGoogleSafeBrowsing }).(pulumi.BoolOutput)
+}
+
+// Whether to filter content using threat intelligence feeds.
+func (o GetTwingateDNSFilteringProfileSecurityCategoriesOutput) EnableThreatIntelligenceFeeds() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTwingateDNSFilteringProfileSecurityCategories) bool { return v.EnableThreatIntelligenceFeeds }).(pulumi.BoolOutput)
+}
+
+type GetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput struct{ *pulumi.OutputState }
+
+func (GetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetTwingateDNSFilteringProfileSecurityCategories)(nil)).Elem()
+}
+
+func (o GetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput) ToGetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput() GetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput {
+	return o
+}
+
+func (o GetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput) ToGetTwingateDNSFilteringProfileSecurityCategoriesPtrOutputWithContext(ctx context.Context) GetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput {
+	return o
+}
+
+func (o GetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput) Elem() GetTwingateDNSFilteringProfileSecurityCategoriesOutput {
+	return o.ApplyT(func(v *GetTwingateDNSFilteringProfileSecurityCategories) GetTwingateDNSFilteringProfileSecurityCategories {
+		if v != nil {
+			return *v
+		}
+		var ret GetTwingateDNSFilteringProfileSecurityCategories
+		return ret
+	}).(GetTwingateDNSFilteringProfileSecurityCategoriesOutput)
+}
+
+// Whether to block cryptojacking sites.
+func (o GetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput) BlockCryptojacking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetTwingateDNSFilteringProfileSecurityCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.BlockCryptojacking
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Blocks public DNS entries from returning private IP addresses.
+func (o GetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput) BlockDnsRebinding() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetTwingateDNSFilteringProfileSecurityCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.BlockDnsRebinding
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Blocks DGA domains.
+func (o GetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput) BlockDomainGenerationAlgorithms() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetTwingateDNSFilteringProfileSecurityCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.BlockDomainGenerationAlgorithms
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to block homoglyph attacks.
+func (o GetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput) BlockIdnHomoglyph() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetTwingateDNSFilteringProfileSecurityCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.BlockIdnHomoglyph
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Blocks newly registered domains.
+func (o GetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput) BlockNewlyRegisteredDomains() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetTwingateDNSFilteringProfileSecurityCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.BlockNewlyRegisteredDomains
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Block parked domains.
+func (o GetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput) BlockParkedDomains() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetTwingateDNSFilteringProfileSecurityCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.BlockParkedDomains
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Blocks typosquatted domains.
+func (o GetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput) BlockTyposquatting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetTwingateDNSFilteringProfileSecurityCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.BlockTyposquatting
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to use Google Safe browsing lists to block content.
+func (o GetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput) EnableGoogleSafeBrowsing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetTwingateDNSFilteringProfileSecurityCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableGoogleSafeBrowsing
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to filter content using threat intelligence feeds.
+func (o GetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput) EnableThreatIntelligenceFeeds() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetTwingateDNSFilteringProfileSecurityCategories) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableThreatIntelligenceFeeds
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GetTwingateGroupsGroup struct {
@@ -2247,6 +4333,16 @@ func (o GetTwingateUsersUserArrayOutput) Index(i pulumi.IntInput) GetTwingateUse
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateDNSFilteringProfileAllowedDomainsInput)(nil)).Elem(), TwingateDNSFilteringProfileAllowedDomainsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateDNSFilteringProfileAllowedDomainsPtrInput)(nil)).Elem(), TwingateDNSFilteringProfileAllowedDomainsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateDNSFilteringProfileContentCategoriesInput)(nil)).Elem(), TwingateDNSFilteringProfileContentCategoriesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateDNSFilteringProfileContentCategoriesPtrInput)(nil)).Elem(), TwingateDNSFilteringProfileContentCategoriesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateDNSFilteringProfileDeniedDomainsInput)(nil)).Elem(), TwingateDNSFilteringProfileDeniedDomainsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateDNSFilteringProfileDeniedDomainsPtrInput)(nil)).Elem(), TwingateDNSFilteringProfileDeniedDomainsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateDNSFilteringProfilePrivacyCategoriesInput)(nil)).Elem(), TwingateDNSFilteringProfilePrivacyCategoriesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateDNSFilteringProfilePrivacyCategoriesPtrInput)(nil)).Elem(), TwingateDNSFilteringProfilePrivacyCategoriesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateDNSFilteringProfileSecurityCategoriesInput)(nil)).Elem(), TwingateDNSFilteringProfileSecurityCategoriesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateDNSFilteringProfileSecurityCategoriesPtrInput)(nil)).Elem(), TwingateDNSFilteringProfileSecurityCategoriesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateResourceAccessGroupInput)(nil)).Elem(), TwingateResourceAccessGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateResourceAccessGroupArrayInput)(nil)).Elem(), TwingateResourceAccessGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateResourceAccessServiceInput)(nil)).Elem(), TwingateResourceAccessServiceArgs{})
@@ -2259,6 +4355,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateResourceProtocolsUdpPtrInput)(nil)).Elem(), TwingateResourceProtocolsUdpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTwingateConnectorsConnectorInput)(nil)).Elem(), GetTwingateConnectorsConnectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTwingateConnectorsConnectorArrayInput)(nil)).Elem(), GetTwingateConnectorsConnectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTwingateDNSFilteringProfileAllowedDomainsInput)(nil)).Elem(), GetTwingateDNSFilteringProfileAllowedDomainsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTwingateDNSFilteringProfileAllowedDomainsPtrInput)(nil)).Elem(), GetTwingateDNSFilteringProfileAllowedDomainsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTwingateDNSFilteringProfileContentCategoriesInput)(nil)).Elem(), GetTwingateDNSFilteringProfileContentCategoriesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTwingateDNSFilteringProfileContentCategoriesPtrInput)(nil)).Elem(), GetTwingateDNSFilteringProfileContentCategoriesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTwingateDNSFilteringProfileDeniedDomainsInput)(nil)).Elem(), GetTwingateDNSFilteringProfileDeniedDomainsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTwingateDNSFilteringProfileDeniedDomainsPtrInput)(nil)).Elem(), GetTwingateDNSFilteringProfileDeniedDomainsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTwingateDNSFilteringProfilePrivacyCategoriesInput)(nil)).Elem(), GetTwingateDNSFilteringProfilePrivacyCategoriesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTwingateDNSFilteringProfilePrivacyCategoriesPtrInput)(nil)).Elem(), GetTwingateDNSFilteringProfilePrivacyCategoriesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTwingateDNSFilteringProfileSecurityCategoriesInput)(nil)).Elem(), GetTwingateDNSFilteringProfileSecurityCategoriesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTwingateDNSFilteringProfileSecurityCategoriesPtrInput)(nil)).Elem(), GetTwingateDNSFilteringProfileSecurityCategoriesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTwingateGroupsGroupInput)(nil)).Elem(), GetTwingateGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTwingateGroupsGroupArrayInput)(nil)).Elem(), GetTwingateGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTwingateRemoteNetworksRemoteNetworkInput)(nil)).Elem(), GetTwingateRemoteNetworksRemoteNetworkArgs{})
@@ -2280,6 +4386,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTwingateServiceAccountsServiceAccountArrayInput)(nil)).Elem(), GetTwingateServiceAccountsServiceAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTwingateUsersUserInput)(nil)).Elem(), GetTwingateUsersUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTwingateUsersUserArrayInput)(nil)).Elem(), GetTwingateUsersUserArray{})
+	pulumi.RegisterOutputType(TwingateDNSFilteringProfileAllowedDomainsOutput{})
+	pulumi.RegisterOutputType(TwingateDNSFilteringProfileAllowedDomainsPtrOutput{})
+	pulumi.RegisterOutputType(TwingateDNSFilteringProfileContentCategoriesOutput{})
+	pulumi.RegisterOutputType(TwingateDNSFilteringProfileContentCategoriesPtrOutput{})
+	pulumi.RegisterOutputType(TwingateDNSFilteringProfileDeniedDomainsOutput{})
+	pulumi.RegisterOutputType(TwingateDNSFilteringProfileDeniedDomainsPtrOutput{})
+	pulumi.RegisterOutputType(TwingateDNSFilteringProfilePrivacyCategoriesOutput{})
+	pulumi.RegisterOutputType(TwingateDNSFilteringProfilePrivacyCategoriesPtrOutput{})
+	pulumi.RegisterOutputType(TwingateDNSFilteringProfileSecurityCategoriesOutput{})
+	pulumi.RegisterOutputType(TwingateDNSFilteringProfileSecurityCategoriesPtrOutput{})
 	pulumi.RegisterOutputType(TwingateResourceAccessGroupOutput{})
 	pulumi.RegisterOutputType(TwingateResourceAccessGroupArrayOutput{})
 	pulumi.RegisterOutputType(TwingateResourceAccessServiceOutput{})
@@ -2292,6 +4408,16 @@ func init() {
 	pulumi.RegisterOutputType(TwingateResourceProtocolsUdpPtrOutput{})
 	pulumi.RegisterOutputType(GetTwingateConnectorsConnectorOutput{})
 	pulumi.RegisterOutputType(GetTwingateConnectorsConnectorArrayOutput{})
+	pulumi.RegisterOutputType(GetTwingateDNSFilteringProfileAllowedDomainsOutput{})
+	pulumi.RegisterOutputType(GetTwingateDNSFilteringProfileAllowedDomainsPtrOutput{})
+	pulumi.RegisterOutputType(GetTwingateDNSFilteringProfileContentCategoriesOutput{})
+	pulumi.RegisterOutputType(GetTwingateDNSFilteringProfileContentCategoriesPtrOutput{})
+	pulumi.RegisterOutputType(GetTwingateDNSFilteringProfileDeniedDomainsOutput{})
+	pulumi.RegisterOutputType(GetTwingateDNSFilteringProfileDeniedDomainsPtrOutput{})
+	pulumi.RegisterOutputType(GetTwingateDNSFilteringProfilePrivacyCategoriesOutput{})
+	pulumi.RegisterOutputType(GetTwingateDNSFilteringProfilePrivacyCategoriesPtrOutput{})
+	pulumi.RegisterOutputType(GetTwingateDNSFilteringProfileSecurityCategoriesOutput{})
+	pulumi.RegisterOutputType(GetTwingateDNSFilteringProfileSecurityCategoriesPtrOutput{})
 	pulumi.RegisterOutputType(GetTwingateGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetTwingateGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetTwingateRemoteNetworksRemoteNetworkOutput{})

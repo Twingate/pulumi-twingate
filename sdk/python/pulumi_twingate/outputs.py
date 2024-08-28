@@ -11,12 +11,22 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
+    'TwingateDNSFilteringProfileAllowedDomains',
+    'TwingateDNSFilteringProfileContentCategories',
+    'TwingateDNSFilteringProfileDeniedDomains',
+    'TwingateDNSFilteringProfilePrivacyCategories',
+    'TwingateDNSFilteringProfileSecurityCategories',
     'TwingateResourceAccessGroup',
     'TwingateResourceAccessService',
     'TwingateResourceProtocols',
     'TwingateResourceProtocolsTcp',
     'TwingateResourceProtocolsUdp',
     'GetTwingateConnectorsConnectorResult',
+    'GetTwingateDNSFilteringProfileAllowedDomainsResult',
+    'GetTwingateDNSFilteringProfileContentCategoriesResult',
+    'GetTwingateDNSFilteringProfileDeniedDomainsResult',
+    'GetTwingateDNSFilteringProfilePrivacyCategoriesResult',
+    'GetTwingateDNSFilteringProfileSecurityCategoriesResult',
     'GetTwingateGroupsGroupResult',
     'GetTwingateRemoteNetworksRemoteNetworkResult',
     'GetTwingateResourceProtocolsResult',
@@ -30,6 +40,454 @@ __all__ = [
     'GetTwingateServiceAccountsServiceAccountResult',
     'GetTwingateUsersUserResult',
 ]
+
+@pulumi.output_type
+class TwingateDNSFilteringProfileAllowedDomains(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isAuthoritative":
+            suggest = "is_authoritative"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TwingateDNSFilteringProfileAllowedDomains. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TwingateDNSFilteringProfileAllowedDomains.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TwingateDNSFilteringProfileAllowedDomains.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 domains: Optional[Sequence[str]] = None,
+                 is_authoritative: Optional[bool] = None):
+        """
+        :param Sequence[str] domains: A set of allowed domains. Defaults to an empty set.
+        """
+        if domains is not None:
+            pulumi.set(__self__, "domains", domains)
+        if is_authoritative is not None:
+            pulumi.set(__self__, "is_authoritative", is_authoritative)
+
+    @property
+    @pulumi.getter
+    def domains(self) -> Optional[Sequence[str]]:
+        """
+        A set of allowed domains. Defaults to an empty set.
+        """
+        return pulumi.get(self, "domains")
+
+    @property
+    @pulumi.getter(name="isAuthoritative")
+    def is_authoritative(self) -> Optional[bool]:
+        return pulumi.get(self, "is_authoritative")
+
+
+@pulumi.output_type
+class TwingateDNSFilteringProfileContentCategories(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blockAdultContent":
+            suggest = "block_adult_content"
+        elif key == "blockDating":
+            suggest = "block_dating"
+        elif key == "blockGambling":
+            suggest = "block_gambling"
+        elif key == "blockGames":
+            suggest = "block_games"
+        elif key == "blockPiracy":
+            suggest = "block_piracy"
+        elif key == "blockSocialMedia":
+            suggest = "block_social_media"
+        elif key == "blockStreaming":
+            suggest = "block_streaming"
+        elif key == "enableSafesearch":
+            suggest = "enable_safesearch"
+        elif key == "enableYoutubeRestrictedMode":
+            suggest = "enable_youtube_restricted_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TwingateDNSFilteringProfileContentCategories. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TwingateDNSFilteringProfileContentCategories.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TwingateDNSFilteringProfileContentCategories.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 block_adult_content: Optional[bool] = None,
+                 block_dating: Optional[bool] = None,
+                 block_gambling: Optional[bool] = None,
+                 block_games: Optional[bool] = None,
+                 block_piracy: Optional[bool] = None,
+                 block_social_media: Optional[bool] = None,
+                 block_streaming: Optional[bool] = None,
+                 enable_safesearch: Optional[bool] = None,
+                 enable_youtube_restricted_mode: Optional[bool] = None):
+        """
+        :param bool block_adult_content: Whether to block adult content. Defaults to false.
+        :param bool block_dating: Whether to block dating content. Defaults to false.
+        :param bool block_gambling: Whether to block gambling content. Defaults to false.
+        :param bool block_games: Whether to block games. Defaults to false.
+        :param bool block_piracy: Whether to block piracy sites. Defaults to false.
+        :param bool block_social_media: Whether to block social media. Defaults to false.
+        :param bool block_streaming: Whether to block streaming content. Defaults to false.
+        :param bool enable_safesearch: Whether to force safe search. Defaults to false.
+        :param bool enable_youtube_restricted_mode: Whether to force YouTube to use restricted mode. Defaults to false.
+        """
+        if block_adult_content is not None:
+            pulumi.set(__self__, "block_adult_content", block_adult_content)
+        if block_dating is not None:
+            pulumi.set(__self__, "block_dating", block_dating)
+        if block_gambling is not None:
+            pulumi.set(__self__, "block_gambling", block_gambling)
+        if block_games is not None:
+            pulumi.set(__self__, "block_games", block_games)
+        if block_piracy is not None:
+            pulumi.set(__self__, "block_piracy", block_piracy)
+        if block_social_media is not None:
+            pulumi.set(__self__, "block_social_media", block_social_media)
+        if block_streaming is not None:
+            pulumi.set(__self__, "block_streaming", block_streaming)
+        if enable_safesearch is not None:
+            pulumi.set(__self__, "enable_safesearch", enable_safesearch)
+        if enable_youtube_restricted_mode is not None:
+            pulumi.set(__self__, "enable_youtube_restricted_mode", enable_youtube_restricted_mode)
+
+    @property
+    @pulumi.getter(name="blockAdultContent")
+    def block_adult_content(self) -> Optional[bool]:
+        """
+        Whether to block adult content. Defaults to false.
+        """
+        return pulumi.get(self, "block_adult_content")
+
+    @property
+    @pulumi.getter(name="blockDating")
+    def block_dating(self) -> Optional[bool]:
+        """
+        Whether to block dating content. Defaults to false.
+        """
+        return pulumi.get(self, "block_dating")
+
+    @property
+    @pulumi.getter(name="blockGambling")
+    def block_gambling(self) -> Optional[bool]:
+        """
+        Whether to block gambling content. Defaults to false.
+        """
+        return pulumi.get(self, "block_gambling")
+
+    @property
+    @pulumi.getter(name="blockGames")
+    def block_games(self) -> Optional[bool]:
+        """
+        Whether to block games. Defaults to false.
+        """
+        return pulumi.get(self, "block_games")
+
+    @property
+    @pulumi.getter(name="blockPiracy")
+    def block_piracy(self) -> Optional[bool]:
+        """
+        Whether to block piracy sites. Defaults to false.
+        """
+        return pulumi.get(self, "block_piracy")
+
+    @property
+    @pulumi.getter(name="blockSocialMedia")
+    def block_social_media(self) -> Optional[bool]:
+        """
+        Whether to block social media. Defaults to false.
+        """
+        return pulumi.get(self, "block_social_media")
+
+    @property
+    @pulumi.getter(name="blockStreaming")
+    def block_streaming(self) -> Optional[bool]:
+        """
+        Whether to block streaming content. Defaults to false.
+        """
+        return pulumi.get(self, "block_streaming")
+
+    @property
+    @pulumi.getter(name="enableSafesearch")
+    def enable_safesearch(self) -> Optional[bool]:
+        """
+        Whether to force safe search. Defaults to false.
+        """
+        return pulumi.get(self, "enable_safesearch")
+
+    @property
+    @pulumi.getter(name="enableYoutubeRestrictedMode")
+    def enable_youtube_restricted_mode(self) -> Optional[bool]:
+        """
+        Whether to force YouTube to use restricted mode. Defaults to false.
+        """
+        return pulumi.get(self, "enable_youtube_restricted_mode")
+
+
+@pulumi.output_type
+class TwingateDNSFilteringProfileDeniedDomains(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isAuthoritative":
+            suggest = "is_authoritative"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TwingateDNSFilteringProfileDeniedDomains. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TwingateDNSFilteringProfileDeniedDomains.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TwingateDNSFilteringProfileDeniedDomains.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 domains: Optional[Sequence[str]] = None,
+                 is_authoritative: Optional[bool] = None):
+        """
+        :param Sequence[str] domains: A set of denied domains. Defaults to an empty set.
+        """
+        if domains is not None:
+            pulumi.set(__self__, "domains", domains)
+        if is_authoritative is not None:
+            pulumi.set(__self__, "is_authoritative", is_authoritative)
+
+    @property
+    @pulumi.getter
+    def domains(self) -> Optional[Sequence[str]]:
+        """
+        A set of denied domains. Defaults to an empty set.
+        """
+        return pulumi.get(self, "domains")
+
+    @property
+    @pulumi.getter(name="isAuthoritative")
+    def is_authoritative(self) -> Optional[bool]:
+        return pulumi.get(self, "is_authoritative")
+
+
+@pulumi.output_type
+class TwingateDNSFilteringProfilePrivacyCategories(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blockAdsAndTrackers":
+            suggest = "block_ads_and_trackers"
+        elif key == "blockAffiliateLinks":
+            suggest = "block_affiliate_links"
+        elif key == "blockDisguisedTrackers":
+            suggest = "block_disguised_trackers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TwingateDNSFilteringProfilePrivacyCategories. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TwingateDNSFilteringProfilePrivacyCategories.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TwingateDNSFilteringProfilePrivacyCategories.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 block_ads_and_trackers: Optional[bool] = None,
+                 block_affiliate_links: Optional[bool] = None,
+                 block_disguised_trackers: Optional[bool] = None):
+        """
+        :param bool block_ads_and_trackers: Whether to block ads and trackers. Defaults to false.
+        :param bool block_affiliate_links: Whether to block affiliate links. Defaults to false.
+        :param bool block_disguised_trackers: Whether to block disguised third party trackers. Defaults to false.
+        """
+        if block_ads_and_trackers is not None:
+            pulumi.set(__self__, "block_ads_and_trackers", block_ads_and_trackers)
+        if block_affiliate_links is not None:
+            pulumi.set(__self__, "block_affiliate_links", block_affiliate_links)
+        if block_disguised_trackers is not None:
+            pulumi.set(__self__, "block_disguised_trackers", block_disguised_trackers)
+
+    @property
+    @pulumi.getter(name="blockAdsAndTrackers")
+    def block_ads_and_trackers(self) -> Optional[bool]:
+        """
+        Whether to block ads and trackers. Defaults to false.
+        """
+        return pulumi.get(self, "block_ads_and_trackers")
+
+    @property
+    @pulumi.getter(name="blockAffiliateLinks")
+    def block_affiliate_links(self) -> Optional[bool]:
+        """
+        Whether to block affiliate links. Defaults to false.
+        """
+        return pulumi.get(self, "block_affiliate_links")
+
+    @property
+    @pulumi.getter(name="blockDisguisedTrackers")
+    def block_disguised_trackers(self) -> Optional[bool]:
+        """
+        Whether to block disguised third party trackers. Defaults to false.
+        """
+        return pulumi.get(self, "block_disguised_trackers")
+
+
+@pulumi.output_type
+class TwingateDNSFilteringProfileSecurityCategories(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blockCryptojacking":
+            suggest = "block_cryptojacking"
+        elif key == "blockDnsRebinding":
+            suggest = "block_dns_rebinding"
+        elif key == "blockDomainGenerationAlgorithms":
+            suggest = "block_domain_generation_algorithms"
+        elif key == "blockIdnHomoglyph":
+            suggest = "block_idn_homoglyph"
+        elif key == "blockNewlyRegisteredDomains":
+            suggest = "block_newly_registered_domains"
+        elif key == "blockParkedDomains":
+            suggest = "block_parked_domains"
+        elif key == "blockTyposquatting":
+            suggest = "block_typosquatting"
+        elif key == "enableGoogleSafeBrowsing":
+            suggest = "enable_google_safe_browsing"
+        elif key == "enableThreatIntelligenceFeeds":
+            suggest = "enable_threat_intelligence_feeds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TwingateDNSFilteringProfileSecurityCategories. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TwingateDNSFilteringProfileSecurityCategories.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TwingateDNSFilteringProfileSecurityCategories.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 block_cryptojacking: Optional[bool] = None,
+                 block_dns_rebinding: Optional[bool] = None,
+                 block_domain_generation_algorithms: Optional[bool] = None,
+                 block_idn_homoglyph: Optional[bool] = None,
+                 block_newly_registered_domains: Optional[bool] = None,
+                 block_parked_domains: Optional[bool] = None,
+                 block_typosquatting: Optional[bool] = None,
+                 enable_google_safe_browsing: Optional[bool] = None,
+                 enable_threat_intelligence_feeds: Optional[bool] = None):
+        """
+        :param bool block_cryptojacking: Whether to block cryptojacking sites. Defaults to true.
+        :param bool block_dns_rebinding: Blocks public DNS entries from returning private IP addresses. Defaults to true.
+        :param bool block_domain_generation_algorithms: Blocks DGA domains. Defaults to true.
+        :param bool block_idn_homoglyph: Whether to block homoglyph attacks. Defaults to true.
+        :param bool block_newly_registered_domains: Blocks newly registered domains. Defaults to true.
+        :param bool block_parked_domains: Block parked domains. Defaults to true.
+        :param bool block_typosquatting: Blocks typosquatted domains. Defaults to true.
+        :param bool enable_google_safe_browsing: Whether to use Google Safe browsing lists to block content. Defaults to true.
+        :param bool enable_threat_intelligence_feeds: Whether to filter content using threat intelligence feeds. Defaults to true.
+        """
+        if block_cryptojacking is not None:
+            pulumi.set(__self__, "block_cryptojacking", block_cryptojacking)
+        if block_dns_rebinding is not None:
+            pulumi.set(__self__, "block_dns_rebinding", block_dns_rebinding)
+        if block_domain_generation_algorithms is not None:
+            pulumi.set(__self__, "block_domain_generation_algorithms", block_domain_generation_algorithms)
+        if block_idn_homoglyph is not None:
+            pulumi.set(__self__, "block_idn_homoglyph", block_idn_homoglyph)
+        if block_newly_registered_domains is not None:
+            pulumi.set(__self__, "block_newly_registered_domains", block_newly_registered_domains)
+        if block_parked_domains is not None:
+            pulumi.set(__self__, "block_parked_domains", block_parked_domains)
+        if block_typosquatting is not None:
+            pulumi.set(__self__, "block_typosquatting", block_typosquatting)
+        if enable_google_safe_browsing is not None:
+            pulumi.set(__self__, "enable_google_safe_browsing", enable_google_safe_browsing)
+        if enable_threat_intelligence_feeds is not None:
+            pulumi.set(__self__, "enable_threat_intelligence_feeds", enable_threat_intelligence_feeds)
+
+    @property
+    @pulumi.getter(name="blockCryptojacking")
+    def block_cryptojacking(self) -> Optional[bool]:
+        """
+        Whether to block cryptojacking sites. Defaults to true.
+        """
+        return pulumi.get(self, "block_cryptojacking")
+
+    @property
+    @pulumi.getter(name="blockDnsRebinding")
+    def block_dns_rebinding(self) -> Optional[bool]:
+        """
+        Blocks public DNS entries from returning private IP addresses. Defaults to true.
+        """
+        return pulumi.get(self, "block_dns_rebinding")
+
+    @property
+    @pulumi.getter(name="blockDomainGenerationAlgorithms")
+    def block_domain_generation_algorithms(self) -> Optional[bool]:
+        """
+        Blocks DGA domains. Defaults to true.
+        """
+        return pulumi.get(self, "block_domain_generation_algorithms")
+
+    @property
+    @pulumi.getter(name="blockIdnHomoglyph")
+    def block_idn_homoglyph(self) -> Optional[bool]:
+        """
+        Whether to block homoglyph attacks. Defaults to true.
+        """
+        return pulumi.get(self, "block_idn_homoglyph")
+
+    @property
+    @pulumi.getter(name="blockNewlyRegisteredDomains")
+    def block_newly_registered_domains(self) -> Optional[bool]:
+        """
+        Blocks newly registered domains. Defaults to true.
+        """
+        return pulumi.get(self, "block_newly_registered_domains")
+
+    @property
+    @pulumi.getter(name="blockParkedDomains")
+    def block_parked_domains(self) -> Optional[bool]:
+        """
+        Block parked domains. Defaults to true.
+        """
+        return pulumi.get(self, "block_parked_domains")
+
+    @property
+    @pulumi.getter(name="blockTyposquatting")
+    def block_typosquatting(self) -> Optional[bool]:
+        """
+        Blocks typosquatted domains. Defaults to true.
+        """
+        return pulumi.get(self, "block_typosquatting")
+
+    @property
+    @pulumi.getter(name="enableGoogleSafeBrowsing")
+    def enable_google_safe_browsing(self) -> Optional[bool]:
+        """
+        Whether to use Google Safe browsing lists to block content. Defaults to true.
+        """
+        return pulumi.get(self, "enable_google_safe_browsing")
+
+    @property
+    @pulumi.getter(name="enableThreatIntelligenceFeeds")
+    def enable_threat_intelligence_feeds(self) -> Optional[bool]:
+        """
+        Whether to filter content using threat intelligence feeds. Defaults to true.
+        """
+        return pulumi.get(self, "enable_threat_intelligence_feeds")
+
 
 @pulumi.output_type
 class TwingateResourceAccessGroup(dict):
@@ -294,6 +752,294 @@ class GetTwingateConnectorsConnectorResult(dict):
         Determines whether status notifications are enabled for the Connector.
         """
         return pulumi.get(self, "status_updates_enabled")
+
+
+@pulumi.output_type
+class GetTwingateDNSFilteringProfileAllowedDomainsResult(dict):
+    def __init__(__self__, *,
+                 domains: Sequence[str]):
+        """
+        :param Sequence[str] domains: A set of allowed domains.
+        """
+        pulumi.set(__self__, "domains", domains)
+
+    @property
+    @pulumi.getter
+    def domains(self) -> Sequence[str]:
+        """
+        A set of allowed domains.
+        """
+        return pulumi.get(self, "domains")
+
+
+@pulumi.output_type
+class GetTwingateDNSFilteringProfileContentCategoriesResult(dict):
+    def __init__(__self__, *,
+                 block_adult_content: bool,
+                 block_dating: bool,
+                 block_gambling: bool,
+                 block_games: bool,
+                 block_piracy: bool,
+                 block_social_media: bool,
+                 block_streaming: bool,
+                 enable_safesearch: bool,
+                 enable_youtube_restricted_mode: bool):
+        """
+        :param bool block_adult_content: Whether to block adult content.
+        :param bool block_dating: Whether to block dating content.
+        :param bool block_gambling: Whether to block gambling content.
+        :param bool block_games: Whether to block games.
+        :param bool block_piracy: Whether to block piracy sites.
+        :param bool block_social_media: Whether to block social media.
+        :param bool block_streaming: Whether to block streaming content.
+        :param bool enable_safesearch: Whether to force safe search.
+        :param bool enable_youtube_restricted_mode: Whether to force YouTube to use restricted mode.
+        """
+        pulumi.set(__self__, "block_adult_content", block_adult_content)
+        pulumi.set(__self__, "block_dating", block_dating)
+        pulumi.set(__self__, "block_gambling", block_gambling)
+        pulumi.set(__self__, "block_games", block_games)
+        pulumi.set(__self__, "block_piracy", block_piracy)
+        pulumi.set(__self__, "block_social_media", block_social_media)
+        pulumi.set(__self__, "block_streaming", block_streaming)
+        pulumi.set(__self__, "enable_safesearch", enable_safesearch)
+        pulumi.set(__self__, "enable_youtube_restricted_mode", enable_youtube_restricted_mode)
+
+    @property
+    @pulumi.getter(name="blockAdultContent")
+    def block_adult_content(self) -> bool:
+        """
+        Whether to block adult content.
+        """
+        return pulumi.get(self, "block_adult_content")
+
+    @property
+    @pulumi.getter(name="blockDating")
+    def block_dating(self) -> bool:
+        """
+        Whether to block dating content.
+        """
+        return pulumi.get(self, "block_dating")
+
+    @property
+    @pulumi.getter(name="blockGambling")
+    def block_gambling(self) -> bool:
+        """
+        Whether to block gambling content.
+        """
+        return pulumi.get(self, "block_gambling")
+
+    @property
+    @pulumi.getter(name="blockGames")
+    def block_games(self) -> bool:
+        """
+        Whether to block games.
+        """
+        return pulumi.get(self, "block_games")
+
+    @property
+    @pulumi.getter(name="blockPiracy")
+    def block_piracy(self) -> bool:
+        """
+        Whether to block piracy sites.
+        """
+        return pulumi.get(self, "block_piracy")
+
+    @property
+    @pulumi.getter(name="blockSocialMedia")
+    def block_social_media(self) -> bool:
+        """
+        Whether to block social media.
+        """
+        return pulumi.get(self, "block_social_media")
+
+    @property
+    @pulumi.getter(name="blockStreaming")
+    def block_streaming(self) -> bool:
+        """
+        Whether to block streaming content.
+        """
+        return pulumi.get(self, "block_streaming")
+
+    @property
+    @pulumi.getter(name="enableSafesearch")
+    def enable_safesearch(self) -> bool:
+        """
+        Whether to force safe search.
+        """
+        return pulumi.get(self, "enable_safesearch")
+
+    @property
+    @pulumi.getter(name="enableYoutubeRestrictedMode")
+    def enable_youtube_restricted_mode(self) -> bool:
+        """
+        Whether to force YouTube to use restricted mode.
+        """
+        return pulumi.get(self, "enable_youtube_restricted_mode")
+
+
+@pulumi.output_type
+class GetTwingateDNSFilteringProfileDeniedDomainsResult(dict):
+    def __init__(__self__, *,
+                 domains: Sequence[str]):
+        """
+        :param Sequence[str] domains: A set of denied domains.
+        """
+        pulumi.set(__self__, "domains", domains)
+
+    @property
+    @pulumi.getter
+    def domains(self) -> Sequence[str]:
+        """
+        A set of denied domains.
+        """
+        return pulumi.get(self, "domains")
+
+
+@pulumi.output_type
+class GetTwingateDNSFilteringProfilePrivacyCategoriesResult(dict):
+    def __init__(__self__, *,
+                 block_ads_and_trackers: bool,
+                 block_affiliate_links: bool,
+                 block_disguised_trackers: bool):
+        """
+        :param bool block_ads_and_trackers: Whether to block ads and trackers.
+        :param bool block_affiliate_links: Whether to block affiliate links.
+        :param bool block_disguised_trackers: Whether to block disguised third party trackers.
+        """
+        pulumi.set(__self__, "block_ads_and_trackers", block_ads_and_trackers)
+        pulumi.set(__self__, "block_affiliate_links", block_affiliate_links)
+        pulumi.set(__self__, "block_disguised_trackers", block_disguised_trackers)
+
+    @property
+    @pulumi.getter(name="blockAdsAndTrackers")
+    def block_ads_and_trackers(self) -> bool:
+        """
+        Whether to block ads and trackers.
+        """
+        return pulumi.get(self, "block_ads_and_trackers")
+
+    @property
+    @pulumi.getter(name="blockAffiliateLinks")
+    def block_affiliate_links(self) -> bool:
+        """
+        Whether to block affiliate links.
+        """
+        return pulumi.get(self, "block_affiliate_links")
+
+    @property
+    @pulumi.getter(name="blockDisguisedTrackers")
+    def block_disguised_trackers(self) -> bool:
+        """
+        Whether to block disguised third party trackers.
+        """
+        return pulumi.get(self, "block_disguised_trackers")
+
+
+@pulumi.output_type
+class GetTwingateDNSFilteringProfileSecurityCategoriesResult(dict):
+    def __init__(__self__, *,
+                 block_cryptojacking: bool,
+                 block_dns_rebinding: bool,
+                 block_domain_generation_algorithms: bool,
+                 block_idn_homoglyph: bool,
+                 block_newly_registered_domains: bool,
+                 block_parked_domains: bool,
+                 block_typosquatting: bool,
+                 enable_google_safe_browsing: bool,
+                 enable_threat_intelligence_feeds: bool):
+        """
+        :param bool block_cryptojacking: Whether to block cryptojacking sites.
+        :param bool block_dns_rebinding: Blocks public DNS entries from returning private IP addresses.
+        :param bool block_domain_generation_algorithms: Blocks DGA domains.
+        :param bool block_idn_homoglyph: Whether to block homoglyph attacks.
+        :param bool block_newly_registered_domains: Blocks newly registered domains.
+        :param bool block_parked_domains: Block parked domains.
+        :param bool block_typosquatting: Blocks typosquatted domains.
+        :param bool enable_google_safe_browsing: Whether to use Google Safe browsing lists to block content.
+        :param bool enable_threat_intelligence_feeds: Whether to filter content using threat intelligence feeds.
+        """
+        pulumi.set(__self__, "block_cryptojacking", block_cryptojacking)
+        pulumi.set(__self__, "block_dns_rebinding", block_dns_rebinding)
+        pulumi.set(__self__, "block_domain_generation_algorithms", block_domain_generation_algorithms)
+        pulumi.set(__self__, "block_idn_homoglyph", block_idn_homoglyph)
+        pulumi.set(__self__, "block_newly_registered_domains", block_newly_registered_domains)
+        pulumi.set(__self__, "block_parked_domains", block_parked_domains)
+        pulumi.set(__self__, "block_typosquatting", block_typosquatting)
+        pulumi.set(__self__, "enable_google_safe_browsing", enable_google_safe_browsing)
+        pulumi.set(__self__, "enable_threat_intelligence_feeds", enable_threat_intelligence_feeds)
+
+    @property
+    @pulumi.getter(name="blockCryptojacking")
+    def block_cryptojacking(self) -> bool:
+        """
+        Whether to block cryptojacking sites.
+        """
+        return pulumi.get(self, "block_cryptojacking")
+
+    @property
+    @pulumi.getter(name="blockDnsRebinding")
+    def block_dns_rebinding(self) -> bool:
+        """
+        Blocks public DNS entries from returning private IP addresses.
+        """
+        return pulumi.get(self, "block_dns_rebinding")
+
+    @property
+    @pulumi.getter(name="blockDomainGenerationAlgorithms")
+    def block_domain_generation_algorithms(self) -> bool:
+        """
+        Blocks DGA domains.
+        """
+        return pulumi.get(self, "block_domain_generation_algorithms")
+
+    @property
+    @pulumi.getter(name="blockIdnHomoglyph")
+    def block_idn_homoglyph(self) -> bool:
+        """
+        Whether to block homoglyph attacks.
+        """
+        return pulumi.get(self, "block_idn_homoglyph")
+
+    @property
+    @pulumi.getter(name="blockNewlyRegisteredDomains")
+    def block_newly_registered_domains(self) -> bool:
+        """
+        Blocks newly registered domains.
+        """
+        return pulumi.get(self, "block_newly_registered_domains")
+
+    @property
+    @pulumi.getter(name="blockParkedDomains")
+    def block_parked_domains(self) -> bool:
+        """
+        Block parked domains.
+        """
+        return pulumi.get(self, "block_parked_domains")
+
+    @property
+    @pulumi.getter(name="blockTyposquatting")
+    def block_typosquatting(self) -> bool:
+        """
+        Blocks typosquatted domains.
+        """
+        return pulumi.get(self, "block_typosquatting")
+
+    @property
+    @pulumi.getter(name="enableGoogleSafeBrowsing")
+    def enable_google_safe_browsing(self) -> bool:
+        """
+        Whether to use Google Safe browsing lists to block content.
+        """
+        return pulumi.get(self, "enable_google_safe_browsing")
+
+    @property
+    @pulumi.getter(name="enableThreatIntelligenceFeeds")
+    def enable_threat_intelligence_feeds(self) -> bool:
+        """
+        Whether to filter content using threat intelligence feeds.
+        """
+        return pulumi.get(self, "enable_threat_intelligence_feeds")
 
 
 @pulumi.output_type
