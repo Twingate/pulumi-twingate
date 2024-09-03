@@ -77,11 +77,44 @@ func main() {
 				},
 			},
 		})
+
+		ctx.Export("resource_id", resource.ID())
+
+		// exampleProfile, err := twingate.NewDNSFilteringProfile(ctx, "exampleProfile", &twingate.DNSFilteringProfileArgs{
+		// 	Name:           pulumi.String("CS Pulumi DNS Filtering Profile"),
+		// 	Priority:       pulumi.Int(2),
+		// 	FallbackMethod: pulumi.String("AUTO"),
+		// 	Groups:         pulumi.StringArray{group.ID()},
+		// 	AllowedDomains: &twingate.DNSFilteringProfileAllowedDomainsArgs{
+		// 		IsAuthoritative: pulumi.Bool(false),
+		// 		Domains: pulumi.StringArray{
+		// 			pulumi.String("twingate.com"),
+		// 			pulumi.String("zoom.us"),
+		// 		},
+		// 	},
+		// 	DeniedDomains: &twingate.DNSFilteringProfileDeniedDomainsArgs{
+		// 		IsAuthoritative: pulumi.Bool(true),
+		// 		Domains: pulumi.StringArray{
+		// 			pulumi.String("evil.example"),
+		// 		},
+		// 	},
+		// 	ContentCategories: &twingate.DNSFilteringProfileContentCategoriesArgs{
+		// 		BlockAdultContent: pulumi.Bool(true),
+		// 	},
+		// 	SecurityCategories: &twingate.DNSFilteringProfileSecurityCategoriesArgs{
+		// 		BlockDnsRebinding:           pulumi.Bool(false),
+		// 		BlockNewlyRegisteredDomains: pulumi.Bool(false),
+		// 	},
+		// 	PrivacyCategories: &twingate.DNSFilteringProfilePrivacyCategoriesArgs{
+		// 		BlockDisguisedTrackers: pulumi.Bool(true),
+		// 	},
+		// })
+
+		// ctx.Export("exampleProfile_id", exampleProfile.ID())
+
 		if err != nil {
 			return err
 		}
-
-		ctx.Export("resource_id", resource.ID())
 
 		return nil
 	})
