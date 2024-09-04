@@ -182,7 +182,7 @@ func Provider() tfbridge.ProviderInfo {
 	// probably there is issue with pulumi-terraform-bridge/pf library compatibility
 	// as problem with library method, and not with terraform provider itself
 	//
-	//prov.MustApplyAutoAliases()
+	prov.MustApplyAutoAliases()
 
 	prov.SetAutonaming(255, "-")
 

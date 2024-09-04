@@ -2,13 +2,39 @@
     "auto-aliasing": {
         "resources": {
             "twingate_connector": {
-                "current": "twingate:index/twingateConnector:TwingateConnector"
+                "current": "twingate:index/twingateConnector:TwingateConnector",
+                "majorVersion": 3
             },
             "twingate_connector_tokens": {
-                "current": "twingate:index/twingateConnectorTokens:TwingateConnectorTokens"
+                "current": "twingate:index/twingateConnectorTokens:TwingateConnectorTokens",
+                "majorVersion": 3
+            },
+            "twingate_dns_filtering_profile": {
+                "current": "twingate:index/twingateDNSFilteringProfile:TwingateDNSFilteringProfile",
+                "majorVersion": 3,
+                "fields": {
+                    "allowed_domains": {
+                        "fields": {
+                            "domains": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "denied_domains": {
+                        "fields": {
+                            "domains": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "groups": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "twingate_group": {
                 "current": "twingate:index/twingateGroup:TwingateGroup",
+                "majorVersion": 3,
                 "fields": {
                     "user_ids": {
                         "maxItemsOne": false
@@ -16,46 +42,32 @@
                 }
             },
             "twingate_remote_network": {
-                "current": "twingate:index/twingateRemoteNetwork:TwingateRemoteNetwork"
+                "current": "twingate:index/twingateRemoteNetwork:TwingateRemoteNetwork",
+                "majorVersion": 3
             },
             "twingate_resource": {
                 "current": "twingate:index/twingateResource:TwingateResource",
+                "majorVersion": 3,
                 "fields": {
-                    "access": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "group_ids": {
-                                    "maxItemsOne": false
-                                },
-                                "service_account_ids": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
+                    "access_group": {
+                        "maxItemsOne": false
+                    },
+                    "access_service": {
+                        "maxItemsOne": false
                     },
                     "protocols": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "tcp": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "ports": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
+                        "fields": {
+                            "tcp": {
+                                "fields": {
+                                    "ports": {
+                                        "maxItemsOne": false
                                     }
-                                },
-                                "udp": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "ports": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
+                                }
+                            },
+                            "udp": {
+                                "fields": {
+                                    "ports": {
+                                        "maxItemsOne": false
                                     }
                                 }
                             }
@@ -64,43 +76,78 @@
                 }
             },
             "twingate_service_account": {
-                "current": "twingate:index/twingateServiceAccount:TwingateServiceAccount"
+                "current": "twingate:index/twingateServiceAccount:TwingateServiceAccount",
+                "majorVersion": 3
             },
             "twingate_service_account_key": {
-                "current": "twingate:index/twingateServiceAccountKey:TwingateServiceAccountKey"
+                "current": "twingate:index/twingateServiceAccountKey:TwingateServiceAccountKey",
+                "majorVersion": 3
             },
             "twingate_user": {
-                "current": "twingate:index/twingateUser:TwingateUser"
+                "current": "twingate:index/twingateUser:TwingateUser",
+                "majorVersion": 3
             }
         },
         "datasources": {
             "twingate_connector": {
-                "current": "twingate:index/getTwingateConnector:getTwingateConnector"
+                "current": "twingate:index/getTwingateConnector:getTwingateConnector",
+                "majorVersion": 3
             },
             "twingate_connectors": {
                 "current": "twingate:index/getTwingateConnectors:getTwingateConnectors",
+                "majorVersion": 3,
                 "fields": {
                     "connectors": {
                         "maxItemsOne": false
                     }
                 }
             },
-            "twingate_group": {
-                "current": "twingate:index/getTwingateGroup:getTwingateGroup"
-            },
-            "twingate_groups": {
-                "current": "twingate:index/getTwingateGroups:getTwingateGroups",
+            "twingate_dns_filtering_profile": {
+                "current": "twingate:index/getTwingateDNSFilteringProfile:getTwingateDNSFilteringProfile",
+                "majorVersion": 3,
                 "fields": {
+                    "allowed_domains": {
+                        "fields": {
+                            "domains": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "denied_domains": {
+                        "fields": {
+                            "domains": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
                     "groups": {
                         "maxItemsOne": false
                     }
                 }
             },
+            "twingate_group": {
+                "current": "twingate:index/getTwingateGroup:getTwingateGroup",
+                "majorVersion": 3
+            },
+            "twingate_groups": {
+                "current": "twingate:index/getTwingateGroups:getTwingateGroups",
+                "majorVersion": 3,
+                "fields": {
+                    "groups": {
+                        "maxItemsOne": false
+                    },
+                    "types": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "twingate_remote_network": {
-                "current": "twingate:index/getTwingateRemoteNetwork:getTwingateRemoteNetwork"
+                "current": "twingate:index/getTwingateRemoteNetwork:getTwingateRemoteNetwork",
+                "majorVersion": 3
             },
             "twingate_remote_networks": {
                 "current": "twingate:index/getTwingateRemoteNetworks:getTwingateRemoteNetworks",
+                "majorVersion": 3,
                 "fields": {
                     "remote_networks": {
                         "maxItemsOne": false
@@ -109,29 +156,21 @@
             },
             "twingate_resource": {
                 "current": "twingate:index/getTwingateResource:getTwingateResource",
+                "majorVersion": 3,
                 "fields": {
                     "protocols": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "tcp": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "ports": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
+                        "fields": {
+                            "tcp": {
+                                "fields": {
+                                    "ports": {
+                                        "maxItemsOne": false
                                     }
-                                },
-                                "udp": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "ports": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
+                                }
+                            },
+                            "udp": {
+                                "fields": {
+                                    "ports": {
+                                        "maxItemsOne": false
                                     }
                                 }
                             }
@@ -141,33 +180,25 @@
             },
             "twingate_resources": {
                 "current": "twingate:index/getTwingateResources:getTwingateResources",
+                "majorVersion": 3,
                 "fields": {
                     "resources": {
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
                                 "protocols": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "tcp": {
-                                                "maxItemsOne": false,
-                                                "elem": {
-                                                    "fields": {
-                                                        "ports": {
-                                                            "maxItemsOne": false
-                                                        }
-                                                    }
+                                    "fields": {
+                                        "tcp": {
+                                            "fields": {
+                                                "ports": {
+                                                    "maxItemsOne": false
                                                 }
-                                            },
-                                            "udp": {
-                                                "maxItemsOne": false,
-                                                "elem": {
-                                                    "fields": {
-                                                        "ports": {
-                                                            "maxItemsOne": false
-                                                        }
-                                                    }
+                                            }
+                                        },
+                                        "udp": {
+                                            "fields": {
+                                                "ports": {
+                                                    "maxItemsOne": false
                                                 }
                                             }
                                         }
@@ -180,6 +211,7 @@
             },
             "twingate_security_policies": {
                 "current": "twingate:index/getTwingateSecurityPolicies:getTwingateSecurityPolicies",
+                "majorVersion": 3,
                 "fields": {
                     "security_policies": {
                         "maxItemsOne": false
@@ -187,10 +219,12 @@
                 }
             },
             "twingate_security_policy": {
-                "current": "twingate:index/getTwingateSecurityPolicy:getTwingateSecurityPolicy"
+                "current": "twingate:index/getTwingateSecurityPolicy:getTwingateSecurityPolicy",
+                "majorVersion": 3
             },
             "twingate_service_accounts": {
                 "current": "twingate:index/getTwingateServiceAccounts:getTwingateServiceAccounts",
+                "majorVersion": 3,
                 "fields": {
                     "service_accounts": {
                         "maxItemsOne": false,
@@ -208,11 +242,16 @@
                 }
             },
             "twingate_user": {
-                "current": "twingate:index/getTwingateUser:getTwingateUser"
+                "current": "twingate:index/getTwingateUser:getTwingateUser",
+                "majorVersion": 3
             },
             "twingate_users": {
                 "current": "twingate:index/getTwingateUsers:getTwingateUsers",
+                "majorVersion": 3,
                 "fields": {
+                    "roles": {
+                        "maxItemsOne": false
+                    },
                     "users": {
                         "maxItemsOne": false
                     }
@@ -220,138 +259,5 @@
             }
         }
     },
-    "auto-settings": {},
-    "renames": {
-        "resources": {
-            "twingate:index/twingateConnector:TwingateConnector": "twingate_connector",
-            "twingate:index/twingateConnectorTokens:TwingateConnectorTokens": "twingate_connector_tokens",
-            "twingate:index/twingateGroup:TwingateGroup": "twingate_group",
-            "twingate:index/twingateRemoteNetwork:TwingateRemoteNetwork": "twingate_remote_network",
-            "twingate:index/twingateResource:TwingateResource": "twingate_resource",
-            "twingate:index/twingateServiceAccount:TwingateServiceAccount": "twingate_service_account",
-            "twingate:index/twingateServiceAccountKey:TwingateServiceAccountKey": "twingate_service_account_key",
-            "twingate:index/twingateUser:TwingateUser": "twingate_user"
-        },
-        "functions": {
-            "twingate:index/getTwingateConnector:getTwingateConnector": "twingate_connector",
-            "twingate:index/getTwingateConnectors:getTwingateConnectors": "twingate_connectors",
-            "twingate:index/getTwingateGroup:getTwingateGroup": "twingate_group",
-            "twingate:index/getTwingateGroups:getTwingateGroups": "twingate_groups",
-            "twingate:index/getTwingateRemoteNetwork:getTwingateRemoteNetwork": "twingate_remote_network",
-            "twingate:index/getTwingateRemoteNetworks:getTwingateRemoteNetworks": "twingate_remote_networks",
-            "twingate:index/getTwingateResource:getTwingateResource": "twingate_resource",
-            "twingate:index/getTwingateResources:getTwingateResources": "twingate_resources",
-            "twingate:index/getTwingateSecurityPolicies:getTwingateSecurityPolicies": "twingate_security_policies",
-            "twingate:index/getTwingateSecurityPolicy:getTwingateSecurityPolicy": "twingate_security_policy",
-            "twingate:index/getTwingateServiceAccounts:getTwingateServiceAccounts": "twingate_service_accounts",
-            "twingate:index/getTwingateUser:getTwingateUser": "twingate_user",
-            "twingate:index/getTwingateUsers:getTwingateUsers": "twingate_users"
-        },
-        "renamedProperties": {
-            "twingate:index/TwingateResourceAccess:TwingateResourceAccess": {
-                "groupIds": "group_ids",
-                "serviceAccountIds": "service_account_ids"
-            },
-            "twingate:index/TwingateResourceProtocols:TwingateResourceProtocols": {
-                "allowIcmp": "allow_icmp"
-            },
-            "twingate:index/getTwingateConnector:getTwingateConnector": {
-                "remoteNetworkId": "remote_network_id",
-                "statusUpdatesEnabled": "status_updates_enabled"
-            },
-            "twingate:index/getTwingateConnectorsConnector:getTwingateConnectorsConnector": {
-                "remoteNetworkId": "remote_network_id",
-                "statusUpdatesEnabled": "status_updates_enabled"
-            },
-            "twingate:index/getTwingateGroup:getTwingateGroup": {
-                "isActive": "is_active",
-                "securityPolicyId": "security_policy_id"
-            },
-            "twingate:index/getTwingateGroups:getTwingateGroups": {
-                "isActive": "is_active"
-            },
-            "twingate:index/getTwingateGroupsGroup:getTwingateGroupsGroup": {
-                "isActive": "is_active",
-                "securityPolicyId": "security_policy_id"
-            },
-            "twingate:index/getTwingateRemoteNetworks:getTwingateRemoteNetworks": {
-                "remoteNetworks": "remote_networks"
-            },
-            "twingate:index/getTwingateResource:getTwingateResource": {
-                "remoteNetworkId": "remote_network_id"
-            },
-            "twingate:index/getTwingateResourceProtocol:getTwingateResourceProtocol": {
-                "allowIcmp": "allow_icmp",
-                "tcps": "tcp",
-                "udps": "udp"
-            },
-            "twingate:index/getTwingateResourcesResource:getTwingateResourcesResource": {
-                "remoteNetworkId": "remote_network_id"
-            },
-            "twingate:index/getTwingateResourcesResourceProtocol:getTwingateResourcesResourceProtocol": {
-                "allowIcmp": "allow_icmp",
-                "tcps": "tcp",
-                "udps": "udp"
-            },
-            "twingate:index/getTwingateSecurityPolicies:getTwingateSecurityPolicies": {
-                "securityPolicies": "security_policies"
-            },
-            "twingate:index/getTwingateServiceAccounts:getTwingateServiceAccounts": {
-                "serviceAccounts": "service_accounts"
-            },
-            "twingate:index/getTwingateServiceAccountsServiceAccount:getTwingateServiceAccountsServiceAccount": {
-                "keyIds": "key_ids",
-                "resourceIds": "resource_ids"
-            },
-            "twingate:index/getTwingateUser:getTwingateUser": {
-                "firstName": "first_name",
-                "isAdmin": "is_admin",
-                "lastName": "last_name"
-            },
-            "twingate:index/getTwingateUsersUser:getTwingateUsersUser": {
-                "firstName": "first_name",
-                "isAdmin": "is_admin",
-                "lastName": "last_name"
-            },
-            "twingate:index/twingateConnector:TwingateConnector": {
-                "remoteNetworkId": "remote_network_id",
-                "statusUpdatesEnabled": "status_updates_enabled"
-            },
-            "twingate:index/twingateConnectorTokens:TwingateConnectorTokens": {
-                "accessToken": "access_token",
-                "connectorId": "connector_id",
-                "refreshToken": "refresh_token"
-            },
-            "twingate:index/twingateGroup:TwingateGroup": {
-                "isAuthoritative": "is_authoritative",
-                "securityPolicyId": "security_policy_id",
-                "userIds": "user_ids"
-            },
-            "twingate:index/twingateResource:TwingateResource": {
-                "isAuthoritative": "is_authoritative",
-                "isBrowserShortcutEnabled": "is_browser_shortcut_enabled",
-                "isVisible": "is_visible",
-                "remoteNetworkId": "remote_network_id"
-            },
-            "twingate:index/twingateServiceAccountKey:TwingateServiceAccountKey": {
-                "serviceAccountId": "service_account_id"
-            },
-            "twingate:index/twingateUser:TwingateUser": {
-                "firstName": "first_name",
-                "isActive": "is_active",
-                "lastName": "last_name",
-                "sendInvite": "send_invite"
-            },
-            "twingate:index:Provider": {
-                "apiToken": "api_token",
-                "httpMaxRetry": "http_max_retry",
-                "httpTimeout": "http_timeout"
-            }
-        },
-        "renamedConfigProperties": {
-            "apiToken": "api_token",
-            "httpMaxRetry": "http_max_retry",
-            "httpTimeout": "http_timeout"
-        }
-    }
+    "auto-settings": {}
 }
