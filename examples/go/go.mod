@@ -3,11 +3,9 @@ module twingate_go_example
 go 1.22.0
 
 require (
-	github.com/Twingate/pulumi-twingate/sdk/v3 v3.0.11 //v3.0.0-20240707084841-6cd0e7a1501f
+	github.com/Twingate/pulumi-twingate/sdk/v3 v3.0.0-20240901083905-0004a52a6be4
 	github.com/pulumi/pulumi/sdk/v3 v3.130.0
 )
-
-replace github.com/Twingate/pulumi-twingate/sdk/v3 v3.0.11 => ../../sdk
 
 require (
 	dario.cat/mergo v1.0.1 // indirect
