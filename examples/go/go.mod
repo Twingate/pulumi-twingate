@@ -4,7 +4,7 @@ go 1.22.0
 
 require (
 	github.com/Twingate/pulumi-twingate/sdk/v3 v3.0.0-20240901083905-0004a52a6be4
-	github.com/pulumi/pulumi/sdk/v3 v3.129.0
+	github.com/pulumi/pulumi/sdk/v3 v3.130.0
 )
 
 // uncomment the following line to use the local version of the sdk
