@@ -87,48 +87,44 @@ func main() {
 
 		ctx.Export("resource_id", resource.ID())
 
-		// This is commented out because it throws an error. The issue is upstream in the pulumi provider.
-		// twingate:index:TwingateDNSFilteringProfile (dns_profile):
-		// error: [pf/tfbridge] unknown resource token: twingate:index/twingateDNSFilteringProfile:TwingateDNSFilteringProfile
-
 		// Create a Twingate DNS Filtering Profile
-		// _, err = twingate.NewTwingateDNSFilteringProfile(ctx, "dns_profile", &twingate.TwingateDNSFilteringProfileArgs{
-		// 	Name:           pulumi.String("Go Pulumi DNS Filtering Profile"),
-		// 	Priority:       pulumi.Float64(2),
-		// 	FallbackMethod: pulumi.String("AUTO"),
-		// 	Groups:         pulumi.StringArray{group.ID()},
+		_, err = twingate.NewTwingateDNSFilteringProfile(ctx, "dns_profile", &twingate.TwingateDNSFilteringProfileArgs{
+			Name:           pulumi.String("Go Pulumi DNS Filtering Profile"),
+			Priority:       pulumi.Float64(2),
+			FallbackMethod: pulumi.String("AUTO"),
+			Groups:         pulumi.StringArray{group.ID()},
 
-		// 	AllowedDomains: &twingate.TwingateDNSFilteringProfileAllowedDomainsArgs{
-		// 		IsAuthoritative: pulumi.Bool(false),
-		// 		Domains: pulumi.StringArray{
-		// 			pulumi.String("twingate.com"),
-		// 			pulumi.String("zoom.us"),
-		// 		},
-		// 	},
+			AllowedDomains: &twingate.TwingateDNSFilteringProfileAllowedDomainsArgs{
+				IsAuthoritative: pulumi.Bool(false),
+				Domains: pulumi.StringArray{
+					pulumi.String("twingate.com"),
+					pulumi.String("zoom.us"),
+				},
+			},
 
-		// 	DeniedDomains: &twingate.TwingateDNSFilteringProfileDeniedDomainsArgs{
-		// 		IsAuthoritative: pulumi.Bool(true),
-		// 		Domains: pulumi.StringArray{
-		// 			pulumi.String("evil.example"),
-		// 		},
-		// 	},
+			DeniedDomains: &twingate.TwingateDNSFilteringProfileDeniedDomainsArgs{
+				IsAuthoritative: pulumi.Bool(true),
+				Domains: pulumi.StringArray{
+					pulumi.String("evil.example"),
+				},
+			},
 
-		// 	ContentCategories: &twingate.TwingateDNSFilteringProfileContentCategoriesArgs{
-		// 		BlockAdultContent: pulumi.Bool(true),
-		// 	},
+			ContentCategories: &twingate.TwingateDNSFilteringProfileContentCategoriesArgs{
+				BlockAdultContent: pulumi.Bool(true),
+			},
 
-		// 	SecurityCategories: &twingate.TwingateDNSFilteringProfileSecurityCategoriesArgs{
-		// 		BlockDnsRebinding:           pulumi.Bool(false),
-		// 		BlockNewlyRegisteredDomains: pulumi.Bool(false),
-		// 	},
+			SecurityCategories: &twingate.TwingateDNSFilteringProfileSecurityCategoriesArgs{
+				BlockDnsRebinding:           pulumi.Bool(false),
+				BlockNewlyRegisteredDomains: pulumi.Bool(false),
+			},
 
-		// 	PrivacyCategories: &twingate.TwingateDNSFilteringProfilePrivacyCategoriesArgs{
-		// 		BlockDisguisedTrackers: pulumi.Bool(true),
-		// 	},
-		// })
-		// if err != nil {
-		// 	return err
-		// }
+			PrivacyCategories: &twingate.TwingateDNSFilteringProfilePrivacyCategoriesArgs{
+				BlockDisguisedTrackers: pulumi.Bool(true),
+			},
+		})
+		if err != nil {
+			return err
+		}
 
 		return nil
 	})
