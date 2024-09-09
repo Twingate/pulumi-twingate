@@ -32,6 +32,9 @@ func main() {
 			return err
 		}
 
+		// To see service_account_key, execute command `pulumi stack output --show-secrets`
+		ctx.Export("service_account_key", pulumi.ToSecret(serviceAccountKey.Token))
+
 		// Create a Twingate connector
 		connector, err := twingate.NewTwingateConnector(ctx, "test_connector_go", &twingate.TwingateConnectorArgs{
 			RemoteNetworkId: remoteNetwork.ID(),
@@ -46,10 +49,11 @@ func main() {
 		group, err := twingate.NewTwingateGroup(ctx, "twingate_group_go", &twingate.TwingateGroupArgs{
 			Name: pulumi.StringPtr("Demo Group Go"),
 		})
+		if err != nil {
+			return err
+		}
 
-		// To see service_account_key, execute command `pulumi stack output --show-secrets`
-		ctx.Export("service_account_key", pulumi.ToSecret(serviceAccountKey.Token))
-
+		// Create a Twingate Resource and configure resource permission
 		resource, err := twingate.NewTwingateResource(ctx, "twingate_home_page_go", &twingate.TwingateResourceArgs{
 			Name:            pulumi.StringPtr("Twingate Home Page Go"),
 			Address:         pulumi.String("www.twingate.com"),
@@ -82,6 +86,45 @@ func main() {
 		}
 
 		ctx.Export("resource_id", resource.ID())
+
+		// Create a Twingate DNS Filtering Profile
+		_, err = twingate.NewTwingateDNSFilteringProfile(ctx, "dns_profile", &twingate.TwingateDNSFilteringProfileArgs{
+			Name:           pulumi.String("Go Pulumi DNS Filtering Profile"),
+			Priority:       pulumi.Float64(2),
+			FallbackMethod: pulumi.String("AUTO"),
+			Groups:         pulumi.StringArray{group.ID()},
+
+			AllowedDomains: &twingate.TwingateDNSFilteringProfileAllowedDomainsArgs{
+				IsAuthoritative: pulumi.Bool(false),
+				Domains: pulumi.StringArray{
+					pulumi.String("twingate.com"),
+					pulumi.String("zoom.us"),
+				},
+			},
+
+			DeniedDomains: &twingate.TwingateDNSFilteringProfileDeniedDomainsArgs{
+				IsAuthoritative: pulumi.Bool(true),
+				Domains: pulumi.StringArray{
+					pulumi.String("evil.example"),
+				},
+			},
+
+			ContentCategories: &twingate.TwingateDNSFilteringProfileContentCategoriesArgs{
+				BlockAdultContent: pulumi.Bool(true),
+			},
+
+			SecurityCategories: &twingate.TwingateDNSFilteringProfileSecurityCategoriesArgs{
+				BlockDnsRebinding:           pulumi.Bool(false),
+				BlockNewlyRegisteredDomains: pulumi.Bool(false),
+			},
+
+			PrivacyCategories: &twingate.TwingateDNSFilteringProfilePrivacyCategoriesArgs{
+				BlockDisguisedTrackers: pulumi.Bool(true),
+			},
+		})
+		if err != nil {
+			return err
+		}
 
 		return nil
 	})

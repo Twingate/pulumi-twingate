@@ -110,4 +110,46 @@ await Deployment.RunAsync(() =>
         Console.WriteLine($"Connector Status Updates: {connector.StatusUpdatesEnabled}");
         Console.WriteLine();
     }
+
+    // Create a Twingate DNS Filtering Profile
+    var exampleProfile = new TwingateDNSFilteringProfile("exampleProfile", new TwingateDNSFilteringProfileArgs
+    {
+        Name = "CS Pulumi DNS Filtering Profile",
+        Priority = 2,
+        FallbackMethod = "AUTO",
+        Groups =
+            {
+                tgGroup.Id
+            },
+        AllowedDomains = new TwingateDNSFilteringProfileAllowedDomainsArgs
+        {
+            IsAuthoritative = false,
+            Domains =
+                {
+                    "twingate.com",
+                    "zoom.us"
+                }
+        },
+        DeniedDomains = new TwingateDNSFilteringProfileDeniedDomainsArgs
+        {
+            IsAuthoritative = true,
+            Domains =
+                {
+                    "evil.example"
+                }
+        },
+        ContentCategories = new TwingateDNSFilteringProfileContentCategoriesArgs
+        {
+            BlockAdultContent = true
+        },
+        SecurityCategories = new TwingateDNSFilteringProfileSecurityCategoriesArgs
+        {
+            BlockDnsRebinding = false,
+            BlockNewlyRegisteredDomains = false
+        },
+        PrivacyCategories = new TwingateDNSFilteringProfilePrivacyCategoriesArgs
+        {
+            BlockDisguisedTrackers = true
+        }
+    });
 });

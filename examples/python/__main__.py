@@ -64,3 +64,36 @@ connectors = result.connectors
 # Print the list of connectors
 for connector in connectors:
     print(f"Connector ID: {connector.remote_network_id}, Name: {connector.name}")
+
+# Create a Twingate DNS Filtering Profile
+example_profile = tg.TwingateDNSFilteringProfile("exampleProfile",
+    name="PY Pulumi DNS Filtering Profile",
+    priority=2,
+    fallback_method="AUTO",
+    groups=[
+        tg_group.id
+    ],
+    allowed_domains=tg.TwingateDNSFilteringProfileAllowedDomainsArgs(
+        is_authoritative=False,
+        domains=[
+            "twingate.com",
+            "zoom.us"
+        ]
+    ),
+    denied_domains=tg.TwingateDNSFilteringProfileDeniedDomainsArgs(
+        is_authoritative=True,
+        domains=[
+            "evil.example"
+        ]
+    ),
+    content_categories=tg.TwingateDNSFilteringProfileContentCategoriesArgs(
+        block_adult_content=True
+    ),
+    security_categories=tg.TwingateDNSFilteringProfileSecurityCategoriesArgs(
+        block_dns_rebinding=False,
+        block_newly_registered_domains=False
+    ),
+    privacy_categories=tg.TwingateDNSFilteringProfilePrivacyCategoriesArgs(
+        block_disguised_trackers=True
+    )
+)

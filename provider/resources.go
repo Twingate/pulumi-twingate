@@ -22,7 +22,6 @@ import (
 
 	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 
@@ -175,14 +174,14 @@ func Provider() tfbridge.ProviderInfo {
 	// tokens, and apply auto aliasing for full backwards compatibility.  For more
 	// information, please reference:
 	// https://pkg.go.dev/github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge#ProviderInfo.ComputeTokens
-	prov.MustComputeTokens(tokens.SingleModule("twingate_", mainMod, tokens.MakeStandard(mainPkg)))
+	// prov.MustComputeTokens(tokens.SingleModule("twingate_", mainMod, tokens.MakeStandard(mainPkg)))
 
 	// TODO: that func call panics
 	// panic: Set not supported - is it possible to treat this as immutable?
 	// probably there is issue with pulumi-terraform-bridge/pf library compatibility
 	// as problem with library method, and not with terraform provider itself
 	//
-	//prov.MustApplyAutoAliases()
+	/// prov.MustApplyAutoAliases()
 
 	prov.SetAutonaming(255, "-")
 

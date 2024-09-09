@@ -14,7 +14,7 @@ const serviceAccountKey = new tg.TwingateServiceAccountKey("ci_cd_key_js", { nam
 const tggcpConnector = new tg.TwingateConnector("twingateConnectorJS", { remoteNetworkId: remoteNetwork.id });
 
 // Create a Twingate group
-const tggroup = new tg.TwingateGroup("twingateGroup", {
+const tgGroup = new tg.TwingateGroup("twingateGroup", {
     name: "demo group JS",
 });
 
@@ -61,3 +61,34 @@ result.then((value) => {
     const connectors = value.connectors;
     console.log(connectors);
 });
+
+// Create a Twingate DNS Filtering Profile
+const exampleProfile = new tg.TwingateDNSFilteringProfile("exampleProfile", {
+    name: "JS Pulumi DNS Filtering Profile",
+    priority: 2,
+    fallbackMethod: "AUTO",
+    groups: [tgGroup.id],
+    allowedDomains: {
+        isAuthoritative: false,
+        domains: [
+            "twingate.com",
+            "zoom.us"
+        ]
+    },
+    deniedDomains: {
+        isAuthoritative: true,
+        domains: [
+            "evil.example"
+        ]
+    },
+    contentCategories: {
+        blockAdultContent: true
+    },
+    securityCategories: {
+        blockDnsRebinding: false,
+        blockNewlyRegisteredDomains: false
+    },
+    privacyCategories: {
+        blockDisguisedTrackers: true
+    }
+} as tg.TwingateDNSFilteringProfileArgs);
