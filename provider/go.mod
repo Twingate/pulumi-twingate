@@ -6,8 +6,8 @@ toolchain go1.22.0
 
 require (
 	github.com/Twingate/terraform-provider-twingate/v3 v3.0.11
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.44.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.91.0
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.44.1
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.91.1
 	github.com/pulumi/pulumi/sdk/v3 v3.133.0
 )
 
