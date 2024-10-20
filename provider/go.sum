@@ -576,8 +576,8 @@ github.com/hashicorp/terraform-plugin-framework v1.11.0 h1:M7+9zBArexHFXDx/pKTxj
 github.com/hashicorp/terraform-plugin-framework v1.11.0/go.mod h1:qBXLDn69kM97NNVi/MQ9qgd1uWWsVftGSnygYG1tImM=
 github.com/hashicorp/terraform-plugin-framework-validators v0.13.0 h1:bxZfGo9DIUoLLtHMElsu+zwqI4IsMZQBRRy4iLzZJ8E=
 github.com/hashicorp/terraform-plugin-framework-validators v0.13.0/go.mod h1:wGeI02gEhj9nPANU62F2jCaHjXulejm/X+af4PdZaNo=
-github.com/hashicorp/terraform-plugin-go v0.23.0 h1:AALVuU1gD1kPb48aPQUjug9Ir/125t+AAurhqphJ2Co=
-github.com/hashicorp/terraform-plugin-go v0.23.0/go.mod h1:1E3Cr9h2vMlahWMbsSEcNrOCxovCZhOOIXjFHbjc/lQ=
+github.com/hashicorp/terraform-plugin-go v0.24.0 h1:2WpHhginCdVhFIrWHxDEg6RBn3YaWzR2o6qUeIEat2U=
+github.com/hashicorp/terraform-plugin-go v0.24.0/go.mod h1:tUQ53lAsOyYSckFGEefGC5C8BAaO0ENqzFd3bQeuYQg=
 github.com/hashicorp/terraform-plugin-log v0.9.0 h1:i7hOA+vdAItN1/7UrfBqBwvYPQ9TFvymaRGZED3FCV0=
 github.com/hashicorp/terraform-plugin-log v0.9.0/go.mod h1:rKL8egZQ/eXSyDqzLUuwUYLVdlYeamldAHSxjUFADow=
 github.com/hashicorp/terraform-plugin-sdk v1.7.0 h1:B//oq0ZORG+EkVrIJy0uPGSonvmXqxSzXe8+GhknoW0=
@@ -744,8 +744,8 @@ github.com/pulumi/pulumi-java/pkg v0.16.1 h1:orHnDWFbpOERwaBLry9f+6nqPX7x0MsrIka
 github.com/pulumi/pulumi-java/pkg v0.16.1/go.mod h1:QH0DihZkWYle9XFc+LJ76m4hUo+fA3RdyaM90pqOaSM=
 github.com/pulumi/pulumi-terraform-bridge/pf v0.45.0 h1:RIu3thoVfOR2yyyVS1xwuJ9ud05SPuXTf7Q+mnV6CQg=
 github.com/pulumi/pulumi-terraform-bridge/pf v0.45.0/go.mod h1:bcSV/ALzPJm4Ib1qS2rga27/O3DCGo2mV4XXGrcNfZE=
-github.com/pulumi/pulumi-terraform-bridge/v3 v3.92.0 h1:LOUHyMFGYkchv4Bzej7v+1W1ooaspgQG6/oZVJ+3lXY=
-github.com/pulumi/pulumi-terraform-bridge/v3 v3.92.0/go.mod h1:aI3U3eanRcyOX05No+Nk6FuJvppx4jjcQwFelHSI8yE=
+github.com/pulumi/pulumi-terraform-bridge/v3 v3.93.1 h1:EEf5W3buVR5pcCKTXGouDS1/oY6TqVUIRKLksl5h4Es=
+github.com/pulumi/pulumi-terraform-bridge/v3 v3.93.1/go.mod h1:jNpOSGkfTeZSnSjpGBHHiyllciCEDRqFaZhLUpQPlpo=
 github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.10 h1:VAXmHuldKd760ZlMe6khXeJY0ccY3TJF1g1FnWGccaM=
 github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.10/go.mod h1:+AQS/2h775Chx1a4vxb7cDdyiOsdEw2Q6gD7K5QCIwI=
 github.com/pulumi/pulumi-yaml v1.10.3 h1:j5cjPiE32ILmjrWnC1cfZ0MWdqCZ8fg9wlaWk7HOtM4=
@@ -1427,8 +1427,8 @@ google.golang.org/grpc v1.48.0/go.mod h1:vN9eftEi1UMyUsIF80+uQXhHjbXYbm0uXoFCACu
 google.golang.org/grpc v1.49.0/go.mod h1:ZgQEeidpAuNRZ8iRrlBKXZQP1ghovWIVhdJRyCDK+GI=
 google.golang.org/grpc v1.50.0/go.mod h1:ZgQEeidpAuNRZ8iRrlBKXZQP1ghovWIVhdJRyCDK+GI=
 google.golang.org/grpc v1.50.1/go.mod h1:ZgQEeidpAuNRZ8iRrlBKXZQP1ghovWIVhdJRyCDK+GI=
-google.golang.org/grpc v1.65.0 h1:bs/cUb4lp1G5iImFFd3u5ixQzweKizoZJAwBNLR42lc=
-google.golang.org/grpc v1.65.0/go.mod h1:WgYC2ypjlB0EiQi6wdKixMqukr6lBc0Vo+oOgjrM5ZQ=
+google.golang.org/grpc v1.66.2 h1:3QdXkuq3Bkh7w+ywLdLvM56cmGvQHUMZpiCzt6Rqaoo=
+google.golang.org/grpc v1.66.2/go.mod h1:s3/l6xSSCURdVfAnL+TqCNMyTDAGN6+lZeVxnZR128Y=
 google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.1.0/go.mod h1:6Kw0yEErY5E/yWrBtf03jp27GLLJujG4z/JK95pnjjw=
 google.golang.org/protobuf v0.0.0-20200109180630-ec00e32a8dfd/go.mod h1:DFci5gLYBciE7Vtevhsrf46CRTquxDuWsQurQQe4oz8=
 google.golang.org/protobuf v0.0.0-20200221191635-4d8936d0db64/go.mod h1:kwYJMbMJ01Woi6D6+Kah6886xMZcty6N08ah7+eCXa0=
