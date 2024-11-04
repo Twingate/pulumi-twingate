@@ -85,14 +85,20 @@ type GetTwingateSecurityPoliciesResult struct {
 
 func GetTwingateSecurityPoliciesOutput(ctx *pulumi.Context, args GetTwingateSecurityPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetTwingateSecurityPoliciesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetTwingateSecurityPoliciesResult, error) {
+		ApplyT(func(v interface{}) (GetTwingateSecurityPoliciesResultOutput, error) {
 			args := v.(GetTwingateSecurityPoliciesArgs)
-			r, err := GetTwingateSecurityPolicies(ctx, &args, opts...)
-			var s GetTwingateSecurityPoliciesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetTwingateSecurityPoliciesResult
+			secret, err := ctx.InvokePackageRaw("twingate:index/getTwingateSecurityPolicies:getTwingateSecurityPolicies", args, &rv, "", opts...)
+			if err != nil {
+				return GetTwingateSecurityPoliciesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetTwingateSecurityPoliciesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetTwingateSecurityPoliciesResultOutput), nil
+			}
+			return output, nil
 		}).(GetTwingateSecurityPoliciesResultOutput)
 }
 

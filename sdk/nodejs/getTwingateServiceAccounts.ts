@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  */
 export function getTwingateServiceAccounts(args?: GetTwingateServiceAccountsArgs, opts?: pulumi.InvokeOptions): Promise<GetTwingateServiceAccountsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("twingate:index/getTwingateServiceAccounts:getTwingateServiceAccounts", {
         "name": args.name,
@@ -116,7 +115,16 @@ export interface GetTwingateServiceAccountsResult {
  * ```
  */
 export function getTwingateServiceAccountsOutput(args?: GetTwingateServiceAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateServiceAccountsResult> {
-    return pulumi.output(args).apply((a: any) => getTwingateServiceAccounts(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("twingate:index/getTwingateServiceAccounts:getTwingateServiceAccounts", {
+        "name": args.name,
+        "nameContains": args.nameContains,
+        "nameExclude": args.nameExclude,
+        "namePrefix": args.namePrefix,
+        "nameRegexp": args.nameRegexp,
+        "nameSuffix": args.nameSuffix,
+    }, opts);
 }
 
 /**

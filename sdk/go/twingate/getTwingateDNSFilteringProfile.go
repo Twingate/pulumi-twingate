@@ -90,14 +90,20 @@ type LookupTwingateDNSFilteringProfileResult struct {
 
 func LookupTwingateDNSFilteringProfileOutput(ctx *pulumi.Context, args LookupTwingateDNSFilteringProfileOutputArgs, opts ...pulumi.InvokeOption) LookupTwingateDNSFilteringProfileResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupTwingateDNSFilteringProfileResult, error) {
+		ApplyT(func(v interface{}) (LookupTwingateDNSFilteringProfileResultOutput, error) {
 			args := v.(LookupTwingateDNSFilteringProfileArgs)
-			r, err := LookupTwingateDNSFilteringProfile(ctx, &args, opts...)
-			var s LookupTwingateDNSFilteringProfileResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupTwingateDNSFilteringProfileResult
+			secret, err := ctx.InvokePackageRaw("twingate:index/getTwingateDNSFilteringProfile:getTwingateDNSFilteringProfile", args, &rv, "", opts...)
+			if err != nil {
+				return LookupTwingateDNSFilteringProfileResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupTwingateDNSFilteringProfileResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupTwingateDNSFilteringProfileResultOutput), nil
+			}
+			return output, nil
 		}).(LookupTwingateDNSFilteringProfileResultOutput)
 }
 

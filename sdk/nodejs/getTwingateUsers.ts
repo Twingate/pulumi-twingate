@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  */
 export function getTwingateUsers(args?: GetTwingateUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetTwingateUsersResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("twingate:index/getTwingateUsers:getTwingateUsers", {
         "email": args.email,
@@ -226,7 +225,29 @@ export interface GetTwingateUsersResult {
  * ```
  */
 export function getTwingateUsersOutput(args?: GetTwingateUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateUsersResult> {
-    return pulumi.output(args).apply((a: any) => getTwingateUsers(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("twingate:index/getTwingateUsers:getTwingateUsers", {
+        "email": args.email,
+        "emailContains": args.emailContains,
+        "emailExclude": args.emailExclude,
+        "emailPrefix": args.emailPrefix,
+        "emailRegexp": args.emailRegexp,
+        "emailSuffix": args.emailSuffix,
+        "firstName": args.firstName,
+        "firstNameContains": args.firstNameContains,
+        "firstNameExclude": args.firstNameExclude,
+        "firstNamePrefix": args.firstNamePrefix,
+        "firstNameRegexp": args.firstNameRegexp,
+        "firstNameSuffix": args.firstNameSuffix,
+        "lastName": args.lastName,
+        "lastNameContains": args.lastNameContains,
+        "lastNameExclude": args.lastNameExclude,
+        "lastNamePrefix": args.lastNamePrefix,
+        "lastNameRegexp": args.lastNameRegexp,
+        "lastNameSuffix": args.lastNameSuffix,
+        "roles": args.roles,
+    }, opts);
 }
 
 /**

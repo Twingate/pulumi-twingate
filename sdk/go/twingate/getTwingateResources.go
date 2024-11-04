@@ -86,14 +86,20 @@ type GetTwingateResourcesResult struct {
 
 func GetTwingateResourcesOutput(ctx *pulumi.Context, args GetTwingateResourcesOutputArgs, opts ...pulumi.InvokeOption) GetTwingateResourcesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetTwingateResourcesResult, error) {
+		ApplyT(func(v interface{}) (GetTwingateResourcesResultOutput, error) {
 			args := v.(GetTwingateResourcesArgs)
-			r, err := GetTwingateResources(ctx, &args, opts...)
-			var s GetTwingateResourcesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetTwingateResourcesResult
+			secret, err := ctx.InvokePackageRaw("twingate:index/getTwingateResources:getTwingateResources", args, &rv, "", opts...)
+			if err != nil {
+				return GetTwingateResourcesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetTwingateResourcesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetTwingateResourcesResultOutput), nil
+			}
+			return output, nil
 		}).(GetTwingateResourcesResultOutput)
 }
 

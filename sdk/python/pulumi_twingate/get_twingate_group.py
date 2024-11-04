@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -120,9 +125,6 @@ def get_twingate_group(id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         security_policy_id=pulumi.get(__ret__, 'security_policy_id'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_twingate_group)
 def get_twingate_group_output(id: Optional[pulumi.Input[str]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTwingateGroupResult]:
     """
@@ -140,4 +142,13 @@ def get_twingate_group_output(id: Optional[pulumi.Input[str]] = None,
 
     :param str id: The ID of the Group. The ID for the Group can be obtained from the Admin API or the URL string in the Admin Console.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('twingate:index/getTwingateGroup:getTwingateGroup', __args__, opts=opts, typ=GetTwingateGroupResult)
+    return __ret__.apply(lambda __response__: GetTwingateGroupResult(
+        id=pulumi.get(__response__, 'id'),
+        is_active=pulumi.get(__response__, 'is_active'),
+        name=pulumi.get(__response__, 'name'),
+        security_policy_id=pulumi.get(__response__, 'security_policy_id'),
+        type=pulumi.get(__response__, 'type')))

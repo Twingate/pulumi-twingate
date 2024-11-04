@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  */
 export function getTwingateSecurityPolicies(args?: GetTwingateSecurityPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetTwingateSecurityPoliciesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("twingate:index/getTwingateSecurityPolicies:getTwingateSecurityPolicies", {
         "name": args.name,
@@ -113,7 +112,16 @@ export interface GetTwingateSecurityPoliciesResult {
  * ```
  */
 export function getTwingateSecurityPoliciesOutput(args?: GetTwingateSecurityPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateSecurityPoliciesResult> {
-    return pulumi.output(args).apply((a: any) => getTwingateSecurityPolicies(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("twingate:index/getTwingateSecurityPolicies:getTwingateSecurityPolicies", {
+        "name": args.name,
+        "nameContains": args.nameContains,
+        "nameExclude": args.nameExclude,
+        "namePrefix": args.namePrefix,
+        "nameRegexp": args.nameRegexp,
+        "nameSuffix": args.nameSuffix,
+    }, opts);
 }
 
 /**

@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getTwingateUser(args: GetTwingateUserArgs, opts?: pulumi.InvokeOptions): Promise<GetTwingateUserResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("twingate:index/getTwingateUser:getTwingateUser", {
         "id": args.id,
@@ -80,7 +79,10 @@ export interface GetTwingateUserResult {
  * ```
  */
 export function getTwingateUserOutput(args: GetTwingateUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateUserResult> {
-    return pulumi.output(args).apply((a: any) => getTwingateUser(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("twingate:index/getTwingateUser:getTwingateUser", {
+        "id": args.id,
+    }, opts);
 }
 
 /**
