@@ -68,14 +68,20 @@ type LookupTwingateRemoteNetworkResult struct {
 
 func LookupTwingateRemoteNetworkOutput(ctx *pulumi.Context, args LookupTwingateRemoteNetworkOutputArgs, opts ...pulumi.InvokeOption) LookupTwingateRemoteNetworkResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupTwingateRemoteNetworkResult, error) {
+		ApplyT(func(v interface{}) (LookupTwingateRemoteNetworkResultOutput, error) {
 			args := v.(LookupTwingateRemoteNetworkArgs)
-			r, err := LookupTwingateRemoteNetwork(ctx, &args, opts...)
-			var s LookupTwingateRemoteNetworkResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupTwingateRemoteNetworkResult
+			secret, err := ctx.InvokePackageRaw("twingate:index/getTwingateRemoteNetwork:getTwingateRemoteNetwork", args, &rv, "", opts...)
+			if err != nil {
+				return LookupTwingateRemoteNetworkResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupTwingateRemoteNetworkResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupTwingateRemoteNetworkResultOutput), nil
+			}
+			return output, nil
 		}).(LookupTwingateRemoteNetworkResultOutput)
 }
 

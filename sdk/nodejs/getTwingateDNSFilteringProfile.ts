@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getTwingateDNSFilteringProfile(args: GetTwingateDNSFilteringProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetTwingateDNSFilteringProfileResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("twingate:index/getTwingateDNSFilteringProfile:getTwingateDNSFilteringProfile", {
         "allowedDomains": args.allowedDomains,
@@ -123,7 +122,15 @@ export interface GetTwingateDNSFilteringProfileResult {
  * ```
  */
 export function getTwingateDNSFilteringProfileOutput(args: GetTwingateDNSFilteringProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateDNSFilteringProfileResult> {
-    return pulumi.output(args).apply((a: any) => getTwingateDNSFilteringProfile(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("twingate:index/getTwingateDNSFilteringProfile:getTwingateDNSFilteringProfile", {
+        "allowedDomains": args.allowedDomains,
+        "contentCategories": args.contentCategories,
+        "deniedDomains": args.deniedDomains,
+        "id": args.id,
+        "privacyCategories": args.privacyCategories,
+        "securityCategories": args.securityCategories,
+    }, opts);
 }
 
 /**

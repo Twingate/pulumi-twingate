@@ -86,14 +86,20 @@ type GetTwingateServiceAccountsResult struct {
 
 func GetTwingateServiceAccountsOutput(ctx *pulumi.Context, args GetTwingateServiceAccountsOutputArgs, opts ...pulumi.InvokeOption) GetTwingateServiceAccountsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetTwingateServiceAccountsResult, error) {
+		ApplyT(func(v interface{}) (GetTwingateServiceAccountsResultOutput, error) {
 			args := v.(GetTwingateServiceAccountsArgs)
-			r, err := GetTwingateServiceAccounts(ctx, &args, opts...)
-			var s GetTwingateServiceAccountsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetTwingateServiceAccountsResult
+			secret, err := ctx.InvokePackageRaw("twingate:index/getTwingateServiceAccounts:getTwingateServiceAccounts", args, &rv, "", opts...)
+			if err != nil {
+				return GetTwingateServiceAccountsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetTwingateServiceAccountsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetTwingateServiceAccountsResultOutput), nil
+			}
+			return output, nil
 		}).(GetTwingateServiceAccountsResultOutput)
 }
 

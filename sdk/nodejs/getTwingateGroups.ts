@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  */
 export function getTwingateGroups(args?: GetTwingateGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetTwingateGroupsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("twingate:index/getTwingateGroups:getTwingateGroups", {
         "isActive": args.isActive,
@@ -134,7 +133,18 @@ export interface GetTwingateGroupsResult {
  * ```
  */
 export function getTwingateGroupsOutput(args?: GetTwingateGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getTwingateGroups(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("twingate:index/getTwingateGroups:getTwingateGroups", {
+        "isActive": args.isActive,
+        "name": args.name,
+        "nameContains": args.nameContains,
+        "nameExclude": args.nameExclude,
+        "namePrefix": args.namePrefix,
+        "nameRegexp": args.nameRegexp,
+        "nameSuffix": args.nameSuffix,
+        "types": args.types,
+    }, opts);
 }
 
 /**

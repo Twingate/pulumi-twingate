@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -107,9 +112,6 @@ def get_twingate_connector(id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         remote_network_id=pulumi.get(__ret__, 'remote_network_id'),
         status_updates_enabled=pulumi.get(__ret__, 'status_updates_enabled'))
-
-
-@_utilities.lift_output_func(get_twingate_connector)
 def get_twingate_connector_output(id: Optional[pulumi.Input[str]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTwingateConnectorResult]:
     """
@@ -127,4 +129,12 @@ def get_twingate_connector_output(id: Optional[pulumi.Input[str]] = None,
 
     :param str id: The ID of the Connector. The ID for the Connector can be obtained from the Admin API or the URL string in the Admin Console.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('twingate:index/getTwingateConnector:getTwingateConnector', __args__, opts=opts, typ=GetTwingateConnectorResult)
+    return __ret__.apply(lambda __response__: GetTwingateConnectorResult(
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        remote_network_id=pulumi.get(__response__, 'remote_network_id'),
+        status_updates_enabled=pulumi.get(__response__, 'status_updates_enabled')))

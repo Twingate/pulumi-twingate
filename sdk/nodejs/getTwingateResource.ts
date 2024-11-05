@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getTwingateResource(args: GetTwingateResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetTwingateResourceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("twingate:index/getTwingateResource:getTwingateResource", {
         "id": args.id,
@@ -83,7 +82,11 @@ export interface GetTwingateResourceResult {
  * ```
  */
 export function getTwingateResourceOutput(args: GetTwingateResourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateResourceResult> {
-    return pulumi.output(args).apply((a: any) => getTwingateResource(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("twingate:index/getTwingateResource:getTwingateResource", {
+        "id": args.id,
+        "protocols": args.protocols,
+    }, opts);
 }
 
 /**
