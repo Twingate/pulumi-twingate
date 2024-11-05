@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -202,9 +207,6 @@ def get_twingate_dns_filtering_profile(allowed_domains: Optional[Union['GetTwing
         priority=pulumi.get(__ret__, 'priority'),
         privacy_categories=pulumi.get(__ret__, 'privacy_categories'),
         security_categories=pulumi.get(__ret__, 'security_categories'))
-
-
-@_utilities.lift_output_func(get_twingate_dns_filtering_profile)
 def get_twingate_dns_filtering_profile_output(allowed_domains: Optional[pulumi.Input[Optional[Union['GetTwingateDNSFilteringProfileAllowedDomainsArgs', 'GetTwingateDNSFilteringProfileAllowedDomainsArgsDict']]]] = None,
                                               content_categories: Optional[pulumi.Input[Optional[Union['GetTwingateDNSFilteringProfileContentCategoriesArgs', 'GetTwingateDNSFilteringProfileContentCategoriesArgsDict']]]] = None,
                                               denied_domains: Optional[pulumi.Input[Optional[Union['GetTwingateDNSFilteringProfileDeniedDomainsArgs', 'GetTwingateDNSFilteringProfileDeniedDomainsArgsDict']]]] = None,
@@ -232,4 +234,23 @@ def get_twingate_dns_filtering_profile_output(allowed_domains: Optional[pulumi.I
     :param Union['GetTwingateDNSFilteringProfilePrivacyCategoriesArgs', 'GetTwingateDNSFilteringProfilePrivacyCategoriesArgsDict'] privacy_categories: A block with the following attributes.
     :param Union['GetTwingateDNSFilteringProfileSecurityCategoriesArgs', 'GetTwingateDNSFilteringProfileSecurityCategoriesArgsDict'] security_categories: A block with the following attributes.
     """
-    ...
+    __args__ = dict()
+    __args__['allowedDomains'] = allowed_domains
+    __args__['contentCategories'] = content_categories
+    __args__['deniedDomains'] = denied_domains
+    __args__['id'] = id
+    __args__['privacyCategories'] = privacy_categories
+    __args__['securityCategories'] = security_categories
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('twingate:index/getTwingateDNSFilteringProfile:getTwingateDNSFilteringProfile', __args__, opts=opts, typ=GetTwingateDNSFilteringProfileResult)
+    return __ret__.apply(lambda __response__: GetTwingateDNSFilteringProfileResult(
+        allowed_domains=pulumi.get(__response__, 'allowed_domains'),
+        content_categories=pulumi.get(__response__, 'content_categories'),
+        denied_domains=pulumi.get(__response__, 'denied_domains'),
+        fallback_method=pulumi.get(__response__, 'fallback_method'),
+        groups=pulumi.get(__response__, 'groups'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        priority=pulumi.get(__response__, 'priority'),
+        privacy_categories=pulumi.get(__response__, 'privacy_categories'),
+        security_categories=pulumi.get(__response__, 'security_categories')))

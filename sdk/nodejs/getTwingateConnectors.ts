@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  */
 export function getTwingateConnectors(args?: GetTwingateConnectorsArgs, opts?: pulumi.InvokeOptions): Promise<GetTwingateConnectorsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("twingate:index/getTwingateConnectors:getTwingateConnectors", {
         "name": args.name,
@@ -116,7 +115,16 @@ export interface GetTwingateConnectorsResult {
  * ```
  */
 export function getTwingateConnectorsOutput(args?: GetTwingateConnectorsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateConnectorsResult> {
-    return pulumi.output(args).apply((a: any) => getTwingateConnectors(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("twingate:index/getTwingateConnectors:getTwingateConnectors", {
+        "name": args.name,
+        "nameContains": args.nameContains,
+        "nameExclude": args.nameExclude,
+        "namePrefix": args.namePrefix,
+        "nameRegexp": args.nameRegexp,
+        "nameSuffix": args.nameSuffix,
+    }, opts);
 }
 
 /**

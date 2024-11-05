@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -380,9 +385,6 @@ def get_twingate_users(email: Optional[str] = None,
         last_name_suffix=pulumi.get(__ret__, 'last_name_suffix'),
         roles=pulumi.get(__ret__, 'roles'),
         users=pulumi.get(__ret__, 'users'))
-
-
-@_utilities.lift_output_func(get_twingate_users)
 def get_twingate_users_output(email: Optional[pulumi.Input[Optional[str]]] = None,
                               email_contains: Optional[pulumi.Input[Optional[str]]] = None,
                               email_exclude: Optional[pulumi.Input[Optional[str]]] = None,
@@ -436,4 +438,47 @@ def get_twingate_users_output(email: Optional[pulumi.Input[Optional[str]]] = Non
     :param str last_name_suffix: The last name of the user must end with the value.
     :param Sequence[str] roles: Returns users that match a list of roles. Valid roles: `ADMIN`, `DEVOPS`, `SUPPORT`, `MEMBER`.
     """
-    ...
+    __args__ = dict()
+    __args__['email'] = email
+    __args__['emailContains'] = email_contains
+    __args__['emailExclude'] = email_exclude
+    __args__['emailPrefix'] = email_prefix
+    __args__['emailRegexp'] = email_regexp
+    __args__['emailSuffix'] = email_suffix
+    __args__['firstName'] = first_name
+    __args__['firstNameContains'] = first_name_contains
+    __args__['firstNameExclude'] = first_name_exclude
+    __args__['firstNamePrefix'] = first_name_prefix
+    __args__['firstNameRegexp'] = first_name_regexp
+    __args__['firstNameSuffix'] = first_name_suffix
+    __args__['lastName'] = last_name
+    __args__['lastNameContains'] = last_name_contains
+    __args__['lastNameExclude'] = last_name_exclude
+    __args__['lastNamePrefix'] = last_name_prefix
+    __args__['lastNameRegexp'] = last_name_regexp
+    __args__['lastNameSuffix'] = last_name_suffix
+    __args__['roles'] = roles
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('twingate:index/getTwingateUsers:getTwingateUsers', __args__, opts=opts, typ=GetTwingateUsersResult)
+    return __ret__.apply(lambda __response__: GetTwingateUsersResult(
+        email=pulumi.get(__response__, 'email'),
+        email_contains=pulumi.get(__response__, 'email_contains'),
+        email_exclude=pulumi.get(__response__, 'email_exclude'),
+        email_prefix=pulumi.get(__response__, 'email_prefix'),
+        email_regexp=pulumi.get(__response__, 'email_regexp'),
+        email_suffix=pulumi.get(__response__, 'email_suffix'),
+        first_name=pulumi.get(__response__, 'first_name'),
+        first_name_contains=pulumi.get(__response__, 'first_name_contains'),
+        first_name_exclude=pulumi.get(__response__, 'first_name_exclude'),
+        first_name_prefix=pulumi.get(__response__, 'first_name_prefix'),
+        first_name_regexp=pulumi.get(__response__, 'first_name_regexp'),
+        first_name_suffix=pulumi.get(__response__, 'first_name_suffix'),
+        id=pulumi.get(__response__, 'id'),
+        last_name=pulumi.get(__response__, 'last_name'),
+        last_name_contains=pulumi.get(__response__, 'last_name_contains'),
+        last_name_exclude=pulumi.get(__response__, 'last_name_exclude'),
+        last_name_prefix=pulumi.get(__response__, 'last_name_prefix'),
+        last_name_regexp=pulumi.get(__response__, 'last_name_regexp'),
+        last_name_suffix=pulumi.get(__response__, 'last_name_suffix'),
+        roles=pulumi.get(__response__, 'roles'),
+        users=pulumi.get(__response__, 'users')))

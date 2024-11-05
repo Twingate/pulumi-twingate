@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -133,9 +138,6 @@ def get_twingate_user(id: Optional[str] = None,
         last_name=pulumi.get(__ret__, 'last_name'),
         role=pulumi.get(__ret__, 'role'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_twingate_user)
 def get_twingate_user_output(id: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTwingateUserResult]:
     """
@@ -153,4 +155,14 @@ def get_twingate_user_output(id: Optional[pulumi.Input[str]] = None,
 
     :param str id: The ID of the User. The ID for the User can be obtained from the Admin API or the URL string in the Admin Console.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('twingate:index/getTwingateUser:getTwingateUser', __args__, opts=opts, typ=GetTwingateUserResult)
+    return __ret__.apply(lambda __response__: GetTwingateUserResult(
+        email=pulumi.get(__response__, 'email'),
+        first_name=pulumi.get(__response__, 'first_name'),
+        id=pulumi.get(__response__, 'id'),
+        last_name=pulumi.get(__response__, 'last_name'),
+        role=pulumi.get(__response__, 'role'),
+        type=pulumi.get(__response__, 'type')))

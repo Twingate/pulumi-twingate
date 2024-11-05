@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  */
 export function getTwingateRemoteNetwork(args?: GetTwingateRemoteNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetTwingateRemoteNetworkResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("twingate:index/getTwingateRemoteNetwork:getTwingateRemoteNetwork", {
         "id": args.id,
@@ -74,7 +73,12 @@ export interface GetTwingateRemoteNetworkResult {
  * ```
  */
 export function getTwingateRemoteNetworkOutput(args?: GetTwingateRemoteNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateRemoteNetworkResult> {
-    return pulumi.output(args).apply((a: any) => getTwingateRemoteNetwork(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("twingate:index/getTwingateRemoteNetwork:getTwingateRemoteNetwork", {
+        "id": args.id,
+        "name": args.name,
+    }, opts);
 }
 
 /**

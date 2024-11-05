@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getTwingateConnector(args: GetTwingateConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetTwingateConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("twingate:index/getTwingateConnector:getTwingateConnector", {
         "id": args.id,
@@ -72,7 +71,10 @@ export interface GetTwingateConnectorResult {
  * ```
  */
 export function getTwingateConnectorOutput(args: GetTwingateConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getTwingateConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("twingate:index/getTwingateConnector:getTwingateConnector", {
+        "id": args.id,
+    }, opts);
 }
 
 /**

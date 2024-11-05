@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -175,9 +180,6 @@ def get_twingate_resources(name: Optional[str] = None,
         name_regexp=pulumi.get(__ret__, 'name_regexp'),
         name_suffix=pulumi.get(__ret__, 'name_suffix'),
         resources=pulumi.get(__ret__, 'resources'))
-
-
-@_utilities.lift_output_func(get_twingate_resources)
 def get_twingate_resources_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                                   name_contains: Optional[pulumi.Input[Optional[str]]] = None,
                                   name_exclude: Optional[pulumi.Input[Optional[str]]] = None,
@@ -205,4 +207,21 @@ def get_twingate_resources_output(name: Optional[pulumi.Input[Optional[str]]] = 
     :param str name_regexp: The regular expression match of the name of the resource.
     :param str name_suffix: The name of the resource must end with the value.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['nameContains'] = name_contains
+    __args__['nameExclude'] = name_exclude
+    __args__['namePrefix'] = name_prefix
+    __args__['nameRegexp'] = name_regexp
+    __args__['nameSuffix'] = name_suffix
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('twingate:index/getTwingateResources:getTwingateResources', __args__, opts=opts, typ=GetTwingateResourcesResult)
+    return __ret__.apply(lambda __response__: GetTwingateResourcesResult(
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        name_contains=pulumi.get(__response__, 'name_contains'),
+        name_exclude=pulumi.get(__response__, 'name_exclude'),
+        name_prefix=pulumi.get(__response__, 'name_prefix'),
+        name_regexp=pulumi.get(__response__, 'name_regexp'),
+        name_suffix=pulumi.get(__response__, 'name_suffix'),
+        resources=pulumi.get(__response__, 'resources')))

@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getTwingateGroup(args: GetTwingateGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetTwingateGroupResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("twingate:index/getTwingateGroup:getTwingateGroup", {
         "id": args.id,
@@ -76,7 +75,10 @@ export interface GetTwingateGroupResult {
  * ```
  */
 export function getTwingateGroupOutput(args: GetTwingateGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateGroupResult> {
-    return pulumi.output(args).apply((a: any) => getTwingateGroup(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("twingate:index/getTwingateGroup:getTwingateGroup", {
+        "id": args.id,
+    }, opts);
 }
 
 /**
