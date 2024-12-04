@@ -7,6 +7,10 @@ import * as outputs from "../types/output";
 
 export interface GetTwingateConnectorsConnector {
     /**
+     * The hostname of the machine hosting the Connector.
+     */
+    hostname: string;
+    /**
      * The ID of the Connector.
      */
     id: string;
@@ -15,13 +19,29 @@ export interface GetTwingateConnectorsConnector {
      */
     name: string;
     /**
+     * The Connector's private IP addresses.
+     */
+    privateIps: string[];
+    /**
+     * The Connector's public IP address.
+     */
+    publicIp: string;
+    /**
      * The ID of the Remote Network attached to the Connector.
      */
     remoteNetworkId: string;
     /**
+     * The Connector's state. One of `ALIVE`, `DEAD_NO_HEARTBEAT`, `DEAD_HEARTBEAT_TOO_OLD` or `DEAD_NO_RELAYS`.
+     */
+    state: string;
+    /**
      * Determines whether status notifications are enabled for the Connector.
      */
     statusUpdatesEnabled: boolean;
+    /**
+     * The Connector's version.
+     */
+    version: string;
 }
 
 export interface GetTwingateDNSFilteringProfileAllowedDomains {

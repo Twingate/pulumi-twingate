@@ -40,6 +40,10 @@ export interface GetTwingateConnectorArgs {
  */
 export interface GetTwingateConnectorResult {
     /**
+     * The hostname of the machine hosting the Connector.
+     */
+    readonly hostname: string;
+    /**
      * The ID of the Connector. The ID for the Connector can be obtained from the Admin API or the URL string in the Admin Console.
      */
     readonly id: string;
@@ -48,13 +52,29 @@ export interface GetTwingateConnectorResult {
      */
     readonly name: string;
     /**
+     * The Connector's private IP addresses.
+     */
+    readonly privateIps: string[];
+    /**
+     * The Connector's public IP address.
+     */
+    readonly publicIp: string;
+    /**
      * The ID of the Remote Network the Connector is attached to.
      */
     readonly remoteNetworkId: string;
     /**
+     * The Connector's state. One of `ALIVE`, `DEAD_NO_HEARTBEAT`, `DEAD_HEARTBEAT_TOO_OLD` or `DEAD_NO_RELAYS`.
+     */
+    readonly state: string;
+    /**
      * Determines whether status notifications are enabled for the Connector.
      */
     readonly statusUpdatesEnabled: boolean;
+    /**
+     * The Connector's version.
+     */
+    readonly version: string;
 }
 /**
  * Connectors provide connectivity to Remote Networks. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/understanding-access-nodes).
