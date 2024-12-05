@@ -56,14 +56,24 @@ type LookupTwingateConnectorArgs struct {
 
 // A collection of values returned by getTwingateConnector.
 type LookupTwingateConnectorResult struct {
+	// The hostname of the machine hosting the Connector.
+	Hostname string `pulumi:"hostname"`
 	// The ID of the Connector. The ID for the Connector can be obtained from the Admin API or the URL string in the Admin Console.
 	Id string `pulumi:"id"`
 	// The name of the Connector.
 	Name string `pulumi:"name"`
+	// The Connector's private IP addresses.
+	PrivateIps []string `pulumi:"privateIps"`
+	// The Connector's public IP address.
+	PublicIp string `pulumi:"publicIp"`
 	// The ID of the Remote Network the Connector is attached to.
 	RemoteNetworkId string `pulumi:"remoteNetworkId"`
+	// The Connector's state. One of `ALIVE`, `DEAD_NO_HEARTBEAT`, `DEAD_HEARTBEAT_TOO_OLD` or `DEAD_NO_RELAYS`.
+	State string `pulumi:"state"`
 	// Determines whether status notifications are enabled for the Connector.
 	StatusUpdatesEnabled bool `pulumi:"statusUpdatesEnabled"`
+	// The Connector's version.
+	Version string `pulumi:"version"`
 }
 
 func LookupTwingateConnectorOutput(ctx *pulumi.Context, args LookupTwingateConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupTwingateConnectorResultOutput {
@@ -110,6 +120,11 @@ func (o LookupTwingateConnectorResultOutput) ToLookupTwingateConnectorResultOutp
 	return o
 }
 
+// The hostname of the machine hosting the Connector.
+func (o LookupTwingateConnectorResultOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTwingateConnectorResult) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
 // The ID of the Connector. The ID for the Connector can be obtained from the Admin API or the URL string in the Admin Console.
 func (o LookupTwingateConnectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTwingateConnectorResult) string { return v.Id }).(pulumi.StringOutput)
@@ -120,14 +135,34 @@ func (o LookupTwingateConnectorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTwingateConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The Connector's private IP addresses.
+func (o LookupTwingateConnectorResultOutput) PrivateIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupTwingateConnectorResult) []string { return v.PrivateIps }).(pulumi.StringArrayOutput)
+}
+
+// The Connector's public IP address.
+func (o LookupTwingateConnectorResultOutput) PublicIp() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTwingateConnectorResult) string { return v.PublicIp }).(pulumi.StringOutput)
+}
+
 // The ID of the Remote Network the Connector is attached to.
 func (o LookupTwingateConnectorResultOutput) RemoteNetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTwingateConnectorResult) string { return v.RemoteNetworkId }).(pulumi.StringOutput)
 }
 
+// The Connector's state. One of `ALIVE`, `DEAD_NO_HEARTBEAT`, `DEAD_HEARTBEAT_TOO_OLD` or `DEAD_NO_RELAYS`.
+func (o LookupTwingateConnectorResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTwingateConnectorResult) string { return v.State }).(pulumi.StringOutput)
+}
+
 // Determines whether status notifications are enabled for the Connector.
 func (o LookupTwingateConnectorResultOutput) StatusUpdatesEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupTwingateConnectorResult) bool { return v.StatusUpdatesEnabled }).(pulumi.BoolOutput)
+}
+
+// The Connector's version.
+func (o LookupTwingateConnectorResultOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTwingateConnectorResult) string { return v.Version }).(pulumi.StringOutput)
 }
 
 func init() {

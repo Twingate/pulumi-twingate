@@ -55,17 +55,37 @@ export class TwingateConnector extends pulumi.CustomResource {
     }
 
     /**
+     * The hostname of the machine hosting the Connector.
+     */
+    public /*out*/ readonly hostname!: pulumi.Output<string>;
+    /**
      * Name of the Connector, if not provided one will be generated.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The Connector's private IP addresses.
+     */
+    public /*out*/ readonly privateIps!: pulumi.Output<string[]>;
+    /**
+     * The Connector's public IP address.
+     */
+    public /*out*/ readonly publicIp!: pulumi.Output<string>;
     /**
      * The ID of the Remote Network the Connector is attached to.
      */
     public readonly remoteNetworkId!: pulumi.Output<string>;
     /**
+     * The Connector's state. One of `ALIVE`, `DEAD_NO_HEARTBEAT`, `DEAD_HEARTBEAT_TOO_OLD` or `DEAD_NO_RELAYS`.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
      * Determines whether status notifications are enabled for the Connector. Default is `true`.
      */
     public readonly statusUpdatesEnabled!: pulumi.Output<boolean>;
+    /**
+     * The Connector's version.
+     */
+    public /*out*/ readonly version!: pulumi.Output<string>;
 
     /**
      * Create a TwingateConnector resource with the given unique name, arguments, and options.
@@ -80,9 +100,14 @@ export class TwingateConnector extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TwingateConnectorState | undefined;
+            resourceInputs["hostname"] = state ? state.hostname : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["privateIps"] = state ? state.privateIps : undefined;
+            resourceInputs["publicIp"] = state ? state.publicIp : undefined;
             resourceInputs["remoteNetworkId"] = state ? state.remoteNetworkId : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["statusUpdatesEnabled"] = state ? state.statusUpdatesEnabled : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as TwingateConnectorArgs | undefined;
             if ((!args || args.remoteNetworkId === undefined) && !opts.urn) {
@@ -91,6 +116,11 @@ export class TwingateConnector extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["remoteNetworkId"] = args ? args.remoteNetworkId : undefined;
             resourceInputs["statusUpdatesEnabled"] = args ? args.statusUpdatesEnabled : undefined;
+            resourceInputs["hostname"] = undefined /*out*/;
+            resourceInputs["privateIps"] = undefined /*out*/;
+            resourceInputs["publicIp"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TwingateConnector.__pulumiType, name, resourceInputs, opts);
@@ -102,17 +132,37 @@ export class TwingateConnector extends pulumi.CustomResource {
  */
 export interface TwingateConnectorState {
     /**
+     * The hostname of the machine hosting the Connector.
+     */
+    hostname?: pulumi.Input<string>;
+    /**
      * Name of the Connector, if not provided one will be generated.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The Connector's private IP addresses.
+     */
+    privateIps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The Connector's public IP address.
+     */
+    publicIp?: pulumi.Input<string>;
     /**
      * The ID of the Remote Network the Connector is attached to.
      */
     remoteNetworkId?: pulumi.Input<string>;
     /**
+     * The Connector's state. One of `ALIVE`, `DEAD_NO_HEARTBEAT`, `DEAD_HEARTBEAT_TOO_OLD` or `DEAD_NO_RELAYS`.
+     */
+    state?: pulumi.Input<string>;
+    /**
      * Determines whether status notifications are enabled for the Connector. Default is `true`.
      */
     statusUpdatesEnabled?: pulumi.Input<boolean>;
+    /**
+     * The Connector's version.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**

@@ -44,10 +44,28 @@ namespace Twingate.Twingate
     public partial class TwingateConnector : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The hostname of the machine hosting the Connector.
+        /// </summary>
+        [Output("hostname")]
+        public Output<string> Hostname { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the Connector, if not provided one will be generated.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The Connector's private IP addresses.
+        /// </summary>
+        [Output("privateIps")]
+        public Output<ImmutableArray<string>> PrivateIps { get; private set; } = null!;
+
+        /// <summary>
+        /// The Connector's public IP address.
+        /// </summary>
+        [Output("publicIp")]
+        public Output<string> PublicIp { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the Remote Network the Connector is attached to.
@@ -56,10 +74,22 @@ namespace Twingate.Twingate
         public Output<string> RemoteNetworkId { get; private set; } = null!;
 
         /// <summary>
+        /// The Connector's state. One of `ALIVE`, `DEAD_NO_HEARTBEAT`, `DEAD_HEARTBEAT_TOO_OLD` or `DEAD_NO_RELAYS`.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
         /// Determines whether status notifications are enabled for the Connector. Default is `true`.
         /// </summary>
         [Output("statusUpdatesEnabled")]
         public Output<bool> StatusUpdatesEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The Connector's version.
+        /// </summary>
+        [Output("version")]
+        public Output<string> Version { get; private set; } = null!;
 
 
         /// <summary>
@@ -135,10 +165,34 @@ namespace Twingate.Twingate
     public sealed class TwingateConnectorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The hostname of the machine hosting the Connector.
+        /// </summary>
+        [Input("hostname")]
+        public Input<string>? Hostname { get; set; }
+
+        /// <summary>
         /// Name of the Connector, if not provided one will be generated.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("privateIps")]
+        private InputList<string>? _privateIps;
+
+        /// <summary>
+        /// The Connector's private IP addresses.
+        /// </summary>
+        public InputList<string> PrivateIps
+        {
+            get => _privateIps ?? (_privateIps = new InputList<string>());
+            set => _privateIps = value;
+        }
+
+        /// <summary>
+        /// The Connector's public IP address.
+        /// </summary>
+        [Input("publicIp")]
+        public Input<string>? PublicIp { get; set; }
 
         /// <summary>
         /// The ID of the Remote Network the Connector is attached to.
@@ -147,10 +201,22 @@ namespace Twingate.Twingate
         public Input<string>? RemoteNetworkId { get; set; }
 
         /// <summary>
+        /// The Connector's state. One of `ALIVE`, `DEAD_NO_HEARTBEAT`, `DEAD_HEARTBEAT_TOO_OLD` or `DEAD_NO_RELAYS`.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
+
+        /// <summary>
         /// Determines whether status notifications are enabled for the Connector. Default is `true`.
         /// </summary>
         [Input("statusUpdatesEnabled")]
         public Input<bool>? StatusUpdatesEnabled { get; set; }
+
+        /// <summary>
+        /// The Connector's version.
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
 
         public TwingateConnectorState()
         {

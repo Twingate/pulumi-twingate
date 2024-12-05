@@ -711,20 +711,43 @@ class TwingateResourceProtocolsUdp(dict):
 @pulumi.output_type
 class GetTwingateConnectorsConnectorResult(dict):
     def __init__(__self__, *,
+                 hostname: str,
                  id: str,
                  name: str,
+                 private_ips: Sequence[str],
+                 public_ip: str,
                  remote_network_id: str,
-                 status_updates_enabled: bool):
+                 state: str,
+                 status_updates_enabled: bool,
+                 version: str):
         """
+        :param str hostname: The hostname of the machine hosting the Connector.
         :param str id: The ID of the Connector.
         :param str name: The Name of the Connector.
+        :param Sequence[str] private_ips: The Connector's private IP addresses.
+        :param str public_ip: The Connector's public IP address.
         :param str remote_network_id: The ID of the Remote Network attached to the Connector.
+        :param str state: The Connector's state. One of `ALIVE`, `DEAD_NO_HEARTBEAT`, `DEAD_HEARTBEAT_TOO_OLD` or `DEAD_NO_RELAYS`.
         :param bool status_updates_enabled: Determines whether status notifications are enabled for the Connector.
+        :param str version: The Connector's version.
         """
+        pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "private_ips", private_ips)
+        pulumi.set(__self__, "public_ip", public_ip)
         pulumi.set(__self__, "remote_network_id", remote_network_id)
+        pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "status_updates_enabled", status_updates_enabled)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        The hostname of the machine hosting the Connector.
+        """
+        return pulumi.get(self, "hostname")
 
     @property
     @pulumi.getter
@@ -743,6 +766,22 @@ class GetTwingateConnectorsConnectorResult(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="privateIps")
+    def private_ips(self) -> Sequence[str]:
+        """
+        The Connector's private IP addresses.
+        """
+        return pulumi.get(self, "private_ips")
+
+    @property
+    @pulumi.getter(name="publicIp")
+    def public_ip(self) -> str:
+        """
+        The Connector's public IP address.
+        """
+        return pulumi.get(self, "public_ip")
+
+    @property
     @pulumi.getter(name="remoteNetworkId")
     def remote_network_id(self) -> str:
         """
@@ -751,12 +790,28 @@ class GetTwingateConnectorsConnectorResult(dict):
         return pulumi.get(self, "remote_network_id")
 
     @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The Connector's state. One of `ALIVE`, `DEAD_NO_HEARTBEAT`, `DEAD_HEARTBEAT_TOO_OLD` or `DEAD_NO_RELAYS`.
+        """
+        return pulumi.get(self, "state")
+
+    @property
     @pulumi.getter(name="statusUpdatesEnabled")
     def status_updates_enabled(self) -> bool:
         """
         Determines whether status notifications are enabled for the Connector.
         """
         return pulumi.get(self, "status_updates_enabled")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        The Connector's version.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type

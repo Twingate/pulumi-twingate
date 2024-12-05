@@ -53,12 +53,22 @@ import (
 type TwingateConnector struct {
 	pulumi.CustomResourceState
 
+	// The hostname of the machine hosting the Connector.
+	Hostname pulumi.StringOutput `pulumi:"hostname"`
 	// Name of the Connector, if not provided one will be generated.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The Connector's private IP addresses.
+	PrivateIps pulumi.StringArrayOutput `pulumi:"privateIps"`
+	// The Connector's public IP address.
+	PublicIp pulumi.StringOutput `pulumi:"publicIp"`
 	// The ID of the Remote Network the Connector is attached to.
 	RemoteNetworkId pulumi.StringOutput `pulumi:"remoteNetworkId"`
+	// The Connector's state. One of `ALIVE`, `DEAD_NO_HEARTBEAT`, `DEAD_HEARTBEAT_TOO_OLD` or `DEAD_NO_RELAYS`.
+	State pulumi.StringOutput `pulumi:"state"`
 	// Determines whether status notifications are enabled for the Connector. Default is `true`.
 	StatusUpdatesEnabled pulumi.BoolOutput `pulumi:"statusUpdatesEnabled"`
+	// The Connector's version.
+	Version pulumi.StringOutput `pulumi:"version"`
 }
 
 // NewTwingateConnector registers a new resource with the given unique name, arguments, and options.
@@ -94,21 +104,41 @@ func GetTwingateConnector(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TwingateConnector resources.
 type twingateConnectorState struct {
+	// The hostname of the machine hosting the Connector.
+	Hostname *string `pulumi:"hostname"`
 	// Name of the Connector, if not provided one will be generated.
 	Name *string `pulumi:"name"`
+	// The Connector's private IP addresses.
+	PrivateIps []string `pulumi:"privateIps"`
+	// The Connector's public IP address.
+	PublicIp *string `pulumi:"publicIp"`
 	// The ID of the Remote Network the Connector is attached to.
 	RemoteNetworkId *string `pulumi:"remoteNetworkId"`
+	// The Connector's state. One of `ALIVE`, `DEAD_NO_HEARTBEAT`, `DEAD_HEARTBEAT_TOO_OLD` or `DEAD_NO_RELAYS`.
+	State *string `pulumi:"state"`
 	// Determines whether status notifications are enabled for the Connector. Default is `true`.
 	StatusUpdatesEnabled *bool `pulumi:"statusUpdatesEnabled"`
+	// The Connector's version.
+	Version *string `pulumi:"version"`
 }
 
 type TwingateConnectorState struct {
+	// The hostname of the machine hosting the Connector.
+	Hostname pulumi.StringPtrInput
 	// Name of the Connector, if not provided one will be generated.
 	Name pulumi.StringPtrInput
+	// The Connector's private IP addresses.
+	PrivateIps pulumi.StringArrayInput
+	// The Connector's public IP address.
+	PublicIp pulumi.StringPtrInput
 	// The ID of the Remote Network the Connector is attached to.
 	RemoteNetworkId pulumi.StringPtrInput
+	// The Connector's state. One of `ALIVE`, `DEAD_NO_HEARTBEAT`, `DEAD_HEARTBEAT_TOO_OLD` or `DEAD_NO_RELAYS`.
+	State pulumi.StringPtrInput
 	// Determines whether status notifications are enabled for the Connector. Default is `true`.
 	StatusUpdatesEnabled pulumi.BoolPtrInput
+	// The Connector's version.
+	Version pulumi.StringPtrInput
 }
 
 func (TwingateConnectorState) ElementType() reflect.Type {
@@ -221,9 +251,24 @@ func (o TwingateConnectorOutput) ToTwingateConnectorOutputWithContext(ctx contex
 	return o
 }
 
+// The hostname of the machine hosting the Connector.
+func (o TwingateConnectorOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v *TwingateConnector) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
+}
+
 // Name of the Connector, if not provided one will be generated.
 func (o TwingateConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TwingateConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Connector's private IP addresses.
+func (o TwingateConnectorOutput) PrivateIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TwingateConnector) pulumi.StringArrayOutput { return v.PrivateIps }).(pulumi.StringArrayOutput)
+}
+
+// The Connector's public IP address.
+func (o TwingateConnectorOutput) PublicIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *TwingateConnector) pulumi.StringOutput { return v.PublicIp }).(pulumi.StringOutput)
 }
 
 // The ID of the Remote Network the Connector is attached to.
@@ -231,9 +276,19 @@ func (o TwingateConnectorOutput) RemoteNetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TwingateConnector) pulumi.StringOutput { return v.RemoteNetworkId }).(pulumi.StringOutput)
 }
 
+// The Connector's state. One of `ALIVE`, `DEAD_NO_HEARTBEAT`, `DEAD_HEARTBEAT_TOO_OLD` or `DEAD_NO_RELAYS`.
+func (o TwingateConnectorOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *TwingateConnector) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
 // Determines whether status notifications are enabled for the Connector. Default is `true`.
 func (o TwingateConnectorOutput) StatusUpdatesEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *TwingateConnector) pulumi.BoolOutput { return v.StatusUpdatesEnabled }).(pulumi.BoolOutput)
+}
+
+// The Connector's version.
+func (o TwingateConnectorOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v *TwingateConnector) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
 }
 
 type TwingateConnectorArrayOutput struct{ *pulumi.OutputState }

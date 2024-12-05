@@ -95,6 +95,10 @@ namespace Twingate.Twingate
     public sealed class GetTwingateConnectorResult
     {
         /// <summary>
+        /// The hostname of the machine hosting the Connector.
+        /// </summary>
+        public readonly string Hostname;
+        /// <summary>
         /// The ID of the Connector. The ID for the Connector can be obtained from the Admin API or the URL string in the Admin Console.
         /// </summary>
         public readonly string Id;
@@ -103,28 +107,59 @@ namespace Twingate.Twingate
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// The Connector's private IP addresses.
+        /// </summary>
+        public readonly ImmutableArray<string> PrivateIps;
+        /// <summary>
+        /// The Connector's public IP address.
+        /// </summary>
+        public readonly string PublicIp;
+        /// <summary>
         /// The ID of the Remote Network the Connector is attached to.
         /// </summary>
         public readonly string RemoteNetworkId;
         /// <summary>
+        /// The Connector's state. One of `ALIVE`, `DEAD_NO_HEARTBEAT`, `DEAD_HEARTBEAT_TOO_OLD` or `DEAD_NO_RELAYS`.
+        /// </summary>
+        public readonly string State;
+        /// <summary>
         /// Determines whether status notifications are enabled for the Connector.
         /// </summary>
         public readonly bool StatusUpdatesEnabled;
+        /// <summary>
+        /// The Connector's version.
+        /// </summary>
+        public readonly string Version;
 
         [OutputConstructor]
         private GetTwingateConnectorResult(
+            string hostname,
+
             string id,
 
             string name,
 
+            ImmutableArray<string> privateIps,
+
+            string publicIp,
+
             string remoteNetworkId,
 
-            bool statusUpdatesEnabled)
+            string state,
+
+            bool statusUpdatesEnabled,
+
+            string version)
         {
+            Hostname = hostname;
             Id = id;
             Name = name;
+            PrivateIps = privateIps;
+            PublicIp = publicIp;
             RemoteNetworkId = remoteNetworkId;
+            State = state;
             StatusUpdatesEnabled = statusUpdatesEnabled;
+            Version = version;
         }
     }
 }
