@@ -5,7 +5,7 @@ go 1.23
 toolchain go1.23.4
 
 require (
-	github.com/Twingate/terraform-provider-twingate/v3 v3.0.13
+	github.com/Twingate/terraform-provider-twingate/v3 v3.0.14
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.48.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.96.0
 	github.com/pulumi/pulumi/sdk/v3 v3.142.0
@@ -175,7 +175,7 @@ require (
 	golang.org/x/mod v0.21.0 // indirect
 	golang.org/x/net v0.29.0 // indirect
 	golang.org/x/oauth2 v0.23.0 // indirect
-	golang.org/x/sync v0.9.0 // indirect
+	golang.org/x/sync v0.10.0 // indirect
 	golang.org/x/sys v0.27.0 // indirect
 	golang.org/x/term v0.26.0 // indirect
 	golang.org/x/text v0.20.0 // indirect
