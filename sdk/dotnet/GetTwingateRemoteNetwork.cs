@@ -118,6 +118,10 @@ namespace Twingate.Twingate
         /// The name of the Remote Network
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// The type of the Remote Network. Must be one of the following: REGULAR, EXIT.
+        /// </summary>
+        public readonly string Type;
 
         [OutputConstructor]
         private GetTwingateRemoteNetworkResult(
@@ -125,11 +129,14 @@ namespace Twingate.Twingate
 
             string location,
 
-            string? name)
+            string? name,
+
+            string type)
         {
             Id = id;
             Location = location;
             Name = name;
+            Type = type;
         }
     }
 }

@@ -57,6 +57,10 @@ export interface GetTwingateRemoteNetworkResult {
      * The name of the Remote Network
      */
     readonly name?: string;
+    /**
+     * The type of the Remote Network. Must be one of the following: REGULAR, EXIT.
+     */
+    readonly type: string;
 }
 /**
  * A Remote Network represents a single private network in Twingate that can have one or more Connectors and Resources assigned to it. You must create a Remote Network before creating Resources and Connectors that belong to it. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/remote-networks).

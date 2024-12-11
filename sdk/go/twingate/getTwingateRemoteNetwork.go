@@ -64,6 +64,8 @@ type LookupTwingateRemoteNetworkResult struct {
 	Location string `pulumi:"location"`
 	// The name of the Remote Network
 	Name *string `pulumi:"name"`
+	// The type of the Remote Network. Must be one of the following: REGULAR, EXIT.
+	Type string `pulumi:"type"`
 }
 
 func LookupTwingateRemoteNetworkOutput(ctx *pulumi.Context, args LookupTwingateRemoteNetworkOutputArgs, opts ...pulumi.InvokeOption) LookupTwingateRemoteNetworkResultOutput {
@@ -125,6 +127,11 @@ func (o LookupTwingateRemoteNetworkResultOutput) Location() pulumi.StringOutput 
 // The name of the Remote Network
 func (o LookupTwingateRemoteNetworkResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTwingateRemoteNetworkResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The type of the Remote Network. Must be one of the following: REGULAR, EXIT.
+func (o LookupTwingateRemoteNetworkResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTwingateRemoteNetworkResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {

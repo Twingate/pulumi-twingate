@@ -49,6 +49,8 @@ type TwingateRemoteNetwork struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the Remote Network
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The type of the Remote Network. Must be one of the following: REGULAR, EXIT. Defaults to REGULAR.
+	Type pulumi.StringOutput `pulumi:"type"`
 }
 
 // NewTwingateRemoteNetwork registers a new resource with the given unique name, arguments, and options.
@@ -85,6 +87,8 @@ type twingateRemoteNetworkState struct {
 	Location *string `pulumi:"location"`
 	// The name of the Remote Network
 	Name *string `pulumi:"name"`
+	// The type of the Remote Network. Must be one of the following: REGULAR, EXIT. Defaults to REGULAR.
+	Type *string `pulumi:"type"`
 }
 
 type TwingateRemoteNetworkState struct {
@@ -92,6 +96,8 @@ type TwingateRemoteNetworkState struct {
 	Location pulumi.StringPtrInput
 	// The name of the Remote Network
 	Name pulumi.StringPtrInput
+	// The type of the Remote Network. Must be one of the following: REGULAR, EXIT. Defaults to REGULAR.
+	Type pulumi.StringPtrInput
 }
 
 func (TwingateRemoteNetworkState) ElementType() reflect.Type {
@@ -103,6 +109,8 @@ type twingateRemoteNetworkArgs struct {
 	Location *string `pulumi:"location"`
 	// The name of the Remote Network
 	Name *string `pulumi:"name"`
+	// The type of the Remote Network. Must be one of the following: REGULAR, EXIT. Defaults to REGULAR.
+	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a TwingateRemoteNetwork resource.
@@ -111,6 +119,8 @@ type TwingateRemoteNetworkArgs struct {
 	Location pulumi.StringPtrInput
 	// The name of the Remote Network
 	Name pulumi.StringPtrInput
+	// The type of the Remote Network. Must be one of the following: REGULAR, EXIT. Defaults to REGULAR.
+	Type pulumi.StringPtrInput
 }
 
 func (TwingateRemoteNetworkArgs) ElementType() reflect.Type {
@@ -208,6 +218,11 @@ func (o TwingateRemoteNetworkOutput) Location() pulumi.StringOutput {
 // The name of the Remote Network
 func (o TwingateRemoteNetworkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TwingateRemoteNetwork) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The type of the Remote Network. Must be one of the following: REGULAR, EXIT. Defaults to REGULAR.
+func (o TwingateRemoteNetworkOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *TwingateRemoteNetwork) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 type TwingateRemoteNetworkArrayOutput struct{ *pulumi.OutputState }

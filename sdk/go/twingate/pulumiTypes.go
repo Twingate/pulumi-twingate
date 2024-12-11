@@ -3099,6 +3099,8 @@ type GetTwingateRemoteNetworksRemoteNetwork struct {
 	Location string `pulumi:"location"`
 	// The name of the Remote Network.
 	Name *string `pulumi:"name"`
+	// The type of the Remote Network. Must be one of the following: REGULAR, EXIT.
+	Type string `pulumi:"type"`
 }
 
 // GetTwingateRemoteNetworksRemoteNetworkInput is an input type that accepts GetTwingateRemoteNetworksRemoteNetworkArgs and GetTwingateRemoteNetworksRemoteNetworkOutput values.
@@ -3119,6 +3121,8 @@ type GetTwingateRemoteNetworksRemoteNetworkArgs struct {
 	Location pulumi.StringInput `pulumi:"location"`
 	// The name of the Remote Network.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The type of the Remote Network. Must be one of the following: REGULAR, EXIT.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetTwingateRemoteNetworksRemoteNetworkArgs) ElementType() reflect.Type {
@@ -3185,6 +3189,11 @@ func (o GetTwingateRemoteNetworksRemoteNetworkOutput) Location() pulumi.StringOu
 // The name of the Remote Network.
 func (o GetTwingateRemoteNetworksRemoteNetworkOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTwingateRemoteNetworksRemoteNetwork) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The type of the Remote Network. Must be one of the following: REGULAR, EXIT.
+func (o GetTwingateRemoteNetworksRemoteNetworkOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTwingateRemoteNetworksRemoteNetwork) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type GetTwingateRemoteNetworksRemoteNetworkArrayOutput struct{ *pulumi.OutputState }

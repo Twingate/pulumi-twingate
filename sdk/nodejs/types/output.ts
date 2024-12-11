@@ -187,6 +187,10 @@ export interface GetTwingateRemoteNetworksRemoteNetwork {
      * The name of the Remote Network.
      */
     name?: string;
+    /**
+     * The type of the Remote Network. Must be one of the following: REGULAR, EXIT.
+     */
+    type: string;
 }
 
 export interface GetTwingateResourceProtocols {

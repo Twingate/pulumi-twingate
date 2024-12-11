@@ -26,7 +26,7 @@ class GetTwingateRemoteNetworkResult:
     """
     A collection of values returned by getTwingateRemoteNetwork.
     """
-    def __init__(__self__, id=None, location=None, name=None):
+    def __init__(__self__, id=None, location=None, name=None, type=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -36,6 +36,9 @@ class GetTwingateRemoteNetworkResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -61,6 +64,14 @@ class GetTwingateRemoteNetworkResult:
         """
         return pulumi.get(self, "name")
 
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the Remote Network. Must be one of the following: REGULAR, EXIT.
+        """
+        return pulumi.get(self, "type")
+
 
 class AwaitableGetTwingateRemoteNetworkResult(GetTwingateRemoteNetworkResult):
     # pylint: disable=using-constant-test
@@ -70,7 +81,8 @@ class AwaitableGetTwingateRemoteNetworkResult(GetTwingateRemoteNetworkResult):
         return GetTwingateRemoteNetworkResult(
             id=self.id,
             location=self.location,
-            name=self.name)
+            name=self.name,
+            type=self.type)
 
 
 def get_twingate_remote_network(id: Optional[str] = None,
@@ -101,7 +113,8 @@ def get_twingate_remote_network(id: Optional[str] = None,
     return AwaitableGetTwingateRemoteNetworkResult(
         id=pulumi.get(__ret__, 'id'),
         location=pulumi.get(__ret__, 'location'),
-        name=pulumi.get(__ret__, 'name'))
+        name=pulumi.get(__ret__, 'name'),
+        type=pulumi.get(__ret__, 'type'))
 def get_twingate_remote_network_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                                        name: Optional[pulumi.Input[Optional[str]]] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTwingateRemoteNetworkResult]:
@@ -129,4 +142,5 @@ def get_twingate_remote_network_output(id: Optional[pulumi.Input[Optional[str]]]
     return __ret__.apply(lambda __response__: GetTwingateRemoteNetworkResult(
         id=pulumi.get(__response__, 'id'),
         location=pulumi.get(__response__, 'location'),
-        name=pulumi.get(__response__, 'name')))
+        name=pulumi.get(__response__, 'name'),
+        type=pulumi.get(__response__, 'type')))
