@@ -669,12 +669,17 @@
                 "name": {
                     "type": "string",
                     "description": "The name of the Remote Network.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the Remote Network. Must be one of the following: REGULAR, EXIT.\n"
                 }
             },
             "type": "object",
             "required": [
                 "id",
-                "location"
+                "location",
+                "type"
             ],
             "language": {
                 "nodejs": {
@@ -1423,11 +1428,16 @@
                 "name": {
                     "type": "string",
                     "description": "The name of the Remote Network\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the Remote Network. Must be one of the following: REGULAR, EXIT. Defaults to REGULAR.\n"
                 }
             },
             "required": [
                 "location",
-                "name"
+                "name",
+                "type"
             ],
             "inputProperties": {
                 "location": {
@@ -1437,6 +1447,10 @@
                 "name": {
                     "type": "string",
                     "description": "The name of the Remote Network\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the Remote Network. Must be one of the following: REGULAR, EXIT. Defaults to REGULAR.\n"
                 }
             },
             "stateInputs": {
@@ -1449,6 +1463,10 @@
                     "name": {
                         "type": "string",
                         "description": "The name of the Remote Network\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of the Remote Network. Must be one of the following: REGULAR, EXIT. Defaults to REGULAR.\n"
                     }
                 },
                 "type": "object"
@@ -2272,11 +2290,16 @@
                     "name": {
                         "type": "string",
                         "description": "The name of the Remote Network\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of the Remote Network. Must be one of the following: REGULAR, EXIT.\n"
                     }
                 },
                 "type": "object",
                 "required": [
-                    "location"
+                    "location",
+                    "type"
                 ]
             }
         },

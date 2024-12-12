@@ -49,6 +49,12 @@ namespace Twingate.Twingate
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The type of the Remote Network. Must be one of the following: REGULAR, EXIT. Defaults to REGULAR.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a TwingateRemoteNetwork resource with the given unique name, arguments, and options.
@@ -108,6 +114,12 @@ namespace Twingate.Twingate
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The type of the Remote Network. Must be one of the following: REGULAR, EXIT. Defaults to REGULAR.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
         public TwingateRemoteNetworkArgs()
         {
         }
@@ -127,6 +139,12 @@ namespace Twingate.Twingate
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The type of the Remote Network. Must be one of the following: REGULAR, EXIT. Defaults to REGULAR.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public TwingateRemoteNetworkState()
         {

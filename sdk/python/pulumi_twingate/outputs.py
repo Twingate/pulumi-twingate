@@ -1169,14 +1169,17 @@ class GetTwingateRemoteNetworksRemoteNetworkResult(dict):
     def __init__(__self__, *,
                  id: str,
                  location: str,
+                 type: str,
                  name: Optional[str] = None):
         """
         :param str id: The ID of the Remote Network.
         :param str location: The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
+        :param str type: The type of the Remote Network. Must be one of the following: REGULAR, EXIT.
         :param str name: The name of the Remote Network.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "type", type)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -1195,6 +1198,14 @@ class GetTwingateRemoteNetworksRemoteNetworkResult(dict):
         The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
         """
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the Remote Network. Must be one of the following: REGULAR, EXIT.
+        """
+        return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
