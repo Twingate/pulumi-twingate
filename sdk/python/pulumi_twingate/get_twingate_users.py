@@ -404,7 +404,7 @@ def get_twingate_users_output(email: Optional[pulumi.Input[Optional[str]]] = Non
                               last_name_regexp: Optional[pulumi.Input[Optional[str]]] = None,
                               last_name_suffix: Optional[pulumi.Input[Optional[str]]] = None,
                               roles: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTwingateUsersResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTwingateUsersResult]:
     """
     Users in Twingate can be given access to Twingate Resources and may either be added manually or automatically synchronized with a 3rd party identity provider. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/users).
 
@@ -458,7 +458,7 @@ def get_twingate_users_output(email: Optional[pulumi.Input[Optional[str]]] = Non
     __args__['lastNameRegexp'] = last_name_regexp
     __args__['lastNameSuffix'] = last_name_suffix
     __args__['roles'] = roles
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('twingate:index/getTwingateUsers:getTwingateUsers', __args__, opts=opts, typ=GetTwingateUsersResult)
     return __ret__.apply(lambda __response__: GetTwingateUsersResult(
         email=pulumi.get(__response__, 'email'),

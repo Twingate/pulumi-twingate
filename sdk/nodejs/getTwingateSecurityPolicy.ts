@@ -68,7 +68,7 @@ export interface GetTwingateSecurityPolicyResult {
  * });
  * ```
  */
-export function getTwingateSecurityPolicyOutput(args?: GetTwingateSecurityPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateSecurityPolicyResult> {
+export function getTwingateSecurityPolicyOutput(args?: GetTwingateSecurityPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTwingateSecurityPolicyResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("twingate:index/getTwingateSecurityPolicy:getTwingateSecurityPolicy", {

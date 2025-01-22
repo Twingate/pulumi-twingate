@@ -126,7 +126,7 @@ def get_twingate_group(id: Optional[str] = None,
         security_policy_id=pulumi.get(__ret__, 'security_policy_id'),
         type=pulumi.get(__ret__, 'type'))
 def get_twingate_group_output(id: Optional[pulumi.Input[str]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTwingateGroupResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTwingateGroupResult]:
     """
     Groups are how users are authorized to access Resources. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/groups).
 
@@ -144,7 +144,7 @@ def get_twingate_group_output(id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['id'] = id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('twingate:index/getTwingateGroup:getTwingateGroup', __args__, opts=opts, typ=GetTwingateGroupResult)
     return __ret__.apply(lambda __response__: GetTwingateGroupResult(
         id=pulumi.get(__response__, 'id'),

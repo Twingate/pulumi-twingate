@@ -74,7 +74,7 @@ export interface GetTwingateGroupResult {
  * });
  * ```
  */
-export function getTwingateGroupOutput(args: GetTwingateGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateGroupResult> {
+export function getTwingateGroupOutput(args: GetTwingateGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTwingateGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("twingate:index/getTwingateGroup:getTwingateGroup", {
         "id": args.id,

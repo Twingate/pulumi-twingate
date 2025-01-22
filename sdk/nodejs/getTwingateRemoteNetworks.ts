@@ -114,7 +114,7 @@ export interface GetTwingateRemoteNetworksResult {
  * });
  * ```
  */
-export function getTwingateRemoteNetworksOutput(args?: GetTwingateRemoteNetworksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateRemoteNetworksResult> {
+export function getTwingateRemoteNetworksOutput(args?: GetTwingateRemoteNetworksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTwingateRemoteNetworksResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("twingate:index/getTwingateRemoteNetworks:getTwingateRemoteNetworks", {

@@ -186,7 +186,7 @@ def get_twingate_resources_output(name: Optional[pulumi.Input[Optional[str]]] = 
                                   name_prefix: Optional[pulumi.Input[Optional[str]]] = None,
                                   name_regexp: Optional[pulumi.Input[Optional[str]]] = None,
                                   name_suffix: Optional[pulumi.Input[Optional[str]]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTwingateResourcesResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTwingateResourcesResult]:
     """
     Resources in Twingate represent servers on the private network that clients can connect to. Resources can be defined by IP, CIDR range, FQDN, or DNS zone. For more information, see the Twingate [documentation](https://docs.twingate.com/docs/resources-and-access-nodes).
 
@@ -214,7 +214,7 @@ def get_twingate_resources_output(name: Optional[pulumi.Input[Optional[str]]] = 
     __args__['namePrefix'] = name_prefix
     __args__['nameRegexp'] = name_regexp
     __args__['nameSuffix'] = name_suffix
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('twingate:index/getTwingateResources:getTwingateResources', __args__, opts=opts, typ=GetTwingateResourcesResult)
     return __ret__.apply(lambda __response__: GetTwingateResourcesResult(
         id=pulumi.get(__response__, 'id'),

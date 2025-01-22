@@ -186,7 +186,7 @@ def get_twingate_service_accounts_output(name: Optional[pulumi.Input[Optional[st
                                          name_prefix: Optional[pulumi.Input[Optional[str]]] = None,
                                          name_regexp: Optional[pulumi.Input[Optional[str]]] = None,
                                          name_suffix: Optional[pulumi.Input[Optional[str]]] = None,
-                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTwingateServiceAccountsResult]:
+                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTwingateServiceAccountsResult]:
     """
     Service Accounts offer a way to provide programmatic, centrally-controlled, and consistent access controls.
 
@@ -214,7 +214,7 @@ def get_twingate_service_accounts_output(name: Optional[pulumi.Input[Optional[st
     __args__['namePrefix'] = name_prefix
     __args__['nameRegexp'] = name_regexp
     __args__['nameSuffix'] = name_suffix
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('twingate:index/getTwingateServiceAccounts:getTwingateServiceAccounts', __args__, opts=opts, typ=GetTwingateServiceAccountsResult)
     return __ret__.apply(lambda __response__: GetTwingateServiceAccountsResult(
         id=pulumi.get(__response__, 'id'),

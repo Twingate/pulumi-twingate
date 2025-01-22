@@ -134,21 +134,11 @@ type GetTwingateUsersResult struct {
 }
 
 func GetTwingateUsersOutput(ctx *pulumi.Context, args GetTwingateUsersOutputArgs, opts ...pulumi.InvokeOption) GetTwingateUsersResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTwingateUsersResultOutput, error) {
 			args := v.(GetTwingateUsersArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetTwingateUsersResult
-			secret, err := ctx.InvokePackageRaw("twingate:index/getTwingateUsers:getTwingateUsers", args, &rv, "", opts...)
-			if err != nil {
-				return GetTwingateUsersResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetTwingateUsersResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetTwingateUsersResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("twingate:index/getTwingateUsers:getTwingateUsers", args, GetTwingateUsersResultOutput{}, options).(GetTwingateUsersResultOutput), nil
 		}).(GetTwingateUsersResultOutput)
 }
 

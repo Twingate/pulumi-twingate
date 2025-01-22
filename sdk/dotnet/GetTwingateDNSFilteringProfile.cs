@@ -59,6 +59,30 @@ namespace Twingate.Twingate
         /// </summary>
         public static Output<GetTwingateDNSFilteringProfileResult> Invoke(GetTwingateDNSFilteringProfileInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTwingateDNSFilteringProfileResult>("twingate:index/getTwingateDNSFilteringProfile:getTwingateDNSFilteringProfile", args ?? new GetTwingateDNSFilteringProfileInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// DNS filtering gives you the ability to control what websites your users can access. DNS filtering is only available on certain plans. For more information, see Twingate's [documentation](https://www.twingate.com/docs/dns-filtering). DNS filtering must be enabled for this data source to work. If DNS filtering isn't enabled, the provider will throw an error.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Twingate = Pulumi.Twingate;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Twingate.GetTwingateDNSFilteringProfile.Invoke(new()
+        ///     {
+        ///         Id = "&lt;your dns profile's id&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTwingateDNSFilteringProfileResult> Invoke(GetTwingateDNSFilteringProfileInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTwingateDNSFilteringProfileResult>("twingate:index/getTwingateDNSFilteringProfile:getTwingateDNSFilteringProfile", args ?? new GetTwingateDNSFilteringProfileInvokeArgs(), options.WithDefaults());
     }
 
 

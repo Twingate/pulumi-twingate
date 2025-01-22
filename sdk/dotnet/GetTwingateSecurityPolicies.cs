@@ -59,6 +59,30 @@ namespace Twingate.Twingate
         /// </summary>
         public static Output<GetTwingateSecurityPoliciesResult> Invoke(GetTwingateSecurityPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTwingateSecurityPoliciesResult>("twingate:index/getTwingateSecurityPolicies:getTwingateSecurityPolicies", args ?? new GetTwingateSecurityPoliciesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Security Policies are defined in the Twingate Admin Console and determine user and device authentication requirements for Resources.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Twingate = Pulumi.Twingate;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Twingate.GetTwingateSecurityPolicies.Invoke(new()
+        ///     {
+        ///         Name = "&lt;your security policy's name&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTwingateSecurityPoliciesResult> Invoke(GetTwingateSecurityPoliciesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTwingateSecurityPoliciesResult>("twingate:index/getTwingateSecurityPolicies:getTwingateSecurityPolicies", args ?? new GetTwingateSecurityPoliciesInvokeArgs(), options.WithDefaults());
     }
 
 
