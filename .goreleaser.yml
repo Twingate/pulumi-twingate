@@ -17,9 +17,7 @@ builds:
       - windows
       - linux
     hooks:
-      post:
-      - env GOOS={{ .Os }} GOARCH={{ .Arch }} go clean -cache
-      - env GOOS={{ .Os }} GOARCH={{ .Arch }} go clean -modcache
+      post: []
     ignore: []
     ldflags:
       # The line below MUST align with the module in current provider/go.mod
