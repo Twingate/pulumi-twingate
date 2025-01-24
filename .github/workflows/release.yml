@@ -48,6 +48,10 @@ jobs:
 
     - name: Set PreRelease Version
       run: echo "GORELEASER_CURRENT_TAG=v$(pulumictl get version --language generic --omit-commit-hash)" >> $GITHUB_ENV
+
+    - name: Set temporary GOMODCACHE
+      run: echo "GOMODCACHE=$(mktemp -d)" >> $GITHUB_ENV
+
     - name: Run GoReleaser
       uses: goreleaser/goreleaser-action@v6
       with:
