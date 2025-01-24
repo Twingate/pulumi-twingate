@@ -121,7 +121,7 @@ export interface GetTwingateDNSFilteringProfileResult {
  * });
  * ```
  */
-export function getTwingateDNSFilteringProfileOutput(args: GetTwingateDNSFilteringProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateDNSFilteringProfileResult> {
+export function getTwingateDNSFilteringProfileOutput(args: GetTwingateDNSFilteringProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTwingateDNSFilteringProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("twingate:index/getTwingateDNSFilteringProfile:getTwingateDNSFilteringProfile", {
         "allowedDomains": args.allowedDomains,

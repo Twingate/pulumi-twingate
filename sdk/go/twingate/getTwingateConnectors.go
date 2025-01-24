@@ -85,21 +85,11 @@ type GetTwingateConnectorsResult struct {
 }
 
 func GetTwingateConnectorsOutput(ctx *pulumi.Context, args GetTwingateConnectorsOutputArgs, opts ...pulumi.InvokeOption) GetTwingateConnectorsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTwingateConnectorsResultOutput, error) {
 			args := v.(GetTwingateConnectorsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetTwingateConnectorsResult
-			secret, err := ctx.InvokePackageRaw("twingate:index/getTwingateConnectors:getTwingateConnectors", args, &rv, "", opts...)
-			if err != nil {
-				return GetTwingateConnectorsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetTwingateConnectorsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetTwingateConnectorsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("twingate:index/getTwingateConnectors:getTwingateConnectors", args, GetTwingateConnectorsResultOutput{}, options).(GetTwingateConnectorsResultOutput), nil
 		}).(GetTwingateConnectorsResultOutput)
 }
 

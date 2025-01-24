@@ -213,7 +213,7 @@ def get_twingate_dns_filtering_profile_output(allowed_domains: Optional[pulumi.I
                                               id: Optional[pulumi.Input[str]] = None,
                                               privacy_categories: Optional[pulumi.Input[Optional[Union['GetTwingateDNSFilteringProfilePrivacyCategoriesArgs', 'GetTwingateDNSFilteringProfilePrivacyCategoriesArgsDict']]]] = None,
                                               security_categories: Optional[pulumi.Input[Optional[Union['GetTwingateDNSFilteringProfileSecurityCategoriesArgs', 'GetTwingateDNSFilteringProfileSecurityCategoriesArgsDict']]]] = None,
-                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTwingateDNSFilteringProfileResult]:
+                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTwingateDNSFilteringProfileResult]:
     """
     DNS filtering gives you the ability to control what websites your users can access. DNS filtering is only available on certain plans. For more information, see Twingate's [documentation](https://www.twingate.com/docs/dns-filtering). DNS filtering must be enabled for this data source to work. If DNS filtering isn't enabled, the provider will throw an error.
 
@@ -241,7 +241,7 @@ def get_twingate_dns_filtering_profile_output(allowed_domains: Optional[pulumi.I
     __args__['id'] = id
     __args__['privacyCategories'] = privacy_categories
     __args__['securityCategories'] = security_categories
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('twingate:index/getTwingateDNSFilteringProfile:getTwingateDNSFilteringProfile', __args__, opts=opts, typ=GetTwingateDNSFilteringProfileResult)
     return __ret__.apply(lambda __response__: GetTwingateDNSFilteringProfileResult(
         allowed_domains=pulumi.get(__response__, 'allowed_domains'),

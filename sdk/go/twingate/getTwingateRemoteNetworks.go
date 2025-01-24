@@ -85,21 +85,11 @@ type GetTwingateRemoteNetworksResult struct {
 }
 
 func GetTwingateRemoteNetworksOutput(ctx *pulumi.Context, args GetTwingateRemoteNetworksOutputArgs, opts ...pulumi.InvokeOption) GetTwingateRemoteNetworksResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTwingateRemoteNetworksResultOutput, error) {
 			args := v.(GetTwingateRemoteNetworksArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetTwingateRemoteNetworksResult
-			secret, err := ctx.InvokePackageRaw("twingate:index/getTwingateRemoteNetworks:getTwingateRemoteNetworks", args, &rv, "", opts...)
-			if err != nil {
-				return GetTwingateRemoteNetworksResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetTwingateRemoteNetworksResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetTwingateRemoteNetworksResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("twingate:index/getTwingateRemoteNetworks:getTwingateRemoteNetworks", args, GetTwingateRemoteNetworksResultOutput{}, options).(GetTwingateRemoteNetworksResultOutput), nil
 		}).(GetTwingateRemoteNetworksResultOutput)
 }
 

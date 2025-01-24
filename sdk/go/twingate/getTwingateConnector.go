@@ -77,21 +77,11 @@ type LookupTwingateConnectorResult struct {
 }
 
 func LookupTwingateConnectorOutput(ctx *pulumi.Context, args LookupTwingateConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupTwingateConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTwingateConnectorResultOutput, error) {
 			args := v.(LookupTwingateConnectorArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupTwingateConnectorResult
-			secret, err := ctx.InvokePackageRaw("twingate:index/getTwingateConnector:getTwingateConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupTwingateConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupTwingateConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupTwingateConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("twingate:index/getTwingateConnector:getTwingateConnector", args, LookupTwingateConnectorResultOutput{}, options).(LookupTwingateConnectorResultOutput), nil
 		}).(LookupTwingateConnectorResultOutput)
 }
 

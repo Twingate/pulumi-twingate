@@ -76,7 +76,7 @@ export interface GetTwingateRemoteNetworkResult {
  * });
  * ```
  */
-export function getTwingateRemoteNetworkOutput(args?: GetTwingateRemoteNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateRemoteNetworkResult> {
+export function getTwingateRemoteNetworkOutput(args?: GetTwingateRemoteNetworkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTwingateRemoteNetworkResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("twingate:index/getTwingateRemoteNetwork:getTwingateRemoteNetwork", {

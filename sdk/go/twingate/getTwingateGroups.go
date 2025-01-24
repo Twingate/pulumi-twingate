@@ -93,21 +93,11 @@ type GetTwingateGroupsResult struct {
 }
 
 func GetTwingateGroupsOutput(ctx *pulumi.Context, args GetTwingateGroupsOutputArgs, opts ...pulumi.InvokeOption) GetTwingateGroupsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTwingateGroupsResultOutput, error) {
 			args := v.(GetTwingateGroupsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetTwingateGroupsResult
-			secret, err := ctx.InvokePackageRaw("twingate:index/getTwingateGroups:getTwingateGroups", args, &rv, "", opts...)
-			if err != nil {
-				return GetTwingateGroupsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetTwingateGroupsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetTwingateGroupsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("twingate:index/getTwingateGroups:getTwingateGroups", args, GetTwingateGroupsResultOutput{}, options).(GetTwingateGroupsResultOutput), nil
 		}).(GetTwingateGroupsResultOutput)
 }
 

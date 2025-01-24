@@ -78,7 +78,7 @@ export interface GetTwingateUserResult {
  * });
  * ```
  */
-export function getTwingateUserOutput(args: GetTwingateUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateUserResult> {
+export function getTwingateUserOutput(args: GetTwingateUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTwingateUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("twingate:index/getTwingateUser:getTwingateUser", {
         "id": args.id,
