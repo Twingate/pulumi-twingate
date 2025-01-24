@@ -186,7 +186,7 @@ def get_twingate_connectors_output(name: Optional[pulumi.Input[Optional[str]]] =
                                    name_prefix: Optional[pulumi.Input[Optional[str]]] = None,
                                    name_regexp: Optional[pulumi.Input[Optional[str]]] = None,
                                    name_suffix: Optional[pulumi.Input[Optional[str]]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTwingateConnectorsResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTwingateConnectorsResult]:
     """
     Connectors provide connectivity to Remote Networks. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/understanding-access-nodes).
 
@@ -214,7 +214,7 @@ def get_twingate_connectors_output(name: Optional[pulumi.Input[Optional[str]]] =
     __args__['namePrefix'] = name_prefix
     __args__['nameRegexp'] = name_regexp
     __args__['nameSuffix'] = name_suffix
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('twingate:index/getTwingateConnectors:getTwingateConnectors', __args__, opts=opts, typ=GetTwingateConnectorsResult)
     return __ret__.apply(lambda __response__: GetTwingateConnectorsResult(
         connectors=pulumi.get(__response__, 'connectors'),

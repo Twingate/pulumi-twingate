@@ -71,21 +71,11 @@ type LookupTwingateUserResult struct {
 }
 
 func LookupTwingateUserOutput(ctx *pulumi.Context, args LookupTwingateUserOutputArgs, opts ...pulumi.InvokeOption) LookupTwingateUserResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTwingateUserResultOutput, error) {
 			args := v.(LookupTwingateUserArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupTwingateUserResult
-			secret, err := ctx.InvokePackageRaw("twingate:index/getTwingateUser:getTwingateUser", args, &rv, "", opts...)
-			if err != nil {
-				return LookupTwingateUserResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupTwingateUserResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupTwingateUserResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("twingate:index/getTwingateUser:getTwingateUser", args, LookupTwingateUserResultOutput{}, options).(LookupTwingateUserResultOutput), nil
 		}).(LookupTwingateUserResultOutput)
 }
 

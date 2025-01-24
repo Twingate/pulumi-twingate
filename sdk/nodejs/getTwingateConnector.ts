@@ -90,7 +90,7 @@ export interface GetTwingateConnectorResult {
  * });
  * ```
  */
-export function getTwingateConnectorOutput(args: GetTwingateConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateConnectorResult> {
+export function getTwingateConnectorOutput(args: GetTwingateConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTwingateConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("twingate:index/getTwingateConnector:getTwingateConnector", {
         "id": args.id,

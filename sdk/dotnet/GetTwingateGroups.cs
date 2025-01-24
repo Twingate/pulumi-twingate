@@ -59,6 +59,30 @@ namespace Twingate.Twingate
         /// </summary>
         public static Output<GetTwingateGroupsResult> Invoke(GetTwingateGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTwingateGroupsResult>("twingate:index/getTwingateGroups:getTwingateGroups", args ?? new GetTwingateGroupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Groups are how users are authorized to access Resources. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/groups).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Twingate = Pulumi.Twingate;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Twingate.GetTwingateGroups.Invoke(new()
+        ///     {
+        ///         Name = "&lt;your group's name&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTwingateGroupsResult> Invoke(GetTwingateGroupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTwingateGroupsResult>("twingate:index/getTwingateGroups:getTwingateGroups", args ?? new GetTwingateGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

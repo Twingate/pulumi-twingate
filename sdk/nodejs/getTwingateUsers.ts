@@ -224,7 +224,7 @@ export interface GetTwingateUsersResult {
  * const all = twingate.getTwingateUsers({});
  * ```
  */
-export function getTwingateUsersOutput(args?: GetTwingateUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateUsersResult> {
+export function getTwingateUsersOutput(args?: GetTwingateUsersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTwingateUsersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("twingate:index/getTwingateUsers:getTwingateUsers", {

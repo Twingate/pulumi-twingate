@@ -114,7 +114,7 @@ export interface GetTwingateServiceAccountsResult {
  * });
  * ```
  */
-export function getTwingateServiceAccountsOutput(args?: GetTwingateServiceAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateServiceAccountsResult> {
+export function getTwingateServiceAccountsOutput(args?: GetTwingateServiceAccountsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTwingateServiceAccountsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("twingate:index/getTwingateServiceAccounts:getTwingateServiceAccounts", {

@@ -114,7 +114,7 @@ export interface GetTwingateResourcesResult {
  * });
  * ```
  */
-export function getTwingateResourcesOutput(args?: GetTwingateResourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateResourcesResult> {
+export function getTwingateResourcesOutput(args?: GetTwingateResourcesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTwingateResourcesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("twingate:index/getTwingateResources:getTwingateResources", {

@@ -53,6 +53,27 @@ namespace Twingate.Twingate
         /// </summary>
         public static Output<GetTwingateUsersResult> Invoke(GetTwingateUsersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTwingateUsersResult>("twingate:index/getTwingateUsers:getTwingateUsers", args ?? new GetTwingateUsersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Users in Twingate can be given access to Twingate Resources and may either be added manually or automatically synchronized with a 3rd party identity provider. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/users).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Twingate = Pulumi.Twingate;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Twingate.GetTwingateUsers.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTwingateUsersResult> Invoke(GetTwingateUsersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTwingateUsersResult>("twingate:index/getTwingateUsers:getTwingateUsers", args ?? new GetTwingateUsersInvokeArgs(), options.WithDefaults());
     }
 
 

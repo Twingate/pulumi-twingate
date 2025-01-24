@@ -117,7 +117,7 @@ def get_twingate_remote_network(id: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'))
 def get_twingate_remote_network_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                                        name: Optional[pulumi.Input[Optional[str]]] = None,
-                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTwingateRemoteNetworkResult]:
+                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTwingateRemoteNetworkResult]:
     """
     A Remote Network represents a single private network in Twingate that can have one or more Connectors and Resources assigned to it. You must create a Remote Network before creating Resources and Connectors that belong to it. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/remote-networks).
 
@@ -137,7 +137,7 @@ def get_twingate_remote_network_output(id: Optional[pulumi.Input[Optional[str]]]
     __args__ = dict()
     __args__['id'] = id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('twingate:index/getTwingateRemoteNetwork:getTwingateRemoteNetwork', __args__, opts=opts, typ=GetTwingateRemoteNetworkResult)
     return __ret__.apply(lambda __response__: GetTwingateRemoteNetworkResult(
         id=pulumi.get(__response__, 'id'),

@@ -59,6 +59,30 @@ namespace Twingate.Twingate
         /// </summary>
         public static Output<GetTwingateServiceAccountsResult> Invoke(GetTwingateServiceAccountsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTwingateServiceAccountsResult>("twingate:index/getTwingateServiceAccounts:getTwingateServiceAccounts", args ?? new GetTwingateServiceAccountsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Service Accounts offer a way to provide programmatic, centrally-controlled, and consistent access controls.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Twingate = Pulumi.Twingate;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Twingate.GetTwingateServiceAccounts.Invoke(new()
+        ///     {
+        ///         Name = "&lt;your service account's name&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTwingateServiceAccountsResult> Invoke(GetTwingateServiceAccountsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTwingateServiceAccountsResult>("twingate:index/getTwingateServiceAccounts:getTwingateServiceAccounts", args ?? new GetTwingateServiceAccountsInvokeArgs(), options.WithDefaults());
     }
 
 

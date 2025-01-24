@@ -59,6 +59,30 @@ namespace Twingate.Twingate
         /// </summary>
         public static Output<GetTwingateConnectorsResult> Invoke(GetTwingateConnectorsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTwingateConnectorsResult>("twingate:index/getTwingateConnectors:getTwingateConnectors", args ?? new GetTwingateConnectorsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Connectors provide connectivity to Remote Networks. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/understanding-access-nodes).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Twingate = Pulumi.Twingate;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Twingate.GetTwingateConnectors.Invoke(new()
+        ///     {
+        ///         Name = "&lt;your connector's name&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTwingateConnectorsResult> Invoke(GetTwingateConnectorsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTwingateConnectorsResult>("twingate:index/getTwingateConnectors:getTwingateConnectors", args ?? new GetTwingateConnectorsInvokeArgs(), options.WithDefaults());
     }
 
 

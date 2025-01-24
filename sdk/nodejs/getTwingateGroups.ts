@@ -132,7 +132,7 @@ export interface GetTwingateGroupsResult {
  * });
  * ```
  */
-export function getTwingateGroupsOutput(args?: GetTwingateGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTwingateGroupsResult> {
+export function getTwingateGroupsOutput(args?: GetTwingateGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTwingateGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("twingate:index/getTwingateGroups:getTwingateGroups", {
