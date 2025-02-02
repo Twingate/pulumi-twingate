@@ -7,7 +7,7 @@ toolchain go1.23.4
 require (
 	github.com/Twingate/terraform-provider-twingate/v3 v3.0.15
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.48.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.101.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.102.0
 	github.com/pulumi/pulumi/sdk/v3 v3.147.0
 )
 
@@ -138,7 +138,7 @@ require (
 	github.com/pulumi/inflector v0.2.1 // indirect
 	github.com/pulumi/pulumi-java/pkg v0.19.0 // indirect
 	github.com/pulumi/pulumi-yaml v1.12.0 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.145.0 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.147.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/rogpeppe/go-internal v1.13.1 // indirect
@@ -190,6 +190,5 @@ require (
 	google.golang.org/protobuf v1.35.1 // indirect
 	gopkg.in/warnings.v0 v0.1.2 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	gotest.tools/v3 v3.5.1 // indirect
 	lukechampine.com/frand v1.4.2 // indirect
 )
