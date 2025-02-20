@@ -18,10 +18,12 @@ package main
 
 import (
 	"context"
+
 	_ "embed"
 
-	twingate "github.com/Twingate/pulumi-twingate/provider"
 	"github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
+
+	twingate "github.com/Twingate/pulumi-twingate/provider"
 )
 
 //go:embed schema-embed.json
