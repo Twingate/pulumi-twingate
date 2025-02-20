@@ -8,7 +8,7 @@ require (
 	github.com/Twingate/terraform-provider-twingate/v3 v3.0.16
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.48.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.103.0
-	github.com/pulumi/pulumi/sdk/v3 v3.149.0
+	github.com/pulumi/pulumi/sdk/v3 v3.150.0
 )
 
 require (
