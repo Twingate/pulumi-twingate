@@ -15,18 +15,19 @@
 package twingate
 
 import (
-	// Allow embedding bridge-metadata.json in the provider.
-	_ "embed"
 	"fmt"
 	"path"
+
+	// Allow embedding bridge-metadata.json in the provider.
+	_ "embed"
+
+	// Replace this provider with the provider you are bridging.
+	"github.com/Twingate/terraform-provider-twingate/v3/twingate"
 
 	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
-
-	// Replace this provider with the provider you are bridging.
-	"github.com/Twingate/terraform-provider-twingate/v3/twingate"
 
 	"github.com/Twingate/pulumi-twingate/provider/pkg/version"
 )
