@@ -37,7 +37,7 @@ jobs:
       run: make upstream
     - run: cd provider && go mod tidy
     - name: golangci-lint
-      uses: golangci/golangci-lint-action@v6
+      uses: golangci/golangci-lint-action@v6.5.0
       with:
-        version: v1.62.2
+        version: v1.64.6
         working-directory: provider
