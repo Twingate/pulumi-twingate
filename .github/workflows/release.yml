@@ -62,7 +62,7 @@ jobs:
       fail-fast: true
       matrix:
         goversion:
-          - 1.22.x
+          - 1.24.x
 
   publish_sdk:
     name: Publish SDKs ${{ matrix.language }}
@@ -155,7 +155,7 @@ jobs:
         dotnetversion:
           - 6.0.x
         goversion:
-          - 1.22.x
+          - 1.24.x
         nodeversion:
           - 20.x
         pythonversion:
