@@ -21,12 +21,11 @@ import (
 	// Allow embedding bridge-metadata.json in the provider.
 	_ "embed"
 
-	// Replace this provider with the provider you are bridging.
 	"github.com/Twingate/terraform-provider-twingate/v3/twingate"
 
-	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
+	bridgev3 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 
 	"github.com/Twingate/pulumi-twingate/provider/pkg/version"
@@ -53,14 +52,14 @@ func preConfigureCallback(resource.PropertyMap, shim.ResourceConfig) error {
 var metadata []byte
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
-func Provider() tfbridge.ProviderInfo {
+func Provider() bridgev3.ProviderInfo {
 	// Create a Pulumi provider mapping
 
 	provider := twingate.New("Pulumi", version.Version)()
 
-	prov := tfbridge.ProviderInfo{
+	prov := bridgev3.ProviderInfo{
 		// Instantiate the Terraform provider
-		P:                       pf.ShimProvider(provider),
+		P:                       tfbridge.ShimProvider(provider),
 		TFProviderModuleVersion: "v3",
 		Name:                    "twingate",
 		Version:                 version.Version,
@@ -93,8 +92,8 @@ func Provider() tfbridge.ProviderInfo {
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
 		GitHubOrg:    "Twingate",
-		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
-		Config:       map[string]*tfbridge.SchemaInfo{
+		MetadataInfo: bridgev3.NewProviderMetadata(metadata),
+		Config:       map[string]*bridgev3.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.
 			// "region": {
@@ -105,34 +104,34 @@ func Provider() tfbridge.ProviderInfo {
 			// },
 		},
 		PreConfigureCallback: preConfigureCallback,
-		Resources: map[string]*tfbridge.ResourceInfo{
-			"twingate_connector":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TwingateConnector")},
-			"twingate_connector_tokens":      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TwingateConnectorTokens")},
-			"twingate_dns_filtering_profile": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TwingateDNSFilteringProfile")},
-			"twingate_group":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TwingateGroup")},
-			"twingate_remote_network":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TwingateRemoteNetwork")},
-			"twingate_resource":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TwingateResource")},
-			"twingate_service_account":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TwingateServiceAccount")},
-			"twingate_service_account_key":   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TwingateServiceAccountKey")},
-			"twingate_user":                  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TwingateUser")},
+		Resources: map[string]*bridgev3.ResourceInfo{
+			"twingate_connector":             {Tok: bridgev3.MakeResource(mainPkg, mainMod, "TwingateConnector")},
+			"twingate_connector_tokens":      {Tok: bridgev3.MakeResource(mainPkg, mainMod, "TwingateConnectorTokens")},
+			"twingate_dns_filtering_profile": {Tok: bridgev3.MakeResource(mainPkg, mainMod, "TwingateDNSFilteringProfile")},
+			"twingate_group":                 {Tok: bridgev3.MakeResource(mainPkg, mainMod, "TwingateGroup")},
+			"twingate_remote_network":        {Tok: bridgev3.MakeResource(mainPkg, mainMod, "TwingateRemoteNetwork")},
+			"twingate_resource":              {Tok: bridgev3.MakeResource(mainPkg, mainMod, "TwingateResource")},
+			"twingate_service_account":       {Tok: bridgev3.MakeResource(mainPkg, mainMod, "TwingateServiceAccount")},
+			"twingate_service_account_key":   {Tok: bridgev3.MakeResource(mainPkg, mainMod, "TwingateServiceAccountKey")},
+			"twingate_user":                  {Tok: bridgev3.MakeResource(mainPkg, mainMod, "TwingateUser")},
 		},
-		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"twingate_connector":             {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getTwingateConnector")},
-			"twingate_connectors":            {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getTwingateConnectors")},
-			"twingate_dns_filtering_profile": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getTwingateDNSFilteringProfile")},
-			"twingate_group":                 {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getTwingateGroup")},
-			"twingate_groups":                {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getTwingateGroups")},
-			"twingate_remote_network":        {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getTwingateRemoteNetwork")},
-			"twingate_remote_networks":       {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getTwingateRemoteNetworks")},
-			"twingate_resource":              {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getTwingateResource")},
-			"twingate_resources":             {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getTwingateResources")},
-			"twingate_security_policy":       {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getTwingateSecurityPolicy")},
-			"twingate_security_policies":     {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getTwingateSecurityPolicies")},
-			"twingate_service_accounts":      {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getTwingateServiceAccounts")},
-			"twingate_user":                  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getTwingateUser")},
-			"twingate_users":                 {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getTwingateUsers")},
+		DataSources: map[string]*bridgev3.DataSourceInfo{
+			"twingate_connector":             {Tok: bridgev3.MakeDataSource(mainPkg, mainMod, "getTwingateConnector")},
+			"twingate_connectors":            {Tok: bridgev3.MakeDataSource(mainPkg, mainMod, "getTwingateConnectors")},
+			"twingate_dns_filtering_profile": {Tok: bridgev3.MakeDataSource(mainPkg, mainMod, "getTwingateDNSFilteringProfile")},
+			"twingate_group":                 {Tok: bridgev3.MakeDataSource(mainPkg, mainMod, "getTwingateGroup")},
+			"twingate_groups":                {Tok: bridgev3.MakeDataSource(mainPkg, mainMod, "getTwingateGroups")},
+			"twingate_remote_network":        {Tok: bridgev3.MakeDataSource(mainPkg, mainMod, "getTwingateRemoteNetwork")},
+			"twingate_remote_networks":       {Tok: bridgev3.MakeDataSource(mainPkg, mainMod, "getTwingateRemoteNetworks")},
+			"twingate_resource":              {Tok: bridgev3.MakeDataSource(mainPkg, mainMod, "getTwingateResource")},
+			"twingate_resources":             {Tok: bridgev3.MakeDataSource(mainPkg, mainMod, "getTwingateResources")},
+			"twingate_security_policy":       {Tok: bridgev3.MakeDataSource(mainPkg, mainMod, "getTwingateSecurityPolicy")},
+			"twingate_security_policies":     {Tok: bridgev3.MakeDataSource(mainPkg, mainMod, "getTwingateSecurityPolicies")},
+			"twingate_service_accounts":      {Tok: bridgev3.MakeDataSource(mainPkg, mainMod, "getTwingateServiceAccounts")},
+			"twingate_user":                  {Tok: bridgev3.MakeDataSource(mainPkg, mainMod, "getTwingateUser")},
+			"twingate_users":                 {Tok: bridgev3.MakeDataSource(mainPkg, mainMod, "getTwingateUsers")},
 		},
-		JavaScript: &tfbridge.JavaScriptInfo{
+		JavaScript: &bridgev3.JavaScriptInfo{
 			PackageName: "@twingate/pulumi-twingate",
 			// List any npm dependencies and their versions
 			Dependencies: map[string]string{
@@ -147,23 +146,23 @@ func Provider() tfbridge.ProviderInfo {
 			// no overlay files.
 			//Overlay: &tfbridge.OverlayInfo{},
 		},
-		Python: &tfbridge.PythonInfo{
+		Python: &bridgev3.PythonInfo{
 			PackageName: "pulumi_twingate",
 			// List any Python dependencies and their version ranges
 			Requires: map[string]string{
 				"pulumi": ">=3.0.0,<4.0.0",
 			},
 		},
-		Golang: &tfbridge.GolangInfo{
+		Golang: &bridgev3.GolangInfo{
 			ImportBasePath: path.Join(
 				fmt.Sprintf("github.com/Twingate/pulumi-%[1]s/sdk/", mainPkg),
-				tfbridge.GetModuleMajorVersion(version.Version),
+				bridgev3.GetModuleMajorVersion(version.Version),
 				"go",
 				mainPkg,
 			),
 			GenerateResourceContainerTypes: true,
 		},
-		CSharp: &tfbridge.CSharpInfo{
+		CSharp: &bridgev3.CSharpInfo{
 			RootNamespace: "Twingate",
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
