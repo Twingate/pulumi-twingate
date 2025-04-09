@@ -34,6 +34,10 @@ namespace Twingate.Twingate.Outputs
         /// Remote Network ID where the Resource lives
         /// </summary>
         public readonly string RemoteNetworkId;
+        /// <summary>
+        /// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Tags;
 
         [OutputConstructor]
         private GetTwingateResourcesResourceResult(
@@ -45,13 +49,16 @@ namespace Twingate.Twingate.Outputs
 
             Outputs.GetTwingateResourcesResourceProtocolsResult protocols,
 
-            string remoteNetworkId)
+            string remoteNetworkId,
+
+            ImmutableDictionary<string, string> tags)
         {
             Address = address;
             Id = id;
             Name = name;
             Protocols = protocols;
             RemoteNetworkId = remoteNetworkId;
+            Tags = tags;
         }
     }
 }

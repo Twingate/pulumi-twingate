@@ -91,6 +91,12 @@ namespace Twingate.Twingate
         [Output("securityPolicyId")]
         public Output<string> SecurityPolicyId { get; private set; } = null!;
 
+        /// <summary>
+        /// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>> Tags { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a TwingateResource resource with the given unique name, arguments, and options.
@@ -219,6 +225,18 @@ namespace Twingate.Twingate
         [Input("securityPolicyId")]
         public Input<string>? SecurityPolicyId { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
         public TwingateResourceArgs()
         {
         }
@@ -307,6 +325,18 @@ namespace Twingate.Twingate
         /// </summary>
         [Input("securityPolicyId")]
         public Input<string>? SecurityPolicyId { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public TwingateResourceState()
         {

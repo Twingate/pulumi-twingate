@@ -45,6 +45,8 @@ type TwingateResource struct {
 	RemoteNetworkId pulumi.StringOutput `pulumi:"remoteNetworkId"`
 	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
 	SecurityPolicyId pulumi.StringOutput `pulumi:"securityPolicyId"`
+	// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewTwingateResource registers a new resource with the given unique name, arguments, and options.
@@ -106,6 +108,8 @@ type twingateResourceState struct {
 	RemoteNetworkId *string `pulumi:"remoteNetworkId"`
 	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
+	// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type TwingateResourceState struct {
@@ -132,6 +136,8 @@ type TwingateResourceState struct {
 	RemoteNetworkId pulumi.StringPtrInput
 	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
 	SecurityPolicyId pulumi.StringPtrInput
+	// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+	Tags pulumi.StringMapInput
 }
 
 func (TwingateResourceState) ElementType() reflect.Type {
@@ -162,6 +168,8 @@ type twingateResourceArgs struct {
 	RemoteNetworkId string `pulumi:"remoteNetworkId"`
 	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
+	// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a TwingateResource resource.
@@ -189,6 +197,8 @@ type TwingateResourceArgs struct {
 	RemoteNetworkId pulumi.StringInput
 	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
 	SecurityPolicyId pulumi.StringPtrInput
+	// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+	Tags pulumi.StringMapInput
 }
 
 func (TwingateResourceArgs) ElementType() reflect.Type {
@@ -335,6 +345,11 @@ func (o TwingateResourceOutput) RemoteNetworkId() pulumi.StringOutput {
 // The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
 func (o TwingateResourceOutput) SecurityPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TwingateResource) pulumi.StringOutput { return v.SecurityPolicyId }).(pulumi.StringOutput)
+}
+
+// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+func (o TwingateResourceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TwingateResource) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type TwingateResourceArrayOutput struct{ *pulumi.OutputState }
