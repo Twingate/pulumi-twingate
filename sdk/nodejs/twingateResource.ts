@@ -88,6 +88,10 @@ export class TwingateResource extends pulumi.CustomResource {
      * The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
      */
     public readonly securityPolicyId!: pulumi.Output<string>;
+    /**
+     * The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a TwingateResource resource with the given unique name, arguments, and options.
@@ -114,6 +118,7 @@ export class TwingateResource extends pulumi.CustomResource {
             resourceInputs["protocols"] = state ? state.protocols : undefined;
             resourceInputs["remoteNetworkId"] = state ? state.remoteNetworkId : undefined;
             resourceInputs["securityPolicyId"] = state ? state.securityPolicyId : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as TwingateResourceArgs | undefined;
             if ((!args || args.address === undefined) && !opts.urn) {
@@ -134,6 +139,7 @@ export class TwingateResource extends pulumi.CustomResource {
             resourceInputs["protocols"] = args ? args.protocols : undefined;
             resourceInputs["remoteNetworkId"] = args ? args.remoteNetworkId : undefined;
             resourceInputs["securityPolicyId"] = args ? args.securityPolicyId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TwingateResource.__pulumiType, name, resourceInputs, opts);
@@ -189,6 +195,10 @@ export interface TwingateResourceState {
      * The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
      */
     securityPolicyId?: pulumi.Input<string>;
+    /**
+     * The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -240,4 +250,8 @@ export interface TwingateResourceArgs {
      * The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
      */
     securityPolicyId?: pulumi.Input<string>;
+    /**
+     * The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -124,6 +124,18 @@ namespace Twingate.Twingate
         [Input("nameSuffix")]
         public string? NameSuffix { get; set; }
 
+        [Input("tags")]
+        private Dictionary<string, string>? _tags;
+
+        /// <summary>
+        /// Returns only resources that exactly match the given tags.
+        /// </summary>
+        public Dictionary<string, string> Tags
+        {
+            get => _tags ?? (_tags = new Dictionary<string, string>());
+            set => _tags = value;
+        }
+
         public GetTwingateResourcesArgs()
         {
         }
@@ -168,6 +180,18 @@ namespace Twingate.Twingate
         [Input("nameSuffix")]
         public Input<string>? NameSuffix { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Returns only resources that exactly match the given tags.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
         public GetTwingateResourcesInvokeArgs()
         {
         }
@@ -210,6 +234,10 @@ namespace Twingate.Twingate
         /// List of Resources
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTwingateResourcesResourceResult> Resources;
+        /// <summary>
+        /// Returns only resources that exactly match the given tags.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]
         private GetTwingateResourcesResult(
@@ -227,7 +255,9 @@ namespace Twingate.Twingate
 
             string? nameSuffix,
 
-            ImmutableArray<Outputs.GetTwingateResourcesResourceResult> resources)
+            ImmutableArray<Outputs.GetTwingateResourcesResourceResult> resources,
+
+            ImmutableDictionary<string, string>? tags)
         {
             Id = id;
             Name = name;
@@ -237,6 +267,7 @@ namespace Twingate.Twingate
             NameRegexp = nameRegexp;
             NameSuffix = nameSuffix;
             Resources = resources;
+            Tags = tags;
         }
     }
 }

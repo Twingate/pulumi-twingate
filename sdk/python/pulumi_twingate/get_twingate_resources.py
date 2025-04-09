@@ -27,7 +27,7 @@ class GetTwingateResourcesResult:
     """
     A collection of values returned by getTwingateResources.
     """
-    def __init__(__self__, id=None, name=None, name_contains=None, name_exclude=None, name_prefix=None, name_regexp=None, name_suffix=None, resources=None):
+    def __init__(__self__, id=None, name=None, name_contains=None, name_exclude=None, name_prefix=None, name_regexp=None, name_suffix=None, resources=None, tags=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -52,6 +52,9 @@ class GetTwingateResourcesResult:
         if resources and not isinstance(resources, list):
             raise TypeError("Expected argument 'resources' to be a list")
         pulumi.set(__self__, "resources", resources)
+        if tags and not isinstance(tags, dict):
+            raise TypeError("Expected argument 'tags' to be a dict")
+        pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -117,6 +120,14 @@ class GetTwingateResourcesResult:
         """
         return pulumi.get(self, "resources")
 
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Returns only resources that exactly match the given tags.
+        """
+        return pulumi.get(self, "tags")
+
 
 class AwaitableGetTwingateResourcesResult(GetTwingateResourcesResult):
     # pylint: disable=using-constant-test
@@ -131,7 +142,8 @@ class AwaitableGetTwingateResourcesResult(GetTwingateResourcesResult):
             name_prefix=self.name_prefix,
             name_regexp=self.name_regexp,
             name_suffix=self.name_suffix,
-            resources=self.resources)
+            resources=self.resources,
+            tags=self.tags)
 
 
 def get_twingate_resources(name: Optional[str] = None,
@@ -140,6 +152,7 @@ def get_twingate_resources(name: Optional[str] = None,
                            name_prefix: Optional[str] = None,
                            name_regexp: Optional[str] = None,
                            name_suffix: Optional[str] = None,
+                           tags: Optional[Mapping[str, str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTwingateResourcesResult:
     """
     Resources in Twingate represent servers on the private network that clients can connect to. Resources can be defined by IP, CIDR range, FQDN, or DNS zone. For more information, see the Twingate [documentation](https://docs.twingate.com/docs/resources-and-access-nodes).
@@ -160,6 +173,7 @@ def get_twingate_resources(name: Optional[str] = None,
     :param str name_prefix: The name of the resource must start with the value.
     :param str name_regexp: The regular expression match of the name of the resource.
     :param str name_suffix: The name of the resource must end with the value.
+    :param Mapping[str, str] tags: Returns only resources that exactly match the given tags.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -168,6 +182,7 @@ def get_twingate_resources(name: Optional[str] = None,
     __args__['namePrefix'] = name_prefix
     __args__['nameRegexp'] = name_regexp
     __args__['nameSuffix'] = name_suffix
+    __args__['tags'] = tags
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('twingate:index/getTwingateResources:getTwingateResources', __args__, opts=opts, typ=GetTwingateResourcesResult).value
 
@@ -179,13 +194,15 @@ def get_twingate_resources(name: Optional[str] = None,
         name_prefix=pulumi.get(__ret__, 'name_prefix'),
         name_regexp=pulumi.get(__ret__, 'name_regexp'),
         name_suffix=pulumi.get(__ret__, 'name_suffix'),
-        resources=pulumi.get(__ret__, 'resources'))
+        resources=pulumi.get(__ret__, 'resources'),
+        tags=pulumi.get(__ret__, 'tags'))
 def get_twingate_resources_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                                   name_contains: Optional[pulumi.Input[Optional[str]]] = None,
                                   name_exclude: Optional[pulumi.Input[Optional[str]]] = None,
                                   name_prefix: Optional[pulumi.Input[Optional[str]]] = None,
                                   name_regexp: Optional[pulumi.Input[Optional[str]]] = None,
                                   name_suffix: Optional[pulumi.Input[Optional[str]]] = None,
+                                  tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTwingateResourcesResult]:
     """
     Resources in Twingate represent servers on the private network that clients can connect to. Resources can be defined by IP, CIDR range, FQDN, or DNS zone. For more information, see the Twingate [documentation](https://docs.twingate.com/docs/resources-and-access-nodes).
@@ -206,6 +223,7 @@ def get_twingate_resources_output(name: Optional[pulumi.Input[Optional[str]]] = 
     :param str name_prefix: The name of the resource must start with the value.
     :param str name_regexp: The regular expression match of the name of the resource.
     :param str name_suffix: The name of the resource must end with the value.
+    :param Mapping[str, str] tags: Returns only resources that exactly match the given tags.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -214,6 +232,7 @@ def get_twingate_resources_output(name: Optional[pulumi.Input[Optional[str]]] = 
     __args__['namePrefix'] = name_prefix
     __args__['nameRegexp'] = name_regexp
     __args__['nameSuffix'] = name_suffix
+    __args__['tags'] = tags
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('twingate:index/getTwingateResources:getTwingateResources', __args__, opts=opts, typ=GetTwingateResourcesResult)
     return __ret__.apply(lambda __response__: GetTwingateResourcesResult(
@@ -224,4 +243,5 @@ def get_twingate_resources_output(name: Optional[pulumi.Input[Optional[str]]] = 
         name_prefix=pulumi.get(__response__, 'name_prefix'),
         name_regexp=pulumi.get(__response__, 'name_regexp'),
         name_suffix=pulumi.get(__response__, 'name_suffix'),
-        resources=pulumi.get(__response__, 'resources')))
+        resources=pulumi.get(__response__, 'resources'),
+        tags=pulumi.get(__response__, 'tags')))
