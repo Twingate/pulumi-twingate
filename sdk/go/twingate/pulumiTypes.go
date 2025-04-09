@@ -3706,6 +3706,8 @@ type GetTwingateResourcesResource struct {
 	Protocols GetTwingateResourcesResourceProtocols `pulumi:"protocols"`
 	// Remote Network ID where the Resource lives
 	RemoteNetworkId string `pulumi:"remoteNetworkId"`
+	// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // GetTwingateResourcesResourceInput is an input type that accepts GetTwingateResourcesResourceArgs and GetTwingateResourcesResourceOutput values.
@@ -3730,6 +3732,8 @@ type GetTwingateResourcesResourceArgs struct {
 	Protocols GetTwingateResourcesResourceProtocolsInput `pulumi:"protocols"`
 	// Remote Network ID where the Resource lives
 	RemoteNetworkId pulumi.StringInput `pulumi:"remoteNetworkId"`
+	// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetTwingateResourcesResourceArgs) ElementType() reflect.Type {
@@ -3806,6 +3810,11 @@ func (o GetTwingateResourcesResourceOutput) Protocols() GetTwingateResourcesReso
 // Remote Network ID where the Resource lives
 func (o GetTwingateResourcesResourceOutput) RemoteNetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTwingateResourcesResource) string { return v.RemoteNetworkId }).(pulumi.StringOutput)
+}
+
+// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+func (o GetTwingateResourcesResourceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetTwingateResourcesResource) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type GetTwingateResourcesResourceArrayOutput struct{ *pulumi.OutputState }

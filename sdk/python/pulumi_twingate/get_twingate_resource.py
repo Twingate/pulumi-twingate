@@ -28,7 +28,7 @@ class GetTwingateResourceResult:
     """
     A collection of values returned by getTwingateResource.
     """
-    def __init__(__self__, address=None, id=None, name=None, protocols=None, remote_network_id=None):
+    def __init__(__self__, address=None, id=None, name=None, protocols=None, remote_network_id=None, tags=None):
         if address and not isinstance(address, str):
             raise TypeError("Expected argument 'address' to be a str")
         pulumi.set(__self__, "address", address)
@@ -44,6 +44,9 @@ class GetTwingateResourceResult:
         if remote_network_id and not isinstance(remote_network_id, str):
             raise TypeError("Expected argument 'remote_network_id' to be a str")
         pulumi.set(__self__, "remote_network_id", remote_network_id)
+        if tags and not isinstance(tags, dict):
+            raise TypeError("Expected argument 'tags' to be a dict")
+        pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -85,6 +88,14 @@ class GetTwingateResourceResult:
         """
         return pulumi.get(self, "remote_network_id")
 
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, str]:
+        """
+        The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+        """
+        return pulumi.get(self, "tags")
+
 
 class AwaitableGetTwingateResourceResult(GetTwingateResourceResult):
     # pylint: disable=using-constant-test
@@ -96,7 +107,8 @@ class AwaitableGetTwingateResourceResult(GetTwingateResourceResult):
             id=self.id,
             name=self.name,
             protocols=self.protocols,
-            remote_network_id=self.remote_network_id)
+            remote_network_id=self.remote_network_id,
+            tags=self.tags)
 
 
 def get_twingate_resource(id: Optional[str] = None,
@@ -129,7 +141,8 @@ def get_twingate_resource(id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         protocols=pulumi.get(__ret__, 'protocols'),
-        remote_network_id=pulumi.get(__ret__, 'remote_network_id'))
+        remote_network_id=pulumi.get(__ret__, 'remote_network_id'),
+        tags=pulumi.get(__ret__, 'tags'))
 def get_twingate_resource_output(id: Optional[pulumi.Input[str]] = None,
                                  protocols: Optional[pulumi.Input[Optional[Union['GetTwingateResourceProtocolsArgs', 'GetTwingateResourceProtocolsArgsDict']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTwingateResourceResult]:
@@ -159,4 +172,5 @@ def get_twingate_resource_output(id: Optional[pulumi.Input[str]] = None,
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         protocols=pulumi.get(__response__, 'protocols'),
-        remote_network_id=pulumi.get(__response__, 'remote_network_id')))
+        remote_network_id=pulumi.get(__response__, 'remote_network_id'),
+        tags=pulumi.get(__response__, 'tags')))

@@ -68,6 +68,8 @@ type LookupTwingateResourceResult struct {
 	Protocols *GetTwingateResourceProtocols `pulumi:"protocols"`
 	// The Remote Network ID that the Resource is associated with. Resources may only be associated with a single Remote Network.
 	RemoteNetworkId string `pulumi:"remoteNetworkId"`
+	// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func LookupTwingateResourceOutput(ctx *pulumi.Context, args LookupTwingateResourceOutputArgs, opts ...pulumi.InvokeOption) LookupTwingateResourceResultOutput {
@@ -129,6 +131,11 @@ func (o LookupTwingateResourceResultOutput) Protocols() GetTwingateResourceProto
 // The Remote Network ID that the Resource is associated with. Resources may only be associated with a single Remote Network.
 func (o LookupTwingateResourceResultOutput) RemoteNetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTwingateResourceResult) string { return v.RemoteNetworkId }).(pulumi.StringOutput)
+}
+
+// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+func (o LookupTwingateResourceResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupTwingateResourceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

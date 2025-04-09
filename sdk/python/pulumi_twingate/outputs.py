@@ -1315,19 +1315,22 @@ class GetTwingateResourcesResourceResult(dict):
                  id: str,
                  name: str,
                  protocols: 'outputs.GetTwingateResourcesResourceProtocolsResult',
-                 remote_network_id: str):
+                 remote_network_id: str,
+                 tags: Mapping[str, str]):
         """
         :param str address: The Resource's IP/CIDR or FQDN/DNS zone
         :param str id: The id of the Resource
         :param str name: The name of the Resource
         :param 'GetTwingateResourcesResourceProtocolsArgs' protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param str remote_network_id: Remote Network ID where the Resource lives
+        :param Mapping[str, str] tags: The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "protocols", protocols)
         pulumi.set(__self__, "remote_network_id", remote_network_id)
+        pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -1368,6 +1371,14 @@ class GetTwingateResourcesResourceResult(dict):
         Remote Network ID where the Resource lives
         """
         return pulumi.get(self, "remote_network_id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, str]:
+        """
+        The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+        """
+        return pulumi.get(self, "tags")
 
 
 @pulumi.output_type

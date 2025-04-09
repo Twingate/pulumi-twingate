@@ -30,6 +30,7 @@ export function getTwingateResources(args?: GetTwingateResourcesArgs, opts?: pul
         "namePrefix": args.namePrefix,
         "nameRegexp": args.nameRegexp,
         "nameSuffix": args.nameSuffix,
+        "tags": args.tags,
     }, opts);
 }
 
@@ -61,6 +62,10 @@ export interface GetTwingateResourcesArgs {
      * The name of the resource must end with the value.
      */
     nameSuffix?: string;
+    /**
+     * Returns only resources that exactly match the given tags.
+     */
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -99,6 +104,10 @@ export interface GetTwingateResourcesResult {
      * List of Resources
      */
     readonly resources: outputs.GetTwingateResourcesResource[];
+    /**
+     * Returns only resources that exactly match the given tags.
+     */
+    readonly tags?: {[key: string]: string};
 }
 /**
  * Resources in Twingate represent servers on the private network that clients can connect to. Resources can be defined by IP, CIDR range, FQDN, or DNS zone. For more information, see the Twingate [documentation](https://docs.twingate.com/docs/resources-and-access-nodes).
@@ -124,6 +133,7 @@ export function getTwingateResourcesOutput(args?: GetTwingateResourcesOutputArgs
         "namePrefix": args.namePrefix,
         "nameRegexp": args.nameRegexp,
         "nameSuffix": args.nameSuffix,
+        "tags": args.tags,
     }, opts);
 }
 
@@ -155,4 +165,8 @@ export interface GetTwingateResourcesOutputArgs {
      * The name of the resource must end with the value.
      */
     nameSuffix?: pulumi.Input<string>;
+    /**
+     * Returns only resources that exactly match the given tags.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

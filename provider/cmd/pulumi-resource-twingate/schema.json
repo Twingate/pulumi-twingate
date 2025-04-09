@@ -781,6 +781,13 @@
                 "remoteNetworkId": {
                     "type": "string",
                     "description": "Remote Network ID where the Resource lives\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.\n"
                 }
             },
             "type": "object",
@@ -789,7 +796,8 @@
                 "id",
                 "name",
                 "protocols",
-                "remoteNetworkId"
+                "remoteNetworkId",
+                "tags"
             ],
             "language": {
                 "nodejs": {
@@ -1527,6 +1535,13 @@
                 "securityPolicyId": {
                     "type": "string",
                     "description": "The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.\n"
                 }
             },
             "required": [
@@ -1538,7 +1553,8 @@
                 "name",
                 "protocols",
                 "remoteNetworkId",
-                "securityPolicyId"
+                "securityPolicyId",
+                "tags"
             ],
             "inputProperties": {
                 "accessGroups": {
@@ -1593,6 +1609,13 @@
                 "securityPolicyId": {
                     "type": "string",
                     "description": "The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.\n"
                 }
             },
             "requiredInputs": [
@@ -1654,6 +1677,13 @@
                     "securityPolicyId": {
                         "type": "string",
                         "description": "The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.\n"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.\n"
                     }
                 },
                 "type": "object"
@@ -2422,6 +2452,13 @@
                     "remoteNetworkId": {
                         "type": "string",
                         "description": "The Remote Network ID that the Resource is associated with. Resources may only be associated with a single Remote Network.\n"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.\n"
                     }
                 },
                 "type": "object",
@@ -2429,7 +2466,8 @@
                     "address",
                     "id",
                     "name",
-                    "remoteNetworkId"
+                    "remoteNetworkId",
+                    "tags"
                 ]
             }
         },
@@ -2461,6 +2499,13 @@
                     "nameSuffix": {
                         "type": "string",
                         "description": "The name of the resource must end with the value.\n"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Returns only resources that exactly match the given tags.\n"
                     }
                 },
                 "type": "object"
@@ -2502,6 +2547,13 @@
                             "$ref": "#/types/twingate:index/getTwingateResourcesResource:getTwingateResourcesResource"
                         },
                         "description": "List of Resources\n"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Returns only resources that exactly match the given tags.\n"
                     }
                 },
                 "type": "object",
