@@ -3,9 +3,9 @@ module github.com/Twingate/pulumi-twingate/provider
 go 1.24
 
 require (
-	github.com/Twingate/terraform-provider-twingate/v3 v3.0.16
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.105.0
-	github.com/pulumi/pulumi/sdk/v3 v3.156.0
+	github.com/Twingate/terraform-provider-twingate/v3 v3.0.18
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.106.0
+	github.com/pulumi/pulumi/sdk/v3 v3.160.0
 )
 
 require (
@@ -77,7 +77,7 @@ require (
 	github.com/grpc-ecosystem/grpc-opentracing v0.0.0-20180507213350-8e809c8a8645 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
-	github.com/hashicorp/go-cty v1.4.1 // indirect
+	github.com/hashicorp/go-cty v1.5.0 // indirect
 	github.com/hashicorp/go-getter v1.7.8 // indirect
 	github.com/hashicorp/go-hclog v1.6.3 // indirect
 	github.com/hashicorp/go-multierror v1.1.1 // indirect
@@ -141,9 +141,9 @@ require (
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
 	github.com/pulumi/esc v0.12.0 // indirect
 	github.com/pulumi/inflector v0.2.1 // indirect
-	github.com/pulumi/pulumi-java/pkg v1.5.0 // indirect
-	github.com/pulumi/pulumi-yaml v1.14.1 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.156.0 // indirect
+	github.com/pulumi/pulumi-java/pkg v1.8.0 // indirect
+	github.com/pulumi/pulumi-yaml v1.15.1 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.160.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/rogpeppe/go-internal v1.14.1 // indirect
@@ -183,9 +183,9 @@ require (
 	golang.org/x/crypto v0.36.0 // indirect
 	golang.org/x/exp v0.0.0-20250305212735-054e65f0b394 // indirect
 	golang.org/x/mod v0.24.0 // indirect
-	golang.org/x/net v0.37.0 // indirect
+	golang.org/x/net v0.38.0 // indirect
 	golang.org/x/oauth2 v0.28.0 // indirect
-	golang.org/x/sync v0.12.0 // indirect
+	golang.org/x/sync v0.13.0 // indirect
 	golang.org/x/sys v0.31.0 // indirect
 	golang.org/x/term v0.30.0 // indirect
 	golang.org/x/text v0.23.0 // indirect

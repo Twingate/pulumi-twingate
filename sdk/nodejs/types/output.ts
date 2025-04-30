@@ -245,6 +245,10 @@ export interface GetTwingateResourcesResource {
      * Remote Network ID where the Resource lives
      */
     remoteNetworkId: string;
+    /**
+     * The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+     */
+    tags: {[key: string]: string};
 }
 
 export interface GetTwingateResourcesResourceProtocols {

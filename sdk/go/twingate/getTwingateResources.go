@@ -62,6 +62,8 @@ type GetTwingateResourcesArgs struct {
 	NameRegexp *string `pulumi:"nameRegexp"`
 	// The name of the resource must end with the value.
 	NameSuffix *string `pulumi:"nameSuffix"`
+	// Returns only resources that exactly match the given tags.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getTwingateResources.
@@ -82,6 +84,8 @@ type GetTwingateResourcesResult struct {
 	NameSuffix *string `pulumi:"nameSuffix"`
 	// List of Resources
 	Resources []GetTwingateResourcesResource `pulumi:"resources"`
+	// Returns only resources that exactly match the given tags.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetTwingateResourcesOutput(ctx *pulumi.Context, args GetTwingateResourcesOutputArgs, opts ...pulumi.InvokeOption) GetTwingateResourcesResultOutput {
@@ -107,6 +111,8 @@ type GetTwingateResourcesOutputArgs struct {
 	NameRegexp pulumi.StringPtrInput `pulumi:"nameRegexp"`
 	// The name of the resource must end with the value.
 	NameSuffix pulumi.StringPtrInput `pulumi:"nameSuffix"`
+	// Returns only resources that exactly match the given tags.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetTwingateResourcesOutputArgs) ElementType() reflect.Type {
@@ -166,6 +172,11 @@ func (o GetTwingateResourcesResultOutput) NameSuffix() pulumi.StringPtrOutput {
 // List of Resources
 func (o GetTwingateResourcesResultOutput) Resources() GetTwingateResourcesResourceArrayOutput {
 	return o.ApplyT(func(v GetTwingateResourcesResult) []GetTwingateResourcesResource { return v.Resources }).(GetTwingateResourcesResourceArrayOutput)
+}
+
+// Returns only resources that exactly match the given tags.
+func (o GetTwingateResourcesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetTwingateResourcesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

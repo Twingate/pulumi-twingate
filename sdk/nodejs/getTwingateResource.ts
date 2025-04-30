@@ -66,6 +66,10 @@ export interface GetTwingateResourceResult {
      * The Remote Network ID that the Resource is associated with. Resources may only be associated with a single Remote Network.
      */
     readonly remoteNetworkId: string;
+    /**
+     * The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+     */
+    readonly tags: {[key: string]: string};
 }
 /**
  * Resources in Twingate represent any network destination address that you wish to provide private access to for users authorized via the Twingate Client application. Resources can be defined by either IP or DNS address, and all private DNS addresses will be automatically resolved with no client configuration changes. For more information, see the Twingate [documentation](https://docs.twingate.com/docs/resources-and-access-nodes).
