@@ -5,7 +5,7 @@ go 1.24
 require (
 	github.com/Twingate/terraform-provider-twingate/v3 v3.0.19
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.107.0
-	github.com/pulumi/pulumi/sdk/v3 v3.166.0
+	github.com/pulumi/pulumi/sdk/v3 v3.167.0
 )
 
 require (
