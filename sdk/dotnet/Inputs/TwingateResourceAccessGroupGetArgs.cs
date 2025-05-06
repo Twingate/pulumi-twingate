@@ -14,6 +14,12 @@ namespace Twingate.Twingate.Inputs
     public sealed class TwingateResourceAccessGroupGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+        /// </summary>
+        [Input("approvalMode")]
+        public Input<string>? ApprovalMode { get; set; }
+
+        /// <summary>
         /// Group ID that will have permission to access the Resource.
         /// </summary>
         [Input("groupId")]

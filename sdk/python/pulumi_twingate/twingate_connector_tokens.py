@@ -129,6 +129,9 @@ class _TwingateConnectorTokensState:
 
 
 class TwingateConnectorTokens(pulumi.CustomResource):
+
+    pulumi_type = "twingate:index/twingateConnectorTokens:TwingateConnectorTokens"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

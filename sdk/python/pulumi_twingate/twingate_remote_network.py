@@ -130,6 +130,9 @@ class _TwingateRemoteNetworkState:
 
 
 class TwingateRemoteNetwork(pulumi.CustomResource):
+
+    pulumi_type = "twingate:index/twingateRemoteNetwork:TwingateRemoteNetwork"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -1071,6 +1071,8 @@ func (o TwingateDNSFilteringProfileSecurityCategoriesPtrOutput) EnableThreatInte
 }
 
 type TwingateResourceAccessGroup struct {
+	// This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+	ApprovalMode *string `pulumi:"approvalMode"`
 	// Group ID that will have permission to access the Resource.
 	GroupId *string `pulumi:"groupId"`
 	// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
@@ -1091,6 +1093,8 @@ type TwingateResourceAccessGroupInput interface {
 }
 
 type TwingateResourceAccessGroupArgs struct {
+	// This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+	ApprovalMode pulumi.StringPtrInput `pulumi:"approvalMode"`
 	// Group ID that will have permission to access the Resource.
 	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
 	// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
@@ -1148,6 +1152,11 @@ func (o TwingateResourceAccessGroupOutput) ToTwingateResourceAccessGroupOutput()
 
 func (o TwingateResourceAccessGroupOutput) ToTwingateResourceAccessGroupOutputWithContext(ctx context.Context) TwingateResourceAccessGroupOutput {
 	return o
+}
+
+// This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+func (o TwingateResourceAccessGroupOutput) ApprovalMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TwingateResourceAccessGroup) *string { return v.ApprovalMode }).(pulumi.StringPtrOutput)
 }
 
 // Group ID that will have permission to access the Resource.
@@ -3698,6 +3707,8 @@ func (o GetTwingateResourceProtocolsUdpPtrOutput) Ports() pulumi.StringArrayOutp
 type GetTwingateResourcesResource struct {
 	// The Resource's IP/CIDR or FQDN/DNS zone
 	Address string `pulumi:"address"`
+	// The Approval Mode of the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+	ApprovalMode string `pulumi:"approvalMode"`
 	// The id of the Resource
 	Id string `pulumi:"id"`
 	// The name of the Resource
@@ -3708,6 +3719,8 @@ type GetTwingateResourcesResource struct {
 	RemoteNetworkId string `pulumi:"remoteNetworkId"`
 	// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
 	Tags map[string]string `pulumi:"tags"`
+	// The number of days that the Resource will be locked after the last successful login.
+	UsageBasedAutolockDurationDays int `pulumi:"usageBasedAutolockDurationDays"`
 }
 
 // GetTwingateResourcesResourceInput is an input type that accepts GetTwingateResourcesResourceArgs and GetTwingateResourcesResourceOutput values.
@@ -3724,6 +3737,8 @@ type GetTwingateResourcesResourceInput interface {
 type GetTwingateResourcesResourceArgs struct {
 	// The Resource's IP/CIDR or FQDN/DNS zone
 	Address pulumi.StringInput `pulumi:"address"`
+	// The Approval Mode of the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+	ApprovalMode pulumi.StringInput `pulumi:"approvalMode"`
 	// The id of the Resource
 	Id pulumi.StringInput `pulumi:"id"`
 	// The name of the Resource
@@ -3734,6 +3749,8 @@ type GetTwingateResourcesResourceArgs struct {
 	RemoteNetworkId pulumi.StringInput `pulumi:"remoteNetworkId"`
 	// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The number of days that the Resource will be locked after the last successful login.
+	UsageBasedAutolockDurationDays pulumi.IntInput `pulumi:"usageBasedAutolockDurationDays"`
 }
 
 func (GetTwingateResourcesResourceArgs) ElementType() reflect.Type {
@@ -3792,6 +3809,11 @@ func (o GetTwingateResourcesResourceOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTwingateResourcesResource) string { return v.Address }).(pulumi.StringOutput)
 }
 
+// The Approval Mode of the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+func (o GetTwingateResourcesResourceOutput) ApprovalMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTwingateResourcesResource) string { return v.ApprovalMode }).(pulumi.StringOutput)
+}
+
 // The id of the Resource
 func (o GetTwingateResourcesResourceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTwingateResourcesResource) string { return v.Id }).(pulumi.StringOutput)
@@ -3815,6 +3837,11 @@ func (o GetTwingateResourcesResourceOutput) RemoteNetworkId() pulumi.StringOutpu
 // The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
 func (o GetTwingateResourcesResourceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetTwingateResourcesResource) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The number of days that the Resource will be locked after the last successful login.
+func (o GetTwingateResourcesResourceOutput) UsageBasedAutolockDurationDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTwingateResourcesResource) int { return v.UsageBasedAutolockDurationDays }).(pulumi.IntOutput)
 }
 
 type GetTwingateResourcesResourceArrayOutput struct{ *pulumi.OutputState }

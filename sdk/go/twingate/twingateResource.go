@@ -30,6 +30,8 @@ type TwingateResource struct {
 	Address pulumi.StringOutput `pulumi:"address"`
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
 	Alias pulumi.StringPtrOutput `pulumi:"alias"`
+	// This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+	ApprovalMode pulumi.StringOutput `pulumi:"approvalMode"`
 	// Set the resource as active or inactive. Default is `true`.
 	IsActive        pulumi.BoolOutput `pulumi:"isActive"`
 	IsAuthoritative pulumi.BoolOutput `pulumi:"isAuthoritative"`
@@ -47,6 +49,8 @@ type TwingateResource struct {
 	SecurityPolicyId pulumi.StringOutput `pulumi:"securityPolicyId"`
 	// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// The usage-based auto-lock duration for the Resource (in days).
+	UsageBasedAutolockDurationDays pulumi.IntOutput `pulumi:"usageBasedAutolockDurationDays"`
 }
 
 // NewTwingateResource registers a new resource with the given unique name, arguments, and options.
@@ -93,6 +97,8 @@ type twingateResourceState struct {
 	Address *string `pulumi:"address"`
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
 	Alias *string `pulumi:"alias"`
+	// This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+	ApprovalMode *string `pulumi:"approvalMode"`
 	// Set the resource as active or inactive. Default is `true`.
 	IsActive        *bool `pulumi:"isActive"`
 	IsAuthoritative *bool `pulumi:"isAuthoritative"`
@@ -110,6 +116,8 @@ type twingateResourceState struct {
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 	// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
 	Tags map[string]string `pulumi:"tags"`
+	// The usage-based auto-lock duration for the Resource (in days).
+	UsageBasedAutolockDurationDays *int `pulumi:"usageBasedAutolockDurationDays"`
 }
 
 type TwingateResourceState struct {
@@ -121,6 +129,8 @@ type TwingateResourceState struct {
 	Address pulumi.StringPtrInput
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
 	Alias pulumi.StringPtrInput
+	// This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+	ApprovalMode pulumi.StringPtrInput
 	// Set the resource as active or inactive. Default is `true`.
 	IsActive        pulumi.BoolPtrInput
 	IsAuthoritative pulumi.BoolPtrInput
@@ -138,6 +148,8 @@ type TwingateResourceState struct {
 	SecurityPolicyId pulumi.StringPtrInput
 	// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
 	Tags pulumi.StringMapInput
+	// The usage-based auto-lock duration for the Resource (in days).
+	UsageBasedAutolockDurationDays pulumi.IntPtrInput
 }
 
 func (TwingateResourceState) ElementType() reflect.Type {
@@ -153,6 +165,8 @@ type twingateResourceArgs struct {
 	Address string `pulumi:"address"`
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
 	Alias *string `pulumi:"alias"`
+	// This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+	ApprovalMode *string `pulumi:"approvalMode"`
 	// Set the resource as active or inactive. Default is `true`.
 	IsActive        *bool `pulumi:"isActive"`
 	IsAuthoritative *bool `pulumi:"isAuthoritative"`
@@ -170,6 +184,8 @@ type twingateResourceArgs struct {
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 	// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
 	Tags map[string]string `pulumi:"tags"`
+	// The usage-based auto-lock duration for the Resource (in days).
+	UsageBasedAutolockDurationDays *int `pulumi:"usageBasedAutolockDurationDays"`
 }
 
 // The set of arguments for constructing a TwingateResource resource.
@@ -182,6 +198,8 @@ type TwingateResourceArgs struct {
 	Address pulumi.StringInput
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
 	Alias pulumi.StringPtrInput
+	// This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+	ApprovalMode pulumi.StringPtrInput
 	// Set the resource as active or inactive. Default is `true`.
 	IsActive        pulumi.BoolPtrInput
 	IsAuthoritative pulumi.BoolPtrInput
@@ -199,6 +217,8 @@ type TwingateResourceArgs struct {
 	SecurityPolicyId pulumi.StringPtrInput
 	// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
 	Tags pulumi.StringMapInput
+	// The usage-based auto-lock duration for the Resource (in days).
+	UsageBasedAutolockDurationDays pulumi.IntPtrInput
 }
 
 func (TwingateResourceArgs) ElementType() reflect.Type {
@@ -308,6 +328,11 @@ func (o TwingateResourceOutput) Alias() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TwingateResource) pulumi.StringPtrOutput { return v.Alias }).(pulumi.StringPtrOutput)
 }
 
+// This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+func (o TwingateResourceOutput) ApprovalMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *TwingateResource) pulumi.StringOutput { return v.ApprovalMode }).(pulumi.StringOutput)
+}
+
 // Set the resource as active or inactive. Default is `true`.
 func (o TwingateResourceOutput) IsActive() pulumi.BoolOutput {
 	return o.ApplyT(func(v *TwingateResource) pulumi.BoolOutput { return v.IsActive }).(pulumi.BoolOutput)
@@ -350,6 +375,11 @@ func (o TwingateResourceOutput) SecurityPolicyId() pulumi.StringOutput {
 // The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
 func (o TwingateResourceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *TwingateResource) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The usage-based auto-lock duration for the Resource (in days).
+func (o TwingateResourceOutput) UsageBasedAutolockDurationDays() pulumi.IntOutput {
+	return o.ApplyT(func(v *TwingateResource) pulumi.IntOutput { return v.UsageBasedAutolockDurationDays }).(pulumi.IntOutput)
 }
 
 type TwingateResourceArrayOutput struct{ *pulumi.OutputState }

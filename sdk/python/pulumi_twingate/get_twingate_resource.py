@@ -29,10 +29,13 @@ class GetTwingateResourceResult:
     """
     A collection of values returned by getTwingateResource.
     """
-    def __init__(__self__, address=None, id=None, name=None, protocols=None, remote_network_id=None, tags=None):
+    def __init__(__self__, address=None, approval_mode=None, id=None, name=None, protocols=None, remote_network_id=None, tags=None, usage_based_autolock_duration_days=None):
         if address and not isinstance(address, str):
             raise TypeError("Expected argument 'address' to be a str")
         pulumi.set(__self__, "address", address)
+        if approval_mode and not isinstance(approval_mode, str):
+            raise TypeError("Expected argument 'approval_mode' to be a str")
+        pulumi.set(__self__, "approval_mode", approval_mode)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -48,6 +51,9 @@ class GetTwingateResourceResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         pulumi.set(__self__, "tags", tags)
+        if usage_based_autolock_duration_days and not isinstance(usage_based_autolock_duration_days, int):
+            raise TypeError("Expected argument 'usage_based_autolock_duration_days' to be a int")
+        pulumi.set(__self__, "usage_based_autolock_duration_days", usage_based_autolock_duration_days)
 
     @property
     @pulumi.getter
@@ -56,6 +62,14 @@ class GetTwingateResourceResult:
         The Resource's address, which may be an IP address, CIDR range, or DNS address
         """
         return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="approvalMode")
+    def approval_mode(self) -> builtins.str:
+        """
+        The Approval Mode of the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+        """
+        return pulumi.get(self, "approval_mode")
 
     @property
     @pulumi.getter
@@ -97,6 +111,14 @@ class GetTwingateResourceResult:
         """
         return pulumi.get(self, "tags")
 
+    @property
+    @pulumi.getter(name="usageBasedAutolockDurationDays")
+    def usage_based_autolock_duration_days(self) -> builtins.int:
+        """
+        The number of days that the Resource will be locked after the last successful login.
+        """
+        return pulumi.get(self, "usage_based_autolock_duration_days")
+
 
 class AwaitableGetTwingateResourceResult(GetTwingateResourceResult):
     # pylint: disable=using-constant-test
@@ -105,11 +127,13 @@ class AwaitableGetTwingateResourceResult(GetTwingateResourceResult):
             yield self
         return GetTwingateResourceResult(
             address=self.address,
+            approval_mode=self.approval_mode,
             id=self.id,
             name=self.name,
             protocols=self.protocols,
             remote_network_id=self.remote_network_id,
-            tags=self.tags)
+            tags=self.tags,
+            usage_based_autolock_duration_days=self.usage_based_autolock_duration_days)
 
 
 def get_twingate_resource(id: Optional[builtins.str] = None,
@@ -139,11 +163,13 @@ def get_twingate_resource(id: Optional[builtins.str] = None,
 
     return AwaitableGetTwingateResourceResult(
         address=pulumi.get(__ret__, 'address'),
+        approval_mode=pulumi.get(__ret__, 'approval_mode'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         protocols=pulumi.get(__ret__, 'protocols'),
         remote_network_id=pulumi.get(__ret__, 'remote_network_id'),
-        tags=pulumi.get(__ret__, 'tags'))
+        tags=pulumi.get(__ret__, 'tags'),
+        usage_based_autolock_duration_days=pulumi.get(__ret__, 'usage_based_autolock_duration_days'))
 def get_twingate_resource_output(id: Optional[pulumi.Input[builtins.str]] = None,
                                  protocols: Optional[pulumi.Input[Optional[Union['GetTwingateResourceProtocolsArgs', 'GetTwingateResourceProtocolsArgsDict']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTwingateResourceResult]:
@@ -170,8 +196,10 @@ def get_twingate_resource_output(id: Optional[pulumi.Input[builtins.str]] = None
     __ret__ = pulumi.runtime.invoke_output('twingate:index/getTwingateResource:getTwingateResource', __args__, opts=opts, typ=GetTwingateResourceResult)
     return __ret__.apply(lambda __response__: GetTwingateResourceResult(
         address=pulumi.get(__response__, 'address'),
+        approval_mode=pulumi.get(__response__, 'approval_mode'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         protocols=pulumi.get(__response__, 'protocols'),
         remote_network_id=pulumi.get(__response__, 'remote_network_id'),
-        tags=pulumi.get(__response__, 'tags')))
+        tags=pulumi.get(__response__, 'tags'),
+        usage_based_autolock_duration_days=pulumi.get(__response__, 'usage_based_autolock_duration_days')))

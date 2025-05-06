@@ -323,6 +323,9 @@ class _TwingateDNSFilteringProfileState:
 
 
 class TwingateDNSFilteringProfile(pulumi.CustomResource):
+
+    pulumi_type = "twingate:index/twingateDNSFilteringProfile:TwingateDNSFilteringProfile"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

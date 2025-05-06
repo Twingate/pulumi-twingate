@@ -27,6 +27,7 @@ class TwingateResourceArgs:
                  access_groups: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupArgs']]]] = None,
                  access_services: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]]] = None,
                  alias: Optional[pulumi.Input[builtins.str]] = None,
+                 approval_mode: Optional[pulumi.Input[builtins.str]] = None,
                  is_active: Optional[pulumi.Input[builtins.bool]] = None,
                  is_authoritative: Optional[pulumi.Input[builtins.bool]] = None,
                  is_browser_shortcut_enabled: Optional[pulumi.Input[builtins.bool]] = None,
@@ -34,7 +35,8 @@ class TwingateResourceArgs:
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  protocols: Optional[pulumi.Input['TwingateResourceProtocolsArgs']] = None,
                  security_policy_id: Optional[pulumi.Input[builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 usage_based_autolock_duration_days: Optional[pulumi.Input[builtins.int]] = None):
         """
         The set of arguments for constructing a TwingateResource resource.
         :param pulumi.Input[builtins.str] address: The Resource's IP/CIDR or FQDN/DNS zone
@@ -42,6 +44,7 @@ class TwingateResourceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupArgs']]] access_groups: Restrict access to certain group
         :param pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]] access_services: Restrict access to certain service account
         :param pulumi.Input[builtins.str] alias: Set a DNS alias address for the Resource. Must be a DNS-valid name string.
+        :param pulumi.Input[builtins.str] approval_mode: This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
         :param pulumi.Input[builtins.bool] is_active: Set the resource as active or inactive. Default is `true`.
         :param pulumi.Input[builtins.bool] is_browser_shortcut_enabled: Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
         :param pulumi.Input[builtins.bool] is_visible: Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
@@ -49,6 +52,7 @@ class TwingateResourceArgs:
         :param pulumi.Input['TwingateResourceProtocolsArgs'] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param pulumi.Input[builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is `Default Policy`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+        :param pulumi.Input[builtins.int] usage_based_autolock_duration_days: The usage-based auto-lock duration for the Resource (in days).
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "remote_network_id", remote_network_id)
@@ -58,6 +62,8 @@ class TwingateResourceArgs:
             pulumi.set(__self__, "access_services", access_services)
         if alias is not None:
             pulumi.set(__self__, "alias", alias)
+        if approval_mode is not None:
+            pulumi.set(__self__, "approval_mode", approval_mode)
         if is_active is not None:
             pulumi.set(__self__, "is_active", is_active)
         if is_authoritative is not None:
@@ -74,6 +80,8 @@ class TwingateResourceArgs:
             pulumi.set(__self__, "security_policy_id", security_policy_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if usage_based_autolock_duration_days is not None:
+            pulumi.set(__self__, "usage_based_autolock_duration_days", usage_based_autolock_duration_days)
 
     @property
     @pulumi.getter
@@ -134,6 +142,18 @@ class TwingateResourceArgs:
     @alias.setter
     def alias(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "alias", value)
+
+    @property
+    @pulumi.getter(name="approvalMode")
+    def approval_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+        """
+        return pulumi.get(self, "approval_mode")
+
+    @approval_mode.setter
+    def approval_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "approval_mode", value)
 
     @property
     @pulumi.getter(name="isActive")
@@ -228,6 +248,18 @@ class TwingateResourceArgs:
     def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter(name="usageBasedAutolockDurationDays")
+    def usage_based_autolock_duration_days(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The usage-based auto-lock duration for the Resource (in days).
+        """
+        return pulumi.get(self, "usage_based_autolock_duration_days")
+
+    @usage_based_autolock_duration_days.setter
+    def usage_based_autolock_duration_days(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "usage_based_autolock_duration_days", value)
+
 
 @pulumi.input_type
 class _TwingateResourceState:
@@ -236,6 +268,7 @@ class _TwingateResourceState:
                  access_services: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]]] = None,
                  address: Optional[pulumi.Input[builtins.str]] = None,
                  alias: Optional[pulumi.Input[builtins.str]] = None,
+                 approval_mode: Optional[pulumi.Input[builtins.str]] = None,
                  is_active: Optional[pulumi.Input[builtins.bool]] = None,
                  is_authoritative: Optional[pulumi.Input[builtins.bool]] = None,
                  is_browser_shortcut_enabled: Optional[pulumi.Input[builtins.bool]] = None,
@@ -244,13 +277,15 @@ class _TwingateResourceState:
                  protocols: Optional[pulumi.Input['TwingateResourceProtocolsArgs']] = None,
                  remote_network_id: Optional[pulumi.Input[builtins.str]] = None,
                  security_policy_id: Optional[pulumi.Input[builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 usage_based_autolock_duration_days: Optional[pulumi.Input[builtins.int]] = None):
         """
         Input properties used for looking up and filtering TwingateResource resources.
         :param pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupArgs']]] access_groups: Restrict access to certain group
         :param pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]] access_services: Restrict access to certain service account
         :param pulumi.Input[builtins.str] address: The Resource's IP/CIDR or FQDN/DNS zone
         :param pulumi.Input[builtins.str] alias: Set a DNS alias address for the Resource. Must be a DNS-valid name string.
+        :param pulumi.Input[builtins.str] approval_mode: This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
         :param pulumi.Input[builtins.bool] is_active: Set the resource as active or inactive. Default is `true`.
         :param pulumi.Input[builtins.bool] is_browser_shortcut_enabled: Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
         :param pulumi.Input[builtins.bool] is_visible: Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
@@ -259,6 +294,7 @@ class _TwingateResourceState:
         :param pulumi.Input[builtins.str] remote_network_id: Remote Network ID where the Resource lives
         :param pulumi.Input[builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is `Default Policy`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+        :param pulumi.Input[builtins.int] usage_based_autolock_duration_days: The usage-based auto-lock duration for the Resource (in days).
         """
         if access_groups is not None:
             pulumi.set(__self__, "access_groups", access_groups)
@@ -268,6 +304,8 @@ class _TwingateResourceState:
             pulumi.set(__self__, "address", address)
         if alias is not None:
             pulumi.set(__self__, "alias", alias)
+        if approval_mode is not None:
+            pulumi.set(__self__, "approval_mode", approval_mode)
         if is_active is not None:
             pulumi.set(__self__, "is_active", is_active)
         if is_authoritative is not None:
@@ -286,6 +324,8 @@ class _TwingateResourceState:
             pulumi.set(__self__, "security_policy_id", security_policy_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if usage_based_autolock_duration_days is not None:
+            pulumi.set(__self__, "usage_based_autolock_duration_days", usage_based_autolock_duration_days)
 
     @property
     @pulumi.getter(name="accessGroups")
@@ -334,6 +374,18 @@ class _TwingateResourceState:
     @alias.setter
     def alias(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "alias", value)
+
+    @property
+    @pulumi.getter(name="approvalMode")
+    def approval_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+        """
+        return pulumi.get(self, "approval_mode")
+
+    @approval_mode.setter
+    def approval_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "approval_mode", value)
 
     @property
     @pulumi.getter(name="isActive")
@@ -440,8 +492,23 @@ class _TwingateResourceState:
     def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter(name="usageBasedAutolockDurationDays")
+    def usage_based_autolock_duration_days(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The usage-based auto-lock duration for the Resource (in days).
+        """
+        return pulumi.get(self, "usage_based_autolock_duration_days")
+
+    @usage_based_autolock_duration_days.setter
+    def usage_based_autolock_duration_days(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "usage_based_autolock_duration_days", value)
+
 
 class TwingateResource(pulumi.CustomResource):
+
+    pulumi_type = "twingate:index/twingateResource:TwingateResource"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -450,6 +517,7 @@ class TwingateResource(pulumi.CustomResource):
                  access_services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessServiceArgs', 'TwingateResourceAccessServiceArgsDict']]]]] = None,
                  address: Optional[pulumi.Input[builtins.str]] = None,
                  alias: Optional[pulumi.Input[builtins.str]] = None,
+                 approval_mode: Optional[pulumi.Input[builtins.str]] = None,
                  is_active: Optional[pulumi.Input[builtins.bool]] = None,
                  is_authoritative: Optional[pulumi.Input[builtins.bool]] = None,
                  is_browser_shortcut_enabled: Optional[pulumi.Input[builtins.bool]] = None,
@@ -459,6 +527,7 @@ class TwingateResource(pulumi.CustomResource):
                  remote_network_id: Optional[pulumi.Input[builtins.str]] = None,
                  security_policy_id: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 usage_based_autolock_duration_days: Optional[pulumi.Input[builtins.int]] = None,
                  __props__=None):
         """
         Resources in Twingate represent servers on the private network that clients can connect to. Resources can be defined by IP, CIDR range, FQDN, or DNS zone. For more information, see the Twingate [documentation](https://docs.twingate.com/docs/resources-and-access-nodes).
@@ -475,6 +544,7 @@ class TwingateResource(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessServiceArgs', 'TwingateResourceAccessServiceArgsDict']]]] access_services: Restrict access to certain service account
         :param pulumi.Input[builtins.str] address: The Resource's IP/CIDR or FQDN/DNS zone
         :param pulumi.Input[builtins.str] alias: Set a DNS alias address for the Resource. Must be a DNS-valid name string.
+        :param pulumi.Input[builtins.str] approval_mode: This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
         :param pulumi.Input[builtins.bool] is_active: Set the resource as active or inactive. Default is `true`.
         :param pulumi.Input[builtins.bool] is_browser_shortcut_enabled: Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
         :param pulumi.Input[builtins.bool] is_visible: Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
@@ -483,6 +553,7 @@ class TwingateResource(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] remote_network_id: Remote Network ID where the Resource lives
         :param pulumi.Input[builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is `Default Policy`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+        :param pulumi.Input[builtins.int] usage_based_autolock_duration_days: The usage-based auto-lock duration for the Resource (in days).
         """
         ...
     @overload
@@ -518,6 +589,7 @@ class TwingateResource(pulumi.CustomResource):
                  access_services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessServiceArgs', 'TwingateResourceAccessServiceArgsDict']]]]] = None,
                  address: Optional[pulumi.Input[builtins.str]] = None,
                  alias: Optional[pulumi.Input[builtins.str]] = None,
+                 approval_mode: Optional[pulumi.Input[builtins.str]] = None,
                  is_active: Optional[pulumi.Input[builtins.bool]] = None,
                  is_authoritative: Optional[pulumi.Input[builtins.bool]] = None,
                  is_browser_shortcut_enabled: Optional[pulumi.Input[builtins.bool]] = None,
@@ -527,6 +599,7 @@ class TwingateResource(pulumi.CustomResource):
                  remote_network_id: Optional[pulumi.Input[builtins.str]] = None,
                  security_policy_id: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 usage_based_autolock_duration_days: Optional[pulumi.Input[builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -542,6 +615,7 @@ class TwingateResource(pulumi.CustomResource):
                 raise TypeError("Missing required property 'address'")
             __props__.__dict__["address"] = address
             __props__.__dict__["alias"] = alias
+            __props__.__dict__["approval_mode"] = approval_mode
             __props__.__dict__["is_active"] = is_active
             __props__.__dict__["is_authoritative"] = is_authoritative
             __props__.__dict__["is_browser_shortcut_enabled"] = is_browser_shortcut_enabled
@@ -553,6 +627,7 @@ class TwingateResource(pulumi.CustomResource):
             __props__.__dict__["remote_network_id"] = remote_network_id
             __props__.__dict__["security_policy_id"] = security_policy_id
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["usage_based_autolock_duration_days"] = usage_based_autolock_duration_days
         super(TwingateResource, __self__).__init__(
             'twingate:index/twingateResource:TwingateResource',
             resource_name,
@@ -567,6 +642,7 @@ class TwingateResource(pulumi.CustomResource):
             access_services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessServiceArgs', 'TwingateResourceAccessServiceArgsDict']]]]] = None,
             address: Optional[pulumi.Input[builtins.str]] = None,
             alias: Optional[pulumi.Input[builtins.str]] = None,
+            approval_mode: Optional[pulumi.Input[builtins.str]] = None,
             is_active: Optional[pulumi.Input[builtins.bool]] = None,
             is_authoritative: Optional[pulumi.Input[builtins.bool]] = None,
             is_browser_shortcut_enabled: Optional[pulumi.Input[builtins.bool]] = None,
@@ -575,7 +651,8 @@ class TwingateResource(pulumi.CustomResource):
             protocols: Optional[pulumi.Input[Union['TwingateResourceProtocolsArgs', 'TwingateResourceProtocolsArgsDict']]] = None,
             remote_network_id: Optional[pulumi.Input[builtins.str]] = None,
             security_policy_id: Optional[pulumi.Input[builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None) -> 'TwingateResource':
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+            usage_based_autolock_duration_days: Optional[pulumi.Input[builtins.int]] = None) -> 'TwingateResource':
         """
         Get an existing TwingateResource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -587,6 +664,7 @@ class TwingateResource(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessServiceArgs', 'TwingateResourceAccessServiceArgsDict']]]] access_services: Restrict access to certain service account
         :param pulumi.Input[builtins.str] address: The Resource's IP/CIDR or FQDN/DNS zone
         :param pulumi.Input[builtins.str] alias: Set a DNS alias address for the Resource. Must be a DNS-valid name string.
+        :param pulumi.Input[builtins.str] approval_mode: This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
         :param pulumi.Input[builtins.bool] is_active: Set the resource as active or inactive. Default is `true`.
         :param pulumi.Input[builtins.bool] is_browser_shortcut_enabled: Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
         :param pulumi.Input[builtins.bool] is_visible: Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
@@ -595,6 +673,7 @@ class TwingateResource(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] remote_network_id: Remote Network ID where the Resource lives
         :param pulumi.Input[builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is `Default Policy`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+        :param pulumi.Input[builtins.int] usage_based_autolock_duration_days: The usage-based auto-lock duration for the Resource (in days).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -604,6 +683,7 @@ class TwingateResource(pulumi.CustomResource):
         __props__.__dict__["access_services"] = access_services
         __props__.__dict__["address"] = address
         __props__.__dict__["alias"] = alias
+        __props__.__dict__["approval_mode"] = approval_mode
         __props__.__dict__["is_active"] = is_active
         __props__.__dict__["is_authoritative"] = is_authoritative
         __props__.__dict__["is_browser_shortcut_enabled"] = is_browser_shortcut_enabled
@@ -613,6 +693,7 @@ class TwingateResource(pulumi.CustomResource):
         __props__.__dict__["remote_network_id"] = remote_network_id
         __props__.__dict__["security_policy_id"] = security_policy_id
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["usage_based_autolock_duration_days"] = usage_based_autolock_duration_days
         return TwingateResource(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -646,6 +727,14 @@ class TwingateResource(pulumi.CustomResource):
         Set a DNS alias address for the Resource. Must be a DNS-valid name string.
         """
         return pulumi.get(self, "alias")
+
+    @property
+    @pulumi.getter(name="approvalMode")
+    def approval_mode(self) -> pulumi.Output[builtins.str]:
+        """
+        This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+        """
+        return pulumi.get(self, "approval_mode")
 
     @property
     @pulumi.getter(name="isActive")
@@ -715,4 +804,12 @@ class TwingateResource(pulumi.CustomResource):
         The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="usageBasedAutolockDurationDays")
+    def usage_based_autolock_duration_days(self) -> pulumi.Output[builtins.int]:
+        """
+        The usage-based auto-lock duration for the Resource (in days).
+        """
+        return pulumi.get(self, "usage_based_autolock_duration_days")
 

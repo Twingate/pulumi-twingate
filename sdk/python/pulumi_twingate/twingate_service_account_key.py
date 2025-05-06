@@ -157,6 +157,9 @@ class _TwingateServiceAccountKeyState:
 
 
 class TwingateServiceAccountKey(pulumi.CustomResource):
+
+    pulumi_type = "twingate:index/twingateServiceAccountKey:TwingateServiceAccountKey"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
