@@ -47,6 +47,12 @@ namespace Twingate.Twingate
         public Output<string?> Alias { get; private set; } = null!;
 
         /// <summary>
+        /// This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+        /// </summary>
+        [Output("approvalMode")]
+        public Output<string> ApprovalMode { get; private set; } = null!;
+
+        /// <summary>
         /// Set the resource as active or inactive. Default is `true`.
         /// </summary>
         [Output("isActive")]
@@ -96,6 +102,12 @@ namespace Twingate.Twingate
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// The usage-based auto-lock duration for the Resource (in days).
+        /// </summary>
+        [Output("usageBasedAutolockDurationDays")]
+        public Output<int> UsageBasedAutolockDurationDays { get; private set; } = null!;
 
 
         /// <summary>
@@ -181,6 +193,12 @@ namespace Twingate.Twingate
         public Input<string>? Alias { get; set; }
 
         /// <summary>
+        /// This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+        /// </summary>
+        [Input("approvalMode")]
+        public Input<string>? ApprovalMode { get; set; }
+
+        /// <summary>
         /// Set the resource as active or inactive. Default is `true`.
         /// </summary>
         [Input("isActive")]
@@ -237,6 +255,12 @@ namespace Twingate.Twingate
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The usage-based auto-lock duration for the Resource (in days).
+        /// </summary>
+        [Input("usageBasedAutolockDurationDays")]
+        public Input<int>? UsageBasedAutolockDurationDays { get; set; }
+
         public TwingateResourceArgs()
         {
         }
@@ -280,6 +304,12 @@ namespace Twingate.Twingate
         /// </summary>
         [Input("alias")]
         public Input<string>? Alias { get; set; }
+
+        /// <summary>
+        /// This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+        /// </summary>
+        [Input("approvalMode")]
+        public Input<string>? ApprovalMode { get; set; }
 
         /// <summary>
         /// Set the resource as active or inactive. Default is `true`.
@@ -337,6 +367,12 @@ namespace Twingate.Twingate
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// The usage-based auto-lock duration for the Resource (in days).
+        /// </summary>
+        [Input("usageBasedAutolockDurationDays")]
+        public Input<int>? UsageBasedAutolockDurationDays { get; set; }
 
         public TwingateResourceState()
         {

@@ -392,6 +392,10 @@ export interface TwingateDNSFilteringProfileSecurityCategories {
 
 export interface TwingateResourceAccessGroup {
     /**
+     * This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+     */
+    approvalMode?: pulumi.Input<string>;
+    /**
      * Group ID that will have permission to access the Resource.
      */
     groupId?: pulumi.Input<string>;

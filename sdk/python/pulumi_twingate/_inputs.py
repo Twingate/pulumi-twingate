@@ -604,6 +604,10 @@ class TwingateDNSFilteringProfileSecurityCategoriesArgs:
 
 if not MYPY:
     class TwingateResourceAccessGroupArgsDict(TypedDict):
+        approval_mode: NotRequired[pulumi.Input[builtins.str]]
+        """
+        This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+        """
         group_id: NotRequired[pulumi.Input[builtins.str]]
         """
         Group ID that will have permission to access the Resource.
@@ -622,20 +626,36 @@ elif False:
 @pulumi.input_type
 class TwingateResourceAccessGroupArgs:
     def __init__(__self__, *,
+                 approval_mode: Optional[pulumi.Input[builtins.str]] = None,
                  group_id: Optional[pulumi.Input[builtins.str]] = None,
                  security_policy_id: Optional[pulumi.Input[builtins.str]] = None,
                  usage_based_autolock_duration_days: Optional[pulumi.Input[builtins.int]] = None):
         """
+        :param pulumi.Input[builtins.str] approval_mode: This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
         :param pulumi.Input[builtins.str] group_id: Group ID that will have permission to access the Resource.
         :param pulumi.Input[builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block.
         :param pulumi.Input[builtins.int] usage_based_autolock_duration_days: The usage-based auto-lock duration configured on the edge (in days).
         """
+        if approval_mode is not None:
+            pulumi.set(__self__, "approval_mode", approval_mode)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
         if security_policy_id is not None:
             pulumi.set(__self__, "security_policy_id", security_policy_id)
         if usage_based_autolock_duration_days is not None:
             pulumi.set(__self__, "usage_based_autolock_duration_days", usage_based_autolock_duration_days)
+
+    @property
+    @pulumi.getter(name="approvalMode")
+    def approval_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+        """
+        return pulumi.get(self, "approval_mode")
+
+    @approval_mode.setter
+    def approval_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "approval_mode", value)
 
     @property
     @pulumi.getter(name="groupId")

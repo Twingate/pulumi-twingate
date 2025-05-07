@@ -154,6 +154,9 @@ class _TwingateGroupState:
 
 
 class TwingateGroup(pulumi.CustomResource):
+
+    pulumi_type = "twingate:index/twingateGroup:TwingateGroup"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

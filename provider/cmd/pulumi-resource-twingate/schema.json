@@ -266,6 +266,10 @@
         },
         "twingate:index/TwingateResourceAccessGroup:TwingateResourceAccessGroup": {
             "properties": {
+                "approvalMode": {
+                    "type": "string",
+                    "description": "This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.\n"
+                },
                 "groupId": {
                     "type": "string",
                     "description": "Group ID that will have permission to access the Resource.\n"
@@ -283,6 +287,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "approvalMode",
                         "groupId",
                         "securityPolicyId",
                         "usageBasedAutolockDurationDays"
@@ -766,6 +771,10 @@
                     "type": "string",
                     "description": "The Resource's IP/CIDR or FQDN/DNS zone\n"
                 },
+                "approvalMode": {
+                    "type": "string",
+                    "description": "The Approval Mode of the Resource. The valid values are `AUTOMATIC` and `MANUAL`.\n"
+                },
                 "id": {
                     "type": "string",
                     "description": "The id of the Resource\n"
@@ -788,16 +797,22 @@
                         "type": "string"
                     },
                     "description": "The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.\n"
+                },
+                "usageBasedAutolockDurationDays": {
+                    "type": "integer",
+                    "description": "The number of days that the Resource will be locked after the last successful login.\n"
                 }
             },
             "type": "object",
             "required": [
                 "address",
+                "approvalMode",
                 "id",
                 "name",
                 "protocols",
                 "remoteNetworkId",
-                "tags"
+                "tags",
+                "usageBasedAutolockDurationDays"
             ],
             "language": {
                 "nodejs": {
@@ -1505,6 +1520,10 @@
                     "type": "string",
                     "description": "Set a DNS alias address for the Resource. Must be a DNS-valid name string.\n"
                 },
+                "approvalMode": {
+                    "type": "string",
+                    "description": "This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.\n"
+                },
                 "isActive": {
                     "type": "boolean",
                     "description": "Set the resource as active or inactive. Default is `true`.\n"
@@ -1542,10 +1561,15 @@
                         "type": "string"
                     },
                     "description": "The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.\n"
+                },
+                "usageBasedAutolockDurationDays": {
+                    "type": "integer",
+                    "description": "The usage-based auto-lock duration for the Resource (in days).\n"
                 }
             },
             "required": [
                 "address",
+                "approvalMode",
                 "isActive",
                 "isAuthoritative",
                 "isBrowserShortcutEnabled",
@@ -1554,7 +1578,8 @@
                 "protocols",
                 "remoteNetworkId",
                 "securityPolicyId",
-                "tags"
+                "tags",
+                "usageBasedAutolockDurationDays"
             ],
             "inputProperties": {
                 "accessGroups": {
@@ -1579,6 +1604,10 @@
                     "type": "string",
                     "description": "Set a DNS alias address for the Resource. Must be a DNS-valid name string.\n"
                 },
+                "approvalMode": {
+                    "type": "string",
+                    "description": "This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.\n"
+                },
                 "isActive": {
                     "type": "boolean",
                     "description": "Set the resource as active or inactive. Default is `true`.\n"
@@ -1616,6 +1645,10 @@
                         "type": "string"
                     },
                     "description": "The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.\n"
+                },
+                "usageBasedAutolockDurationDays": {
+                    "type": "integer",
+                    "description": "The usage-based auto-lock duration for the Resource (in days).\n"
                 }
             },
             "requiredInputs": [
@@ -1646,6 +1679,10 @@
                     "alias": {
                         "type": "string",
                         "description": "Set a DNS alias address for the Resource. Must be a DNS-valid name string.\n"
+                    },
+                    "approvalMode": {
+                        "type": "string",
+                        "description": "This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.\n"
                     },
                     "isActive": {
                         "type": "boolean",
@@ -1684,6 +1721,10 @@
                             "type": "string"
                         },
                         "description": "The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.\n"
+                    },
+                    "usageBasedAutolockDurationDays": {
+                        "type": "integer",
+                        "description": "The usage-based auto-lock duration for the Resource (in days).\n"
                     }
                 },
                 "type": "object"
@@ -2437,6 +2478,10 @@
                         "type": "string",
                         "description": "The Resource's address, which may be an IP address, CIDR range, or DNS address\n"
                     },
+                    "approvalMode": {
+                        "type": "string",
+                        "description": "The Approval Mode of the Resource. The valid values are `AUTOMATIC` and `MANUAL`.\n"
+                    },
                     "id": {
                         "type": "string",
                         "description": "The ID of the Resource. The ID for the Resource can be obtained from the Admin API or the URL string in the Admin Console.\n"
@@ -2459,15 +2504,21 @@
                             "type": "string"
                         },
                         "description": "The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.\n"
+                    },
+                    "usageBasedAutolockDurationDays": {
+                        "type": "integer",
+                        "description": "The number of days that the Resource will be locked after the last successful login.\n"
                     }
                 },
                 "type": "object",
                 "required": [
                     "address",
+                    "approvalMode",
                     "id",
                     "name",
                     "remoteNetworkId",
-                    "tags"
+                    "tags",
+                    "usageBasedAutolockDurationDays"
                 ]
             }
         },

@@ -60,6 +60,8 @@ type LookupTwingateResourceArgs struct {
 type LookupTwingateResourceResult struct {
 	// The Resource's address, which may be an IP address, CIDR range, or DNS address
 	Address string `pulumi:"address"`
+	// The Approval Mode of the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+	ApprovalMode string `pulumi:"approvalMode"`
 	// The ID of the Resource. The ID for the Resource can be obtained from the Admin API or the URL string in the Admin Console.
 	Id string `pulumi:"id"`
 	// The name of the Resource
@@ -70,6 +72,8 @@ type LookupTwingateResourceResult struct {
 	RemoteNetworkId string `pulumi:"remoteNetworkId"`
 	// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
 	Tags map[string]string `pulumi:"tags"`
+	// The number of days that the Resource will be locked after the last successful login.
+	UsageBasedAutolockDurationDays int `pulumi:"usageBasedAutolockDurationDays"`
 }
 
 func LookupTwingateResourceOutput(ctx *pulumi.Context, args LookupTwingateResourceOutputArgs, opts ...pulumi.InvokeOption) LookupTwingateResourceResultOutput {
@@ -113,6 +117,11 @@ func (o LookupTwingateResourceResultOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTwingateResourceResult) string { return v.Address }).(pulumi.StringOutput)
 }
 
+// The Approval Mode of the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+func (o LookupTwingateResourceResultOutput) ApprovalMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTwingateResourceResult) string { return v.ApprovalMode }).(pulumi.StringOutput)
+}
+
 // The ID of the Resource. The ID for the Resource can be obtained from the Admin API or the URL string in the Admin Console.
 func (o LookupTwingateResourceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTwingateResourceResult) string { return v.Id }).(pulumi.StringOutput)
@@ -136,6 +145,11 @@ func (o LookupTwingateResourceResultOutput) RemoteNetworkId() pulumi.StringOutpu
 // The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
 func (o LookupTwingateResourceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupTwingateResourceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The number of days that the Resource will be locked after the last successful login.
+func (o LookupTwingateResourceResultOutput) UsageBasedAutolockDurationDays() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupTwingateResourceResult) int { return v.UsageBasedAutolockDurationDays }).(pulumi.IntOutput)
 }
 
 func init() {

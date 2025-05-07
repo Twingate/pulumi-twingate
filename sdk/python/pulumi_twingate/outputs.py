@@ -500,7 +500,9 @@ class TwingateResourceAccessGroup(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "groupId":
+        if key == "approvalMode":
+            suggest = "approval_mode"
+        elif key == "groupId":
             suggest = "group_id"
         elif key == "securityPolicyId":
             suggest = "security_policy_id"
@@ -519,20 +521,32 @@ class TwingateResourceAccessGroup(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 approval_mode: Optional[builtins.str] = None,
                  group_id: Optional[builtins.str] = None,
                  security_policy_id: Optional[builtins.str] = None,
                  usage_based_autolock_duration_days: Optional[builtins.int] = None):
         """
+        :param builtins.str approval_mode: This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
         :param builtins.str group_id: Group ID that will have permission to access the Resource.
         :param builtins.str security_policy_id: The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block.
         :param builtins.int usage_based_autolock_duration_days: The usage-based auto-lock duration configured on the edge (in days).
         """
+        if approval_mode is not None:
+            pulumi.set(__self__, "approval_mode", approval_mode)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
         if security_policy_id is not None:
             pulumi.set(__self__, "security_policy_id", security_policy_id)
         if usage_based_autolock_duration_days is not None:
             pulumi.set(__self__, "usage_based_autolock_duration_days", usage_based_autolock_duration_days)
+
+    @property
+    @pulumi.getter(name="approvalMode")
+    def approval_mode(self) -> Optional[builtins.str]:
+        """
+        This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+        """
+        return pulumi.get(self, "approval_mode")
 
     @property
     @pulumi.getter(name="groupId")
@@ -1313,25 +1327,31 @@ class GetTwingateResourceProtocolsUdpResult(dict):
 class GetTwingateResourcesResourceResult(dict):
     def __init__(__self__, *,
                  address: builtins.str,
+                 approval_mode: builtins.str,
                  id: builtins.str,
                  name: builtins.str,
                  protocols: 'outputs.GetTwingateResourcesResourceProtocolsResult',
                  remote_network_id: builtins.str,
-                 tags: Mapping[str, builtins.str]):
+                 tags: Mapping[str, builtins.str],
+                 usage_based_autolock_duration_days: builtins.int):
         """
         :param builtins.str address: The Resource's IP/CIDR or FQDN/DNS zone
+        :param builtins.str approval_mode: The Approval Mode of the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
         :param builtins.str id: The id of the Resource
         :param builtins.str name: The name of the Resource
         :param 'GetTwingateResourcesResourceProtocolsArgs' protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param builtins.str remote_network_id: Remote Network ID where the Resource lives
         :param Mapping[str, builtins.str] tags: The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+        :param builtins.int usage_based_autolock_duration_days: The number of days that the Resource will be locked after the last successful login.
         """
         pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "approval_mode", approval_mode)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "protocols", protocols)
         pulumi.set(__self__, "remote_network_id", remote_network_id)
         pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "usage_based_autolock_duration_days", usage_based_autolock_duration_days)
 
     @property
     @pulumi.getter
@@ -1340,6 +1360,14 @@ class GetTwingateResourcesResourceResult(dict):
         The Resource's IP/CIDR or FQDN/DNS zone
         """
         return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="approvalMode")
+    def approval_mode(self) -> builtins.str:
+        """
+        The Approval Mode of the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+        """
+        return pulumi.get(self, "approval_mode")
 
     @property
     @pulumi.getter
@@ -1380,6 +1408,14 @@ class GetTwingateResourcesResourceResult(dict):
         The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="usageBasedAutolockDurationDays")
+    def usage_based_autolock_duration_days(self) -> builtins.int:
+        """
+        The number of days that the Resource will be locked after the last successful login.
+        """
+        return pulumi.get(self, "usage_based_autolock_duration_days")
 
 
 @pulumi.output_type

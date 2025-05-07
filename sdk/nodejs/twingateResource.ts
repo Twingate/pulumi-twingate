@@ -60,6 +60,10 @@ export class TwingateResource extends pulumi.CustomResource {
      */
     public readonly alias!: pulumi.Output<string | undefined>;
     /**
+     * This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+     */
+    public readonly approvalMode!: pulumi.Output<string>;
+    /**
      * Set the resource as active or inactive. Default is `true`.
      */
     public readonly isActive!: pulumi.Output<boolean>;
@@ -92,6 +96,10 @@ export class TwingateResource extends pulumi.CustomResource {
      * The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
      */
     public readonly tags!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The usage-based auto-lock duration for the Resource (in days).
+     */
+    public readonly usageBasedAutolockDurationDays!: pulumi.Output<number>;
 
     /**
      * Create a TwingateResource resource with the given unique name, arguments, and options.
@@ -110,6 +118,7 @@ export class TwingateResource extends pulumi.CustomResource {
             resourceInputs["accessServices"] = state ? state.accessServices : undefined;
             resourceInputs["address"] = state ? state.address : undefined;
             resourceInputs["alias"] = state ? state.alias : undefined;
+            resourceInputs["approvalMode"] = state ? state.approvalMode : undefined;
             resourceInputs["isActive"] = state ? state.isActive : undefined;
             resourceInputs["isAuthoritative"] = state ? state.isAuthoritative : undefined;
             resourceInputs["isBrowserShortcutEnabled"] = state ? state.isBrowserShortcutEnabled : undefined;
@@ -119,6 +128,7 @@ export class TwingateResource extends pulumi.CustomResource {
             resourceInputs["remoteNetworkId"] = state ? state.remoteNetworkId : undefined;
             resourceInputs["securityPolicyId"] = state ? state.securityPolicyId : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["usageBasedAutolockDurationDays"] = state ? state.usageBasedAutolockDurationDays : undefined;
         } else {
             const args = argsOrState as TwingateResourceArgs | undefined;
             if ((!args || args.address === undefined) && !opts.urn) {
@@ -131,6 +141,7 @@ export class TwingateResource extends pulumi.CustomResource {
             resourceInputs["accessServices"] = args ? args.accessServices : undefined;
             resourceInputs["address"] = args ? args.address : undefined;
             resourceInputs["alias"] = args ? args.alias : undefined;
+            resourceInputs["approvalMode"] = args ? args.approvalMode : undefined;
             resourceInputs["isActive"] = args ? args.isActive : undefined;
             resourceInputs["isAuthoritative"] = args ? args.isAuthoritative : undefined;
             resourceInputs["isBrowserShortcutEnabled"] = args ? args.isBrowserShortcutEnabled : undefined;
@@ -140,6 +151,7 @@ export class TwingateResource extends pulumi.CustomResource {
             resourceInputs["remoteNetworkId"] = args ? args.remoteNetworkId : undefined;
             resourceInputs["securityPolicyId"] = args ? args.securityPolicyId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["usageBasedAutolockDurationDays"] = args ? args.usageBasedAutolockDurationDays : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TwingateResource.__pulumiType, name, resourceInputs, opts);
@@ -166,6 +178,10 @@ export interface TwingateResourceState {
      * Set a DNS alias address for the Resource. Must be a DNS-valid name string.
      */
     alias?: pulumi.Input<string>;
+    /**
+     * This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+     */
+    approvalMode?: pulumi.Input<string>;
     /**
      * Set the resource as active or inactive. Default is `true`.
      */
@@ -199,6 +215,10 @@ export interface TwingateResourceState {
      * The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The usage-based auto-lock duration for the Resource (in days).
+     */
+    usageBasedAutolockDurationDays?: pulumi.Input<number>;
 }
 
 /**
@@ -221,6 +241,10 @@ export interface TwingateResourceArgs {
      * Set a DNS alias address for the Resource. Must be a DNS-valid name string.
      */
     alias?: pulumi.Input<string>;
+    /**
+     * This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+     */
+    approvalMode?: pulumi.Input<string>;
     /**
      * Set the resource as active or inactive. Default is `true`.
      */
@@ -254,4 +278,8 @@ export interface TwingateResourceArgs {
      * The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The usage-based auto-lock duration for the Resource (in days).
+     */
+    usageBasedAutolockDurationDays?: pulumi.Input<number>;
 }

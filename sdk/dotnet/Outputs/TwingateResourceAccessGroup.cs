@@ -15,6 +15,10 @@ namespace Twingate.Twingate.Outputs
     public sealed class TwingateResourceAccessGroup
     {
         /// <summary>
+        /// This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+        /// </summary>
+        public readonly string? ApprovalMode;
+        /// <summary>
         /// Group ID that will have permission to access the Resource.
         /// </summary>
         public readonly string? GroupId;
@@ -29,12 +33,15 @@ namespace Twingate.Twingate.Outputs
 
         [OutputConstructor]
         private TwingateResourceAccessGroup(
+            string? approvalMode,
+
             string? groupId,
 
             string? securityPolicyId,
 
             int? usageBasedAutolockDurationDays)
         {
+            ApprovalMode = approvalMode;
             GroupId = groupId;
             SecurityPolicyId = securityPolicyId;
             UsageBasedAutolockDurationDays = usageBasedAutolockDurationDays;

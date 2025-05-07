@@ -241,6 +241,9 @@ class _TwingateUserState:
 
 
 class TwingateUser(pulumi.CustomResource):
+
+    pulumi_type = "twingate:index/twingateUser:TwingateUser"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
