@@ -65,10 +65,8 @@ class _TwingateServiceAccountState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("twingate:index/twingateServiceAccount:TwingateServiceAccount")
 class TwingateServiceAccount(pulumi.CustomResource):
-
-    pulumi_type = "twingate:index/twingateServiceAccount:TwingateServiceAccount"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -1045,6 +1045,9 @@
                 "type": "string",
                 "description": "The default is 'twingate.com' This is optional and shouldn't be changed under normal circumstances.\n"
             }
+        },
+        "methods": {
+            "terraformConfig": "pulumi:providers:twingate/terraformConfig"
         }
     },
     "resources": {
@@ -1940,6 +1943,35 @@
         }
     },
     "functions": {
+        "pulumi:providers:twingate/terraformConfig": {
+            "description": "This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.",
+            "inputs": {
+                "properties": {
+                    "__self__": {
+                        "type": "ref",
+                        "$ref": "#/resources/pulumi:providers:twingate"
+                    }
+                },
+                "type": "pulumi:providers:twingate/terraformConfig",
+                "required": [
+                    "__self__"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "result": {
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "result"
+                ],
+                "type": "object"
+            }
+        },
         "twingate:index/getTwingateConnector:getTwingateConnector": {
             "description": "Connectors provide connectivity to Remote Networks. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/understanding-access-nodes).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@pulumi/twingate\";\n\nconst foo = twingate.getTwingateConnector({\n    id: \"\u003cyour connector's id\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nfoo = twingate.get_twingate_connector(id=\"\u003cyour connector's id\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Pulumi.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = Twingate.GetTwingateConnector.Invoke(new()\n    {\n        Id = \"\u003cyour connector's id\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/v3/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.LookupTwingateConnector(ctx, \u0026twingate.LookupTwingateConnectorArgs{\n\t\t\tId: \"\u003cyour connector's id\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateConnectorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = TwingateFunctions.getTwingateConnector(GetTwingateConnectorArgs.builder()\n            .id(\"\u003cyour connector's id\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      function: twingate:getTwingateConnector\n      arguments:\n        id: \u003cyour connector's id\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {

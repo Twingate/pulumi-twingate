@@ -153,10 +153,8 @@ class _TwingateGroupState:
         pulumi.set(self, "user_ids", value)
 
 
+@pulumi.type_token("twingate:index/twingateGroup:TwingateGroup")
 class TwingateGroup(pulumi.CustomResource):
-
-    pulumi_type = "twingate:index/twingateGroup:TwingateGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

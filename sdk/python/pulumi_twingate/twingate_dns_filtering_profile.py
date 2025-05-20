@@ -322,10 +322,8 @@ class _TwingateDNSFilteringProfileState:
         pulumi.set(self, "security_categories", value)
 
 
+@pulumi.type_token("twingate:index/twingateDNSFilteringProfile:TwingateDNSFilteringProfile")
 class TwingateDNSFilteringProfile(pulumi.CustomResource):
-
-    pulumi_type = "twingate:index/twingateDNSFilteringProfile:TwingateDNSFilteringProfile"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

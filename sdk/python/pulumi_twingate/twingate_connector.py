@@ -208,10 +208,8 @@ class _TwingateConnectorState:
         pulumi.set(self, "version", value)
 
 
+@pulumi.type_token("twingate:index/twingateConnector:TwingateConnector")
 class TwingateConnector(pulumi.CustomResource):
-
-    pulumi_type = "twingate:index/twingateConnector:TwingateConnector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

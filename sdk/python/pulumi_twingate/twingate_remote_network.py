@@ -129,10 +129,8 @@ class _TwingateRemoteNetworkState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("twingate:index/twingateRemoteNetwork:TwingateRemoteNetwork")
 class TwingateRemoteNetwork(pulumi.CustomResource):
-
-    pulumi_type = "twingate:index/twingateRemoteNetwork:TwingateRemoteNetwork"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
