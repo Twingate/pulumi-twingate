@@ -240,10 +240,8 @@ class _TwingateUserState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("twingate:index/twingateUser:TwingateUser")
 class TwingateUser(pulumi.CustomResource):
-
-    pulumi_type = "twingate:index/twingateUser:TwingateUser"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

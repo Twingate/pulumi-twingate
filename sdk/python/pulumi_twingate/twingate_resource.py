@@ -505,10 +505,8 @@ class _TwingateResourceState:
         pulumi.set(self, "usage_based_autolock_duration_days", value)
 
 
+@pulumi.type_token("twingate:index/twingateResource:TwingateResource")
 class TwingateResource(pulumi.CustomResource):
-
-    pulumi_type = "twingate:index/twingateResource:TwingateResource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

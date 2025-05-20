@@ -64,6 +64,15 @@ export class Provider extends pulumi.ProviderResource {
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }
+
+    /**
+     * This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.
+     */
+    terraformConfig(): pulumi.Output<Provider.TerraformConfigResult> {
+        return pulumi.runtime.call("pulumi:providers:twingate/terraformConfig", {
+            "__self__": this,
+        }, this);
+    }
 }
 
 /**
@@ -96,4 +105,14 @@ export interface ProviderArgs {
      * The default is 'twingate.com' This is optional and shouldn't be changed under normal circumstances.
      */
     url?: pulumi.Input<string>;
+}
+
+export namespace Provider {
+    /**
+     * The results of the Provider.terraformConfig method.
+     */
+    export interface TerraformConfigResult {
+        readonly result: {[key: string]: any};
+    }
+
 }
