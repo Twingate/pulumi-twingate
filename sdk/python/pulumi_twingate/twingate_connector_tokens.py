@@ -128,10 +128,8 @@ class _TwingateConnectorTokensState:
         pulumi.set(self, "refresh_token", value)
 
 
+@pulumi.type_token("twingate:index/twingateConnectorTokens:TwingateConnectorTokens")
 class TwingateConnectorTokens(pulumi.CustomResource):
-
-    pulumi_type = "twingate:index/twingateConnectorTokens:TwingateConnectorTokens"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
