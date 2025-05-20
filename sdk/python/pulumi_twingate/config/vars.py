@@ -14,6 +14,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
 
 import types
 
@@ -29,6 +30,20 @@ class _ExportableConfig(types.ModuleType):
         TWINGATE_API_TOKEN environment variable.
         """
         return __config__.get('apiToken')
+
+    @property
+    def cache(self) -> Optional[str]:
+        """
+        Specifies the cache settings for the provider.
+        """
+        return __config__.get('cache')
+
+    @property
+    def default_tags(self) -> Optional[str]:
+        """
+        A default set of tags applied globally to all resources created by the provider.
+        """
+        return __config__.get('defaultTags')
 
     @property
     def http_max_retry(self) -> Optional[int]:

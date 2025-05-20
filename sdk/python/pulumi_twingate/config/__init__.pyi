@@ -14,12 +14,23 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
 
 apiToken: Optional[str]
 """
 The access key for API operations. You can retrieve this from the Twingate Admin Console
 ([documentation](https://docs.twingate.com/docs/api-overview)). Alternatively, this can be specified using the
 TWINGATE_API_TOKEN environment variable.
+"""
+
+cache: Optional[str]
+"""
+Specifies the cache settings for the provider.
+"""
+
+defaultTags: Optional[str]
+"""
+A default set of tags applied globally to all resources created by the provider.
 """
 
 httpMaxRetry: Optional[int]

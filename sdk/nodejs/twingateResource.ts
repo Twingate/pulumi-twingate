@@ -93,9 +93,13 @@ export class TwingateResource extends pulumi.CustomResource {
      */
     public readonly securityPolicyId!: pulumi.Output<string>;
     /**
-     * The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+     * A map of key-value pair tags to set on this resource.
      */
     public readonly tags!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+     */
+    public /*out*/ readonly tagsAll!: pulumi.Output<{[key: string]: string}>;
     /**
      * The usage-based auto-lock duration for the Resource (in days).
      */
@@ -128,6 +132,7 @@ export class TwingateResource extends pulumi.CustomResource {
             resourceInputs["remoteNetworkId"] = state ? state.remoteNetworkId : undefined;
             resourceInputs["securityPolicyId"] = state ? state.securityPolicyId : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["tagsAll"] = state ? state.tagsAll : undefined;
             resourceInputs["usageBasedAutolockDurationDays"] = state ? state.usageBasedAutolockDurationDays : undefined;
         } else {
             const args = argsOrState as TwingateResourceArgs | undefined;
@@ -152,6 +157,7 @@ export class TwingateResource extends pulumi.CustomResource {
             resourceInputs["securityPolicyId"] = args ? args.securityPolicyId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["usageBasedAutolockDurationDays"] = args ? args.usageBasedAutolockDurationDays : undefined;
+            resourceInputs["tagsAll"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TwingateResource.__pulumiType, name, resourceInputs, opts);
@@ -212,9 +218,13 @@ export interface TwingateResourceState {
      */
     securityPolicyId?: pulumi.Input<string>;
     /**
-     * The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+     * A map of key-value pair tags to set on this resource.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+     */
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The usage-based auto-lock duration for the Resource (in days).
      */
@@ -275,7 +285,7 @@ export interface TwingateResourceArgs {
      */
     securityPolicyId?: pulumi.Input<string>;
     /**
-     * The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+     * A map of key-value pair tags to set on this resource.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

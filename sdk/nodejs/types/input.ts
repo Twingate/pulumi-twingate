@@ -281,6 +281,24 @@ export interface GetTwingateResourceProtocolsUdpArgs {
     ports?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface ProviderCache {
+    /**
+     * Specifies whether the provider should cache groups. The default value is `true`.
+     */
+    groupsEnabled?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether the provider should cache resources. The default value is `true`.
+     */
+    resourceEnabled?: pulumi.Input<boolean>;
+}
+
+export interface ProviderDefaultTags {
+    /**
+     * A map of key-value pair tags to be set on all resources by default.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
 export interface TwingateDNSFilteringProfileAllowedDomains {
     /**
      * A set of allowed domains. Defaults to an empty set.
@@ -445,4 +463,6 @@ export interface TwingateResourceProtocolsUdp {
      * List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
      */
     ports?: pulumi.Input<pulumi.Input<string>[]>;
+}
+export namespace config {
 }

@@ -44,6 +44,26 @@ namespace Twingate.Twingate
             set => _apiToken.Set(value);
         }
 
+        private static readonly __Value<Twingate.Twingate.Config.Types.Cache?> _cache = new __Value<Twingate.Twingate.Config.Types.Cache?>(() => __config.GetObject<Twingate.Twingate.Config.Types.Cache>("cache"));
+        /// <summary>
+        /// Specifies the cache settings for the provider.
+        /// </summary>
+        public static Twingate.Twingate.Config.Types.Cache? Cache
+        {
+            get => _cache.Get();
+            set => _cache.Set(value);
+        }
+
+        private static readonly __Value<Twingate.Twingate.Config.Types.DefaultTags?> _defaultTags = new __Value<Twingate.Twingate.Config.Types.DefaultTags?>(() => __config.GetObject<Twingate.Twingate.Config.Types.DefaultTags>("defaultTags"));
+        /// <summary>
+        /// A default set of tags applied globally to all resources created by the provider.
+        /// </summary>
+        public static Twingate.Twingate.Config.Types.DefaultTags? DefaultTags
+        {
+            get => _defaultTags.Get();
+            set => _defaultTags.Set(value);
+        }
+
         private static readonly __Value<int?> _httpMaxRetry = new __Value<int?>(() => __config.GetInt32("httpMaxRetry"));
         /// <summary>
         /// Specifies a retry limit for the http requests made. The default value is 10. Alternatively, this can be specified using
@@ -88,5 +108,28 @@ namespace Twingate.Twingate
             set => _url.Set(value);
         }
 
+        public static class Types
+        {
+
+             public class Cache
+             {
+            /// <summary>
+            /// Specifies whether the provider should cache groups. The default value is `true`.
+            /// </summary>
+                public bool? GroupsEnabled { get; set; }
+            /// <summary>
+            /// Specifies whether the provider should cache resources. The default value is `true`.
+            /// </summary>
+                public bool? ResourceEnabled { get; set; }
+            }
+
+             public class DefaultTags
+             {
+            /// <summary>
+            /// A map of key-value pair tags to be set on all resources by default.
+            /// </summary>
+                public ImmutableDictionary<string, string>? Tags { get; set; } = null!;
+            }
+        }
     }
 }

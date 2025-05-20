@@ -58,6 +58,10 @@ type providerArgs struct {
 	// ([documentation](https://docs.twingate.com/docs/api-overview)). Alternatively, this can be specified using the
 	// TWINGATE_API_TOKEN environment variable.
 	ApiToken *string `pulumi:"apiToken"`
+	// Specifies the cache settings for the provider.
+	Cache *ProviderCache `pulumi:"cache"`
+	// A default set of tags applied globally to all resources created by the provider.
+	DefaultTags *ProviderDefaultTags `pulumi:"defaultTags"`
 	// Specifies a retry limit for the http requests made. The default value is 10. Alternatively, this can be specified using
 	// the TWINGATE_HTTP_MAX_RETRY environment variable
 	HttpMaxRetry *int `pulumi:"httpMaxRetry"`
@@ -78,6 +82,10 @@ type ProviderArgs struct {
 	// ([documentation](https://docs.twingate.com/docs/api-overview)). Alternatively, this can be specified using the
 	// TWINGATE_API_TOKEN environment variable.
 	ApiToken pulumi.StringPtrInput
+	// Specifies the cache settings for the provider.
+	Cache ProviderCachePtrInput
+	// A default set of tags applied globally to all resources created by the provider.
+	DefaultTags ProviderDefaultTagsPtrInput
 	// Specifies a retry limit for the http requests made. The default value is 10. Alternatively, this can be specified using
 	// the TWINGATE_HTTP_MAX_RETRY environment variable
 	HttpMaxRetry pulumi.IntPtrInput
@@ -94,6 +102,29 @@ type ProviderArgs struct {
 
 func (ProviderArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*providerArgs)(nil)).Elem()
+}
+
+// This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.
+func (r *Provider) TerraformConfig(ctx *pulumi.Context) (ProviderTerraformConfigResultOutput, error) {
+	out, err := ctx.Call("pulumi:providers:twingate/terraformConfig", nil, ProviderTerraformConfigResultOutput{}, r)
+	if err != nil {
+		return ProviderTerraformConfigResultOutput{}, err
+	}
+	return out.(ProviderTerraformConfigResultOutput), nil
+}
+
+type ProviderTerraformConfigResult struct {
+	Result map[string]interface{} `pulumi:"result"`
+}
+
+type ProviderTerraformConfigResultOutput struct{ *pulumi.OutputState }
+
+func (ProviderTerraformConfigResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderTerraformConfigResult)(nil)).Elem()
+}
+
+func (o ProviderTerraformConfigResultOutput) Result() pulumi.MapOutput {
+	return o.ApplyT(func(v ProviderTerraformConfigResult) map[string]interface{} { return v.Result }).(pulumi.MapOutput)
 }
 
 type ProviderInput interface {
@@ -151,4 +182,5 @@ func (o ProviderOutput) Url() pulumi.StringPtrOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderInput)(nil)).Elem(), &Provider{})
 	pulumi.RegisterOutputType(ProviderOutput{})
+	pulumi.RegisterOutputType(ProviderTerraformConfigResultOutput{})
 }

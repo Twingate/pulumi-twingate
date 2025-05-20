@@ -18,6 +18,16 @@ func GetApiToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "twingate:apiToken")
 }
 
+// Specifies the cache settings for the provider.
+func GetCache(ctx *pulumi.Context) string {
+	return config.Get(ctx, "twingate:cache")
+}
+
+// A default set of tags applied globally to all resources created by the provider.
+func GetDefaultTags(ctx *pulumi.Context) string {
+	return config.Get(ctx, "twingate:defaultTags")
+}
+
 // Specifies a retry limit for the http requests made. The default value is 10. Alternatively, this can be specified using
 // the TWINGATE_HTTP_MAX_RETRY environment variable
 func GetHttpMaxRetry(ctx *pulumi.Context) int {

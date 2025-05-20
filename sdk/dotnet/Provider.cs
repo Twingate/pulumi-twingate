@@ -70,6 +70,12 @@ namespace Twingate.Twingate
             merged.Id = id ?? merged.Id;
             return merged;
         }
+
+        /// <summary>
+        /// This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.
+        /// </summary>
+        public global::Pulumi.Output<ProviderTerraformConfigResult> TerraformConfig()
+            => global::Pulumi.Deployment.Instance.Call<ProviderTerraformConfigResult>("pulumi:providers:twingate/terraformConfig", CallArgs.Empty, this);
     }
 
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
@@ -91,6 +97,18 @@ namespace Twingate.Twingate
                 _apiToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        /// <summary>
+        /// Specifies the cache settings for the provider.
+        /// </summary>
+        [Input("cache", json: true)]
+        public Input<Inputs.ProviderCacheArgs>? Cache { get; set; }
+
+        /// <summary>
+        /// A default set of tags applied globally to all resources created by the provider.
+        /// </summary>
+        [Input("defaultTags", json: true)]
+        public Input<Inputs.ProviderDefaultTagsArgs>? DefaultTags { get; set; }
 
         /// <summary>
         /// Specifies a retry limit for the http requests made. The default value is 10. Alternatively, this can be specified using
@@ -124,5 +142,20 @@ namespace Twingate.Twingate
         {
         }
         public static new ProviderArgs Empty => new ProviderArgs();
+    }
+
+    /// <summary>
+    /// The results of the <see cref="Provider.TerraformConfig"/> method.
+    /// </summary>
+    [OutputType]
+    public sealed class ProviderTerraformConfigResult
+    {
+        public readonly ImmutableDictionary<string, object> Result;
+
+        [OutputConstructor]
+        private ProviderTerraformConfigResult(ImmutableDictionary<string, object> result)
+        {
+            Result = result;
+        }
     }
 }

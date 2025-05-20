@@ -47,8 +47,10 @@ type TwingateResource struct {
 	RemoteNetworkId pulumi.StringOutput `pulumi:"remoteNetworkId"`
 	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
 	SecurityPolicyId pulumi.StringOutput `pulumi:"securityPolicyId"`
-	// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+	// A map of key-value pair tags to set on this resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+	TagsAll pulumi.StringMapOutput `pulumi:"tagsAll"`
 	// The usage-based auto-lock duration for the Resource (in days).
 	UsageBasedAutolockDurationDays pulumi.IntOutput `pulumi:"usageBasedAutolockDurationDays"`
 }
@@ -114,8 +116,10 @@ type twingateResourceState struct {
 	RemoteNetworkId *string `pulumi:"remoteNetworkId"`
 	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
-	// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+	// A map of key-value pair tags to set on this resource.
 	Tags map[string]string `pulumi:"tags"`
+	// A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+	TagsAll map[string]string `pulumi:"tagsAll"`
 	// The usage-based auto-lock duration for the Resource (in days).
 	UsageBasedAutolockDurationDays *int `pulumi:"usageBasedAutolockDurationDays"`
 }
@@ -146,8 +150,10 @@ type TwingateResourceState struct {
 	RemoteNetworkId pulumi.StringPtrInput
 	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
 	SecurityPolicyId pulumi.StringPtrInput
-	// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+	// A map of key-value pair tags to set on this resource.
 	Tags pulumi.StringMapInput
+	// A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+	TagsAll pulumi.StringMapInput
 	// The usage-based auto-lock duration for the Resource (in days).
 	UsageBasedAutolockDurationDays pulumi.IntPtrInput
 }
@@ -182,7 +188,7 @@ type twingateResourceArgs struct {
 	RemoteNetworkId string `pulumi:"remoteNetworkId"`
 	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
-	// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+	// A map of key-value pair tags to set on this resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The usage-based auto-lock duration for the Resource (in days).
 	UsageBasedAutolockDurationDays *int `pulumi:"usageBasedAutolockDurationDays"`
@@ -215,7 +221,7 @@ type TwingateResourceArgs struct {
 	RemoteNetworkId pulumi.StringInput
 	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
 	SecurityPolicyId pulumi.StringPtrInput
-	// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+	// A map of key-value pair tags to set on this resource.
 	Tags pulumi.StringMapInput
 	// The usage-based auto-lock duration for the Resource (in days).
 	UsageBasedAutolockDurationDays pulumi.IntPtrInput
@@ -372,9 +378,14 @@ func (o TwingateResourceOutput) SecurityPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TwingateResource) pulumi.StringOutput { return v.SecurityPolicyId }).(pulumi.StringOutput)
 }
 
-// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+// A map of key-value pair tags to set on this resource.
 func (o TwingateResourceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *TwingateResource) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+func (o TwingateResourceOutput) TagsAll() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TwingateResource) pulumi.StringMapOutput { return v.TagsAll }).(pulumi.StringMapOutput)
 }
 
 // The usage-based auto-lock duration for the Resource (in days).

@@ -75,10 +75,8 @@ export const getTwingateUsers: typeof import("./getTwingateUsers").getTwingateUs
 export const getTwingateUsersOutput: typeof import("./getTwingateUsers").getTwingateUsersOutput = null as any;
 utilities.lazyLoad(exports, ["getTwingateUsers","getTwingateUsersOutput"], () => require("./getTwingateUsers"));
 
-export { ProviderArgs } from "./provider";
-export type Provider = import("./provider").Provider;
-export const Provider: typeof import("./provider").Provider = null as any;
-utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+export * from "./provider";
+import { Provider } from "./provider";
 
 export { TwingateConnectorArgs, TwingateConnectorState } from "./twingateConnector";
 export type TwingateConnector = import("./twingateConnector").TwingateConnector;

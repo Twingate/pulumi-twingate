@@ -34,6 +34,12 @@ namespace Twingate.Twingate
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import twingate:index/twingateUser:TwingateUser user VXNlcjo1ODk3MTM=
+    /// ```
     /// </summary>
     [TwingateResourceType("twingate:index/twingateUser:TwingateUser")]
     public partial class TwingateUser : global::Pulumi.CustomResource

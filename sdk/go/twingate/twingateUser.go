@@ -43,6 +43,12 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import twingate:index/twingateUser:TwingateUser user VXNlcjo1ODk3MTM=
+// ```
 type TwingateUser struct {
 	pulumi.CustomResourceState
 

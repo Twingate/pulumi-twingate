@@ -21,6 +21,12 @@ import * as utilities from "./utilities";
  *     sendInvite: true,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import twingate:index/twingateUser:TwingateUser user VXNlcjo1ODk3MTM=
+ * ```
  */
 export class TwingateUser extends pulumi.CustomResource {
     /**

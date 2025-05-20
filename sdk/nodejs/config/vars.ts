@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 declare var exports: any;
@@ -16,6 +18,28 @@ export declare const apiToken: string | undefined;
 Object.defineProperty(exports, "apiToken", {
     get() {
         return __config.get("apiToken");
+    },
+    enumerable: true,
+});
+
+/**
+ * Specifies the cache settings for the provider.
+ */
+export declare const cache: outputs.config.Cache | undefined;
+Object.defineProperty(exports, "cache", {
+    get() {
+        return __config.getObject<outputs.config.Cache>("cache");
+    },
+    enumerable: true,
+});
+
+/**
+ * A default set of tags applied globally to all resources created by the provider.
+ */
+export declare const defaultTags: outputs.config.DefaultTags | undefined;
+Object.defineProperty(exports, "defaultTags", {
+    get() {
+        return __config.getObject<outputs.config.DefaultTags>("defaultTags");
     },
     enumerable: true,
 });
