@@ -3,7 +3,7 @@ module github.com/Twingate/pulumi-twingate/provider
 go 1.24.2
 
 require (
-	github.com/Twingate/terraform-provider-twingate/v3 v3.1.0
+	github.com/Twingate/terraform-provider-twingate/v3 v3.2.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.108.0
 	github.com/pulumi/pulumi/sdk/v3 v3.169.0
 )
@@ -96,7 +96,7 @@ require (
 	github.com/hashicorp/terraform-registry-address v0.2.4 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
 	github.com/hashicorp/yamux v0.1.2 // indirect
-	github.com/hasura/go-graphql-client v0.14.0 // indirect
+	github.com/hasura/go-graphql-client v0.14.1 // indirect
 	github.com/huandu/xstrings v1.5.0 // indirect
 	github.com/iancoleman/strcase v0.3.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
