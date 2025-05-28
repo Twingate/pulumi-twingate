@@ -13,6 +13,299 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ProviderCache struct {
+	// Specifies whether the provider should cache groups. The default value is `true`.
+	GroupsEnabled *bool `pulumi:"groupsEnabled"`
+	// Specifies whether the provider should cache resources. The default value is `true`.
+	ResourceEnabled *bool `pulumi:"resourceEnabled"`
+}
+
+// ProviderCacheInput is an input type that accepts ProviderCacheArgs and ProviderCacheOutput values.
+// You can construct a concrete instance of `ProviderCacheInput` via:
+//
+//	ProviderCacheArgs{...}
+type ProviderCacheInput interface {
+	pulumi.Input
+
+	ToProviderCacheOutput() ProviderCacheOutput
+	ToProviderCacheOutputWithContext(context.Context) ProviderCacheOutput
+}
+
+type ProviderCacheArgs struct {
+	// Specifies whether the provider should cache groups. The default value is `true`.
+	GroupsEnabled pulumi.BoolPtrInput `pulumi:"groupsEnabled"`
+	// Specifies whether the provider should cache resources. The default value is `true`.
+	ResourceEnabled pulumi.BoolPtrInput `pulumi:"resourceEnabled"`
+}
+
+func (ProviderCacheArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderCache)(nil)).Elem()
+}
+
+func (i ProviderCacheArgs) ToProviderCacheOutput() ProviderCacheOutput {
+	return i.ToProviderCacheOutputWithContext(context.Background())
+}
+
+func (i ProviderCacheArgs) ToProviderCacheOutputWithContext(ctx context.Context) ProviderCacheOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderCacheOutput)
+}
+
+func (i ProviderCacheArgs) ToProviderCachePtrOutput() ProviderCachePtrOutput {
+	return i.ToProviderCachePtrOutputWithContext(context.Background())
+}
+
+func (i ProviderCacheArgs) ToProviderCachePtrOutputWithContext(ctx context.Context) ProviderCachePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderCacheOutput).ToProviderCachePtrOutputWithContext(ctx)
+}
+
+// ProviderCachePtrInput is an input type that accepts ProviderCacheArgs, ProviderCachePtr and ProviderCachePtrOutput values.
+// You can construct a concrete instance of `ProviderCachePtrInput` via:
+//
+//	        ProviderCacheArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProviderCachePtrInput interface {
+	pulumi.Input
+
+	ToProviderCachePtrOutput() ProviderCachePtrOutput
+	ToProviderCachePtrOutputWithContext(context.Context) ProviderCachePtrOutput
+}
+
+type providerCachePtrType ProviderCacheArgs
+
+func ProviderCachePtr(v *ProviderCacheArgs) ProviderCachePtrInput {
+	return (*providerCachePtrType)(v)
+}
+
+func (*providerCachePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderCache)(nil)).Elem()
+}
+
+func (i *providerCachePtrType) ToProviderCachePtrOutput() ProviderCachePtrOutput {
+	return i.ToProviderCachePtrOutputWithContext(context.Background())
+}
+
+func (i *providerCachePtrType) ToProviderCachePtrOutputWithContext(ctx context.Context) ProviderCachePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderCachePtrOutput)
+}
+
+type ProviderCacheOutput struct{ *pulumi.OutputState }
+
+func (ProviderCacheOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderCache)(nil)).Elem()
+}
+
+func (o ProviderCacheOutput) ToProviderCacheOutput() ProviderCacheOutput {
+	return o
+}
+
+func (o ProviderCacheOutput) ToProviderCacheOutputWithContext(ctx context.Context) ProviderCacheOutput {
+	return o
+}
+
+func (o ProviderCacheOutput) ToProviderCachePtrOutput() ProviderCachePtrOutput {
+	return o.ToProviderCachePtrOutputWithContext(context.Background())
+}
+
+func (o ProviderCacheOutput) ToProviderCachePtrOutputWithContext(ctx context.Context) ProviderCachePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProviderCache) *ProviderCache {
+		return &v
+	}).(ProviderCachePtrOutput)
+}
+
+// Specifies whether the provider should cache groups. The default value is `true`.
+func (o ProviderCacheOutput) GroupsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProviderCache) *bool { return v.GroupsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether the provider should cache resources. The default value is `true`.
+func (o ProviderCacheOutput) ResourceEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProviderCache) *bool { return v.ResourceEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type ProviderCachePtrOutput struct{ *pulumi.OutputState }
+
+func (ProviderCachePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderCache)(nil)).Elem()
+}
+
+func (o ProviderCachePtrOutput) ToProviderCachePtrOutput() ProviderCachePtrOutput {
+	return o
+}
+
+func (o ProviderCachePtrOutput) ToProviderCachePtrOutputWithContext(ctx context.Context) ProviderCachePtrOutput {
+	return o
+}
+
+func (o ProviderCachePtrOutput) Elem() ProviderCacheOutput {
+	return o.ApplyT(func(v *ProviderCache) ProviderCache {
+		if v != nil {
+			return *v
+		}
+		var ret ProviderCache
+		return ret
+	}).(ProviderCacheOutput)
+}
+
+// Specifies whether the provider should cache groups. The default value is `true`.
+func (o ProviderCachePtrOutput) GroupsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProviderCache) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GroupsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether the provider should cache resources. The default value is `true`.
+func (o ProviderCachePtrOutput) ResourceEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProviderCache) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ProviderDefaultTags struct {
+	// A map of key-value pair tags to be set on all resources by default.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// ProviderDefaultTagsInput is an input type that accepts ProviderDefaultTagsArgs and ProviderDefaultTagsOutput values.
+// You can construct a concrete instance of `ProviderDefaultTagsInput` via:
+//
+//	ProviderDefaultTagsArgs{...}
+type ProviderDefaultTagsInput interface {
+	pulumi.Input
+
+	ToProviderDefaultTagsOutput() ProviderDefaultTagsOutput
+	ToProviderDefaultTagsOutputWithContext(context.Context) ProviderDefaultTagsOutput
+}
+
+type ProviderDefaultTagsArgs struct {
+	// A map of key-value pair tags to be set on all resources by default.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (ProviderDefaultTagsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderDefaultTags)(nil)).Elem()
+}
+
+func (i ProviderDefaultTagsArgs) ToProviderDefaultTagsOutput() ProviderDefaultTagsOutput {
+	return i.ToProviderDefaultTagsOutputWithContext(context.Background())
+}
+
+func (i ProviderDefaultTagsArgs) ToProviderDefaultTagsOutputWithContext(ctx context.Context) ProviderDefaultTagsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderDefaultTagsOutput)
+}
+
+func (i ProviderDefaultTagsArgs) ToProviderDefaultTagsPtrOutput() ProviderDefaultTagsPtrOutput {
+	return i.ToProviderDefaultTagsPtrOutputWithContext(context.Background())
+}
+
+func (i ProviderDefaultTagsArgs) ToProviderDefaultTagsPtrOutputWithContext(ctx context.Context) ProviderDefaultTagsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderDefaultTagsOutput).ToProviderDefaultTagsPtrOutputWithContext(ctx)
+}
+
+// ProviderDefaultTagsPtrInput is an input type that accepts ProviderDefaultTagsArgs, ProviderDefaultTagsPtr and ProviderDefaultTagsPtrOutput values.
+// You can construct a concrete instance of `ProviderDefaultTagsPtrInput` via:
+//
+//	        ProviderDefaultTagsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProviderDefaultTagsPtrInput interface {
+	pulumi.Input
+
+	ToProviderDefaultTagsPtrOutput() ProviderDefaultTagsPtrOutput
+	ToProviderDefaultTagsPtrOutputWithContext(context.Context) ProviderDefaultTagsPtrOutput
+}
+
+type providerDefaultTagsPtrType ProviderDefaultTagsArgs
+
+func ProviderDefaultTagsPtr(v *ProviderDefaultTagsArgs) ProviderDefaultTagsPtrInput {
+	return (*providerDefaultTagsPtrType)(v)
+}
+
+func (*providerDefaultTagsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderDefaultTags)(nil)).Elem()
+}
+
+func (i *providerDefaultTagsPtrType) ToProviderDefaultTagsPtrOutput() ProviderDefaultTagsPtrOutput {
+	return i.ToProviderDefaultTagsPtrOutputWithContext(context.Background())
+}
+
+func (i *providerDefaultTagsPtrType) ToProviderDefaultTagsPtrOutputWithContext(ctx context.Context) ProviderDefaultTagsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderDefaultTagsPtrOutput)
+}
+
+type ProviderDefaultTagsOutput struct{ *pulumi.OutputState }
+
+func (ProviderDefaultTagsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderDefaultTags)(nil)).Elem()
+}
+
+func (o ProviderDefaultTagsOutput) ToProviderDefaultTagsOutput() ProviderDefaultTagsOutput {
+	return o
+}
+
+func (o ProviderDefaultTagsOutput) ToProviderDefaultTagsOutputWithContext(ctx context.Context) ProviderDefaultTagsOutput {
+	return o
+}
+
+func (o ProviderDefaultTagsOutput) ToProviderDefaultTagsPtrOutput() ProviderDefaultTagsPtrOutput {
+	return o.ToProviderDefaultTagsPtrOutputWithContext(context.Background())
+}
+
+func (o ProviderDefaultTagsOutput) ToProviderDefaultTagsPtrOutputWithContext(ctx context.Context) ProviderDefaultTagsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProviderDefaultTags) *ProviderDefaultTags {
+		return &v
+	}).(ProviderDefaultTagsPtrOutput)
+}
+
+// A map of key-value pair tags to be set on all resources by default.
+func (o ProviderDefaultTagsOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ProviderDefaultTags) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type ProviderDefaultTagsPtrOutput struct{ *pulumi.OutputState }
+
+func (ProviderDefaultTagsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderDefaultTags)(nil)).Elem()
+}
+
+func (o ProviderDefaultTagsPtrOutput) ToProviderDefaultTagsPtrOutput() ProviderDefaultTagsPtrOutput {
+	return o
+}
+
+func (o ProviderDefaultTagsPtrOutput) ToProviderDefaultTagsPtrOutputWithContext(ctx context.Context) ProviderDefaultTagsPtrOutput {
+	return o
+}
+
+func (o ProviderDefaultTagsPtrOutput) Elem() ProviderDefaultTagsOutput {
+	return o.ApplyT(func(v *ProviderDefaultTags) ProviderDefaultTags {
+		if v != nil {
+			return *v
+		}
+		var ret ProviderDefaultTags
+		return ret
+	}).(ProviderDefaultTagsOutput)
+}
+
+// A map of key-value pair tags to be set on all resources by default.
+func (o ProviderDefaultTagsPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ProviderDefaultTags) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
 type TwingateDNSFilteringProfileAllowedDomains struct {
 	// A set of allowed domains. Defaults to an empty set.
 	Domains         []string `pulumi:"domains"`
@@ -4423,6 +4716,10 @@ func (o GetTwingateUsersUserArrayOutput) Index(i pulumi.IntInput) GetTwingateUse
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderCacheInput)(nil)).Elem(), ProviderCacheArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderCachePtrInput)(nil)).Elem(), ProviderCacheArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderDefaultTagsInput)(nil)).Elem(), ProviderDefaultTagsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderDefaultTagsPtrInput)(nil)).Elem(), ProviderDefaultTagsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateDNSFilteringProfileAllowedDomainsInput)(nil)).Elem(), TwingateDNSFilteringProfileAllowedDomainsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateDNSFilteringProfileAllowedDomainsPtrInput)(nil)).Elem(), TwingateDNSFilteringProfileAllowedDomainsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateDNSFilteringProfileContentCategoriesInput)(nil)).Elem(), TwingateDNSFilteringProfileContentCategoriesArgs{})
@@ -4476,6 +4773,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTwingateServiceAccountsServiceAccountArrayInput)(nil)).Elem(), GetTwingateServiceAccountsServiceAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTwingateUsersUserInput)(nil)).Elem(), GetTwingateUsersUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTwingateUsersUserArrayInput)(nil)).Elem(), GetTwingateUsersUserArray{})
+	pulumi.RegisterOutputType(ProviderCacheOutput{})
+	pulumi.RegisterOutputType(ProviderCachePtrOutput{})
+	pulumi.RegisterOutputType(ProviderDefaultTagsOutput{})
+	pulumi.RegisterOutputType(ProviderDefaultTagsPtrOutput{})
 	pulumi.RegisterOutputType(TwingateDNSFilteringProfileAllowedDomainsOutput{})
 	pulumi.RegisterOutputType(TwingateDNSFilteringProfileAllowedDomainsPtrOutput{})
 	pulumi.RegisterOutputType(TwingateDNSFilteringProfileContentCategoriesOutput{})

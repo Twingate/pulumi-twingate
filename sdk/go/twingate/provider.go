@@ -58,6 +58,10 @@ type providerArgs struct {
 	// ([documentation](https://docs.twingate.com/docs/api-overview)). Alternatively, this can be specified using the
 	// TWINGATE_API_TOKEN environment variable.
 	ApiToken *string `pulumi:"apiToken"`
+	// Specifies the cache settings for the provider.
+	Cache *ProviderCache `pulumi:"cache"`
+	// A default set of tags applied globally to all resources created by the provider.
+	DefaultTags *ProviderDefaultTags `pulumi:"defaultTags"`
 	// Specifies a retry limit for the http requests made. The default value is 10. Alternatively, this can be specified using
 	// the TWINGATE_HTTP_MAX_RETRY environment variable
 	HttpMaxRetry *int `pulumi:"httpMaxRetry"`
@@ -78,6 +82,10 @@ type ProviderArgs struct {
 	// ([documentation](https://docs.twingate.com/docs/api-overview)). Alternatively, this can be specified using the
 	// TWINGATE_API_TOKEN environment variable.
 	ApiToken pulumi.StringPtrInput
+	// Specifies the cache settings for the provider.
+	Cache ProviderCachePtrInput
+	// A default set of tags applied globally to all resources created by the provider.
+	DefaultTags ProviderDefaultTagsPtrInput
 	// Specifies a retry limit for the http requests made. The default value is 10. Alternatively, this can be specified using
 	// the TWINGATE_HTTP_MAX_RETRY environment variable
 	HttpMaxRetry pulumi.IntPtrInput

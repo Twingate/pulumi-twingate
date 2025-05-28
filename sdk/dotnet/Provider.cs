@@ -99,6 +99,18 @@ namespace Twingate.Twingate
         }
 
         /// <summary>
+        /// Specifies the cache settings for the provider.
+        /// </summary>
+        [Input("cache", json: true)]
+        public Input<Inputs.ProviderCacheArgs>? Cache { get; set; }
+
+        /// <summary>
+        /// A default set of tags applied globally to all resources created by the provider.
+        /// </summary>
+        [Input("defaultTags", json: true)]
+        public Input<Inputs.ProviderDefaultTagsArgs>? DefaultTags { get; set; }
+
+        /// <summary>
         /// Specifies a retry limit for the http requests made. The default value is 10. Alternatively, this can be specified using
         /// the TWINGATE_HTTP_MAX_RETRY environment variable
         /// </summary>

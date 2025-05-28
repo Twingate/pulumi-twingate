@@ -13,6 +13,12 @@ import (
 )
 
 // DNS filtering gives you the ability to control what websites your users can access. DNS filtering is only available on certain plans. For more information, see Twingate's [documentation](https://www.twingate.com/docs/dns-filtering). DNS filtering must be enabled for this resources to work. If DNS filtering isn't enabled, the provider will throw an error.
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import twingate:index/twingateDNSFilteringProfile:TwingateDNSFilteringProfile example RG5zRmlsdGVyaW5nUHJvZmlsZToxY2I4YzM0YTc0
+// ```
 type TwingateDNSFilteringProfile struct {
 	pulumi.CustomResourceState
 

@@ -14,6 +14,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from ._inputs import *
 
 __all__ = ['ProviderArgs', 'Provider']
 
@@ -21,6 +22,8 @@ __all__ = ['ProviderArgs', 'Provider']
 class ProviderArgs:
     def __init__(__self__, *,
                  api_token: Optional[pulumi.Input[builtins.str]] = None,
+                 cache: Optional[pulumi.Input['ProviderCacheArgs']] = None,
+                 default_tags: Optional[pulumi.Input['ProviderDefaultTagsArgs']] = None,
                  http_max_retry: Optional[pulumi.Input[builtins.int]] = None,
                  http_timeout: Optional[pulumi.Input[builtins.int]] = None,
                  network: Optional[pulumi.Input[builtins.str]] = None,
@@ -30,6 +33,8 @@ class ProviderArgs:
         :param pulumi.Input[builtins.str] api_token: The access key for API operations. You can retrieve this from the Twingate Admin Console
                ([documentation](https://docs.twingate.com/docs/api-overview)). Alternatively, this can be specified using the
                TWINGATE_API_TOKEN environment variable.
+        :param pulumi.Input['ProviderCacheArgs'] cache: Specifies the cache settings for the provider.
+        :param pulumi.Input['ProviderDefaultTagsArgs'] default_tags: A default set of tags applied globally to all resources created by the provider.
         :param pulumi.Input[builtins.int] http_max_retry: Specifies a retry limit for the http requests made. The default value is 10. Alternatively, this can be specified using
                the TWINGATE_HTTP_MAX_RETRY environment variable
         :param pulumi.Input[builtins.int] http_timeout: Specifies a time limit in seconds for the http requests made. The default value is 35 seconds. Alternatively, this can
@@ -41,6 +46,10 @@ class ProviderArgs:
         """
         if api_token is not None:
             pulumi.set(__self__, "api_token", api_token)
+        if cache is not None:
+            pulumi.set(__self__, "cache", cache)
+        if default_tags is not None:
+            pulumi.set(__self__, "default_tags", default_tags)
         if http_max_retry is not None:
             pulumi.set(__self__, "http_max_retry", http_max_retry)
         if http_timeout is not None:
@@ -63,6 +72,30 @@ class ProviderArgs:
     @api_token.setter
     def api_token(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "api_token", value)
+
+    @property
+    @pulumi.getter
+    def cache(self) -> Optional[pulumi.Input['ProviderCacheArgs']]:
+        """
+        Specifies the cache settings for the provider.
+        """
+        return pulumi.get(self, "cache")
+
+    @cache.setter
+    def cache(self, value: Optional[pulumi.Input['ProviderCacheArgs']]):
+        pulumi.set(self, "cache", value)
+
+    @property
+    @pulumi.getter(name="defaultTags")
+    def default_tags(self) -> Optional[pulumi.Input['ProviderDefaultTagsArgs']]:
+        """
+        A default set of tags applied globally to all resources created by the provider.
+        """
+        return pulumi.get(self, "default_tags")
+
+    @default_tags.setter
+    def default_tags(self, value: Optional[pulumi.Input['ProviderDefaultTagsArgs']]):
+        pulumi.set(self, "default_tags", value)
 
     @property
     @pulumi.getter(name="httpMaxRetry")
@@ -124,6 +157,8 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_token: Optional[pulumi.Input[builtins.str]] = None,
+                 cache: Optional[pulumi.Input[Union['ProviderCacheArgs', 'ProviderCacheArgsDict']]] = None,
+                 default_tags: Optional[pulumi.Input[Union['ProviderDefaultTagsArgs', 'ProviderDefaultTagsArgsDict']]] = None,
                  http_max_retry: Optional[pulumi.Input[builtins.int]] = None,
                  http_timeout: Optional[pulumi.Input[builtins.int]] = None,
                  network: Optional[pulumi.Input[builtins.str]] = None,
@@ -140,6 +175,8 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[builtins.str] api_token: The access key for API operations. You can retrieve this from the Twingate Admin Console
                ([documentation](https://docs.twingate.com/docs/api-overview)). Alternatively, this can be specified using the
                TWINGATE_API_TOKEN environment variable.
+        :param pulumi.Input[Union['ProviderCacheArgs', 'ProviderCacheArgsDict']] cache: Specifies the cache settings for the provider.
+        :param pulumi.Input[Union['ProviderDefaultTagsArgs', 'ProviderDefaultTagsArgsDict']] default_tags: A default set of tags applied globally to all resources created by the provider.
         :param pulumi.Input[builtins.int] http_max_retry: Specifies a retry limit for the http requests made. The default value is 10. Alternatively, this can be specified using
                the TWINGATE_HTTP_MAX_RETRY environment variable
         :param pulumi.Input[builtins.int] http_timeout: Specifies a time limit in seconds for the http requests made. The default value is 35 seconds. Alternatively, this can
@@ -177,6 +214,8 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_token: Optional[pulumi.Input[builtins.str]] = None,
+                 cache: Optional[pulumi.Input[Union['ProviderCacheArgs', 'ProviderCacheArgsDict']]] = None,
+                 default_tags: Optional[pulumi.Input[Union['ProviderDefaultTagsArgs', 'ProviderDefaultTagsArgsDict']]] = None,
                  http_max_retry: Optional[pulumi.Input[builtins.int]] = None,
                  http_timeout: Optional[pulumi.Input[builtins.int]] = None,
                  network: Optional[pulumi.Input[builtins.str]] = None,
@@ -191,6 +230,8 @@ class Provider(pulumi.ProviderResource):
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
             __props__.__dict__["api_token"] = None if api_token is None else pulumi.Output.secret(api_token)
+            __props__.__dict__["cache"] = pulumi.Output.from_input(cache).apply(pulumi.runtime.to_json) if cache is not None else None
+            __props__.__dict__["default_tags"] = pulumi.Output.from_input(default_tags).apply(pulumi.runtime.to_json) if default_tags is not None else None
             __props__.__dict__["http_max_retry"] = pulumi.Output.from_input(http_max_retry).apply(pulumi.runtime.to_json) if http_max_retry is not None else None
             __props__.__dict__["http_timeout"] = pulumi.Output.from_input(http_timeout).apply(pulumi.runtime.to_json) if http_timeout is not None else None
             __props__.__dict__["network"] = network

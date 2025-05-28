@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -54,6 +56,8 @@ export class Provider extends pulumi.ProviderResource {
         opts = opts || {};
         {
             resourceInputs["apiToken"] = args?.apiToken ? pulumi.secret(args.apiToken) : undefined;
+            resourceInputs["cache"] = pulumi.output(args ? args.cache : undefined).apply(JSON.stringify);
+            resourceInputs["defaultTags"] = pulumi.output(args ? args.defaultTags : undefined).apply(JSON.stringify);
             resourceInputs["httpMaxRetry"] = pulumi.output(args ? args.httpMaxRetry : undefined).apply(JSON.stringify);
             resourceInputs["httpTimeout"] = pulumi.output(args ? args.httpTimeout : undefined).apply(JSON.stringify);
             resourceInputs["network"] = args ? args.network : undefined;
@@ -85,6 +89,14 @@ export interface ProviderArgs {
      * TWINGATE_API_TOKEN environment variable.
      */
     apiToken?: pulumi.Input<string>;
+    /**
+     * Specifies the cache settings for the provider.
+     */
+    cache?: pulumi.Input<inputs.ProviderCache>;
+    /**
+     * A default set of tags applied globally to all resources created by the provider.
+     */
+    defaultTags?: pulumi.Input<inputs.ProviderDefaultTags>;
     /**
      * Specifies a retry limit for the http requests made. The default value is 10. Alternatively, this can be specified using
      * the TWINGATE_HTTP_MAX_RETRY environment variable

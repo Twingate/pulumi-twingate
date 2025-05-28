@@ -341,6 +341,12 @@ class TwingateDNSFilteringProfile(pulumi.CustomResource):
         """
         DNS filtering gives you the ability to control what websites your users can access. DNS filtering is only available on certain plans. For more information, see Twingate's [documentation](https://www.twingate.com/docs/dns-filtering). DNS filtering must be enabled for this resources to work. If DNS filtering isn't enabled, the provider will throw an error.
 
+        ## Import
+
+        ```sh
+        $ pulumi import twingate:index/twingateDNSFilteringProfile:TwingateDNSFilteringProfile example RG5zRmlsdGVyaW5nUHJvZmlsZToxY2I4YzM0YTc0
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['TwingateDNSFilteringProfileAllowedDomainsArgs', 'TwingateDNSFilteringProfileAllowedDomainsArgsDict']] allowed_domains: A block with the following attributes.
@@ -361,6 +367,12 @@ class TwingateDNSFilteringProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         DNS filtering gives you the ability to control what websites your users can access. DNS filtering is only available on certain plans. For more information, see Twingate's [documentation](https://www.twingate.com/docs/dns-filtering). DNS filtering must be enabled for this resources to work. If DNS filtering isn't enabled, the provider will throw an error.
+
+        ## Import
+
+        ```sh
+        $ pulumi import twingate:index/twingateDNSFilteringProfile:TwingateDNSFilteringProfile example RG5zRmlsdGVyaW5nUHJvZmlsZToxY2I4YzM0YTc0
+        ```
 
         :param str resource_name: The name of the resource.
         :param TwingateDNSFilteringProfileArgs args: The arguments to use to populate this resource's properties.

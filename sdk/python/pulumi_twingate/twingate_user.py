@@ -270,6 +270,12 @@ class TwingateUser(pulumi.CustomResource):
             send_invite=True)
         ```
 
+        ## Import
+
+        ```sh
+        $ pulumi import twingate:index/twingateUser:TwingateUser user VXNlcjo1ODk3MTM=
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] email: The User's email address
@@ -300,6 +306,12 @@ class TwingateUser(pulumi.CustomResource):
             last_name="Gate",
             role="DEVOPS",
             send_invite=True)
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import twingate:index/twingateUser:TwingateUser user VXNlcjo1ODk3MTM=
         ```
 
         :param str resource_name: The name of the resource.

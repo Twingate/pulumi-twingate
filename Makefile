@@ -20,6 +20,8 @@ WORKING_DIR     := $(shell pwd)
 OS := $(shell uname)
 EMPTY_TO_AVOID_SED := ""
 
+PATCH_FILE := sdk/dotnet/Config/Config.cs
+
 prepare::
 	@if test -z "${NAME}"; then echo "NAME not set"; exit 1; fi
 	@if test -z "${REPOSITORY}"; then echo "REPOSITORY not set"; exit 1; fi
@@ -81,9 +83,20 @@ build_dotnet:: DOTNET_VERSION := $(shell pulumictl get version --language dotnet
 build_dotnet:: install_plugins tfgen # build the dotnet sdk
 	pulumictl get version --language dotnet --omit-commit-hash
 	$(WORKING_DIR)/bin/$(TFGEN) dotnet --overlays provider/overlays/dotnet --out sdk/dotnet/
+
+	if [[ -f $(PATCH_FILE) ]]; then \
+		if [[ "${OS}" == "Darwin" ]]; then \
+			sed -i '' 's/Twingate\.Twingate\./Twingate\./g' $(PATCH_FILE); \
+		else \
+			sed -i 's/Twingate\.Twingate\./Twingate\./g' $(PATCH_FILE); \
+		fi \
+	else \
+		echo "File ${PATCH_FILE} does not exist."; \
+	fi
+
 	cd sdk/dotnet/ && \
 		echo "${DOTNET_VERSION}" >version.txt && \
-        dotnet build /p:Version=${DOTNET_VERSION}
+		dotnet build /p:Version=${DOTNET_VERSION}
 
 build_go:: install_plugins tfgen # build the go sdk
 	$(WORKING_DIR)/bin/$(TFGEN) go --overlays provider/overlays/go --out sdk/go/

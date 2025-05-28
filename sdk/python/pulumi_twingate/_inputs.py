@@ -16,6 +16,10 @@ else:
 from . import _utilities
 
 __all__ = [
+    'ProviderCacheArgs',
+    'ProviderCacheArgsDict',
+    'ProviderDefaultTagsArgs',
+    'ProviderDefaultTagsArgsDict',
     'TwingateDNSFilteringProfileAllowedDomainsArgs',
     'TwingateDNSFilteringProfileAllowedDomainsArgsDict',
     'TwingateDNSFilteringProfileContentCategoriesArgs',
@@ -55,6 +59,90 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class ProviderCacheArgsDict(TypedDict):
+        groups_enabled: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Specifies whether the provider should cache groups. The default value is `true`.
+        """
+        resource_enabled: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Specifies whether the provider should cache resources. The default value is `true`.
+        """
+elif False:
+    ProviderCacheArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ProviderCacheArgs:
+    def __init__(__self__, *,
+                 groups_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 resource_enabled: Optional[pulumi.Input[builtins.bool]] = None):
+        """
+        :param pulumi.Input[builtins.bool] groups_enabled: Specifies whether the provider should cache groups. The default value is `true`.
+        :param pulumi.Input[builtins.bool] resource_enabled: Specifies whether the provider should cache resources. The default value is `true`.
+        """
+        if groups_enabled is not None:
+            pulumi.set(__self__, "groups_enabled", groups_enabled)
+        if resource_enabled is not None:
+            pulumi.set(__self__, "resource_enabled", resource_enabled)
+
+    @property
+    @pulumi.getter(name="groupsEnabled")
+    def groups_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Specifies whether the provider should cache groups. The default value is `true`.
+        """
+        return pulumi.get(self, "groups_enabled")
+
+    @groups_enabled.setter
+    def groups_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "groups_enabled", value)
+
+    @property
+    @pulumi.getter(name="resourceEnabled")
+    def resource_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Specifies whether the provider should cache resources. The default value is `true`.
+        """
+        return pulumi.get(self, "resource_enabled")
+
+    @resource_enabled.setter
+    def resource_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "resource_enabled", value)
+
+
+if not MYPY:
+    class ProviderDefaultTagsArgsDict(TypedDict):
+        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]
+        """
+        A map of key-value pair tags to be set on all resources by default.
+        """
+elif False:
+    ProviderDefaultTagsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ProviderDefaultTagsArgs:
+    def __init__(__self__, *,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A map of key-value pair tags to be set on all resources by default.
+        """
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        """
+        A map of key-value pair tags to be set on all resources by default.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 if not MYPY:
     class TwingateDNSFilteringProfileAllowedDomainsArgsDict(TypedDict):

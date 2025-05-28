@@ -61,6 +61,14 @@
                 "description": "The access key for API operations. You can retrieve this from the Twingate Admin Console\n([documentation](https://docs.twingate.com/docs/api-overview)). Alternatively, this can be specified using the\nTWINGATE_API_TOKEN environment variable.\n",
                 "secret": true
             },
+            "cache": {
+                "$ref": "#/types/twingate:config/cache:cache",
+                "description": "Specifies the cache settings for the provider.\n"
+            },
+            "defaultTags": {
+                "$ref": "#/types/twingate:config/defaultTags:defaultTags",
+                "description": "A default set of tags applied globally to all resources created by the provider.\n"
+            },
             "httpMaxRetry": {
                 "type": "integer",
                 "description": "Specifies a retry limit for the http requests made. The default value is 10. Alternatively, this can be specified using\nthe TWINGATE_HTTP_MAX_RETRY environment variable\n"
@@ -80,6 +88,56 @@
         }
     },
     "types": {
+        "twingate:config/cache:cache": {
+            "properties": {
+                "groupsEnabled": {
+                    "type": "boolean",
+                    "description": "Specifies whether the provider should cache groups. The default value is `true`.\n"
+                },
+                "resourceEnabled": {
+                    "type": "boolean",
+                    "description": "Specifies whether the provider should cache resources. The default value is `true`.\n"
+                }
+            },
+            "type": "object"
+        },
+        "twingate:config/defaultTags:defaultTags": {
+            "properties": {
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of key-value pair tags to be set on all resources by default.\n"
+                }
+            },
+            "type": "object"
+        },
+        "twingate:index/ProviderCache:ProviderCache": {
+            "properties": {
+                "groupsEnabled": {
+                    "type": "boolean",
+                    "description": "Specifies whether the provider should cache groups. The default value is `true`.\n"
+                },
+                "resourceEnabled": {
+                    "type": "boolean",
+                    "description": "Specifies whether the provider should cache resources. The default value is `true`.\n"
+                }
+            },
+            "type": "object"
+        },
+        "twingate:index/ProviderDefaultTags:ProviderDefaultTags": {
+            "properties": {
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of key-value pair tags to be set on all resources by default.\n"
+                }
+            },
+            "type": "object"
+        },
         "twingate:index/TwingateDNSFilteringProfileAllowedDomains:TwingateDNSFilteringProfileAllowedDomains": {
             "properties": {
                 "domains": {
@@ -1006,6 +1064,14 @@
                 "description": "The access key for API operations. You can retrieve this from the Twingate Admin Console\n([documentation](https://docs.twingate.com/docs/api-overview)). Alternatively, this can be specified using the\nTWINGATE_API_TOKEN environment variable.\n",
                 "secret": true
             },
+            "cache": {
+                "$ref": "#/types/twingate:index/ProviderCache:ProviderCache",
+                "description": "Specifies the cache settings for the provider.\n"
+            },
+            "defaultTags": {
+                "$ref": "#/types/twingate:index/ProviderDefaultTags:ProviderDefaultTags",
+                "description": "A default set of tags applied globally to all resources created by the provider.\n"
+            },
             "httpMaxRetry": {
                 "type": "integer",
                 "description": "Specifies a retry limit for the http requests made. The default value is 10. Alternatively, this can be specified using\nthe TWINGATE_HTTP_MAX_RETRY environment variable\n"
@@ -1028,6 +1094,14 @@
                 "type": "string",
                 "description": "The access key for API operations. You can retrieve this from the Twingate Admin Console\n([documentation](https://docs.twingate.com/docs/api-overview)). Alternatively, this can be specified using the\nTWINGATE_API_TOKEN environment variable.\n",
                 "secret": true
+            },
+            "cache": {
+                "$ref": "#/types/twingate:index/ProviderCache:ProviderCache",
+                "description": "Specifies the cache settings for the provider.\n"
+            },
+            "defaultTags": {
+                "$ref": "#/types/twingate:index/ProviderDefaultTags:ProviderDefaultTags",
+                "description": "A default set of tags applied globally to all resources created by the provider.\n"
             },
             "httpMaxRetry": {
                 "type": "integer",
@@ -1234,7 +1308,7 @@
             }
         },
         "twingate:index/twingateDNSFilteringProfile:TwingateDNSFilteringProfile": {
-            "description": "DNS filtering gives you the ability to control what websites your users can access. DNS filtering is only available on certain plans. For more information, see Twingate's [documentation](https://www.twingate.com/docs/dns-filtering). DNS filtering must be enabled for this resources to work. If DNS filtering isn't enabled, the provider will throw an error.\n\n",
+            "description": "DNS filtering gives you the ability to control what websites your users can access. DNS filtering is only available on certain plans. For more information, see Twingate's [documentation](https://www.twingate.com/docs/dns-filtering). DNS filtering must be enabled for this resources to work. If DNS filtering isn't enabled, the provider will throw an error.\n\n## Import\n\n```sh\n$ pulumi import twingate:index/twingateDNSFilteringProfile:TwingateDNSFilteringProfile example RG5zRmlsdGVyaW5nUHJvZmlsZToxY2I4YzM0YTc0\n```\n\n",
             "properties": {
                 "allowedDomains": {
                     "$ref": "#/types/twingate:index/TwingateDNSFilteringProfileAllowedDomains:TwingateDNSFilteringProfileAllowedDomains",
@@ -1563,7 +1637,14 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.\n"
+                    "description": "A map of key-value pair tags to set on this resource.\n"
+                },
+                "tagsAll": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.\n"
                 },
                 "usageBasedAutolockDurationDays": {
                     "type": "integer",
@@ -1582,6 +1663,7 @@
                 "remoteNetworkId",
                 "securityPolicyId",
                 "tags",
+                "tagsAll",
                 "usageBasedAutolockDurationDays"
             ],
             "inputProperties": {
@@ -1647,7 +1729,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.\n"
+                    "description": "A map of key-value pair tags to set on this resource.\n"
                 },
                 "usageBasedAutolockDurationDays": {
                     "type": "integer",
@@ -1723,7 +1805,14 @@
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.\n"
+                        "description": "A map of key-value pair tags to set on this resource.\n"
+                    },
+                    "tagsAll": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.\n"
                     },
                     "usageBasedAutolockDurationDays": {
                         "type": "integer",
@@ -1837,7 +1926,7 @@
             }
         },
         "twingate:index/twingateUser:TwingateUser": {
-            "description": "Users provides different levels of write capabilities across the Twingate Admin Console. For more information, see Twingate's [documentation](https://www.twingate.com/docs/users).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@twingate/pulumi-twingate\";\n\nconst user = new twingate.TwingateUser(\"user\", {\n    email: \"sample@company.com\",\n    firstName: \"Twin\",\n    lastName: \"Gate\",\n    role: \"DEVOPS\",\n    sendInvite: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nuser = twingate.TwingateUser(\"user\",\n    email=\"sample@company.com\",\n    first_name=\"Twin\",\n    last_name=\"Gate\",\n    role=\"DEVOPS\",\n    send_invite=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Twingate.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var user = new Twingate.TwingateUser(\"user\", new()\n    {\n        Email = \"sample@company.com\",\n        FirstName = \"Twin\",\n        LastName = \"Gate\",\n        Role = \"DEVOPS\",\n        SendInvite = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/v3/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.NewTwingateUser(ctx, \"user\", \u0026twingate.TwingateUserArgs{\n\t\t\tEmail:      pulumi.String(\"sample@company.com\"),\n\t\t\tFirstName:  pulumi.String(\"Twin\"),\n\t\t\tLastName:   pulumi.String(\"Gate\"),\n\t\t\tRole:       pulumi.String(\"DEVOPS\"),\n\t\t\tSendInvite: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateUser;\nimport com.pulumi.twingate.TwingateUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var user = new TwingateUser(\"user\", TwingateUserArgs.builder()\n            .email(\"sample@company.com\")\n            .firstName(\"Twin\")\n            .lastName(\"Gate\")\n            .role(\"DEVOPS\")\n            .sendInvite(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  user:\n    type: twingate:TwingateUser\n    properties:\n      email: sample@company.com\n      firstName: Twin\n      lastName: Gate\n      role: DEVOPS\n      sendInvite: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Users provides different levels of write capabilities across the Twingate Admin Console. For more information, see Twingate's [documentation](https://www.twingate.com/docs/users).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@twingate/pulumi-twingate\";\n\nconst user = new twingate.TwingateUser(\"user\", {\n    email: \"sample@company.com\",\n    firstName: \"Twin\",\n    lastName: \"Gate\",\n    role: \"DEVOPS\",\n    sendInvite: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nuser = twingate.TwingateUser(\"user\",\n    email=\"sample@company.com\",\n    first_name=\"Twin\",\n    last_name=\"Gate\",\n    role=\"DEVOPS\",\n    send_invite=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Twingate.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var user = new Twingate.TwingateUser(\"user\", new()\n    {\n        Email = \"sample@company.com\",\n        FirstName = \"Twin\",\n        LastName = \"Gate\",\n        Role = \"DEVOPS\",\n        SendInvite = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/v3/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.NewTwingateUser(ctx, \"user\", \u0026twingate.TwingateUserArgs{\n\t\t\tEmail:      pulumi.String(\"sample@company.com\"),\n\t\t\tFirstName:  pulumi.String(\"Twin\"),\n\t\t\tLastName:   pulumi.String(\"Gate\"),\n\t\t\tRole:       pulumi.String(\"DEVOPS\"),\n\t\t\tSendInvite: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateUser;\nimport com.pulumi.twingate.TwingateUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var user = new TwingateUser(\"user\", TwingateUserArgs.builder()\n            .email(\"sample@company.com\")\n            .firstName(\"Twin\")\n            .lastName(\"Gate\")\n            .role(\"DEVOPS\")\n            .sendInvite(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  user:\n    type: twingate:TwingateUser\n    properties:\n      email: sample@company.com\n      firstName: Twin\n      lastName: Gate\n      role: DEVOPS\n      sendInvite: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import twingate:index/twingateUser:TwingateUser user VXNlcjo1ODk3MTM=\n```\n\n",
             "properties": {
                 "email": {
                     "type": "string",

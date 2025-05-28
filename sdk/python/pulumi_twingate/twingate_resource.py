@@ -51,7 +51,7 @@ class TwingateResourceArgs:
         :param pulumi.Input[builtins.str] name: The name of the Resource
         :param pulumi.Input['TwingateResourceProtocolsArgs'] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param pulumi.Input[builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is `Default Policy`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A map of key-value pair tags to set on this resource.
         :param pulumi.Input[builtins.int] usage_based_autolock_duration_days: The usage-based auto-lock duration for the Resource (in days).
         """
         pulumi.set(__self__, "address", address)
@@ -240,7 +240,7 @@ class TwingateResourceArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+        A map of key-value pair tags to set on this resource.
         """
         return pulumi.get(self, "tags")
 
@@ -278,6 +278,7 @@ class _TwingateResourceState:
                  remote_network_id: Optional[pulumi.Input[builtins.str]] = None,
                  security_policy_id: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 tags_all: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  usage_based_autolock_duration_days: Optional[pulumi.Input[builtins.int]] = None):
         """
         Input properties used for looking up and filtering TwingateResource resources.
@@ -293,7 +294,8 @@ class _TwingateResourceState:
         :param pulumi.Input['TwingateResourceProtocolsArgs'] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param pulumi.Input[builtins.str] remote_network_id: Remote Network ID where the Resource lives
         :param pulumi.Input[builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is `Default Policy`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A map of key-value pair tags to set on this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags_all: A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
         :param pulumi.Input[builtins.int] usage_based_autolock_duration_days: The usage-based auto-lock duration for the Resource (in days).
         """
         if access_groups is not None:
@@ -324,6 +326,8 @@ class _TwingateResourceState:
             pulumi.set(__self__, "security_policy_id", security_policy_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tags_all is not None:
+            pulumi.set(__self__, "tags_all", tags_all)
         if usage_based_autolock_duration_days is not None:
             pulumi.set(__self__, "usage_based_autolock_duration_days", usage_based_autolock_duration_days)
 
@@ -484,13 +488,25 @@ class _TwingateResourceState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+        A map of key-value pair tags to set on this resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="tagsAll")
+    def tags_all(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        """
+        A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+        """
+        return pulumi.get(self, "tags_all")
+
+    @tags_all.setter
+    def tags_all(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "tags_all", value)
 
     @property
     @pulumi.getter(name="usageBasedAutolockDurationDays")
@@ -550,7 +566,7 @@ class TwingateResource(pulumi.CustomResource):
         :param pulumi.Input[Union['TwingateResourceProtocolsArgs', 'TwingateResourceProtocolsArgsDict']] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param pulumi.Input[builtins.str] remote_network_id: Remote Network ID where the Resource lives
         :param pulumi.Input[builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is `Default Policy`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A map of key-value pair tags to set on this resource.
         :param pulumi.Input[builtins.int] usage_based_autolock_duration_days: The usage-based auto-lock duration for the Resource (in days).
         """
         ...
@@ -626,6 +642,7 @@ class TwingateResource(pulumi.CustomResource):
             __props__.__dict__["security_policy_id"] = security_policy_id
             __props__.__dict__["tags"] = tags
             __props__.__dict__["usage_based_autolock_duration_days"] = usage_based_autolock_duration_days
+            __props__.__dict__["tags_all"] = None
         super(TwingateResource, __self__).__init__(
             'twingate:index/twingateResource:TwingateResource',
             resource_name,
@@ -650,6 +667,7 @@ class TwingateResource(pulumi.CustomResource):
             remote_network_id: Optional[pulumi.Input[builtins.str]] = None,
             security_policy_id: Optional[pulumi.Input[builtins.str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+            tags_all: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             usage_based_autolock_duration_days: Optional[pulumi.Input[builtins.int]] = None) -> 'TwingateResource':
         """
         Get an existing TwingateResource resource's state with the given name, id, and optional extra
@@ -670,7 +688,8 @@ class TwingateResource(pulumi.CustomResource):
         :param pulumi.Input[Union['TwingateResourceProtocolsArgs', 'TwingateResourceProtocolsArgsDict']] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param pulumi.Input[builtins.str] remote_network_id: Remote Network ID where the Resource lives
         :param pulumi.Input[builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is `Default Policy`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A map of key-value pair tags to set on this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags_all: A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
         :param pulumi.Input[builtins.int] usage_based_autolock_duration_days: The usage-based auto-lock duration for the Resource (in days).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -691,6 +710,7 @@ class TwingateResource(pulumi.CustomResource):
         __props__.__dict__["remote_network_id"] = remote_network_id
         __props__.__dict__["security_policy_id"] = security_policy_id
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["tags_all"] = tags_all
         __props__.__dict__["usage_based_autolock_duration_days"] = usage_based_autolock_duration_days
         return TwingateResource(resource_name, opts=opts, __props__=__props__)
 
@@ -799,9 +819,17 @@ class TwingateResource(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Mapping[str, builtins.str]]:
         """
-        The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+        A map of key-value pair tags to set on this resource.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="tagsAll")
+    def tags_all(self) -> pulumi.Output[Mapping[str, builtins.str]]:
+        """
+        A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+        """
+        return pulumi.get(self, "tags_all")
 
     @property
     @pulumi.getter(name="usageBasedAutolockDurationDays")

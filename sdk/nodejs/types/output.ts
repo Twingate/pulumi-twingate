@@ -513,3 +513,23 @@ export interface TwingateResourceProtocolsUdp {
     ports: string[];
 }
 
+export namespace config {
+    export interface Cache {
+        /**
+         * Specifies whether the provider should cache groups. The default value is `true`.
+         */
+        groupsEnabled?: boolean;
+        /**
+         * Specifies whether the provider should cache resources. The default value is `true`.
+         */
+        resourceEnabled?: boolean;
+    }
+
+    export interface DefaultTags {
+        /**
+         * A map of key-value pair tags to be set on all resources by default.
+         */
+        tags?: {[key: string]: string};
+    }
+
+}
