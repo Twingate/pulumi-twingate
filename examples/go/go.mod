@@ -5,7 +5,7 @@ go 1.24.0
 require (
 	// uncomment the following line to use the remote version of the sdk
 	github.com/Twingate/pulumi-twingate/sdk/v3 v3.0.0-20250223083426-375c59fb5a8e
-	github.com/pulumi/pulumi/sdk/v3 v3.171.0
+	github.com/pulumi/pulumi/sdk/v3 v3.173.0
 )
 
 // uncomment the following line to use the local version of the sdk
