@@ -5,7 +5,7 @@ go 1.24.0
 require (
 	// uncomment the following line to use the remote version of the sdk
 	github.com/Twingate/pulumi-twingate/sdk/v3 v3.0.0-20250223083426-375c59fb5a8e
-	github.com/pulumi/pulumi/sdk/v3 v3.173.0
+	github.com/pulumi/pulumi/sdk/v3 v3.175.0
 )
 
 // uncomment the following line to use the local version of the sdk
@@ -27,7 +27,7 @@ require (
 	github.com/charmbracelet/x/ansi v0.8.0 // indirect
 	github.com/charmbracelet/x/term v0.2.1 // indirect
 	github.com/cheggaaa/pb v1.0.29 // indirect
-	github.com/cloudflare/circl v1.6.0 // indirect
+	github.com/cloudflare/circl v1.6.1 // indirect
 	github.com/cyphar/filepath-securejoin v0.4.1 // indirect
 	github.com/djherbis/times v1.6.0 // indirect
 	github.com/emirpasic/gods v1.18.1 // indirect
