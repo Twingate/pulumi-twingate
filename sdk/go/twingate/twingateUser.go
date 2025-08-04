@@ -29,11 +29,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := twingate.NewTwingateUser(ctx, "user", &twingate.TwingateUserArgs{
-//				Email:      pulumi.String("sample@company.com"),
-//				FirstName:  pulumi.String("Twin"),
-//				LastName:   pulumi.String("Gate"),
-//				Role:       pulumi.String("DEVOPS"),
-//				SendInvite: pulumi.Bool(true),
+//				Email:     pulumi.String("sample@company.com"),
+//				FirstName: pulumi.String("Twin"),
+//				LastName:  pulumi.String("Gate"),
+//				Role:      pulumi.String("DEVOPS"),
 //			})
 //			if err != nil {
 //				return err
@@ -63,6 +62,8 @@ type TwingateUser struct {
 	// Determines the User's role. Either ADMIN, DEVOPS, SUPPORT or MEMBER.
 	Role pulumi.StringOutput `pulumi:"role"`
 	// Determines whether to send an email invitation to the User. True by default.
+	//
+	// Deprecated: This attribute is no longer used and will be removed in a future release.
 	SendInvite pulumi.BoolOutput `pulumi:"sendInvite"`
 	// Indicates the User's type. Either MANUAL or SYNCED.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -112,6 +113,8 @@ type twingateUserState struct {
 	// Determines the User's role. Either ADMIN, DEVOPS, SUPPORT or MEMBER.
 	Role *string `pulumi:"role"`
 	// Determines whether to send an email invitation to the User. True by default.
+	//
+	// Deprecated: This attribute is no longer used and will be removed in a future release.
 	SendInvite *bool `pulumi:"sendInvite"`
 	// Indicates the User's type. Either MANUAL or SYNCED.
 	Type *string `pulumi:"type"`
@@ -129,6 +132,8 @@ type TwingateUserState struct {
 	// Determines the User's role. Either ADMIN, DEVOPS, SUPPORT or MEMBER.
 	Role pulumi.StringPtrInput
 	// Determines whether to send an email invitation to the User. True by default.
+	//
+	// Deprecated: This attribute is no longer used and will be removed in a future release.
 	SendInvite pulumi.BoolPtrInput
 	// Indicates the User's type. Either MANUAL or SYNCED.
 	Type pulumi.StringPtrInput
@@ -150,6 +155,8 @@ type twingateUserArgs struct {
 	// Determines the User's role. Either ADMIN, DEVOPS, SUPPORT or MEMBER.
 	Role *string `pulumi:"role"`
 	// Determines whether to send an email invitation to the User. True by default.
+	//
+	// Deprecated: This attribute is no longer used and will be removed in a future release.
 	SendInvite *bool `pulumi:"sendInvite"`
 }
 
@@ -166,6 +173,8 @@ type TwingateUserArgs struct {
 	// Determines the User's role. Either ADMIN, DEVOPS, SUPPORT or MEMBER.
 	Role pulumi.StringPtrInput
 	// Determines whether to send an email invitation to the User. True by default.
+	//
+	// Deprecated: This attribute is no longer used and will be removed in a future release.
 	SendInvite pulumi.BoolPtrInput
 }
 
@@ -282,6 +291,8 @@ func (o TwingateUserOutput) Role() pulumi.StringOutput {
 }
 
 // Determines whether to send an email invitation to the User. True by default.
+//
+// Deprecated: This attribute is no longer used and will be removed in a future release.
 func (o TwingateUserOutput) SendInvite() pulumi.BoolOutput {
 	return o.ApplyT(func(v *TwingateUser) pulumi.BoolOutput { return v.SendInvite }).(pulumi.BoolOutput)
 }

@@ -18,7 +18,6 @@ import * as utilities from "./utilities";
  *     firstName: "Twin",
  *     lastName: "Gate",
  *     role: "DEVOPS",
- *     sendInvite: true,
  * });
  * ```
  *
@@ -78,6 +77,8 @@ export class TwingateUser extends pulumi.CustomResource {
     public readonly role!: pulumi.Output<string>;
     /**
      * Determines whether to send an email invitation to the User. True by default.
+     *
+     * @deprecated This attribute is no longer used and will be removed in a future release.
      */
     public readonly sendInvite!: pulumi.Output<boolean>;
     /**
@@ -149,6 +150,8 @@ export interface TwingateUserState {
     role?: pulumi.Input<string>;
     /**
      * Determines whether to send an email invitation to the User. True by default.
+     *
+     * @deprecated This attribute is no longer used and will be removed in a future release.
      */
     sendInvite?: pulumi.Input<boolean>;
     /**
@@ -183,6 +186,8 @@ export interface TwingateUserArgs {
     role?: pulumi.Input<string>;
     /**
      * Determines whether to send an email invitation to the User. True by default.
+     *
+     * @deprecated This attribute is no longer used and will be removed in a future release.
      */
     sendInvite?: pulumi.Input<boolean>;
 }

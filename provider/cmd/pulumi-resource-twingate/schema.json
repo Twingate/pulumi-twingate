@@ -1926,7 +1926,7 @@
             }
         },
         "twingate:index/twingateUser:TwingateUser": {
-            "description": "Users provides different levels of write capabilities across the Twingate Admin Console. For more information, see Twingate's [documentation](https://www.twingate.com/docs/users).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@twingate/pulumi-twingate\";\n\nconst user = new twingate.TwingateUser(\"user\", {\n    email: \"sample@company.com\",\n    firstName: \"Twin\",\n    lastName: \"Gate\",\n    role: \"DEVOPS\",\n    sendInvite: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nuser = twingate.TwingateUser(\"user\",\n    email=\"sample@company.com\",\n    first_name=\"Twin\",\n    last_name=\"Gate\",\n    role=\"DEVOPS\",\n    send_invite=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Twingate.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var user = new Twingate.TwingateUser(\"user\", new()\n    {\n        Email = \"sample@company.com\",\n        FirstName = \"Twin\",\n        LastName = \"Gate\",\n        Role = \"DEVOPS\",\n        SendInvite = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/v3/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.NewTwingateUser(ctx, \"user\", \u0026twingate.TwingateUserArgs{\n\t\t\tEmail:      pulumi.String(\"sample@company.com\"),\n\t\t\tFirstName:  pulumi.String(\"Twin\"),\n\t\t\tLastName:   pulumi.String(\"Gate\"),\n\t\t\tRole:       pulumi.String(\"DEVOPS\"),\n\t\t\tSendInvite: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateUser;\nimport com.pulumi.twingate.TwingateUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var user = new TwingateUser(\"user\", TwingateUserArgs.builder()\n            .email(\"sample@company.com\")\n            .firstName(\"Twin\")\n            .lastName(\"Gate\")\n            .role(\"DEVOPS\")\n            .sendInvite(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  user:\n    type: twingate:TwingateUser\n    properties:\n      email: sample@company.com\n      firstName: Twin\n      lastName: Gate\n      role: DEVOPS\n      sendInvite: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import twingate:index/twingateUser:TwingateUser user VXNlcjo1ODk3MTM=\n```\n\n",
+            "description": "Users provides different levels of write capabilities across the Twingate Admin Console. For more information, see Twingate's [documentation](https://www.twingate.com/docs/users).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@twingate/pulumi-twingate\";\n\nconst user = new twingate.TwingateUser(\"user\", {\n    email: \"sample@company.com\",\n    firstName: \"Twin\",\n    lastName: \"Gate\",\n    role: \"DEVOPS\",\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nuser = twingate.TwingateUser(\"user\",\n    email=\"sample@company.com\",\n    first_name=\"Twin\",\n    last_name=\"Gate\",\n    role=\"DEVOPS\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Twingate.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var user = new Twingate.TwingateUser(\"user\", new()\n    {\n        Email = \"sample@company.com\",\n        FirstName = \"Twin\",\n        LastName = \"Gate\",\n        Role = \"DEVOPS\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/v3/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.NewTwingateUser(ctx, \"user\", \u0026twingate.TwingateUserArgs{\n\t\t\tEmail:     pulumi.String(\"sample@company.com\"),\n\t\t\tFirstName: pulumi.String(\"Twin\"),\n\t\t\tLastName:  pulumi.String(\"Gate\"),\n\t\t\tRole:      pulumi.String(\"DEVOPS\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateUser;\nimport com.pulumi.twingate.TwingateUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var user = new TwingateUser(\"user\", TwingateUserArgs.builder()\n            .email(\"sample@company.com\")\n            .firstName(\"Twin\")\n            .lastName(\"Gate\")\n            .role(\"DEVOPS\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  user:\n    type: twingate:TwingateUser\n    properties:\n      email: sample@company.com\n      firstName: Twin\n      lastName: Gate\n      role: DEVOPS\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import twingate:index/twingateUser:TwingateUser user VXNlcjo1ODk3MTM=\n```\n\n",
             "properties": {
                 "email": {
                     "type": "string",
@@ -1950,7 +1950,8 @@
                 },
                 "sendInvite": {
                     "type": "boolean",
-                    "description": "Determines whether to send an email invitation to the User. True by default.\n"
+                    "description": "Determines whether to send an email invitation to the User. True by default.\n",
+                    "deprecationMessage": "This attribute is no longer used and will be removed in a future release."
                 },
                 "type": {
                     "type": "string",
@@ -1989,7 +1990,8 @@
                 },
                 "sendInvite": {
                     "type": "boolean",
-                    "description": "Determines whether to send an email invitation to the User. True by default.\n"
+                    "description": "Determines whether to send an email invitation to the User. True by default.\n",
+                    "deprecationMessage": "This attribute is no longer used and will be removed in a future release."
                 }
             },
             "requiredInputs": [
@@ -2020,7 +2022,8 @@
                     },
                     "sendInvite": {
                         "type": "boolean",
-                        "description": "Determines whether to send an email invitation to the User. True by default.\n"
+                        "description": "Determines whether to send an email invitation to the User. True by default.\n",
+                        "deprecationMessage": "This attribute is no longer used and will be removed in a future release."
                     },
                     "type": {
                         "type": "string",

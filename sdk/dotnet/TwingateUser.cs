@@ -29,7 +29,6 @@ namespace Twingate.Twingate
     ///         FirstName = "Twin",
     ///         LastName = "Gate",
     ///         Role = "DEVOPS",
-    ///         SendInvite = true,
     ///     });
     /// 
     /// });
