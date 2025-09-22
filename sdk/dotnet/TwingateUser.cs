@@ -68,7 +68,7 @@ namespace Twingate.Twingate
         public Output<string> LastName { get; private set; } = null!;
 
         /// <summary>
-        /// Determines the User's role. Either ADMIN, DEVOPS, SUPPORT or MEMBER.
+        /// Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
         /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
@@ -157,7 +157,7 @@ namespace Twingate.Twingate
         public Input<string>? LastName { get; set; }
 
         /// <summary>
-        /// Determines the User's role. Either ADMIN, DEVOPS, SUPPORT or MEMBER.
+        /// Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
@@ -201,7 +201,7 @@ namespace Twingate.Twingate
         public Input<string>? LastName { get; set; }
 
         /// <summary>
-        /// Determines the User's role. Either ADMIN, DEVOPS, SUPPORT or MEMBER.
+        /// Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
