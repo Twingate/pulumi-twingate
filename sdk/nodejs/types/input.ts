@@ -287,9 +287,83 @@ export interface ProviderCache {
      */
     groupsEnabled?: pulumi.Input<boolean>;
     /**
+     * Specifies the filter for the groups to be cached.
+     */
+    groupsFilter?: pulumi.Input<inputs.ProviderCacheGroupsFilter>;
+    /**
      * Specifies whether the provider should cache resources. The default value is `true`.
      */
     resourceEnabled?: pulumi.Input<boolean>;
+    /**
+     * Specifies the filter for the resources to be cached.
+     */
+    resourcesFilter?: pulumi.Input<inputs.ProviderCacheResourcesFilter>;
+}
+
+export interface ProviderCacheGroupsFilter {
+    /**
+     * Returns only Groups matching the specified state.
+     */
+    isActive?: pulumi.Input<boolean>;
+    /**
+     * Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Match when the value exist in the name of the group.
+     */
+    nameContains?: pulumi.Input<string>;
+    /**
+     * Match when the exact value does not exist in the name of the group.
+     */
+    nameExclude?: pulumi.Input<string>;
+    /**
+     * The name of the group must start with the value.
+     */
+    namePrefix?: pulumi.Input<string>;
+    /**
+     * The regular expression match of the name of the group.
+     */
+    nameRegexp?: pulumi.Input<string>;
+    /**
+     * The name of the group must end with the value.
+     */
+    nameSuffix?: pulumi.Input<string>;
+    /**
+     * Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.
+     */
+    types?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ProviderCacheResourcesFilter {
+    /**
+     * Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Match when the value exist in the name of the resource.
+     */
+    nameContains?: pulumi.Input<string>;
+    /**
+     * Match when the exact value does not exist in the name of the resource.
+     */
+    nameExclude?: pulumi.Input<string>;
+    /**
+     * The name of the resource must start with the value.
+     */
+    namePrefix?: pulumi.Input<string>;
+    /**
+     * The regular expression match of the name of the resource.
+     */
+    nameRegexp?: pulumi.Input<string>;
+    /**
+     * The name of the resource must end with the value.
+     */
+    nameSuffix?: pulumi.Input<string>;
+    /**
+     * Returns only resources that exactly match the given tags.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface ProviderDefaultTags {

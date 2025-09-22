@@ -338,7 +338,7 @@ export interface GetTwingateUsersUser {
      */
     lastName: string;
     /**
-     * Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, or MEMBER.
+     * Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
      */
     role: string;
     /**
@@ -520,9 +520,83 @@ export namespace config {
          */
         groupsEnabled?: boolean;
         /**
+         * Specifies the filter for the groups to be cached.
+         */
+        groupsFilter?: outputs.config.CacheGroupsFilter;
+        /**
          * Specifies whether the provider should cache resources. The default value is `true`.
          */
         resourceEnabled?: boolean;
+        /**
+         * Specifies the filter for the resources to be cached.
+         */
+        resourcesFilter?: outputs.config.CacheResourcesFilter;
+    }
+
+    export interface CacheGroupsFilter {
+        /**
+         * Returns only Groups matching the specified state.
+         */
+        isActive?: boolean;
+        /**
+         * Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+         */
+        name?: string;
+        /**
+         * Match when the value exist in the name of the group.
+         */
+        nameContains?: string;
+        /**
+         * Match when the exact value does not exist in the name of the group.
+         */
+        nameExclude?: string;
+        /**
+         * The name of the group must start with the value.
+         */
+        namePrefix?: string;
+        /**
+         * The regular expression match of the name of the group.
+         */
+        nameRegexp?: string;
+        /**
+         * The name of the group must end with the value.
+         */
+        nameSuffix?: string;
+        /**
+         * Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.
+         */
+        types?: string[];
+    }
+
+    export interface CacheResourcesFilter {
+        /**
+         * Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+         */
+        name?: string;
+        /**
+         * Match when the value exist in the name of the resource.
+         */
+        nameContains?: string;
+        /**
+         * Match when the exact value does not exist in the name of the resource.
+         */
+        nameExclude?: string;
+        /**
+         * The name of the resource must start with the value.
+         */
+        namePrefix?: string;
+        /**
+         * The regular expression match of the name of the resource.
+         */
+        nameRegexp?: string;
+        /**
+         * The name of the resource must end with the value.
+         */
+        nameSuffix?: string;
+        /**
+         * Returns only resources that exactly match the given tags.
+         */
+        tags?: {[key: string]: string};
     }
 
     export interface DefaultTags {
