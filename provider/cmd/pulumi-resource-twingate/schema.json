@@ -94,9 +94,93 @@
                     "type": "boolean",
                     "description": "Specifies whether the provider should cache groups. The default value is `true`.\n"
                 },
+                "groupsFilter": {
+                    "$ref": "#/types/twingate:config/cacheGroupsFilter:cacheGroupsFilter",
+                    "description": "Specifies the filter for the groups to be cached.\n"
+                },
                 "resourceEnabled": {
                     "type": "boolean",
                     "description": "Specifies whether the provider should cache resources. The default value is `true`.\n"
+                },
+                "resourcesFilter": {
+                    "$ref": "#/types/twingate:config/cacheResourcesFilter:cacheResourcesFilter",
+                    "description": "Specifies the filter for the resources to be cached.\n"
+                }
+            },
+            "type": "object"
+        },
+        "twingate:config/cacheGroupsFilter:cacheGroupsFilter": {
+            "properties": {
+                "isActive": {
+                    "type": "boolean",
+                    "description": "Returns only Groups matching the specified state.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.\n"
+                },
+                "nameContains": {
+                    "type": "string",
+                    "description": "Match when the value exist in the name of the group.\n"
+                },
+                "nameExclude": {
+                    "type": "string",
+                    "description": "Match when the exact value does not exist in the name of the group.\n"
+                },
+                "namePrefix": {
+                    "type": "string",
+                    "description": "The name of the group must start with the value.\n"
+                },
+                "nameRegexp": {
+                    "type": "string",
+                    "description": "The regular expression match of the name of the group.\n"
+                },
+                "nameSuffix": {
+                    "type": "string",
+                    "description": "The name of the group must end with the value.\n"
+                },
+                "types": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.\n"
+                }
+            },
+            "type": "object"
+        },
+        "twingate:config/cacheResourcesFilter:cacheResourcesFilter": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.\n"
+                },
+                "nameContains": {
+                    "type": "string",
+                    "description": "Match when the value exist in the name of the resource.\n"
+                },
+                "nameExclude": {
+                    "type": "string",
+                    "description": "Match when the exact value does not exist in the name of the resource.\n"
+                },
+                "namePrefix": {
+                    "type": "string",
+                    "description": "The name of the resource must start with the value.\n"
+                },
+                "nameRegexp": {
+                    "type": "string",
+                    "description": "The regular expression match of the name of the resource.\n"
+                },
+                "nameSuffix": {
+                    "type": "string",
+                    "description": "The name of the resource must end with the value.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Returns only resources that exactly match the given tags.\n"
                 }
             },
             "type": "object"
@@ -119,9 +203,93 @@
                     "type": "boolean",
                     "description": "Specifies whether the provider should cache groups. The default value is `true`.\n"
                 },
+                "groupsFilter": {
+                    "$ref": "#/types/twingate:index/ProviderCacheGroupsFilter:ProviderCacheGroupsFilter",
+                    "description": "Specifies the filter for the groups to be cached.\n"
+                },
                 "resourceEnabled": {
                     "type": "boolean",
                     "description": "Specifies whether the provider should cache resources. The default value is `true`.\n"
+                },
+                "resourcesFilter": {
+                    "$ref": "#/types/twingate:index/ProviderCacheResourcesFilter:ProviderCacheResourcesFilter",
+                    "description": "Specifies the filter for the resources to be cached.\n"
+                }
+            },
+            "type": "object"
+        },
+        "twingate:index/ProviderCacheGroupsFilter:ProviderCacheGroupsFilter": {
+            "properties": {
+                "isActive": {
+                    "type": "boolean",
+                    "description": "Returns only Groups matching the specified state.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.\n"
+                },
+                "nameContains": {
+                    "type": "string",
+                    "description": "Match when the value exist in the name of the group.\n"
+                },
+                "nameExclude": {
+                    "type": "string",
+                    "description": "Match when the exact value does not exist in the name of the group.\n"
+                },
+                "namePrefix": {
+                    "type": "string",
+                    "description": "The name of the group must start with the value.\n"
+                },
+                "nameRegexp": {
+                    "type": "string",
+                    "description": "The regular expression match of the name of the group.\n"
+                },
+                "nameSuffix": {
+                    "type": "string",
+                    "description": "The name of the group must end with the value.\n"
+                },
+                "types": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.\n"
+                }
+            },
+            "type": "object"
+        },
+        "twingate:index/ProviderCacheResourcesFilter:ProviderCacheResourcesFilter": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.\n"
+                },
+                "nameContains": {
+                    "type": "string",
+                    "description": "Match when the value exist in the name of the resource.\n"
+                },
+                "nameExclude": {
+                    "type": "string",
+                    "description": "Match when the exact value does not exist in the name of the resource.\n"
+                },
+                "namePrefix": {
+                    "type": "string",
+                    "description": "The name of the resource must start with the value.\n"
+                },
+                "nameRegexp": {
+                    "type": "string",
+                    "description": "The regular expression match of the name of the resource.\n"
+                },
+                "nameSuffix": {
+                    "type": "string",
+                    "description": "The name of the resource must end with the value.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Returns only resources that exactly match the given tags.\n"
                 }
             },
             "type": "object"
@@ -1033,7 +1201,7 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, or MEMBER.\n"
+                    "description": "Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.\n"
                 },
                 "type": {
                     "type": "string",
@@ -1946,7 +2114,7 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "Determines the User's role. Either ADMIN, DEVOPS, SUPPORT or MEMBER.\n"
+                    "description": "Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.\n"
                 },
                 "sendInvite": {
                     "type": "boolean",
@@ -1986,7 +2154,7 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "Determines the User's role. Either ADMIN, DEVOPS, SUPPORT or MEMBER.\n"
+                    "description": "Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.\n"
                 },
                 "sendInvite": {
                     "type": "boolean",
@@ -2018,7 +2186,7 @@
                     },
                     "role": {
                         "type": "string",
-                        "description": "Determines the User's role. Either ADMIN, DEVOPS, SUPPORT or MEMBER.\n"
+                        "description": "Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.\n"
                     },
                     "sendInvite": {
                         "type": "boolean",
@@ -2041,7 +2209,7 @@
                 "properties": {
                     "__self__": {
                         "type": "ref",
-                        "$ref": "#/resources/pulumi:providers:twingate"
+                        "$ref": "#/provider"
                     }
                 },
                 "type": "pulumi:providers:twingate/terraformConfig",
@@ -2960,7 +3128,7 @@
                     },
                     "role": {
                         "type": "string",
-                        "description": "Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, or MEMBER\n"
+                        "description": "Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.\n"
                     },
                     "type": {
                         "type": "string",
