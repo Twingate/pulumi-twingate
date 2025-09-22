@@ -56,7 +56,7 @@ export interface GetTwingateUserResult {
      */
     readonly lastName: string;
     /**
-     * Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, or MEMBER
+     * Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
      */
     readonly role: string;
     /**
