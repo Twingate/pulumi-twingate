@@ -20,10 +20,22 @@ namespace Twingate.Twingate.Inputs
         public Input<bool>? GroupsEnabled { get; set; }
 
         /// <summary>
+        /// Specifies the filter for the groups to be cached.
+        /// </summary>
+        [Input("groupsFilter")]
+        public Input<Inputs.ProviderCacheGroupsFilterArgs>? GroupsFilter { get; set; }
+
+        /// <summary>
         /// Specifies whether the provider should cache resources. The default value is `true`.
         /// </summary>
         [Input("resourceEnabled")]
         public Input<bool>? ResourceEnabled { get; set; }
+
+        /// <summary>
+        /// Specifies the filter for the resources to be cached.
+        /// </summary>
+        [Input("resourcesFilter")]
+        public Input<Inputs.ProviderCacheResourcesFilterArgs>? ResourcesFilter { get; set; }
 
         public ProviderCacheArgs()
         {

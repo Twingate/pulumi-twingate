@@ -16,8 +16,12 @@ var _ = internal.GetEnvOrDefault
 type Cache struct {
 	// Specifies whether the provider should cache groups. The default value is `true`.
 	GroupsEnabled *bool `pulumi:"groupsEnabled"`
+	// Specifies the filter for the groups to be cached.
+	GroupsFilter *CacheGroupsFilter `pulumi:"groupsFilter"`
 	// Specifies whether the provider should cache resources. The default value is `true`.
 	ResourceEnabled *bool `pulumi:"resourceEnabled"`
+	// Specifies the filter for the resources to be cached.
+	ResourcesFilter *CacheResourcesFilter `pulumi:"resourcesFilter"`
 }
 
 // CacheInput is an input type that accepts CacheArgs and CacheOutput values.
@@ -34,8 +38,12 @@ type CacheInput interface {
 type CacheArgs struct {
 	// Specifies whether the provider should cache groups. The default value is `true`.
 	GroupsEnabled pulumi.BoolPtrInput `pulumi:"groupsEnabled"`
+	// Specifies the filter for the groups to be cached.
+	GroupsFilter CacheGroupsFilterPtrInput `pulumi:"groupsFilter"`
 	// Specifies whether the provider should cache resources. The default value is `true`.
 	ResourceEnabled pulumi.BoolPtrInput `pulumi:"resourceEnabled"`
+	// Specifies the filter for the resources to be cached.
+	ResourcesFilter CacheResourcesFilterPtrInput `pulumi:"resourcesFilter"`
 }
 
 func (CacheArgs) ElementType() reflect.Type {
@@ -69,9 +77,540 @@ func (o CacheOutput) GroupsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Cache) *bool { return v.GroupsEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Specifies the filter for the groups to be cached.
+func (o CacheOutput) GroupsFilter() CacheGroupsFilterPtrOutput {
+	return o.ApplyT(func(v Cache) *CacheGroupsFilter { return v.GroupsFilter }).(CacheGroupsFilterPtrOutput)
+}
+
 // Specifies whether the provider should cache resources. The default value is `true`.
 func (o CacheOutput) ResourceEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Cache) *bool { return v.ResourceEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the filter for the resources to be cached.
+func (o CacheOutput) ResourcesFilter() CacheResourcesFilterPtrOutput {
+	return o.ApplyT(func(v Cache) *CacheResourcesFilter { return v.ResourcesFilter }).(CacheResourcesFilterPtrOutput)
+}
+
+type CacheGroupsFilter struct {
+	// Returns only Groups matching the specified state.
+	IsActive *bool `pulumi:"isActive"`
+	// Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+	Name *string `pulumi:"name"`
+	// Match when the value exist in the name of the group.
+	NameContains *string `pulumi:"nameContains"`
+	// Match when the exact value does not exist in the name of the group.
+	NameExclude *string `pulumi:"nameExclude"`
+	// The name of the group must start with the value.
+	NamePrefix *string `pulumi:"namePrefix"`
+	// The regular expression match of the name of the group.
+	NameRegexp *string `pulumi:"nameRegexp"`
+	// The name of the group must end with the value.
+	NameSuffix *string `pulumi:"nameSuffix"`
+	// Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.
+	Types []string `pulumi:"types"`
+}
+
+// CacheGroupsFilterInput is an input type that accepts CacheGroupsFilterArgs and CacheGroupsFilterOutput values.
+// You can construct a concrete instance of `CacheGroupsFilterInput` via:
+//
+//	CacheGroupsFilterArgs{...}
+type CacheGroupsFilterInput interface {
+	pulumi.Input
+
+	ToCacheGroupsFilterOutput() CacheGroupsFilterOutput
+	ToCacheGroupsFilterOutputWithContext(context.Context) CacheGroupsFilterOutput
+}
+
+type CacheGroupsFilterArgs struct {
+	// Returns only Groups matching the specified state.
+	IsActive pulumi.BoolPtrInput `pulumi:"isActive"`
+	// Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Match when the value exist in the name of the group.
+	NameContains pulumi.StringPtrInput `pulumi:"nameContains"`
+	// Match when the exact value does not exist in the name of the group.
+	NameExclude pulumi.StringPtrInput `pulumi:"nameExclude"`
+	// The name of the group must start with the value.
+	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
+	// The regular expression match of the name of the group.
+	NameRegexp pulumi.StringPtrInput `pulumi:"nameRegexp"`
+	// The name of the group must end with the value.
+	NameSuffix pulumi.StringPtrInput `pulumi:"nameSuffix"`
+	// Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.
+	Types pulumi.StringArrayInput `pulumi:"types"`
+}
+
+func (CacheGroupsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CacheGroupsFilter)(nil)).Elem()
+}
+
+func (i CacheGroupsFilterArgs) ToCacheGroupsFilterOutput() CacheGroupsFilterOutput {
+	return i.ToCacheGroupsFilterOutputWithContext(context.Background())
+}
+
+func (i CacheGroupsFilterArgs) ToCacheGroupsFilterOutputWithContext(ctx context.Context) CacheGroupsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CacheGroupsFilterOutput)
+}
+
+func (i CacheGroupsFilterArgs) ToCacheGroupsFilterPtrOutput() CacheGroupsFilterPtrOutput {
+	return i.ToCacheGroupsFilterPtrOutputWithContext(context.Background())
+}
+
+func (i CacheGroupsFilterArgs) ToCacheGroupsFilterPtrOutputWithContext(ctx context.Context) CacheGroupsFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CacheGroupsFilterOutput).ToCacheGroupsFilterPtrOutputWithContext(ctx)
+}
+
+// CacheGroupsFilterPtrInput is an input type that accepts CacheGroupsFilterArgs, CacheGroupsFilterPtr and CacheGroupsFilterPtrOutput values.
+// You can construct a concrete instance of `CacheGroupsFilterPtrInput` via:
+//
+//	        CacheGroupsFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type CacheGroupsFilterPtrInput interface {
+	pulumi.Input
+
+	ToCacheGroupsFilterPtrOutput() CacheGroupsFilterPtrOutput
+	ToCacheGroupsFilterPtrOutputWithContext(context.Context) CacheGroupsFilterPtrOutput
+}
+
+type cacheGroupsFilterPtrType CacheGroupsFilterArgs
+
+func CacheGroupsFilterPtr(v *CacheGroupsFilterArgs) CacheGroupsFilterPtrInput {
+	return (*cacheGroupsFilterPtrType)(v)
+}
+
+func (*cacheGroupsFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CacheGroupsFilter)(nil)).Elem()
+}
+
+func (i *cacheGroupsFilterPtrType) ToCacheGroupsFilterPtrOutput() CacheGroupsFilterPtrOutput {
+	return i.ToCacheGroupsFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *cacheGroupsFilterPtrType) ToCacheGroupsFilterPtrOutputWithContext(ctx context.Context) CacheGroupsFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CacheGroupsFilterPtrOutput)
+}
+
+type CacheGroupsFilterOutput struct{ *pulumi.OutputState }
+
+func (CacheGroupsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CacheGroupsFilter)(nil)).Elem()
+}
+
+func (o CacheGroupsFilterOutput) ToCacheGroupsFilterOutput() CacheGroupsFilterOutput {
+	return o
+}
+
+func (o CacheGroupsFilterOutput) ToCacheGroupsFilterOutputWithContext(ctx context.Context) CacheGroupsFilterOutput {
+	return o
+}
+
+func (o CacheGroupsFilterOutput) ToCacheGroupsFilterPtrOutput() CacheGroupsFilterPtrOutput {
+	return o.ToCacheGroupsFilterPtrOutputWithContext(context.Background())
+}
+
+func (o CacheGroupsFilterOutput) ToCacheGroupsFilterPtrOutputWithContext(ctx context.Context) CacheGroupsFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CacheGroupsFilter) *CacheGroupsFilter {
+		return &v
+	}).(CacheGroupsFilterPtrOutput)
+}
+
+// Returns only Groups matching the specified state.
+func (o CacheGroupsFilterOutput) IsActive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CacheGroupsFilter) *bool { return v.IsActive }).(pulumi.BoolPtrOutput)
+}
+
+// Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+func (o CacheGroupsFilterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CacheGroupsFilter) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Match when the value exist in the name of the group.
+func (o CacheGroupsFilterOutput) NameContains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CacheGroupsFilter) *string { return v.NameContains }).(pulumi.StringPtrOutput)
+}
+
+// Match when the exact value does not exist in the name of the group.
+func (o CacheGroupsFilterOutput) NameExclude() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CacheGroupsFilter) *string { return v.NameExclude }).(pulumi.StringPtrOutput)
+}
+
+// The name of the group must start with the value.
+func (o CacheGroupsFilterOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CacheGroupsFilter) *string { return v.NamePrefix }).(pulumi.StringPtrOutput)
+}
+
+// The regular expression match of the name of the group.
+func (o CacheGroupsFilterOutput) NameRegexp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CacheGroupsFilter) *string { return v.NameRegexp }).(pulumi.StringPtrOutput)
+}
+
+// The name of the group must end with the value.
+func (o CacheGroupsFilterOutput) NameSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CacheGroupsFilter) *string { return v.NameSuffix }).(pulumi.StringPtrOutput)
+}
+
+// Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.
+func (o CacheGroupsFilterOutput) Types() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CacheGroupsFilter) []string { return v.Types }).(pulumi.StringArrayOutput)
+}
+
+type CacheGroupsFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (CacheGroupsFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CacheGroupsFilter)(nil)).Elem()
+}
+
+func (o CacheGroupsFilterPtrOutput) ToCacheGroupsFilterPtrOutput() CacheGroupsFilterPtrOutput {
+	return o
+}
+
+func (o CacheGroupsFilterPtrOutput) ToCacheGroupsFilterPtrOutputWithContext(ctx context.Context) CacheGroupsFilterPtrOutput {
+	return o
+}
+
+func (o CacheGroupsFilterPtrOutput) Elem() CacheGroupsFilterOutput {
+	return o.ApplyT(func(v *CacheGroupsFilter) CacheGroupsFilter {
+		if v != nil {
+			return *v
+		}
+		var ret CacheGroupsFilter
+		return ret
+	}).(CacheGroupsFilterOutput)
+}
+
+// Returns only Groups matching the specified state.
+func (o CacheGroupsFilterPtrOutput) IsActive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CacheGroupsFilter) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsActive
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+func (o CacheGroupsFilterPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CacheGroupsFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Match when the value exist in the name of the group.
+func (o CacheGroupsFilterPtrOutput) NameContains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CacheGroupsFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameContains
+	}).(pulumi.StringPtrOutput)
+}
+
+// Match when the exact value does not exist in the name of the group.
+func (o CacheGroupsFilterPtrOutput) NameExclude() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CacheGroupsFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameExclude
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the group must start with the value.
+func (o CacheGroupsFilterPtrOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CacheGroupsFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NamePrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// The regular expression match of the name of the group.
+func (o CacheGroupsFilterPtrOutput) NameRegexp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CacheGroupsFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameRegexp
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the group must end with the value.
+func (o CacheGroupsFilterPtrOutput) NameSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CacheGroupsFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameSuffix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.
+func (o CacheGroupsFilterPtrOutput) Types() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CacheGroupsFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Types
+	}).(pulumi.StringArrayOutput)
+}
+
+type CacheResourcesFilter struct {
+	// Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+	Name *string `pulumi:"name"`
+	// Match when the value exist in the name of the resource.
+	NameContains *string `pulumi:"nameContains"`
+	// Match when the exact value does not exist in the name of the resource.
+	NameExclude *string `pulumi:"nameExclude"`
+	// The name of the resource must start with the value.
+	NamePrefix *string `pulumi:"namePrefix"`
+	// The regular expression match of the name of the resource.
+	NameRegexp *string `pulumi:"nameRegexp"`
+	// The name of the resource must end with the value.
+	NameSuffix *string `pulumi:"nameSuffix"`
+	// Returns only resources that exactly match the given tags.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// CacheResourcesFilterInput is an input type that accepts CacheResourcesFilterArgs and CacheResourcesFilterOutput values.
+// You can construct a concrete instance of `CacheResourcesFilterInput` via:
+//
+//	CacheResourcesFilterArgs{...}
+type CacheResourcesFilterInput interface {
+	pulumi.Input
+
+	ToCacheResourcesFilterOutput() CacheResourcesFilterOutput
+	ToCacheResourcesFilterOutputWithContext(context.Context) CacheResourcesFilterOutput
+}
+
+type CacheResourcesFilterArgs struct {
+	// Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Match when the value exist in the name of the resource.
+	NameContains pulumi.StringPtrInput `pulumi:"nameContains"`
+	// Match when the exact value does not exist in the name of the resource.
+	NameExclude pulumi.StringPtrInput `pulumi:"nameExclude"`
+	// The name of the resource must start with the value.
+	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
+	// The regular expression match of the name of the resource.
+	NameRegexp pulumi.StringPtrInput `pulumi:"nameRegexp"`
+	// The name of the resource must end with the value.
+	NameSuffix pulumi.StringPtrInput `pulumi:"nameSuffix"`
+	// Returns only resources that exactly match the given tags.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (CacheResourcesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CacheResourcesFilter)(nil)).Elem()
+}
+
+func (i CacheResourcesFilterArgs) ToCacheResourcesFilterOutput() CacheResourcesFilterOutput {
+	return i.ToCacheResourcesFilterOutputWithContext(context.Background())
+}
+
+func (i CacheResourcesFilterArgs) ToCacheResourcesFilterOutputWithContext(ctx context.Context) CacheResourcesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CacheResourcesFilterOutput)
+}
+
+func (i CacheResourcesFilterArgs) ToCacheResourcesFilterPtrOutput() CacheResourcesFilterPtrOutput {
+	return i.ToCacheResourcesFilterPtrOutputWithContext(context.Background())
+}
+
+func (i CacheResourcesFilterArgs) ToCacheResourcesFilterPtrOutputWithContext(ctx context.Context) CacheResourcesFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CacheResourcesFilterOutput).ToCacheResourcesFilterPtrOutputWithContext(ctx)
+}
+
+// CacheResourcesFilterPtrInput is an input type that accepts CacheResourcesFilterArgs, CacheResourcesFilterPtr and CacheResourcesFilterPtrOutput values.
+// You can construct a concrete instance of `CacheResourcesFilterPtrInput` via:
+//
+//	        CacheResourcesFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type CacheResourcesFilterPtrInput interface {
+	pulumi.Input
+
+	ToCacheResourcesFilterPtrOutput() CacheResourcesFilterPtrOutput
+	ToCacheResourcesFilterPtrOutputWithContext(context.Context) CacheResourcesFilterPtrOutput
+}
+
+type cacheResourcesFilterPtrType CacheResourcesFilterArgs
+
+func CacheResourcesFilterPtr(v *CacheResourcesFilterArgs) CacheResourcesFilterPtrInput {
+	return (*cacheResourcesFilterPtrType)(v)
+}
+
+func (*cacheResourcesFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CacheResourcesFilter)(nil)).Elem()
+}
+
+func (i *cacheResourcesFilterPtrType) ToCacheResourcesFilterPtrOutput() CacheResourcesFilterPtrOutput {
+	return i.ToCacheResourcesFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *cacheResourcesFilterPtrType) ToCacheResourcesFilterPtrOutputWithContext(ctx context.Context) CacheResourcesFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CacheResourcesFilterPtrOutput)
+}
+
+type CacheResourcesFilterOutput struct{ *pulumi.OutputState }
+
+func (CacheResourcesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CacheResourcesFilter)(nil)).Elem()
+}
+
+func (o CacheResourcesFilterOutput) ToCacheResourcesFilterOutput() CacheResourcesFilterOutput {
+	return o
+}
+
+func (o CacheResourcesFilterOutput) ToCacheResourcesFilterOutputWithContext(ctx context.Context) CacheResourcesFilterOutput {
+	return o
+}
+
+func (o CacheResourcesFilterOutput) ToCacheResourcesFilterPtrOutput() CacheResourcesFilterPtrOutput {
+	return o.ToCacheResourcesFilterPtrOutputWithContext(context.Background())
+}
+
+func (o CacheResourcesFilterOutput) ToCacheResourcesFilterPtrOutputWithContext(ctx context.Context) CacheResourcesFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CacheResourcesFilter) *CacheResourcesFilter {
+		return &v
+	}).(CacheResourcesFilterPtrOutput)
+}
+
+// Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+func (o CacheResourcesFilterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CacheResourcesFilter) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Match when the value exist in the name of the resource.
+func (o CacheResourcesFilterOutput) NameContains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CacheResourcesFilter) *string { return v.NameContains }).(pulumi.StringPtrOutput)
+}
+
+// Match when the exact value does not exist in the name of the resource.
+func (o CacheResourcesFilterOutput) NameExclude() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CacheResourcesFilter) *string { return v.NameExclude }).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource must start with the value.
+func (o CacheResourcesFilterOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CacheResourcesFilter) *string { return v.NamePrefix }).(pulumi.StringPtrOutput)
+}
+
+// The regular expression match of the name of the resource.
+func (o CacheResourcesFilterOutput) NameRegexp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CacheResourcesFilter) *string { return v.NameRegexp }).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource must end with the value.
+func (o CacheResourcesFilterOutput) NameSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CacheResourcesFilter) *string { return v.NameSuffix }).(pulumi.StringPtrOutput)
+}
+
+// Returns only resources that exactly match the given tags.
+func (o CacheResourcesFilterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CacheResourcesFilter) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type CacheResourcesFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (CacheResourcesFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CacheResourcesFilter)(nil)).Elem()
+}
+
+func (o CacheResourcesFilterPtrOutput) ToCacheResourcesFilterPtrOutput() CacheResourcesFilterPtrOutput {
+	return o
+}
+
+func (o CacheResourcesFilterPtrOutput) ToCacheResourcesFilterPtrOutputWithContext(ctx context.Context) CacheResourcesFilterPtrOutput {
+	return o
+}
+
+func (o CacheResourcesFilterPtrOutput) Elem() CacheResourcesFilterOutput {
+	return o.ApplyT(func(v *CacheResourcesFilter) CacheResourcesFilter {
+		if v != nil {
+			return *v
+		}
+		var ret CacheResourcesFilter
+		return ret
+	}).(CacheResourcesFilterOutput)
+}
+
+// Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+func (o CacheResourcesFilterPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CacheResourcesFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Match when the value exist in the name of the resource.
+func (o CacheResourcesFilterPtrOutput) NameContains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CacheResourcesFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameContains
+	}).(pulumi.StringPtrOutput)
+}
+
+// Match when the exact value does not exist in the name of the resource.
+func (o CacheResourcesFilterPtrOutput) NameExclude() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CacheResourcesFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameExclude
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource must start with the value.
+func (o CacheResourcesFilterPtrOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CacheResourcesFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NamePrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// The regular expression match of the name of the resource.
+func (o CacheResourcesFilterPtrOutput) NameRegexp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CacheResourcesFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameRegexp
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource must end with the value.
+func (o CacheResourcesFilterPtrOutput) NameSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CacheResourcesFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameSuffix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Returns only resources that exactly match the given tags.
+func (o CacheResourcesFilterPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CacheResourcesFilter) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
 }
 
 type DefaultTags struct {
@@ -128,7 +667,15 @@ func (o DefaultTagsOutput) Tags() pulumi.StringMapOutput {
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CacheInput)(nil)).Elem(), CacheArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CacheGroupsFilterInput)(nil)).Elem(), CacheGroupsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CacheGroupsFilterPtrInput)(nil)).Elem(), CacheGroupsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CacheResourcesFilterInput)(nil)).Elem(), CacheResourcesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CacheResourcesFilterPtrInput)(nil)).Elem(), CacheResourcesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultTagsInput)(nil)).Elem(), DefaultTagsArgs{})
 	pulumi.RegisterOutputType(CacheOutput{})
+	pulumi.RegisterOutputType(CacheGroupsFilterOutput{})
+	pulumi.RegisterOutputType(CacheGroupsFilterPtrOutput{})
+	pulumi.RegisterOutputType(CacheResourcesFilterOutput{})
+	pulumi.RegisterOutputType(CacheResourcesFilterPtrOutput{})
 	pulumi.RegisterOutputType(DefaultTagsOutput{})
 }

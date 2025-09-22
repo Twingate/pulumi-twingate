@@ -135,7 +135,7 @@ namespace Twingate.Twingate
         /// </summary>
         public readonly string LastName;
         /// <summary>
-        /// Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, or MEMBER
+        /// Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
         /// </summary>
         public readonly string Role;
         /// <summary>
