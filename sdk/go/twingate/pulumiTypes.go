@@ -16,8 +16,12 @@ var _ = internal.GetEnvOrDefault
 type ProviderCache struct {
 	// Specifies whether the provider should cache groups. The default value is `true`.
 	GroupsEnabled *bool `pulumi:"groupsEnabled"`
+	// Specifies the filter for the groups to be cached.
+	GroupsFilter *ProviderCacheGroupsFilter `pulumi:"groupsFilter"`
 	// Specifies whether the provider should cache resources. The default value is `true`.
 	ResourceEnabled *bool `pulumi:"resourceEnabled"`
+	// Specifies the filter for the resources to be cached.
+	ResourcesFilter *ProviderCacheResourcesFilter `pulumi:"resourcesFilter"`
 }
 
 // ProviderCacheInput is an input type that accepts ProviderCacheArgs and ProviderCacheOutput values.
@@ -34,8 +38,12 @@ type ProviderCacheInput interface {
 type ProviderCacheArgs struct {
 	// Specifies whether the provider should cache groups. The default value is `true`.
 	GroupsEnabled pulumi.BoolPtrInput `pulumi:"groupsEnabled"`
+	// Specifies the filter for the groups to be cached.
+	GroupsFilter ProviderCacheGroupsFilterPtrInput `pulumi:"groupsFilter"`
 	// Specifies whether the provider should cache resources. The default value is `true`.
 	ResourceEnabled pulumi.BoolPtrInput `pulumi:"resourceEnabled"`
+	// Specifies the filter for the resources to be cached.
+	ResourcesFilter ProviderCacheResourcesFilterPtrInput `pulumi:"resourcesFilter"`
 }
 
 func (ProviderCacheArgs) ElementType() reflect.Type {
@@ -120,9 +128,19 @@ func (o ProviderCacheOutput) GroupsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProviderCache) *bool { return v.GroupsEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Specifies the filter for the groups to be cached.
+func (o ProviderCacheOutput) GroupsFilter() ProviderCacheGroupsFilterPtrOutput {
+	return o.ApplyT(func(v ProviderCache) *ProviderCacheGroupsFilter { return v.GroupsFilter }).(ProviderCacheGroupsFilterPtrOutput)
+}
+
 // Specifies whether the provider should cache resources. The default value is `true`.
 func (o ProviderCacheOutput) ResourceEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProviderCache) *bool { return v.ResourceEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the filter for the resources to be cached.
+func (o ProviderCacheOutput) ResourcesFilter() ProviderCacheResourcesFilterPtrOutput {
+	return o.ApplyT(func(v ProviderCache) *ProviderCacheResourcesFilter { return v.ResourcesFilter }).(ProviderCacheResourcesFilterPtrOutput)
 }
 
 type ProviderCachePtrOutput struct{ *pulumi.OutputState }
@@ -159,6 +177,16 @@ func (o ProviderCachePtrOutput) GroupsEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Specifies the filter for the groups to be cached.
+func (o ProviderCachePtrOutput) GroupsFilter() ProviderCacheGroupsFilterPtrOutput {
+	return o.ApplyT(func(v *ProviderCache) *ProviderCacheGroupsFilter {
+		if v == nil {
+			return nil
+		}
+		return v.GroupsFilter
+	}).(ProviderCacheGroupsFilterPtrOutput)
+}
+
 // Specifies whether the provider should cache resources. The default value is `true`.
 func (o ProviderCachePtrOutput) ResourceEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProviderCache) *bool {
@@ -167,6 +195,537 @@ func (o ProviderCachePtrOutput) ResourceEnabled() pulumi.BoolPtrOutput {
 		}
 		return v.ResourceEnabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the filter for the resources to be cached.
+func (o ProviderCachePtrOutput) ResourcesFilter() ProviderCacheResourcesFilterPtrOutput {
+	return o.ApplyT(func(v *ProviderCache) *ProviderCacheResourcesFilter {
+		if v == nil {
+			return nil
+		}
+		return v.ResourcesFilter
+	}).(ProviderCacheResourcesFilterPtrOutput)
+}
+
+type ProviderCacheGroupsFilter struct {
+	// Returns only Groups matching the specified state.
+	IsActive *bool `pulumi:"isActive"`
+	// Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+	Name *string `pulumi:"name"`
+	// Match when the value exist in the name of the group.
+	NameContains *string `pulumi:"nameContains"`
+	// Match when the exact value does not exist in the name of the group.
+	NameExclude *string `pulumi:"nameExclude"`
+	// The name of the group must start with the value.
+	NamePrefix *string `pulumi:"namePrefix"`
+	// The regular expression match of the name of the group.
+	NameRegexp *string `pulumi:"nameRegexp"`
+	// The name of the group must end with the value.
+	NameSuffix *string `pulumi:"nameSuffix"`
+	// Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.
+	Types []string `pulumi:"types"`
+}
+
+// ProviderCacheGroupsFilterInput is an input type that accepts ProviderCacheGroupsFilterArgs and ProviderCacheGroupsFilterOutput values.
+// You can construct a concrete instance of `ProviderCacheGroupsFilterInput` via:
+//
+//	ProviderCacheGroupsFilterArgs{...}
+type ProviderCacheGroupsFilterInput interface {
+	pulumi.Input
+
+	ToProviderCacheGroupsFilterOutput() ProviderCacheGroupsFilterOutput
+	ToProviderCacheGroupsFilterOutputWithContext(context.Context) ProviderCacheGroupsFilterOutput
+}
+
+type ProviderCacheGroupsFilterArgs struct {
+	// Returns only Groups matching the specified state.
+	IsActive pulumi.BoolPtrInput `pulumi:"isActive"`
+	// Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Match when the value exist in the name of the group.
+	NameContains pulumi.StringPtrInput `pulumi:"nameContains"`
+	// Match when the exact value does not exist in the name of the group.
+	NameExclude pulumi.StringPtrInput `pulumi:"nameExclude"`
+	// The name of the group must start with the value.
+	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
+	// The regular expression match of the name of the group.
+	NameRegexp pulumi.StringPtrInput `pulumi:"nameRegexp"`
+	// The name of the group must end with the value.
+	NameSuffix pulumi.StringPtrInput `pulumi:"nameSuffix"`
+	// Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.
+	Types pulumi.StringArrayInput `pulumi:"types"`
+}
+
+func (ProviderCacheGroupsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderCacheGroupsFilter)(nil)).Elem()
+}
+
+func (i ProviderCacheGroupsFilterArgs) ToProviderCacheGroupsFilterOutput() ProviderCacheGroupsFilterOutput {
+	return i.ToProviderCacheGroupsFilterOutputWithContext(context.Background())
+}
+
+func (i ProviderCacheGroupsFilterArgs) ToProviderCacheGroupsFilterOutputWithContext(ctx context.Context) ProviderCacheGroupsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderCacheGroupsFilterOutput)
+}
+
+func (i ProviderCacheGroupsFilterArgs) ToProviderCacheGroupsFilterPtrOutput() ProviderCacheGroupsFilterPtrOutput {
+	return i.ToProviderCacheGroupsFilterPtrOutputWithContext(context.Background())
+}
+
+func (i ProviderCacheGroupsFilterArgs) ToProviderCacheGroupsFilterPtrOutputWithContext(ctx context.Context) ProviderCacheGroupsFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderCacheGroupsFilterOutput).ToProviderCacheGroupsFilterPtrOutputWithContext(ctx)
+}
+
+// ProviderCacheGroupsFilterPtrInput is an input type that accepts ProviderCacheGroupsFilterArgs, ProviderCacheGroupsFilterPtr and ProviderCacheGroupsFilterPtrOutput values.
+// You can construct a concrete instance of `ProviderCacheGroupsFilterPtrInput` via:
+//
+//	        ProviderCacheGroupsFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProviderCacheGroupsFilterPtrInput interface {
+	pulumi.Input
+
+	ToProviderCacheGroupsFilterPtrOutput() ProviderCacheGroupsFilterPtrOutput
+	ToProviderCacheGroupsFilterPtrOutputWithContext(context.Context) ProviderCacheGroupsFilterPtrOutput
+}
+
+type providerCacheGroupsFilterPtrType ProviderCacheGroupsFilterArgs
+
+func ProviderCacheGroupsFilterPtr(v *ProviderCacheGroupsFilterArgs) ProviderCacheGroupsFilterPtrInput {
+	return (*providerCacheGroupsFilterPtrType)(v)
+}
+
+func (*providerCacheGroupsFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderCacheGroupsFilter)(nil)).Elem()
+}
+
+func (i *providerCacheGroupsFilterPtrType) ToProviderCacheGroupsFilterPtrOutput() ProviderCacheGroupsFilterPtrOutput {
+	return i.ToProviderCacheGroupsFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *providerCacheGroupsFilterPtrType) ToProviderCacheGroupsFilterPtrOutputWithContext(ctx context.Context) ProviderCacheGroupsFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderCacheGroupsFilterPtrOutput)
+}
+
+type ProviderCacheGroupsFilterOutput struct{ *pulumi.OutputState }
+
+func (ProviderCacheGroupsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderCacheGroupsFilter)(nil)).Elem()
+}
+
+func (o ProviderCacheGroupsFilterOutput) ToProviderCacheGroupsFilterOutput() ProviderCacheGroupsFilterOutput {
+	return o
+}
+
+func (o ProviderCacheGroupsFilterOutput) ToProviderCacheGroupsFilterOutputWithContext(ctx context.Context) ProviderCacheGroupsFilterOutput {
+	return o
+}
+
+func (o ProviderCacheGroupsFilterOutput) ToProviderCacheGroupsFilterPtrOutput() ProviderCacheGroupsFilterPtrOutput {
+	return o.ToProviderCacheGroupsFilterPtrOutputWithContext(context.Background())
+}
+
+func (o ProviderCacheGroupsFilterOutput) ToProviderCacheGroupsFilterPtrOutputWithContext(ctx context.Context) ProviderCacheGroupsFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProviderCacheGroupsFilter) *ProviderCacheGroupsFilter {
+		return &v
+	}).(ProviderCacheGroupsFilterPtrOutput)
+}
+
+// Returns only Groups matching the specified state.
+func (o ProviderCacheGroupsFilterOutput) IsActive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProviderCacheGroupsFilter) *bool { return v.IsActive }).(pulumi.BoolPtrOutput)
+}
+
+// Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+func (o ProviderCacheGroupsFilterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderCacheGroupsFilter) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Match when the value exist in the name of the group.
+func (o ProviderCacheGroupsFilterOutput) NameContains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderCacheGroupsFilter) *string { return v.NameContains }).(pulumi.StringPtrOutput)
+}
+
+// Match when the exact value does not exist in the name of the group.
+func (o ProviderCacheGroupsFilterOutput) NameExclude() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderCacheGroupsFilter) *string { return v.NameExclude }).(pulumi.StringPtrOutput)
+}
+
+// The name of the group must start with the value.
+func (o ProviderCacheGroupsFilterOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderCacheGroupsFilter) *string { return v.NamePrefix }).(pulumi.StringPtrOutput)
+}
+
+// The regular expression match of the name of the group.
+func (o ProviderCacheGroupsFilterOutput) NameRegexp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderCacheGroupsFilter) *string { return v.NameRegexp }).(pulumi.StringPtrOutput)
+}
+
+// The name of the group must end with the value.
+func (o ProviderCacheGroupsFilterOutput) NameSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderCacheGroupsFilter) *string { return v.NameSuffix }).(pulumi.StringPtrOutput)
+}
+
+// Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.
+func (o ProviderCacheGroupsFilterOutput) Types() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ProviderCacheGroupsFilter) []string { return v.Types }).(pulumi.StringArrayOutput)
+}
+
+type ProviderCacheGroupsFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (ProviderCacheGroupsFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderCacheGroupsFilter)(nil)).Elem()
+}
+
+func (o ProviderCacheGroupsFilterPtrOutput) ToProviderCacheGroupsFilterPtrOutput() ProviderCacheGroupsFilterPtrOutput {
+	return o
+}
+
+func (o ProviderCacheGroupsFilterPtrOutput) ToProviderCacheGroupsFilterPtrOutputWithContext(ctx context.Context) ProviderCacheGroupsFilterPtrOutput {
+	return o
+}
+
+func (o ProviderCacheGroupsFilterPtrOutput) Elem() ProviderCacheGroupsFilterOutput {
+	return o.ApplyT(func(v *ProviderCacheGroupsFilter) ProviderCacheGroupsFilter {
+		if v != nil {
+			return *v
+		}
+		var ret ProviderCacheGroupsFilter
+		return ret
+	}).(ProviderCacheGroupsFilterOutput)
+}
+
+// Returns only Groups matching the specified state.
+func (o ProviderCacheGroupsFilterPtrOutput) IsActive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProviderCacheGroupsFilter) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsActive
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+func (o ProviderCacheGroupsFilterPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderCacheGroupsFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Match when the value exist in the name of the group.
+func (o ProviderCacheGroupsFilterPtrOutput) NameContains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderCacheGroupsFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameContains
+	}).(pulumi.StringPtrOutput)
+}
+
+// Match when the exact value does not exist in the name of the group.
+func (o ProviderCacheGroupsFilterPtrOutput) NameExclude() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderCacheGroupsFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameExclude
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the group must start with the value.
+func (o ProviderCacheGroupsFilterPtrOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderCacheGroupsFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NamePrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// The regular expression match of the name of the group.
+func (o ProviderCacheGroupsFilterPtrOutput) NameRegexp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderCacheGroupsFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameRegexp
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the group must end with the value.
+func (o ProviderCacheGroupsFilterPtrOutput) NameSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderCacheGroupsFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameSuffix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.
+func (o ProviderCacheGroupsFilterPtrOutput) Types() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ProviderCacheGroupsFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Types
+	}).(pulumi.StringArrayOutput)
+}
+
+type ProviderCacheResourcesFilter struct {
+	// Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+	Name *string `pulumi:"name"`
+	// Match when the value exist in the name of the resource.
+	NameContains *string `pulumi:"nameContains"`
+	// Match when the exact value does not exist in the name of the resource.
+	NameExclude *string `pulumi:"nameExclude"`
+	// The name of the resource must start with the value.
+	NamePrefix *string `pulumi:"namePrefix"`
+	// The regular expression match of the name of the resource.
+	NameRegexp *string `pulumi:"nameRegexp"`
+	// The name of the resource must end with the value.
+	NameSuffix *string `pulumi:"nameSuffix"`
+	// Returns only resources that exactly match the given tags.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// ProviderCacheResourcesFilterInput is an input type that accepts ProviderCacheResourcesFilterArgs and ProviderCacheResourcesFilterOutput values.
+// You can construct a concrete instance of `ProviderCacheResourcesFilterInput` via:
+//
+//	ProviderCacheResourcesFilterArgs{...}
+type ProviderCacheResourcesFilterInput interface {
+	pulumi.Input
+
+	ToProviderCacheResourcesFilterOutput() ProviderCacheResourcesFilterOutput
+	ToProviderCacheResourcesFilterOutputWithContext(context.Context) ProviderCacheResourcesFilterOutput
+}
+
+type ProviderCacheResourcesFilterArgs struct {
+	// Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Match when the value exist in the name of the resource.
+	NameContains pulumi.StringPtrInput `pulumi:"nameContains"`
+	// Match when the exact value does not exist in the name of the resource.
+	NameExclude pulumi.StringPtrInput `pulumi:"nameExclude"`
+	// The name of the resource must start with the value.
+	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
+	// The regular expression match of the name of the resource.
+	NameRegexp pulumi.StringPtrInput `pulumi:"nameRegexp"`
+	// The name of the resource must end with the value.
+	NameSuffix pulumi.StringPtrInput `pulumi:"nameSuffix"`
+	// Returns only resources that exactly match the given tags.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (ProviderCacheResourcesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderCacheResourcesFilter)(nil)).Elem()
+}
+
+func (i ProviderCacheResourcesFilterArgs) ToProviderCacheResourcesFilterOutput() ProviderCacheResourcesFilterOutput {
+	return i.ToProviderCacheResourcesFilterOutputWithContext(context.Background())
+}
+
+func (i ProviderCacheResourcesFilterArgs) ToProviderCacheResourcesFilterOutputWithContext(ctx context.Context) ProviderCacheResourcesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderCacheResourcesFilterOutput)
+}
+
+func (i ProviderCacheResourcesFilterArgs) ToProviderCacheResourcesFilterPtrOutput() ProviderCacheResourcesFilterPtrOutput {
+	return i.ToProviderCacheResourcesFilterPtrOutputWithContext(context.Background())
+}
+
+func (i ProviderCacheResourcesFilterArgs) ToProviderCacheResourcesFilterPtrOutputWithContext(ctx context.Context) ProviderCacheResourcesFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderCacheResourcesFilterOutput).ToProviderCacheResourcesFilterPtrOutputWithContext(ctx)
+}
+
+// ProviderCacheResourcesFilterPtrInput is an input type that accepts ProviderCacheResourcesFilterArgs, ProviderCacheResourcesFilterPtr and ProviderCacheResourcesFilterPtrOutput values.
+// You can construct a concrete instance of `ProviderCacheResourcesFilterPtrInput` via:
+//
+//	        ProviderCacheResourcesFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProviderCacheResourcesFilterPtrInput interface {
+	pulumi.Input
+
+	ToProviderCacheResourcesFilterPtrOutput() ProviderCacheResourcesFilterPtrOutput
+	ToProviderCacheResourcesFilterPtrOutputWithContext(context.Context) ProviderCacheResourcesFilterPtrOutput
+}
+
+type providerCacheResourcesFilterPtrType ProviderCacheResourcesFilterArgs
+
+func ProviderCacheResourcesFilterPtr(v *ProviderCacheResourcesFilterArgs) ProviderCacheResourcesFilterPtrInput {
+	return (*providerCacheResourcesFilterPtrType)(v)
+}
+
+func (*providerCacheResourcesFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderCacheResourcesFilter)(nil)).Elem()
+}
+
+func (i *providerCacheResourcesFilterPtrType) ToProviderCacheResourcesFilterPtrOutput() ProviderCacheResourcesFilterPtrOutput {
+	return i.ToProviderCacheResourcesFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *providerCacheResourcesFilterPtrType) ToProviderCacheResourcesFilterPtrOutputWithContext(ctx context.Context) ProviderCacheResourcesFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderCacheResourcesFilterPtrOutput)
+}
+
+type ProviderCacheResourcesFilterOutput struct{ *pulumi.OutputState }
+
+func (ProviderCacheResourcesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderCacheResourcesFilter)(nil)).Elem()
+}
+
+func (o ProviderCacheResourcesFilterOutput) ToProviderCacheResourcesFilterOutput() ProviderCacheResourcesFilterOutput {
+	return o
+}
+
+func (o ProviderCacheResourcesFilterOutput) ToProviderCacheResourcesFilterOutputWithContext(ctx context.Context) ProviderCacheResourcesFilterOutput {
+	return o
+}
+
+func (o ProviderCacheResourcesFilterOutput) ToProviderCacheResourcesFilterPtrOutput() ProviderCacheResourcesFilterPtrOutput {
+	return o.ToProviderCacheResourcesFilterPtrOutputWithContext(context.Background())
+}
+
+func (o ProviderCacheResourcesFilterOutput) ToProviderCacheResourcesFilterPtrOutputWithContext(ctx context.Context) ProviderCacheResourcesFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProviderCacheResourcesFilter) *ProviderCacheResourcesFilter {
+		return &v
+	}).(ProviderCacheResourcesFilterPtrOutput)
+}
+
+// Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+func (o ProviderCacheResourcesFilterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderCacheResourcesFilter) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Match when the value exist in the name of the resource.
+func (o ProviderCacheResourcesFilterOutput) NameContains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderCacheResourcesFilter) *string { return v.NameContains }).(pulumi.StringPtrOutput)
+}
+
+// Match when the exact value does not exist in the name of the resource.
+func (o ProviderCacheResourcesFilterOutput) NameExclude() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderCacheResourcesFilter) *string { return v.NameExclude }).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource must start with the value.
+func (o ProviderCacheResourcesFilterOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderCacheResourcesFilter) *string { return v.NamePrefix }).(pulumi.StringPtrOutput)
+}
+
+// The regular expression match of the name of the resource.
+func (o ProviderCacheResourcesFilterOutput) NameRegexp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderCacheResourcesFilter) *string { return v.NameRegexp }).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource must end with the value.
+func (o ProviderCacheResourcesFilterOutput) NameSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderCacheResourcesFilter) *string { return v.NameSuffix }).(pulumi.StringPtrOutput)
+}
+
+// Returns only resources that exactly match the given tags.
+func (o ProviderCacheResourcesFilterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ProviderCacheResourcesFilter) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type ProviderCacheResourcesFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (ProviderCacheResourcesFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderCacheResourcesFilter)(nil)).Elem()
+}
+
+func (o ProviderCacheResourcesFilterPtrOutput) ToProviderCacheResourcesFilterPtrOutput() ProviderCacheResourcesFilterPtrOutput {
+	return o
+}
+
+func (o ProviderCacheResourcesFilterPtrOutput) ToProviderCacheResourcesFilterPtrOutputWithContext(ctx context.Context) ProviderCacheResourcesFilterPtrOutput {
+	return o
+}
+
+func (o ProviderCacheResourcesFilterPtrOutput) Elem() ProviderCacheResourcesFilterOutput {
+	return o.ApplyT(func(v *ProviderCacheResourcesFilter) ProviderCacheResourcesFilter {
+		if v != nil {
+			return *v
+		}
+		var ret ProviderCacheResourcesFilter
+		return ret
+	}).(ProviderCacheResourcesFilterOutput)
+}
+
+// Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+func (o ProviderCacheResourcesFilterPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderCacheResourcesFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Match when the value exist in the name of the resource.
+func (o ProviderCacheResourcesFilterPtrOutput) NameContains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderCacheResourcesFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameContains
+	}).(pulumi.StringPtrOutput)
+}
+
+// Match when the exact value does not exist in the name of the resource.
+func (o ProviderCacheResourcesFilterPtrOutput) NameExclude() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderCacheResourcesFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameExclude
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource must start with the value.
+func (o ProviderCacheResourcesFilterPtrOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderCacheResourcesFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NamePrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// The regular expression match of the name of the resource.
+func (o ProviderCacheResourcesFilterPtrOutput) NameRegexp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderCacheResourcesFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameRegexp
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource must end with the value.
+func (o ProviderCacheResourcesFilterPtrOutput) NameSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderCacheResourcesFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameSuffix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Returns only resources that exactly match the given tags.
+func (o ProviderCacheResourcesFilterPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ProviderCacheResourcesFilter) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
 }
 
 type ProviderDefaultTags struct {
@@ -4582,7 +5141,7 @@ type GetTwingateUsersUser struct {
 	Id string `pulumi:"id"`
 	// The last name of the User
 	LastName string `pulumi:"lastName"`
-	// Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, or MEMBER.
+	// Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
 	Role string `pulumi:"role"`
 	// Indicates the User's type. Either MANUAL or SYNCED.
 	Type string `pulumi:"type"`
@@ -4608,7 +5167,7 @@ type GetTwingateUsersUserArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The last name of the User
 	LastName pulumi.StringInput `pulumi:"lastName"`
-	// Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, or MEMBER.
+	// Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
 	Role pulumi.StringInput `pulumi:"role"`
 	// Indicates the User's type. Either MANUAL or SYNCED.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -4685,7 +5244,7 @@ func (o GetTwingateUsersUserOutput) LastName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTwingateUsersUser) string { return v.LastName }).(pulumi.StringOutput)
 }
 
-// Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, or MEMBER.
+// Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
 func (o GetTwingateUsersUserOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTwingateUsersUser) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -4718,6 +5277,10 @@ func (o GetTwingateUsersUserArrayOutput) Index(i pulumi.IntInput) GetTwingateUse
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderCacheInput)(nil)).Elem(), ProviderCacheArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderCachePtrInput)(nil)).Elem(), ProviderCacheArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderCacheGroupsFilterInput)(nil)).Elem(), ProviderCacheGroupsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderCacheGroupsFilterPtrInput)(nil)).Elem(), ProviderCacheGroupsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderCacheResourcesFilterInput)(nil)).Elem(), ProviderCacheResourcesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderCacheResourcesFilterPtrInput)(nil)).Elem(), ProviderCacheResourcesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderDefaultTagsInput)(nil)).Elem(), ProviderDefaultTagsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderDefaultTagsPtrInput)(nil)).Elem(), ProviderDefaultTagsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateDNSFilteringProfileAllowedDomainsInput)(nil)).Elem(), TwingateDNSFilteringProfileAllowedDomainsArgs{})
@@ -4775,6 +5338,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTwingateUsersUserArrayInput)(nil)).Elem(), GetTwingateUsersUserArray{})
 	pulumi.RegisterOutputType(ProviderCacheOutput{})
 	pulumi.RegisterOutputType(ProviderCachePtrOutput{})
+	pulumi.RegisterOutputType(ProviderCacheGroupsFilterOutput{})
+	pulumi.RegisterOutputType(ProviderCacheGroupsFilterPtrOutput{})
+	pulumi.RegisterOutputType(ProviderCacheResourcesFilterOutput{})
+	pulumi.RegisterOutputType(ProviderCacheResourcesFilterPtrOutput{})
 	pulumi.RegisterOutputType(ProviderDefaultTagsOutput{})
 	pulumi.RegisterOutputType(ProviderDefaultTagsPtrOutput{})
 	pulumi.RegisterOutputType(TwingateDNSFilteringProfileAllowedDomainsOutput{})

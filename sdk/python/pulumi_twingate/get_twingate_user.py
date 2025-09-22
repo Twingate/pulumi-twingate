@@ -82,7 +82,7 @@ class GetTwingateUserResult:
     @pulumi.getter
     def role(self) -> _builtins.str:
         """
-        Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, or MEMBER
+        Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
         """
         return pulumi.get(self, "role")
 
