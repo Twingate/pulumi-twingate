@@ -17,6 +17,10 @@ from . import _utilities
 __all__ = [
     'ProviderCacheArgs',
     'ProviderCacheArgsDict',
+    'ProviderCacheGroupsFilterArgs',
+    'ProviderCacheGroupsFilterArgsDict',
+    'ProviderCacheResourcesFilterArgs',
+    'ProviderCacheResourcesFilterArgsDict',
     'ProviderDefaultTagsArgs',
     'ProviderDefaultTagsArgsDict',
     'TwingateDNSFilteringProfileAllowedDomainsArgs',
@@ -65,9 +69,17 @@ if not MYPY:
         """
         Specifies whether the provider should cache groups. The default value is `true`.
         """
+        groups_filter: NotRequired[pulumi.Input['ProviderCacheGroupsFilterArgsDict']]
+        """
+        Specifies the filter for the groups to be cached.
+        """
         resource_enabled: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Specifies whether the provider should cache resources. The default value is `true`.
+        """
+        resources_filter: NotRequired[pulumi.Input['ProviderCacheResourcesFilterArgsDict']]
+        """
+        Specifies the filter for the resources to be cached.
         """
 elif False:
     ProviderCacheArgsDict: TypeAlias = Mapping[str, Any]
@@ -76,15 +88,23 @@ elif False:
 class ProviderCacheArgs:
     def __init__(__self__, *,
                  groups_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 groups_filter: Optional[pulumi.Input['ProviderCacheGroupsFilterArgs']] = None,
+                 resource_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 resources_filter: Optional[pulumi.Input['ProviderCacheResourcesFilterArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] groups_enabled: Specifies whether the provider should cache groups. The default value is `true`.
+        :param pulumi.Input['ProviderCacheGroupsFilterArgs'] groups_filter: Specifies the filter for the groups to be cached.
         :param pulumi.Input[_builtins.bool] resource_enabled: Specifies whether the provider should cache resources. The default value is `true`.
+        :param pulumi.Input['ProviderCacheResourcesFilterArgs'] resources_filter: Specifies the filter for the resources to be cached.
         """
         if groups_enabled is not None:
             pulumi.set(__self__, "groups_enabled", groups_enabled)
+        if groups_filter is not None:
+            pulumi.set(__self__, "groups_filter", groups_filter)
         if resource_enabled is not None:
             pulumi.set(__self__, "resource_enabled", resource_enabled)
+        if resources_filter is not None:
+            pulumi.set(__self__, "resources_filter", resources_filter)
 
     @_builtins.property
     @pulumi.getter(name="groupsEnabled")
@@ -99,6 +119,18 @@ class ProviderCacheArgs:
         pulumi.set(self, "groups_enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="groupsFilter")
+    def groups_filter(self) -> Optional[pulumi.Input['ProviderCacheGroupsFilterArgs']]:
+        """
+        Specifies the filter for the groups to be cached.
+        """
+        return pulumi.get(self, "groups_filter")
+
+    @groups_filter.setter
+    def groups_filter(self, value: Optional[pulumi.Input['ProviderCacheGroupsFilterArgs']]):
+        pulumi.set(self, "groups_filter", value)
+
+    @_builtins.property
     @pulumi.getter(name="resourceEnabled")
     def resource_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -109,6 +141,342 @@ class ProviderCacheArgs:
     @resource_enabled.setter
     def resource_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "resource_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourcesFilter")
+    def resources_filter(self) -> Optional[pulumi.Input['ProviderCacheResourcesFilterArgs']]:
+        """
+        Specifies the filter for the resources to be cached.
+        """
+        return pulumi.get(self, "resources_filter")
+
+    @resources_filter.setter
+    def resources_filter(self, value: Optional[pulumi.Input['ProviderCacheResourcesFilterArgs']]):
+        pulumi.set(self, "resources_filter", value)
+
+
+if not MYPY:
+    class ProviderCacheGroupsFilterArgsDict(TypedDict):
+        is_active: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Returns only Groups matching the specified state.
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+        """
+        name_contains: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Match when the value exist in the name of the group.
+        """
+        name_exclude: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Match when the exact value does not exist in the name of the group.
+        """
+        name_prefix: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the group must start with the value.
+        """
+        name_regexp: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The regular expression match of the name of the group.
+        """
+        name_suffix: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the group must end with the value.
+        """
+        types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.
+        """
+elif False:
+    ProviderCacheGroupsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ProviderCacheGroupsFilterArgs:
+    def __init__(__self__, *,
+                 is_active: Optional[pulumi.Input[_builtins.bool]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 name_contains: Optional[pulumi.Input[_builtins.str]] = None,
+                 name_exclude: Optional[pulumi.Input[_builtins.str]] = None,
+                 name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
+                 name_regexp: Optional[pulumi.Input[_builtins.str]] = None,
+                 name_suffix: Optional[pulumi.Input[_builtins.str]] = None,
+                 types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] is_active: Returns only Groups matching the specified state.
+        :param pulumi.Input[_builtins.str] name: Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+        :param pulumi.Input[_builtins.str] name_contains: Match when the value exist in the name of the group.
+        :param pulumi.Input[_builtins.str] name_exclude: Match when the exact value does not exist in the name of the group.
+        :param pulumi.Input[_builtins.str] name_prefix: The name of the group must start with the value.
+        :param pulumi.Input[_builtins.str] name_regexp: The regular expression match of the name of the group.
+        :param pulumi.Input[_builtins.str] name_suffix: The name of the group must end with the value.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] types: Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.
+        """
+        if is_active is not None:
+            pulumi.set(__self__, "is_active", is_active)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if name_contains is not None:
+            pulumi.set(__self__, "name_contains", name_contains)
+        if name_exclude is not None:
+            pulumi.set(__self__, "name_exclude", name_exclude)
+        if name_prefix is not None:
+            pulumi.set(__self__, "name_prefix", name_prefix)
+        if name_regexp is not None:
+            pulumi.set(__self__, "name_regexp", name_regexp)
+        if name_suffix is not None:
+            pulumi.set(__self__, "name_suffix", name_suffix)
+        if types is not None:
+            pulumi.set(__self__, "types", types)
+
+    @_builtins.property
+    @pulumi.getter(name="isActive")
+    def is_active(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Returns only Groups matching the specified state.
+        """
+        return pulumi.get(self, "is_active")
+
+    @is_active.setter
+    def is_active(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_active", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nameContains")
+    def name_contains(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Match when the value exist in the name of the group.
+        """
+        return pulumi.get(self, "name_contains")
+
+    @name_contains.setter
+    def name_contains(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name_contains", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nameExclude")
+    def name_exclude(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Match when the exact value does not exist in the name of the group.
+        """
+        return pulumi.get(self, "name_exclude")
+
+    @name_exclude.setter
+    def name_exclude(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name_exclude", value)
+
+    @_builtins.property
+    @pulumi.getter(name="namePrefix")
+    def name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the group must start with the value.
+        """
+        return pulumi.get(self, "name_prefix")
+
+    @name_prefix.setter
+    def name_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name_prefix", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nameRegexp")
+    def name_regexp(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The regular expression match of the name of the group.
+        """
+        return pulumi.get(self, "name_regexp")
+
+    @name_regexp.setter
+    def name_regexp(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name_regexp", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nameSuffix")
+    def name_suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the group must end with the value.
+        """
+        return pulumi.get(self, "name_suffix")
+
+    @name_suffix.setter
+    def name_suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name_suffix", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.
+        """
+        return pulumi.get(self, "types")
+
+    @types.setter
+    def types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "types", value)
+
+
+if not MYPY:
+    class ProviderCacheResourcesFilterArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+        """
+        name_contains: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Match when the value exist in the name of the resource.
+        """
+        name_exclude: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Match when the exact value does not exist in the name of the resource.
+        """
+        name_prefix: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the resource must start with the value.
+        """
+        name_regexp: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The regular expression match of the name of the resource.
+        """
+        name_suffix: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the resource must end with the value.
+        """
+        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        Returns only resources that exactly match the given tags.
+        """
+elif False:
+    ProviderCacheResourcesFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ProviderCacheResourcesFilterArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 name_contains: Optional[pulumi.Input[_builtins.str]] = None,
+                 name_exclude: Optional[pulumi.Input[_builtins.str]] = None,
+                 name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
+                 name_regexp: Optional[pulumi.Input[_builtins.str]] = None,
+                 name_suffix: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+        :param pulumi.Input[_builtins.str] name_contains: Match when the value exist in the name of the resource.
+        :param pulumi.Input[_builtins.str] name_exclude: Match when the exact value does not exist in the name of the resource.
+        :param pulumi.Input[_builtins.str] name_prefix: The name of the resource must start with the value.
+        :param pulumi.Input[_builtins.str] name_regexp: The regular expression match of the name of the resource.
+        :param pulumi.Input[_builtins.str] name_suffix: The name of the resource must end with the value.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Returns only resources that exactly match the given tags.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if name_contains is not None:
+            pulumi.set(__self__, "name_contains", name_contains)
+        if name_exclude is not None:
+            pulumi.set(__self__, "name_exclude", name_exclude)
+        if name_prefix is not None:
+            pulumi.set(__self__, "name_prefix", name_prefix)
+        if name_regexp is not None:
+            pulumi.set(__self__, "name_regexp", name_regexp)
+        if name_suffix is not None:
+            pulumi.set(__self__, "name_suffix", name_suffix)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nameContains")
+    def name_contains(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Match when the value exist in the name of the resource.
+        """
+        return pulumi.get(self, "name_contains")
+
+    @name_contains.setter
+    def name_contains(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name_contains", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nameExclude")
+    def name_exclude(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Match when the exact value does not exist in the name of the resource.
+        """
+        return pulumi.get(self, "name_exclude")
+
+    @name_exclude.setter
+    def name_exclude(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name_exclude", value)
+
+    @_builtins.property
+    @pulumi.getter(name="namePrefix")
+    def name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the resource must start with the value.
+        """
+        return pulumi.get(self, "name_prefix")
+
+    @name_prefix.setter
+    def name_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name_prefix", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nameRegexp")
+    def name_regexp(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The regular expression match of the name of the resource.
+        """
+        return pulumi.get(self, "name_regexp")
+
+    @name_regexp.setter
+    def name_regexp(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name_regexp", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nameSuffix")
+    def name_suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the resource must end with the value.
+        """
+        return pulumi.get(self, "name_suffix")
+
+    @name_suffix.setter
+    def name_suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name_suffix", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Returns only resources that exactly match the given tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 if not MYPY:
