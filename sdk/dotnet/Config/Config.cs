@@ -118,9 +118,85 @@ namespace Twingate.Twingate
             /// </summary>
                 public bool? GroupsEnabled { get; set; }
             /// <summary>
+            /// Specifies the filter for the groups to be cached.
+            /// </summary>
+                public Twingate.Config.Types.CacheGroupsFilter? GroupsFilter { get; set; } = null!;
+            /// <summary>
             /// Specifies whether the provider should cache resources. The default value is `true`.
             /// </summary>
                 public bool? ResourceEnabled { get; set; }
+            /// <summary>
+            /// Specifies the filter for the resources to be cached.
+            /// </summary>
+                public Twingate.Config.Types.CacheResourcesFilter? ResourcesFilter { get; set; } = null!;
+            }
+
+             public class CacheGroupsFilter
+             {
+            /// <summary>
+            /// Returns only Groups matching the specified state.
+            /// </summary>
+                public bool? IsActive { get; set; }
+            /// <summary>
+            /// Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+            /// </summary>
+                public string? Name { get; set; } = null!;
+            /// <summary>
+            /// Match when the value exist in the name of the group.
+            /// </summary>
+                public string? NameContains { get; set; } = null!;
+            /// <summary>
+            /// Match when the exact value does not exist in the name of the group.
+            /// </summary>
+                public string? NameExclude { get; set; } = null!;
+            /// <summary>
+            /// The name of the group must start with the value.
+            /// </summary>
+                public string? NamePrefix { get; set; } = null!;
+            /// <summary>
+            /// The regular expression match of the name of the group.
+            /// </summary>
+                public string? NameRegexp { get; set; } = null!;
+            /// <summary>
+            /// The name of the group must end with the value.
+            /// </summary>
+                public string? NameSuffix { get; set; } = null!;
+            /// <summary>
+            /// Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.
+            /// </summary>
+                public ImmutableArray<string> Types { get; set; }
+            }
+
+             public class CacheResourcesFilter
+             {
+            /// <summary>
+            /// Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+            /// </summary>
+                public string? Name { get; set; } = null!;
+            /// <summary>
+            /// Match when the value exist in the name of the resource.
+            /// </summary>
+                public string? NameContains { get; set; } = null!;
+            /// <summary>
+            /// Match when the exact value does not exist in the name of the resource.
+            /// </summary>
+                public string? NameExclude { get; set; } = null!;
+            /// <summary>
+            /// The name of the resource must start with the value.
+            /// </summary>
+                public string? NamePrefix { get; set; } = null!;
+            /// <summary>
+            /// The regular expression match of the name of the resource.
+            /// </summary>
+                public string? NameRegexp { get; set; } = null!;
+            /// <summary>
+            /// The name of the resource must end with the value.
+            /// </summary>
+                public string? NameSuffix { get; set; } = null!;
+            /// <summary>
+            /// Returns only resources that exactly match the given tags.
+            /// </summary>
+                public ImmutableDictionary<string, string>? Tags { get; set; } = null!;
             }
 
              public class DefaultTags
