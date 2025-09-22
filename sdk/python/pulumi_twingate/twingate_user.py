@@ -31,7 +31,7 @@ class TwingateUserArgs:
         :param pulumi.Input[_builtins.str] first_name: The User's first name
         :param pulumi.Input[_builtins.bool] is_active: Determines whether the User is active or not. Inactive users will be not able to sign in.
         :param pulumi.Input[_builtins.str] last_name: The User's last name
-        :param pulumi.Input[_builtins.str] role: Determines the User's role. Either ADMIN, DEVOPS, SUPPORT or MEMBER.
+        :param pulumi.Input[_builtins.str] role: Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
         :param pulumi.Input[_builtins.bool] send_invite: Determines whether to send an email invitation to the User. True by default.
         """
         pulumi.set(__self__, "email", email)
@@ -101,7 +101,7 @@ class TwingateUserArgs:
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Determines the User's role. Either ADMIN, DEVOPS, SUPPORT or MEMBER.
+        Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
         """
         return pulumi.get(self, "role")
 
@@ -139,7 +139,7 @@ class _TwingateUserState:
         :param pulumi.Input[_builtins.str] first_name: The User's first name
         :param pulumi.Input[_builtins.bool] is_active: Determines whether the User is active or not. Inactive users will be not able to sign in.
         :param pulumi.Input[_builtins.str] last_name: The User's last name
-        :param pulumi.Input[_builtins.str] role: Determines the User's role. Either ADMIN, DEVOPS, SUPPORT or MEMBER.
+        :param pulumi.Input[_builtins.str] role: Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
         :param pulumi.Input[_builtins.bool] send_invite: Determines whether to send an email invitation to the User. True by default.
         :param pulumi.Input[_builtins.str] type: Indicates the User's type. Either MANUAL or SYNCED.
         """
@@ -213,7 +213,7 @@ class _TwingateUserState:
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Determines the User's role. Either ADMIN, DEVOPS, SUPPORT or MEMBER.
+        Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
         """
         return pulumi.get(self, "role")
 
@@ -288,7 +288,7 @@ class TwingateUser(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] first_name: The User's first name
         :param pulumi.Input[_builtins.bool] is_active: Determines whether the User is active or not. Inactive users will be not able to sign in.
         :param pulumi.Input[_builtins.str] last_name: The User's last name
-        :param pulumi.Input[_builtins.str] role: Determines the User's role. Either ADMIN, DEVOPS, SUPPORT or MEMBER.
+        :param pulumi.Input[_builtins.str] role: Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
         :param pulumi.Input[_builtins.bool] send_invite: Determines whether to send an email invitation to the User. True by default.
         """
         ...
@@ -386,7 +386,7 @@ class TwingateUser(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] first_name: The User's first name
         :param pulumi.Input[_builtins.bool] is_active: Determines whether the User is active or not. Inactive users will be not able to sign in.
         :param pulumi.Input[_builtins.str] last_name: The User's last name
-        :param pulumi.Input[_builtins.str] role: Determines the User's role. Either ADMIN, DEVOPS, SUPPORT or MEMBER.
+        :param pulumi.Input[_builtins.str] role: Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
         :param pulumi.Input[_builtins.bool] send_invite: Determines whether to send an email invitation to the User. True by default.
         :param pulumi.Input[_builtins.str] type: Indicates the User's type. Either MANUAL or SYNCED.
         """
@@ -439,7 +439,7 @@ class TwingateUser(pulumi.CustomResource):
     @pulumi.getter
     def role(self) -> pulumi.Output[_builtins.str]:
         """
-        Determines the User's role. Either ADMIN, DEVOPS, SUPPORT or MEMBER.
+        Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
         """
         return pulumi.get(self, "role")
 
