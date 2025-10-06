@@ -111,7 +111,7 @@ jobs:
 
       - if: ${{ matrix.language == 'python'}}
         name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: ${{matrix.pythonversion}}
 
@@ -137,7 +137,7 @@ jobs:
           packages_dir: ${{github.workspace}}/sdk/python/bin/dist
 
       - if: ${{ matrix.language == 'nodejs' && env.PUBLISH_NPM == 'true' }}
-        uses: JS-DevTools/npm-publish@v3
+        uses: JS-DevTools/npm-publish@v4
         with:
           access: "public"
           token: ${{ env.NPM_TOKEN }}
