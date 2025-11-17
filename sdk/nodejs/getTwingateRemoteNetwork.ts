@@ -6,17 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * A Remote Network represents a single private network in Twingate that can have one or more Connectors and Resources assigned to it. You must create a Remote Network before creating Resources and Connectors that belong to it. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/remote-networks).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as twingate from "@twingate/pulumi-twingate";
- *
- * const foo = twingate.getTwingateRemoteNetwork({
- *     name: "<your network's name>",
- * });
- * ```
  */
 export function getTwingateRemoteNetwork(args?: GetTwingateRemoteNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetTwingateRemoteNetworkResult> {
     args = args || {};
@@ -64,17 +53,6 @@ export interface GetTwingateRemoteNetworkResult {
 }
 /**
  * A Remote Network represents a single private network in Twingate that can have one or more Connectors and Resources assigned to it. You must create a Remote Network before creating Resources and Connectors that belong to it. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/remote-networks).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as twingate from "@twingate/pulumi-twingate";
- *
- * const foo = twingate.getTwingateRemoteNetwork({
- *     name: "<your network's name>",
- * });
- * ```
  */
 export function getTwingateRemoteNetworkOutput(args?: GetTwingateRemoteNetworkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTwingateRemoteNetworkResult> {
     args = args || {};

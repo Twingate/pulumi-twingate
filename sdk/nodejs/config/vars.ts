@@ -10,9 +10,9 @@ declare var exports: any;
 const __config = new pulumi.Config("twingate");
 
 /**
- * The access key for API operations. You can retrieve this from the Twingate Admin Console
- * ([documentation](https://docs.twingate.com/docs/api-overview)). Alternatively, this can be specified using the
- * TWINGATE_API_TOKEN environment variable.
+ * The access key for API operations. You can retrieve this
+ * from the Twingate Admin Console ([documentation](https://docs.twingate.com/docs/api-overview)).
+ * Alternatively, this can be specified using the TWINGATE_API_TOKEN environment variable.
  */
 export declare const apiToken: string | undefined;
 Object.defineProperty(exports, "apiToken", {
@@ -45,8 +45,8 @@ Object.defineProperty(exports, "defaultTags", {
 });
 
 /**
- * Specifies a retry limit for the http requests made. The default value is 10. Alternatively, this can be specified using
- * the TWINGATE_HTTP_MAX_RETRY environment variable
+ * Specifies a retry limit for the http requests made. The default value is 10.
+ * Alternatively, this can be specified using the TWINGATE_HTTP_MAX_RETRY environment variable
  */
 export declare const httpMaxRetry: number | undefined;
 Object.defineProperty(exports, "httpMaxRetry", {
@@ -57,8 +57,8 @@ Object.defineProperty(exports, "httpMaxRetry", {
 });
 
 /**
- * Specifies a time limit in seconds for the http requests made. The default value is 35 seconds. Alternatively, this can
- * be specified using the TWINGATE_HTTP_TIMEOUT environment variable
+ * Specifies a time limit in seconds for the http requests made. The default value is 35 seconds.
+ * Alternatively, this can be specified using the TWINGATE_HTTP_TIMEOUT environment variable
  */
 export declare const httpTimeout: number | undefined;
 Object.defineProperty(exports, "httpTimeout", {
@@ -69,9 +69,10 @@ Object.defineProperty(exports, "httpTimeout", {
 });
 
 /**
- * Your Twingate network ID for API operations. You can find it in the Admin Console URL, for example:
- * `autoco.twingate.com`, where `autoco` is your network ID Alternatively, this can be specified using the TWINGATE_NETWORK
- * environment variable.
+ * Your Twingate network ID for API operations.
+ * You can find it in the Admin Console URL, for example:
+ * `autoco.twingate.com`, where `autoco` is your network ID
+ * Alternatively, this can be specified using the TWINGATE_NETWORK environment variable.
  */
 export declare const network: string | undefined;
 Object.defineProperty(exports, "network", {
@@ -82,7 +83,8 @@ Object.defineProperty(exports, "network", {
 });
 
 /**
- * The default is 'twingate.com' This is optional and shouldn't be changed under normal circumstances.
+ * The default is 'twingate.com'
+ * This is optional and shouldn't be changed under normal circumstances.
  */
 export declare const url: string | undefined;
 Object.defineProperty(exports, "url", {

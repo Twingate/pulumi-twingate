@@ -23,6 +23,14 @@ func main() {
 			return err
 		}
 
+		// Create a second Twingate service account
+		serviceAccount2, err := twingate.NewTwingateServiceAccount(ctx, "ci_cd_account_go_2", &twingate.TwingateServiceAccountArgs{
+			Name: pulumi.StringPtr("CI CD Service Go 2"),
+		})
+		if err != nil {
+			return err
+		}
+
 		// Create a Twingate service key
 		serviceAccountKey, err := twingate.NewTwingateServiceAccountKey(ctx, "ci_cd_key_go", &twingate.TwingateServiceAccountKeyArgs{
 			Name:             pulumi.StringPtr("CI CD key Go"),
@@ -53,19 +61,33 @@ func main() {
 			return err
 		}
 
+		// Create a second Twingate group
+		group2, err := twingate.NewTwingateGroup(ctx, "twingate_group_go_2", &twingate.TwingateGroupArgs{
+			Name: pulumi.StringPtr("Demo Group Go 2"),
+		})
+		if err != nil {
+			return err
+		}
+
 		// Create a Twingate Resource and configure resource permission
 		resource, err := twingate.NewTwingateResource(ctx, "twingate_home_page_go", &twingate.TwingateResourceArgs{
-			Name:            pulumi.StringPtr("Twingate Home Page Go"),
+			Name:            pulumi.StringPtr("Twingate Home Page Go Test"),
 			Address:         pulumi.String("www.twingate.com"),
 			RemoteNetworkId: remoteNetwork.ID(),
 			AccessGroups: &twingate.TwingateResourceAccessGroupArray{
 				&twingate.TwingateResourceAccessGroupArgs{
 					GroupId: group.ID(),
 				},
+				&twingate.TwingateResourceAccessGroupArgs{
+					GroupId: group2.ID(),
+				},
 			},
 			AccessServices: &twingate.TwingateResourceAccessServiceArray{
 				&twingate.TwingateResourceAccessServiceArgs{
 					ServiceAccountId: serviceAccount.ID(),
+				},
+				&twingate.TwingateResourceAccessServiceArgs{
+					ServiceAccountId: serviceAccount2.ID(),
 				},
 			},
 			Protocols: &twingate.TwingateResourceProtocolsArgs{

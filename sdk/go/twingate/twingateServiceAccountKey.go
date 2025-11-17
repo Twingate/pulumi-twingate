@@ -13,55 +13,6 @@ import (
 )
 
 // A Service Key authorizes access to all Resources assigned to a Service Account.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/Twingate/pulumi-twingate/sdk/v3/go/twingate"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			githubActionsProd, err := twingate.NewTwingateServiceAccount(ctx, "githubActionsProd", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = twingate.NewTwingateServiceAccountKey(ctx, "githubKey", &twingate.TwingateServiceAccountKeyArgs{
-//				ServiceAccountId: githubActionsProd.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			keyRotationRotating, err := time.NewRotating(ctx, "keyRotationRotating", &time.RotatingArgs{
-//				RotationDays: pulumi.Int(30),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = time.NewStatic(ctx, "keyRotationStatic", &time.StaticArgs{
-//				Rfc3339: keyRotationRotating.Rfc3339,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = twingate.NewTwingateServiceAccountKey(ctx, "githubKeyWithRotation", &twingate.TwingateServiceAccountKeyArgs{
-//				ServiceAccountId: githubActionsProd.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type TwingateServiceAccountKey struct {
 	pulumi.CustomResourceState
 

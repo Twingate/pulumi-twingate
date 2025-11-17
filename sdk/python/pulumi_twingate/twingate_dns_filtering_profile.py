@@ -340,6 +340,44 @@ class TwingateDNSFilteringProfile(pulumi.CustomResource):
         """
         DNS filtering gives you the ability to control what websites your users can access. DNS filtering is only available on certain plans. For more information, see Twingate's [documentation](https://www.twingate.com/docs/dns-filtering). DNS filtering must be enabled for this resources to work. If DNS filtering isn't enabled, the provider will throw an error.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_std as std
+        import pulumi_twingate as twingate
+
+        example1 = twingate.TwingateGroup("example1", name="example_1")
+        example2 = twingate.TwingateGroup("example2", name="example_2")
+        example = twingate.get_twingate_groups(name_prefix="example")
+        example_twingate_dns_filtering_profile = twingate.TwingateDNSFilteringProfile("example",
+            name="Example DNS Filtering Profile",
+            priority=2,
+            fallback_method="AUTO",
+            groups=std.toset(input=[__item.id for __item in example.groups]).result,
+            allowed_domains={
+                "is_authoritative": False,
+                "domains": [
+                    "twingate.com",
+                    "zoom.us",
+                ],
+            },
+            denied_domains={
+                "is_authoritative": True,
+                "domains": ["evil.example"],
+            },
+            content_categories={
+                "block_adult_content": True,
+            },
+            security_categories={
+                "block_dns_rebinding": False,
+                "block_newly_registered_domains": False,
+            },
+            privacy_categories={
+                "block_disguised_trackers": True,
+            })
+        ```
+
         ## Import
 
         ```sh
@@ -366,6 +404,44 @@ class TwingateDNSFilteringProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         DNS filtering gives you the ability to control what websites your users can access. DNS filtering is only available on certain plans. For more information, see Twingate's [documentation](https://www.twingate.com/docs/dns-filtering). DNS filtering must be enabled for this resources to work. If DNS filtering isn't enabled, the provider will throw an error.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_std as std
+        import pulumi_twingate as twingate
+
+        example1 = twingate.TwingateGroup("example1", name="example_1")
+        example2 = twingate.TwingateGroup("example2", name="example_2")
+        example = twingate.get_twingate_groups(name_prefix="example")
+        example_twingate_dns_filtering_profile = twingate.TwingateDNSFilteringProfile("example",
+            name="Example DNS Filtering Profile",
+            priority=2,
+            fallback_method="AUTO",
+            groups=std.toset(input=[__item.id for __item in example.groups]).result,
+            allowed_domains={
+                "is_authoritative": False,
+                "domains": [
+                    "twingate.com",
+                    "zoom.us",
+                ],
+            },
+            denied_domains={
+                "is_authoritative": True,
+                "domains": ["evil.example"],
+            },
+            content_categories={
+                "block_adult_content": True,
+            },
+            security_categories={
+                "block_dns_rebinding": False,
+                "block_newly_registered_domains": False,
+            },
+            privacy_categories={
+                "block_disguised_trackers": True,
+            })
+        ```
 
         ## Import
 

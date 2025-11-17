@@ -13,8 +13,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@twingate/pulumi-twingate";
  *
- * const awsNetwork = new twingate.TwingateRemoteNetwork("awsNetwork", {});
- * const awsConnector = new twingate.TwingateConnector("awsConnector", {
+ * const awsNetwork = new twingate.TwingateRemoteNetwork("aws_network", {name: "aws_remote_network"});
+ * const awsConnector = new twingate.TwingateConnector("aws_connector", {
  *     remoteNetworkId: awsNetwork.id,
  *     statusUpdatesEnabled: true,
  * });
@@ -57,35 +57,35 @@ export class TwingateConnector extends pulumi.CustomResource {
     /**
      * The hostname of the machine hosting the Connector.
      */
-    public /*out*/ readonly hostname!: pulumi.Output<string>;
+    declare public /*out*/ readonly hostname: pulumi.Output<string>;
     /**
      * Name of the Connector, if not provided one will be generated.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The Connector's private IP addresses.
      */
-    public /*out*/ readonly privateIps!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly privateIps: pulumi.Output<string[]>;
     /**
      * The Connector's public IP address.
      */
-    public /*out*/ readonly publicIp!: pulumi.Output<string>;
+    declare public /*out*/ readonly publicIp: pulumi.Output<string>;
     /**
      * The ID of the Remote Network the Connector is attached to.
      */
-    public readonly remoteNetworkId!: pulumi.Output<string>;
+    declare public readonly remoteNetworkId: pulumi.Output<string>;
     /**
      * The Connector's state. One of `ALIVE`, `DEAD_NO_HEARTBEAT`, `DEAD_HEARTBEAT_TOO_OLD` or `DEAD_NO_RELAYS`.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Determines whether status notifications are enabled for the Connector. Default is `true`.
      */
-    public readonly statusUpdatesEnabled!: pulumi.Output<boolean>;
+    declare public readonly statusUpdatesEnabled: pulumi.Output<boolean>;
     /**
      * The Connector's version.
      */
-    public /*out*/ readonly version!: pulumi.Output<string>;
+    declare public /*out*/ readonly version: pulumi.Output<string>;
 
     /**
      * Create a TwingateConnector resource with the given unique name, arguments, and options.
@@ -100,22 +100,22 @@ export class TwingateConnector extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TwingateConnectorState | undefined;
-            resourceInputs["hostname"] = state ? state.hostname : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["privateIps"] = state ? state.privateIps : undefined;
-            resourceInputs["publicIp"] = state ? state.publicIp : undefined;
-            resourceInputs["remoteNetworkId"] = state ? state.remoteNetworkId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["statusUpdatesEnabled"] = state ? state.statusUpdatesEnabled : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["hostname"] = state?.hostname;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["privateIps"] = state?.privateIps;
+            resourceInputs["publicIp"] = state?.publicIp;
+            resourceInputs["remoteNetworkId"] = state?.remoteNetworkId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["statusUpdatesEnabled"] = state?.statusUpdatesEnabled;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as TwingateConnectorArgs | undefined;
-            if ((!args || args.remoteNetworkId === undefined) && !opts.urn) {
+            if (args?.remoteNetworkId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'remoteNetworkId'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["remoteNetworkId"] = args ? args.remoteNetworkId : undefined;
-            resourceInputs["statusUpdatesEnabled"] = args ? args.statusUpdatesEnabled : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["remoteNetworkId"] = args?.remoteNetworkId;
+            resourceInputs["statusUpdatesEnabled"] = args?.statusUpdatesEnabled;
             resourceInputs["hostname"] = undefined /*out*/;
             resourceInputs["privateIps"] = undefined /*out*/;
             resourceInputs["publicIp"] = undefined /*out*/;

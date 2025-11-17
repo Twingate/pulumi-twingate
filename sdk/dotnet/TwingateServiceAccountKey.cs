@@ -12,43 +12,6 @@ namespace Twingate.Twingate
 {
     /// <summary>
     /// A Service Key authorizes access to all Resources assigned to a Service Account.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Time = Pulumiverse.Time;
-    /// using Twingate = Twingate.Twingate;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var githubActionsProd = new Twingate.TwingateServiceAccount("githubActionsProd");
-    /// 
-    ///     var githubKey = new Twingate.TwingateServiceAccountKey("githubKey", new()
-    ///     {
-    ///         ServiceAccountId = githubActionsProd.Id,
-    ///     });
-    /// 
-    ///     // Key rotation using the time provider (see https://registry.terraform.io/providers/hashicorp/time/latest)
-    ///     var keyRotationRotating = new Time.Rotating("keyRotationRotating", new()
-    ///     {
-    ///         RotationDays = 30,
-    ///     });
-    /// 
-    ///     var keyRotationStatic = new Time.Static("keyRotationStatic", new()
-    ///     {
-    ///         Rfc3339 = keyRotationRotating.Rfc3339,
-    ///     });
-    /// 
-    ///     var githubKeyWithRotation = new Twingate.TwingateServiceAccountKey("githubKeyWithRotation", new()
-    ///     {
-    ///         ServiceAccountId = githubActionsProd.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [TwingateResourceType("twingate:index/twingateServiceAccountKey:TwingateServiceAccountKey")]
     public partial class TwingateServiceAccountKey : global::Pulumi.CustomResource

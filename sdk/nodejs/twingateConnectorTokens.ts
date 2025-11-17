@@ -13,9 +13,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@twingate/pulumi-twingate";
  *
- * const awsNetwork = new twingate.TwingateRemoteNetwork("awsNetwork", {});
- * const awsConnector = new twingate.TwingateConnector("awsConnector", {remoteNetworkId: awsNetwork.id});
- * const awsConnectorTokens = new twingate.TwingateConnectorTokens("awsConnectorTokens", {connectorId: awsConnector.id});
+ * const awsNetwork = new twingate.TwingateRemoteNetwork("aws_network", {name: "aws_remote_network"});
+ * const awsConnector = new twingate.TwingateConnector("aws_connector", {remoteNetworkId: awsNetwork.id});
+ * const awsConnectorTokens = new twingate.TwingateConnectorTokens("aws_connector_tokens", {connectorId: awsConnector.id});
  * ```
  */
 export class TwingateConnectorTokens extends pulumi.CustomResource {
@@ -49,19 +49,19 @@ export class TwingateConnectorTokens extends pulumi.CustomResource {
     /**
      * The Access Token of the parent Connector
      */
-    public /*out*/ readonly accessToken!: pulumi.Output<string>;
+    declare public /*out*/ readonly accessToken: pulumi.Output<string>;
     /**
      * The ID of the parent Connector
      */
-    public readonly connectorId!: pulumi.Output<string>;
+    declare public readonly connectorId: pulumi.Output<string>;
     /**
      * Arbitrary map of values that, when changed, will trigger recreation of resource. Use this to automatically rotate Connector tokens on a schedule.
      */
-    public readonly keepers!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly keepers: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The Refresh Token of the parent Connector
      */
-    public /*out*/ readonly refreshToken!: pulumi.Output<string>;
+    declare public /*out*/ readonly refreshToken: pulumi.Output<string>;
 
     /**
      * Create a TwingateConnectorTokens resource with the given unique name, arguments, and options.
@@ -76,17 +76,17 @@ export class TwingateConnectorTokens extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TwingateConnectorTokensState | undefined;
-            resourceInputs["accessToken"] = state ? state.accessToken : undefined;
-            resourceInputs["connectorId"] = state ? state.connectorId : undefined;
-            resourceInputs["keepers"] = state ? state.keepers : undefined;
-            resourceInputs["refreshToken"] = state ? state.refreshToken : undefined;
+            resourceInputs["accessToken"] = state?.accessToken;
+            resourceInputs["connectorId"] = state?.connectorId;
+            resourceInputs["keepers"] = state?.keepers;
+            resourceInputs["refreshToken"] = state?.refreshToken;
         } else {
             const args = argsOrState as TwingateConnectorTokensArgs | undefined;
-            if ((!args || args.connectorId === undefined) && !opts.urn) {
+            if (args?.connectorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectorId'");
             }
-            resourceInputs["connectorId"] = args ? args.connectorId : undefined;
-            resourceInputs["keepers"] = args ? args.keepers : undefined;
+            resourceInputs["connectorId"] = args?.connectorId;
+            resourceInputs["keepers"] = args?.keepers;
             resourceInputs["accessToken"] = undefined /*out*/;
             resourceInputs["refreshToken"] = undefined /*out*/;
         }

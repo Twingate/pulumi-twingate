@@ -13,6 +13,77 @@ namespace Twingate.Twingate
     /// <summary>
     /// DNS filtering gives you the ability to control what websites your users can access. DNS filtering is only available on certain plans. For more information, see Twingate's [documentation](https://www.twingate.com/docs/dns-filtering). DNS filtering must be enabled for this resources to work. If DNS filtering isn't enabled, the provider will throw an error.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Std = Pulumi.Std;
+    /// using Twingate = Pulumi.Twingate;
+    /// using Twingate = Twingate.Twingate;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example1 = new Twingate.TwingateGroup("example1", new()
+    ///     {
+    ///         Name = "example_1",
+    ///     });
+    /// 
+    ///     var example2 = new Twingate.TwingateGroup("example2", new()
+    ///     {
+    ///         Name = "example_2",
+    ///     });
+    /// 
+    ///     var example = Twingate.GetTwingateGroups.Invoke(new()
+    ///     {
+    ///         NamePrefix = "example",
+    ///     });
+    /// 
+    ///     var exampleTwingateDNSFilteringProfile = new Twingate.TwingateDNSFilteringProfile("example", new()
+    ///     {
+    ///         Name = "Example DNS Filtering Profile",
+    ///         Priority = 2,
+    ///         FallbackMethod = "AUTO",
+    ///         Groups = Std.Toset.Invoke(new()
+    ///         {
+    ///             Input = example.Apply(getTwingateGroupsResult =&gt; getTwingateGroupsResult.Groups).Select(__item =&gt; __item.Id).ToList(),
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         AllowedDomains = new Twingate.Inputs.TwingateDNSFilteringProfileAllowedDomainsArgs
+    ///         {
+    ///             IsAuthoritative = false,
+    ///             Domains = new[]
+    ///             {
+    ///                 "twingate.com",
+    ///                 "zoom.us",
+    ///             },
+    ///         },
+    ///         DeniedDomains = new Twingate.Inputs.TwingateDNSFilteringProfileDeniedDomainsArgs
+    ///         {
+    ///             IsAuthoritative = true,
+    ///             Domains = new[]
+    ///             {
+    ///                 "evil.example",
+    ///             },
+    ///         },
+    ///         ContentCategories = new Twingate.Inputs.TwingateDNSFilteringProfileContentCategoriesArgs
+    ///         {
+    ///             BlockAdultContent = true,
+    ///         },
+    ///         SecurityCategories = new Twingate.Inputs.TwingateDNSFilteringProfileSecurityCategoriesArgs
+    ///         {
+    ///             BlockDnsRebinding = false,
+    ///             BlockNewlyRegisteredDomains = false,
+    ///         },
+    ///         PrivacyCategories = new Twingate.Inputs.TwingateDNSFilteringProfilePrivacyCategoriesArgs
+    ///         {
+    ///             BlockDisguisedTrackers = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

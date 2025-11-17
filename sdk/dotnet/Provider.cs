@@ -20,23 +20,25 @@ namespace Twingate.Twingate
     public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
-        /// The access key for API operations. You can retrieve this from the Twingate Admin Console
-        /// ([documentation](https://docs.twingate.com/docs/api-overview)). Alternatively, this can be specified using the
-        /// TWINGATE_API_TOKEN environment variable.
+        /// The access key for API operations. You can retrieve this
+        /// from the Twingate Admin Console ([documentation](https://docs.twingate.com/docs/api-overview)).
+        /// Alternatively, this can be specified using the TWINGATE_API_TOKEN environment variable.
         /// </summary>
         [Output("apiToken")]
         public Output<string?> ApiToken { get; private set; } = null!;
 
         /// <summary>
-        /// Your Twingate network ID for API operations. You can find it in the Admin Console URL, for example:
-        /// `autoco.twingate.com`, where `autoco` is your network ID Alternatively, this can be specified using the TWINGATE_NETWORK
-        /// environment variable.
+        /// Your Twingate network ID for API operations.
+        /// You can find it in the Admin Console URL, for example:
+        /// `autoco.twingate.com`, where `Autoco` is your network ID
+        /// Alternatively, this can be specified using the TWINGATE_NETWORK environment variable.
         /// </summary>
         [Output("network")]
         public Output<string?> Network { get; private set; } = null!;
 
         /// <summary>
-        /// The default is 'twingate.com' This is optional and shouldn't be changed under normal circumstances.
+        /// The default is 'twingate.com'
+        /// This is optional and shouldn't be changed under normal circumstances.
         /// </summary>
         [Output("url")]
         public Output<string?> Url { get; private set; } = null!;
@@ -84,9 +86,9 @@ namespace Twingate.Twingate
         private Input<string>? _apiToken;
 
         /// <summary>
-        /// The access key for API operations. You can retrieve this from the Twingate Admin Console
-        /// ([documentation](https://docs.twingate.com/docs/api-overview)). Alternatively, this can be specified using the
-        /// TWINGATE_API_TOKEN environment variable.
+        /// The access key for API operations. You can retrieve this
+        /// from the Twingate Admin Console ([documentation](https://docs.twingate.com/docs/api-overview)).
+        /// Alternatively, this can be specified using the TWINGATE_API_TOKEN environment variable.
         /// </summary>
         public Input<string>? ApiToken
         {
@@ -111,29 +113,31 @@ namespace Twingate.Twingate
         public Input<Inputs.ProviderDefaultTagsArgs>? DefaultTags { get; set; }
 
         /// <summary>
-        /// Specifies a retry limit for the http requests made. The default value is 10. Alternatively, this can be specified using
-        /// the TWINGATE_HTTP_MAX_RETRY environment variable
+        /// Specifies a retry limit for the http requests made. The default value is 10.
+        /// Alternatively, this can be specified using the TWINGATE_HTTP_MAX_RETRY environment variable
         /// </summary>
         [Input("httpMaxRetry", json: true)]
         public Input<int>? HttpMaxRetry { get; set; }
 
         /// <summary>
-        /// Specifies a time limit in seconds for the http requests made. The default value is 35 seconds. Alternatively, this can
-        /// be specified using the TWINGATE_HTTP_TIMEOUT environment variable
+        /// Specifies a time limit in seconds for the http requests made. The default value is 35 seconds.
+        /// Alternatively, this can be specified using the TWINGATE_HTTP_TIMEOUT environment variable
         /// </summary>
         [Input("httpTimeout", json: true)]
         public Input<int>? HttpTimeout { get; set; }
 
         /// <summary>
-        /// Your Twingate network ID for API operations. You can find it in the Admin Console URL, for example:
-        /// `autoco.twingate.com`, where `autoco` is your network ID Alternatively, this can be specified using the TWINGATE_NETWORK
-        /// environment variable.
+        /// Your Twingate network ID for API operations.
+        /// You can find it in the Admin Console URL, for example:
+        /// `autoco.twingate.com`, where `Autoco` is your network ID
+        /// Alternatively, this can be specified using the TWINGATE_NETWORK environment variable.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// The default is 'twingate.com' This is optional and shouldn't be changed under normal circumstances.
+        /// The default is 'twingate.com'
+        /// This is optional and shouldn't be changed under normal circumstances.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

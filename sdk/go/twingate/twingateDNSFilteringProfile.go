@@ -14,6 +14,81 @@ import (
 
 // DNS filtering gives you the ability to control what websites your users can access. DNS filtering is only available on certain plans. For more information, see Twingate's [documentation](https://www.twingate.com/docs/dns-filtering). DNS filtering must be enabled for this resources to work. If DNS filtering isn't enabled, the provider will throw an error.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/Twingate/pulumi-twingate/sdk/v3/go/twingate"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _, err := twingate.NewTwingateGroup(ctx, "example1", &twingate.TwingateGroupArgs{
+// Name: pulumi.String("example_1"),
+// })
+// if err != nil {
+// return err
+// }
+// _, err = twingate.NewTwingateGroup(ctx, "example2", &twingate.TwingateGroupArgs{
+// Name: pulumi.String("example_2"),
+// })
+// if err != nil {
+// return err
+// }
+// example, err := twingate.GetTwingateGroups(ctx, &twingate.GetTwingateGroupsArgs{
+// NamePrefix: pulumi.StringRef("example"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// invokeToset, err := std.Toset(ctx, &std.TosetArgs{
+// Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:19,13-33),
+// }, nil)
+// if err != nil {
+// return err
+// }
+// _, err = twingate.NewTwingateDNSFilteringProfile(ctx, "example", &twingate.TwingateDNSFilteringProfileArgs{
+// Name: pulumi.String("Example DNS Filtering Profile"),
+// Priority: pulumi.Float64(2),
+// FallbackMethod: pulumi.String("AUTO"),
+// Groups: pulumi.StringArray(invokeToset.Result),
+// AllowedDomains: &twingate.TwingateDNSFilteringProfileAllowedDomainsArgs{
+// IsAuthoritative: pulumi.Bool(false),
+// Domains: pulumi.StringArray{
+// pulumi.String("twingate.com"),
+// pulumi.String("zoom.us"),
+// },
+// },
+// DeniedDomains: &twingate.TwingateDNSFilteringProfileDeniedDomainsArgs{
+// IsAuthoritative: pulumi.Bool(true),
+// Domains: pulumi.StringArray{
+// pulumi.String("evil.example"),
+// },
+// },
+// ContentCategories: &twingate.TwingateDNSFilteringProfileContentCategoriesArgs{
+// BlockAdultContent: pulumi.Bool(true),
+// },
+// SecurityCategories: &twingate.TwingateDNSFilteringProfileSecurityCategoriesArgs{
+// BlockDnsRebinding: pulumi.Bool(false),
+// BlockNewlyRegisteredDomains: pulumi.Bool(false),
+// },
+// PrivacyCategories: &twingate.TwingateDNSFilteringProfilePrivacyCategoriesArgs{
+// BlockDisguisedTrackers: pulumi.Bool(true),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+//
 // ## Import
 //
 // ```sh

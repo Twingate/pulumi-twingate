@@ -168,21 +168,6 @@ class TwingateServiceAccountKey(pulumi.CustomResource):
         """
         A Service Key authorizes access to all Resources assigned to a Service Account.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_twingate as twingate
-        import pulumiverse_time as time
-
-        github_actions_prod = twingate.TwingateServiceAccount("githubActionsProd")
-        github_key = twingate.TwingateServiceAccountKey("githubKey", service_account_id=github_actions_prod.id)
-        # Key rotation using the time provider (see https://registry.terraform.io/providers/hashicorp/time/latest)
-        key_rotation_rotating = time.Rotating("keyRotationRotating", rotation_days=30)
-        key_rotation_static = time.Static("keyRotationStatic", rfc3339=key_rotation_rotating.rfc3339)
-        github_key_with_rotation = twingate.TwingateServiceAccountKey("githubKeyWithRotation", service_account_id=github_actions_prod.id)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] expiration_time: Specifies how many days until a Service Account Key expires. This should be an integer between 0 and 365 representing the number of days until the Service Account Key will expire. Defaults to 0, meaning the key will never expire.
@@ -197,21 +182,6 @@ class TwingateServiceAccountKey(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Service Key authorizes access to all Resources assigned to a Service Account.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_twingate as twingate
-        import pulumiverse_time as time
-
-        github_actions_prod = twingate.TwingateServiceAccount("githubActionsProd")
-        github_key = twingate.TwingateServiceAccountKey("githubKey", service_account_id=github_actions_prod.id)
-        # Key rotation using the time provider (see https://registry.terraform.io/providers/hashicorp/time/latest)
-        key_rotation_rotating = time.Rotating("keyRotationRotating", rotation_days=30)
-        key_rotation_static = time.Static("keyRotationStatic", rfc3339=key_rotation_rotating.rfc3339)
-        github_key_with_rotation = twingate.TwingateServiceAccountKey("githubKeyWithRotation", service_account_id=github_actions_prod.id)
-        ```
 
         :param str resource_name: The name of the resource.
         :param TwingateServiceAccountKeyArgs args: The arguments to use to populate this resource's properties.

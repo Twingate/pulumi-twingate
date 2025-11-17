@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@twingate/pulumi-twingate";
  *
- * const aws = new twingate.TwingateGroup("aws", {});
+ * const aws = new twingate.TwingateGroup("aws", {name: "aws_group"});
  * ```
  *
  * ## Import
@@ -50,19 +50,19 @@ export class TwingateGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === TwingateGroup.__pulumiType;
     }
 
-    public readonly isAuthoritative!: pulumi.Output<boolean>;
+    declare public readonly isAuthoritative: pulumi.Output<boolean>;
     /**
      * The name of the group
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Defines which Security Policy applies to this Group. The Security Policy ID can be obtained from the `twingate.getTwingateSecurityPolicy` and `twingate.getTwingateSecurityPolicies` data sources.
      */
-    public readonly securityPolicyId!: pulumi.Output<string>;
+    declare public readonly securityPolicyId: pulumi.Output<string>;
     /**
      * List of User IDs that have permission to access the Group.
      */
-    public readonly userIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly userIds: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a TwingateGroup resource with the given unique name, arguments, and options.
@@ -77,16 +77,16 @@ export class TwingateGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TwingateGroupState | undefined;
-            resourceInputs["isAuthoritative"] = state ? state.isAuthoritative : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["securityPolicyId"] = state ? state.securityPolicyId : undefined;
-            resourceInputs["userIds"] = state ? state.userIds : undefined;
+            resourceInputs["isAuthoritative"] = state?.isAuthoritative;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["securityPolicyId"] = state?.securityPolicyId;
+            resourceInputs["userIds"] = state?.userIds;
         } else {
             const args = argsOrState as TwingateGroupArgs | undefined;
-            resourceInputs["isAuthoritative"] = args ? args.isAuthoritative : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["securityPolicyId"] = args ? args.securityPolicyId : undefined;
-            resourceInputs["userIds"] = args ? args.userIds : undefined;
+            resourceInputs["isAuthoritative"] = args?.isAuthoritative;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["securityPolicyId"] = args?.securityPolicyId;
+            resourceInputs["userIds"] = args?.userIds;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TwingateGroup.__pulumiType, name, resourceInputs, opts);

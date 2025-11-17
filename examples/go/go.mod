@@ -8,8 +8,8 @@ require (
 	github.com/pulumi/pulumi/sdk/v3 v3.206.0
 )
 
-// uncomment the following line to use the local version of the sdk
-//replace github.com/Twingate/pulumi-twingate/sdk/v3/go/twingate => ../../sdk/go/twingate
+// Use local SDK since Go module
+replace github.com/Twingate/pulumi-twingate/sdk/v3 => ../../sdk
 
 require (
 	dario.cat/mergo v1.0.1 // indirect

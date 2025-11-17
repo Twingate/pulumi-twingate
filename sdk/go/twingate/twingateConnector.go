@@ -28,11 +28,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			awsNetwork, err := twingate.NewTwingateRemoteNetwork(ctx, "awsNetwork", nil)
+//			awsNetwork, err := twingate.NewTwingateRemoteNetwork(ctx, "aws_network", &twingate.TwingateRemoteNetworkArgs{
+//				Name: pulumi.String("aws_remote_network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = twingate.NewTwingateConnector(ctx, "awsConnector", &twingate.TwingateConnectorArgs{
+//			_, err = twingate.NewTwingateConnector(ctx, "aws_connector", &twingate.TwingateConnectorArgs{
 //				RemoteNetworkId:      awsNetwork.ID(),
 //				StatusUpdatesEnabled: pulumi.Bool(true),
 //			})

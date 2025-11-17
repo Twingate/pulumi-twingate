@@ -9,6 +9,49 @@ import * as utilities from "./utilities";
 /**
  * DNS filtering gives you the ability to control what websites your users can access. DNS filtering is only available on certain plans. For more information, see Twingate's [documentation](https://www.twingate.com/docs/dns-filtering). DNS filtering must be enabled for this resources to work. If DNS filtering isn't enabled, the provider will throw an error.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as std from "@pulumi/std";
+ * import * as twingate from "@twingate/pulumi-twingate";
+ *
+ * const example1 = new twingate.TwingateGroup("example1", {name: "example_1"});
+ * const example2 = new twingate.TwingateGroup("example2", {name: "example_2"});
+ * const example = twingate.getTwingateGroups({
+ *     namePrefix: "example",
+ * });
+ * const exampleTwingateDNSFilteringProfile = new twingate.TwingateDNSFilteringProfile("example", {
+ *     name: "Example DNS Filtering Profile",
+ *     priority: 2,
+ *     fallbackMethod: "AUTO",
+ *     groups: example.then(example => std.toset({
+ *         input: example.groups.map(__item => __item.id),
+ *     })).then(invoke => invoke.result),
+ *     allowedDomains: {
+ *         isAuthoritative: false,
+ *         domains: [
+ *             "twingate.com",
+ *             "zoom.us",
+ *         ],
+ *     },
+ *     deniedDomains: {
+ *         isAuthoritative: true,
+ *         domains: ["evil.example"],
+ *     },
+ *     contentCategories: {
+ *         blockAdultContent: true,
+ *     },
+ *     securityCategories: {
+ *         blockDnsRebinding: false,
+ *         blockNewlyRegisteredDomains: false,
+ *     },
+ *     privacyCategories: {
+ *         blockDisguisedTrackers: true,
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh
@@ -46,39 +89,39 @@ export class TwingateDNSFilteringProfile extends pulumi.CustomResource {
     /**
      * A block with the following attributes.
      */
-    public readonly allowedDomains!: pulumi.Output<outputs.TwingateDNSFilteringProfileAllowedDomains | undefined>;
+    declare public readonly allowedDomains: pulumi.Output<outputs.TwingateDNSFilteringProfileAllowedDomains | undefined>;
     /**
      * A block with the following attributes.
      */
-    public readonly contentCategories!: pulumi.Output<outputs.TwingateDNSFilteringProfileContentCategories | undefined>;
+    declare public readonly contentCategories: pulumi.Output<outputs.TwingateDNSFilteringProfileContentCategories | undefined>;
     /**
      * A block with the following attributes.
      */
-    public readonly deniedDomains!: pulumi.Output<outputs.TwingateDNSFilteringProfileDeniedDomains | undefined>;
+    declare public readonly deniedDomains: pulumi.Output<outputs.TwingateDNSFilteringProfileDeniedDomains | undefined>;
     /**
      * The DNS filtering profile's fallback method. One of "AUTO" or "STRICT". Defaults to "STRICT".
      */
-    public readonly fallbackMethod!: pulumi.Output<string>;
+    declare public readonly fallbackMethod: pulumi.Output<string>;
     /**
      * A set of group IDs that have this as their DNS filtering profile. Defaults to an empty set.
      */
-    public readonly groups!: pulumi.Output<string[]>;
+    declare public readonly groups: pulumi.Output<string[]>;
     /**
      * The DNS filtering profile's name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * A floating point number representing the profile's priority.
      */
-    public readonly priority!: pulumi.Output<number>;
+    declare public readonly priority: pulumi.Output<number>;
     /**
      * A block with the following attributes.
      */
-    public readonly privacyCategories!: pulumi.Output<outputs.TwingateDNSFilteringProfilePrivacyCategories | undefined>;
+    declare public readonly privacyCategories: pulumi.Output<outputs.TwingateDNSFilteringProfilePrivacyCategories | undefined>;
     /**
      * A block with the following attributes.
      */
-    public readonly securityCategories!: pulumi.Output<outputs.TwingateDNSFilteringProfileSecurityCategories | undefined>;
+    declare public readonly securityCategories: pulumi.Output<outputs.TwingateDNSFilteringProfileSecurityCategories | undefined>;
 
     /**
      * Create a TwingateDNSFilteringProfile resource with the given unique name, arguments, and options.
@@ -93,29 +136,29 @@ export class TwingateDNSFilteringProfile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TwingateDNSFilteringProfileState | undefined;
-            resourceInputs["allowedDomains"] = state ? state.allowedDomains : undefined;
-            resourceInputs["contentCategories"] = state ? state.contentCategories : undefined;
-            resourceInputs["deniedDomains"] = state ? state.deniedDomains : undefined;
-            resourceInputs["fallbackMethod"] = state ? state.fallbackMethod : undefined;
-            resourceInputs["groups"] = state ? state.groups : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["privacyCategories"] = state ? state.privacyCategories : undefined;
-            resourceInputs["securityCategories"] = state ? state.securityCategories : undefined;
+            resourceInputs["allowedDomains"] = state?.allowedDomains;
+            resourceInputs["contentCategories"] = state?.contentCategories;
+            resourceInputs["deniedDomains"] = state?.deniedDomains;
+            resourceInputs["fallbackMethod"] = state?.fallbackMethod;
+            resourceInputs["groups"] = state?.groups;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["privacyCategories"] = state?.privacyCategories;
+            resourceInputs["securityCategories"] = state?.securityCategories;
         } else {
             const args = argsOrState as TwingateDNSFilteringProfileArgs | undefined;
-            if ((!args || args.priority === undefined) && !opts.urn) {
+            if (args?.priority === undefined && !opts.urn) {
                 throw new Error("Missing required property 'priority'");
             }
-            resourceInputs["allowedDomains"] = args ? args.allowedDomains : undefined;
-            resourceInputs["contentCategories"] = args ? args.contentCategories : undefined;
-            resourceInputs["deniedDomains"] = args ? args.deniedDomains : undefined;
-            resourceInputs["fallbackMethod"] = args ? args.fallbackMethod : undefined;
-            resourceInputs["groups"] = args ? args.groups : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["privacyCategories"] = args ? args.privacyCategories : undefined;
-            resourceInputs["securityCategories"] = args ? args.securityCategories : undefined;
+            resourceInputs["allowedDomains"] = args?.allowedDomains;
+            resourceInputs["contentCategories"] = args?.contentCategories;
+            resourceInputs["deniedDomains"] = args?.deniedDomains;
+            resourceInputs["fallbackMethod"] = args?.fallbackMethod;
+            resourceInputs["groups"] = args?.groups;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["privacyCategories"] = args?.privacyCategories;
+            resourceInputs["securityCategories"] = args?.securityCategories;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TwingateDNSFilteringProfile.__pulumiType, name, resourceInputs, opts);

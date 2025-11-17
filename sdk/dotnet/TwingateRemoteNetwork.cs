@@ -23,7 +23,10 @@ namespace Twingate.Twingate
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var awsNetwork = new Twingate.TwingateRemoteNetwork("awsNetwork");
+    ///     var awsNetwork = new Twingate.TwingateRemoteNetwork("aws_network", new()
+    ///     {
+    ///         Name = "aws_remote_network",
+    ///     });
     /// 
     /// });
     /// ```

@@ -145,9 +145,9 @@ class TwingateConnectorTokens(pulumi.CustomResource):
         import pulumi
         import pulumi_twingate as twingate
 
-        aws_network = twingate.TwingateRemoteNetwork("awsNetwork")
-        aws_connector = twingate.TwingateConnector("awsConnector", remote_network_id=aws_network.id)
-        aws_connector_tokens = twingate.TwingateConnectorTokens("awsConnectorTokens", connector_id=aws_connector.id)
+        aws_network = twingate.TwingateRemoteNetwork("aws_network", name="aws_remote_network")
+        aws_connector = twingate.TwingateConnector("aws_connector", remote_network_id=aws_network.id)
+        aws_connector_tokens = twingate.TwingateConnectorTokens("aws_connector_tokens", connector_id=aws_connector.id)
         ```
 
         :param str resource_name: The name of the resource.
@@ -170,9 +170,9 @@ class TwingateConnectorTokens(pulumi.CustomResource):
         import pulumi
         import pulumi_twingate as twingate
 
-        aws_network = twingate.TwingateRemoteNetwork("awsNetwork")
-        aws_connector = twingate.TwingateConnector("awsConnector", remote_network_id=aws_network.id)
-        aws_connector_tokens = twingate.TwingateConnectorTokens("awsConnectorTokens", connector_id=aws_connector.id)
+        aws_network = twingate.TwingateRemoteNetwork("aws_network", name="aws_remote_network")
+        aws_connector = twingate.TwingateConnector("aws_connector", remote_network_id=aws_network.id)
+        aws_connector_tokens = twingate.TwingateConnectorTokens("aws_connector_tokens", connector_id=aws_connector.id)
         ```
 
         :param str resource_name: The name of the resource.

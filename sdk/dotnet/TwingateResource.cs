@@ -53,7 +53,7 @@ namespace Twingate.Twingate
         public Output<string> ApprovalMode { get; private set; } = null!;
 
         /// <summary>
-        /// Set the resource as active or inactive. Default is `true`.
+        /// Set the resource as active or inactive. Default is `True`.
         /// </summary>
         [Output("isActive")]
         public Output<bool> IsActive { get; private set; } = null!;
@@ -62,13 +62,13 @@ namespace Twingate.Twingate
         public Output<bool> IsAuthoritative { get; private set; } = null!;
 
         /// <summary>
-        /// Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
+        /// Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `False`.
         /// </summary>
         [Output("isBrowserShortcutEnabled")]
         public Output<bool> IsBrowserShortcutEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
+        /// Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `True`.
         /// </summary>
         [Output("isVisible")]
         public Output<bool> IsVisible { get; private set; } = null!;
@@ -205,7 +205,7 @@ namespace Twingate.Twingate
         public Input<string>? ApprovalMode { get; set; }
 
         /// <summary>
-        /// Set the resource as active or inactive. Default is `true`.
+        /// Set the resource as active or inactive. Default is `True`.
         /// </summary>
         [Input("isActive")]
         public Input<bool>? IsActive { get; set; }
@@ -214,13 +214,13 @@ namespace Twingate.Twingate
         public Input<bool>? IsAuthoritative { get; set; }
 
         /// <summary>
-        /// Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
+        /// Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `False`.
         /// </summary>
         [Input("isBrowserShortcutEnabled")]
         public Input<bool>? IsBrowserShortcutEnabled { get; set; }
 
         /// <summary>
-        /// Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
+        /// Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `True`.
         /// </summary>
         [Input("isVisible")]
         public Input<bool>? IsVisible { get; set; }
@@ -318,7 +318,7 @@ namespace Twingate.Twingate
         public Input<string>? ApprovalMode { get; set; }
 
         /// <summary>
-        /// Set the resource as active or inactive. Default is `true`.
+        /// Set the resource as active or inactive. Default is `True`.
         /// </summary>
         [Input("isActive")]
         public Input<bool>? IsActive { get; set; }
@@ -327,13 +327,13 @@ namespace Twingate.Twingate
         public Input<bool>? IsAuthoritative { get; set; }
 
         /// <summary>
-        /// Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
+        /// Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `False`.
         /// </summary>
         [Input("isBrowserShortcutEnabled")]
         public Input<bool>? IsBrowserShortcutEnabled { get; set; }
 
         /// <summary>
-        /// Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
+        /// Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `True`.
         /// </summary>
         [Input("isVisible")]
         public Input<bool>? IsVisible { get; set; }

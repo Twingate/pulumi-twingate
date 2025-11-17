@@ -58,33 +58,33 @@ export class TwingateUser extends pulumi.CustomResource {
     /**
      * The User's email address
      */
-    public readonly email!: pulumi.Output<string>;
+    declare public readonly email: pulumi.Output<string>;
     /**
      * The User's first name
      */
-    public readonly firstName!: pulumi.Output<string>;
+    declare public readonly firstName: pulumi.Output<string>;
     /**
      * Determines whether the User is active or not. Inactive users will be not able to sign in.
      */
-    public readonly isActive!: pulumi.Output<boolean>;
+    declare public readonly isActive: pulumi.Output<boolean>;
     /**
      * The User's last name
      */
-    public readonly lastName!: pulumi.Output<string>;
+    declare public readonly lastName: pulumi.Output<string>;
     /**
      * Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
     /**
      * Determines whether to send an email invitation to the User. True by default.
      *
      * @deprecated This attribute is no longer used and will be removed in a future release.
      */
-    public readonly sendInvite!: pulumi.Output<boolean>;
+    declare public readonly sendInvite: pulumi.Output<boolean>;
     /**
      * Indicates the User's type. Either MANUAL or SYNCED.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a TwingateUser resource with the given unique name, arguments, and options.
@@ -99,24 +99,24 @@ export class TwingateUser extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TwingateUserState | undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["firstName"] = state ? state.firstName : undefined;
-            resourceInputs["isActive"] = state ? state.isActive : undefined;
-            resourceInputs["lastName"] = state ? state.lastName : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["sendInvite"] = state ? state.sendInvite : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["firstName"] = state?.firstName;
+            resourceInputs["isActive"] = state?.isActive;
+            resourceInputs["lastName"] = state?.lastName;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["sendInvite"] = state?.sendInvite;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as TwingateUserArgs | undefined;
-            if ((!args || args.email === undefined) && !opts.urn) {
+            if (args?.email === undefined && !opts.urn) {
                 throw new Error("Missing required property 'email'");
             }
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["firstName"] = args ? args.firstName : undefined;
-            resourceInputs["isActive"] = args ? args.isActive : undefined;
-            resourceInputs["lastName"] = args ? args.lastName : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["sendInvite"] = args ? args.sendInvite : undefined;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["firstName"] = args?.firstName;
+            resourceInputs["isActive"] = args?.isActive;
+            resourceInputs["lastName"] = args?.lastName;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["sendInvite"] = args?.sendInvite;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

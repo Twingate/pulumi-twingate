@@ -23,7 +23,10 @@ namespace Twingate.Twingate
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var aws = new Twingate.TwingateGroup("aws");
+    ///     var aws = new Twingate.TwingateGroup("aws", new()
+    ///     {
+    ///         Name = "aws_group",
+    ///     });
     /// 
     /// });
     /// ```

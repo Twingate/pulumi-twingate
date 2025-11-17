@@ -172,7 +172,7 @@ class TwingateGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_twingate as twingate
 
-        aws = twingate.TwingateGroup("aws")
+        aws = twingate.TwingateGroup("aws", name="aws_group")
         ```
 
         ## Import
@@ -202,7 +202,7 @@ class TwingateGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_twingate as twingate
 
-        aws = twingate.TwingateGroup("aws")
+        aws = twingate.TwingateGroup("aws", name="aws_group")
         ```
 
         ## Import

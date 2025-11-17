@@ -23,7 +23,10 @@ namespace Twingate.Twingate
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var githubActionsProd = new Twingate.TwingateServiceAccount("githubActionsProd");
+    ///     var githubActionsProd = new Twingate.TwingateServiceAccount("github_actions_prod", new()
+    ///     {
+    ///         Name = "Github Actions PROD",
+    ///     });
     /// 
     /// });
     /// ```

@@ -34,9 +34,9 @@ namespace Twingate.Twingate
 
         private static readonly __Value<string?> _apiToken = new __Value<string?>(() => __config.Get("apiToken"));
         /// <summary>
-        /// The access key for API operations. You can retrieve this from the Twingate Admin Console
-        /// ([documentation](https://docs.twingate.com/docs/api-overview)). Alternatively, this can be specified using the
-        /// TWINGATE_API_TOKEN environment variable.
+        /// The access key for API operations. You can retrieve this
+        /// from the Twingate Admin Console ([documentation](https://docs.twingate.com/docs/api-overview)).
+        /// Alternatively, this can be specified using the TWINGATE_API_TOKEN environment variable.
         /// </summary>
         public static string? ApiToken
         {
@@ -66,8 +66,8 @@ namespace Twingate.Twingate
 
         private static readonly __Value<int?> _httpMaxRetry = new __Value<int?>(() => __config.GetInt32("httpMaxRetry"));
         /// <summary>
-        /// Specifies a retry limit for the http requests made. The default value is 10. Alternatively, this can be specified using
-        /// the TWINGATE_HTTP_MAX_RETRY environment variable
+        /// Specifies a retry limit for the http requests made. The default value is 10.
+        /// Alternatively, this can be specified using the TWINGATE_HTTP_MAX_RETRY environment variable
         /// </summary>
         public static int? HttpMaxRetry
         {
@@ -77,8 +77,8 @@ namespace Twingate.Twingate
 
         private static readonly __Value<int?> _httpTimeout = new __Value<int?>(() => __config.GetInt32("httpTimeout"));
         /// <summary>
-        /// Specifies a time limit in seconds for the http requests made. The default value is 35 seconds. Alternatively, this can
-        /// be specified using the TWINGATE_HTTP_TIMEOUT environment variable
+        /// Specifies a time limit in seconds for the http requests made. The default value is 35 seconds.
+        /// Alternatively, this can be specified using the TWINGATE_HTTP_TIMEOUT environment variable
         /// </summary>
         public static int? HttpTimeout
         {
@@ -88,9 +88,10 @@ namespace Twingate.Twingate
 
         private static readonly __Value<string?> _network = new __Value<string?>(() => __config.Get("network"));
         /// <summary>
-        /// Your Twingate network ID for API operations. You can find it in the Admin Console URL, for example:
-        /// `autoco.twingate.com`, where `autoco` is your network ID Alternatively, this can be specified using the TWINGATE_NETWORK
-        /// environment variable.
+        /// Your Twingate network ID for API operations.
+        /// You can find it in the Admin Console URL, for example:
+        /// `autoco.twingate.com`, where `Autoco` is your network ID
+        /// Alternatively, this can be specified using the TWINGATE_NETWORK environment variable.
         /// </summary>
         public static string? Network
         {
@@ -100,7 +101,8 @@ namespace Twingate.Twingate
 
         private static readonly __Value<string?> _url = new __Value<string?>(() => __config.Get("url"));
         /// <summary>
-        /// The default is 'twingate.com' This is optional and shouldn't be changed under normal circumstances.
+        /// The default is 'twingate.com'
+        /// This is optional and shouldn't be changed under normal circumstances.
         /// </summary>
         public static string? Url
         {
@@ -114,7 +116,7 @@ namespace Twingate.Twingate
              public class Cache
              {
             /// <summary>
-            /// Specifies whether the provider should cache groups. The default value is `true`.
+            /// Specifies whether the provider should cache groups. The default value is `True`.
             /// </summary>
                 public bool? GroupsEnabled { get; set; }
             /// <summary>
@@ -122,7 +124,7 @@ namespace Twingate.Twingate
             /// </summary>
                 public Twingate.Config.Types.CacheGroupsFilter? GroupsFilter { get; set; } = null!;
             /// <summary>
-            /// Specifies whether the provider should cache resources. The default value is `true`.
+            /// Specifies whether the provider should cache resources. The default value is `True`.
             /// </summary>
                 public bool? ResourceEnabled { get; set; }
             /// <summary>
