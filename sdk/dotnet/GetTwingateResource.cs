@@ -155,7 +155,7 @@ namespace Twingate.Twingate
         /// </summary>
         public readonly string RemoteNetworkId;
         /// <summary>
-        /// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
+        /// The `Tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>

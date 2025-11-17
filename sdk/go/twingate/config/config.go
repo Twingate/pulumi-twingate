@@ -11,9 +11,9 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-// The access key for API operations. You can retrieve this from the Twingate Admin Console
-// ([documentation](https://docs.twingate.com/docs/api-overview)). Alternatively, this can be specified using the
-// TWINGATE_API_TOKEN environment variable.
+// The access key for API operations. You can retrieve this
+// from the Twingate Admin Console ([documentation](https://docs.twingate.com/docs/api-overview)).
+// Alternatively, this can be specified using the TWINGATE_API_TOKEN environment variable.
 func GetApiToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "twingate:apiToken")
 }
@@ -28,26 +28,28 @@ func GetDefaultTags(ctx *pulumi.Context) string {
 	return config.Get(ctx, "twingate:defaultTags")
 }
 
-// Specifies a retry limit for the http requests made. The default value is 10. Alternatively, this can be specified using
-// the TWINGATE_HTTP_MAX_RETRY environment variable
+// Specifies a retry limit for the http requests made. The default value is 10.
+// Alternatively, this can be specified using the TWINGATE_HTTP_MAX_RETRY environment variable
 func GetHttpMaxRetry(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "twingate:httpMaxRetry")
 }
 
-// Specifies a time limit in seconds for the http requests made. The default value is 35 seconds. Alternatively, this can
-// be specified using the TWINGATE_HTTP_TIMEOUT environment variable
+// Specifies a time limit in seconds for the http requests made. The default value is 35 seconds.
+// Alternatively, this can be specified using the TWINGATE_HTTP_TIMEOUT environment variable
 func GetHttpTimeout(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "twingate:httpTimeout")
 }
 
-// Your Twingate network ID for API operations. You can find it in the Admin Console URL, for example:
-// `autoco.twingate.com`, where `autoco` is your network ID Alternatively, this can be specified using the TWINGATE_NETWORK
-// environment variable.
+// Your Twingate network ID for API operations.
+// You can find it in the Admin Console URL, for example:
+// `autoco.twingate.com`, where `autoco` is your network ID
+// Alternatively, this can be specified using the TWINGATE_NETWORK environment variable.
 func GetNetwork(ctx *pulumi.Context) string {
 	return config.Get(ctx, "twingate:network")
 }
 
-// The default is 'twingate.com' This is optional and shouldn't be changed under normal circumstances.
+// The default is 'twingate.com'
+// This is optional and shouldn't be changed under normal circumstances.
 func GetUrl(ctx *pulumi.Context) string {
 	return config.Get(ctx, "twingate:url")
 }

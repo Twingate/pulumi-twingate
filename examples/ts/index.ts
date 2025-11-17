@@ -7,6 +7,9 @@ const remoteNetwork = new tg.TwingateRemoteNetwork("test-network-js", { name: "O
 // Create a Twingate service account
 const serviceAccount = new tg.TwingateServiceAccount("ci_cd_account_js", { name: "CI CD Service JS" })
 
+// Create a second Twingate service account
+const serviceAccount2 = new tg.TwingateServiceAccount("ci_cd_account_js_2", { name: "CI CD Service JS 2" })
+
 // Create a Twingate service account key
 const serviceAccountKey = new tg.TwingateServiceAccountKey("ci_cd_key_js", { name: "CI CD Key JS", serviceAccountId: serviceAccount.id })
 
@@ -16,6 +19,11 @@ const tggcpConnector = new tg.TwingateConnector("twingateConnectorJS", { remoteN
 // Create a Twingate group
 const tgGroup = new tg.TwingateGroup("twingateGroup", {
     name: "demo group JS",
+});
+
+// Create a second Twingate group
+const tgGroup2 = new tg.TwingateGroup("twingateGroup2", {
+    name: "demo group JS 2",
 });
 
 // To see serviceAccountKeyOut, execute command `pulumi stack output --show-secrets`
@@ -29,17 +37,23 @@ function getGroupId(groupName: string) {
 
 // Create a Twingate Resource and configure resource permission
 new tg.TwingateResource("twingate_home_page_js", {
-    name: "Twingate Home Page JS",
+    name: "Twingate Home Page JS test updated",
     address: "www.twingate.com",
     remoteNetworkId: remoteNetwork.id,
     accessGroups: [
         {
-            groupId: getGroupId("Everyone"),
+            groupId: tgGroup.id,
+        },
+        {
+            groupId: tgGroup2.id,
         }
     ],
     accessServices: [
         {
             serviceAccountId: serviceAccount.id,
+        },
+        {
+            serviceAccountId: serviceAccount2.id,
         }
     ],
     protocols: {

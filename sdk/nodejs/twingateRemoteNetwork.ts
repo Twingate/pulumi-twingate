@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@twingate/pulumi-twingate";
  *
- * const awsNetwork = new twingate.TwingateRemoteNetwork("awsNetwork", {});
+ * const awsNetwork = new twingate.TwingateRemoteNetwork("aws_network", {name: "aws_remote_network"});
  * ```
  *
  * ## Import
@@ -53,15 +53,15 @@ export class TwingateRemoteNetwork extends pulumi.CustomResource {
     /**
      * The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the Remote Network
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The type of the Remote Network. Must be one of the following: REGULAR, EXIT. Defaults to REGULAR.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a TwingateRemoteNetwork resource with the given unique name, arguments, and options.
@@ -76,14 +76,14 @@ export class TwingateRemoteNetwork extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TwingateRemoteNetworkState | undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as TwingateRemoteNetworkArgs | undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TwingateRemoteNetwork.__pulumiType, name, resourceInputs, opts);

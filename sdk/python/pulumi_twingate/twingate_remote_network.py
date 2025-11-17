@@ -147,7 +147,7 @@ class TwingateRemoteNetwork(pulumi.CustomResource):
         import pulumi
         import pulumi_twingate as twingate
 
-        aws_network = twingate.TwingateRemoteNetwork("awsNetwork")
+        aws_network = twingate.TwingateRemoteNetwork("aws_network", name="aws_remote_network")
         ```
 
         ## Import
@@ -177,7 +177,7 @@ class TwingateRemoteNetwork(pulumi.CustomResource):
         import pulumi
         import pulumi_twingate as twingate
 
-        aws_network = twingate.TwingateRemoteNetwork("awsNetwork")
+        aws_network = twingate.TwingateRemoteNetwork("aws_network", name="aws_remote_network")
         ```
 
         ## Import

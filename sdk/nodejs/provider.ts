@@ -28,21 +28,23 @@ export class Provider extends pulumi.ProviderResource {
     }
 
     /**
-     * The access key for API operations. You can retrieve this from the Twingate Admin Console
-     * ([documentation](https://docs.twingate.com/docs/api-overview)). Alternatively, this can be specified using the
-     * TWINGATE_API_TOKEN environment variable.
+     * The access key for API operations. You can retrieve this
+     * from the Twingate Admin Console ([documentation](https://docs.twingate.com/docs/api-overview)).
+     * Alternatively, this can be specified using the TWINGATE_API_TOKEN environment variable.
      */
-    public readonly apiToken!: pulumi.Output<string | undefined>;
+    declare public readonly apiToken: pulumi.Output<string | undefined>;
     /**
-     * Your Twingate network ID for API operations. You can find it in the Admin Console URL, for example:
-     * `autoco.twingate.com`, where `autoco` is your network ID Alternatively, this can be specified using the TWINGATE_NETWORK
-     * environment variable.
+     * Your Twingate network ID for API operations.
+     * You can find it in the Admin Console URL, for example:
+     * `autoco.twingate.com`, where `autoco` is your network ID
+     * Alternatively, this can be specified using the TWINGATE_NETWORK environment variable.
      */
-    public readonly network!: pulumi.Output<string | undefined>;
+    declare public readonly network: pulumi.Output<string | undefined>;
     /**
-     * The default is 'twingate.com' This is optional and shouldn't be changed under normal circumstances.
+     * The default is 'twingate.com'
+     * This is optional and shouldn't be changed under normal circumstances.
      */
-    public readonly url!: pulumi.Output<string | undefined>;
+    declare public readonly url: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -56,12 +58,12 @@ export class Provider extends pulumi.ProviderResource {
         opts = opts || {};
         {
             resourceInputs["apiToken"] = args?.apiToken ? pulumi.secret(args.apiToken) : undefined;
-            resourceInputs["cache"] = pulumi.output(args ? args.cache : undefined).apply(JSON.stringify);
-            resourceInputs["defaultTags"] = pulumi.output(args ? args.defaultTags : undefined).apply(JSON.stringify);
-            resourceInputs["httpMaxRetry"] = pulumi.output(args ? args.httpMaxRetry : undefined).apply(JSON.stringify);
-            resourceInputs["httpTimeout"] = pulumi.output(args ? args.httpTimeout : undefined).apply(JSON.stringify);
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["cache"] = pulumi.output(args?.cache).apply(JSON.stringify);
+            resourceInputs["defaultTags"] = pulumi.output(args?.defaultTags).apply(JSON.stringify);
+            resourceInputs["httpMaxRetry"] = pulumi.output(args?.httpMaxRetry).apply(JSON.stringify);
+            resourceInputs["httpTimeout"] = pulumi.output(args?.httpTimeout).apply(JSON.stringify);
+            resourceInputs["network"] = args?.network;
+            resourceInputs["url"] = args?.url;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["apiToken"] };
@@ -84,9 +86,9 @@ export class Provider extends pulumi.ProviderResource {
  */
 export interface ProviderArgs {
     /**
-     * The access key for API operations. You can retrieve this from the Twingate Admin Console
-     * ([documentation](https://docs.twingate.com/docs/api-overview)). Alternatively, this can be specified using the
-     * TWINGATE_API_TOKEN environment variable.
+     * The access key for API operations. You can retrieve this
+     * from the Twingate Admin Console ([documentation](https://docs.twingate.com/docs/api-overview)).
+     * Alternatively, this can be specified using the TWINGATE_API_TOKEN environment variable.
      */
     apiToken?: pulumi.Input<string>;
     /**
@@ -98,23 +100,25 @@ export interface ProviderArgs {
      */
     defaultTags?: pulumi.Input<inputs.ProviderDefaultTags>;
     /**
-     * Specifies a retry limit for the http requests made. The default value is 10. Alternatively, this can be specified using
-     * the TWINGATE_HTTP_MAX_RETRY environment variable
+     * Specifies a retry limit for the http requests made. The default value is 10.
+     * Alternatively, this can be specified using the TWINGATE_HTTP_MAX_RETRY environment variable
      */
     httpMaxRetry?: pulumi.Input<number>;
     /**
-     * Specifies a time limit in seconds for the http requests made. The default value is 35 seconds. Alternatively, this can
-     * be specified using the TWINGATE_HTTP_TIMEOUT environment variable
+     * Specifies a time limit in seconds for the http requests made. The default value is 35 seconds.
+     * Alternatively, this can be specified using the TWINGATE_HTTP_TIMEOUT environment variable
      */
     httpTimeout?: pulumi.Input<number>;
     /**
-     * Your Twingate network ID for API operations. You can find it in the Admin Console URL, for example:
-     * `autoco.twingate.com`, where `autoco` is your network ID Alternatively, this can be specified using the TWINGATE_NETWORK
-     * environment variable.
+     * Your Twingate network ID for API operations.
+     * You can find it in the Admin Console URL, for example:
+     * `autoco.twingate.com`, where `autoco` is your network ID
+     * Alternatively, this can be specified using the TWINGATE_NETWORK environment variable.
      */
     network?: pulumi.Input<string>;
     /**
-     * The default is 'twingate.com' This is optional and shouldn't be changed under normal circumstances.
+     * The default is 'twingate.com'
+     * This is optional and shouldn't be changed under normal circumstances.
      */
     url?: pulumi.Input<string>;
 }

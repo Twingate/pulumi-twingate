@@ -27,7 +27,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := twingate.NewTwingateServiceAccount(ctx, "githubActionsProd", nil)
+//			_, err := twingate.NewTwingateServiceAccount(ctx, "github_actions_prod", &twingate.TwingateServiceAccountArgs{
+//				Name: pulumi.String("Github Actions PROD"),
+//			})
 //			if err != nil {
 //				return err
 //			}

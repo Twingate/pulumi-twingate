@@ -29,19 +29,21 @@ class ProviderArgs:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
-        :param pulumi.Input[_builtins.str] api_token: The access key for API operations. You can retrieve this from the Twingate Admin Console
-               ([documentation](https://docs.twingate.com/docs/api-overview)). Alternatively, this can be specified using the
-               TWINGATE_API_TOKEN environment variable.
+        :param pulumi.Input[_builtins.str] api_token: The access key for API operations. You can retrieve this
+               from the Twingate Admin Console ([documentation](https://docs.twingate.com/docs/api-overview)).
+               Alternatively, this can be specified using the TWINGATE_API_TOKEN environment variable.
         :param pulumi.Input['ProviderCacheArgs'] cache: Specifies the cache settings for the provider.
         :param pulumi.Input['ProviderDefaultTagsArgs'] default_tags: A default set of tags applied globally to all resources created by the provider.
-        :param pulumi.Input[_builtins.int] http_max_retry: Specifies a retry limit for the http requests made. The default value is 10. Alternatively, this can be specified using
-               the TWINGATE_HTTP_MAX_RETRY environment variable
-        :param pulumi.Input[_builtins.int] http_timeout: Specifies a time limit in seconds for the http requests made. The default value is 35 seconds. Alternatively, this can
-               be specified using the TWINGATE_HTTP_TIMEOUT environment variable
-        :param pulumi.Input[_builtins.str] network: Your Twingate network ID for API operations. You can find it in the Admin Console URL, for example:
-               `autoco.twingate.com`, where `autoco` is your network ID Alternatively, this can be specified using the TWINGATE_NETWORK
-               environment variable.
-        :param pulumi.Input[_builtins.str] url: The default is 'twingate.com' This is optional and shouldn't be changed under normal circumstances.
+        :param pulumi.Input[_builtins.int] http_max_retry: Specifies a retry limit for the http requests made. The default value is 10.
+               Alternatively, this can be specified using the TWINGATE_HTTP_MAX_RETRY environment variable
+        :param pulumi.Input[_builtins.int] http_timeout: Specifies a time limit in seconds for the http requests made. The default value is 35 seconds.
+               Alternatively, this can be specified using the TWINGATE_HTTP_TIMEOUT environment variable
+        :param pulumi.Input[_builtins.str] network: Your Twingate network ID for API operations.
+               You can find it in the Admin Console URL, for example:
+               `autoco.twingate.com`, where `autoco` is your network ID
+               Alternatively, this can be specified using the TWINGATE_NETWORK environment variable.
+        :param pulumi.Input[_builtins.str] url: The default is 'twingate.com'
+               This is optional and shouldn't be changed under normal circumstances.
         """
         if api_token is not None:
             pulumi.set(__self__, "api_token", api_token)
@@ -62,9 +64,9 @@ class ProviderArgs:
     @pulumi.getter(name="apiToken")
     def api_token(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The access key for API operations. You can retrieve this from the Twingate Admin Console
-        ([documentation](https://docs.twingate.com/docs/api-overview)). Alternatively, this can be specified using the
-        TWINGATE_API_TOKEN environment variable.
+        The access key for API operations. You can retrieve this
+        from the Twingate Admin Console ([documentation](https://docs.twingate.com/docs/api-overview)).
+        Alternatively, this can be specified using the TWINGATE_API_TOKEN environment variable.
         """
         return pulumi.get(self, "api_token")
 
@@ -100,8 +102,8 @@ class ProviderArgs:
     @pulumi.getter(name="httpMaxRetry")
     def http_max_retry(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies a retry limit for the http requests made. The default value is 10. Alternatively, this can be specified using
-        the TWINGATE_HTTP_MAX_RETRY environment variable
+        Specifies a retry limit for the http requests made. The default value is 10.
+        Alternatively, this can be specified using the TWINGATE_HTTP_MAX_RETRY environment variable
         """
         return pulumi.get(self, "http_max_retry")
 
@@ -113,8 +115,8 @@ class ProviderArgs:
     @pulumi.getter(name="httpTimeout")
     def http_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies a time limit in seconds for the http requests made. The default value is 35 seconds. Alternatively, this can
-        be specified using the TWINGATE_HTTP_TIMEOUT environment variable
+        Specifies a time limit in seconds for the http requests made. The default value is 35 seconds.
+        Alternatively, this can be specified using the TWINGATE_HTTP_TIMEOUT environment variable
         """
         return pulumi.get(self, "http_timeout")
 
@@ -126,9 +128,10 @@ class ProviderArgs:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Your Twingate network ID for API operations. You can find it in the Admin Console URL, for example:
-        `autoco.twingate.com`, where `autoco` is your network ID Alternatively, this can be specified using the TWINGATE_NETWORK
-        environment variable.
+        Your Twingate network ID for API operations.
+        You can find it in the Admin Console URL, for example:
+        `autoco.twingate.com`, where `autoco` is your network ID
+        Alternatively, this can be specified using the TWINGATE_NETWORK environment variable.
         """
         return pulumi.get(self, "network")
 
@@ -140,7 +143,8 @@ class ProviderArgs:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The default is 'twingate.com' This is optional and shouldn't be changed under normal circumstances.
+        The default is 'twingate.com'
+        This is optional and shouldn't be changed under normal circumstances.
         """
         return pulumi.get(self, "url")
 
@@ -171,19 +175,21 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] api_token: The access key for API operations. You can retrieve this from the Twingate Admin Console
-               ([documentation](https://docs.twingate.com/docs/api-overview)). Alternatively, this can be specified using the
-               TWINGATE_API_TOKEN environment variable.
+        :param pulumi.Input[_builtins.str] api_token: The access key for API operations. You can retrieve this
+               from the Twingate Admin Console ([documentation](https://docs.twingate.com/docs/api-overview)).
+               Alternatively, this can be specified using the TWINGATE_API_TOKEN environment variable.
         :param pulumi.Input[Union['ProviderCacheArgs', 'ProviderCacheArgsDict']] cache: Specifies the cache settings for the provider.
         :param pulumi.Input[Union['ProviderDefaultTagsArgs', 'ProviderDefaultTagsArgsDict']] default_tags: A default set of tags applied globally to all resources created by the provider.
-        :param pulumi.Input[_builtins.int] http_max_retry: Specifies a retry limit for the http requests made. The default value is 10. Alternatively, this can be specified using
-               the TWINGATE_HTTP_MAX_RETRY environment variable
-        :param pulumi.Input[_builtins.int] http_timeout: Specifies a time limit in seconds for the http requests made. The default value is 35 seconds. Alternatively, this can
-               be specified using the TWINGATE_HTTP_TIMEOUT environment variable
-        :param pulumi.Input[_builtins.str] network: Your Twingate network ID for API operations. You can find it in the Admin Console URL, for example:
-               `autoco.twingate.com`, where `autoco` is your network ID Alternatively, this can be specified using the TWINGATE_NETWORK
-               environment variable.
-        :param pulumi.Input[_builtins.str] url: The default is 'twingate.com' This is optional and shouldn't be changed under normal circumstances.
+        :param pulumi.Input[_builtins.int] http_max_retry: Specifies a retry limit for the http requests made. The default value is 10.
+               Alternatively, this can be specified using the TWINGATE_HTTP_MAX_RETRY environment variable
+        :param pulumi.Input[_builtins.int] http_timeout: Specifies a time limit in seconds for the http requests made. The default value is 35 seconds.
+               Alternatively, this can be specified using the TWINGATE_HTTP_TIMEOUT environment variable
+        :param pulumi.Input[_builtins.str] network: Your Twingate network ID for API operations.
+               You can find it in the Admin Console URL, for example:
+               `autoco.twingate.com`, where `autoco` is your network ID
+               Alternatively, this can be specified using the TWINGATE_NETWORK environment variable.
+        :param pulumi.Input[_builtins.str] url: The default is 'twingate.com'
+               This is optional and shouldn't be changed under normal circumstances.
         """
         ...
     @overload
@@ -247,9 +253,9 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="apiToken")
     def api_token(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The access key for API operations. You can retrieve this from the Twingate Admin Console
-        ([documentation](https://docs.twingate.com/docs/api-overview)). Alternatively, this can be specified using the
-        TWINGATE_API_TOKEN environment variable.
+        The access key for API operations. You can retrieve this
+        from the Twingate Admin Console ([documentation](https://docs.twingate.com/docs/api-overview)).
+        Alternatively, this can be specified using the TWINGATE_API_TOKEN environment variable.
         """
         return pulumi.get(self, "api_token")
 
@@ -257,9 +263,10 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def network(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Your Twingate network ID for API operations. You can find it in the Admin Console URL, for example:
-        `autoco.twingate.com`, where `autoco` is your network ID Alternatively, this can be specified using the TWINGATE_NETWORK
-        environment variable.
+        Your Twingate network ID for API operations.
+        You can find it in the Admin Console URL, for example:
+        `autoco.twingate.com`, where `autoco` is your network ID
+        Alternatively, this can be specified using the TWINGATE_NETWORK environment variable.
         """
         return pulumi.get(self, "network")
 
@@ -267,7 +274,8 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The default is 'twingate.com' This is optional and shouldn't be changed under normal circumstances.
+        The default is 'twingate.com'
+        This is optional and shouldn't be changed under normal circumstances.
         """
         return pulumi.get(self, "url")
 

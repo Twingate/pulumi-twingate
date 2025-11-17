@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as twingate from "@twingate/pulumi-twingate";
  *
- * const githubActionsProd = new twingate.TwingateServiceAccount("githubActionsProd", {});
+ * const githubActionsProd = new twingate.TwingateServiceAccount("github_actions_prod", {name: "Github Actions PROD"});
  * ```
  */
 export class TwingateServiceAccount extends pulumi.CustomResource {
@@ -47,7 +47,7 @@ export class TwingateServiceAccount extends pulumi.CustomResource {
     /**
      * The name of the Service Account in Twingate
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a TwingateServiceAccount resource with the given unique name, arguments, and options.
@@ -62,10 +62,10 @@ export class TwingateServiceAccount extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TwingateServiceAccountState | undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as TwingateServiceAccountArgs | undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TwingateServiceAccount.__pulumiType, name, resourceInputs, opts);

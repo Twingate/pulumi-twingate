@@ -23,9 +23,12 @@ namespace Twingate.Twingate
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var awsNetwork = new Twingate.TwingateRemoteNetwork("awsNetwork");
+    ///     var awsNetwork = new Twingate.TwingateRemoteNetwork("aws_network", new()
+    ///     {
+    ///         Name = "aws_remote_network",
+    ///     });
     /// 
-    ///     var awsConnector = new Twingate.TwingateConnector("awsConnector", new()
+    ///     var awsConnector = new Twingate.TwingateConnector("aws_connector", new()
     ///     {
     ///         RemoteNetworkId = awsNetwork.Id,
     ///         StatusUpdatesEnabled = true,
@@ -80,7 +83,7 @@ namespace Twingate.Twingate
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Determines whether status notifications are enabled for the Connector. Default is `true`.
+        /// Determines whether status notifications are enabled for the Connector. Default is `True`.
         /// </summary>
         [Output("statusUpdatesEnabled")]
         public Output<bool> StatusUpdatesEnabled { get; private set; } = null!;
@@ -151,7 +154,7 @@ namespace Twingate.Twingate
         public Input<string> RemoteNetworkId { get; set; } = null!;
 
         /// <summary>
-        /// Determines whether status notifications are enabled for the Connector. Default is `true`.
+        /// Determines whether status notifications are enabled for the Connector. Default is `True`.
         /// </summary>
         [Input("statusUpdatesEnabled")]
         public Input<bool>? StatusUpdatesEnabled { get; set; }
@@ -207,7 +210,7 @@ namespace Twingate.Twingate
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Determines whether status notifications are enabled for the Connector. Default is `true`.
+        /// Determines whether status notifications are enabled for the Connector. Default is `True`.
         /// </summary>
         [Input("statusUpdatesEnabled")]
         public Input<bool>? StatusUpdatesEnabled { get; set; }

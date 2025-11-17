@@ -27,7 +27,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := twingate.NewTwingateRemoteNetwork(ctx, "awsNetwork", nil)
+//			_, err := twingate.NewTwingateRemoteNetwork(ctx, "aws_network", &twingate.TwingateRemoteNetworkArgs{
+//				Name: pulumi.String("aws_remote_network"),
+//			})
 //			if err != nil {
 //				return err
 //			}

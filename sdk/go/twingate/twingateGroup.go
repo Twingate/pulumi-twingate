@@ -27,7 +27,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := twingate.NewTwingateGroup(ctx, "aws", nil)
+//			_, err := twingate.NewTwingateGroup(ctx, "aws", &twingate.TwingateGroupArgs{
+//				Name: pulumi.String("aws_group"),
+//			})
 //			if err != nil {
 //				return err
 //			}

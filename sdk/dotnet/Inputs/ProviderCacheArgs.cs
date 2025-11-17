@@ -14,7 +14,7 @@ namespace Twingate.Twingate.Inputs
     public sealed class ProviderCacheArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether the provider should cache groups. The default value is `true`.
+        /// Specifies whether the provider should cache groups. The default value is `True`.
         /// </summary>
         [Input("groupsEnabled")]
         public Input<bool>? GroupsEnabled { get; set; }
@@ -26,7 +26,7 @@ namespace Twingate.Twingate.Inputs
         public Input<Inputs.ProviderCacheGroupsFilterArgs>? GroupsFilter { get; set; }
 
         /// <summary>
-        /// Specifies whether the provider should cache resources. The default value is `true`.
+        /// Specifies whether the provider should cache resources. The default value is `True`.
         /// </summary>
         [Input("resourceEnabled")]
         public Input<bool>? ResourceEnabled { get; set; }

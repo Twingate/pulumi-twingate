@@ -18,6 +18,12 @@ await Deployment.RunAsync(() =>
         Name = "CI CD Service CS",
     });
 
+    // Create a second Twingate service account
+    var serviceAccount2 = new TwingateServiceAccount("ci_cd_account_cs_2", new TwingateServiceAccountArgs
+    {
+        Name = "CI CD Service CS 2",
+    });
+
     // Create a Twingate service key
     var serviceAccountKey = new TwingateServiceAccountKey("ci_cd_key_cs", new TwingateServiceAccountKeyArgs
     {
@@ -37,19 +43,39 @@ await Deployment.RunAsync(() =>
         Name = "demo group CS",
     });
 
+    // Create a second Twingate group
+    var tgGroup2 = new TwingateGroup("twingateGroup2", new TwingateGroupArgs
+    {
+        Name = "demo group CS 2",
+    });
+
     // Create a Twingate Resource and configure resource permission
     var twingateResource = new TwingateResource("twingate_home_page_cs", new TwingateResourceArgs
     {
-        Name = "Twingate Home Page CS",
+        Name = "Twingate Home Page CS test updated",
         Address = "www.twingate.com",
         RemoteNetworkId = remoteNetwork.Id,
-        AccessGroups = new TwingateResourceAccessGroupArgs
+        AccessGroups = new[]
         {
-            GroupId = tgGroup.Id,
+            new TwingateResourceAccessGroupArgs
+            {
+                GroupId = tgGroup.Id,
+            },
+            new TwingateResourceAccessGroupArgs
+            {
+                GroupId = tgGroup2.Id,
+            },
         },
-        AccessServices = new TwingateResourceAccessServiceArgs
+        AccessServices = new[]
         {
-            ServiceAccountId = serviceAccount.Id,
+            new TwingateResourceAccessServiceArgs
+            {
+                ServiceAccountId = serviceAccount.Id,
+            },
+            new TwingateResourceAccessServiceArgs
+            {
+                ServiceAccountId = serviceAccount2.Id,
+            },
         },
         Protocols = new TwingateResourceProtocolsArgs
         {

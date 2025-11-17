@@ -209,3 +209,9 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	lukechampine.com/frand v1.5.1 // indirect
 )
+
+// uncomment to test local changes to terraform-provider-twingate
+//replace github.com/Twingate/terraform-provider-twingate/v3 => ../../terraform-provider-twingate
+
+// Use forked pulumi-terraform-bridge with Go SDK array truncation fix
+replace github.com/pulumi/pulumi-terraform-bridge/v3 => github.com/twingate-blee/pulumi-terraform-bridge/v3 v3.117.1

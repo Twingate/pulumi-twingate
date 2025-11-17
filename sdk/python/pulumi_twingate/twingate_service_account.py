@@ -81,7 +81,7 @@ class TwingateServiceAccount(pulumi.CustomResource):
         import pulumi
         import pulumi_twingate as twingate
 
-        github_actions_prod = twingate.TwingateServiceAccount("githubActionsProd")
+        github_actions_prod = twingate.TwingateServiceAccount("github_actions_prod", name="Github Actions PROD")
         ```
 
         :param str resource_name: The name of the resource.
@@ -103,7 +103,7 @@ class TwingateServiceAccount(pulumi.CustomResource):
         import pulumi
         import pulumi_twingate as twingate
 
-        github_actions_prod = twingate.TwingateServiceAccount("githubActionsProd")
+        github_actions_prod = twingate.TwingateServiceAccount("github_actions_prod", name="Github Actions PROD")
         ```
 
         :param str resource_name: The name of the resource.

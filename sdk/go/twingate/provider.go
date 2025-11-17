@@ -18,15 +18,17 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
-	// The access key for API operations. You can retrieve this from the Twingate Admin Console
-	// ([documentation](https://docs.twingate.com/docs/api-overview)). Alternatively, this can be specified using the
-	// TWINGATE_API_TOKEN environment variable.
+	// The access key for API operations. You can retrieve this
+	// from the Twingate Admin Console ([documentation](https://docs.twingate.com/docs/api-overview)).
+	// Alternatively, this can be specified using the TWINGATE_API_TOKEN environment variable.
 	ApiToken pulumi.StringPtrOutput `pulumi:"apiToken"`
-	// Your Twingate network ID for API operations. You can find it in the Admin Console URL, for example:
-	// `autoco.twingate.com`, where `autoco` is your network ID Alternatively, this can be specified using the TWINGATE_NETWORK
-	// environment variable.
+	// Your Twingate network ID for API operations.
+	// You can find it in the Admin Console URL, for example:
+	// `autoco.twingate.com`, where `autoco` is your network ID
+	// Alternatively, this can be specified using the TWINGATE_NETWORK environment variable.
 	Network pulumi.StringPtrOutput `pulumi:"network"`
-	// The default is 'twingate.com' This is optional and shouldn't be changed under normal circumstances.
+	// The default is 'twingate.com'
+	// This is optional and shouldn't be changed under normal circumstances.
 	Url pulumi.StringPtrOutput `pulumi:"url"`
 }
 
@@ -54,49 +56,53 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	// The access key for API operations. You can retrieve this from the Twingate Admin Console
-	// ([documentation](https://docs.twingate.com/docs/api-overview)). Alternatively, this can be specified using the
-	// TWINGATE_API_TOKEN environment variable.
+	// The access key for API operations. You can retrieve this
+	// from the Twingate Admin Console ([documentation](https://docs.twingate.com/docs/api-overview)).
+	// Alternatively, this can be specified using the TWINGATE_API_TOKEN environment variable.
 	ApiToken *string `pulumi:"apiToken"`
 	// Specifies the cache settings for the provider.
 	Cache *ProviderCache `pulumi:"cache"`
 	// A default set of tags applied globally to all resources created by the provider.
 	DefaultTags *ProviderDefaultTags `pulumi:"defaultTags"`
-	// Specifies a retry limit for the http requests made. The default value is 10. Alternatively, this can be specified using
-	// the TWINGATE_HTTP_MAX_RETRY environment variable
+	// Specifies a retry limit for the http requests made. The default value is 10.
+	// Alternatively, this can be specified using the TWINGATE_HTTP_MAX_RETRY environment variable
 	HttpMaxRetry *int `pulumi:"httpMaxRetry"`
-	// Specifies a time limit in seconds for the http requests made. The default value is 35 seconds. Alternatively, this can
-	// be specified using the TWINGATE_HTTP_TIMEOUT environment variable
+	// Specifies a time limit in seconds for the http requests made. The default value is 35 seconds.
+	// Alternatively, this can be specified using the TWINGATE_HTTP_TIMEOUT environment variable
 	HttpTimeout *int `pulumi:"httpTimeout"`
-	// Your Twingate network ID for API operations. You can find it in the Admin Console URL, for example:
-	// `autoco.twingate.com`, where `autoco` is your network ID Alternatively, this can be specified using the TWINGATE_NETWORK
-	// environment variable.
+	// Your Twingate network ID for API operations.
+	// You can find it in the Admin Console URL, for example:
+	// `autoco.twingate.com`, where `autoco` is your network ID
+	// Alternatively, this can be specified using the TWINGATE_NETWORK environment variable.
 	Network *string `pulumi:"network"`
-	// The default is 'twingate.com' This is optional and shouldn't be changed under normal circumstances.
+	// The default is 'twingate.com'
+	// This is optional and shouldn't be changed under normal circumstances.
 	Url *string `pulumi:"url"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	// The access key for API operations. You can retrieve this from the Twingate Admin Console
-	// ([documentation](https://docs.twingate.com/docs/api-overview)). Alternatively, this can be specified using the
-	// TWINGATE_API_TOKEN environment variable.
+	// The access key for API operations. You can retrieve this
+	// from the Twingate Admin Console ([documentation](https://docs.twingate.com/docs/api-overview)).
+	// Alternatively, this can be specified using the TWINGATE_API_TOKEN environment variable.
 	ApiToken pulumi.StringPtrInput
 	// Specifies the cache settings for the provider.
 	Cache ProviderCachePtrInput
 	// A default set of tags applied globally to all resources created by the provider.
 	DefaultTags ProviderDefaultTagsPtrInput
-	// Specifies a retry limit for the http requests made. The default value is 10. Alternatively, this can be specified using
-	// the TWINGATE_HTTP_MAX_RETRY environment variable
+	// Specifies a retry limit for the http requests made. The default value is 10.
+	// Alternatively, this can be specified using the TWINGATE_HTTP_MAX_RETRY environment variable
 	HttpMaxRetry pulumi.IntPtrInput
-	// Specifies a time limit in seconds for the http requests made. The default value is 35 seconds. Alternatively, this can
-	// be specified using the TWINGATE_HTTP_TIMEOUT environment variable
+	// Specifies a time limit in seconds for the http requests made. The default value is 35 seconds.
+	// Alternatively, this can be specified using the TWINGATE_HTTP_TIMEOUT environment variable
 	HttpTimeout pulumi.IntPtrInput
-	// Your Twingate network ID for API operations. You can find it in the Admin Console URL, for example:
-	// `autoco.twingate.com`, where `autoco` is your network ID Alternatively, this can be specified using the TWINGATE_NETWORK
-	// environment variable.
+	// Your Twingate network ID for API operations.
+	// You can find it in the Admin Console URL, for example:
+	// `autoco.twingate.com`, where `autoco` is your network ID
+	// Alternatively, this can be specified using the TWINGATE_NETWORK environment variable.
 	Network pulumi.StringPtrInput
-	// The default is 'twingate.com' This is optional and shouldn't be changed under normal circumstances.
+	// The default is 'twingate.com'
+	// This is optional and shouldn't be changed under normal circumstances.
 	Url pulumi.StringPtrInput
 }
 
@@ -160,21 +166,23 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
-// The access key for API operations. You can retrieve this from the Twingate Admin Console
-// ([documentation](https://docs.twingate.com/docs/api-overview)). Alternatively, this can be specified using the
-// TWINGATE_API_TOKEN environment variable.
+// The access key for API operations. You can retrieve this
+// from the Twingate Admin Console ([documentation](https://docs.twingate.com/docs/api-overview)).
+// Alternatively, this can be specified using the TWINGATE_API_TOKEN environment variable.
 func (o ProviderOutput) ApiToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiToken }).(pulumi.StringPtrOutput)
 }
 
-// Your Twingate network ID for API operations. You can find it in the Admin Console URL, for example:
-// `autoco.twingate.com`, where `autoco` is your network ID Alternatively, this can be specified using the TWINGATE_NETWORK
-// environment variable.
+// Your Twingate network ID for API operations.
+// You can find it in the Admin Console URL, for example:
+// `autoco.twingate.com`, where `autoco` is your network ID
+// Alternatively, this can be specified using the TWINGATE_NETWORK environment variable.
 func (o ProviderOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Network }).(pulumi.StringPtrOutput)
 }
 
-// The default is 'twingate.com' This is optional and shouldn't be changed under normal circumstances.
+// The default is 'twingate.com'
+// This is optional and shouldn't be changed under normal circumstances.
 func (o ProviderOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Url }).(pulumi.StringPtrOutput)
 }

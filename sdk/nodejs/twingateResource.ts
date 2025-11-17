@@ -46,64 +46,64 @@ export class TwingateResource extends pulumi.CustomResource {
     /**
      * Restrict access to certain group
      */
-    public readonly accessGroups!: pulumi.Output<outputs.TwingateResourceAccessGroup[] | undefined>;
+    declare public readonly accessGroups: pulumi.Output<outputs.TwingateResourceAccessGroup[] | undefined>;
     /**
      * Restrict access to certain service account
      */
-    public readonly accessServices!: pulumi.Output<outputs.TwingateResourceAccessService[] | undefined>;
+    declare public readonly accessServices: pulumi.Output<outputs.TwingateResourceAccessService[] | undefined>;
     /**
      * The Resource's IP/CIDR or FQDN/DNS zone
      */
-    public readonly address!: pulumi.Output<string>;
+    declare public readonly address: pulumi.Output<string>;
     /**
      * Set a DNS alias address for the Resource. Must be a DNS-valid name string.
      */
-    public readonly alias!: pulumi.Output<string | undefined>;
+    declare public readonly alias: pulumi.Output<string | undefined>;
     /**
      * This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
      */
-    public readonly approvalMode!: pulumi.Output<string>;
+    declare public readonly approvalMode: pulumi.Output<string>;
     /**
      * Set the resource as active or inactive. Default is `true`.
      */
-    public readonly isActive!: pulumi.Output<boolean>;
-    public readonly isAuthoritative!: pulumi.Output<boolean>;
+    declare public readonly isActive: pulumi.Output<boolean>;
+    declare public readonly isAuthoritative: pulumi.Output<boolean>;
     /**
      * Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
      */
-    public readonly isBrowserShortcutEnabled!: pulumi.Output<boolean>;
+    declare public readonly isBrowserShortcutEnabled: pulumi.Output<boolean>;
     /**
      * Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
      */
-    public readonly isVisible!: pulumi.Output<boolean>;
+    declare public readonly isVisible: pulumi.Output<boolean>;
     /**
      * The name of the Resource
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
      */
-    public readonly protocols!: pulumi.Output<outputs.TwingateResourceProtocols>;
+    declare public readonly protocols: pulumi.Output<outputs.TwingateResourceProtocols>;
     /**
      * Remote Network ID where the Resource lives
      */
-    public readonly remoteNetworkId!: pulumi.Output<string>;
+    declare public readonly remoteNetworkId: pulumi.Output<string>;
     /**
      * The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
      */
-    public readonly securityPolicyId!: pulumi.Output<string>;
+    declare public readonly securityPolicyId: pulumi.Output<string>;
     /**
      * A map of key-value pair tags to set on this resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     /**
      * A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
      */
-    public /*out*/ readonly tagsAll!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly tagsAll: pulumi.Output<{[key: string]: string}>;
     /**
      * The usage-based auto-lock duration for the Resource (in days).
      */
-    public readonly usageBasedAutolockDurationDays!: pulumi.Output<number>;
+    declare public readonly usageBasedAutolockDurationDays: pulumi.Output<number>;
 
     /**
      * Create a TwingateResource resource with the given unique name, arguments, and options.
@@ -118,45 +118,45 @@ export class TwingateResource extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TwingateResourceState | undefined;
-            resourceInputs["accessGroups"] = state ? state.accessGroups : undefined;
-            resourceInputs["accessServices"] = state ? state.accessServices : undefined;
-            resourceInputs["address"] = state ? state.address : undefined;
-            resourceInputs["alias"] = state ? state.alias : undefined;
-            resourceInputs["approvalMode"] = state ? state.approvalMode : undefined;
-            resourceInputs["isActive"] = state ? state.isActive : undefined;
-            resourceInputs["isAuthoritative"] = state ? state.isAuthoritative : undefined;
-            resourceInputs["isBrowserShortcutEnabled"] = state ? state.isBrowserShortcutEnabled : undefined;
-            resourceInputs["isVisible"] = state ? state.isVisible : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["protocols"] = state ? state.protocols : undefined;
-            resourceInputs["remoteNetworkId"] = state ? state.remoteNetworkId : undefined;
-            resourceInputs["securityPolicyId"] = state ? state.securityPolicyId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tagsAll"] = state ? state.tagsAll : undefined;
-            resourceInputs["usageBasedAutolockDurationDays"] = state ? state.usageBasedAutolockDurationDays : undefined;
+            resourceInputs["accessGroups"] = state?.accessGroups;
+            resourceInputs["accessServices"] = state?.accessServices;
+            resourceInputs["address"] = state?.address;
+            resourceInputs["alias"] = state?.alias;
+            resourceInputs["approvalMode"] = state?.approvalMode;
+            resourceInputs["isActive"] = state?.isActive;
+            resourceInputs["isAuthoritative"] = state?.isAuthoritative;
+            resourceInputs["isBrowserShortcutEnabled"] = state?.isBrowserShortcutEnabled;
+            resourceInputs["isVisible"] = state?.isVisible;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["protocols"] = state?.protocols;
+            resourceInputs["remoteNetworkId"] = state?.remoteNetworkId;
+            resourceInputs["securityPolicyId"] = state?.securityPolicyId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tagsAll"] = state?.tagsAll;
+            resourceInputs["usageBasedAutolockDurationDays"] = state?.usageBasedAutolockDurationDays;
         } else {
             const args = argsOrState as TwingateResourceArgs | undefined;
-            if ((!args || args.address === undefined) && !opts.urn) {
+            if (args?.address === undefined && !opts.urn) {
                 throw new Error("Missing required property 'address'");
             }
-            if ((!args || args.remoteNetworkId === undefined) && !opts.urn) {
+            if (args?.remoteNetworkId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'remoteNetworkId'");
             }
-            resourceInputs["accessGroups"] = args ? args.accessGroups : undefined;
-            resourceInputs["accessServices"] = args ? args.accessServices : undefined;
-            resourceInputs["address"] = args ? args.address : undefined;
-            resourceInputs["alias"] = args ? args.alias : undefined;
-            resourceInputs["approvalMode"] = args ? args.approvalMode : undefined;
-            resourceInputs["isActive"] = args ? args.isActive : undefined;
-            resourceInputs["isAuthoritative"] = args ? args.isAuthoritative : undefined;
-            resourceInputs["isBrowserShortcutEnabled"] = args ? args.isBrowserShortcutEnabled : undefined;
-            resourceInputs["isVisible"] = args ? args.isVisible : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["protocols"] = args ? args.protocols : undefined;
-            resourceInputs["remoteNetworkId"] = args ? args.remoteNetworkId : undefined;
-            resourceInputs["securityPolicyId"] = args ? args.securityPolicyId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["usageBasedAutolockDurationDays"] = args ? args.usageBasedAutolockDurationDays : undefined;
+            resourceInputs["accessGroups"] = args?.accessGroups;
+            resourceInputs["accessServices"] = args?.accessServices;
+            resourceInputs["address"] = args?.address;
+            resourceInputs["alias"] = args?.alias;
+            resourceInputs["approvalMode"] = args?.approvalMode;
+            resourceInputs["isActive"] = args?.isActive;
+            resourceInputs["isAuthoritative"] = args?.isAuthoritative;
+            resourceInputs["isBrowserShortcutEnabled"] = args?.isBrowserShortcutEnabled;
+            resourceInputs["isVisible"] = args?.isVisible;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["protocols"] = args?.protocols;
+            resourceInputs["remoteNetworkId"] = args?.remoteNetworkId;
+            resourceInputs["securityPolicyId"] = args?.securityPolicyId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["usageBasedAutolockDurationDays"] = args?.usageBasedAutolockDurationDays;
             resourceInputs["tagsAll"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

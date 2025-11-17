@@ -17,9 +17,9 @@ from . import outputs
 
 apiToken: Optional[str]
 """
-The access key for API operations. You can retrieve this from the Twingate Admin Console
-([documentation](https://docs.twingate.com/docs/api-overview)). Alternatively, this can be specified using the
-TWINGATE_API_TOKEN environment variable.
+The access key for API operations. You can retrieve this
+from the Twingate Admin Console ([documentation](https://docs.twingate.com/docs/api-overview)).
+Alternatively, this can be specified using the TWINGATE_API_TOKEN environment variable.
 """
 
 cache: Optional[str]
@@ -34,25 +34,27 @@ A default set of tags applied globally to all resources created by the provider.
 
 httpMaxRetry: Optional[int]
 """
-Specifies a retry limit for the http requests made. The default value is 10. Alternatively, this can be specified using
-the TWINGATE_HTTP_MAX_RETRY environment variable
+Specifies a retry limit for the http requests made. The default value is 10.
+Alternatively, this can be specified using the TWINGATE_HTTP_MAX_RETRY environment variable
 """
 
 httpTimeout: Optional[int]
 """
-Specifies a time limit in seconds for the http requests made. The default value is 35 seconds. Alternatively, this can
-be specified using the TWINGATE_HTTP_TIMEOUT environment variable
+Specifies a time limit in seconds for the http requests made. The default value is 35 seconds.
+Alternatively, this can be specified using the TWINGATE_HTTP_TIMEOUT environment variable
 """
 
 network: Optional[str]
 """
-Your Twingate network ID for API operations. You can find it in the Admin Console URL, for example:
-`autoco.twingate.com`, where `autoco` is your network ID Alternatively, this can be specified using the TWINGATE_NETWORK
-environment variable.
+Your Twingate network ID for API operations.
+You can find it in the Admin Console URL, for example:
+`autoco.twingate.com`, where `autoco` is your network ID
+Alternatively, this can be specified using the TWINGATE_NETWORK environment variable.
 """
 
 url: Optional[str]
 """
-The default is 'twingate.com' This is optional and shouldn't be changed under normal circumstances.
+The default is 'twingate.com'
+This is optional and shouldn't be changed under normal circumstances.
 """
 

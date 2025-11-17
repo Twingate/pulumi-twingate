@@ -28,17 +28,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			awsNetwork, err := twingate.NewTwingateRemoteNetwork(ctx, "awsNetwork", nil)
+//			awsNetwork, err := twingate.NewTwingateRemoteNetwork(ctx, "aws_network", &twingate.TwingateRemoteNetworkArgs{
+//				Name: pulumi.String("aws_remote_network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			awsConnector, err := twingate.NewTwingateConnector(ctx, "awsConnector", &twingate.TwingateConnectorArgs{
+//			awsConnector, err := twingate.NewTwingateConnector(ctx, "aws_connector", &twingate.TwingateConnectorArgs{
 //				RemoteNetworkId: awsNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = twingate.NewTwingateConnectorTokens(ctx, "awsConnectorTokens", &twingate.TwingateConnectorTokensArgs{
+//			_, err = twingate.NewTwingateConnectorTokens(ctx, "aws_connector_tokens", &twingate.TwingateConnectorTokensArgs{
 //				ConnectorId: awsConnector.ID(),
 //			})
 //			if err != nil {
