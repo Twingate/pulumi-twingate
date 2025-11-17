@@ -137,7 +137,7 @@ await Deployment.RunAsync(() =>
         Console.WriteLine();
     }
 
-    Create a Twingate DNS Filtering Profile
+    // Create a Twingate DNS Filtering Profile
     var exampleProfile = new TwingateDNSFilteringProfile("exampleProfile", new TwingateDNSFilteringProfileArgs
     {
         Name = "CS Pulumi DNS Filtering Profile",
