@@ -3,13 +3,12 @@ module twingate_go_example
 go 1.24.0
 
 require (
-	// uncomment the following line to use the remote version of the sdk
-	github.com/Twingate/pulumi-twingate/sdk/v3 v3.0.0-20250223083426-375c59fb5a8e
+	github.com/Twingate/pulumi-twingate/sdk/v3 v3.0.0-20250922175542-8f7b9e56d4a5
 	github.com/pulumi/pulumi/sdk/v3 v3.207.0
 )
 
-// Use local SDK since Go module
-replace github.com/Twingate/pulumi-twingate/sdk/v3 => ../../sdk
+// Uncomment to use local SDK for development/testing
+// replace github.com/Twingate/pulumi-twingate/sdk/v3 => ../../sdk
 
 require (
 	dario.cat/mergo v1.0.1 // indirect

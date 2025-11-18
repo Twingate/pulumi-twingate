@@ -165,3 +165,30 @@ jobs:
           - python
           - dotnet
           - go
+
+  create_sdk_tag:
+    name: Create SDK Tag
+    runs-on: ubuntu-latest
+    needs: publish_sdk
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Create and Push SDK Tag
+        run: |
+          # Extract version from tag (e.g., refs/tags/v3.5.1 -> v3.5.1)
+          VERSION=${GITHUB_REF#refs/tags/}
+
+          echo "Creating SDK tag for version: $VERSION"
+
+          # Create SDK tag pointing to the same commit as the main tag
+          git tag "sdk/$VERSION"
+
+          # Push SDK tag
+          git push origin "sdk/$VERSION"
+
+          echo "✅ Created and pushed tag: sdk/$VERSION"
