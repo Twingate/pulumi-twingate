@@ -4,7 +4,7 @@ go 1.24.0
 
 require (
 	github.com/Twingate/pulumi-twingate/sdk/v3 v3.6.0
-	github.com/pulumi/pulumi/sdk/v3 v3.208.0
+	github.com/pulumi/pulumi/sdk/v3 v3.209.0
 )
 
 // Uncomment to use local SDK for development/testing
@@ -12,7 +12,6 @@ require (
 
 require (
 	dario.cat/mergo v1.0.1 // indirect
-	github.com/BurntSushi/toml v1.4.0 // indirect
 	github.com/Microsoft/go-winio v0.6.2 // indirect
 	github.com/ProtonMail/go-crypto v1.1.6 // indirect
 	github.com/agext/levenshtein v1.2.3 // indirect
