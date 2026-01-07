@@ -492,9 +492,17 @@
         },
         "twingate:index/TwingateResourceAccessGroup:TwingateResourceAccessGroup": {
             "properties": {
+                "accessPolicies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/twingate:index/TwingateResourceAccessGroupAccessPolicy:TwingateResourceAccessGroupAccessPolicy"
+                    },
+                    "description": "Restrict access according to JIT access policy\n"
+                },
                 "approvalMode": {
                     "type": "string",
-                    "description": "This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.\n"
+                    "description": "This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.\n",
+                    "deprecationMessage": "Configure\u003cspan pulumi-lang-nodejs=\" accessPolicy \" pulumi-lang-dotnet=\" AccessPolicy \" pulumi-lang-go=\" accessPolicy \" pulumi-lang-python=\" access_policy \" pulumi-lang-yaml=\" accessPolicy \" pulumi-lang-java=\" accessPolicy \"\u003e access_policy \u003c/span\u003einstead. This attribute will be removed in the next major version of the provider."
                 },
                 "groupId": {
                     "type": "string",
@@ -506,7 +514,8 @@
                 },
                 "usageBasedAutolockDurationDays": {
                     "type": "integer",
-                    "description": "The usage-based auto-lock duration configured on the edge (in days).\n"
+                    "description": "The usage-based auto-lock duration configured on the edge (in days).\n",
+                    "deprecationMessage": "Configure\u003cspan pulumi-lang-nodejs=\" accessPolicy \" pulumi-lang-dotnet=\" AccessPolicy \" pulumi-lang-go=\" accessPolicy \" pulumi-lang-python=\" access_policy \" pulumi-lang-yaml=\" accessPolicy \" pulumi-lang-java=\" accessPolicy \"\u003e access_policy \u003c/span\u003einstead. This attribute will be removed in the next major version of the provider."
                 }
             },
             "type": "object",
@@ -517,6 +526,58 @@
                         "groupId",
                         "securityPolicyId",
                         "usageBasedAutolockDurationDays"
+                    ]
+                }
+            }
+        },
+        "twingate:index/TwingateResourceAccessGroupAccessPolicy:TwingateResourceAccessGroupAccessPolicy": {
+            "properties": {
+                "approvalMode": {
+                    "type": "string",
+                    "description": "This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.\n"
+                },
+                "duration": {
+                    "type": "string",
+                    "description": "This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like \u003cspan pulumi-lang-nodejs=\"`1h`\" pulumi-lang-dotnet=\"`1h`\" pulumi-lang-go=\"`1h`\" pulumi-lang-python=\"`1h`\" pulumi-lang-yaml=\"`1h`\" pulumi-lang-java=\"`1h`\"\u003e`1h`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`2d`\" pulumi-lang-dotnet=\"`2d`\" pulumi-lang-go=\"`2d`\" pulumi-lang-python=\"`2d`\" pulumi-lang-yaml=\"`2d`\" pulumi-lang-java=\"`2d`\"\u003e`2d`\u003c/span\u003e.\n"
+                },
+                "mode": {
+                    "type": "string",
+                    "description": "This will set the\u003cspan pulumi-lang-nodejs=\" accessPolicy \" pulumi-lang-dotnet=\" AccessPolicy \" pulumi-lang-go=\" accessPolicy \" pulumi-lang-python=\" access_policy \" pulumi-lang-yaml=\" accessPolicy \" pulumi-lang-java=\" accessPolicy \"\u003e access_policy \u003c/span\u003emode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "approvalMode",
+                        "duration",
+                        "mode"
+                    ]
+                }
+            }
+        },
+        "twingate:index/TwingateResourceAccessPolicy:TwingateResourceAccessPolicy": {
+            "properties": {
+                "approvalMode": {
+                    "type": "string",
+                    "description": "This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.\n"
+                },
+                "duration": {
+                    "type": "string",
+                    "description": "This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like \u003cspan pulumi-lang-nodejs=\"`1h`\" pulumi-lang-dotnet=\"`1h`\" pulumi-lang-go=\"`1h`\" pulumi-lang-python=\"`1h`\" pulumi-lang-yaml=\"`1h`\" pulumi-lang-java=\"`1h`\"\u003e`1h`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`2d`\" pulumi-lang-dotnet=\"`2d`\" pulumi-lang-go=\"`2d`\" pulumi-lang-python=\"`2d`\" pulumi-lang-yaml=\"`2d`\" pulumi-lang-java=\"`2d`\"\u003e`2d`\u003c/span\u003e.\n"
+                },
+                "mode": {
+                    "type": "string",
+                    "description": "This will set the\u003cspan pulumi-lang-nodejs=\" accessPolicy \" pulumi-lang-dotnet=\" AccessPolicy \" pulumi-lang-go=\" accessPolicy \" pulumi-lang-python=\" access_policy \" pulumi-lang-yaml=\" accessPolicy \" pulumi-lang-java=\" accessPolicy \"\u003e access_policy \u003c/span\u003emode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "approvalMode",
+                        "duration",
+                        "mode"
                     ]
                 }
             }
@@ -1750,6 +1811,13 @@
                     },
                     "description": "Restrict access to certain group\n"
                 },
+                "accessPolicies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/twingate:index/TwingateResourceAccessPolicy:TwingateResourceAccessPolicy"
+                    },
+                    "description": "Restrict access according to JIT access policy\n"
+                },
                 "accessServices": {
                     "type": "array",
                     "items": {
@@ -1767,7 +1835,8 @@
                 },
                 "approvalMode": {
                     "type": "string",
-                    "description": "This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.\n"
+                    "description": "This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.\n",
+                    "deprecationMessage": "Configure\u003cspan pulumi-lang-nodejs=\" accessPolicy \" pulumi-lang-dotnet=\" AccessPolicy \" pulumi-lang-go=\" accessPolicy \" pulumi-lang-python=\" access_policy \" pulumi-lang-yaml=\" accessPolicy \" pulumi-lang-java=\" accessPolicy \"\u003e access_policy \u003c/span\u003einstead. This attribute will be removed in the next major version of the provider."
                 },
                 "isActive": {
                     "type": "boolean",
@@ -1816,7 +1885,8 @@
                 },
                 "usageBasedAutolockDurationDays": {
                     "type": "integer",
-                    "description": "The usage-based auto-lock duration for the Resource (in days).\n"
+                    "description": "The usage-based auto-lock duration for the Resource (in days).\n",
+                    "deprecationMessage": "Configure\u003cspan pulumi-lang-nodejs=\" accessPolicy \" pulumi-lang-dotnet=\" AccessPolicy \" pulumi-lang-go=\" accessPolicy \" pulumi-lang-python=\" access_policy \" pulumi-lang-yaml=\" accessPolicy \" pulumi-lang-java=\" accessPolicy \"\u003e access_policy \u003c/span\u003einstead. This attribute will be removed in the next major version of the provider."
                 }
             },
             "required": [
@@ -1842,6 +1912,13 @@
                     },
                     "description": "Restrict access to certain group\n"
                 },
+                "accessPolicies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/twingate:index/TwingateResourceAccessPolicy:TwingateResourceAccessPolicy"
+                    },
+                    "description": "Restrict access according to JIT access policy\n"
+                },
                 "accessServices": {
                     "type": "array",
                     "items": {
@@ -1859,7 +1936,8 @@
                 },
                 "approvalMode": {
                     "type": "string",
-                    "description": "This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.\n"
+                    "description": "This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.\n",
+                    "deprecationMessage": "Configure\u003cspan pulumi-lang-nodejs=\" accessPolicy \" pulumi-lang-dotnet=\" AccessPolicy \" pulumi-lang-go=\" accessPolicy \" pulumi-lang-python=\" access_policy \" pulumi-lang-yaml=\" accessPolicy \" pulumi-lang-java=\" accessPolicy \"\u003e access_policy \u003c/span\u003einstead. This attribute will be removed in the next major version of the provider."
                 },
                 "isActive": {
                     "type": "boolean",
@@ -1901,7 +1979,8 @@
                 },
                 "usageBasedAutolockDurationDays": {
                     "type": "integer",
-                    "description": "The usage-based auto-lock duration for the Resource (in days).\n"
+                    "description": "The usage-based auto-lock duration for the Resource (in days).\n",
+                    "deprecationMessage": "Configure\u003cspan pulumi-lang-nodejs=\" accessPolicy \" pulumi-lang-dotnet=\" AccessPolicy \" pulumi-lang-go=\" accessPolicy \" pulumi-lang-python=\" access_policy \" pulumi-lang-yaml=\" accessPolicy \" pulumi-lang-java=\" accessPolicy \"\u003e access_policy \u003c/span\u003einstead. This attribute will be removed in the next major version of the provider."
                 }
             },
             "requiredInputs": [
@@ -1917,6 +1996,13 @@
                             "$ref": "#/types/twingate:index/TwingateResourceAccessGroup:TwingateResourceAccessGroup"
                         },
                         "description": "Restrict access to certain group\n"
+                    },
+                    "accessPolicies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/twingate:index/TwingateResourceAccessPolicy:TwingateResourceAccessPolicy"
+                        },
+                        "description": "Restrict access according to JIT access policy\n"
                     },
                     "accessServices": {
                         "type": "array",
@@ -1935,7 +2021,8 @@
                     },
                     "approvalMode": {
                         "type": "string",
-                        "description": "This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.\n"
+                        "description": "This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.\n",
+                        "deprecationMessage": "Configure\u003cspan pulumi-lang-nodejs=\" accessPolicy \" pulumi-lang-dotnet=\" AccessPolicy \" pulumi-lang-go=\" accessPolicy \" pulumi-lang-python=\" access_policy \" pulumi-lang-yaml=\" accessPolicy \" pulumi-lang-java=\" accessPolicy \"\u003e access_policy \u003c/span\u003einstead. This attribute will be removed in the next major version of the provider."
                     },
                     "isActive": {
                         "type": "boolean",
@@ -1984,7 +2071,8 @@
                     },
                     "usageBasedAutolockDurationDays": {
                         "type": "integer",
-                        "description": "The usage-based auto-lock duration for the Resource (in days).\n"
+                        "description": "The usage-based auto-lock duration for the Resource (in days).\n",
+                        "deprecationMessage": "Configure\u003cspan pulumi-lang-nodejs=\" accessPolicy \" pulumi-lang-dotnet=\" AccessPolicy \" pulumi-lang-go=\" accessPolicy \" pulumi-lang-python=\" access_policy \" pulumi-lang-yaml=\" accessPolicy \" pulumi-lang-java=\" accessPolicy \"\u003e access_policy \u003c/span\u003einstead. This attribute will be removed in the next major version of the provider."
                     }
                 },
                 "type": "object"
