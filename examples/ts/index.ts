@@ -68,8 +68,10 @@ new tg.TwingateResource("twingate_home_page_js", {
     }
 })
 
-// Example: Create a Resource with JIT (Just-In-Time) Access Policy
-// Apply the policy directly to the access group for it to take effect
+// Example: Create a Resource with JIT (Just-In-Time) Access Policies
+// Demonstrates group-specific access policies with different configurations:
+// - Group 1: AUTO_LOCK with automatic approval (7 day duration)
+// - Group 2: ACCESS_REQUEST with manual approval (2 hour duration)
 new tg.TwingateResource("jit_resource_js", {
     name: "JIT Access Resource JS",
     address: "internal-app.example.com",
@@ -77,48 +79,22 @@ new tg.TwingateResource("jit_resource_js", {
     accessGroups: [
         {
             groupId: tgGroup.id,
-            // Access policy must be set on the group level when using accessGroups
-            accessPolicies: [
-                {
-                    mode: "AUTO_LOCK",           // Automatically lock access after duration
-                    approvalMode: "AUTOMATIC",    // No manual approval required
-                    duration: "24h",              // Access granted for 24 hours
-                }
-            ],
-        }
-    ],
-    protocols: {
-        allowIcmp: true,
-        tcp: {
-            policy: "ALLOW_ALL",
-        },
-    }
-})
-
-// Example: Create a Resource with group-specific Access Policies
-new tg.TwingateResource("group_policy_resource_js", {
-    name: "Group-Specific Policy Resource JS",
-    address: "sensitive-app.example.com",
-    remoteNetworkId: remoteNetwork.id,
-    accessGroups: [
-        {
-            groupId: tgGroup.id,
-            // This group gets auto-lock access
+            // Auto-lock: Access automatically expires after duration
             accessPolicies: [
                 {
                     mode: "AUTO_LOCK",
                     approvalMode: "AUTOMATIC",
-                    duration: "8h",
+                    duration: "7d",
                 }
             ],
         },
         {
             groupId: tgGroup2.id,
-            // This group requires manual access requests
+            // Access request: Requires manual approval before granting access
             accessPolicies: [
                 {
                     mode: "ACCESS_REQUEST",
-                    approvalMode: "MANUAL",      // Requires manual approval
+                    approvalMode: "MANUAL",
                     duration: "2h",
                 }
             ],

@@ -63,8 +63,10 @@ twingate_resource = tg.TwingateResource(
     }
 )
 
-# Example: Create a Resource with JIT (Just-In-Time) Access Policy
-# Apply the policy directly to the access group for it to take effect
+# Example: Create a Resource with JIT (Just-In-Time) Access Policies
+# Demonstrates group-specific access policies with different configurations:
+# - Group 1: AUTO_LOCK with automatic approval (7 day duration)
+# - Group 2: ACCESS_REQUEST with manual approval (2 hour duration)
 jit_resource = tg.TwingateResource(
     "jit_resource_py",
     name="JIT Access Resource PY",
@@ -73,49 +75,22 @@ jit_resource = tg.TwingateResource(
     access_groups=[
         tg.TwingateResourceAccessGroupArgs(
             group_id=tg_group.id,
-            # Access policy must be set on the group level when using access_groups
-            access_policies=[
-                tg.TwingateResourceAccessGroupAccessPolicyArgs(
-                    mode="AUTO_LOCK",           # Automatically lock access after duration
-                    approval_mode="AUTOMATIC",  # No manual approval required
-                    duration="24h",             # Access granted for 24 hours
-                )
-            ],
-        )
-    ],
-    protocols={
-        "allowIcmp": True,
-        "tcp": {
-            "policy": "ALLOW_ALL",
-        },
-    }
-)
-
-# Example: Create a Resource with group-specific Access Policies
-group_policy_resource = tg.TwingateResource(
-    "group_policy_resource_py",
-    name="Group-Specific Policy Resource PY",
-    address="sensitive-app.example.com",
-    remote_network_id=remote_network.id,
-    access_groups=[
-        tg.TwingateResourceAccessGroupArgs(
-            group_id=tg_group.id,
-            # This group gets auto-lock access
+            # Auto-lock: Access automatically expires after duration
             access_policies=[
                 tg.TwingateResourceAccessGroupAccessPolicyArgs(
                     mode="AUTO_LOCK",
                     approval_mode="AUTOMATIC",
-                    duration="8h",
+                    duration="7d",
                 )
             ],
         ),
         tg.TwingateResourceAccessGroupArgs(
             group_id=tg_group2.id,
-            # This group requires manual access requests
+            # Access request: Requires manual approval before granting access
             access_policies=[
                 tg.TwingateResourceAccessGroupAccessPolicyArgs(
                     mode="ACCESS_REQUEST",
-                    approval_mode="MANUAL",  # Requires manual approval
+                    approval_mode="MANUAL",
                     duration="2h",
                 )
             ],

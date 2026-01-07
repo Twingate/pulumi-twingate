@@ -92,8 +92,10 @@ await Deployment.RunAsync(() =>
         },
     });
 
-    // Example: Create a Resource with JIT (Just-In-Time) Access Policy
-    // Apply the policy directly to the access group for it to take effect
+    // Example: Create a Resource with JIT (Just-In-Time) Access Policies
+    // Demonstrates group-specific access policies with different configurations:
+    // - Group 1: AUTO_LOCK with automatic approval (7 day duration)
+    // - Group 2: ACCESS_REQUEST with manual approval (2 hour duration)
     var jitResource = new TwingateResource("jit_resource_cs", new TwingateResourceArgs
     {
         Name = "JIT Access Resource CS",
@@ -104,60 +106,27 @@ await Deployment.RunAsync(() =>
             new TwingateResourceAccessGroupArgs
             {
                 GroupId = tgGroup.Id,
-                // Access policy must be set on the group level when using AccessGroups
-                AccessPolicies = new[]
-                {
-                    new TwingateResourceAccessGroupAccessPolicyArgs
-                    {
-                        Mode = "AUTO_LOCK",         // Automatically lock access after duration
-                        ApprovalMode = "AUTOMATIC", // No manual approval required
-                        Duration = "24h",           // Access granted for 24 hours
-                    },
-                },
-            },
-        },
-        Protocols = new TwingateResourceProtocolsArgs
-        {
-            AllowIcmp = true,
-            Tcp = new TwingateResourceProtocolsTcpArgs
-            {
-                Policy = "ALLOW_ALL",
-            },
-        },
-    });
-
-    // Example: Create a Resource with group-specific Access Policies
-    var groupPolicyResource = new TwingateResource("group_policy_resource_cs", new TwingateResourceArgs
-    {
-        Name = "Group-Specific Policy Resource CS",
-        Address = "sensitive-app.example.com",
-        RemoteNetworkId = remoteNetwork.Id,
-        AccessGroups = new[]
-        {
-            new TwingateResourceAccessGroupArgs
-            {
-                GroupId = tgGroup.Id,
-                // This group gets auto-lock access
+                // Auto-lock: Access automatically expires after duration
                 AccessPolicies = new[]
                 {
                     new TwingateResourceAccessGroupAccessPolicyArgs
                     {
                         Mode = "AUTO_LOCK",
                         ApprovalMode = "AUTOMATIC",
-                        Duration = "8h",
+                        Duration = "7d",
                     },
                 },
             },
             new TwingateResourceAccessGroupArgs
             {
                 GroupId = tgGroup2.Id,
-                // This group requires manual access requests
+                // Access request: Requires manual approval before granting access
                 AccessPolicies = new[]
                 {
                     new TwingateResourceAccessGroupAccessPolicyArgs
                     {
                         Mode = "ACCESS_REQUEST",
-                        ApprovalMode = "MANUAL", // Requires manual approval
+                        ApprovalMode = "MANUAL",
                         Duration = "2h",
                     },
                 },
