@@ -92,7 +92,8 @@ await Deployment.RunAsync(() =>
         },
     });
 
-    // Example: Create a Resource with JIT (Just-In-Time) Access Policy at resource level
+    // Example: Create a Resource with JIT (Just-In-Time) Access Policy
+    // Apply the policy directly to the access group for it to take effect
     var jitResource = new TwingateResource("jit_resource_cs", new TwingateResourceArgs
     {
         Name = "JIT Access Resource CS",
@@ -103,16 +104,16 @@ await Deployment.RunAsync(() =>
             new TwingateResourceAccessGroupArgs
             {
                 GroupId = tgGroup.Id,
-            },
-        },
-        // Resource-level access policy - applies to all access groups
-        AccessPolicies = new[]
-        {
-            new TwingateResourceAccessPolicyArgs
-            {
-                Mode = "AUTO_LOCK",         // Automatically lock access after duration
-                ApprovalMode = "AUTOMATIC", // No manual approval required
-                Duration = "24h",           // Access granted for 24 hours
+                // Access policy must be set on the group level when using AccessGroups
+                AccessPolicies = new[]
+                {
+                    new TwingateResourceAccessGroupAccessPolicyArgs
+                    {
+                        Mode = "AUTO_LOCK",         // Automatically lock access after duration
+                        ApprovalMode = "AUTOMATIC", // No manual approval required
+                        Duration = "24h",           // Access granted for 24 hours
+                    },
+                },
             },
         },
         Protocols = new TwingateResourceProtocolsArgs

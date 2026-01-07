@@ -63,23 +63,24 @@ twingate_resource = tg.TwingateResource(
     }
 )
 
-# Example: Create a Resource with JIT (Just-In-Time) Access Policy at resource level
+# Example: Create a Resource with JIT (Just-In-Time) Access Policy
+# Apply the policy directly to the access group for it to take effect
 jit_resource = tg.TwingateResource(
     "jit_resource_py",
     name="JIT Access Resource PY",
     address="internal-app.example.com",
     remote_network_id=remote_network.id,
     access_groups=[
-        {
-            "groupId": tg_group.id,
-        }
-    ],
-    # Resource-level access policy - applies to all access groups
-    access_policies=[
-        tg.TwingateResourceAccessPolicyArgs(
-            mode="AUTO_LOCK",           # Automatically lock access after duration
-            approval_mode="AUTOMATIC",  # No manual approval required
-            duration="24h",             # Access granted for 24 hours
+        tg.TwingateResourceAccessGroupArgs(
+            group_id=tg_group.id,
+            # Access policy must be set on the group level when using access_groups
+            access_policies=[
+                tg.TwingateResourceAccessGroupAccessPolicyArgs(
+                    mode="AUTO_LOCK",           # Automatically lock access after duration
+                    approval_mode="AUTOMATIC",  # No manual approval required
+                    duration="24h",             # Access granted for 24 hours
+                )
+            ],
         )
     ],
     protocols={

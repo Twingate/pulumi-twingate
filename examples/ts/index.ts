@@ -68,7 +68,8 @@ new tg.TwingateResource("twingate_home_page_js", {
     }
 })
 
-// Example: Create a Resource with JIT (Just-In-Time) Access Policy at resource level
+// Example: Create a Resource with JIT (Just-In-Time) Access Policy
+// Apply the policy directly to the access group for it to take effect
 new tg.TwingateResource("jit_resource_js", {
     name: "JIT Access Resource JS",
     address: "internal-app.example.com",
@@ -76,14 +77,14 @@ new tg.TwingateResource("jit_resource_js", {
     accessGroups: [
         {
             groupId: tgGroup.id,
-        }
-    ],
-    // Resource-level access policy - applies to all access groups
-    accessPolicies: [
-        {
-            mode: "AUTO_LOCK",           // Automatically lock access after duration
-            approvalMode: "AUTOMATIC",    // No manual approval required
-            duration: "24h",              // Access granted for 24 hours
+            // Access policy must be set on the group level when using accessGroups
+            accessPolicies: [
+                {
+                    mode: "AUTO_LOCK",           // Automatically lock access after duration
+                    approvalMode: "AUTOMATIC",    // No manual approval required
+                    duration: "24h",              // Access granted for 24 hours
+                }
+            ],
         }
     ],
     protocols: {

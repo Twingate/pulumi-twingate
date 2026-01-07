@@ -109,7 +109,8 @@ func main() {
 
 		ctx.Export("resource_id", resource.ID())
 
-		// Example: Create a Resource with JIT (Just-In-Time) Access Policy at resource level
+		// Example: Create a Resource with JIT (Just-In-Time) Access Policy
+		// Apply the policy directly to the access group for it to take effect
 		_, err = twingate.NewTwingateResource(ctx, "jit_resource_go", &twingate.TwingateResourceArgs{
 			Name:            pulumi.StringPtr("JIT Access Resource Go"),
 			Address:         pulumi.String("internal-app.example.com"),
@@ -117,14 +118,14 @@ func main() {
 			AccessGroups: &twingate.TwingateResourceAccessGroupArray{
 				&twingate.TwingateResourceAccessGroupArgs{
 					GroupId: group.ID(),
-				},
-			},
-			// Resource-level access policy - applies to all access groups
-			AccessPolicies: &twingate.TwingateResourceAccessPolicyArray{
-				&twingate.TwingateResourceAccessPolicyArgs{
-					Mode:         pulumi.String("AUTO_LOCK"),  // Automatically lock access after duration
-					ApprovalMode: pulumi.String("AUTOMATIC"),  // No manual approval required
-					Duration:     pulumi.String("24h"),        // Access granted for 24 hours
+					// Access policy must be set on the group level when using access_groups
+					AccessPolicies: &twingate.TwingateResourceAccessGroupAccessPolicyArray{
+						&twingate.TwingateResourceAccessGroupAccessPolicyArgs{
+							Mode:         pulumi.String("AUTO_LOCK"), // Automatically lock access after duration
+							ApprovalMode: pulumi.String("AUTOMATIC"), // No manual approval required
+							Duration:     pulumi.String("24h"),       // Access granted for 24 hours
+						},
+					},
 				},
 			},
 			Protocols: &twingate.TwingateResourceProtocolsArgs{
