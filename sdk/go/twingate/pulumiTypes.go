@@ -1923,13 +1923,19 @@ func (o TwingateDNSFilteringProfileSecurityCategoriesPtrOutput) EnableThreatInte
 }
 
 type TwingateResourceAccessGroup struct {
+	// Restrict access according to JIT access policy
+	AccessPolicies []TwingateResourceAccessGroupAccessPolicy `pulumi:"accessPolicies"`
 	// This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+	//
+	// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
 	ApprovalMode *string `pulumi:"approvalMode"`
 	// Group ID that will have permission to access the Resource.
 	GroupId *string `pulumi:"groupId"`
 	// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 	// The usage-based auto-lock duration configured on the edge (in days).
+	//
+	// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
 	UsageBasedAutolockDurationDays *int `pulumi:"usageBasedAutolockDurationDays"`
 }
 
@@ -1945,13 +1951,19 @@ type TwingateResourceAccessGroupInput interface {
 }
 
 type TwingateResourceAccessGroupArgs struct {
+	// Restrict access according to JIT access policy
+	AccessPolicies TwingateResourceAccessGroupAccessPolicyArrayInput `pulumi:"accessPolicies"`
 	// This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+	//
+	// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
 	ApprovalMode pulumi.StringPtrInput `pulumi:"approvalMode"`
 	// Group ID that will have permission to access the Resource.
 	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
 	// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
 	SecurityPolicyId pulumi.StringPtrInput `pulumi:"securityPolicyId"`
 	// The usage-based auto-lock duration configured on the edge (in days).
+	//
+	// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
 	UsageBasedAutolockDurationDays pulumi.IntPtrInput `pulumi:"usageBasedAutolockDurationDays"`
 }
 
@@ -2006,7 +2018,14 @@ func (o TwingateResourceAccessGroupOutput) ToTwingateResourceAccessGroupOutputWi
 	return o
 }
 
+// Restrict access according to JIT access policy
+func (o TwingateResourceAccessGroupOutput) AccessPolicies() TwingateResourceAccessGroupAccessPolicyArrayOutput {
+	return o.ApplyT(func(v TwingateResourceAccessGroup) []TwingateResourceAccessGroupAccessPolicy { return v.AccessPolicies }).(TwingateResourceAccessGroupAccessPolicyArrayOutput)
+}
+
 // This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+//
+// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
 func (o TwingateResourceAccessGroupOutput) ApprovalMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TwingateResourceAccessGroup) *string { return v.ApprovalMode }).(pulumi.StringPtrOutput)
 }
@@ -2022,6 +2041,8 @@ func (o TwingateResourceAccessGroupOutput) SecurityPolicyId() pulumi.StringPtrOu
 }
 
 // The usage-based auto-lock duration configured on the edge (in days).
+//
+// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
 func (o TwingateResourceAccessGroupOutput) UsageBasedAutolockDurationDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TwingateResourceAccessGroup) *int { return v.UsageBasedAutolockDurationDays }).(pulumi.IntPtrOutput)
 }
@@ -2044,6 +2065,236 @@ func (o TwingateResourceAccessGroupArrayOutput) Index(i pulumi.IntInput) Twingat
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TwingateResourceAccessGroup {
 		return vs[0].([]TwingateResourceAccessGroup)[vs[1].(int)]
 	}).(TwingateResourceAccessGroupOutput)
+}
+
+type TwingateResourceAccessGroupAccessPolicy struct {
+	// This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+	ApprovalMode *string `pulumi:"approvalMode"`
+	// This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
+	Duration *string `pulumi:"duration"`
+	// This will set the accessPolicy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+	Mode *string `pulumi:"mode"`
+}
+
+// TwingateResourceAccessGroupAccessPolicyInput is an input type that accepts TwingateResourceAccessGroupAccessPolicyArgs and TwingateResourceAccessGroupAccessPolicyOutput values.
+// You can construct a concrete instance of `TwingateResourceAccessGroupAccessPolicyInput` via:
+//
+//	TwingateResourceAccessGroupAccessPolicyArgs{...}
+type TwingateResourceAccessGroupAccessPolicyInput interface {
+	pulumi.Input
+
+	ToTwingateResourceAccessGroupAccessPolicyOutput() TwingateResourceAccessGroupAccessPolicyOutput
+	ToTwingateResourceAccessGroupAccessPolicyOutputWithContext(context.Context) TwingateResourceAccessGroupAccessPolicyOutput
+}
+
+type TwingateResourceAccessGroupAccessPolicyArgs struct {
+	// This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+	ApprovalMode pulumi.StringPtrInput `pulumi:"approvalMode"`
+	// This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
+	Duration pulumi.StringPtrInput `pulumi:"duration"`
+	// This will set the accessPolicy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+}
+
+func (TwingateResourceAccessGroupAccessPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateResourceAccessGroupAccessPolicy)(nil)).Elem()
+}
+
+func (i TwingateResourceAccessGroupAccessPolicyArgs) ToTwingateResourceAccessGroupAccessPolicyOutput() TwingateResourceAccessGroupAccessPolicyOutput {
+	return i.ToTwingateResourceAccessGroupAccessPolicyOutputWithContext(context.Background())
+}
+
+func (i TwingateResourceAccessGroupAccessPolicyArgs) ToTwingateResourceAccessGroupAccessPolicyOutputWithContext(ctx context.Context) TwingateResourceAccessGroupAccessPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateResourceAccessGroupAccessPolicyOutput)
+}
+
+// TwingateResourceAccessGroupAccessPolicyArrayInput is an input type that accepts TwingateResourceAccessGroupAccessPolicyArray and TwingateResourceAccessGroupAccessPolicyArrayOutput values.
+// You can construct a concrete instance of `TwingateResourceAccessGroupAccessPolicyArrayInput` via:
+//
+//	TwingateResourceAccessGroupAccessPolicyArray{ TwingateResourceAccessGroupAccessPolicyArgs{...} }
+type TwingateResourceAccessGroupAccessPolicyArrayInput interface {
+	pulumi.Input
+
+	ToTwingateResourceAccessGroupAccessPolicyArrayOutput() TwingateResourceAccessGroupAccessPolicyArrayOutput
+	ToTwingateResourceAccessGroupAccessPolicyArrayOutputWithContext(context.Context) TwingateResourceAccessGroupAccessPolicyArrayOutput
+}
+
+type TwingateResourceAccessGroupAccessPolicyArray []TwingateResourceAccessGroupAccessPolicyInput
+
+func (TwingateResourceAccessGroupAccessPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TwingateResourceAccessGroupAccessPolicy)(nil)).Elem()
+}
+
+func (i TwingateResourceAccessGroupAccessPolicyArray) ToTwingateResourceAccessGroupAccessPolicyArrayOutput() TwingateResourceAccessGroupAccessPolicyArrayOutput {
+	return i.ToTwingateResourceAccessGroupAccessPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i TwingateResourceAccessGroupAccessPolicyArray) ToTwingateResourceAccessGroupAccessPolicyArrayOutputWithContext(ctx context.Context) TwingateResourceAccessGroupAccessPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateResourceAccessGroupAccessPolicyArrayOutput)
+}
+
+type TwingateResourceAccessGroupAccessPolicyOutput struct{ *pulumi.OutputState }
+
+func (TwingateResourceAccessGroupAccessPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateResourceAccessGroupAccessPolicy)(nil)).Elem()
+}
+
+func (o TwingateResourceAccessGroupAccessPolicyOutput) ToTwingateResourceAccessGroupAccessPolicyOutput() TwingateResourceAccessGroupAccessPolicyOutput {
+	return o
+}
+
+func (o TwingateResourceAccessGroupAccessPolicyOutput) ToTwingateResourceAccessGroupAccessPolicyOutputWithContext(ctx context.Context) TwingateResourceAccessGroupAccessPolicyOutput {
+	return o
+}
+
+// This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+func (o TwingateResourceAccessGroupAccessPolicyOutput) ApprovalMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TwingateResourceAccessGroupAccessPolicy) *string { return v.ApprovalMode }).(pulumi.StringPtrOutput)
+}
+
+// This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
+func (o TwingateResourceAccessGroupAccessPolicyOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TwingateResourceAccessGroupAccessPolicy) *string { return v.Duration }).(pulumi.StringPtrOutput)
+}
+
+// This will set the accessPolicy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+func (o TwingateResourceAccessGroupAccessPolicyOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TwingateResourceAccessGroupAccessPolicy) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+type TwingateResourceAccessGroupAccessPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (TwingateResourceAccessGroupAccessPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TwingateResourceAccessGroupAccessPolicy)(nil)).Elem()
+}
+
+func (o TwingateResourceAccessGroupAccessPolicyArrayOutput) ToTwingateResourceAccessGroupAccessPolicyArrayOutput() TwingateResourceAccessGroupAccessPolicyArrayOutput {
+	return o
+}
+
+func (o TwingateResourceAccessGroupAccessPolicyArrayOutput) ToTwingateResourceAccessGroupAccessPolicyArrayOutputWithContext(ctx context.Context) TwingateResourceAccessGroupAccessPolicyArrayOutput {
+	return o
+}
+
+func (o TwingateResourceAccessGroupAccessPolicyArrayOutput) Index(i pulumi.IntInput) TwingateResourceAccessGroupAccessPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TwingateResourceAccessGroupAccessPolicy {
+		return vs[0].([]TwingateResourceAccessGroupAccessPolicy)[vs[1].(int)]
+	}).(TwingateResourceAccessGroupAccessPolicyOutput)
+}
+
+type TwingateResourceAccessPolicy struct {
+	// This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+	ApprovalMode *string `pulumi:"approvalMode"`
+	// This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
+	Duration *string `pulumi:"duration"`
+	// This will set the accessPolicy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+	Mode *string `pulumi:"mode"`
+}
+
+// TwingateResourceAccessPolicyInput is an input type that accepts TwingateResourceAccessPolicyArgs and TwingateResourceAccessPolicyOutput values.
+// You can construct a concrete instance of `TwingateResourceAccessPolicyInput` via:
+//
+//	TwingateResourceAccessPolicyArgs{...}
+type TwingateResourceAccessPolicyInput interface {
+	pulumi.Input
+
+	ToTwingateResourceAccessPolicyOutput() TwingateResourceAccessPolicyOutput
+	ToTwingateResourceAccessPolicyOutputWithContext(context.Context) TwingateResourceAccessPolicyOutput
+}
+
+type TwingateResourceAccessPolicyArgs struct {
+	// This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+	ApprovalMode pulumi.StringPtrInput `pulumi:"approvalMode"`
+	// This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
+	Duration pulumi.StringPtrInput `pulumi:"duration"`
+	// This will set the accessPolicy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+}
+
+func (TwingateResourceAccessPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateResourceAccessPolicy)(nil)).Elem()
+}
+
+func (i TwingateResourceAccessPolicyArgs) ToTwingateResourceAccessPolicyOutput() TwingateResourceAccessPolicyOutput {
+	return i.ToTwingateResourceAccessPolicyOutputWithContext(context.Background())
+}
+
+func (i TwingateResourceAccessPolicyArgs) ToTwingateResourceAccessPolicyOutputWithContext(ctx context.Context) TwingateResourceAccessPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateResourceAccessPolicyOutput)
+}
+
+// TwingateResourceAccessPolicyArrayInput is an input type that accepts TwingateResourceAccessPolicyArray and TwingateResourceAccessPolicyArrayOutput values.
+// You can construct a concrete instance of `TwingateResourceAccessPolicyArrayInput` via:
+//
+//	TwingateResourceAccessPolicyArray{ TwingateResourceAccessPolicyArgs{...} }
+type TwingateResourceAccessPolicyArrayInput interface {
+	pulumi.Input
+
+	ToTwingateResourceAccessPolicyArrayOutput() TwingateResourceAccessPolicyArrayOutput
+	ToTwingateResourceAccessPolicyArrayOutputWithContext(context.Context) TwingateResourceAccessPolicyArrayOutput
+}
+
+type TwingateResourceAccessPolicyArray []TwingateResourceAccessPolicyInput
+
+func (TwingateResourceAccessPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TwingateResourceAccessPolicy)(nil)).Elem()
+}
+
+func (i TwingateResourceAccessPolicyArray) ToTwingateResourceAccessPolicyArrayOutput() TwingateResourceAccessPolicyArrayOutput {
+	return i.ToTwingateResourceAccessPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i TwingateResourceAccessPolicyArray) ToTwingateResourceAccessPolicyArrayOutputWithContext(ctx context.Context) TwingateResourceAccessPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateResourceAccessPolicyArrayOutput)
+}
+
+type TwingateResourceAccessPolicyOutput struct{ *pulumi.OutputState }
+
+func (TwingateResourceAccessPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateResourceAccessPolicy)(nil)).Elem()
+}
+
+func (o TwingateResourceAccessPolicyOutput) ToTwingateResourceAccessPolicyOutput() TwingateResourceAccessPolicyOutput {
+	return o
+}
+
+func (o TwingateResourceAccessPolicyOutput) ToTwingateResourceAccessPolicyOutputWithContext(ctx context.Context) TwingateResourceAccessPolicyOutput {
+	return o
+}
+
+// This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+func (o TwingateResourceAccessPolicyOutput) ApprovalMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TwingateResourceAccessPolicy) *string { return v.ApprovalMode }).(pulumi.StringPtrOutput)
+}
+
+// This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
+func (o TwingateResourceAccessPolicyOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TwingateResourceAccessPolicy) *string { return v.Duration }).(pulumi.StringPtrOutput)
+}
+
+// This will set the accessPolicy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+func (o TwingateResourceAccessPolicyOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TwingateResourceAccessPolicy) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+type TwingateResourceAccessPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (TwingateResourceAccessPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TwingateResourceAccessPolicy)(nil)).Elem()
+}
+
+func (o TwingateResourceAccessPolicyArrayOutput) ToTwingateResourceAccessPolicyArrayOutput() TwingateResourceAccessPolicyArrayOutput {
+	return o
+}
+
+func (o TwingateResourceAccessPolicyArrayOutput) ToTwingateResourceAccessPolicyArrayOutputWithContext(ctx context.Context) TwingateResourceAccessPolicyArrayOutput {
+	return o
+}
+
+func (o TwingateResourceAccessPolicyArrayOutput) Index(i pulumi.IntInput) TwingateResourceAccessPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TwingateResourceAccessPolicy {
+		return vs[0].([]TwingateResourceAccessPolicy)[vs[1].(int)]
+	}).(TwingateResourceAccessPolicyOutput)
 }
 
 type TwingateResourceAccessService struct {
@@ -5295,6 +5546,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateDNSFilteringProfileSecurityCategoriesPtrInput)(nil)).Elem(), TwingateDNSFilteringProfileSecurityCategoriesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateResourceAccessGroupInput)(nil)).Elem(), TwingateResourceAccessGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateResourceAccessGroupArrayInput)(nil)).Elem(), TwingateResourceAccessGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateResourceAccessGroupAccessPolicyInput)(nil)).Elem(), TwingateResourceAccessGroupAccessPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateResourceAccessGroupAccessPolicyArrayInput)(nil)).Elem(), TwingateResourceAccessGroupAccessPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateResourceAccessPolicyInput)(nil)).Elem(), TwingateResourceAccessPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateResourceAccessPolicyArrayInput)(nil)).Elem(), TwingateResourceAccessPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateResourceAccessServiceInput)(nil)).Elem(), TwingateResourceAccessServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateResourceAccessServiceArrayInput)(nil)).Elem(), TwingateResourceAccessServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateResourceProtocolsInput)(nil)).Elem(), TwingateResourceProtocolsArgs{})
@@ -5356,6 +5611,10 @@ func init() {
 	pulumi.RegisterOutputType(TwingateDNSFilteringProfileSecurityCategoriesPtrOutput{})
 	pulumi.RegisterOutputType(TwingateResourceAccessGroupOutput{})
 	pulumi.RegisterOutputType(TwingateResourceAccessGroupArrayOutput{})
+	pulumi.RegisterOutputType(TwingateResourceAccessGroupAccessPolicyOutput{})
+	pulumi.RegisterOutputType(TwingateResourceAccessGroupAccessPolicyArrayOutput{})
+	pulumi.RegisterOutputType(TwingateResourceAccessPolicyOutput{})
+	pulumi.RegisterOutputType(TwingateResourceAccessPolicyArrayOutput{})
 	pulumi.RegisterOutputType(TwingateResourceAccessServiceOutput{})
 	pulumi.RegisterOutputType(TwingateResourceAccessServiceArrayOutput{})
 	pulumi.RegisterOutputType(TwingateResourceProtocolsOutput{})

@@ -13,6 +13,18 @@ namespace Twingate.Twingate.Inputs
 
     public sealed class TwingateResourceAccessGroupArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accessPolicies")]
+        private InputList<Inputs.TwingateResourceAccessGroupAccessPolicyArgs>? _accessPolicies;
+
+        /// <summary>
+        /// Restrict access according to JIT access policy
+        /// </summary>
+        public InputList<Inputs.TwingateResourceAccessGroupAccessPolicyArgs> AccessPolicies
+        {
+            get => _accessPolicies ?? (_accessPolicies = new InputList<Inputs.TwingateResourceAccessGroupAccessPolicyArgs>());
+            set => _accessPolicies = value;
+        }
+
         /// <summary>
         /// This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
         /// </summary>

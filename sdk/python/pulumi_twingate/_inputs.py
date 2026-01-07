@@ -35,6 +35,10 @@ __all__ = [
     'TwingateDNSFilteringProfileSecurityCategoriesArgsDict',
     'TwingateResourceAccessGroupArgs',
     'TwingateResourceAccessGroupArgsDict',
+    'TwingateResourceAccessGroupAccessPolicyArgs',
+    'TwingateResourceAccessGroupAccessPolicyArgsDict',
+    'TwingateResourceAccessPolicyArgs',
+    'TwingateResourceAccessPolicyArgsDict',
     'TwingateResourceAccessServiceArgs',
     'TwingateResourceAccessServiceArgsDict',
     'TwingateResourceProtocolsArgs',
@@ -1059,6 +1063,10 @@ class TwingateDNSFilteringProfileSecurityCategoriesArgs:
 
 if not MYPY:
     class TwingateResourceAccessGroupArgsDict(TypedDict):
+        access_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupAccessPolicyArgsDict']]]]
+        """
+        Restrict access according to JIT access policy
+        """
         approval_mode: NotRequired[pulumi.Input[_builtins.str]]
         """
         This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
@@ -1081,16 +1089,23 @@ elif False:
 @pulumi.input_type
 class TwingateResourceAccessGroupArgs:
     def __init__(__self__, *,
+                 access_policies: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupAccessPolicyArgs']]]] = None,
                  approval_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  usage_based_autolock_duration_days: Optional[pulumi.Input[_builtins.int]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupAccessPolicyArgs']]] access_policies: Restrict access according to JIT access policy
         :param pulumi.Input[_builtins.str] approval_mode: This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
         :param pulumi.Input[_builtins.str] group_id: Group ID that will have permission to access the Resource.
         :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block.
         :param pulumi.Input[_builtins.int] usage_based_autolock_duration_days: The usage-based auto-lock duration configured on the edge (in days).
         """
+        if access_policies is not None:
+            pulumi.set(__self__, "access_policies", access_policies)
+        if approval_mode is not None:
+            warnings.warn("""Configure access_policy instead. This attribute will be removed in the next major version of the provider.""", DeprecationWarning)
+            pulumi.log.warn("""approval_mode is deprecated: Configure access_policy instead. This attribute will be removed in the next major version of the provider.""")
         if approval_mode is not None:
             pulumi.set(__self__, "approval_mode", approval_mode)
         if group_id is not None:
@@ -1098,10 +1113,26 @@ class TwingateResourceAccessGroupArgs:
         if security_policy_id is not None:
             pulumi.set(__self__, "security_policy_id", security_policy_id)
         if usage_based_autolock_duration_days is not None:
+            warnings.warn("""Configure access_policy instead. This attribute will be removed in the next major version of the provider.""", DeprecationWarning)
+            pulumi.log.warn("""usage_based_autolock_duration_days is deprecated: Configure access_policy instead. This attribute will be removed in the next major version of the provider.""")
+        if usage_based_autolock_duration_days is not None:
             pulumi.set(__self__, "usage_based_autolock_duration_days", usage_based_autolock_duration_days)
 
     @_builtins.property
+    @pulumi.getter(name="accessPolicies")
+    def access_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupAccessPolicyArgs']]]]:
+        """
+        Restrict access according to JIT access policy
+        """
+        return pulumi.get(self, "access_policies")
+
+    @access_policies.setter
+    def access_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupAccessPolicyArgs']]]]):
+        pulumi.set(self, "access_policies", value)
+
+    @_builtins.property
     @pulumi.getter(name="approvalMode")
+    @_utilities.deprecated("""Configure access_policy instead. This attribute will be removed in the next major version of the provider.""")
     def approval_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
@@ -1138,6 +1169,7 @@ class TwingateResourceAccessGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="usageBasedAutolockDurationDays")
+    @_utilities.deprecated("""Configure access_policy instead. This attribute will be removed in the next major version of the provider.""")
     def usage_based_autolock_duration_days(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The usage-based auto-lock duration configured on the edge (in days).
@@ -1147,6 +1179,150 @@ class TwingateResourceAccessGroupArgs:
     @usage_based_autolock_duration_days.setter
     def usage_based_autolock_duration_days(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "usage_based_autolock_duration_days", value)
+
+
+if not MYPY:
+    class TwingateResourceAccessGroupAccessPolicyArgsDict(TypedDict):
+        approval_mode: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+        """
+        duration: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
+        """
+        mode: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        This will set the access_policy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        """
+elif False:
+    TwingateResourceAccessGroupAccessPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TwingateResourceAccessGroupAccessPolicyArgs:
+    def __init__(__self__, *,
+                 approval_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 duration: Optional[pulumi.Input[_builtins.str]] = None,
+                 mode: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] approval_mode: This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+        :param pulumi.Input[_builtins.str] duration: This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
+        :param pulumi.Input[_builtins.str] mode: This will set the access_policy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        """
+        if approval_mode is not None:
+            pulumi.set(__self__, "approval_mode", approval_mode)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @_builtins.property
+    @pulumi.getter(name="approvalMode")
+    def approval_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+        """
+        return pulumi.get(self, "approval_mode")
+
+    @approval_mode.setter
+    def approval_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "approval_mode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "duration", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This will set the access_policy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "mode", value)
+
+
+if not MYPY:
+    class TwingateResourceAccessPolicyArgsDict(TypedDict):
+        approval_mode: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+        """
+        duration: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
+        """
+        mode: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        This will set the access_policy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        """
+elif False:
+    TwingateResourceAccessPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TwingateResourceAccessPolicyArgs:
+    def __init__(__self__, *,
+                 approval_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 duration: Optional[pulumi.Input[_builtins.str]] = None,
+                 mode: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] approval_mode: This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+        :param pulumi.Input[_builtins.str] duration: This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
+        :param pulumi.Input[_builtins.str] mode: This will set the access_policy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        """
+        if approval_mode is not None:
+            pulumi.set(__self__, "approval_mode", approval_mode)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @_builtins.property
+    @pulumi.getter(name="approvalMode")
+    def approval_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+        """
+        return pulumi.get(self, "approval_mode")
+
+    @approval_mode.setter
+    def approval_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "approval_mode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "duration", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This will set the access_policy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "mode", value)
 
 
 if not MYPY:

@@ -24,6 +24,7 @@ class TwingateResourceArgs:
                  address: pulumi.Input[_builtins.str],
                  remote_network_id: pulumi.Input[_builtins.str],
                  access_groups: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupArgs']]]] = None,
+                 access_policies: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessPolicyArgs']]]] = None,
                  access_services: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]]] = None,
                  alias: Optional[pulumi.Input[_builtins.str]] = None,
                  approval_mode: Optional[pulumi.Input[_builtins.str]] = None,
@@ -41,6 +42,7 @@ class TwingateResourceArgs:
         :param pulumi.Input[_builtins.str] address: The Resource's IP/CIDR or FQDN/DNS zone
         :param pulumi.Input[_builtins.str] remote_network_id: Remote Network ID where the Resource lives
         :param pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupArgs']]] access_groups: Restrict access to certain group
+        :param pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessPolicyArgs']]] access_policies: Restrict access according to JIT access policy
         :param pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]] access_services: Restrict access to certain service account
         :param pulumi.Input[_builtins.str] alias: Set a DNS alias address for the Resource. Must be a DNS-valid name string.
         :param pulumi.Input[_builtins.str] approval_mode: This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
@@ -57,10 +59,15 @@ class TwingateResourceArgs:
         pulumi.set(__self__, "remote_network_id", remote_network_id)
         if access_groups is not None:
             pulumi.set(__self__, "access_groups", access_groups)
+        if access_policies is not None:
+            pulumi.set(__self__, "access_policies", access_policies)
         if access_services is not None:
             pulumi.set(__self__, "access_services", access_services)
         if alias is not None:
             pulumi.set(__self__, "alias", alias)
+        if approval_mode is not None:
+            warnings.warn("""Configure access_policy instead. This attribute will be removed in the next major version of the provider.""", DeprecationWarning)
+            pulumi.log.warn("""approval_mode is deprecated: Configure access_policy instead. This attribute will be removed in the next major version of the provider.""")
         if approval_mode is not None:
             pulumi.set(__self__, "approval_mode", approval_mode)
         if is_active is not None:
@@ -79,6 +86,9 @@ class TwingateResourceArgs:
             pulumi.set(__self__, "security_policy_id", security_policy_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if usage_based_autolock_duration_days is not None:
+            warnings.warn("""Configure access_policy instead. This attribute will be removed in the next major version of the provider.""", DeprecationWarning)
+            pulumi.log.warn("""usage_based_autolock_duration_days is deprecated: Configure access_policy instead. This attribute will be removed in the next major version of the provider.""")
         if usage_based_autolock_duration_days is not None:
             pulumi.set(__self__, "usage_based_autolock_duration_days", usage_based_autolock_duration_days)
 
@@ -119,6 +129,18 @@ class TwingateResourceArgs:
         pulumi.set(self, "access_groups", value)
 
     @_builtins.property
+    @pulumi.getter(name="accessPolicies")
+    def access_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessPolicyArgs']]]]:
+        """
+        Restrict access according to JIT access policy
+        """
+        return pulumi.get(self, "access_policies")
+
+    @access_policies.setter
+    def access_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessPolicyArgs']]]]):
+        pulumi.set(self, "access_policies", value)
+
+    @_builtins.property
     @pulumi.getter(name="accessServices")
     def access_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]]]:
         """
@@ -144,6 +166,7 @@ class TwingateResourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="approvalMode")
+    @_utilities.deprecated("""Configure access_policy instead. This attribute will be removed in the next major version of the provider.""")
     def approval_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
@@ -249,6 +272,7 @@ class TwingateResourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="usageBasedAutolockDurationDays")
+    @_utilities.deprecated("""Configure access_policy instead. This attribute will be removed in the next major version of the provider.""")
     def usage_based_autolock_duration_days(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The usage-based auto-lock duration for the Resource (in days).
@@ -264,6 +288,7 @@ class TwingateResourceArgs:
 class _TwingateResourceState:
     def __init__(__self__, *,
                  access_groups: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupArgs']]]] = None,
+                 access_policies: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessPolicyArgs']]]] = None,
                  access_services: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]]] = None,
                  address: Optional[pulumi.Input[_builtins.str]] = None,
                  alias: Optional[pulumi.Input[_builtins.str]] = None,
@@ -282,6 +307,7 @@ class _TwingateResourceState:
         """
         Input properties used for looking up and filtering TwingateResource resources.
         :param pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupArgs']]] access_groups: Restrict access to certain group
+        :param pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessPolicyArgs']]] access_policies: Restrict access according to JIT access policy
         :param pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]] access_services: Restrict access to certain service account
         :param pulumi.Input[_builtins.str] address: The Resource's IP/CIDR or FQDN/DNS zone
         :param pulumi.Input[_builtins.str] alias: Set a DNS alias address for the Resource. Must be a DNS-valid name string.
@@ -299,12 +325,17 @@ class _TwingateResourceState:
         """
         if access_groups is not None:
             pulumi.set(__self__, "access_groups", access_groups)
+        if access_policies is not None:
+            pulumi.set(__self__, "access_policies", access_policies)
         if access_services is not None:
             pulumi.set(__self__, "access_services", access_services)
         if address is not None:
             pulumi.set(__self__, "address", address)
         if alias is not None:
             pulumi.set(__self__, "alias", alias)
+        if approval_mode is not None:
+            warnings.warn("""Configure access_policy instead. This attribute will be removed in the next major version of the provider.""", DeprecationWarning)
+            pulumi.log.warn("""approval_mode is deprecated: Configure access_policy instead. This attribute will be removed in the next major version of the provider.""")
         if approval_mode is not None:
             pulumi.set(__self__, "approval_mode", approval_mode)
         if is_active is not None:
@@ -328,6 +359,9 @@ class _TwingateResourceState:
         if tags_all is not None:
             pulumi.set(__self__, "tags_all", tags_all)
         if usage_based_autolock_duration_days is not None:
+            warnings.warn("""Configure access_policy instead. This attribute will be removed in the next major version of the provider.""", DeprecationWarning)
+            pulumi.log.warn("""usage_based_autolock_duration_days is deprecated: Configure access_policy instead. This attribute will be removed in the next major version of the provider.""")
+        if usage_based_autolock_duration_days is not None:
             pulumi.set(__self__, "usage_based_autolock_duration_days", usage_based_autolock_duration_days)
 
     @_builtins.property
@@ -341,6 +375,18 @@ class _TwingateResourceState:
     @access_groups.setter
     def access_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupArgs']]]]):
         pulumi.set(self, "access_groups", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accessPolicies")
+    def access_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessPolicyArgs']]]]:
+        """
+        Restrict access according to JIT access policy
+        """
+        return pulumi.get(self, "access_policies")
+
+    @access_policies.setter
+    def access_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessPolicyArgs']]]]):
+        pulumi.set(self, "access_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="accessServices")
@@ -380,6 +426,7 @@ class _TwingateResourceState:
 
     @_builtins.property
     @pulumi.getter(name="approvalMode")
+    @_utilities.deprecated("""Configure access_policy instead. This attribute will be removed in the next major version of the provider.""")
     def approval_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
@@ -509,6 +556,7 @@ class _TwingateResourceState:
 
     @_builtins.property
     @pulumi.getter(name="usageBasedAutolockDurationDays")
+    @_utilities.deprecated("""Configure access_policy instead. This attribute will be removed in the next major version of the provider.""")
     def usage_based_autolock_duration_days(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The usage-based auto-lock duration for the Resource (in days).
@@ -527,6 +575,7 @@ class TwingateResource(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessGroupArgs', 'TwingateResourceAccessGroupArgsDict']]]]] = None,
+                 access_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessPolicyArgs', 'TwingateResourceAccessPolicyArgsDict']]]]] = None,
                  access_services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessServiceArgs', 'TwingateResourceAccessServiceArgsDict']]]]] = None,
                  address: Optional[pulumi.Input[_builtins.str]] = None,
                  alias: Optional[pulumi.Input[_builtins.str]] = None,
@@ -554,6 +603,7 @@ class TwingateResource(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessGroupArgs', 'TwingateResourceAccessGroupArgsDict']]]] access_groups: Restrict access to certain group
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessPolicyArgs', 'TwingateResourceAccessPolicyArgsDict']]]] access_policies: Restrict access according to JIT access policy
         :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessServiceArgs', 'TwingateResourceAccessServiceArgsDict']]]] access_services: Restrict access to certain service account
         :param pulumi.Input[_builtins.str] address: The Resource's IP/CIDR or FQDN/DNS zone
         :param pulumi.Input[_builtins.str] alias: Set a DNS alias address for the Resource. Must be a DNS-valid name string.
@@ -599,6 +649,7 @@ class TwingateResource(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessGroupArgs', 'TwingateResourceAccessGroupArgsDict']]]]] = None,
+                 access_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessPolicyArgs', 'TwingateResourceAccessPolicyArgsDict']]]]] = None,
                  access_services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessServiceArgs', 'TwingateResourceAccessServiceArgsDict']]]]] = None,
                  address: Optional[pulumi.Input[_builtins.str]] = None,
                  alias: Optional[pulumi.Input[_builtins.str]] = None,
@@ -623,6 +674,7 @@ class TwingateResource(pulumi.CustomResource):
             __props__ = TwingateResourceArgs.__new__(TwingateResourceArgs)
 
             __props__.__dict__["access_groups"] = access_groups
+            __props__.__dict__["access_policies"] = access_policies
             __props__.__dict__["access_services"] = access_services
             if address is None and not opts.urn:
                 raise TypeError("Missing required property 'address'")
@@ -653,6 +705,7 @@ class TwingateResource(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessGroupArgs', 'TwingateResourceAccessGroupArgsDict']]]]] = None,
+            access_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessPolicyArgs', 'TwingateResourceAccessPolicyArgsDict']]]]] = None,
             access_services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessServiceArgs', 'TwingateResourceAccessServiceArgsDict']]]]] = None,
             address: Optional[pulumi.Input[_builtins.str]] = None,
             alias: Optional[pulumi.Input[_builtins.str]] = None,
@@ -676,6 +729,7 @@ class TwingateResource(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessGroupArgs', 'TwingateResourceAccessGroupArgsDict']]]] access_groups: Restrict access to certain group
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessPolicyArgs', 'TwingateResourceAccessPolicyArgsDict']]]] access_policies: Restrict access according to JIT access policy
         :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessServiceArgs', 'TwingateResourceAccessServiceArgsDict']]]] access_services: Restrict access to certain service account
         :param pulumi.Input[_builtins.str] address: The Resource's IP/CIDR or FQDN/DNS zone
         :param pulumi.Input[_builtins.str] alias: Set a DNS alias address for the Resource. Must be a DNS-valid name string.
@@ -696,6 +750,7 @@ class TwingateResource(pulumi.CustomResource):
         __props__ = _TwingateResourceState.__new__(_TwingateResourceState)
 
         __props__.__dict__["access_groups"] = access_groups
+        __props__.__dict__["access_policies"] = access_policies
         __props__.__dict__["access_services"] = access_services
         __props__.__dict__["address"] = address
         __props__.__dict__["alias"] = alias
@@ -720,6 +775,14 @@ class TwingateResource(pulumi.CustomResource):
         Restrict access to certain group
         """
         return pulumi.get(self, "access_groups")
+
+    @_builtins.property
+    @pulumi.getter(name="accessPolicies")
+    def access_policies(self) -> pulumi.Output[Optional[Sequence['outputs.TwingateResourceAccessPolicy']]]:
+        """
+        Restrict access according to JIT access policy
+        """
+        return pulumi.get(self, "access_policies")
 
     @_builtins.property
     @pulumi.getter(name="accessServices")
@@ -747,6 +810,7 @@ class TwingateResource(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="approvalMode")
+    @_utilities.deprecated("""Configure access_policy instead. This attribute will be removed in the next major version of the provider.""")
     def approval_mode(self) -> pulumi.Output[_builtins.str]:
         """
         This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
@@ -832,6 +896,7 @@ class TwingateResource(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="usageBasedAutolockDurationDays")
+    @_utilities.deprecated("""Configure access_policy instead. This attribute will be removed in the next major version of the provider.""")
     def usage_based_autolock_duration_days(self) -> pulumi.Output[_builtins.int]:
         """
         The usage-based auto-lock duration for the Resource (in days).

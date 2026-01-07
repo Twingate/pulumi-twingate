@@ -48,6 +48,10 @@ export class TwingateResource extends pulumi.CustomResource {
      */
     declare public readonly accessGroups: pulumi.Output<outputs.TwingateResourceAccessGroup[] | undefined>;
     /**
+     * Restrict access according to JIT access policy
+     */
+    declare public readonly accessPolicies: pulumi.Output<outputs.TwingateResourceAccessPolicy[] | undefined>;
+    /**
      * Restrict access to certain service account
      */
     declare public readonly accessServices: pulumi.Output<outputs.TwingateResourceAccessService[] | undefined>;
@@ -61,6 +65,8 @@ export class TwingateResource extends pulumi.CustomResource {
     declare public readonly alias: pulumi.Output<string | undefined>;
     /**
      * This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+     *
+     * @deprecated Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
      */
     declare public readonly approvalMode: pulumi.Output<string>;
     /**
@@ -102,6 +108,8 @@ export class TwingateResource extends pulumi.CustomResource {
     declare public /*out*/ readonly tagsAll: pulumi.Output<{[key: string]: string}>;
     /**
      * The usage-based auto-lock duration for the Resource (in days).
+     *
+     * @deprecated Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
      */
     declare public readonly usageBasedAutolockDurationDays: pulumi.Output<number>;
 
@@ -119,6 +127,7 @@ export class TwingateResource extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as TwingateResourceState | undefined;
             resourceInputs["accessGroups"] = state?.accessGroups;
+            resourceInputs["accessPolicies"] = state?.accessPolicies;
             resourceInputs["accessServices"] = state?.accessServices;
             resourceInputs["address"] = state?.address;
             resourceInputs["alias"] = state?.alias;
@@ -143,6 +152,7 @@ export class TwingateResource extends pulumi.CustomResource {
                 throw new Error("Missing required property 'remoteNetworkId'");
             }
             resourceInputs["accessGroups"] = args?.accessGroups;
+            resourceInputs["accessPolicies"] = args?.accessPolicies;
             resourceInputs["accessServices"] = args?.accessServices;
             resourceInputs["address"] = args?.address;
             resourceInputs["alias"] = args?.alias;
@@ -173,6 +183,10 @@ export interface TwingateResourceState {
      */
     accessGroups?: pulumi.Input<pulumi.Input<inputs.TwingateResourceAccessGroup>[]>;
     /**
+     * Restrict access according to JIT access policy
+     */
+    accessPolicies?: pulumi.Input<pulumi.Input<inputs.TwingateResourceAccessPolicy>[]>;
+    /**
      * Restrict access to certain service account
      */
     accessServices?: pulumi.Input<pulumi.Input<inputs.TwingateResourceAccessService>[]>;
@@ -186,6 +200,8 @@ export interface TwingateResourceState {
     alias?: pulumi.Input<string>;
     /**
      * This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+     *
+     * @deprecated Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
      */
     approvalMode?: pulumi.Input<string>;
     /**
@@ -227,6 +243,8 @@ export interface TwingateResourceState {
     tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The usage-based auto-lock duration for the Resource (in days).
+     *
+     * @deprecated Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
      */
     usageBasedAutolockDurationDays?: pulumi.Input<number>;
 }
@@ -239,6 +257,10 @@ export interface TwingateResourceArgs {
      * Restrict access to certain group
      */
     accessGroups?: pulumi.Input<pulumi.Input<inputs.TwingateResourceAccessGroup>[]>;
+    /**
+     * Restrict access according to JIT access policy
+     */
+    accessPolicies?: pulumi.Input<pulumi.Input<inputs.TwingateResourceAccessPolicy>[]>;
     /**
      * Restrict access to certain service account
      */
@@ -253,6 +275,8 @@ export interface TwingateResourceArgs {
     alias?: pulumi.Input<string>;
     /**
      * This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+     *
+     * @deprecated Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
      */
     approvalMode?: pulumi.Input<string>;
     /**
@@ -290,6 +314,8 @@ export interface TwingateResourceArgs {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The usage-based auto-lock duration for the Resource (in days).
+     *
+     * @deprecated Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
      */
     usageBasedAutolockDurationDays?: pulumi.Input<number>;
 }
