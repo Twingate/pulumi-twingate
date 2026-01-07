@@ -1257,6 +1257,8 @@ github.com/pulumi/providertest v0.3.0 h1:Dv10aoFaNQBDRtK8cRbd2uk9vEhpC/NryN+0y7N
 github.com/pulumi/providertest v0.3.0/go.mod h1:aTxVfdxP/Pe0iPbokjBp99x0XaY4fkZB2CjIS5wysMs=
 github.com/pulumi/pulumi-java/pkg v1.12.0 h1:T7yFnFr0bgqy6huVUANMyUeGO1/Y3r2CJJ6S5YQDQCU=
 github.com/pulumi/pulumi-java/pkg v1.12.0/go.mod h1:g8QQjEgB5wTsZptyf1vbIcI/pgYEGJObnihAEgymkAo=
+github.com/pulumi/pulumi-terraform-bridge/v3 v3.117.0 h1:LaP/ZTgs0+YDiVUZ7InebVzz1fcAThDkqotf7fPjTuA=
+github.com/pulumi/pulumi-terraform-bridge/v3 v3.117.0/go.mod h1:yZoFrsFTpXZz1z1BvjajYxWGZW7i5y/27/yL39ZVT20=
 github.com/pulumi/pulumi-yaml v1.19.1 h1:Y92eTQv07p5RbbNj6s/54+ibdPgvndLJ2Lb1IjYffng=
 github.com/pulumi/pulumi-yaml v1.19.1/go.mod h1:n1JTtfUXR1IWVJ86HvMvQglK5mrDeDduxsLifGW1WIA=
 github.com/pulumi/pulumi/pkg/v3 v3.209.0 h1:1KzIJTO2F6iCb+08E25C/QBdbQ9by0FATsAFdynDve8=
@@ -1339,8 +1341,6 @@ github.com/teekennedy/goldmark-markdown v0.4.1 h1:z+khlNC+dX1zsZOEmr/IqXBBJ9CwXr
 github.com/teekennedy/goldmark-markdown v0.4.1/go.mod h1:HmgaLa1NTxngaJbKPKI+3Cs6ZEHT/FffRTk8A86ognA=
 github.com/texttheater/golang-levenshtein v1.0.1 h1:+cRNoVrfiwufQPhoMzB6N0Yf/Mqajr6t1lOv8GyGE2U=
 github.com/texttheater/golang-levenshtein v1.0.1/go.mod h1:PYAKrbF5sAiq9wd+H82hs7gNaen0CplQ9uvm6+enD/8=
-github.com/twingate-blee/pulumi-terraform-bridge/v3 v3.119.1 h1:NQQrq4xeYzLQa8RSJ/HZGmzwFIfYSnXmkhKAwMXZhIw=
-github.com/twingate-blee/pulumi-terraform-bridge/v3 v3.119.1/go.mod h1:6WRgxtYSONM9ZanvEAIjNXMeg5RQviaEfZvMev9ojEU=
 github.com/uber/jaeger-client-go v2.30.0+incompatible h1:D6wyKGCecFaSRUpo8lCVbaOOb6ThwMmTEbhRwtKR97o=
 github.com/uber/jaeger-client-go v2.30.0+incompatible/go.mod h1:WVhlPFC8FDjOFMMWRy2pZqQJSXxYSwNYOkTr/Z6d3Kk=
 github.com/uber/jaeger-lib v2.4.1+incompatible h1:td4jdvLcExb4cBISKIpHuGoVXh+dVKhn2Um6rjCsSsg=
