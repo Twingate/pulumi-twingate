@@ -68,6 +68,69 @@ new tg.TwingateResource("twingate_home_page_js", {
     }
 })
 
+// Example: Create a Resource with JIT (Just-In-Time) Access Policy at resource level
+new tg.TwingateResource("jit_resource_js", {
+    name: "JIT Access Resource JS",
+    address: "internal-app.example.com",
+    remoteNetworkId: remoteNetwork.id,
+    accessGroups: [
+        {
+            groupId: tgGroup.id,
+        }
+    ],
+    // Resource-level access policy - applies to all access groups
+    accessPolicies: [
+        {
+            mode: "AUTO_LOCK",           // Automatically lock access after duration
+            approvalMode: "AUTOMATIC",    // No manual approval required
+            duration: "24h",              // Access granted for 24 hours
+        }
+    ],
+    protocols: {
+        allowIcmp: true,
+        tcp: {
+            policy: "ALLOW_ALL",
+        },
+    }
+})
+
+// Example: Create a Resource with group-specific Access Policies
+new tg.TwingateResource("group_policy_resource_js", {
+    name: "Group-Specific Policy Resource JS",
+    address: "sensitive-app.example.com",
+    remoteNetworkId: remoteNetwork.id,
+    accessGroups: [
+        {
+            groupId: tgGroup.id,
+            // This group gets auto-lock access
+            accessPolicies: [
+                {
+                    mode: "AUTO_LOCK",
+                    approvalMode: "AUTOMATIC",
+                    duration: "8h",
+                }
+            ],
+        },
+        {
+            groupId: tgGroup2.id,
+            // This group requires manual access requests
+            accessPolicies: [
+                {
+                    mode: "ACCESS_REQUEST",
+                    approvalMode: "MANUAL",      // Requires manual approval
+                    duration: "2h",
+                }
+            ],
+        }
+    ],
+    protocols: {
+        tcp: {
+            policy: "RESTRICTED",
+            ports: ["443", "8080"],
+        },
+    }
+})
+
 // Get Twingate connector and filter results
 const result: Promise<tg.GetTwingateConnectorsResult> = tg.getTwingateConnectors({ nameContains: "twingate" });
 

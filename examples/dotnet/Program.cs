@@ -92,6 +92,86 @@ await Deployment.RunAsync(() =>
         },
     });
 
+    // Example: Create a Resource with JIT (Just-In-Time) Access Policy at resource level
+    var jitResource = new TwingateResource("jit_resource_cs", new TwingateResourceArgs
+    {
+        Name = "JIT Access Resource CS",
+        Address = "internal-app.example.com",
+        RemoteNetworkId = remoteNetwork.Id,
+        AccessGroups = new[]
+        {
+            new TwingateResourceAccessGroupArgs
+            {
+                GroupId = tgGroup.Id,
+            },
+        },
+        // Resource-level access policy - applies to all access groups
+        AccessPolicies = new[]
+        {
+            new TwingateResourceAccessPolicyArgs
+            {
+                Mode = "AUTO_LOCK",         // Automatically lock access after duration
+                ApprovalMode = "AUTOMATIC", // No manual approval required
+                Duration = "24h",           // Access granted for 24 hours
+            },
+        },
+        Protocols = new TwingateResourceProtocolsArgs
+        {
+            AllowIcmp = true,
+            Tcp = new TwingateResourceProtocolsTcpArgs
+            {
+                Policy = "ALLOW_ALL",
+            },
+        },
+    });
+
+    // Example: Create a Resource with group-specific Access Policies
+    var groupPolicyResource = new TwingateResource("group_policy_resource_cs", new TwingateResourceArgs
+    {
+        Name = "Group-Specific Policy Resource CS",
+        Address = "sensitive-app.example.com",
+        RemoteNetworkId = remoteNetwork.Id,
+        AccessGroups = new[]
+        {
+            new TwingateResourceAccessGroupArgs
+            {
+                GroupId = tgGroup.Id,
+                // This group gets auto-lock access
+                AccessPolicies = new[]
+                {
+                    new TwingateResourceAccessGroupAccessPolicyArgs
+                    {
+                        Mode = "AUTO_LOCK",
+                        ApprovalMode = "AUTOMATIC",
+                        Duration = "8h",
+                    },
+                },
+            },
+            new TwingateResourceAccessGroupArgs
+            {
+                GroupId = tgGroup2.Id,
+                // This group requires manual access requests
+                AccessPolicies = new[]
+                {
+                    new TwingateResourceAccessGroupAccessPolicyArgs
+                    {
+                        Mode = "ACCESS_REQUEST",
+                        ApprovalMode = "MANUAL", // Requires manual approval
+                        Duration = "2h",
+                    },
+                },
+            },
+        },
+        Protocols = new TwingateResourceProtocolsArgs
+        {
+            Tcp = new TwingateResourceProtocolsTcpArgs
+            {
+                Policy = "RESTRICTED",
+                Ports = { "443", "8080" },
+            },
+        },
+    });
+
     // Specify the additional criteria to filter the Twingate groups
     var groupsArgs = new GetTwingateGroupsArgs
     {

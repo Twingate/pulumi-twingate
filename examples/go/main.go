@@ -109,6 +109,78 @@ func main() {
 
 		ctx.Export("resource_id", resource.ID())
 
+		// Example: Create a Resource with JIT (Just-In-Time) Access Policy at resource level
+		_, err = twingate.NewTwingateResource(ctx, "jit_resource_go", &twingate.TwingateResourceArgs{
+			Name:            pulumi.StringPtr("JIT Access Resource Go"),
+			Address:         pulumi.String("internal-app.example.com"),
+			RemoteNetworkId: remoteNetwork.ID(),
+			AccessGroups: &twingate.TwingateResourceAccessGroupArray{
+				&twingate.TwingateResourceAccessGroupArgs{
+					GroupId: group.ID(),
+				},
+			},
+			// Resource-level access policy - applies to all access groups
+			AccessPolicies: &twingate.TwingateResourceAccessPolicyArray{
+				&twingate.TwingateResourceAccessPolicyArgs{
+					Mode:         pulumi.String("AUTO_LOCK"),  // Automatically lock access after duration
+					ApprovalMode: pulumi.String("AUTOMATIC"),  // No manual approval required
+					Duration:     pulumi.String("24h"),        // Access granted for 24 hours
+				},
+			},
+			Protocols: &twingate.TwingateResourceProtocolsArgs{
+				AllowIcmp: pulumi.BoolPtr(true),
+				Tcp: &twingate.TwingateResourceProtocolsTcpArgs{
+					Policy: pulumi.StringPtr("ALLOW_ALL"),
+				},
+			},
+		})
+		if err != nil {
+			return err
+		}
+
+		// Example: Create a Resource with group-specific Access Policies
+		_, err = twingate.NewTwingateResource(ctx, "group_policy_resource_go", &twingate.TwingateResourceArgs{
+			Name:            pulumi.StringPtr("Group-Specific Policy Resource Go"),
+			Address:         pulumi.String("sensitive-app.example.com"),
+			RemoteNetworkId: remoteNetwork.ID(),
+			AccessGroups: &twingate.TwingateResourceAccessGroupArray{
+				&twingate.TwingateResourceAccessGroupArgs{
+					GroupId: group.ID(),
+					// This group gets auto-lock access
+					AccessPolicies: &twingate.TwingateResourceAccessGroupAccessPolicyArray{
+						&twingate.TwingateResourceAccessGroupAccessPolicyArgs{
+							Mode:         pulumi.String("AUTO_LOCK"),
+							ApprovalMode: pulumi.String("AUTOMATIC"),
+							Duration:     pulumi.String("8h"),
+						},
+					},
+				},
+				&twingate.TwingateResourceAccessGroupArgs{
+					GroupId: group2.ID(),
+					// This group requires manual access requests
+					AccessPolicies: &twingate.TwingateResourceAccessGroupAccessPolicyArray{
+						&twingate.TwingateResourceAccessGroupAccessPolicyArgs{
+							Mode:         pulumi.String("ACCESS_REQUEST"),
+							ApprovalMode: pulumi.String("MANUAL"), // Requires manual approval
+							Duration:     pulumi.String("2h"),
+						},
+					},
+				},
+			},
+			Protocols: &twingate.TwingateResourceProtocolsArgs{
+				Tcp: &twingate.TwingateResourceProtocolsTcpArgs{
+					Policy: pulumi.StringPtr("RESTRICTED"),
+					Ports: pulumi.StringArray{
+						pulumi.String("443"),
+						pulumi.String("8080"),
+					},
+				},
+			},
+		})
+		if err != nil {
+			return err
+		}
+
 		// Create a Twingate DNS Filtering Profile
 		_, err = twingate.NewTwingateDNSFilteringProfile(ctx, "dns_profile", &twingate.TwingateDNSFilteringProfileArgs{
 			Name:           pulumi.String("Go Pulumi DNS Filtering Profile"),
