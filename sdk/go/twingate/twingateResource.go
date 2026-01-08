@@ -24,6 +24,8 @@ type TwingateResource struct {
 
 	// Restrict access to certain group
 	AccessGroups TwingateResourceAccessGroupArrayOutput `pulumi:"accessGroups"`
+	// Restrict access according to JIT access policy
+	AccessPolicies TwingateResourceAccessPolicyArrayOutput `pulumi:"accessPolicies"`
 	// Restrict access to certain service account
 	AccessServices TwingateResourceAccessServiceArrayOutput `pulumi:"accessServices"`
 	// The Resource's IP/CIDR or FQDN/DNS zone
@@ -31,6 +33,8 @@ type TwingateResource struct {
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
 	Alias pulumi.StringPtrOutput `pulumi:"alias"`
 	// This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+	//
+	// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
 	ApprovalMode pulumi.StringOutput `pulumi:"approvalMode"`
 	// Set the resource as active or inactive. Default is `true`.
 	IsActive        pulumi.BoolOutput `pulumi:"isActive"`
@@ -52,6 +56,8 @@ type TwingateResource struct {
 	// A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
 	TagsAll pulumi.StringMapOutput `pulumi:"tagsAll"`
 	// The usage-based auto-lock duration for the Resource (in days).
+	//
+	// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
 	UsageBasedAutolockDurationDays pulumi.IntOutput `pulumi:"usageBasedAutolockDurationDays"`
 }
 
@@ -93,6 +99,8 @@ func GetTwingateResource(ctx *pulumi.Context,
 type twingateResourceState struct {
 	// Restrict access to certain group
 	AccessGroups []TwingateResourceAccessGroup `pulumi:"accessGroups"`
+	// Restrict access according to JIT access policy
+	AccessPolicies []TwingateResourceAccessPolicy `pulumi:"accessPolicies"`
 	// Restrict access to certain service account
 	AccessServices []TwingateResourceAccessService `pulumi:"accessServices"`
 	// The Resource's IP/CIDR or FQDN/DNS zone
@@ -100,6 +108,8 @@ type twingateResourceState struct {
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
 	Alias *string `pulumi:"alias"`
 	// This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+	//
+	// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
 	ApprovalMode *string `pulumi:"approvalMode"`
 	// Set the resource as active or inactive. Default is `true`.
 	IsActive        *bool `pulumi:"isActive"`
@@ -121,12 +131,16 @@ type twingateResourceState struct {
 	// A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
 	TagsAll map[string]string `pulumi:"tagsAll"`
 	// The usage-based auto-lock duration for the Resource (in days).
+	//
+	// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
 	UsageBasedAutolockDurationDays *int `pulumi:"usageBasedAutolockDurationDays"`
 }
 
 type TwingateResourceState struct {
 	// Restrict access to certain group
 	AccessGroups TwingateResourceAccessGroupArrayInput
+	// Restrict access according to JIT access policy
+	AccessPolicies TwingateResourceAccessPolicyArrayInput
 	// Restrict access to certain service account
 	AccessServices TwingateResourceAccessServiceArrayInput
 	// The Resource's IP/CIDR or FQDN/DNS zone
@@ -134,6 +148,8 @@ type TwingateResourceState struct {
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
 	Alias pulumi.StringPtrInput
 	// This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+	//
+	// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
 	ApprovalMode pulumi.StringPtrInput
 	// Set the resource as active or inactive. Default is `true`.
 	IsActive        pulumi.BoolPtrInput
@@ -155,6 +171,8 @@ type TwingateResourceState struct {
 	// A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
 	TagsAll pulumi.StringMapInput
 	// The usage-based auto-lock duration for the Resource (in days).
+	//
+	// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
 	UsageBasedAutolockDurationDays pulumi.IntPtrInput
 }
 
@@ -165,6 +183,8 @@ func (TwingateResourceState) ElementType() reflect.Type {
 type twingateResourceArgs struct {
 	// Restrict access to certain group
 	AccessGroups []TwingateResourceAccessGroup `pulumi:"accessGroups"`
+	// Restrict access according to JIT access policy
+	AccessPolicies []TwingateResourceAccessPolicy `pulumi:"accessPolicies"`
 	// Restrict access to certain service account
 	AccessServices []TwingateResourceAccessService `pulumi:"accessServices"`
 	// The Resource's IP/CIDR or FQDN/DNS zone
@@ -172,6 +192,8 @@ type twingateResourceArgs struct {
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
 	Alias *string `pulumi:"alias"`
 	// This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+	//
+	// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
 	ApprovalMode *string `pulumi:"approvalMode"`
 	// Set the resource as active or inactive. Default is `true`.
 	IsActive        *bool `pulumi:"isActive"`
@@ -191,6 +213,8 @@ type twingateResourceArgs struct {
 	// A map of key-value pair tags to set on this resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The usage-based auto-lock duration for the Resource (in days).
+	//
+	// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
 	UsageBasedAutolockDurationDays *int `pulumi:"usageBasedAutolockDurationDays"`
 }
 
@@ -198,6 +222,8 @@ type twingateResourceArgs struct {
 type TwingateResourceArgs struct {
 	// Restrict access to certain group
 	AccessGroups TwingateResourceAccessGroupArrayInput
+	// Restrict access according to JIT access policy
+	AccessPolicies TwingateResourceAccessPolicyArrayInput
 	// Restrict access to certain service account
 	AccessServices TwingateResourceAccessServiceArrayInput
 	// The Resource's IP/CIDR or FQDN/DNS zone
@@ -205,6 +231,8 @@ type TwingateResourceArgs struct {
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
 	Alias pulumi.StringPtrInput
 	// This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+	//
+	// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
 	ApprovalMode pulumi.StringPtrInput
 	// Set the resource as active or inactive. Default is `true`.
 	IsActive        pulumi.BoolPtrInput
@@ -224,6 +252,8 @@ type TwingateResourceArgs struct {
 	// A map of key-value pair tags to set on this resource.
 	Tags pulumi.StringMapInput
 	// The usage-based auto-lock duration for the Resource (in days).
+	//
+	// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
 	UsageBasedAutolockDurationDays pulumi.IntPtrInput
 }
 
@@ -319,6 +349,11 @@ func (o TwingateResourceOutput) AccessGroups() TwingateResourceAccessGroupArrayO
 	return o.ApplyT(func(v *TwingateResource) TwingateResourceAccessGroupArrayOutput { return v.AccessGroups }).(TwingateResourceAccessGroupArrayOutput)
 }
 
+// Restrict access according to JIT access policy
+func (o TwingateResourceOutput) AccessPolicies() TwingateResourceAccessPolicyArrayOutput {
+	return o.ApplyT(func(v *TwingateResource) TwingateResourceAccessPolicyArrayOutput { return v.AccessPolicies }).(TwingateResourceAccessPolicyArrayOutput)
+}
+
 // Restrict access to certain service account
 func (o TwingateResourceOutput) AccessServices() TwingateResourceAccessServiceArrayOutput {
 	return o.ApplyT(func(v *TwingateResource) TwingateResourceAccessServiceArrayOutput { return v.AccessServices }).(TwingateResourceAccessServiceArrayOutput)
@@ -335,6 +370,8 @@ func (o TwingateResourceOutput) Alias() pulumi.StringPtrOutput {
 }
 
 // This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
+//
+// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
 func (o TwingateResourceOutput) ApprovalMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *TwingateResource) pulumi.StringOutput { return v.ApprovalMode }).(pulumi.StringOutput)
 }
@@ -389,6 +426,8 @@ func (o TwingateResourceOutput) TagsAll() pulumi.StringMapOutput {
 }
 
 // The usage-based auto-lock duration for the Resource (in days).
+//
+// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
 func (o TwingateResourceOutput) UsageBasedAutolockDurationDays() pulumi.IntOutput {
 	return o.ApplyT(func(v *TwingateResource) pulumi.IntOutput { return v.UsageBasedAutolockDurationDays }).(pulumi.IntOutput)
 }

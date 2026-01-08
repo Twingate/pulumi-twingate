@@ -109,6 +109,59 @@ func main() {
 
 		ctx.Export("resource_id", resource.ID())
 
+		// Example: Create a Resource with JIT (Just-In-Time) Access Policies
+		// Demonstrates group-specific access policies with different configurations:
+		// - Group 1: AUTO_LOCK with automatic approval (7 day duration)
+		// - Group 2: ACCESS_REQUEST with manual approval (2 hour duration)
+		_, err = twingate.NewTwingateResource(ctx, "jit_resource_go", &twingate.TwingateResourceArgs{
+			Name:            pulumi.StringPtr("JIT Access Resource Go"),
+			Address:         pulumi.String("internal-app.example.com"),
+			RemoteNetworkId: remoteNetwork.ID(),
+			AccessPolicies: &twingate.TwingateResourceAccessPolicyArray{
+				&twingate.TwingateResourceAccessPolicyArgs{
+					Mode:         pulumi.String("AUTO_LOCK"),
+					Duration:     pulumi.String("7d"),
+					ApprovalMode: pulumi.String("MANUAL"),
+				},
+			},
+			AccessGroups: &twingate.TwingateResourceAccessGroupArray{
+				&twingate.TwingateResourceAccessGroupArgs{
+					GroupId: group.ID(),
+					// Auto-lock: Access automatically expires after duration
+					AccessPolicies: &twingate.TwingateResourceAccessGroupAccessPolicyArray{
+						&twingate.TwingateResourceAccessGroupAccessPolicyArgs{
+							Mode:         pulumi.String("AUTO_LOCK"),
+							ApprovalMode: pulumi.String("AUTOMATIC"),
+							Duration:     pulumi.String("7d"),
+						},
+					},
+				},
+				&twingate.TwingateResourceAccessGroupArgs{
+					GroupId: group2.ID(),
+					// Access request: Requires manual approval before granting access
+					AccessPolicies: &twingate.TwingateResourceAccessGroupAccessPolicyArray{
+						&twingate.TwingateResourceAccessGroupAccessPolicyArgs{
+							Mode:         pulumi.String("ACCESS_REQUEST"),
+							ApprovalMode: pulumi.String("MANUAL"),
+							Duration:     pulumi.String("2h"),
+						},
+					},
+				},
+			},
+			Protocols: &twingate.TwingateResourceProtocolsArgs{
+				Tcp: &twingate.TwingateResourceProtocolsTcpArgs{
+					Policy: pulumi.StringPtr("RESTRICTED"),
+					Ports: pulumi.StringArray{
+						pulumi.String("443"),
+						pulumi.String("8080"),
+					},
+				},
+			},
+		})
+		if err != nil {
+			return err
+		}
+
 		// Create a Twingate DNS Filtering Profile
 		_, err = twingate.NewTwingateDNSFilteringProfile(ctx, "dns_profile", &twingate.TwingateDNSFilteringProfileArgs{
 			Name:           pulumi.String("Go Pulumi DNS Filtering Profile"),

@@ -4,11 +4,11 @@ go 1.24.0
 
 require (
 	github.com/Twingate/pulumi-twingate/sdk/v3 v3.6.0
-	github.com/pulumi/pulumi/sdk/v3 v3.214.1
+	github.com/pulumi/pulumi/sdk/v3 v3.215.0
 )
 
 // Uncomment to use local SDK for development/testing
-// replace github.com/Twingate/pulumi-twingate/sdk/v3 => ../../sdk
+replace github.com/Twingate/pulumi-twingate/sdk/v3 => ../../sdk
 
 require (
 	dario.cat/mergo v1.0.1 // indirect

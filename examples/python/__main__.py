@@ -63,6 +63,54 @@ twingate_resource = tg.TwingateResource(
     }
 )
 
+# Example: Create a Resource with JIT (Just-In-Time) Access Policies
+# Demonstrates group-specific access policies with different configurations:
+# - Group 1: AUTO_LOCK with automatic approval (7 day duration)
+# - Group 2: ACCESS_REQUEST with manual approval (2 hour duration)
+jit_resource = tg.TwingateResource(
+    "jit_resource_py",
+    name="JIT Access Resource PY",
+    address="internal-app.example.com",
+    remote_network_id=remote_network.id,
+    access_policies=[
+        tg.TwingateResourceAccessPolicyArgs(
+            mode="AUTO_LOCK",
+            duration="7d",
+            approval_mode="MANUAL",
+        )
+    ],
+    access_groups=[
+        tg.TwingateResourceAccessGroupArgs(
+            group_id=tg_group.id,
+            # Auto-lock: Access automatically expires after duration
+            access_policies=[
+                tg.TwingateResourceAccessGroupAccessPolicyArgs(
+                    mode="AUTO_LOCK",
+                    approval_mode="AUTOMATIC",
+                    duration="7d",
+                )
+            ],
+        ),
+        tg.TwingateResourceAccessGroupArgs(
+            group_id=tg_group2.id,
+            # Access request: Requires manual approval before granting access
+            access_policies=[
+                tg.TwingateResourceAccessGroupAccessPolicyArgs(
+                    mode="ACCESS_REQUEST",
+                    approval_mode="MANUAL",
+                    duration="2h",
+                )
+            ],
+        )
+    ],
+    protocols={
+        "tcp": {
+            "policy": "RESTRICTED",
+            "ports": ["443", "8080"],
+        },
+    }
+)
+
 # Get Twingate connector and filter results
 result = tg.get_twingate_connectors(name_contains="t")
 

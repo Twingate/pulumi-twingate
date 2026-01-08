@@ -29,6 +29,12 @@ namespace Twingate.Twingate
         public Output<ImmutableArray<Outputs.TwingateResourceAccessGroup>> AccessGroups { get; private set; } = null!;
 
         /// <summary>
+        /// Restrict access according to JIT access policy
+        /// </summary>
+        [Output("accessPolicies")]
+        public Output<ImmutableArray<Outputs.TwingateResourceAccessPolicy>> AccessPolicies { get; private set; } = null!;
+
+        /// <summary>
         /// Restrict access to certain service account
         /// </summary>
         [Output("accessServices")]
@@ -174,6 +180,18 @@ namespace Twingate.Twingate
             set => _accessGroups = value;
         }
 
+        [Input("accessPolicies")]
+        private InputList<Inputs.TwingateResourceAccessPolicyArgs>? _accessPolicies;
+
+        /// <summary>
+        /// Restrict access according to JIT access policy
+        /// </summary>
+        public InputList<Inputs.TwingateResourceAccessPolicyArgs> AccessPolicies
+        {
+            get => _accessPolicies ?? (_accessPolicies = new InputList<Inputs.TwingateResourceAccessPolicyArgs>());
+            set => _accessPolicies = value;
+        }
+
         [Input("accessServices")]
         private InputList<Inputs.TwingateResourceAccessServiceArgs>? _accessServices;
 
@@ -285,6 +303,18 @@ namespace Twingate.Twingate
         {
             get => _accessGroups ?? (_accessGroups = new InputList<Inputs.TwingateResourceAccessGroupGetArgs>());
             set => _accessGroups = value;
+        }
+
+        [Input("accessPolicies")]
+        private InputList<Inputs.TwingateResourceAccessPolicyGetArgs>? _accessPolicies;
+
+        /// <summary>
+        /// Restrict access according to JIT access policy
+        /// </summary>
+        public InputList<Inputs.TwingateResourceAccessPolicyGetArgs> AccessPolicies
+        {
+            get => _accessPolicies ?? (_accessPolicies = new InputList<Inputs.TwingateResourceAccessPolicyGetArgs>());
+            set => _accessPolicies = value;
         }
 
         [Input("accessServices")]

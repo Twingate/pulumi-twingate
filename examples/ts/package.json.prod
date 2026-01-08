@@ -5,7 +5,8 @@
     },
     "dependencies": {
         "@pulumi/pulumi": "^3.112.0",
-        "@twingate/pulumi-twingate": "file:../../sdk/nodejs/bin",
+        // Use published NPM package for production
+        "@twingate/pulumi-twingate": "^3.7.0",
         "pulumi": "^0.0.1"
     }
 }

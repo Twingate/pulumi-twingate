@@ -68,6 +68,53 @@ new tg.TwingateResource("twingate_home_page_js", {
     }
 })
 
+// Example: Create a Resource with JIT (Just-In-Time) Access Policies
+// Demonstrates group-specific access policies with different configurations:
+// - Group 1: AUTO_LOCK with automatic approval (7 day duration)
+// - Group 2: ACCESS_REQUEST with manual approval (2 hour duration)
+new tg.TwingateResource("jit_resource_js", {
+    name: "JIT Access Resource JS",
+    address: "internal-app.example.com",
+    remoteNetworkId: remoteNetwork.id,
+    accessPolicies: [
+        {
+            mode: "AUTO_LOCK",
+            duration: "7d",
+            approvalMode: "MANUAL",
+        }
+    ],
+    accessGroups: [
+        {
+            groupId: tgGroup.id,
+            // Auto-lock: Access automatically expires after duration
+            accessPolicies: [
+                {
+                    mode: "AUTO_LOCK",
+                    approvalMode: "AUTOMATIC",
+                    duration: "7d",
+                }
+            ],
+        },
+        {
+            groupId: tgGroup2.id,
+            // Access request: Requires manual approval before granting access
+            accessPolicies: [
+                {
+                    mode: "ACCESS_REQUEST",
+                    approvalMode: "MANUAL",
+                    duration: "2h",
+                }
+            ],
+        }
+    ],
+    protocols: {
+        tcp: {
+            policy: "RESTRICTED",
+            ports: ["443", "8080"],
+        },
+    }
+})
+
 // Get Twingate connector and filter results
 const result: Promise<tg.GetTwingateConnectorsResult> = tg.getTwingateConnectors({ nameContains: "twingate" });
 

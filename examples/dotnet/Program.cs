@@ -92,6 +92,65 @@ await Deployment.RunAsync(() =>
         },
     });
 
+    // Example: Create a Resource with JIT (Just-In-Time) Access Policies
+    // Demonstrates group-specific access policies with different configurations:
+    // - Group 1: AUTO_LOCK with automatic approval (7 day duration)
+    // - Group 2: ACCESS_REQUEST with manual approval (2 hour duration)
+    var jitResource = new TwingateResource("jit_resource_cs", new TwingateResourceArgs
+    {
+        Name = "JIT Access Resource CS",
+        Address = "internal-app.example.com",
+        RemoteNetworkId = remoteNetwork.Id,
+        AccessPolicies = new[]
+        {
+            new TwingateResourceAccessPolicyArgs
+            {
+                Mode = "AUTO_LOCK",
+                Duration = "7d",
+                ApprovalMode = "MANUAL",
+            },
+        },
+        AccessGroups = new[]
+        {
+            new TwingateResourceAccessGroupArgs
+            {
+                GroupId = tgGroup.Id,
+                // Auto-lock: Access automatically expires after duration
+                AccessPolicies = new[]
+                {
+                    new TwingateResourceAccessGroupAccessPolicyArgs
+                    {
+                        Mode = "AUTO_LOCK",
+                        ApprovalMode = "AUTOMATIC",
+                        Duration = "7d",
+                    },
+                },
+            },
+            new TwingateResourceAccessGroupArgs
+            {
+                GroupId = tgGroup2.Id,
+                // Access request: Requires manual approval before granting access
+                AccessPolicies = new[]
+                {
+                    new TwingateResourceAccessGroupAccessPolicyArgs
+                    {
+                        Mode = "ACCESS_REQUEST",
+                        ApprovalMode = "MANUAL",
+                        Duration = "2h",
+                    },
+                },
+            },
+        },
+        Protocols = new TwingateResourceProtocolsArgs
+        {
+            Tcp = new TwingateResourceProtocolsTcpArgs
+            {
+                Policy = "RESTRICTED",
+                Ports = { "443", "8080" },
+            },
+        },
+    });
+
     // Specify the additional criteria to filter the Twingate groups
     var groupsArgs = new GetTwingateGroupsArgs
     {

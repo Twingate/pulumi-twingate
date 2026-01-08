@@ -484,7 +484,13 @@ export interface TwingateDNSFilteringProfileSecurityCategories {
 
 export interface TwingateResourceAccessGroup {
     /**
+     * Restrict access according to JIT access policy
+     */
+    accessPolicies?: pulumi.Input<pulumi.Input<inputs.TwingateResourceAccessGroupAccessPolicy>[]>;
+    /**
      * This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+     *
+     * @deprecated Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
      */
     approvalMode?: pulumi.Input<string>;
     /**
@@ -497,8 +503,40 @@ export interface TwingateResourceAccessGroup {
     securityPolicyId?: pulumi.Input<string>;
     /**
      * The usage-based auto-lock duration configured on the edge (in days).
+     *
+     * @deprecated Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
      */
     usageBasedAutolockDurationDays?: pulumi.Input<number>;
+}
+
+export interface TwingateResourceAccessGroupAccessPolicy {
+    /**
+     * This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+     */
+    approvalMode?: pulumi.Input<string>;
+    /**
+     * This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
+     */
+    duration?: pulumi.Input<string>;
+    /**
+     * This will set the accessPolicy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+     */
+    mode?: pulumi.Input<string>;
+}
+
+export interface TwingateResourceAccessPolicy {
+    /**
+     * This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+     */
+    approvalMode?: pulumi.Input<string>;
+    /**
+     * This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
+     */
+    duration?: pulumi.Input<string>;
+    /**
+     * This will set the accessPolicy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+     */
+    mode?: pulumi.Input<string>;
 }
 
 export interface TwingateResourceAccessService {

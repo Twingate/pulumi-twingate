@@ -15,6 +15,10 @@ namespace Twingate.Twingate.Outputs
     public sealed class TwingateResourceAccessGroup
     {
         /// <summary>
+        /// Restrict access according to JIT access policy
+        /// </summary>
+        public readonly ImmutableArray<Outputs.TwingateResourceAccessGroupAccessPolicy> AccessPolicies;
+        /// <summary>
         /// This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
         /// </summary>
         public readonly string? ApprovalMode;
@@ -33,6 +37,8 @@ namespace Twingate.Twingate.Outputs
 
         [OutputConstructor]
         private TwingateResourceAccessGroup(
+            ImmutableArray<Outputs.TwingateResourceAccessGroupAccessPolicy> accessPolicies,
+
             string? approvalMode,
 
             string? groupId,
@@ -41,6 +47,7 @@ namespace Twingate.Twingate.Outputs
 
             int? usageBasedAutolockDurationDays)
         {
+            AccessPolicies = accessPolicies;
             ApprovalMode = approvalMode;
             GroupId = groupId;
             SecurityPolicyId = securityPolicyId;

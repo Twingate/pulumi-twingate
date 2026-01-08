@@ -458,7 +458,13 @@ export interface TwingateDNSFilteringProfileSecurityCategories {
 
 export interface TwingateResourceAccessGroup {
     /**
+     * Restrict access according to JIT access policy
+     */
+    accessPolicies?: outputs.TwingateResourceAccessGroupAccessPolicy[];
+    /**
      * This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+     *
+     * @deprecated Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
      */
     approvalMode: string;
     /**
@@ -471,8 +477,40 @@ export interface TwingateResourceAccessGroup {
     securityPolicyId: string;
     /**
      * The usage-based auto-lock duration configured on the edge (in days).
+     *
+     * @deprecated Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
      */
     usageBasedAutolockDurationDays: number;
+}
+
+export interface TwingateResourceAccessGroupAccessPolicy {
+    /**
+     * This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+     */
+    approvalMode: string;
+    /**
+     * This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
+     */
+    duration: string;
+    /**
+     * This will set the accessPolicy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+     */
+    mode: string;
+}
+
+export interface TwingateResourceAccessPolicy {
+    /**
+     * This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+     */
+    approvalMode: string;
+    /**
+     * This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
+     */
+    duration: string;
+    /**
+     * This will set the accessPolicy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+     */
+    mode: string;
 }
 
 export interface TwingateResourceAccessService {
