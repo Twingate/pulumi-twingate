@@ -94,7 +94,6 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: ${{matrix.nodeversion}}
-          registry-url: ${{env.NPM_REGISTRY_URL}}
 
       - if: ${{ matrix.language == 'dotnet'}}
         name: Setup DotNet
@@ -133,8 +132,6 @@ jobs:
         name: Publish package to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          user: ${{ env.PYPI_USERNAME }}
-          password: ${{ env.PYPI_PASSWORD }}
           packages_dir: ${{github.workspace}}/sdk/python/bin/dist
 
       - if: ${{ matrix.language == 'nodejs' && env.PUBLISH_NPM == 'true' }}
@@ -154,13 +151,13 @@ jobs:
       fail-fast: true
       matrix:
         dotnetversion:
-          - 6.0.x
+          - 10.0.x
         goversion:
-          - 1.24.x
+          - 1.25.x
         nodeversion:
-          - 20.x
+          - 25.x
         pythonversion:
-          - "3.9"
+          - "3.14"
         language:
           - nodejs
           - python
