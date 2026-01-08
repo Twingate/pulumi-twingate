@@ -24,12 +24,12 @@ func main() {
 		}
 
 		// Create a second Twingate service account
-		// serviceAccount2, err := twingate.NewTwingateServiceAccount(ctx, "ci_cd_account_go_2", &twingate.TwingateServiceAccountArgs{
-		// 	Name: pulumi.StringPtr("CI CD Service Go 2"),
-		// })
-		// if err != nil {
-		// 	return err
-		// }
+		serviceAccount2, err := twingate.NewTwingateServiceAccount(ctx, "ci_cd_account_go_2", &twingate.TwingateServiceAccountArgs{
+			Name: pulumi.StringPtr("CI CD Service Go 2"),
+		})
+		if err != nil {
+			return err
+		}
 
 		// Create a Twingate service key
 		serviceAccountKey, err := twingate.NewTwingateServiceAccountKey(ctx, "ci_cd_key_go", &twingate.TwingateServiceAccountKeyArgs{
@@ -78,17 +78,17 @@ func main() {
 				&twingate.TwingateResourceAccessGroupArgs{
 					GroupId: group.ID(),
 				},
-				// &twingate.TwingateResourceAccessGroupArgs{
-				// 	GroupId: group2.ID(),
-				// },
+				&twingate.TwingateResourceAccessGroupArgs{
+					GroupId: group2.ID(),
+				},
 			},
 			AccessServices: &twingate.TwingateResourceAccessServiceArray{
 				&twingate.TwingateResourceAccessServiceArgs{
 					ServiceAccountId: serviceAccount.ID(),
 				},
-				// &twingate.TwingateResourceAccessServiceArgs{
-				// 	ServiceAccountId: serviceAccount2.ID(),
-				// },
+				&twingate.TwingateResourceAccessServiceArgs{
+					ServiceAccountId: serviceAccount2.ID(),
+				},
 			},
 			Protocols: &twingate.TwingateResourceProtocolsArgs{
 				AllowIcmp: pulumi.BoolPtr(true),
@@ -119,7 +119,7 @@ func main() {
 			RemoteNetworkId: remoteNetwork.ID(),
 			AccessPolicies: &twingate.TwingateResourceAccessPolicyArray{
 				&twingate.TwingateResourceAccessPolicyArgs{
-					Mode:         pulumi.String("ACCESS_REQUEST"),
+					Mode:         pulumi.String("AUTO_LOCK"),
 					Duration:     pulumi.String("7d"),
 					ApprovalMode: pulumi.String("MANUAL"),
 				},
