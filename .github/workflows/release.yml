@@ -157,7 +157,7 @@ jobs:
         nodeversion:
           - 25.x
         pythonversion:
-          - "3.14"
+          - "3.12"
         language:
           - nodejs
           - python

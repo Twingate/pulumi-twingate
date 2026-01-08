@@ -77,7 +77,7 @@ build_python:: install_plugins tfgen # build the python sdk
         rm -rf ./bin/ ../python.bin/ && cp -R . ../python.bin && mv ../python.bin ./bin && \
         sed -i.bak -e 's/^VERSION = .*/VERSION = "$(PYPI_VERSION)"/g' -e 's/^PLUGIN_VERSION = .*/PLUGIN_VERSION = "$(VERSION)"/g' ./bin/setup.py && \
         rm ./bin/setup.py.bak && \
-        cd ./bin && python3 setup.py build sdist
+        cd ./bin && python3 -m pip install --upgrade build && python3 -m build --sdist
 
 build_dotnet:: DOTNET_VERSION := $(shell pulumictl get version --language dotnet --omit-commit-hash)
 build_dotnet:: install_plugins tfgen # build the dotnet sdk
