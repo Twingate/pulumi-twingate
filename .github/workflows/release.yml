@@ -11,8 +11,6 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   PUBLISH_NPM: true
   NPM_REGISTRY_URL: https://registry.npmjs.org
   NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
@@ -68,6 +66,9 @@ jobs:
     name: Publish SDKs ${{ matrix.language }}
     runs-on: ubuntu-latest
     needs: publish_binary
+    permissions:
+      contents: read
+      id-token: write  # Required for OIDC/npm provenance
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v6
@@ -140,8 +141,8 @@ jobs:
         uses: JS-DevTools/npm-publish@v4
         with:
           access: "public"
-          token: ${{ env.NPM_TOKEN }}
           package: ${{github.workspace}}/sdk/nodejs/bin/package.json
+          provenance: true  # Enable npm provenance with OIDC
 
       - if: ${{ matrix.language == 'dotnet' && env.PUBLISH_NUGET == 'true' }}
         name: publish nuget package
