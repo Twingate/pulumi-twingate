@@ -101,6 +101,15 @@ await Deployment.RunAsync(() =>
         Name = "JIT Access Resource CS",
         Address = "internal-app.example.com",
         RemoteNetworkId = remoteNetwork.Id,
+        AccessPolicies = new[]
+        {
+            new TwingateResourceAccessPolicyArgs
+            {
+                Mode = "AUTO_LOCK",
+                Duration = "7d",
+                ApprovalMode = "MANUAL",
+            },
+        },
         AccessGroups = new[]
         {
             new TwingateResourceAccessGroupArgs

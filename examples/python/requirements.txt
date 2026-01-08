@@ -1,2 +1,8 @@
 pulumi>=3.0.0,<4.0.0
-pulumi_twingate>=3.5.0
+# Use local SDK for development (built package)
+# make build_python
+../../sdk/python/bin/dist/pulumi_twingate-3.7.0a1767838167+dirty.tar.gz
+# Use local SDK for development (editable install - has version 0.0.0 issue)
+# -e ../../sdk/python
+# Use PyPI package for production
+# pulumi_twingate>=3.7.0

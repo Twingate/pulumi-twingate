@@ -76,6 +76,13 @@ new tg.TwingateResource("jit_resource_js", {
     name: "JIT Access Resource JS",
     address: "internal-app.example.com",
     remoteNetworkId: remoteNetwork.id,
+    accessPolicies: [
+        {
+            mode: "AUTO_LOCK",
+            duration: "7d",
+            approvalMode: "MANUAL",
+        }
+    ],
     accessGroups: [
         {
             groupId: tgGroup.id,

@@ -215,4 +215,4 @@ require (
 
 // Use forked pulumi-terraform-bridge with Go SDK array truncation fix
 // Temporarily commented out to allow upgrade-provider to run
-//replace github.com/pulumi/pulumi-terraform-bridge/v3 => github.com/twingate-blee/pulumi-terraform-bridge/v3 v3.119.1
+// replace github.com/pulumi/pulumi-terraform-bridge/v3 => github.com/twingate-blee/pulumi-terraform-bridge/v3 v3.119.1

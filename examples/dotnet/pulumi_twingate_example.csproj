@@ -8,7 +8,15 @@
 
   <ItemGroup>
     <PackageReference Include="Pulumi" Version="3.*" />
-    <PackageReference Include="Twingate.Twingate" Version="3.5.0" />
+    <!-- Use local SDK for development -->
+    <!---
+    - Built the provider binary using make provider, which created version 3.7.0-alpha.1767838167+dirty
+    - Installed the provider plugin to Pulumi's plugin directory at ~/.pulumi/plugins/resource-twingate-v3.7.0-alpha.1767838167+dirty/
+    - Rebuilt the dotnet SDK using make build_dotnet to ensure the SDK version matches the provider version
+    -->
+    <ProjectReference Include="../../sdk/dotnet/Twingate.Twingate.csproj" />
+    <!-- Use NuGet package for production -->
+    <!-- <PackageReference Include="Twingate.Twingate" Version="3.7.0" /> -->
   </ItemGroup>
 
   <!-- Comment this out if you are not using a Mac -->

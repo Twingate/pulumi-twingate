@@ -72,6 +72,13 @@ jit_resource = tg.TwingateResource(
     name="JIT Access Resource PY",
     address="internal-app.example.com",
     remote_network_id=remote_network.id,
+    access_policies=[
+        tg.TwingateResourceAccessPolicyArgs(
+            mode="AUTO_LOCK",
+            duration="7d",
+            approval_mode="MANUAL",
+        )
+    ],
     access_groups=[
         tg.TwingateResourceAccessGroupArgs(
             group_id=tg_group.id,
