@@ -135,10 +135,28 @@ jobs:
           packages_dir: ${{github.workspace}}/sdk/python/bin/dist
 
       - if: ${{ matrix.language == 'nodejs' && env.PUBLISH_NPM == 'true' }}
+        name: Determine npm tag
+        id: npm-tag
+        run: |
+          VERSION=$(node -p "require('${{github.workspace}}/sdk/nodejs/bin/package.json').version")
+          if [[ "$VERSION" == *-* ]]; then
+            # Prerelease version (contains hyphen) - extract prerelease tag
+            # e.g., 3.7.0-dev -> dev, 3.7.0-alpha.1 -> alpha, 3.7.0-beta.2 -> beta
+            TAG=$(echo "$VERSION" | sed -n 's/.*-\([^.]*\).*/\1/p')
+            echo "tag=$TAG" >> $GITHUB_OUTPUT
+            echo "Publishing prerelease version $VERSION with tag: $TAG"
+          else
+            # Stable version - use latest
+            echo "tag=latest" >> $GITHUB_OUTPUT
+            echo "Publishing stable version $VERSION with tag: latest"
+          fi
+
+      - if: ${{ matrix.language == 'nodejs' && env.PUBLISH_NPM == 'true' }}
         uses: JS-DevTools/npm-publish@v4
         with:
           access: "public"
           package: ${{github.workspace}}/sdk/nodejs/bin/package.json
+          tag: ${{ steps.npm-tag.outputs.tag }}
           provenance: true  # Enable npm provenance with OIDC
 
       - if: ${{ matrix.language == 'dotnet' && env.PUBLISH_NUGET == 'true' }}
