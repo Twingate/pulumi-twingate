@@ -27,36 +27,32 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      id-token: write
     steps:
-    - name: Checkout Repo
-      uses: actions/checkout@v6
-      with:
-        fetch-depth: 0 # IMPORTANT: GoReleaser needs the full history for changelogs/tags
+      - name: Checkout Repo
+        uses: actions/checkout@v6
 
-    - name: Unshallow clone for tags
-      run: git fetch --prune --unshallow --tags
+      - name: Unshallow clone for tags
+        run: git fetch --prune --unshallow --tags
 
-    - name: Install Go
-      uses: actions/setup-go@v6
-      with:
-        go-version: ${{matrix.goversion}}
+      - name: Install Go
+        uses: actions/setup-go@v6
+        with:
+          go-version: ${{matrix.goversion}}
 
-    - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v2.1.0
-      with:
-        repo: pulumi/pulumictl
+      - name: Install pulumictl
+        uses: jaxxstorm/action-install-gh-release@v2.1.0
+        with:
+          repo: pulumi/pulumictl
 
-    - name: Set PreRelease Version
-      run: echo "GORELEASER_CURRENT_TAG=v$(pulumictl get version --language generic --omit-commit-hash)" >> $GITHUB_ENV
+      - name: Set temporary GOMODCACHE
+        run: echo "GOMODCACHE=$(mktemp -d)" >> $GITHUB_ENV
 
-    - name: Set temporary GOMODCACHE
-      run: echo "GOMODCACHE=$(mktemp -d)" >> $GITHUB_ENV
-
-    - name: Run GoReleaser
-      uses: goreleaser/goreleaser-action@v6
-      with:
-        args: -p 3 release --clean
-        version: latest
+      - name: Run GoReleaser
+        uses: goreleaser/goreleaser-action@v6
+        with:
+          args: -p 3 release --clean
+          version: latest
 
     strategy:
       fail-fast: true
@@ -96,7 +92,6 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: ${{matrix.nodeversion}}
-          registry-url: ${{env.NPM_REGISTRY_URL}}
 
       - if: ${{ matrix.language == 'dotnet'}}
         name: Setup DotNet
@@ -135,34 +130,53 @@ jobs:
         name: Publish package to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          user: ${{ env.PYPI_USERNAME }}
-          password: ${{ env.PYPI_PASSWORD }}
           packages_dir: ${{github.workspace}}/sdk/python/bin/dist
+          skip-existing: true # Skip upload if version already exists on PyPI
+
+      - if: ${{ matrix.language == 'nodejs' && env.PUBLISH_NPM == 'true' }}
+        name: Determine npm tag
+        id: npm-tag
+        run: |
+          VERSION=$(node -p "require('${{github.workspace}}/sdk/nodejs/bin/package.json').version")
+          if [[ "$VERSION" == *-* ]]; then
+            # Prerelease version (contains hyphen) - extract prerelease tag
+            # e.g., 3.7.0-dev -> dev, 3.7.0-alpha.1 -> alpha, 3.7.0-beta.2 -> beta
+            TAG=$(echo "$VERSION" | sed -n 's/.*-\([^.]*\).*/\1/p')
+            echo "tag=$TAG" >> $GITHUB_OUTPUT
+            echo "Publishing prerelease version $VERSION with tag: $TAG"
+          else
+            # Stable version - use latest
+            echo "tag=latest" >> $GITHUB_OUTPUT
+            echo "Publishing stable version $VERSION with tag: latest"
+          fi
 
       - if: ${{ matrix.language == 'nodejs' && env.PUBLISH_NPM == 'true' }}
         uses: JS-DevTools/npm-publish@v4
         with:
           access: "public"
+          token: ${{ secrets.NPM_TOKEN }}
           package: ${{github.workspace}}/sdk/nodejs/bin/package.json
+          tag: ${{ steps.npm-tag.outputs.tag }}
           provenance: true  # Enable npm provenance with OIDC
+          check-version: true # Skip publishing if version already exists on npm
 
       - if: ${{ matrix.language == 'dotnet' && env.PUBLISH_NUGET == 'true' }}
         name: publish nuget package
         run: |
-          dotnet nuget push ${{github.workspace}}/sdk/dotnet/bin/Debug/*.nupkg -s ${{ env.NUGET_FEED_URL }} -k ${{ env.NUGET_PUBLISH_KEY }}
+          dotnet nuget push ${{github.workspace}}/sdk/dotnet/bin/Debug/*.nupkg -s ${{ env.NUGET_FEED_URL }} -k ${{ env.NUGET_PUBLISH_KEY }} --skip-duplicate
           echo "done publishing packages"
 
     strategy:
       fail-fast: true
       matrix:
         dotnetversion:
-          - 6.0.x
+          - 10.0.x
         goversion:
-          - 1.24.x
+          - 1.25.x
         nodeversion:
-          - 20.x
+          - 25.x
         pythonversion:
-          - "3.9"
+          - "3.12"
         language:
           - nodejs
           - python

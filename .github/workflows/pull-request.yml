@@ -16,13 +16,13 @@ jobs:
       fail-fast: true
       matrix:
         dotnetversion:
-          - 6.0.x
+          - 10.0.x
         goversion:
-          - 1.24.x
+          - 1.25.x
         nodeversion:
-          - 20.x
+          - 25.x
         pythonversion:
-          - "3.9"
+          - "3.12"
         language:
           - nodejs
           - python
