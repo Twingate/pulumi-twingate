@@ -27,6 +27,8 @@ changelog:
   disable: true
 release:
   disable: false
+  # Replace existing assets if release already exists (useful for re-runs)
+  mode: replace
 snapshot:
   name_template: '{{ .Tag }}-SNAPSHOT'
 project_name: "pulumi-twingate"
