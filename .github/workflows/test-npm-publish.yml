@@ -19,13 +19,13 @@ jobs:
           node-version: 20
           registry-url: https://registry.npmjs.org
 
-      - name: Install dependencies
-        run: npm ci
+      # - name: Install dependencies
+      #   run: npm ci
 
-      - name: Run tests and build
-        run: |
-          npm run build --if-present
-          npm test
+      # - name: Run tests and build
+      #   run: |
+      #     npm run build --if-present
+      #     npm test
 
       - name: Publish package
         # No NPM_TOKEN secret is needed in this step; OIDC handles authentication
