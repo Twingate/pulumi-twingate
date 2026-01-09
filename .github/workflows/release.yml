@@ -31,8 +31,6 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v6
-        with:
-          fetch-depth: 0 # IMPORTANT: GoReleaser needs the full history for changelogs/tags
 
       - name: Unshallow clone for tags
         run: git fetch --prune --unshallow --tags
