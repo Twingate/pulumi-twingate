@@ -27,8 +27,8 @@ jobs:
       #     npm run build --if-present
       #     npm test
       - run: npm whoami
-        env:
-          NODE_AUTH_TOKEN: ""
+        # env:
+        #   NODE_AUTH_TOKEN: ""
 
       - name: Publish package
         # No NPM_TOKEN secret is needed in this step; OIDC handles authentication
