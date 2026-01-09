@@ -133,6 +133,7 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           packages_dir: ${{github.workspace}}/sdk/python/bin/dist
+          skip-existing: true # Skip upload if version already exists on PyPI
 
       - if: ${{ matrix.language == 'nodejs' && env.PUBLISH_NPM == 'true' }}
         name: Determine npm tag
@@ -158,6 +159,7 @@ jobs:
           package: ${{github.workspace}}/sdk/nodejs/bin/package.json
           tag: ${{ steps.npm-tag.outputs.tag }}
           provenance: true  # Enable npm provenance with OIDC
+          check-version: true # Skip publishing if version already exists on npm
 
       - if: ${{ matrix.language == 'dotnet' && env.PUBLISH_NUGET == 'true' }}
         name: publish nuget package
