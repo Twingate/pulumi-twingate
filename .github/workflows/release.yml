@@ -11,8 +11,6 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   PUBLISH_NPM: true
   NPM_REGISTRY_URL: https://registry.npmjs.org
   NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
