@@ -11,6 +11,8 @@ jobs:
       contents: read
       id-token: write  # Required for OIDC/npm provenance
     steps:
+      - run: npm whoami
+
       - name: Checkout Repo
         uses: actions/checkout@v6
 
