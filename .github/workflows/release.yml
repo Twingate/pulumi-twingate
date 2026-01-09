@@ -53,11 +53,11 @@ jobs:
       - name: Set temporary GOMODCACHE
         run: echo "GOMODCACHE=$(mktemp -d)" >> $GITHUB_ENV
 
-      - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v6
-        with:
-          args: -p 3 release --clean
-          version: latest
+      # - name: Run GoReleaser
+      #   uses: goreleaser/goreleaser-action@v6
+      #   with:
+      #     args: -p 3 release --clean
+      #     version: latest
 
     strategy:
       fail-fast: true
@@ -184,9 +184,9 @@ jobs:
           - "3.12"
         language:
           - nodejs
-          - python
-          - dotnet
-          - go
+          # - python
+          # - dotnet
+          # - go
 
   create_sdk_tag:
     name: Create SDK Tag
