@@ -498,7 +498,7 @@ export interface TwingateResourceAccessGroup {
      */
     groupId?: pulumi.Input<string>;
     /**
-     * The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
+     * The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
      */
     securityPolicyId?: pulumi.Input<string>;
     /**

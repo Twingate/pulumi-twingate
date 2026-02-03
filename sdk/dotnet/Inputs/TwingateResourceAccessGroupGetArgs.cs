@@ -38,7 +38,7 @@ namespace Twingate.Twingate.Inputs
         public Input<string>? GroupId { get; set; }
 
         /// <summary>
-        /// The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
+        /// The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
         /// </summary>
         [Input("securityPolicyId")]
         public Input<string>? SecurityPolicyId { get; set; }

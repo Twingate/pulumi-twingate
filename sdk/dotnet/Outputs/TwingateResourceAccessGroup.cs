@@ -27,7 +27,7 @@ namespace Twingate.Twingate.Outputs
         /// </summary>
         public readonly string? GroupId;
         /// <summary>
-        /// The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
+        /// The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
         /// </summary>
         public readonly string? SecurityPolicyId;
         /// <summary>
