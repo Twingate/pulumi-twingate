@@ -98,7 +98,7 @@ namespace Twingate.Twingate
         public Output<string> RemoteNetworkId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
+        /// The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         /// </summary>
         [Output("securityPolicyId")]
         public Output<string> SecurityPolicyId { get; private set; } = null!;
@@ -262,7 +262,7 @@ namespace Twingate.Twingate
         public Input<string> RemoteNetworkId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
+        /// The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         /// </summary>
         [Input("securityPolicyId")]
         public Input<string>? SecurityPolicyId { get; set; }
@@ -387,7 +387,7 @@ namespace Twingate.Twingate
         public Input<string>? RemoteNetworkId { get; set; }
 
         /// <summary>
-        /// The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
+        /// The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         /// </summary>
         [Input("securityPolicyId")]
         public Input<string>? SecurityPolicyId { get; set; }

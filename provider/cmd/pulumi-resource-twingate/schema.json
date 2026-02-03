@@ -510,7 +510,7 @@
                 },
                 "securityPolicyId": {
                     "type": "string",
-                    "description": "The ID of a \u003cspan pulumi-lang-nodejs=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-dotnet=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-go=\"`getTwingateSecurityPolicy`\" pulumi-lang-python=\"`get_twingate_security_policy`\" pulumi-lang-yaml=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-java=\"`twingate.getTwingateSecurityPolicy`\"\u003e`twingate.getTwingateSecurityPolicy`\u003c/span\u003e to use as the access policy for the group IDs in the access block.\n"
+                    "description": "The ID of a \u003cspan pulumi-lang-nodejs=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-dotnet=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-go=\"`getTwingateSecurityPolicy`\" pulumi-lang-python=\"`get_twingate_security_policy`\" pulumi-lang-yaml=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-java=\"`twingate.getTwingateSecurityPolicy`\"\u003e`twingate.getTwingateSecurityPolicy`\u003c/span\u003e to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.\n"
                 },
                 "usageBasedAutolockDurationDays": {
                     "type": "integer",
@@ -1867,7 +1867,7 @@
                 },
                 "securityPolicyId": {
                     "type": "string",
-                    "description": "The ID of a \u003cspan pulumi-lang-nodejs=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-dotnet=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-go=\"`getTwingateSecurityPolicy`\" pulumi-lang-python=\"`get_twingate_security_policy`\" pulumi-lang-yaml=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-java=\"`twingate.getTwingateSecurityPolicy`\"\u003e`twingate.getTwingateSecurityPolicy`\u003c/span\u003e to set as this Resource's Security Policy. Default is `Default Policy`.\n"
+                    "description": "The ID of a \u003cspan pulumi-lang-nodejs=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-dotnet=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-go=\"`getTwingateSecurityPolicy`\" pulumi-lang-python=\"`get_twingate_security_policy`\" pulumi-lang-yaml=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-java=\"`twingate.getTwingateSecurityPolicy`\"\u003e`twingate.getTwingateSecurityPolicy`\u003c/span\u003e to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -1968,7 +1968,7 @@
                 },
                 "securityPolicyId": {
                     "type": "string",
-                    "description": "The ID of a \u003cspan pulumi-lang-nodejs=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-dotnet=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-go=\"`getTwingateSecurityPolicy`\" pulumi-lang-python=\"`get_twingate_security_policy`\" pulumi-lang-yaml=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-java=\"`twingate.getTwingateSecurityPolicy`\"\u003e`twingate.getTwingateSecurityPolicy`\u003c/span\u003e to set as this Resource's Security Policy. Default is `Default Policy`.\n"
+                    "description": "The ID of a \u003cspan pulumi-lang-nodejs=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-dotnet=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-go=\"`getTwingateSecurityPolicy`\" pulumi-lang-python=\"`get_twingate_security_policy`\" pulumi-lang-yaml=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-java=\"`twingate.getTwingateSecurityPolicy`\"\u003e`twingate.getTwingateSecurityPolicy`\u003c/span\u003e to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -2053,7 +2053,7 @@
                     },
                     "securityPolicyId": {
                         "type": "string",
-                        "description": "The ID of a \u003cspan pulumi-lang-nodejs=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-dotnet=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-go=\"`getTwingateSecurityPolicy`\" pulumi-lang-python=\"`get_twingate_security_policy`\" pulumi-lang-yaml=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-java=\"`twingate.getTwingateSecurityPolicy`\"\u003e`twingate.getTwingateSecurityPolicy`\u003c/span\u003e to set as this Resource's Security Policy. Default is `Default Policy`.\n"
+                        "description": "The ID of a \u003cspan pulumi-lang-nodejs=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-dotnet=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-go=\"`getTwingateSecurityPolicy`\" pulumi-lang-python=\"`get_twingate_security_policy`\" pulumi-lang-yaml=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-java=\"`twingate.getTwingateSecurityPolicy`\"\u003e`twingate.getTwingateSecurityPolicy`\u003c/span\u003e to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.\n"
                     },
                     "tags": {
                         "type": "object",

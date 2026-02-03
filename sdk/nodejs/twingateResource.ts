@@ -95,7 +95,7 @@ export class TwingateResource extends pulumi.CustomResource {
      */
     declare public readonly remoteNetworkId: pulumi.Output<string>;
     /**
-     * The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
+     * The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
      */
     declare public readonly securityPolicyId: pulumi.Output<string>;
     /**
@@ -230,7 +230,7 @@ export interface TwingateResourceState {
      */
     remoteNetworkId?: pulumi.Input<string>;
     /**
-     * The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
+     * The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
      */
     securityPolicyId?: pulumi.Input<string>;
     /**
@@ -305,7 +305,7 @@ export interface TwingateResourceArgs {
      */
     remoteNetworkId: pulumi.Input<string>;
     /**
-     * The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is `Default Policy`.
+     * The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
      */
     securityPolicyId?: pulumi.Input<string>;
     /**

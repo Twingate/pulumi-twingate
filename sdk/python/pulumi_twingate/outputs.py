@@ -533,7 +533,7 @@ class TwingateResourceAccessGroup(dict):
         :param Sequence['TwingateResourceAccessGroupAccessPolicyArgs'] access_policies: Restrict access according to JIT access policy
         :param _builtins.str approval_mode: This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
         :param _builtins.str group_id: Group ID that will have permission to access the Resource.
-        :param _builtins.str security_policy_id: The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block.
+        :param _builtins.str security_policy_id: The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
         :param _builtins.int usage_based_autolock_duration_days: The usage-based auto-lock duration configured on the edge (in days).
         """
         if access_policies is not None:
@@ -576,7 +576,7 @@ class TwingateResourceAccessGroup(dict):
     @pulumi.getter(name="securityPolicyId")
     def security_policy_id(self) -> Optional[_builtins.str]:
         """
-        The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block.
+        The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
         """
         return pulumi.get(self, "security_policy_id")
 

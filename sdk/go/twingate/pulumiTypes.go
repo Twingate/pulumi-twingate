@@ -1931,7 +1931,7 @@ type TwingateResourceAccessGroup struct {
 	ApprovalMode *string `pulumi:"approvalMode"`
 	// Group ID that will have permission to access the Resource.
 	GroupId *string `pulumi:"groupId"`
-	// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
+	// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 	// The usage-based auto-lock duration configured on the edge (in days).
 	//
@@ -1959,7 +1959,7 @@ type TwingateResourceAccessGroupArgs struct {
 	ApprovalMode pulumi.StringPtrInput `pulumi:"approvalMode"`
 	// Group ID that will have permission to access the Resource.
 	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
-	// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
+	// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
 	SecurityPolicyId pulumi.StringPtrInput `pulumi:"securityPolicyId"`
 	// The usage-based auto-lock duration configured on the edge (in days).
 	//
@@ -2035,7 +2035,7 @@ func (o TwingateResourceAccessGroupOutput) GroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TwingateResourceAccessGroup) *string { return v.GroupId }).(pulumi.StringPtrOutput)
 }
 
-// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block.
+// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
 func (o TwingateResourceAccessGroupOutput) SecurityPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TwingateResourceAccessGroup) *string { return v.SecurityPolicyId }).(pulumi.StringPtrOutput)
 }

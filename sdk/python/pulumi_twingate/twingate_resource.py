@@ -51,7 +51,7 @@ class TwingateResourceArgs:
         :param pulumi.Input[_builtins.bool] is_visible: Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
         :param pulumi.Input[_builtins.str] name: The name of the Resource
         :param pulumi.Input['TwingateResourceProtocolsArgs'] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-        :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is `Default Policy`.
+        :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of key-value pair tags to set on this resource.
         :param pulumi.Input[_builtins.int] usage_based_autolock_duration_days: The usage-based auto-lock duration for the Resource (in days).
         """
@@ -250,7 +250,7 @@ class TwingateResourceArgs:
     @pulumi.getter(name="securityPolicyId")
     def security_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is `Default Policy`.
+        The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         """
         return pulumi.get(self, "security_policy_id")
 
@@ -318,7 +318,7 @@ class _TwingateResourceState:
         :param pulumi.Input[_builtins.str] name: The name of the Resource
         :param pulumi.Input['TwingateResourceProtocolsArgs'] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param pulumi.Input[_builtins.str] remote_network_id: Remote Network ID where the Resource lives
-        :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is `Default Policy`.
+        :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of key-value pair tags to set on this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags_all: A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
         :param pulumi.Input[_builtins.int] usage_based_autolock_duration_days: The usage-based auto-lock duration for the Resource (in days).
@@ -522,7 +522,7 @@ class _TwingateResourceState:
     @pulumi.getter(name="securityPolicyId")
     def security_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is `Default Policy`.
+        The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         """
         return pulumi.get(self, "security_policy_id")
 
@@ -614,7 +614,7 @@ class TwingateResource(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the Resource
         :param pulumi.Input[Union['TwingateResourceProtocolsArgs', 'TwingateResourceProtocolsArgsDict']] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param pulumi.Input[_builtins.str] remote_network_id: Remote Network ID where the Resource lives
-        :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is `Default Policy`.
+        :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of key-value pair tags to set on this resource.
         :param pulumi.Input[_builtins.int] usage_based_autolock_duration_days: The usage-based auto-lock duration for the Resource (in days).
         """
@@ -740,7 +740,7 @@ class TwingateResource(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the Resource
         :param pulumi.Input[Union['TwingateResourceProtocolsArgs', 'TwingateResourceProtocolsArgsDict']] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param pulumi.Input[_builtins.str] remote_network_id: Remote Network ID where the Resource lives
-        :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is `Default Policy`.
+        :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of key-value pair tags to set on this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags_all: A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
         :param pulumi.Input[_builtins.int] usage_based_autolock_duration_days: The usage-based auto-lock duration for the Resource (in days).
@@ -874,7 +874,7 @@ class TwingateResource(pulumi.CustomResource):
     @pulumi.getter(name="securityPolicyId")
     def security_policy_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is `Default Policy`.
+        The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         """
         return pulumi.get(self, "security_policy_id")
 
