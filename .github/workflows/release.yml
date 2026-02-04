@@ -45,6 +45,11 @@ jobs:
         with:
           repo: pulumi/pulumictl
 
+      - name: Install pulumi
+        uses: pulumi/actions@v6
+        with:
+          pulumi-version: v3.218.0
+
       - name: Set temporary GOMODCACHE
         run: echo "GOMODCACHE=$(mktemp -d)" >> $GITHUB_ENV
 
@@ -86,6 +91,8 @@ jobs:
 
       - name: Install pulumi
         uses: pulumi/actions@v6
+        with:
+          pulumi-version: v3.218.0
 
       - if: ${{ matrix.language == 'nodejs'}}
         name: Setup Node
