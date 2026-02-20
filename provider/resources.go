@@ -21,7 +21,7 @@ import (
 	// Allow embedding bridge-metadata.json in the provider.
 	_ "embed"
 
-	"github.com/Twingate/terraform-provider-twingate/v3/twingate"
+	"github.com/Twingate/terraform-provider-twingate/v4/twingate"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	bridgev3 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
@@ -60,7 +60,7 @@ func Provider() bridgev3.ProviderInfo {
 	prov := bridgev3.ProviderInfo{
 		// Instantiate the Terraform provider
 		P:                       tfbridge.ShimProvider(provider),
-		TFProviderModuleVersion: "v3",
+		TFProviderModuleVersion: "v4",
 		Name:                    "twingate",
 		Version:                 version.Version,
 		// DisplayName is a way to be able to change the casing of the provider

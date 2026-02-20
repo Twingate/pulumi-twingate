@@ -21,7 +21,7 @@ namespace Twingate.Twingate
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Twingate = Pulumi.Twingate;
+        /// using Twingate = Twingate.Twingate;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -45,7 +45,7 @@ namespace Twingate.Twingate
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Twingate = Pulumi.Twingate;
+        /// using Twingate = Twingate.Twingate;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -69,7 +69,7 @@ namespace Twingate.Twingate
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Twingate = Pulumi.Twingate;
+        /// using Twingate = Twingate.Twingate;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {

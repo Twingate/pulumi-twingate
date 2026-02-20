@@ -32,12 +32,9 @@ type TwingateResource struct {
 	Address pulumi.StringOutput `pulumi:"address"`
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
 	Alias pulumi.StringPtrOutput `pulumi:"alias"`
-	// This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
-	//
-	// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
-	ApprovalMode pulumi.StringOutput `pulumi:"approvalMode"`
 	// Set the resource as active or inactive. Default is `true`.
-	IsActive        pulumi.BoolOutput `pulumi:"isActive"`
+	IsActive pulumi.BoolOutput `pulumi:"isActive"`
+	// Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to `false`, assignments made outside of Terraform will be ignored.
 	IsAuthoritative pulumi.BoolOutput `pulumi:"isAuthoritative"`
 	// Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
 	IsBrowserShortcutEnabled pulumi.BoolOutput `pulumi:"isBrowserShortcutEnabled"`
@@ -55,10 +52,6 @@ type TwingateResource struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
 	TagsAll pulumi.StringMapOutput `pulumi:"tagsAll"`
-	// The usage-based auto-lock duration for the Resource (in days).
-	//
-	// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
-	UsageBasedAutolockDurationDays pulumi.IntOutput `pulumi:"usageBasedAutolockDurationDays"`
 }
 
 // NewTwingateResource registers a new resource with the given unique name, arguments, and options.
@@ -107,12 +100,9 @@ type twingateResourceState struct {
 	Address *string `pulumi:"address"`
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
 	Alias *string `pulumi:"alias"`
-	// This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
-	//
-	// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
-	ApprovalMode *string `pulumi:"approvalMode"`
 	// Set the resource as active or inactive. Default is `true`.
-	IsActive        *bool `pulumi:"isActive"`
+	IsActive *bool `pulumi:"isActive"`
+	// Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to `false`, assignments made outside of Terraform will be ignored.
 	IsAuthoritative *bool `pulumi:"isAuthoritative"`
 	// Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
 	IsBrowserShortcutEnabled *bool `pulumi:"isBrowserShortcutEnabled"`
@@ -130,10 +120,6 @@ type twingateResourceState struct {
 	Tags map[string]string `pulumi:"tags"`
 	// A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
 	TagsAll map[string]string `pulumi:"tagsAll"`
-	// The usage-based auto-lock duration for the Resource (in days).
-	//
-	// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
-	UsageBasedAutolockDurationDays *int `pulumi:"usageBasedAutolockDurationDays"`
 }
 
 type TwingateResourceState struct {
@@ -147,12 +133,9 @@ type TwingateResourceState struct {
 	Address pulumi.StringPtrInput
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
 	Alias pulumi.StringPtrInput
-	// This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
-	//
-	// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
-	ApprovalMode pulumi.StringPtrInput
 	// Set the resource as active or inactive. Default is `true`.
-	IsActive        pulumi.BoolPtrInput
+	IsActive pulumi.BoolPtrInput
+	// Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to `false`, assignments made outside of Terraform will be ignored.
 	IsAuthoritative pulumi.BoolPtrInput
 	// Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
 	IsBrowserShortcutEnabled pulumi.BoolPtrInput
@@ -170,10 +153,6 @@ type TwingateResourceState struct {
 	Tags pulumi.StringMapInput
 	// A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
 	TagsAll pulumi.StringMapInput
-	// The usage-based auto-lock duration for the Resource (in days).
-	//
-	// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
-	UsageBasedAutolockDurationDays pulumi.IntPtrInput
 }
 
 func (TwingateResourceState) ElementType() reflect.Type {
@@ -191,12 +170,9 @@ type twingateResourceArgs struct {
 	Address string `pulumi:"address"`
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
 	Alias *string `pulumi:"alias"`
-	// This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
-	//
-	// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
-	ApprovalMode *string `pulumi:"approvalMode"`
 	// Set the resource as active or inactive. Default is `true`.
-	IsActive        *bool `pulumi:"isActive"`
+	IsActive *bool `pulumi:"isActive"`
+	// Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to `false`, assignments made outside of Terraform will be ignored.
 	IsAuthoritative *bool `pulumi:"isAuthoritative"`
 	// Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
 	IsBrowserShortcutEnabled *bool `pulumi:"isBrowserShortcutEnabled"`
@@ -212,10 +188,6 @@ type twingateResourceArgs struct {
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 	// A map of key-value pair tags to set on this resource.
 	Tags map[string]string `pulumi:"tags"`
-	// The usage-based auto-lock duration for the Resource (in days).
-	//
-	// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
-	UsageBasedAutolockDurationDays *int `pulumi:"usageBasedAutolockDurationDays"`
 }
 
 // The set of arguments for constructing a TwingateResource resource.
@@ -230,12 +202,9 @@ type TwingateResourceArgs struct {
 	Address pulumi.StringInput
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
 	Alias pulumi.StringPtrInput
-	// This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
-	//
-	// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
-	ApprovalMode pulumi.StringPtrInput
 	// Set the resource as active or inactive. Default is `true`.
-	IsActive        pulumi.BoolPtrInput
+	IsActive pulumi.BoolPtrInput
+	// Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to `false`, assignments made outside of Terraform will be ignored.
 	IsAuthoritative pulumi.BoolPtrInput
 	// Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
 	IsBrowserShortcutEnabled pulumi.BoolPtrInput
@@ -251,10 +220,6 @@ type TwingateResourceArgs struct {
 	SecurityPolicyId pulumi.StringPtrInput
 	// A map of key-value pair tags to set on this resource.
 	Tags pulumi.StringMapInput
-	// The usage-based auto-lock duration for the Resource (in days).
-	//
-	// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
-	UsageBasedAutolockDurationDays pulumi.IntPtrInput
 }
 
 func (TwingateResourceArgs) ElementType() reflect.Type {
@@ -369,18 +334,12 @@ func (o TwingateResourceOutput) Alias() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TwingateResource) pulumi.StringPtrOutput { return v.Alias }).(pulumi.StringPtrOutput)
 }
 
-// This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
-//
-// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
-func (o TwingateResourceOutput) ApprovalMode() pulumi.StringOutput {
-	return o.ApplyT(func(v *TwingateResource) pulumi.StringOutput { return v.ApprovalMode }).(pulumi.StringOutput)
-}
-
 // Set the resource as active or inactive. Default is `true`.
 func (o TwingateResourceOutput) IsActive() pulumi.BoolOutput {
 	return o.ApplyT(func(v *TwingateResource) pulumi.BoolOutput { return v.IsActive }).(pulumi.BoolOutput)
 }
 
+// Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to `false`, assignments made outside of Terraform will be ignored.
 func (o TwingateResourceOutput) IsAuthoritative() pulumi.BoolOutput {
 	return o.ApplyT(func(v *TwingateResource) pulumi.BoolOutput { return v.IsAuthoritative }).(pulumi.BoolOutput)
 }
@@ -423,13 +382,6 @@ func (o TwingateResourceOutput) Tags() pulumi.StringMapOutput {
 // A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
 func (o TwingateResourceOutput) TagsAll() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *TwingateResource) pulumi.StringMapOutput { return v.TagsAll }).(pulumi.StringMapOutput)
-}
-
-// The usage-based auto-lock duration for the Resource (in days).
-//
-// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
-func (o TwingateResourceOutput) UsageBasedAutolockDurationDays() pulumi.IntOutput {
-	return o.ApplyT(func(v *TwingateResource) pulumi.IntOutput { return v.UsageBasedAutolockDurationDays }).(pulumi.IntOutput)
 }
 
 type TwingateResourceArrayOutput struct{ *pulumi.OutputState }

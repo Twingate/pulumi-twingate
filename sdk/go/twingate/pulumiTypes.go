@@ -867,8 +867,9 @@ func (o ProviderDefaultTagsPtrOutput) Tags() pulumi.StringMapOutput {
 
 type TwingateDNSFilteringProfileAllowedDomains struct {
 	// A set of allowed domains. Defaults to an empty set.
-	Domains         []string `pulumi:"domains"`
-	IsAuthoritative *bool    `pulumi:"isAuthoritative"`
+	Domains []string `pulumi:"domains"`
+	// Whether Terraform should override changes made outside of Terraform. Defaults to true.
+	IsAuthoritative *bool `pulumi:"isAuthoritative"`
 }
 
 // TwingateDNSFilteringProfileAllowedDomainsInput is an input type that accepts TwingateDNSFilteringProfileAllowedDomainsArgs and TwingateDNSFilteringProfileAllowedDomainsOutput values.
@@ -884,8 +885,9 @@ type TwingateDNSFilteringProfileAllowedDomainsInput interface {
 
 type TwingateDNSFilteringProfileAllowedDomainsArgs struct {
 	// A set of allowed domains. Defaults to an empty set.
-	Domains         pulumi.StringArrayInput `pulumi:"domains"`
-	IsAuthoritative pulumi.BoolPtrInput     `pulumi:"isAuthoritative"`
+	Domains pulumi.StringArrayInput `pulumi:"domains"`
+	// Whether Terraform should override changes made outside of Terraform. Defaults to true.
+	IsAuthoritative pulumi.BoolPtrInput `pulumi:"isAuthoritative"`
 }
 
 func (TwingateDNSFilteringProfileAllowedDomainsArgs) ElementType() reflect.Type {
@@ -970,6 +972,7 @@ func (o TwingateDNSFilteringProfileAllowedDomainsOutput) Domains() pulumi.String
 	return o.ApplyT(func(v TwingateDNSFilteringProfileAllowedDomains) []string { return v.Domains }).(pulumi.StringArrayOutput)
 }
 
+// Whether Terraform should override changes made outside of Terraform. Defaults to true.
 func (o TwingateDNSFilteringProfileAllowedDomainsOutput) IsAuthoritative() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TwingateDNSFilteringProfileAllowedDomains) *bool { return v.IsAuthoritative }).(pulumi.BoolPtrOutput)
 }
@@ -1008,6 +1011,7 @@ func (o TwingateDNSFilteringProfileAllowedDomainsPtrOutput) Domains() pulumi.Str
 	}).(pulumi.StringArrayOutput)
 }
 
+// Whether Terraform should override changes made outside of Terraform. Defaults to true.
 func (o TwingateDNSFilteringProfileAllowedDomainsPtrOutput) IsAuthoritative() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TwingateDNSFilteringProfileAllowedDomains) *bool {
 		if v == nil {
@@ -1308,8 +1312,9 @@ func (o TwingateDNSFilteringProfileContentCategoriesPtrOutput) EnableYoutubeRest
 
 type TwingateDNSFilteringProfileDeniedDomains struct {
 	// A set of denied domains. Defaults to an empty set.
-	Domains         []string `pulumi:"domains"`
-	IsAuthoritative *bool    `pulumi:"isAuthoritative"`
+	Domains []string `pulumi:"domains"`
+	// Whether Terraform should override changes made outside of Terraform. Defaults to true.
+	IsAuthoritative *bool `pulumi:"isAuthoritative"`
 }
 
 // TwingateDNSFilteringProfileDeniedDomainsInput is an input type that accepts TwingateDNSFilteringProfileDeniedDomainsArgs and TwingateDNSFilteringProfileDeniedDomainsOutput values.
@@ -1325,8 +1330,9 @@ type TwingateDNSFilteringProfileDeniedDomainsInput interface {
 
 type TwingateDNSFilteringProfileDeniedDomainsArgs struct {
 	// A set of denied domains. Defaults to an empty set.
-	Domains         pulumi.StringArrayInput `pulumi:"domains"`
-	IsAuthoritative pulumi.BoolPtrInput     `pulumi:"isAuthoritative"`
+	Domains pulumi.StringArrayInput `pulumi:"domains"`
+	// Whether Terraform should override changes made outside of Terraform. Defaults to true.
+	IsAuthoritative pulumi.BoolPtrInput `pulumi:"isAuthoritative"`
 }
 
 func (TwingateDNSFilteringProfileDeniedDomainsArgs) ElementType() reflect.Type {
@@ -1411,6 +1417,7 @@ func (o TwingateDNSFilteringProfileDeniedDomainsOutput) Domains() pulumi.StringA
 	return o.ApplyT(func(v TwingateDNSFilteringProfileDeniedDomains) []string { return v.Domains }).(pulumi.StringArrayOutput)
 }
 
+// Whether Terraform should override changes made outside of Terraform. Defaults to true.
 func (o TwingateDNSFilteringProfileDeniedDomainsOutput) IsAuthoritative() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TwingateDNSFilteringProfileDeniedDomains) *bool { return v.IsAuthoritative }).(pulumi.BoolPtrOutput)
 }
@@ -1449,6 +1456,7 @@ func (o TwingateDNSFilteringProfileDeniedDomainsPtrOutput) Domains() pulumi.Stri
 	}).(pulumi.StringArrayOutput)
 }
 
+// Whether Terraform should override changes made outside of Terraform. Defaults to true.
 func (o TwingateDNSFilteringProfileDeniedDomainsPtrOutput) IsAuthoritative() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TwingateDNSFilteringProfileDeniedDomains) *bool {
 		if v == nil {
@@ -1925,18 +1933,10 @@ func (o TwingateDNSFilteringProfileSecurityCategoriesPtrOutput) EnableThreatInte
 type TwingateResourceAccessGroup struct {
 	// Restrict access according to JIT access policy
 	AccessPolicies []TwingateResourceAccessGroupAccessPolicy `pulumi:"accessPolicies"`
-	// This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
-	//
-	// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
-	ApprovalMode *string `pulumi:"approvalMode"`
 	// Group ID that will have permission to access the Resource.
 	GroupId *string `pulumi:"groupId"`
 	// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
-	// The usage-based auto-lock duration configured on the edge (in days).
-	//
-	// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
-	UsageBasedAutolockDurationDays *int `pulumi:"usageBasedAutolockDurationDays"`
 }
 
 // TwingateResourceAccessGroupInput is an input type that accepts TwingateResourceAccessGroupArgs and TwingateResourceAccessGroupOutput values.
@@ -1953,18 +1953,10 @@ type TwingateResourceAccessGroupInput interface {
 type TwingateResourceAccessGroupArgs struct {
 	// Restrict access according to JIT access policy
 	AccessPolicies TwingateResourceAccessGroupAccessPolicyArrayInput `pulumi:"accessPolicies"`
-	// This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
-	//
-	// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
-	ApprovalMode pulumi.StringPtrInput `pulumi:"approvalMode"`
 	// Group ID that will have permission to access the Resource.
 	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
 	// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
 	SecurityPolicyId pulumi.StringPtrInput `pulumi:"securityPolicyId"`
-	// The usage-based auto-lock duration configured on the edge (in days).
-	//
-	// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
-	UsageBasedAutolockDurationDays pulumi.IntPtrInput `pulumi:"usageBasedAutolockDurationDays"`
 }
 
 func (TwingateResourceAccessGroupArgs) ElementType() reflect.Type {
@@ -2023,13 +2015,6 @@ func (o TwingateResourceAccessGroupOutput) AccessPolicies() TwingateResourceAcce
 	return o.ApplyT(func(v TwingateResourceAccessGroup) []TwingateResourceAccessGroupAccessPolicy { return v.AccessPolicies }).(TwingateResourceAccessGroupAccessPolicyArrayOutput)
 }
 
-// This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
-//
-// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
-func (o TwingateResourceAccessGroupOutput) ApprovalMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TwingateResourceAccessGroup) *string { return v.ApprovalMode }).(pulumi.StringPtrOutput)
-}
-
 // Group ID that will have permission to access the Resource.
 func (o TwingateResourceAccessGroupOutput) GroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TwingateResourceAccessGroup) *string { return v.GroupId }).(pulumi.StringPtrOutput)
@@ -2038,13 +2023,6 @@ func (o TwingateResourceAccessGroupOutput) GroupId() pulumi.StringPtrOutput {
 // The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
 func (o TwingateResourceAccessGroupOutput) SecurityPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TwingateResourceAccessGroup) *string { return v.SecurityPolicyId }).(pulumi.StringPtrOutput)
-}
-
-// The usage-based auto-lock duration configured on the edge (in days).
-//
-// Deprecated: Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
-func (o TwingateResourceAccessGroupOutput) UsageBasedAutolockDurationDays() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v TwingateResourceAccessGroup) *int { return v.UsageBasedAutolockDurationDays }).(pulumi.IntPtrOutput)
 }
 
 type TwingateResourceAccessGroupArrayOutput struct{ *pulumi.OutputState }
@@ -4078,8 +4056,6 @@ type GetTwingateGroupsGroup struct {
 	IsActive bool `pulumi:"isActive"`
 	// The name of the Group
 	Name string `pulumi:"name"`
-	// The Security Policy assigned to the Group.
-	SecurityPolicyId string `pulumi:"securityPolicyId"`
 	// The type of the Group
 	Type string `pulumi:"type"`
 }
@@ -4102,8 +4078,6 @@ type GetTwingateGroupsGroupArgs struct {
 	IsActive pulumi.BoolInput `pulumi:"isActive"`
 	// The name of the Group
 	Name pulumi.StringInput `pulumi:"name"`
-	// The Security Policy assigned to the Group.
-	SecurityPolicyId pulumi.StringInput `pulumi:"securityPolicyId"`
 	// The type of the Group
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -4172,11 +4146,6 @@ func (o GetTwingateGroupsGroupOutput) IsActive() pulumi.BoolOutput {
 // The name of the Group
 func (o GetTwingateGroupsGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTwingateGroupsGroup) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The Security Policy assigned to the Group.
-func (o GetTwingateGroupsGroupOutput) SecurityPolicyId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTwingateGroupsGroup) string { return v.SecurityPolicyId }).(pulumi.StringOutput)
 }
 
 // The type of the Group
@@ -4810,8 +4779,6 @@ func (o GetTwingateResourceProtocolsUdpPtrOutput) Ports() pulumi.StringArrayOutp
 type GetTwingateResourcesResource struct {
 	// The Resource's IP/CIDR or FQDN/DNS zone
 	Address string `pulumi:"address"`
-	// The Approval Mode of the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
-	ApprovalMode string `pulumi:"approvalMode"`
 	// The id of the Resource
 	Id string `pulumi:"id"`
 	// The name of the Resource
@@ -4822,8 +4789,6 @@ type GetTwingateResourcesResource struct {
 	RemoteNetworkId string `pulumi:"remoteNetworkId"`
 	// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
 	Tags map[string]string `pulumi:"tags"`
-	// The number of days that the Resource will be locked after the last successful login.
-	UsageBasedAutolockDurationDays int `pulumi:"usageBasedAutolockDurationDays"`
 }
 
 // GetTwingateResourcesResourceInput is an input type that accepts GetTwingateResourcesResourceArgs and GetTwingateResourcesResourceOutput values.
@@ -4840,8 +4805,6 @@ type GetTwingateResourcesResourceInput interface {
 type GetTwingateResourcesResourceArgs struct {
 	// The Resource's IP/CIDR or FQDN/DNS zone
 	Address pulumi.StringInput `pulumi:"address"`
-	// The Approval Mode of the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
-	ApprovalMode pulumi.StringInput `pulumi:"approvalMode"`
 	// The id of the Resource
 	Id pulumi.StringInput `pulumi:"id"`
 	// The name of the Resource
@@ -4852,8 +4815,6 @@ type GetTwingateResourcesResourceArgs struct {
 	RemoteNetworkId pulumi.StringInput `pulumi:"remoteNetworkId"`
 	// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// The number of days that the Resource will be locked after the last successful login.
-	UsageBasedAutolockDurationDays pulumi.IntInput `pulumi:"usageBasedAutolockDurationDays"`
 }
 
 func (GetTwingateResourcesResourceArgs) ElementType() reflect.Type {
@@ -4912,11 +4873,6 @@ func (o GetTwingateResourcesResourceOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTwingateResourcesResource) string { return v.Address }).(pulumi.StringOutput)
 }
 
-// The Approval Mode of the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
-func (o GetTwingateResourcesResourceOutput) ApprovalMode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTwingateResourcesResource) string { return v.ApprovalMode }).(pulumi.StringOutput)
-}
-
 // The id of the Resource
 func (o GetTwingateResourcesResourceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTwingateResourcesResource) string { return v.Id }).(pulumi.StringOutput)
@@ -4940,11 +4896,6 @@ func (o GetTwingateResourcesResourceOutput) RemoteNetworkId() pulumi.StringOutpu
 // The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
 func (o GetTwingateResourcesResourceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetTwingateResourcesResource) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// The number of days that the Resource will be locked after the last successful login.
-func (o GetTwingateResourcesResourceOutput) UsageBasedAutolockDurationDays() pulumi.IntOutput {
-	return o.ApplyT(func(v GetTwingateResourcesResource) int { return v.UsageBasedAutolockDurationDays }).(pulumi.IntOutput)
 }
 
 type GetTwingateResourcesResourceArrayOutput struct{ *pulumi.OutputState }

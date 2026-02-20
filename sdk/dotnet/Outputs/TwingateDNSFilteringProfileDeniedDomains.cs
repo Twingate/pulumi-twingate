@@ -18,6 +18,9 @@ namespace Twingate.Twingate.Outputs
         /// A set of denied domains. Defaults to an empty set.
         /// </summary>
         public readonly ImmutableArray<string> Domains;
+        /// <summary>
+        /// Whether Terraform should override changes made outside of Terraform. Defaults to true.
+        /// </summary>
         public readonly bool? IsAuthoritative;
 
         [OutputConstructor]

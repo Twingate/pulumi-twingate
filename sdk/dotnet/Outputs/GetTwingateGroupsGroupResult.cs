@@ -27,10 +27,6 @@ namespace Twingate.Twingate.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The Security Policy assigned to the Group.
-        /// </summary>
-        public readonly string SecurityPolicyId;
-        /// <summary>
         /// The type of the Group
         /// </summary>
         public readonly string Type;
@@ -43,14 +39,11 @@ namespace Twingate.Twingate.Outputs
 
             string name,
 
-            string securityPolicyId,
-
             string type)
         {
             Id = id;
             IsActive = isActive;
             Name = name;
-            SecurityPolicyId = securityPolicyId;
             Type = type;
         }
     }

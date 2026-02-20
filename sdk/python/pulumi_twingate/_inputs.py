@@ -522,6 +522,9 @@ if not MYPY:
         A set of allowed domains. Defaults to an empty set.
         """
         is_authoritative: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether Terraform should override changes made outside of Terraform. Defaults to true.
+        """
 elif False:
     TwingateDNSFilteringProfileAllowedDomainsArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -532,6 +535,7 @@ class TwingateDNSFilteringProfileAllowedDomainsArgs:
                  is_authoritative: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domains: A set of allowed domains. Defaults to an empty set.
+        :param pulumi.Input[_builtins.bool] is_authoritative: Whether Terraform should override changes made outside of Terraform. Defaults to true.
         """
         if domains is not None:
             pulumi.set(__self__, "domains", domains)
@@ -553,6 +557,9 @@ class TwingateDNSFilteringProfileAllowedDomainsArgs:
     @_builtins.property
     @pulumi.getter(name="isAuthoritative")
     def is_authoritative(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform should override changes made outside of Terraform. Defaults to true.
+        """
         return pulumi.get(self, "is_authoritative")
 
     @is_authoritative.setter
@@ -759,6 +766,9 @@ if not MYPY:
         A set of denied domains. Defaults to an empty set.
         """
         is_authoritative: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether Terraform should override changes made outside of Terraform. Defaults to true.
+        """
 elif False:
     TwingateDNSFilteringProfileDeniedDomainsArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -769,6 +779,7 @@ class TwingateDNSFilteringProfileDeniedDomainsArgs:
                  is_authoritative: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domains: A set of denied domains. Defaults to an empty set.
+        :param pulumi.Input[_builtins.bool] is_authoritative: Whether Terraform should override changes made outside of Terraform. Defaults to true.
         """
         if domains is not None:
             pulumi.set(__self__, "domains", domains)
@@ -790,6 +801,9 @@ class TwingateDNSFilteringProfileDeniedDomainsArgs:
     @_builtins.property
     @pulumi.getter(name="isAuthoritative")
     def is_authoritative(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform should override changes made outside of Terraform. Defaults to true.
+        """
         return pulumi.get(self, "is_authoritative")
 
     @is_authoritative.setter
@@ -1067,10 +1081,6 @@ if not MYPY:
         """
         Restrict access according to JIT access policy
         """
-        approval_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
-        """
         group_id: NotRequired[pulumi.Input[_builtins.str]]
         """
         Group ID that will have permission to access the Resource.
@@ -1079,10 +1089,6 @@ if not MYPY:
         """
         The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
         """
-        usage_based_autolock_duration_days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The usage-based auto-lock duration configured on the edge (in days).
-        """
 elif False:
     TwingateResourceAccessGroupArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1090,33 +1096,19 @@ elif False:
 class TwingateResourceAccessGroupArgs:
     def __init__(__self__, *,
                  access_policies: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupAccessPolicyArgs']]]] = None,
-                 approval_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 usage_based_autolock_duration_days: Optional[pulumi.Input[_builtins.int]] = None):
+                 security_policy_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupAccessPolicyArgs']]] access_policies: Restrict access according to JIT access policy
-        :param pulumi.Input[_builtins.str] approval_mode: This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
         :param pulumi.Input[_builtins.str] group_id: Group ID that will have permission to access the Resource.
         :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
-        :param pulumi.Input[_builtins.int] usage_based_autolock_duration_days: The usage-based auto-lock duration configured on the edge (in days).
         """
         if access_policies is not None:
             pulumi.set(__self__, "access_policies", access_policies)
-        if approval_mode is not None:
-            warnings.warn("""Configure access_policy instead. This attribute will be removed in the next major version of the provider.""", DeprecationWarning)
-            pulumi.log.warn("""approval_mode is deprecated: Configure access_policy instead. This attribute will be removed in the next major version of the provider.""")
-        if approval_mode is not None:
-            pulumi.set(__self__, "approval_mode", approval_mode)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
         if security_policy_id is not None:
             pulumi.set(__self__, "security_policy_id", security_policy_id)
-        if usage_based_autolock_duration_days is not None:
-            warnings.warn("""Configure access_policy instead. This attribute will be removed in the next major version of the provider.""", DeprecationWarning)
-            pulumi.log.warn("""usage_based_autolock_duration_days is deprecated: Configure access_policy instead. This attribute will be removed in the next major version of the provider.""")
-        if usage_based_autolock_duration_days is not None:
-            pulumi.set(__self__, "usage_based_autolock_duration_days", usage_based_autolock_duration_days)
 
     @_builtins.property
     @pulumi.getter(name="accessPolicies")
@@ -1129,19 +1121,6 @@ class TwingateResourceAccessGroupArgs:
     @access_policies.setter
     def access_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupAccessPolicyArgs']]]]):
         pulumi.set(self, "access_policies", value)
-
-    @_builtins.property
-    @pulumi.getter(name="approvalMode")
-    @_utilities.deprecated("""Configure access_policy instead. This attribute will be removed in the next major version of the provider.""")
-    def approval_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
-        """
-        return pulumi.get(self, "approval_mode")
-
-    @approval_mode.setter
-    def approval_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "approval_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
@@ -1166,19 +1145,6 @@ class TwingateResourceAccessGroupArgs:
     @security_policy_id.setter
     def security_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "security_policy_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="usageBasedAutolockDurationDays")
-    @_utilities.deprecated("""Configure access_policy instead. This attribute will be removed in the next major version of the provider.""")
-    def usage_based_autolock_duration_days(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The usage-based auto-lock duration configured on the edge (in days).
-        """
-        return pulumi.get(self, "usage_based_autolock_duration_days")
-
-    @usage_based_autolock_duration_days.setter
-    def usage_based_autolock_duration_days(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "usage_based_autolock_duration_days", value)
 
 
 if not MYPY:

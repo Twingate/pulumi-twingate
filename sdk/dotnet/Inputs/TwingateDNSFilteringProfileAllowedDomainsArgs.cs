@@ -25,6 +25,9 @@ namespace Twingate.Twingate.Inputs
             set => _domains = value;
         }
 
+        /// <summary>
+        /// Whether Terraform should override changes made outside of Terraform. Defaults to true.
+        /// </summary>
         [Input("isAuthoritative")]
         public Input<bool>? IsAuthoritative { get; set; }
 
