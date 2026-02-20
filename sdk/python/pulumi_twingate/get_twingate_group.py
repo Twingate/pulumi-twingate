@@ -26,7 +26,7 @@ class GetTwingateGroupResult:
     """
     A collection of values returned by getTwingateGroup.
     """
-    def __init__(__self__, id=None, is_active=None, name=None, security_policy_id=None, type=None):
+    def __init__(__self__, id=None, is_active=None, name=None, type=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -36,9 +36,6 @@ class GetTwingateGroupResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if security_policy_id and not isinstance(security_policy_id, str):
-            raise TypeError("Expected argument 'security_policy_id' to be a str")
-        pulumi.set(__self__, "security_policy_id", security_policy_id)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -68,14 +65,6 @@ class GetTwingateGroupResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
-    @pulumi.getter(name="securityPolicyId")
-    def security_policy_id(self) -> _builtins.str:
-        """
-        The Security Policy assigned to the Group.
-        """
-        return pulumi.get(self, "security_policy_id")
-
-    @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
@@ -93,7 +82,6 @@ class AwaitableGetTwingateGroupResult(GetTwingateGroupResult):
             id=self.id,
             is_active=self.is_active,
             name=self.name,
-            security_policy_id=self.security_policy_id,
             type=self.type)
 
 
@@ -123,7 +111,6 @@ def get_twingate_group(id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         is_active=pulumi.get(__ret__, 'is_active'),
         name=pulumi.get(__ret__, 'name'),
-        security_policy_id=pulumi.get(__ret__, 'security_policy_id'),
         type=pulumi.get(__ret__, 'type'))
 def get_twingate_group_output(id: Optional[pulumi.Input[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTwingateGroupResult]:
@@ -150,5 +137,4 @@ def get_twingate_group_output(id: Optional[pulumi.Input[_builtins.str]] = None,
         id=pulumi.get(__response__, 'id'),
         is_active=pulumi.get(__response__, 'is_active'),
         name=pulumi.get(__response__, 'name'),
-        security_policy_id=pulumi.get(__response__, 'security_policy_id'),
         type=pulumi.get(__response__, 'type')))

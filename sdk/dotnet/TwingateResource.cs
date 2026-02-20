@@ -53,17 +53,14 @@ namespace Twingate.Twingate
         public Output<string?> Alias { get; private set; } = null!;
 
         /// <summary>
-        /// This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
-        /// </summary>
-        [Output("approvalMode")]
-        public Output<string> ApprovalMode { get; private set; } = null!;
-
-        /// <summary>
         /// Set the resource as active or inactive. Default is `True`.
         /// </summary>
         [Output("isActive")]
         public Output<bool> IsActive { get; private set; } = null!;
 
+        /// <summary>
+        /// Determines whether assignments in the access block will override any existing assignments. Default is `True`. If set to `False`, assignments made outside of Terraform will be ignored.
+        /// </summary>
         [Output("isAuthoritative")]
         public Output<bool> IsAuthoritative { get; private set; } = null!;
 
@@ -114,12 +111,6 @@ namespace Twingate.Twingate
         /// </summary>
         [Output("tagsAll")]
         public Output<ImmutableDictionary<string, string>> TagsAll { get; private set; } = null!;
-
-        /// <summary>
-        /// The usage-based auto-lock duration for the Resource (in days).
-        /// </summary>
-        [Output("usageBasedAutolockDurationDays")]
-        public Output<int> UsageBasedAutolockDurationDays { get; private set; } = null!;
 
 
         /// <summary>
@@ -217,17 +208,14 @@ namespace Twingate.Twingate
         public Input<string>? Alias { get; set; }
 
         /// <summary>
-        /// This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
-        /// </summary>
-        [Input("approvalMode")]
-        public Input<string>? ApprovalMode { get; set; }
-
-        /// <summary>
         /// Set the resource as active or inactive. Default is `True`.
         /// </summary>
         [Input("isActive")]
         public Input<bool>? IsActive { get; set; }
 
+        /// <summary>
+        /// Determines whether assignments in the access block will override any existing assignments. Default is `True`. If set to `False`, assignments made outside of Terraform will be ignored.
+        /// </summary>
         [Input("isAuthoritative")]
         public Input<bool>? IsAuthoritative { get; set; }
 
@@ -278,12 +266,6 @@ namespace Twingate.Twingate
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
-
-        /// <summary>
-        /// The usage-based auto-lock duration for the Resource (in days).
-        /// </summary>
-        [Input("usageBasedAutolockDurationDays")]
-        public Input<int>? UsageBasedAutolockDurationDays { get; set; }
 
         public TwingateResourceArgs()
         {
@@ -342,17 +324,14 @@ namespace Twingate.Twingate
         public Input<string>? Alias { get; set; }
 
         /// <summary>
-        /// This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
-        /// </summary>
-        [Input("approvalMode")]
-        public Input<string>? ApprovalMode { get; set; }
-
-        /// <summary>
         /// Set the resource as active or inactive. Default is `True`.
         /// </summary>
         [Input("isActive")]
         public Input<bool>? IsActive { get; set; }
 
+        /// <summary>
+        /// Determines whether assignments in the access block will override any existing assignments. Default is `True`. If set to `False`, assignments made outside of Terraform will be ignored.
+        /// </summary>
         [Input("isAuthoritative")]
         public Input<bool>? IsAuthoritative { get; set; }
 
@@ -415,12 +394,6 @@ namespace Twingate.Twingate
             get => _tagsAll ?? (_tagsAll = new InputMap<string>());
             set => _tagsAll = value;
         }
-
-        /// <summary>
-        /// The usage-based auto-lock duration for the Resource (in days).
-        /// </summary>
-        [Input("usageBasedAutolockDurationDays")]
-        public Input<int>? UsageBasedAutolockDurationDays { get; set; }
 
         public TwingateResourceState()
         {

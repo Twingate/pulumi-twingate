@@ -62,8 +62,6 @@ type LookupTwingateGroupResult struct {
 	IsActive bool `pulumi:"isActive"`
 	// The name of the Group
 	Name string `pulumi:"name"`
-	// The Security Policy assigned to the Group.
-	SecurityPolicyId string `pulumi:"securityPolicyId"`
 	// The type of the Group
 	Type string `pulumi:"type"`
 }
@@ -115,11 +113,6 @@ func (o LookupTwingateGroupResultOutput) IsActive() pulumi.BoolOutput {
 // The name of the Group
 func (o LookupTwingateGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTwingateGroupResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The Security Policy assigned to the Group.
-func (o LookupTwingateGroupResultOutput) SecurityPolicyId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTwingateGroupResult) string { return v.SecurityPolicyId }).(pulumi.StringOutput)
 }
 
 // The type of the Group

@@ -50,15 +50,14 @@ export class TwingateGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === TwingateGroup.__pulumiType;
     }
 
+    /**
+     * Determines whether User assignments to this Group will override any existing assignments. Default is `true`. If set to `false`, assignments made outside of Terraform will be ignored.
+     */
     declare public readonly isAuthoritative: pulumi.Output<boolean>;
     /**
      * The name of the group
      */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Defines which Security Policy applies to this Group. The Security Policy ID can be obtained from the `twingate.getTwingateSecurityPolicy` and `twingate.getTwingateSecurityPolicies` data sources.
-     */
-    declare public readonly securityPolicyId: pulumi.Output<string>;
     /**
      * List of User IDs that have permission to access the Group.
      */
@@ -79,13 +78,11 @@ export class TwingateGroup extends pulumi.CustomResource {
             const state = argsOrState as TwingateGroupState | undefined;
             resourceInputs["isAuthoritative"] = state?.isAuthoritative;
             resourceInputs["name"] = state?.name;
-            resourceInputs["securityPolicyId"] = state?.securityPolicyId;
             resourceInputs["userIds"] = state?.userIds;
         } else {
             const args = argsOrState as TwingateGroupArgs | undefined;
             resourceInputs["isAuthoritative"] = args?.isAuthoritative;
             resourceInputs["name"] = args?.name;
-            resourceInputs["securityPolicyId"] = args?.securityPolicyId;
             resourceInputs["userIds"] = args?.userIds;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -97,15 +94,14 @@ export class TwingateGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TwingateGroup resources.
  */
 export interface TwingateGroupState {
+    /**
+     * Determines whether User assignments to this Group will override any existing assignments. Default is `true`. If set to `false`, assignments made outside of Terraform will be ignored.
+     */
     isAuthoritative?: pulumi.Input<boolean>;
     /**
      * The name of the group
      */
     name?: pulumi.Input<string>;
-    /**
-     * Defines which Security Policy applies to this Group. The Security Policy ID can be obtained from the `twingate.getTwingateSecurityPolicy` and `twingate.getTwingateSecurityPolicies` data sources.
-     */
-    securityPolicyId?: pulumi.Input<string>;
     /**
      * List of User IDs that have permission to access the Group.
      */
@@ -116,15 +112,14 @@ export interface TwingateGroupState {
  * The set of arguments for constructing a TwingateGroup resource.
  */
 export interface TwingateGroupArgs {
+    /**
+     * Determines whether User assignments to this Group will override any existing assignments. Default is `true`. If set to `false`, assignments made outside of Terraform will be ignored.
+     */
     isAuthoritative?: pulumi.Input<boolean>;
     /**
      * The name of the group
      */
     name?: pulumi.Input<string>;
-    /**
-     * Defines which Security Policy applies to this Group. The Security Policy ID can be obtained from the `twingate.getTwingateSecurityPolicy` and `twingate.getTwingateSecurityPolicies` data sources.
-     */
-    securityPolicyId?: pulumi.Input<string>;
     /**
      * List of User IDs that have permission to access the Group.
      */

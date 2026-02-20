@@ -19,10 +19,6 @@ namespace Twingate.Twingate.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.TwingateResourceAccessGroupAccessPolicy> AccessPolicies;
         /// <summary>
-        /// This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
-        /// </summary>
-        public readonly string? ApprovalMode;
-        /// <summary>
         /// Group ID that will have permission to access the Resource.
         /// </summary>
         public readonly string? GroupId;
@@ -30,28 +26,18 @@ namespace Twingate.Twingate.Outputs
         /// The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
         /// </summary>
         public readonly string? SecurityPolicyId;
-        /// <summary>
-        /// The usage-based auto-lock duration configured on the edge (in days).
-        /// </summary>
-        public readonly int? UsageBasedAutolockDurationDays;
 
         [OutputConstructor]
         private TwingateResourceAccessGroup(
             ImmutableArray<Outputs.TwingateResourceAccessGroupAccessPolicy> accessPolicies,
 
-            string? approvalMode,
-
             string? groupId,
 
-            string? securityPolicyId,
-
-            int? usageBasedAutolockDurationDays)
+            string? securityPolicyId)
         {
             AccessPolicies = accessPolicies;
-            ApprovalMode = approvalMode;
             GroupId = groupId;
             SecurityPolicyId = securityPolicyId;
-            UsageBasedAutolockDurationDays = usageBasedAutolockDurationDays;
         }
     }
 }

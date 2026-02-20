@@ -378,6 +378,9 @@ export interface TwingateDNSFilteringProfileAllowedDomains {
      * A set of allowed domains. Defaults to an empty set.
      */
     domains?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether Terraform should override changes made outside of Terraform. Defaults to true.
+     */
     isAuthoritative?: pulumi.Input<boolean>;
 }
 
@@ -425,6 +428,9 @@ export interface TwingateDNSFilteringProfileDeniedDomains {
      * A set of denied domains. Defaults to an empty set.
      */
     domains?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether Terraform should override changes made outside of Terraform. Defaults to true.
+     */
     isAuthoritative?: pulumi.Input<boolean>;
 }
 
@@ -488,12 +494,6 @@ export interface TwingateResourceAccessGroup {
      */
     accessPolicies?: pulumi.Input<pulumi.Input<inputs.TwingateResourceAccessGroupAccessPolicy>[]>;
     /**
-     * This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
-     *
-     * @deprecated Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
-     */
-    approvalMode?: pulumi.Input<string>;
-    /**
      * Group ID that will have permission to access the Resource.
      */
     groupId?: pulumi.Input<string>;
@@ -501,12 +501,6 @@ export interface TwingateResourceAccessGroup {
      * The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
      */
     securityPolicyId?: pulumi.Input<string>;
-    /**
-     * The usage-based auto-lock duration configured on the edge (in days).
-     *
-     * @deprecated Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
-     */
-    usageBasedAutolockDurationDays?: pulumi.Input<number>;
 }
 
 export interface TwingateResourceAccessGroupAccessPolicy {

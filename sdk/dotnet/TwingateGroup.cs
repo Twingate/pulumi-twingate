@@ -40,6 +40,9 @@ namespace Twingate.Twingate
     [TwingateResourceType("twingate:index/twingateGroup:TwingateGroup")]
     public partial class TwingateGroup : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Determines whether User assignments to this Group will override any existing assignments. Default is `True`. If set to `False`, assignments made outside of Terraform will be ignored.
+        /// </summary>
         [Output("isAuthoritative")]
         public Output<bool> IsAuthoritative { get; private set; } = null!;
 
@@ -48,12 +51,6 @@ namespace Twingate.Twingate
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
-
-        /// <summary>
-        /// Defines which Security Policy applies to this Group. The Security Policy ID can be obtained from the `twingate.getTwingateSecurityPolicy` and `twingate.getTwingateSecurityPolicies` data sources.
-        /// </summary>
-        [Output("securityPolicyId")]
-        public Output<string> SecurityPolicyId { get; private set; } = null!;
 
         /// <summary>
         /// List of User IDs that have permission to access the Group.
@@ -108,6 +105,9 @@ namespace Twingate.Twingate
 
     public sealed class TwingateGroupArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Determines whether User assignments to this Group will override any existing assignments. Default is `True`. If set to `False`, assignments made outside of Terraform will be ignored.
+        /// </summary>
         [Input("isAuthoritative")]
         public Input<bool>? IsAuthoritative { get; set; }
 
@@ -116,12 +116,6 @@ namespace Twingate.Twingate
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// Defines which Security Policy applies to this Group. The Security Policy ID can be obtained from the `twingate.getTwingateSecurityPolicy` and `twingate.getTwingateSecurityPolicies` data sources.
-        /// </summary>
-        [Input("securityPolicyId")]
-        public Input<string>? SecurityPolicyId { get; set; }
 
         [Input("userIds")]
         private InputList<string>? _userIds;
@@ -143,6 +137,9 @@ namespace Twingate.Twingate
 
     public sealed class TwingateGroupState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Determines whether User assignments to this Group will override any existing assignments. Default is `True`. If set to `False`, assignments made outside of Terraform will be ignored.
+        /// </summary>
         [Input("isAuthoritative")]
         public Input<bool>? IsAuthoritative { get; set; }
 
@@ -151,12 +148,6 @@ namespace Twingate.Twingate
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// Defines which Security Policy applies to this Group. The Security Policy ID can be obtained from the `twingate.getTwingateSecurityPolicy` and `twingate.getTwingateSecurityPolicies` data sources.
-        /// </summary>
-        [Input("securityPolicyId")]
-        public Input<string>? SecurityPolicyId { get; set; }
 
         [Input("userIds")]
         private InputList<string>? _userIds;

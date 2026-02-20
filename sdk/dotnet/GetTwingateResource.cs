@@ -21,7 +21,7 @@ namespace Twingate.Twingate
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Twingate = Pulumi.Twingate;
+        /// using Twingate = Twingate.Twingate;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -45,7 +45,7 @@ namespace Twingate.Twingate
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Twingate = Pulumi.Twingate;
+        /// using Twingate = Twingate.Twingate;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -69,7 +69,7 @@ namespace Twingate.Twingate
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Twingate = Pulumi.Twingate;
+        /// using Twingate = Twingate.Twingate;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -135,10 +135,6 @@ namespace Twingate.Twingate
         /// </summary>
         public readonly string Address;
         /// <summary>
-        /// The Approval Mode of the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
-        /// </summary>
-        public readonly string ApprovalMode;
-        /// <summary>
         /// The ID of the Resource. The ID for the Resource can be obtained from the Admin API or the URL string in the Admin Console.
         /// </summary>
         public readonly string Id;
@@ -158,16 +154,10 @@ namespace Twingate.Twingate
         /// The `Tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
-        /// <summary>
-        /// The number of days that the Resource will be locked after the last successful login.
-        /// </summary>
-        public readonly int UsageBasedAutolockDurationDays;
 
         [OutputConstructor]
         private GetTwingateResourceResult(
             string address,
-
-            string approvalMode,
 
             string id,
 
@@ -177,18 +167,14 @@ namespace Twingate.Twingate
 
             string remoteNetworkId,
 
-            ImmutableDictionary<string, string> tags,
-
-            int usageBasedAutolockDurationDays)
+            ImmutableDictionary<string, string> tags)
         {
             Address = address;
-            ApprovalMode = approvalMode;
             Id = id;
             Name = name;
             Protocols = protocols;
             RemoteNetworkId = remoteNetworkId;
             Tags = tags;
-            UsageBasedAutolockDurationDays = usageBasedAutolockDurationDays;
         }
     }
 }

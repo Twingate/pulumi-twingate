@@ -3,7 +3,7 @@ module github.com/Twingate/pulumi-twingate/provider
 go 1.24.7
 
 require (
-	github.com/Twingate/terraform-provider-twingate/v3 v3.8.0
+	github.com/Twingate/terraform-provider-twingate/v4 v4.0.1
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.121.0
 	github.com/pulumi/pulumi/sdk/v3 v3.220.0
 )
@@ -212,7 +212,7 @@ require (
 )
 
 // uncomment to test local changes to terraform-provider-twingate
-//replace github.com/Twingate/terraform-provider-twingate/v3 => ../../terraform-provider-twingate
+//replace github.com/Twingate/terraform-provider-twingate/v4 => ../../terraform-provider-twingate
 
 // Use forked pulumi-terraform-bridge with Go SDK array truncation fix
 // Temporarily commented out to allow upgrade-provider to run

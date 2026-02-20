@@ -64,15 +64,12 @@ export class TwingateResource extends pulumi.CustomResource {
      */
     declare public readonly alias: pulumi.Output<string | undefined>;
     /**
-     * This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
-     *
-     * @deprecated Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
-     */
-    declare public readonly approvalMode: pulumi.Output<string>;
-    /**
      * Set the resource as active or inactive. Default is `true`.
      */
     declare public readonly isActive: pulumi.Output<boolean>;
+    /**
+     * Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to `false`, assignments made outside of Terraform will be ignored.
+     */
     declare public readonly isAuthoritative: pulumi.Output<boolean>;
     /**
      * Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
@@ -106,12 +103,6 @@ export class TwingateResource extends pulumi.CustomResource {
      * A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
      */
     declare public /*out*/ readonly tagsAll: pulumi.Output<{[key: string]: string}>;
-    /**
-     * The usage-based auto-lock duration for the Resource (in days).
-     *
-     * @deprecated Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
-     */
-    declare public readonly usageBasedAutolockDurationDays: pulumi.Output<number>;
 
     /**
      * Create a TwingateResource resource with the given unique name, arguments, and options.
@@ -131,7 +122,6 @@ export class TwingateResource extends pulumi.CustomResource {
             resourceInputs["accessServices"] = state?.accessServices;
             resourceInputs["address"] = state?.address;
             resourceInputs["alias"] = state?.alias;
-            resourceInputs["approvalMode"] = state?.approvalMode;
             resourceInputs["isActive"] = state?.isActive;
             resourceInputs["isAuthoritative"] = state?.isAuthoritative;
             resourceInputs["isBrowserShortcutEnabled"] = state?.isBrowserShortcutEnabled;
@@ -142,7 +132,6 @@ export class TwingateResource extends pulumi.CustomResource {
             resourceInputs["securityPolicyId"] = state?.securityPolicyId;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["tagsAll"] = state?.tagsAll;
-            resourceInputs["usageBasedAutolockDurationDays"] = state?.usageBasedAutolockDurationDays;
         } else {
             const args = argsOrState as TwingateResourceArgs | undefined;
             if (args?.address === undefined && !opts.urn) {
@@ -156,7 +145,6 @@ export class TwingateResource extends pulumi.CustomResource {
             resourceInputs["accessServices"] = args?.accessServices;
             resourceInputs["address"] = args?.address;
             resourceInputs["alias"] = args?.alias;
-            resourceInputs["approvalMode"] = args?.approvalMode;
             resourceInputs["isActive"] = args?.isActive;
             resourceInputs["isAuthoritative"] = args?.isAuthoritative;
             resourceInputs["isBrowserShortcutEnabled"] = args?.isBrowserShortcutEnabled;
@@ -166,7 +154,6 @@ export class TwingateResource extends pulumi.CustomResource {
             resourceInputs["remoteNetworkId"] = args?.remoteNetworkId;
             resourceInputs["securityPolicyId"] = args?.securityPolicyId;
             resourceInputs["tags"] = args?.tags;
-            resourceInputs["usageBasedAutolockDurationDays"] = args?.usageBasedAutolockDurationDays;
             resourceInputs["tagsAll"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -199,15 +186,12 @@ export interface TwingateResourceState {
      */
     alias?: pulumi.Input<string>;
     /**
-     * This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
-     *
-     * @deprecated Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
-     */
-    approvalMode?: pulumi.Input<string>;
-    /**
      * Set the resource as active or inactive. Default is `true`.
      */
     isActive?: pulumi.Input<boolean>;
+    /**
+     * Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to `false`, assignments made outside of Terraform will be ignored.
+     */
     isAuthoritative?: pulumi.Input<boolean>;
     /**
      * Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
@@ -241,12 +225,6 @@ export interface TwingateResourceState {
      * A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
      */
     tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The usage-based auto-lock duration for the Resource (in days).
-     *
-     * @deprecated Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
-     */
-    usageBasedAutolockDurationDays?: pulumi.Input<number>;
 }
 
 /**
@@ -274,15 +252,12 @@ export interface TwingateResourceArgs {
      */
     alias?: pulumi.Input<string>;
     /**
-     * This will set the approval model for the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
-     *
-     * @deprecated Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
-     */
-    approvalMode?: pulumi.Input<string>;
-    /**
      * Set the resource as active or inactive. Default is `true`.
      */
     isActive?: pulumi.Input<boolean>;
+    /**
+     * Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to `false`, assignments made outside of Terraform will be ignored.
+     */
     isAuthoritative?: pulumi.Input<boolean>;
     /**
      * Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
@@ -312,10 +287,4 @@ export interface TwingateResourceArgs {
      * A map of key-value pair tags to set on this resource.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The usage-based auto-lock duration for the Resource (in days).
-     *
-     * @deprecated Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
-     */
-    usageBasedAutolockDurationDays?: pulumi.Input<number>;
 }

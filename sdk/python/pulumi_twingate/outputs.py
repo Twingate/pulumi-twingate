@@ -72,6 +72,7 @@ class TwingateDNSFilteringProfileAllowedDomains(dict):
                  is_authoritative: Optional[_builtins.bool] = None):
         """
         :param Sequence[_builtins.str] domains: A set of allowed domains. Defaults to an empty set.
+        :param _builtins.bool is_authoritative: Whether Terraform should override changes made outside of Terraform. Defaults to true.
         """
         if domains is not None:
             pulumi.set(__self__, "domains", domains)
@@ -89,6 +90,9 @@ class TwingateDNSFilteringProfileAllowedDomains(dict):
     @_builtins.property
     @pulumi.getter(name="isAuthoritative")
     def is_authoritative(self) -> Optional[_builtins.bool]:
+        """
+        Whether Terraform should override changes made outside of Terraform. Defaults to true.
+        """
         return pulumi.get(self, "is_authoritative")
 
 
@@ -264,6 +268,7 @@ class TwingateDNSFilteringProfileDeniedDomains(dict):
                  is_authoritative: Optional[_builtins.bool] = None):
         """
         :param Sequence[_builtins.str] domains: A set of denied domains. Defaults to an empty set.
+        :param _builtins.bool is_authoritative: Whether Terraform should override changes made outside of Terraform. Defaults to true.
         """
         if domains is not None:
             pulumi.set(__self__, "domains", domains)
@@ -281,6 +286,9 @@ class TwingateDNSFilteringProfileDeniedDomains(dict):
     @_builtins.property
     @pulumi.getter(name="isAuthoritative")
     def is_authoritative(self) -> Optional[_builtins.bool]:
+        """
+        Whether Terraform should override changes made outside of Terraform. Defaults to true.
+        """
         return pulumi.get(self, "is_authoritative")
 
 
@@ -503,14 +511,10 @@ class TwingateResourceAccessGroup(dict):
         suggest = None
         if key == "accessPolicies":
             suggest = "access_policies"
-        elif key == "approvalMode":
-            suggest = "approval_mode"
         elif key == "groupId":
             suggest = "group_id"
         elif key == "securityPolicyId":
             suggest = "security_policy_id"
-        elif key == "usageBasedAutolockDurationDays":
-            suggest = "usage_based_autolock_duration_days"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in TwingateResourceAccessGroup. Access the value via the '{suggest}' property getter instead.")
@@ -525,27 +529,19 @@ class TwingateResourceAccessGroup(dict):
 
     def __init__(__self__, *,
                  access_policies: Optional[Sequence['outputs.TwingateResourceAccessGroupAccessPolicy']] = None,
-                 approval_mode: Optional[_builtins.str] = None,
                  group_id: Optional[_builtins.str] = None,
-                 security_policy_id: Optional[_builtins.str] = None,
-                 usage_based_autolock_duration_days: Optional[_builtins.int] = None):
+                 security_policy_id: Optional[_builtins.str] = None):
         """
         :param Sequence['TwingateResourceAccessGroupAccessPolicyArgs'] access_policies: Restrict access according to JIT access policy
-        :param _builtins.str approval_mode: This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
         :param _builtins.str group_id: Group ID that will have permission to access the Resource.
         :param _builtins.str security_policy_id: The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
-        :param _builtins.int usage_based_autolock_duration_days: The usage-based auto-lock duration configured on the edge (in days).
         """
         if access_policies is not None:
             pulumi.set(__self__, "access_policies", access_policies)
-        if approval_mode is not None:
-            pulumi.set(__self__, "approval_mode", approval_mode)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
         if security_policy_id is not None:
             pulumi.set(__self__, "security_policy_id", security_policy_id)
-        if usage_based_autolock_duration_days is not None:
-            pulumi.set(__self__, "usage_based_autolock_duration_days", usage_based_autolock_duration_days)
 
     @_builtins.property
     @pulumi.getter(name="accessPolicies")
@@ -554,15 +550,6 @@ class TwingateResourceAccessGroup(dict):
         Restrict access according to JIT access policy
         """
         return pulumi.get(self, "access_policies")
-
-    @_builtins.property
-    @pulumi.getter(name="approvalMode")
-    @_utilities.deprecated("""Configure access_policy instead. This attribute will be removed in the next major version of the provider.""")
-    def approval_mode(self) -> Optional[_builtins.str]:
-        """
-        This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
-        """
-        return pulumi.get(self, "approval_mode")
 
     @_builtins.property
     @pulumi.getter(name="groupId")
@@ -579,15 +566,6 @@ class TwingateResourceAccessGroup(dict):
         The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
         """
         return pulumi.get(self, "security_policy_id")
-
-    @_builtins.property
-    @pulumi.getter(name="usageBasedAutolockDurationDays")
-    @_utilities.deprecated("""Configure access_policy instead. This attribute will be removed in the next major version of the provider.""")
-    def usage_based_autolock_duration_days(self) -> Optional[_builtins.int]:
-        """
-        The usage-based auto-lock duration configured on the edge (in days).
-        """
-        return pulumi.get(self, "usage_based_autolock_duration_days")
 
 
 @pulumi.output_type
@@ -1260,19 +1238,16 @@ class GetTwingateGroupsGroupResult(dict):
                  id: _builtins.str,
                  is_active: _builtins.bool,
                  name: _builtins.str,
-                 security_policy_id: _builtins.str,
                  type: _builtins.str):
         """
         :param _builtins.str id: The ID of the Group
         :param _builtins.bool is_active: Indicates if the Group is active
         :param _builtins.str name: The name of the Group
-        :param _builtins.str security_policy_id: The Security Policy assigned to the Group.
         :param _builtins.str type: The type of the Group
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "is_active", is_active)
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "security_policy_id", security_policy_id)
         pulumi.set(__self__, "type", type)
 
     @_builtins.property
@@ -1298,14 +1273,6 @@ class GetTwingateGroupsGroupResult(dict):
         The name of the Group
         """
         return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter(name="securityPolicyId")
-    def security_policy_id(self) -> _builtins.str:
-        """
-        The Security Policy assigned to the Group.
-        """
-        return pulumi.get(self, "security_policy_id")
 
     @_builtins.property
     @pulumi.getter
@@ -1464,31 +1431,25 @@ class GetTwingateResourceProtocolsUdpResult(dict):
 class GetTwingateResourcesResourceResult(dict):
     def __init__(__self__, *,
                  address: _builtins.str,
-                 approval_mode: _builtins.str,
                  id: _builtins.str,
                  name: _builtins.str,
                  protocols: 'outputs.GetTwingateResourcesResourceProtocolsResult',
                  remote_network_id: _builtins.str,
-                 tags: Mapping[str, _builtins.str],
-                 usage_based_autolock_duration_days: _builtins.int):
+                 tags: Mapping[str, _builtins.str]):
         """
         :param _builtins.str address: The Resource's IP/CIDR or FQDN/DNS zone
-        :param _builtins.str approval_mode: The Approval Mode of the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
         :param _builtins.str id: The id of the Resource
         :param _builtins.str name: The name of the Resource
         :param 'GetTwingateResourcesResourceProtocolsArgs' protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param _builtins.str remote_network_id: Remote Network ID where the Resource lives
         :param Mapping[str, _builtins.str] tags: The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
-        :param _builtins.int usage_based_autolock_duration_days: The number of days that the Resource will be locked after the last successful login.
         """
         pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "approval_mode", approval_mode)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "protocols", protocols)
         pulumi.set(__self__, "remote_network_id", remote_network_id)
         pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "usage_based_autolock_duration_days", usage_based_autolock_duration_days)
 
     @_builtins.property
     @pulumi.getter
@@ -1497,14 +1458,6 @@ class GetTwingateResourcesResourceResult(dict):
         The Resource's IP/CIDR or FQDN/DNS zone
         """
         return pulumi.get(self, "address")
-
-    @_builtins.property
-    @pulumi.getter(name="approvalMode")
-    def approval_mode(self) -> _builtins.str:
-        """
-        The Approval Mode of the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
-        """
-        return pulumi.get(self, "approval_mode")
 
     @_builtins.property
     @pulumi.getter
@@ -1545,14 +1498,6 @@ class GetTwingateResourcesResourceResult(dict):
         The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
         """
         return pulumi.get(self, "tags")
-
-    @_builtins.property
-    @pulumi.getter(name="usageBasedAutolockDurationDays")
-    def usage_based_autolock_duration_days(self) -> _builtins.int:
-        """
-        The number of days that the Resource will be locked after the last successful login.
-        """
-        return pulumi.get(self, "usage_based_autolock_duration_days")
 
 
 @pulumi.output_type

@@ -52,10 +52,6 @@ export interface GetTwingateGroupResult {
      */
     readonly name: string;
     /**
-     * The Security Policy assigned to the Group.
-     */
-    readonly securityPolicyId: string;
-    /**
      * The type of the Group
      */
     readonly type: string;

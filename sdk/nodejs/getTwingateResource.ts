@@ -51,10 +51,6 @@ export interface GetTwingateResourceResult {
      */
     readonly address: string;
     /**
-     * The Approval Mode of the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
-     */
-    readonly approvalMode: string;
-    /**
      * The ID of the Resource. The ID for the Resource can be obtained from the Admin API or the URL string in the Admin Console.
      */
     readonly id: string;
@@ -74,10 +70,6 @@ export interface GetTwingateResourceResult {
      * The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
      */
     readonly tags: {[key: string]: string};
-    /**
-     * The number of days that the Resource will be locked after the last successful login.
-     */
-    readonly usageBasedAutolockDurationDays: number;
 }
 /**
  * Resources in Twingate represent any network destination address that you wish to provide private access to for users authorized via the Twingate Client application. Resources can be defined by either IP or DNS address, and all private DNS addresses will be automatically resolved with no client configuration changes. For more information, see the Twingate [documentation](https://docs.twingate.com/docs/resources-and-access-nodes).

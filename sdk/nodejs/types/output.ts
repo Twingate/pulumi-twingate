@@ -165,10 +165,6 @@ export interface GetTwingateGroupsGroup {
      */
     name: string;
     /**
-     * The Security Policy assigned to the Group.
-     */
-    securityPolicyId: string;
-    /**
      * The type of the Group
      */
     type: string;
@@ -230,10 +226,6 @@ export interface GetTwingateResourcesResource {
      */
     address: string;
     /**
-     * The Approval Mode of the Resource. The valid values are `AUTOMATIC` and `MANUAL`.
-     */
-    approvalMode: string;
-    /**
      * The id of the Resource
      */
     id: string;
@@ -253,10 +245,6 @@ export interface GetTwingateResourcesResource {
      * The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
      */
     tags: {[key: string]: string};
-    /**
-     * The number of days that the Resource will be locked after the last successful login.
-     */
-    usageBasedAutolockDurationDays: number;
 }
 
 export interface GetTwingateResourcesResourceProtocols {
@@ -352,6 +340,9 @@ export interface TwingateDNSFilteringProfileAllowedDomains {
      * A set of allowed domains. Defaults to an empty set.
      */
     domains: string[];
+    /**
+     * Whether Terraform should override changes made outside of Terraform. Defaults to true.
+     */
     isAuthoritative: boolean;
 }
 
@@ -399,6 +390,9 @@ export interface TwingateDNSFilteringProfileDeniedDomains {
      * A set of denied domains. Defaults to an empty set.
      */
     domains: string[];
+    /**
+     * Whether Terraform should override changes made outside of Terraform. Defaults to true.
+     */
     isAuthoritative: boolean;
 }
 
@@ -462,12 +456,6 @@ export interface TwingateResourceAccessGroup {
      */
     accessPolicies?: outputs.TwingateResourceAccessGroupAccessPolicy[];
     /**
-     * This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
-     *
-     * @deprecated Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
-     */
-    approvalMode: string;
-    /**
      * Group ID that will have permission to access the Resource.
      */
     groupId: string;
@@ -475,12 +463,6 @@ export interface TwingateResourceAccessGroup {
      * The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
      */
     securityPolicyId: string;
-    /**
-     * The usage-based auto-lock duration configured on the edge (in days).
-     *
-     * @deprecated Configure accessPolicy instead. This attribute will be removed in the next major version of the provider.
-     */
-    usageBasedAutolockDurationDays: number;
 }
 
 export interface TwingateResourceAccessGroupAccessPolicy {

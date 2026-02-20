@@ -20,7 +20,6 @@ namespace Twingate.Twingate
     /// using System.Linq;
     /// using Pulumi;
     /// using Std = Pulumi.Std;
-    /// using Twingate = Pulumi.Twingate;
     /// using Twingate = Twingate.Twingate;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 

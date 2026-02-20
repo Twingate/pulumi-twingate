@@ -26,12 +26,6 @@ namespace Twingate.Twingate.Inputs
         }
 
         /// <summary>
-        /// This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
-        /// </summary>
-        [Input("approvalMode")]
-        public Input<string>? ApprovalMode { get; set; }
-
-        /// <summary>
         /// Group ID that will have permission to access the Resource.
         /// </summary>
         [Input("groupId")]
@@ -42,12 +36,6 @@ namespace Twingate.Twingate.Inputs
         /// </summary>
         [Input("securityPolicyId")]
         public Input<string>? SecurityPolicyId { get; set; }
-
-        /// <summary>
-        /// The usage-based auto-lock duration configured on the edge (in days).
-        /// </summary>
-        [Input("usageBasedAutolockDurationDays")]
-        public Input<int>? UsageBasedAutolockDurationDays { get; set; }
 
         public TwingateResourceAccessGroupGetArgs()
         {
