@@ -54,7 +54,7 @@ jobs:
         run: echo "GOMODCACHE=$(mktemp -d)" >> $GITHUB_ENV
 
       - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v6
+        uses: goreleaser/goreleaser-action@v7
         with:
           args: -p 3 release --clean
           version: latest
