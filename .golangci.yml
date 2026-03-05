@@ -44,3 +44,8 @@ formatters:
       - third_party$
       - builtin$
       - examples$
+issues:
+  exclude-rules:
+    - path: pkg/version/version.go
+      linters:
+        - revive
