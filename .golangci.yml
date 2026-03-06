@@ -19,6 +19,7 @@ linters:
       - schema.go
       - pulumiManifest.go
       - pkg/vendored
+      - pkg/version/version.go
       - third_party$
       - builtin$
       - examples$
@@ -44,3 +45,4 @@ formatters:
       - third_party$
       - builtin$
       - examples$
+      - pkg/version/version.go
