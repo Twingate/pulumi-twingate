@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/Twingate/pulumi-twingate/sdk/v3/go/twingate/internal"
+	"github.com/Twingate/pulumi-twingate/sdk/v4/go/twingate/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/Twingate/pulumi-twingate/sdk/v3/go/twingate"
+//	"github.com/Twingate/pulumi-twingate/sdk/v4/go/twingate"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

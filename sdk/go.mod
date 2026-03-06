@@ -1,4 +1,4 @@
-module github.com/Twingate/pulumi-twingate/sdk/v3
+module github.com/Twingate/pulumi-twingate/sdk/v4
 
 go 1.24.0
 
