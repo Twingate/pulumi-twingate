@@ -3,7 +3,7 @@ module github.com/Twingate/pulumi-twingate/provider
 go 1.25.6
 
 require (
-	github.com/Twingate/terraform-provider-twingate/v4 v4.0.1
+	github.com/Twingate/terraform-provider-twingate/v4 v4.0.2
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.123.0
 	github.com/pulumi/pulumi/sdk/v3 v3.225.1
 )
@@ -98,9 +98,9 @@ require (
 	github.com/hashicorp/hcl/v2 v2.24.0 // indirect
 	github.com/hashicorp/hil v0.0.0-20241119142051-4415e05c565c // indirect
 	github.com/hashicorp/logutils v1.0.0 // indirect
-	github.com/hashicorp/terraform-plugin-framework v1.17.0 // indirect
+	github.com/hashicorp/terraform-plugin-framework v1.18.0 // indirect
 	github.com/hashicorp/terraform-plugin-framework-validators v0.19.0 // indirect
-	github.com/hashicorp/terraform-plugin-go v0.29.0 // indirect
+	github.com/hashicorp/terraform-plugin-go v0.30.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.10.0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.38.1 // indirect
 	github.com/hashicorp/terraform-registry-address v0.4.0 // indirect
