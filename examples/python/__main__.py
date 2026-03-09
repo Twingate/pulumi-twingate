@@ -122,7 +122,7 @@ for connector in connectors:
     print(f"Connector ID: {connector.remote_network_id}, Name: {connector.name}")
 
 # Create a Twingate DNS Filtering Profile
-example_profile = tg.TwingateDNSFilteringProfile("exampleProfile",
+example_profile = tg.TwingateDNSFilteringProfile("exampleProfilePY",
     name="PY Pulumi DNS Filtering Profile",
     priority=2,
     fallback_method="AUTO",

@@ -170,7 +170,6 @@ await Deployment.RunAsync(() =>
         Console.WriteLine($"Group ID: {group.Id}");
         Console.WriteLine($"Group Name: {group.Name}");
         Console.WriteLine($"Group Active: {group.IsActive}");
-        Console.WriteLine($"Group Security Policy ID: {group.SecurityPolicyId}");
         Console.WriteLine($"Group Type: {group.Type}");
         Console.WriteLine();
     }
