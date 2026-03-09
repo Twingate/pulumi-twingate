@@ -8,7 +8,7 @@ require (
 	github.com/pulumi/pulumi/sdk/v3 v3.245.0
 )
 
-// Uncomment to use local SDK for development/testing
+// Use local SDK for development/testing
 replace github.com/Twingate/pulumi-twingate/sdk/v4 => ../../sdk
 
 require (
