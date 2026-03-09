@@ -16,7 +16,7 @@
     -->
     <ProjectReference Include="../../sdk/dotnet/Twingate.Twingate.csproj" />
     <!-- Use NuGet package for production -->
-    <!-- <PackageReference Include="Twingate.Twingate" Version="3.7.0" /> -->
+    <!-- <PackageReference Include="Twingate.Twingate" Version="4.0.2" /> -->
   </ItemGroup>
 
   <!-- Comment this out if you are not using a Mac -->

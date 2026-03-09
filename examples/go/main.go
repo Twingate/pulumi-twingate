@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/Twingate/pulumi-twingate/sdk/v3/go/twingate"
+	"github.com/Twingate/pulumi-twingate/sdk/v4/go/twingate"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -163,7 +163,7 @@ func main() {
 		}
 
 		// Create a Twingate DNS Filtering Profile
-		_, err = twingate.NewTwingateDNSFilteringProfile(ctx, "dns_profile", &twingate.TwingateDNSFilteringProfileArgs{
+		_, err = twingate.NewTwingateDNSFilteringProfile(ctx, "exampleProfileGo", &twingate.TwingateDNSFilteringProfileArgs{
 			Name:           pulumi.String("Go Pulumi DNS Filtering Profile"),
 			Priority:       pulumi.Float64(2),
 			FallbackMethod: pulumi.String("AUTO"),

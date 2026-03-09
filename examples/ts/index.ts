@@ -124,7 +124,7 @@ result.then((value) => {
 });
 
 // Create a Twingate DNS Filtering Profile
-const exampleProfile = new tg.TwingateDNSFilteringProfile("exampleProfile", {
+const exampleProfile = new tg.TwingateDNSFilteringProfile("exampleProfileJS", {
     name: "JS Pulumi DNS Filtering Profile",
     priority: 2,
     fallbackMethod: "AUTO",

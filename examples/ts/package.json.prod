@@ -6,7 +6,7 @@
     "dependencies": {
         "@pulumi/pulumi": "^3.112.0",
         // Use published NPM package for production
-        "@twingate/pulumi-twingate": "^3.7.0",
+        "@twingate/pulumi-twingate": "^4.0.2",
         "pulumi": "^0.0.1"
     }
 }
