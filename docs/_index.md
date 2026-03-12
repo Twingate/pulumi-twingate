@@ -160,7 +160,7 @@ for connector in connectors:
 package main
 
 import (
-	"github.com/Twingate/pulumi-twingate/sdk/v3/go/twingate"
+	"github.com/Twingate/pulumi-twingate/sdk/v4/go/twingate"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 

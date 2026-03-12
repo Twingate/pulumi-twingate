@@ -150,14 +150,12 @@ For other platforms, see the [act installation guide](https://github.com/nektos/
 To test a specific workflow job, use:
 
 ```bash
+# List all available jobs
+act --list
+
 # Test the lint workflow
 act pull_request -j lint
 
-# Test all pull request workflows
-act pull_request
-
-# Test push workflows
-act push
 ```
 
 **Note:** The first time you run `act`, it will ask you to choose a Docker image size. Select "Medium" for most workflows.
