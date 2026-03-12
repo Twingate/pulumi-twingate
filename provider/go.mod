@@ -227,6 +227,9 @@ require (
 	lukechampine.com/frand v1.5.1 // indirect
 )
 
+// Use local SDK to avoid v4.0.1+incompatible version mismatch
+replace github.com/Twingate/pulumi-twingate/sdk/v4 => ../sdk
+
 // uncomment to test local changes to terraform-provider-twingate
 //replace github.com/Twingate/terraform-provider-twingate/v4 => ../../terraform-provider-twingate
 
