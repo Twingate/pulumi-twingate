@@ -1,10 +1,10 @@
 module twingate_go_example
 
-go 1.25.6
+go 1.25.8
 
 require (
 	github.com/Twingate/pulumi-twingate/sdk/v4 v4.0.2
-	github.com/pulumi/pulumi/sdk/v3 v3.227.0
+	github.com/pulumi/pulumi/sdk/v3 v3.228.0
 )
 
 // Uncomment to use local SDK for development/testing
