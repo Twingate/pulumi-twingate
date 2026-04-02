@@ -1,11 +1,11 @@
 module github.com/Twingate/pulumi-twingate/provider
 
-go 1.25.6
+go 1.25.8
 
 require (
 	github.com/Twingate/terraform-provider-twingate/v4 v4.0.2
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.123.0
-	github.com/pulumi/pulumi/sdk/v3 v3.226.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.124.0
+	github.com/pulumi/pulumi/sdk/v3 v3.228.0
 )
 
 require (
@@ -65,8 +65,8 @@ require (
 	github.com/fatih/color v1.18.0 // indirect
 	github.com/felixge/httpsnoop v1.0.4 // indirect
 	github.com/go-git/gcfg v1.5.1-0.20230307220236-3a3c6141e376 // indirect
-	github.com/go-git/go-billy/v5 v5.6.2 // indirect
-	github.com/go-git/go-git/v5 v5.16.5 // indirect
+	github.com/go-git/go-billy/v5 v5.8.0 // indirect
+	github.com/go-git/go-git/v5 v5.17.1 // indirect
 	github.com/go-jose/go-jose/v4 v4.1.3 // indirect
 	github.com/go-logr/logr v1.4.3 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
@@ -159,7 +159,7 @@ require (
 	github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.101.2 // indirect
 	github.com/pulumi/pulumi-java/pkg v1.21.2 // indirect
 	github.com/pulumi/pulumi-yaml v1.30.0 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.225.0 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.225.1 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/rogpeppe/go-internal v1.14.1 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
