@@ -110,7 +110,15 @@ func Provider() bridgev3.ProviderInfo {
 			"twingate_dns_filtering_profile": {Tok: bridgev3.MakeResource(mainPkg, mainMod, "TwingateDNSFilteringProfile")},
 			"twingate_group":                 {Tok: bridgev3.MakeResource(mainPkg, mainMod, "TwingateGroup")},
 			"twingate_remote_network":        {Tok: bridgev3.MakeResource(mainPkg, mainMod, "TwingateRemoteNetwork")},
-			"twingate_resource":              {Tok: bridgev3.MakeResource(mainPkg, mainMod, "TwingateResource")},
+			"twingate_resource": {
+				Tok: bridgev3.MakeResource(mainPkg, mainMod, "TwingateResource"),
+				Fields: map[string]*bridgev3.SchemaInfo{
+					// Terraform exposes tags_all as Optional+Computed, which causes perpetual diffs
+					// once provider-level default tags are merged into state. Force it back to
+					// computed-only on the Pulumi side.
+					"tags_all": {MarkAsOptional: bridgev3.False()},
+				},
+			},
 			"twingate_service_account":       {Tok: bridgev3.MakeResource(mainPkg, mainMod, "TwingateServiceAccount")},
 			"twingate_service_account_key":   {Tok: bridgev3.MakeResource(mainPkg, mainMod, "TwingateServiceAccountKey")},
 			"twingate_user":                  {Tok: bridgev3.MakeResource(mainPkg, mainMod, "TwingateUser")},
