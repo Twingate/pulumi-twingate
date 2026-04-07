@@ -65,28 +65,23 @@ __all__ = [
     'GetTwingateResourceProtocolsUdpArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ProviderCacheArgsDict(TypedDict):
-        groups_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether the provider should cache groups. The default value is `true`.
-        """
-        groups_filter: NotRequired[pulumi.Input['ProviderCacheGroupsFilterArgsDict']]
-        """
-        Specifies the filter for the groups to be cached.
-        """
-        resource_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether the provider should cache resources. The default value is `true`.
-        """
-        resources_filter: NotRequired[pulumi.Input['ProviderCacheResourcesFilterArgsDict']]
-        """
-        Specifies the filter for the resources to be cached.
-        """
-elif False:
-    ProviderCacheArgsDict: TypeAlias = Mapping[str, Any]
+class ProviderCacheArgsDict(TypedDict):
+    groups_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether the provider should cache groups. The default value is `true`.
+    """
+    groups_filter: NotRequired[pulumi.Input['ProviderCacheGroupsFilterArgsDict']]
+    """
+    Specifies the filter for the groups to be cached.
+    """
+    resource_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether the provider should cache resources. The default value is `true`.
+    """
+    resources_filter: NotRequired[pulumi.Input['ProviderCacheResourcesFilterArgsDict']]
+    """
+    Specifies the filter for the resources to be cached.
+    """
 
 @pulumi.input_type
 class ProviderCacheArgs:
@@ -159,42 +154,39 @@ class ProviderCacheArgs:
         pulumi.set(self, "resources_filter", value)
 
 
-if not MYPY:
-    class ProviderCacheGroupsFilterArgsDict(TypedDict):
-        is_active: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Returns only Groups matching the specified state.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
-        """
-        name_contains: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Match when the value exist in the name of the group.
-        """
-        name_exclude: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Match when the exact value does not exist in the name of the group.
-        """
-        name_prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the group must start with the value.
-        """
-        name_regexp: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The regular expression match of the name of the group.
-        """
-        name_suffix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the group must end with the value.
-        """
-        types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.
-        """
-elif False:
-    ProviderCacheGroupsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class ProviderCacheGroupsFilterArgsDict(TypedDict):
+    is_active: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Returns only Groups matching the specified state.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+    """
+    name_contains: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Match when the value exist in the name of the group.
+    """
+    name_exclude: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Match when the exact value does not exist in the name of the group.
+    """
+    name_prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the group must start with the value.
+    """
+    name_regexp: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The regular expression match of the name of the group.
+    """
+    name_suffix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the group must end with the value.
+    """
+    types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.
+    """
 
 @pulumi.input_type
 class ProviderCacheGroupsFilterArgs:
@@ -331,38 +323,35 @@ class ProviderCacheGroupsFilterArgs:
         pulumi.set(self, "types", value)
 
 
-if not MYPY:
-    class ProviderCacheResourcesFilterArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
-        """
-        name_contains: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Match when the value exist in the name of the resource.
-        """
-        name_exclude: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Match when the exact value does not exist in the name of the resource.
-        """
-        name_prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the resource must start with the value.
-        """
-        name_regexp: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The regular expression match of the name of the resource.
-        """
-        name_suffix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the resource must end with the value.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Returns only resources that exactly match the given tags.
-        """
-elif False:
-    ProviderCacheResourcesFilterArgsDict: TypeAlias = Mapping[str, Any]
+class ProviderCacheResourcesFilterArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+    """
+    name_contains: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Match when the value exist in the name of the resource.
+    """
+    name_exclude: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Match when the exact value does not exist in the name of the resource.
+    """
+    name_prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the resource must start with the value.
+    """
+    name_regexp: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The regular expression match of the name of the resource.
+    """
+    name_suffix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the resource must end with the value.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Returns only resources that exactly match the given tags.
+    """
 
 @pulumi.input_type
 class ProviderCacheResourcesFilterArgs:
@@ -483,14 +472,11 @@ class ProviderCacheResourcesFilterArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ProviderDefaultTagsArgsDict(TypedDict):
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A map of key-value pair tags to be set on all resources by default.
-        """
-elif False:
-    ProviderDefaultTagsArgsDict: TypeAlias = Mapping[str, Any]
+class ProviderDefaultTagsArgsDict(TypedDict):
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A map of key-value pair tags to be set on all resources by default.
+    """
 
 @pulumi.input_type
 class ProviderDefaultTagsArgs:
@@ -515,18 +501,15 @@ class ProviderDefaultTagsArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class TwingateDNSFilteringProfileAllowedDomainsArgsDict(TypedDict):
-        domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A set of allowed domains. Defaults to an empty set.
-        """
-        is_authoritative: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether Terraform should override changes made outside of Terraform. Defaults to true.
-        """
-elif False:
-    TwingateDNSFilteringProfileAllowedDomainsArgsDict: TypeAlias = Mapping[str, Any]
+class TwingateDNSFilteringProfileAllowedDomainsArgsDict(TypedDict):
+    domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A set of allowed domains. Defaults to an empty set.
+    """
+    is_authoritative: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether Terraform should override changes made outside of Terraform. Defaults to true.
+    """
 
 @pulumi.input_type
 class TwingateDNSFilteringProfileAllowedDomainsArgs:
@@ -567,46 +550,43 @@ class TwingateDNSFilteringProfileAllowedDomainsArgs:
         pulumi.set(self, "is_authoritative", value)
 
 
-if not MYPY:
-    class TwingateDNSFilteringProfileContentCategoriesArgsDict(TypedDict):
-        block_adult_content: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to block adult content. Defaults to false.
-        """
-        block_dating: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to block dating content. Defaults to false.
-        """
-        block_gambling: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to block gambling content. Defaults to false.
-        """
-        block_games: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to block games. Defaults to false.
-        """
-        block_piracy: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to block piracy sites. Defaults to false.
-        """
-        block_social_media: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to block social media. Defaults to false.
-        """
-        block_streaming: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to block streaming content. Defaults to false.
-        """
-        enable_safesearch: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to force safe search. Defaults to false.
-        """
-        enable_youtube_restricted_mode: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to force YouTube to use restricted mode. Defaults to false.
-        """
-elif False:
-    TwingateDNSFilteringProfileContentCategoriesArgsDict: TypeAlias = Mapping[str, Any]
+class TwingateDNSFilteringProfileContentCategoriesArgsDict(TypedDict):
+    block_adult_content: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to block adult content. Defaults to false.
+    """
+    block_dating: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to block dating content. Defaults to false.
+    """
+    block_gambling: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to block gambling content. Defaults to false.
+    """
+    block_games: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to block games. Defaults to false.
+    """
+    block_piracy: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to block piracy sites. Defaults to false.
+    """
+    block_social_media: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to block social media. Defaults to false.
+    """
+    block_streaming: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to block streaming content. Defaults to false.
+    """
+    enable_safesearch: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to force safe search. Defaults to false.
+    """
+    enable_youtube_restricted_mode: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to force YouTube to use restricted mode. Defaults to false.
+    """
 
 @pulumi.input_type
 class TwingateDNSFilteringProfileContentCategoriesArgs:
@@ -759,18 +739,15 @@ class TwingateDNSFilteringProfileContentCategoriesArgs:
         pulumi.set(self, "enable_youtube_restricted_mode", value)
 
 
-if not MYPY:
-    class TwingateDNSFilteringProfileDeniedDomainsArgsDict(TypedDict):
-        domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A set of denied domains. Defaults to an empty set.
-        """
-        is_authoritative: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether Terraform should override changes made outside of Terraform. Defaults to true.
-        """
-elif False:
-    TwingateDNSFilteringProfileDeniedDomainsArgsDict: TypeAlias = Mapping[str, Any]
+class TwingateDNSFilteringProfileDeniedDomainsArgsDict(TypedDict):
+    domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A set of denied domains. Defaults to an empty set.
+    """
+    is_authoritative: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether Terraform should override changes made outside of Terraform. Defaults to true.
+    """
 
 @pulumi.input_type
 class TwingateDNSFilteringProfileDeniedDomainsArgs:
@@ -811,22 +788,19 @@ class TwingateDNSFilteringProfileDeniedDomainsArgs:
         pulumi.set(self, "is_authoritative", value)
 
 
-if not MYPY:
-    class TwingateDNSFilteringProfilePrivacyCategoriesArgsDict(TypedDict):
-        block_ads_and_trackers: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to block ads and trackers. Defaults to false.
-        """
-        block_affiliate_links: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to block affiliate links. Defaults to false.
-        """
-        block_disguised_trackers: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to block disguised third party trackers. Defaults to false.
-        """
-elif False:
-    TwingateDNSFilteringProfilePrivacyCategoriesArgsDict: TypeAlias = Mapping[str, Any]
+class TwingateDNSFilteringProfilePrivacyCategoriesArgsDict(TypedDict):
+    block_ads_and_trackers: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to block ads and trackers. Defaults to false.
+    """
+    block_affiliate_links: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to block affiliate links. Defaults to false.
+    """
+    block_disguised_trackers: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to block disguised third party trackers. Defaults to false.
+    """
 
 @pulumi.input_type
 class TwingateDNSFilteringProfilePrivacyCategoriesArgs:
@@ -883,46 +857,43 @@ class TwingateDNSFilteringProfilePrivacyCategoriesArgs:
         pulumi.set(self, "block_disguised_trackers", value)
 
 
-if not MYPY:
-    class TwingateDNSFilteringProfileSecurityCategoriesArgsDict(TypedDict):
-        block_cryptojacking: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to block cryptojacking sites. Defaults to true.
-        """
-        block_dns_rebinding: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Blocks public DNS entries from returning private IP addresses. Defaults to true.
-        """
-        block_domain_generation_algorithms: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Blocks DGA domains. Defaults to true.
-        """
-        block_idn_homoglyph: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to block homoglyph attacks. Defaults to true.
-        """
-        block_newly_registered_domains: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Blocks newly registered domains. Defaults to true.
-        """
-        block_parked_domains: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Block parked domains. Defaults to true.
-        """
-        block_typosquatting: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Blocks typosquatted domains. Defaults to true.
-        """
-        enable_google_safe_browsing: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to use Google Safe browsing lists to block content. Defaults to true.
-        """
-        enable_threat_intelligence_feeds: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to filter content using threat intelligence feeds. Defaults to true.
-        """
-elif False:
-    TwingateDNSFilteringProfileSecurityCategoriesArgsDict: TypeAlias = Mapping[str, Any]
+class TwingateDNSFilteringProfileSecurityCategoriesArgsDict(TypedDict):
+    block_cryptojacking: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to block cryptojacking sites. Defaults to true.
+    """
+    block_dns_rebinding: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Blocks public DNS entries from returning private IP addresses. Defaults to true.
+    """
+    block_domain_generation_algorithms: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Blocks DGA domains. Defaults to true.
+    """
+    block_idn_homoglyph: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to block homoglyph attacks. Defaults to true.
+    """
+    block_newly_registered_domains: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Blocks newly registered domains. Defaults to true.
+    """
+    block_parked_domains: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Block parked domains. Defaults to true.
+    """
+    block_typosquatting: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Blocks typosquatted domains. Defaults to true.
+    """
+    enable_google_safe_browsing: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to use Google Safe browsing lists to block content. Defaults to true.
+    """
+    enable_threat_intelligence_feeds: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to filter content using threat intelligence feeds. Defaults to true.
+    """
 
 @pulumi.input_type
 class TwingateDNSFilteringProfileSecurityCategoriesArgs:
@@ -1075,22 +1046,19 @@ class TwingateDNSFilteringProfileSecurityCategoriesArgs:
         pulumi.set(self, "enable_threat_intelligence_feeds", value)
 
 
-if not MYPY:
-    class TwingateResourceAccessGroupArgsDict(TypedDict):
-        access_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupAccessPolicyArgsDict']]]]
-        """
-        Restrict access according to JIT access policy
-        """
-        group_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Group ID that will have permission to access the Resource.
-        """
-        security_policy_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
-        """
-elif False:
-    TwingateResourceAccessGroupArgsDict: TypeAlias = Mapping[str, Any]
+class TwingateResourceAccessGroupArgsDict(TypedDict):
+    access_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupAccessPolicyArgsDict']]]]
+    """
+    Restrict access according to JIT access policy
+    """
+    group_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Group ID that will have permission to access the Resource.
+    """
+    security_policy_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
+    """
 
 @pulumi.input_type
 class TwingateResourceAccessGroupArgs:
@@ -1147,22 +1115,19 @@ class TwingateResourceAccessGroupArgs:
         pulumi.set(self, "security_policy_id", value)
 
 
-if not MYPY:
-    class TwingateResourceAccessGroupAccessPolicyArgsDict(TypedDict):
-        approval_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
-        """
-        duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
-        """
-        mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This will set the access_policy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
-        """
-elif False:
-    TwingateResourceAccessGroupAccessPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class TwingateResourceAccessGroupAccessPolicyArgsDict(TypedDict):
+    approval_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+    """
+    duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
+    """
+    mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This will set the access_policy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+    """
 
 @pulumi.input_type
 class TwingateResourceAccessGroupAccessPolicyArgs:
@@ -1219,22 +1184,19 @@ class TwingateResourceAccessGroupAccessPolicyArgs:
         pulumi.set(self, "mode", value)
 
 
-if not MYPY:
-    class TwingateResourceAccessPolicyArgsDict(TypedDict):
-        approval_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
-        """
-        duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
-        """
-        mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This will set the access_policy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
-        """
-elif False:
-    TwingateResourceAccessPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class TwingateResourceAccessPolicyArgsDict(TypedDict):
+    approval_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+    """
+    duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
+    """
+    mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This will set the access_policy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+    """
 
 @pulumi.input_type
 class TwingateResourceAccessPolicyArgs:
@@ -1291,14 +1253,11 @@ class TwingateResourceAccessPolicyArgs:
         pulumi.set(self, "mode", value)
 
 
-if not MYPY:
-    class TwingateResourceAccessServiceArgsDict(TypedDict):
-        service_account_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the service account that should have access to this Resource.
-        """
-elif False:
-    TwingateResourceAccessServiceArgsDict: TypeAlias = Mapping[str, Any]
+class TwingateResourceAccessServiceArgsDict(TypedDict):
+    service_account_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the service account that should have access to this Resource.
+    """
 
 @pulumi.input_type
 class TwingateResourceAccessServiceArgs:
@@ -1323,16 +1282,13 @@ class TwingateResourceAccessServiceArgs:
         pulumi.set(self, "service_account_id", value)
 
 
-if not MYPY:
-    class TwingateResourceProtocolsArgsDict(TypedDict):
-        allow_icmp: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to allow ICMP (ping) traffic
-        """
-        tcp: NotRequired[pulumi.Input['TwingateResourceProtocolsTcpArgsDict']]
-        udp: NotRequired[pulumi.Input['TwingateResourceProtocolsUdpArgsDict']]
-elif False:
-    TwingateResourceProtocolsArgsDict: TypeAlias = Mapping[str, Any]
+class TwingateResourceProtocolsArgsDict(TypedDict):
+    allow_icmp: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to allow ICMP (ping) traffic
+    """
+    tcp: NotRequired[pulumi.Input['TwingateResourceProtocolsTcpArgsDict']]
+    udp: NotRequired[pulumi.Input['TwingateResourceProtocolsUdpArgsDict']]
 
 @pulumi.input_type
 class TwingateResourceProtocolsArgs:
@@ -1381,18 +1337,15 @@ class TwingateResourceProtocolsArgs:
         pulumi.set(self, "udp", value)
 
 
-if not MYPY:
-    class TwingateResourceProtocolsTcpArgsDict(TypedDict):
-        policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
-        """
-        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
-        """
-elif False:
-    TwingateResourceProtocolsTcpArgsDict: TypeAlias = Mapping[str, Any]
+class TwingateResourceProtocolsTcpArgsDict(TypedDict):
+    policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+    """
+    ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+    """
 
 @pulumi.input_type
 class TwingateResourceProtocolsTcpArgs:
@@ -1433,18 +1386,15 @@ class TwingateResourceProtocolsTcpArgs:
         pulumi.set(self, "ports", value)
 
 
-if not MYPY:
-    class TwingateResourceProtocolsUdpArgsDict(TypedDict):
-        policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
-        """
-        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
-        """
-elif False:
-    TwingateResourceProtocolsUdpArgsDict: TypeAlias = Mapping[str, Any]
+class TwingateResourceProtocolsUdpArgsDict(TypedDict):
+    policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+    """
+    ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+    """
 
 @pulumi.input_type
 class TwingateResourceProtocolsUdpArgs:
@@ -1485,14 +1435,11 @@ class TwingateResourceProtocolsUdpArgs:
         pulumi.set(self, "ports", value)
 
 
-if not MYPY:
-    class GetTwingateDNSFilteringProfileAllowedDomainsArgsDict(TypedDict):
-        domains: Sequence[_builtins.str]
-        """
-        A set of allowed domains.
-        """
-elif False:
-    GetTwingateDNSFilteringProfileAllowedDomainsArgsDict: TypeAlias = Mapping[str, Any]
+class GetTwingateDNSFilteringProfileAllowedDomainsArgsDict(TypedDict):
+    domains: Sequence[_builtins.str]
+    """
+    A set of allowed domains.
+    """
 
 @pulumi.input_type
 class GetTwingateDNSFilteringProfileAllowedDomainsArgs:
@@ -1516,46 +1463,43 @@ class GetTwingateDNSFilteringProfileAllowedDomainsArgs:
         pulumi.set(self, "domains", value)
 
 
-if not MYPY:
-    class GetTwingateDNSFilteringProfileContentCategoriesArgsDict(TypedDict):
-        block_adult_content: _builtins.bool
-        """
-        Whether to block adult content.
-        """
-        block_dating: _builtins.bool
-        """
-        Whether to block dating content.
-        """
-        block_gambling: _builtins.bool
-        """
-        Whether to block gambling content.
-        """
-        block_games: _builtins.bool
-        """
-        Whether to block games.
-        """
-        block_piracy: _builtins.bool
-        """
-        Whether to block piracy sites.
-        """
-        block_social_media: _builtins.bool
-        """
-        Whether to block social media.
-        """
-        block_streaming: _builtins.bool
-        """
-        Whether to block streaming content.
-        """
-        enable_safesearch: _builtins.bool
-        """
-        Whether to force safe search.
-        """
-        enable_youtube_restricted_mode: _builtins.bool
-        """
-        Whether to force YouTube to use restricted mode.
-        """
-elif False:
-    GetTwingateDNSFilteringProfileContentCategoriesArgsDict: TypeAlias = Mapping[str, Any]
+class GetTwingateDNSFilteringProfileContentCategoriesArgsDict(TypedDict):
+    block_adult_content: _builtins.bool
+    """
+    Whether to block adult content.
+    """
+    block_dating: _builtins.bool
+    """
+    Whether to block dating content.
+    """
+    block_gambling: _builtins.bool
+    """
+    Whether to block gambling content.
+    """
+    block_games: _builtins.bool
+    """
+    Whether to block games.
+    """
+    block_piracy: _builtins.bool
+    """
+    Whether to block piracy sites.
+    """
+    block_social_media: _builtins.bool
+    """
+    Whether to block social media.
+    """
+    block_streaming: _builtins.bool
+    """
+    Whether to block streaming content.
+    """
+    enable_safesearch: _builtins.bool
+    """
+    Whether to force safe search.
+    """
+    enable_youtube_restricted_mode: _builtins.bool
+    """
+    Whether to force YouTube to use restricted mode.
+    """
 
 @pulumi.input_type
 class GetTwingateDNSFilteringProfileContentCategoriesArgs:
@@ -1699,14 +1643,11 @@ class GetTwingateDNSFilteringProfileContentCategoriesArgs:
         pulumi.set(self, "enable_youtube_restricted_mode", value)
 
 
-if not MYPY:
-    class GetTwingateDNSFilteringProfileDeniedDomainsArgsDict(TypedDict):
-        domains: Sequence[_builtins.str]
-        """
-        A set of denied domains.
-        """
-elif False:
-    GetTwingateDNSFilteringProfileDeniedDomainsArgsDict: TypeAlias = Mapping[str, Any]
+class GetTwingateDNSFilteringProfileDeniedDomainsArgsDict(TypedDict):
+    domains: Sequence[_builtins.str]
+    """
+    A set of denied domains.
+    """
 
 @pulumi.input_type
 class GetTwingateDNSFilteringProfileDeniedDomainsArgs:
@@ -1730,22 +1671,19 @@ class GetTwingateDNSFilteringProfileDeniedDomainsArgs:
         pulumi.set(self, "domains", value)
 
 
-if not MYPY:
-    class GetTwingateDNSFilteringProfilePrivacyCategoriesArgsDict(TypedDict):
-        block_ads_and_trackers: _builtins.bool
-        """
-        Whether to block ads and trackers.
-        """
-        block_affiliate_links: _builtins.bool
-        """
-        Whether to block affiliate links.
-        """
-        block_disguised_trackers: _builtins.bool
-        """
-        Whether to block disguised third party trackers.
-        """
-elif False:
-    GetTwingateDNSFilteringProfilePrivacyCategoriesArgsDict: TypeAlias = Mapping[str, Any]
+class GetTwingateDNSFilteringProfilePrivacyCategoriesArgsDict(TypedDict):
+    block_ads_and_trackers: _builtins.bool
+    """
+    Whether to block ads and trackers.
+    """
+    block_affiliate_links: _builtins.bool
+    """
+    Whether to block affiliate links.
+    """
+    block_disguised_trackers: _builtins.bool
+    """
+    Whether to block disguised third party trackers.
+    """
 
 @pulumi.input_type
 class GetTwingateDNSFilteringProfilePrivacyCategoriesArgs:
@@ -1799,46 +1737,43 @@ class GetTwingateDNSFilteringProfilePrivacyCategoriesArgs:
         pulumi.set(self, "block_disguised_trackers", value)
 
 
-if not MYPY:
-    class GetTwingateDNSFilteringProfileSecurityCategoriesArgsDict(TypedDict):
-        block_cryptojacking: _builtins.bool
-        """
-        Whether to block cryptojacking sites.
-        """
-        block_dns_rebinding: _builtins.bool
-        """
-        Blocks public DNS entries from returning private IP addresses.
-        """
-        block_domain_generation_algorithms: _builtins.bool
-        """
-        Blocks DGA domains.
-        """
-        block_idn_homoglyph: _builtins.bool
-        """
-        Whether to block homoglyph attacks.
-        """
-        block_newly_registered_domains: _builtins.bool
-        """
-        Blocks newly registered domains.
-        """
-        block_parked_domains: _builtins.bool
-        """
-        Block parked domains.
-        """
-        block_typosquatting: _builtins.bool
-        """
-        Blocks typosquatted domains.
-        """
-        enable_google_safe_browsing: _builtins.bool
-        """
-        Whether to use Google Safe browsing lists to block content.
-        """
-        enable_threat_intelligence_feeds: _builtins.bool
-        """
-        Whether to filter content using threat intelligence feeds.
-        """
-elif False:
-    GetTwingateDNSFilteringProfileSecurityCategoriesArgsDict: TypeAlias = Mapping[str, Any]
+class GetTwingateDNSFilteringProfileSecurityCategoriesArgsDict(TypedDict):
+    block_cryptojacking: _builtins.bool
+    """
+    Whether to block cryptojacking sites.
+    """
+    block_dns_rebinding: _builtins.bool
+    """
+    Blocks public DNS entries from returning private IP addresses.
+    """
+    block_domain_generation_algorithms: _builtins.bool
+    """
+    Blocks DGA domains.
+    """
+    block_idn_homoglyph: _builtins.bool
+    """
+    Whether to block homoglyph attacks.
+    """
+    block_newly_registered_domains: _builtins.bool
+    """
+    Blocks newly registered domains.
+    """
+    block_parked_domains: _builtins.bool
+    """
+    Block parked domains.
+    """
+    block_typosquatting: _builtins.bool
+    """
+    Blocks typosquatted domains.
+    """
+    enable_google_safe_browsing: _builtins.bool
+    """
+    Whether to use Google Safe browsing lists to block content.
+    """
+    enable_threat_intelligence_feeds: _builtins.bool
+    """
+    Whether to filter content using threat intelligence feeds.
+    """
 
 @pulumi.input_type
 class GetTwingateDNSFilteringProfileSecurityCategoriesArgs:
@@ -1982,16 +1917,13 @@ class GetTwingateDNSFilteringProfileSecurityCategoriesArgs:
         pulumi.set(self, "enable_threat_intelligence_feeds", value)
 
 
-if not MYPY:
-    class GetTwingateResourceProtocolsArgsDict(TypedDict):
-        allow_icmp: _builtins.bool
-        """
-        Whether to allow ICMP (ping) traffic
-        """
-        tcp: NotRequired['GetTwingateResourceProtocolsTcpArgsDict']
-        udp: NotRequired['GetTwingateResourceProtocolsUdpArgsDict']
-elif False:
-    GetTwingateResourceProtocolsArgsDict: TypeAlias = Mapping[str, Any]
+class GetTwingateResourceProtocolsArgsDict(TypedDict):
+    allow_icmp: _builtins.bool
+    """
+    Whether to allow ICMP (ping) traffic
+    """
+    tcp: NotRequired['GetTwingateResourceProtocolsTcpArgsDict']
+    udp: NotRequired['GetTwingateResourceProtocolsUdpArgsDict']
 
 @pulumi.input_type
 class GetTwingateResourceProtocolsArgs:
@@ -2039,18 +1971,15 @@ class GetTwingateResourceProtocolsArgs:
         pulumi.set(self, "udp", value)
 
 
-if not MYPY:
-    class GetTwingateResourceProtocolsTcpArgsDict(TypedDict):
-        policy: _builtins.str
-        """
-        Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
-        """
-        ports: Sequence[_builtins.str]
-        """
-        List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
-        """
-elif False:
-    GetTwingateResourceProtocolsTcpArgsDict: TypeAlias = Mapping[str, Any]
+class GetTwingateResourceProtocolsTcpArgsDict(TypedDict):
+    policy: _builtins.str
+    """
+    Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+    """
+    ports: Sequence[_builtins.str]
+    """
+    List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+    """
 
 @pulumi.input_type
 class GetTwingateResourceProtocolsTcpArgs:
@@ -2089,18 +2018,15 @@ class GetTwingateResourceProtocolsTcpArgs:
         pulumi.set(self, "ports", value)
 
 
-if not MYPY:
-    class GetTwingateResourceProtocolsUdpArgsDict(TypedDict):
-        policy: _builtins.str
-        """
-        Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
-        """
-        ports: Sequence[_builtins.str]
-        """
-        List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
-        """
-elif False:
-    GetTwingateResourceProtocolsUdpArgsDict: TypeAlias = Mapping[str, Any]
+class GetTwingateResourceProtocolsUdpArgsDict(TypedDict):
+    policy: _builtins.str
+    """
+    Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+    """
+    ports: Sequence[_builtins.str]
+    """
+    List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+    """
 
 @pulumi.input_type
 class GetTwingateResourceProtocolsUdpArgs:

@@ -532,7 +532,7 @@
                 },
                 "mode": {
                     "type": "string",
-                    "description": "This will set the\u003cspan pulumi-lang-nodejs=\" accessPolicy \" pulumi-lang-dotnet=\" AccessPolicy \" pulumi-lang-go=\" accessPolicy \" pulumi-lang-python=\" access_policy \" pulumi-lang-yaml=\" accessPolicy \" pulumi-lang-java=\" accessPolicy \"\u003e access_policy \u003c/span\u003emode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.\n"
+                    "description": "This will set the\u003cspan pulumi-lang-nodejs=\" accessPolicy \" pulumi-lang-dotnet=\" AccessPolicy \" pulumi-lang-go=\" accessPolicy \" pulumi-lang-python=\" access_policy \" pulumi-lang-yaml=\" accessPolicy \" pulumi-lang-java=\" accessPolicy \"\u003e accessPolicy \u003c/span\u003emode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.\n"
                 }
             },
             "type": "object",
@@ -558,7 +558,7 @@
                 },
                 "mode": {
                     "type": "string",
-                    "description": "This will set the\u003cspan pulumi-lang-nodejs=\" accessPolicy \" pulumi-lang-dotnet=\" AccessPolicy \" pulumi-lang-go=\" accessPolicy \" pulumi-lang-python=\" access_policy \" pulumi-lang-yaml=\" accessPolicy \" pulumi-lang-java=\" accessPolicy \"\u003e access_policy \u003c/span\u003emode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.\n"
+                    "description": "This will set the\u003cspan pulumi-lang-nodejs=\" accessPolicy \" pulumi-lang-dotnet=\" AccessPolicy \" pulumi-lang-go=\" accessPolicy \" pulumi-lang-python=\" access_policy \" pulumi-lang-yaml=\" accessPolicy \" pulumi-lang-java=\" accessPolicy \"\u003e accessPolicy \u003c/span\u003emode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.\n"
                 }
             },
             "type": "object",
