@@ -24,6 +24,7 @@ class TwingateGroupArgs:
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a TwingateGroup resource.
+
         :param pulumi.Input[_builtins.bool] is_authoritative: Determines whether User assignments to this Group will override any existing assignments. Default is `true`. If set to `false`, assignments made outside of Terraform will be ignored.
         :param pulumi.Input[_builtins.str] name: The name of the group
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_ids: List of User IDs that have permission to access the Group.
@@ -80,6 +81,7 @@ class _TwingateGroupState:
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering TwingateGroup resources.
+
         :param pulumi.Input[_builtins.bool] is_authoritative: Determines whether User assignments to this Group will override any existing assignments. Default is `true`. If set to `false`, assignments made outside of Terraform will be ignored.
         :param pulumi.Input[_builtins.str] name: The name of the group
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_ids: List of User IDs that have permission to access the Group.
@@ -156,6 +158,7 @@ class TwingateGroup(pulumi.CustomResource):
         $ pulumi import twingate:index/twingateGroup:TwingateGroup aws R3JvdXA6MzQ4OTE=
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] is_authoritative: Determines whether User assignments to this Group will override any existing assignments. Default is `true`. If set to `false`, assignments made outside of Terraform will be ignored.
@@ -185,6 +188,7 @@ class TwingateGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import twingate:index/twingateGroup:TwingateGroup aws R3JvdXA6MzQ4OTE=
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TwingateGroupArgs args: The arguments to use to populate this resource's properties.

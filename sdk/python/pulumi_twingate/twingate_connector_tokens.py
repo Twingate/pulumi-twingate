@@ -23,6 +23,7 @@ class TwingateConnectorTokensArgs:
                  keepers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a TwingateConnectorTokens resource.
+
         :param pulumi.Input[_builtins.str] connector_id: The ID of the parent Connector
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] keepers: Arbitrary map of values that, when changed, will trigger recreation of resource. Use this to automatically rotate Connector tokens on a schedule.
         """
@@ -64,6 +65,7 @@ class _TwingateConnectorTokensState:
                  refresh_token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TwingateConnectorTokens resources.
+
         :param pulumi.Input[_builtins.str] access_token: The Access Token of the parent Connector
         :param pulumi.Input[_builtins.str] connector_id: The ID of the parent Connector
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] keepers: Arbitrary map of values that, when changed, will trigger recreation of resource. Use this to automatically rotate Connector tokens on a schedule.
@@ -150,6 +152,7 @@ class TwingateConnectorTokens(pulumi.CustomResource):
         aws_connector_tokens = twingate.TwingateConnectorTokens("aws_connector_tokens", connector_id=aws_connector.id)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connector_id: The ID of the parent Connector
@@ -174,6 +177,7 @@ class TwingateConnectorTokens(pulumi.CustomResource):
         aws_connector = twingate.TwingateConnector("aws_connector", remote_network_id=aws_network.id)
         aws_connector_tokens = twingate.TwingateConnectorTokens("aws_connector_tokens", connector_id=aws_connector.id)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TwingateConnectorTokensArgs args: The arguments to use to populate this resource's properties.

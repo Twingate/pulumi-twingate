@@ -22,6 +22,7 @@ class TwingateServiceAccountArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TwingateServiceAccount resource.
+
         :param pulumi.Input[_builtins.str] name: The name of the Service Account in Twingate
         """
         if name is not None:
@@ -46,6 +47,7 @@ class _TwingateServiceAccountState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TwingateServiceAccount resources.
+
         :param pulumi.Input[_builtins.str] name: The name of the Service Account in Twingate
         """
         if name is not None:
@@ -84,6 +86,7 @@ class TwingateServiceAccount(pulumi.CustomResource):
         github_actions_prod = twingate.TwingateServiceAccount("github_actions_prod", name="Github Actions PROD")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The name of the Service Account in Twingate
@@ -105,6 +108,7 @@ class TwingateServiceAccount(pulumi.CustomResource):
 
         github_actions_prod = twingate.TwingateServiceAccount("github_actions_prod", name="Github Actions PROD")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TwingateServiceAccountArgs args: The arguments to use to populate this resource's properties.
