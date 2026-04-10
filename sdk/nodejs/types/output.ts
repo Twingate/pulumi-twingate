@@ -450,6 +450,210 @@ export interface TwingateDNSFilteringProfileSecurityCategories {
     enableThreatIntelligenceFeeds: boolean;
 }
 
+export interface TwingateGatewayConfigKubernetes {
+    /**
+     * List of Kubernetes resources. Accepts full twingate*kubernetes*resource references.
+     */
+    resources?: outputs.TwingateGatewayConfigKubernetesResource[];
+}
+
+export interface TwingateGatewayConfigKubernetesResource {
+    address: string;
+    inCluster: boolean;
+    name: string;
+}
+
+export interface TwingateGatewayConfigSsh {
+    /**
+     * SSH CA configuration. Specify either vault.address or private*key*file, not both.
+     */
+    ca: outputs.TwingateGatewayConfigSshCa;
+    /**
+     * SSH gateway settings. All fields are optional and fall back to built-in defaults.
+     */
+    gateway: outputs.TwingateGatewayConfigSshGateway;
+    /**
+     * List of SSH resources. Accepts full twingate*ssh*resource references.
+     */
+    resources?: outputs.TwingateGatewayConfigSshResource[];
+}
+
+export interface TwingateGatewayConfigSshCa {
+    /**
+     * Path to the SSH CA private key file. Can't be used together with vault.address.
+     */
+    privateKeyFile?: string;
+    /**
+     * Vault SSH CA configuration.
+     */
+    vault: outputs.TwingateGatewayConfigSshCaVault;
+}
+
+export interface TwingateGatewayConfigSshCaVault {
+    /**
+     * Vault server address. Can't be used together with ca.private*key*file.
+     */
+    address?: string;
+    /**
+     * Vault authentication configuration.
+     */
+    auth: outputs.TwingateGatewayConfigSshCaVaultAuth;
+    /**
+     * Path to the Vault CA bundle file. Default: "/etc/ssl/vault-ca.crt".
+     */
+    caBundleFile: string;
+    /**
+     * Vault SSH secrets engine mount path. Default: "ssh".
+     */
+    mount: string;
+    /**
+     * Vault role for signing certificates. Default: "gateway".
+     */
+    role: string;
+}
+
+export interface TwingateGatewayConfigSshCaVaultAuth {
+    /**
+     * GCP authentication for Vault. Can't be used together with token.
+     */
+    gcp: outputs.TwingateGatewayConfigSshCaVaultAuthGcp;
+    /**
+     * Vault token used for authentication. Can't be used together with gcp.
+     */
+    token?: string;
+}
+
+export interface TwingateGatewayConfigSshCaVaultAuthGcp {
+    /**
+     * Vault GCP auth mount path. Default: "gcp".
+     */
+    mount: string;
+    /**
+     * GCP IAM role for Vault GCP authentication.
+     */
+    role?: string;
+    /**
+     * Service account email. Required when type is "iam".
+     */
+    serviceAccountEmail?: string;
+    /**
+     * GCP authentication type for Vault (e.g. "iam" or "gce"). When set to "iam", service*account*email is required.
+     */
+    type?: string;
+}
+
+export interface TwingateGatewayConfigSshGateway {
+    /**
+     * Host certificate TTL. Default: "24h".
+     */
+    hostCertTtl: string;
+    /**
+     * SSH key type. Default: "ed25519".
+     */
+    keyType: string;
+    /**
+     * User certificate TTL. Default: "5m".
+     */
+    userCertTtl: string;
+    /**
+     * SSH gateway username. Default: "gateway".
+     */
+    username: string;
+}
+
+export interface TwingateGatewayConfigSshResource {
+    address: string;
+    name: string;
+    username: string;
+}
+
+export interface TwingateGatewayConfigTls {
+    /**
+     * Path to the TLS certificate file. Default: "/etc/gateway/tls.crt".
+     */
+    certificateFile: string;
+    /**
+     * Path to the TLS private key file. Default: "/etc/gateway/tls.key".
+     */
+    privateKeyFile: string;
+}
+
+export interface TwingateKubernetesResourceAccessGroup {
+    /**
+     * Restrict access according to JIT access policy
+     */
+    accessPolicies?: outputs.TwingateKubernetesResourceAccessGroupAccessPolicy[];
+    /**
+     * Group ID that will have permission to access the Resource.
+     */
+    groupId: string;
+    /**
+     * The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
+     */
+    securityPolicyId: string;
+}
+
+export interface TwingateKubernetesResourceAccessGroupAccessPolicy {
+    /**
+     * This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+     */
+    approvalMode: string;
+    /**
+     * This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+     */
+    duration: string;
+    /**
+     * This will set the accessPolicy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+     */
+    mode: string;
+}
+
+export interface TwingateKubernetesResourceAccessPolicy {
+    /**
+     * This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+     */
+    approvalMode: string;
+    /**
+     * This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+     */
+    duration: string;
+    /**
+     * This will set the accessPolicy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+     */
+    mode: string;
+}
+
+export interface TwingateKubernetesResourceProtocols {
+    /**
+     * Whether to allow ICMP (ping) traffic
+     */
+    allowIcmp: boolean;
+    tcp: outputs.TwingateKubernetesResourceProtocolsTcp;
+    udp: outputs.TwingateKubernetesResourceProtocolsUdp;
+}
+
+export interface TwingateKubernetesResourceProtocolsTcp {
+    /**
+     * Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+     */
+    policy: string;
+    /**
+     * List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+     */
+    ports: string[];
+}
+
+export interface TwingateKubernetesResourceProtocolsUdp {
+    /**
+     * Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+     */
+    policy: string;
+    /**
+     * List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+     */
+    ports: string[];
+}
+
 export interface TwingateResourceAccessGroup {
     /**
      * Restrict access according to JIT access policy
@@ -467,30 +671,30 @@ export interface TwingateResourceAccessGroup {
 
 export interface TwingateResourceAccessGroupAccessPolicy {
     /**
-     * This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+     * This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
      */
     approvalMode: string;
     /**
-     * This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
+     * This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
      */
     duration: string;
     /**
-     * This will set the accessPolicy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+     * This will set the accessPolicy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
      */
     mode: string;
 }
 
 export interface TwingateResourceAccessPolicy {
     /**
-     * This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+     * This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
      */
     approvalMode: string;
     /**
-     * This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
+     * This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
      */
     duration: string;
     /**
-     * This will set the accessPolicy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+     * This will set the accessPolicy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
      */
     mode: string;
 }
@@ -523,6 +727,82 @@ export interface TwingateResourceProtocolsTcp {
 }
 
 export interface TwingateResourceProtocolsUdp {
+    /**
+     * Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+     */
+    policy: string;
+    /**
+     * List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+     */
+    ports: string[];
+}
+
+export interface TwingateSSHResourceAccessGroup {
+    /**
+     * Restrict access according to JIT access policy
+     */
+    accessPolicies?: outputs.TwingateSSHResourceAccessGroupAccessPolicy[];
+    /**
+     * Group ID that will have permission to access the Resource.
+     */
+    groupId: string;
+    /**
+     * The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
+     */
+    securityPolicyId: string;
+}
+
+export interface TwingateSSHResourceAccessGroupAccessPolicy {
+    /**
+     * This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+     */
+    approvalMode: string;
+    /**
+     * This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+     */
+    duration: string;
+    /**
+     * This will set the accessPolicy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+     */
+    mode: string;
+}
+
+export interface TwingateSSHResourceAccessPolicy {
+    /**
+     * This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+     */
+    approvalMode: string;
+    /**
+     * This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+     */
+    duration: string;
+    /**
+     * This will set the accessPolicy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+     */
+    mode: string;
+}
+
+export interface TwingateSSHResourceProtocols {
+    /**
+     * Whether to allow ICMP (ping) traffic
+     */
+    allowIcmp: boolean;
+    tcp: outputs.TwingateSSHResourceProtocolsTcp;
+    udp: outputs.TwingateSSHResourceProtocolsUdp;
+}
+
+export interface TwingateSSHResourceProtocolsTcp {
+    /**
+     * Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+     */
+    policy: string;
+    /**
+     * List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+     */
+    ports: string[];
+}
+
+export interface TwingateSSHResourceProtocolsUdp {
     /**
      * Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
      */

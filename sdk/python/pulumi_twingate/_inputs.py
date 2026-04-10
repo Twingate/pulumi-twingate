@@ -33,6 +33,38 @@ __all__ = [
     'TwingateDNSFilteringProfilePrivacyCategoriesArgsDict',
     'TwingateDNSFilteringProfileSecurityCategoriesArgs',
     'TwingateDNSFilteringProfileSecurityCategoriesArgsDict',
+    'TwingateGatewayConfigKubernetesArgs',
+    'TwingateGatewayConfigKubernetesArgsDict',
+    'TwingateGatewayConfigKubernetesResourceArgs',
+    'TwingateGatewayConfigKubernetesResourceArgsDict',
+    'TwingateGatewayConfigSshArgs',
+    'TwingateGatewayConfigSshArgsDict',
+    'TwingateGatewayConfigSshCaArgs',
+    'TwingateGatewayConfigSshCaArgsDict',
+    'TwingateGatewayConfigSshCaVaultArgs',
+    'TwingateGatewayConfigSshCaVaultArgsDict',
+    'TwingateGatewayConfigSshCaVaultAuthArgs',
+    'TwingateGatewayConfigSshCaVaultAuthArgsDict',
+    'TwingateGatewayConfigSshCaVaultAuthGcpArgs',
+    'TwingateGatewayConfigSshCaVaultAuthGcpArgsDict',
+    'TwingateGatewayConfigSshGatewayArgs',
+    'TwingateGatewayConfigSshGatewayArgsDict',
+    'TwingateGatewayConfigSshResourceArgs',
+    'TwingateGatewayConfigSshResourceArgsDict',
+    'TwingateGatewayConfigTlsArgs',
+    'TwingateGatewayConfigTlsArgsDict',
+    'TwingateKubernetesResourceAccessGroupArgs',
+    'TwingateKubernetesResourceAccessGroupArgsDict',
+    'TwingateKubernetesResourceAccessGroupAccessPolicyArgs',
+    'TwingateKubernetesResourceAccessGroupAccessPolicyArgsDict',
+    'TwingateKubernetesResourceAccessPolicyArgs',
+    'TwingateKubernetesResourceAccessPolicyArgsDict',
+    'TwingateKubernetesResourceProtocolsArgs',
+    'TwingateKubernetesResourceProtocolsArgsDict',
+    'TwingateKubernetesResourceProtocolsTcpArgs',
+    'TwingateKubernetesResourceProtocolsTcpArgsDict',
+    'TwingateKubernetesResourceProtocolsUdpArgs',
+    'TwingateKubernetesResourceProtocolsUdpArgsDict',
     'TwingateResourceAccessGroupArgs',
     'TwingateResourceAccessGroupArgsDict',
     'TwingateResourceAccessGroupAccessPolicyArgs',
@@ -47,6 +79,18 @@ __all__ = [
     'TwingateResourceProtocolsTcpArgsDict',
     'TwingateResourceProtocolsUdpArgs',
     'TwingateResourceProtocolsUdpArgsDict',
+    'TwingateSSHResourceAccessGroupArgs',
+    'TwingateSSHResourceAccessGroupArgsDict',
+    'TwingateSSHResourceAccessGroupAccessPolicyArgs',
+    'TwingateSSHResourceAccessGroupAccessPolicyArgsDict',
+    'TwingateSSHResourceAccessPolicyArgs',
+    'TwingateSSHResourceAccessPolicyArgsDict',
+    'TwingateSSHResourceProtocolsArgs',
+    'TwingateSSHResourceProtocolsArgsDict',
+    'TwingateSSHResourceProtocolsTcpArgs',
+    'TwingateSSHResourceProtocolsTcpArgsDict',
+    'TwingateSSHResourceProtocolsUdpArgs',
+    'TwingateSSHResourceProtocolsUdpArgsDict',
     'GetTwingateDNSFilteringProfileAllowedDomainsArgs',
     'GetTwingateDNSFilteringProfileAllowedDomainsArgsDict',
     'GetTwingateDNSFilteringProfileContentCategoriesArgs',
@@ -65,28 +109,23 @@ __all__ = [
     'GetTwingateResourceProtocolsUdpArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ProviderCacheArgsDict(TypedDict):
-        groups_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether the provider should cache groups. The default value is `true`.
-        """
-        groups_filter: NotRequired[pulumi.Input['ProviderCacheGroupsFilterArgsDict']]
-        """
-        Specifies the filter for the groups to be cached.
-        """
-        resource_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether the provider should cache resources. The default value is `true`.
-        """
-        resources_filter: NotRequired[pulumi.Input['ProviderCacheResourcesFilterArgsDict']]
-        """
-        Specifies the filter for the resources to be cached.
-        """
-elif False:
-    ProviderCacheArgsDict: TypeAlias = Mapping[str, Any]
+class ProviderCacheArgsDict(TypedDict):
+    groups_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether the provider should cache groups. The default value is `true`.
+    """
+    groups_filter: NotRequired[pulumi.Input['ProviderCacheGroupsFilterArgsDict']]
+    """
+    Specifies the filter for the groups to be cached.
+    """
+    resource_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether the provider should cache resources. The default value is `true`.
+    """
+    resources_filter: NotRequired[pulumi.Input['ProviderCacheResourcesFilterArgsDict']]
+    """
+    Specifies the filter for the resources to be cached.
+    """
 
 @pulumi.input_type
 class ProviderCacheArgs:
@@ -159,42 +198,39 @@ class ProviderCacheArgs:
         pulumi.set(self, "resources_filter", value)
 
 
-if not MYPY:
-    class ProviderCacheGroupsFilterArgsDict(TypedDict):
-        is_active: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Returns only Groups matching the specified state.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
-        """
-        name_contains: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Match when the value exist in the name of the group.
-        """
-        name_exclude: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Match when the exact value does not exist in the name of the group.
-        """
-        name_prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the group must start with the value.
-        """
-        name_regexp: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The regular expression match of the name of the group.
-        """
-        name_suffix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the group must end with the value.
-        """
-        types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.
-        """
-elif False:
-    ProviderCacheGroupsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class ProviderCacheGroupsFilterArgsDict(TypedDict):
+    is_active: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Returns only Groups matching the specified state.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+    """
+    name_contains: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Match when the value exist in the name of the group.
+    """
+    name_exclude: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Match when the exact value does not exist in the name of the group.
+    """
+    name_prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the group must start with the value.
+    """
+    name_regexp: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The regular expression match of the name of the group.
+    """
+    name_suffix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the group must end with the value.
+    """
+    types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.
+    """
 
 @pulumi.input_type
 class ProviderCacheGroupsFilterArgs:
@@ -331,38 +367,35 @@ class ProviderCacheGroupsFilterArgs:
         pulumi.set(self, "types", value)
 
 
-if not MYPY:
-    class ProviderCacheResourcesFilterArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
-        """
-        name_contains: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Match when the value exist in the name of the resource.
-        """
-        name_exclude: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Match when the exact value does not exist in the name of the resource.
-        """
-        name_prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the resource must start with the value.
-        """
-        name_regexp: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The regular expression match of the name of the resource.
-        """
-        name_suffix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the resource must end with the value.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Returns only resources that exactly match the given tags.
-        """
-elif False:
-    ProviderCacheResourcesFilterArgsDict: TypeAlias = Mapping[str, Any]
+class ProviderCacheResourcesFilterArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
+    """
+    name_contains: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Match when the value exist in the name of the resource.
+    """
+    name_exclude: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Match when the exact value does not exist in the name of the resource.
+    """
+    name_prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the resource must start with the value.
+    """
+    name_regexp: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The regular expression match of the name of the resource.
+    """
+    name_suffix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the resource must end with the value.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Returns only resources that exactly match the given tags.
+    """
 
 @pulumi.input_type
 class ProviderCacheResourcesFilterArgs:
@@ -483,14 +516,11 @@ class ProviderCacheResourcesFilterArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ProviderDefaultTagsArgsDict(TypedDict):
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A map of key-value pair tags to be set on all resources by default.
-        """
-elif False:
-    ProviderDefaultTagsArgsDict: TypeAlias = Mapping[str, Any]
+class ProviderDefaultTagsArgsDict(TypedDict):
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A map of key-value pair tags to be set on all resources by default.
+    """
 
 @pulumi.input_type
 class ProviderDefaultTagsArgs:
@@ -515,18 +545,15 @@ class ProviderDefaultTagsArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class TwingateDNSFilteringProfileAllowedDomainsArgsDict(TypedDict):
-        domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A set of allowed domains. Defaults to an empty set.
-        """
-        is_authoritative: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether Terraform should override changes made outside of Terraform. Defaults to true.
-        """
-elif False:
-    TwingateDNSFilteringProfileAllowedDomainsArgsDict: TypeAlias = Mapping[str, Any]
+class TwingateDNSFilteringProfileAllowedDomainsArgsDict(TypedDict):
+    domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A set of allowed domains. Defaults to an empty set.
+    """
+    is_authoritative: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether Terraform should override changes made outside of Terraform. Defaults to true.
+    """
 
 @pulumi.input_type
 class TwingateDNSFilteringProfileAllowedDomainsArgs:
@@ -567,46 +594,43 @@ class TwingateDNSFilteringProfileAllowedDomainsArgs:
         pulumi.set(self, "is_authoritative", value)
 
 
-if not MYPY:
-    class TwingateDNSFilteringProfileContentCategoriesArgsDict(TypedDict):
-        block_adult_content: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to block adult content. Defaults to false.
-        """
-        block_dating: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to block dating content. Defaults to false.
-        """
-        block_gambling: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to block gambling content. Defaults to false.
-        """
-        block_games: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to block games. Defaults to false.
-        """
-        block_piracy: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to block piracy sites. Defaults to false.
-        """
-        block_social_media: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to block social media. Defaults to false.
-        """
-        block_streaming: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to block streaming content. Defaults to false.
-        """
-        enable_safesearch: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to force safe search. Defaults to false.
-        """
-        enable_youtube_restricted_mode: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to force YouTube to use restricted mode. Defaults to false.
-        """
-elif False:
-    TwingateDNSFilteringProfileContentCategoriesArgsDict: TypeAlias = Mapping[str, Any]
+class TwingateDNSFilteringProfileContentCategoriesArgsDict(TypedDict):
+    block_adult_content: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to block adult content. Defaults to false.
+    """
+    block_dating: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to block dating content. Defaults to false.
+    """
+    block_gambling: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to block gambling content. Defaults to false.
+    """
+    block_games: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to block games. Defaults to false.
+    """
+    block_piracy: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to block piracy sites. Defaults to false.
+    """
+    block_social_media: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to block social media. Defaults to false.
+    """
+    block_streaming: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to block streaming content. Defaults to false.
+    """
+    enable_safesearch: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to force safe search. Defaults to false.
+    """
+    enable_youtube_restricted_mode: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to force YouTube to use restricted mode. Defaults to false.
+    """
 
 @pulumi.input_type
 class TwingateDNSFilteringProfileContentCategoriesArgs:
@@ -759,18 +783,15 @@ class TwingateDNSFilteringProfileContentCategoriesArgs:
         pulumi.set(self, "enable_youtube_restricted_mode", value)
 
 
-if not MYPY:
-    class TwingateDNSFilteringProfileDeniedDomainsArgsDict(TypedDict):
-        domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A set of denied domains. Defaults to an empty set.
-        """
-        is_authoritative: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether Terraform should override changes made outside of Terraform. Defaults to true.
-        """
-elif False:
-    TwingateDNSFilteringProfileDeniedDomainsArgsDict: TypeAlias = Mapping[str, Any]
+class TwingateDNSFilteringProfileDeniedDomainsArgsDict(TypedDict):
+    domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A set of denied domains. Defaults to an empty set.
+    """
+    is_authoritative: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether Terraform should override changes made outside of Terraform. Defaults to true.
+    """
 
 @pulumi.input_type
 class TwingateDNSFilteringProfileDeniedDomainsArgs:
@@ -811,22 +832,19 @@ class TwingateDNSFilteringProfileDeniedDomainsArgs:
         pulumi.set(self, "is_authoritative", value)
 
 
-if not MYPY:
-    class TwingateDNSFilteringProfilePrivacyCategoriesArgsDict(TypedDict):
-        block_ads_and_trackers: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to block ads and trackers. Defaults to false.
-        """
-        block_affiliate_links: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to block affiliate links. Defaults to false.
-        """
-        block_disguised_trackers: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to block disguised third party trackers. Defaults to false.
-        """
-elif False:
-    TwingateDNSFilteringProfilePrivacyCategoriesArgsDict: TypeAlias = Mapping[str, Any]
+class TwingateDNSFilteringProfilePrivacyCategoriesArgsDict(TypedDict):
+    block_ads_and_trackers: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to block ads and trackers. Defaults to false.
+    """
+    block_affiliate_links: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to block affiliate links. Defaults to false.
+    """
+    block_disguised_trackers: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to block disguised third party trackers. Defaults to false.
+    """
 
 @pulumi.input_type
 class TwingateDNSFilteringProfilePrivacyCategoriesArgs:
@@ -883,46 +901,43 @@ class TwingateDNSFilteringProfilePrivacyCategoriesArgs:
         pulumi.set(self, "block_disguised_trackers", value)
 
 
-if not MYPY:
-    class TwingateDNSFilteringProfileSecurityCategoriesArgsDict(TypedDict):
-        block_cryptojacking: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to block cryptojacking sites. Defaults to true.
-        """
-        block_dns_rebinding: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Blocks public DNS entries from returning private IP addresses. Defaults to true.
-        """
-        block_domain_generation_algorithms: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Blocks DGA domains. Defaults to true.
-        """
-        block_idn_homoglyph: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to block homoglyph attacks. Defaults to true.
-        """
-        block_newly_registered_domains: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Blocks newly registered domains. Defaults to true.
-        """
-        block_parked_domains: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Block parked domains. Defaults to true.
-        """
-        block_typosquatting: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Blocks typosquatted domains. Defaults to true.
-        """
-        enable_google_safe_browsing: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to use Google Safe browsing lists to block content. Defaults to true.
-        """
-        enable_threat_intelligence_feeds: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to filter content using threat intelligence feeds. Defaults to true.
-        """
-elif False:
-    TwingateDNSFilteringProfileSecurityCategoriesArgsDict: TypeAlias = Mapping[str, Any]
+class TwingateDNSFilteringProfileSecurityCategoriesArgsDict(TypedDict):
+    block_cryptojacking: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to block cryptojacking sites. Defaults to true.
+    """
+    block_dns_rebinding: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Blocks public DNS entries from returning private IP addresses. Defaults to true.
+    """
+    block_domain_generation_algorithms: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Blocks DGA domains. Defaults to true.
+    """
+    block_idn_homoglyph: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to block homoglyph attacks. Defaults to true.
+    """
+    block_newly_registered_domains: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Blocks newly registered domains. Defaults to true.
+    """
+    block_parked_domains: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Block parked domains. Defaults to true.
+    """
+    block_typosquatting: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Blocks typosquatted domains. Defaults to true.
+    """
+    enable_google_safe_browsing: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to use Google Safe browsing lists to block content. Defaults to true.
+    """
+    enable_threat_intelligence_feeds: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to filter content using threat intelligence feeds. Defaults to true.
+    """
 
 @pulumi.input_type
 class TwingateDNSFilteringProfileSecurityCategoriesArgs:
@@ -1075,22 +1090,997 @@ class TwingateDNSFilteringProfileSecurityCategoriesArgs:
         pulumi.set(self, "enable_threat_intelligence_feeds", value)
 
 
-if not MYPY:
-    class TwingateResourceAccessGroupArgsDict(TypedDict):
-        access_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupAccessPolicyArgsDict']]]]
+class TwingateGatewayConfigKubernetesArgsDict(TypedDict):
+    resources: NotRequired[pulumi.Input[Sequence[pulumi.Input['TwingateGatewayConfigKubernetesResourceArgsDict']]]]
+    """
+    List of Kubernetes resources. Accepts full twingate*kubernetes*resource references.
+    """
+
+@pulumi.input_type
+class TwingateGatewayConfigKubernetesArgs:
+    def __init__(__self__, *,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateGatewayConfigKubernetesResourceArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['TwingateGatewayConfigKubernetesResourceArgs']]] resources: List of Kubernetes resources. Accepts full twingate*kubernetes*resource references.
+        """
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+
+    @_builtins.property
+    @pulumi.getter
+    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TwingateGatewayConfigKubernetesResourceArgs']]]]:
+        """
+        List of Kubernetes resources. Accepts full twingate*kubernetes*resource references.
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateGatewayConfigKubernetesResourceArgs']]]]):
+        pulumi.set(self, "resources", value)
+
+
+class TwingateGatewayConfigKubernetesResourceArgsDict(TypedDict):
+    address: pulumi.Input[_builtins.str]
+    in_cluster: pulumi.Input[_builtins.bool]
+    name: pulumi.Input[_builtins.str]
+
+@pulumi.input_type
+class TwingateGatewayConfigKubernetesResourceArgs:
+    def __init__(__self__, *,
+                 address: pulumi.Input[_builtins.str],
+                 in_cluster: pulumi.Input[_builtins.bool],
+                 name: pulumi.Input[_builtins.str]):
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "in_cluster", in_cluster)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inCluster")
+    def in_cluster(self) -> pulumi.Input[_builtins.bool]:
+        return pulumi.get(self, "in_cluster")
+
+    @in_cluster.setter
+    def in_cluster(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "in_cluster", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+
+class TwingateGatewayConfigSshArgsDict(TypedDict):
+    ca: NotRequired[pulumi.Input['TwingateGatewayConfigSshCaArgsDict']]
+    """
+    SSH CA configuration. Specify either vault.address or private*key*file, not both.
+    """
+    gateway: NotRequired[pulumi.Input['TwingateGatewayConfigSshGatewayArgsDict']]
+    """
+    SSH gateway settings. All fields are optional and fall back to built-in defaults.
+    """
+    resources: NotRequired[pulumi.Input[Sequence[pulumi.Input['TwingateGatewayConfigSshResourceArgsDict']]]]
+    """
+    List of SSH resources. Accepts full twingate*ssh*resource references.
+    """
+
+@pulumi.input_type
+class TwingateGatewayConfigSshArgs:
+    def __init__(__self__, *,
+                 ca: Optional[pulumi.Input['TwingateGatewayConfigSshCaArgs']] = None,
+                 gateway: Optional[pulumi.Input['TwingateGatewayConfigSshGatewayArgs']] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateGatewayConfigSshResourceArgs']]]] = None):
+        """
+        :param pulumi.Input['TwingateGatewayConfigSshCaArgs'] ca: SSH CA configuration. Specify either vault.address or private*key*file, not both.
+        :param pulumi.Input['TwingateGatewayConfigSshGatewayArgs'] gateway: SSH gateway settings. All fields are optional and fall back to built-in defaults.
+        :param pulumi.Input[Sequence[pulumi.Input['TwingateGatewayConfigSshResourceArgs']]] resources: List of SSH resources. Accepts full twingate*ssh*resource references.
+        """
+        if ca is not None:
+            pulumi.set(__self__, "ca", ca)
+        if gateway is not None:
+            pulumi.set(__self__, "gateway", gateway)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+
+    @_builtins.property
+    @pulumi.getter
+    def ca(self) -> Optional[pulumi.Input['TwingateGatewayConfigSshCaArgs']]:
+        """
+        SSH CA configuration. Specify either vault.address or private*key*file, not both.
+        """
+        return pulumi.get(self, "ca")
+
+    @ca.setter
+    def ca(self, value: Optional[pulumi.Input['TwingateGatewayConfigSshCaArgs']]):
+        pulumi.set(self, "ca", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def gateway(self) -> Optional[pulumi.Input['TwingateGatewayConfigSshGatewayArgs']]:
+        """
+        SSH gateway settings. All fields are optional and fall back to built-in defaults.
+        """
+        return pulumi.get(self, "gateway")
+
+    @gateway.setter
+    def gateway(self, value: Optional[pulumi.Input['TwingateGatewayConfigSshGatewayArgs']]):
+        pulumi.set(self, "gateway", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TwingateGatewayConfigSshResourceArgs']]]]:
+        """
+        List of SSH resources. Accepts full twingate*ssh*resource references.
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateGatewayConfigSshResourceArgs']]]]):
+        pulumi.set(self, "resources", value)
+
+
+class TwingateGatewayConfigSshCaArgsDict(TypedDict):
+    private_key_file: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Path to the SSH CA private key file. Can't be used together with vault.address.
+    """
+    vault: NotRequired[pulumi.Input['TwingateGatewayConfigSshCaVaultArgsDict']]
+    """
+    Vault SSH CA configuration.
+    """
+
+@pulumi.input_type
+class TwingateGatewayConfigSshCaArgs:
+    def __init__(__self__, *,
+                 private_key_file: Optional[pulumi.Input[_builtins.str]] = None,
+                 vault: Optional[pulumi.Input['TwingateGatewayConfigSshCaVaultArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] private_key_file: Path to the SSH CA private key file. Can't be used together with vault.address.
+        :param pulumi.Input['TwingateGatewayConfigSshCaVaultArgs'] vault: Vault SSH CA configuration.
+        """
+        if private_key_file is not None:
+            pulumi.set(__self__, "private_key_file", private_key_file)
+        if vault is not None:
+            pulumi.set(__self__, "vault", vault)
+
+    @_builtins.property
+    @pulumi.getter(name="privateKeyFile")
+    def private_key_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Path to the SSH CA private key file. Can't be used together with vault.address.
+        """
+        return pulumi.get(self, "private_key_file")
+
+    @private_key_file.setter
+    def private_key_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "private_key_file", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def vault(self) -> Optional[pulumi.Input['TwingateGatewayConfigSshCaVaultArgs']]:
+        """
+        Vault SSH CA configuration.
+        """
+        return pulumi.get(self, "vault")
+
+    @vault.setter
+    def vault(self, value: Optional[pulumi.Input['TwingateGatewayConfigSshCaVaultArgs']]):
+        pulumi.set(self, "vault", value)
+
+
+class TwingateGatewayConfigSshCaVaultArgsDict(TypedDict):
+    address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Vault server address. Can't be used together with ca.private*key*file.
+    """
+    auth: NotRequired[pulumi.Input['TwingateGatewayConfigSshCaVaultAuthArgsDict']]
+    """
+    Vault authentication configuration.
+    """
+    ca_bundle_file: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Path to the Vault CA bundle file. Default: "/etc/ssl/vault-ca.crt".
+    """
+    mount: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Vault SSH secrets engine mount path. Default: "ssh".
+    """
+    role: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Vault role for signing certificates. Default: "gateway".
+    """
+
+@pulumi.input_type
+class TwingateGatewayConfigSshCaVaultArgs:
+    def __init__(__self__, *,
+                 address: Optional[pulumi.Input[_builtins.str]] = None,
+                 auth: Optional[pulumi.Input['TwingateGatewayConfigSshCaVaultAuthArgs']] = None,
+                 ca_bundle_file: Optional[pulumi.Input[_builtins.str]] = None,
+                 mount: Optional[pulumi.Input[_builtins.str]] = None,
+                 role: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] address: Vault server address. Can't be used together with ca.private*key*file.
+        :param pulumi.Input['TwingateGatewayConfigSshCaVaultAuthArgs'] auth: Vault authentication configuration.
+        :param pulumi.Input[_builtins.str] ca_bundle_file: Path to the Vault CA bundle file. Default: "/etc/ssl/vault-ca.crt".
+        :param pulumi.Input[_builtins.str] mount: Vault SSH secrets engine mount path. Default: "ssh".
+        :param pulumi.Input[_builtins.str] role: Vault role for signing certificates. Default: "gateway".
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if auth is not None:
+            pulumi.set(__self__, "auth", auth)
+        if ca_bundle_file is not None:
+            pulumi.set(__self__, "ca_bundle_file", ca_bundle_file)
+        if mount is not None:
+            pulumi.set(__self__, "mount", mount)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Vault server address. Can't be used together with ca.private*key*file.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "address", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def auth(self) -> Optional[pulumi.Input['TwingateGatewayConfigSshCaVaultAuthArgs']]:
+        """
+        Vault authentication configuration.
+        """
+        return pulumi.get(self, "auth")
+
+    @auth.setter
+    def auth(self, value: Optional[pulumi.Input['TwingateGatewayConfigSshCaVaultAuthArgs']]):
+        pulumi.set(self, "auth", value)
+
+    @_builtins.property
+    @pulumi.getter(name="caBundleFile")
+    def ca_bundle_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Path to the Vault CA bundle file. Default: "/etc/ssl/vault-ca.crt".
+        """
+        return pulumi.get(self, "ca_bundle_file")
+
+    @ca_bundle_file.setter
+    def ca_bundle_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ca_bundle_file", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def mount(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Vault SSH secrets engine mount path. Default: "ssh".
+        """
+        return pulumi.get(self, "mount")
+
+    @mount.setter
+    def mount(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "mount", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Vault role for signing certificates. Default: "gateway".
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "role", value)
+
+
+class TwingateGatewayConfigSshCaVaultAuthArgsDict(TypedDict):
+    gcp: NotRequired[pulumi.Input['TwingateGatewayConfigSshCaVaultAuthGcpArgsDict']]
+    """
+    GCP authentication for Vault. Can't be used together with token.
+    """
+    token: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Vault token used for authentication. Can't be used together with gcp.
+    """
+
+@pulumi.input_type
+class TwingateGatewayConfigSshCaVaultAuthArgs:
+    def __init__(__self__, *,
+                 gcp: Optional[pulumi.Input['TwingateGatewayConfigSshCaVaultAuthGcpArgs']] = None,
+                 token: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input['TwingateGatewayConfigSshCaVaultAuthGcpArgs'] gcp: GCP authentication for Vault. Can't be used together with token.
+        :param pulumi.Input[_builtins.str] token: Vault token used for authentication. Can't be used together with gcp.
+        """
+        if gcp is not None:
+            pulumi.set(__self__, "gcp", gcp)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+
+    @_builtins.property
+    @pulumi.getter
+    def gcp(self) -> Optional[pulumi.Input['TwingateGatewayConfigSshCaVaultAuthGcpArgs']]:
+        """
+        GCP authentication for Vault. Can't be used together with token.
+        """
+        return pulumi.get(self, "gcp")
+
+    @gcp.setter
+    def gcp(self, value: Optional[pulumi.Input['TwingateGatewayConfigSshCaVaultAuthGcpArgs']]):
+        pulumi.set(self, "gcp", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Vault token used for authentication. Can't be used together with gcp.
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "token", value)
+
+
+class TwingateGatewayConfigSshCaVaultAuthGcpArgsDict(TypedDict):
+    mount: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Vault GCP auth mount path. Default: "gcp".
+    """
+    role: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    GCP IAM role for Vault GCP authentication.
+    """
+    service_account_email: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Service account email. Required when type is "iam".
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    GCP authentication type for Vault (e.g. "iam" or "gce"). When set to "iam", service*account*email is required.
+    """
+
+@pulumi.input_type
+class TwingateGatewayConfigSshCaVaultAuthGcpArgs:
+    def __init__(__self__, *,
+                 mount: Optional[pulumi.Input[_builtins.str]] = None,
+                 role: Optional[pulumi.Input[_builtins.str]] = None,
+                 service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] mount: Vault GCP auth mount path. Default: "gcp".
+        :param pulumi.Input[_builtins.str] role: GCP IAM role for Vault GCP authentication.
+        :param pulumi.Input[_builtins.str] service_account_email: Service account email. Required when type is "iam".
+        :param pulumi.Input[_builtins.str] type: GCP authentication type for Vault (e.g. "iam" or "gce"). When set to "iam", service*account*email is required.
+        """
+        if mount is not None:
+            pulumi.set(__self__, "mount", mount)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+        if service_account_email is not None:
+            pulumi.set(__self__, "service_account_email", service_account_email)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def mount(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Vault GCP auth mount path. Default: "gcp".
+        """
+        return pulumi.get(self, "mount")
+
+    @mount.setter
+    def mount(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "mount", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        GCP IAM role for Vault GCP authentication.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "role", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Service account email. Required when type is "iam".
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @service_account_email.setter
+    def service_account_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service_account_email", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        GCP authentication type for Vault (e.g. "iam" or "gce"). When set to "iam", service*account*email is required.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+class TwingateGatewayConfigSshGatewayArgsDict(TypedDict):
+    host_cert_ttl: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Host certificate TTL. Default: "24h".
+    """
+    key_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    SSH key type. Default: "ed25519".
+    """
+    user_cert_ttl: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    User certificate TTL. Default: "5m".
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    SSH gateway username. Default: "gateway".
+    """
+
+@pulumi.input_type
+class TwingateGatewayConfigSshGatewayArgs:
+    def __init__(__self__, *,
+                 host_cert_ttl: Optional[pulumi.Input[_builtins.str]] = None,
+                 key_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 user_cert_ttl: Optional[pulumi.Input[_builtins.str]] = None,
+                 username: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] host_cert_ttl: Host certificate TTL. Default: "24h".
+        :param pulumi.Input[_builtins.str] key_type: SSH key type. Default: "ed25519".
+        :param pulumi.Input[_builtins.str] user_cert_ttl: User certificate TTL. Default: "5m".
+        :param pulumi.Input[_builtins.str] username: SSH gateway username. Default: "gateway".
+        """
+        if host_cert_ttl is not None:
+            pulumi.set(__self__, "host_cert_ttl", host_cert_ttl)
+        if key_type is not None:
+            pulumi.set(__self__, "key_type", key_type)
+        if user_cert_ttl is not None:
+            pulumi.set(__self__, "user_cert_ttl", user_cert_ttl)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter(name="hostCertTtl")
+    def host_cert_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Host certificate TTL. Default: "24h".
+        """
+        return pulumi.get(self, "host_cert_ttl")
+
+    @host_cert_ttl.setter
+    def host_cert_ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "host_cert_ttl", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keyType")
+    def key_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        SSH key type. Default: "ed25519".
+        """
+        return pulumi.get(self, "key_type")
+
+    @key_type.setter
+    def key_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="userCertTtl")
+    def user_cert_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        User certificate TTL. Default: "5m".
+        """
+        return pulumi.get(self, "user_cert_ttl")
+
+    @user_cert_ttl.setter
+    def user_cert_ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "user_cert_ttl", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        SSH gateway username. Default: "gateway".
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "username", value)
+
+
+class TwingateGatewayConfigSshResourceArgsDict(TypedDict):
+    address: pulumi.Input[_builtins.str]
+    name: pulumi.Input[_builtins.str]
+    username: pulumi.Input[_builtins.str]
+
+@pulumi.input_type
+class TwingateGatewayConfigSshResourceArgs:
+    def __init__(__self__, *,
+                 address: pulumi.Input[_builtins.str],
+                 name: pulumi.Input[_builtins.str],
+                 username: pulumi.Input[_builtins.str]):
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "address", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "username", value)
+
+
+class TwingateGatewayConfigTlsArgsDict(TypedDict):
+    certificate_file: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Path to the TLS certificate file. Default: "/etc/gateway/tls.crt".
+    """
+    private_key_file: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Path to the TLS private key file. Default: "/etc/gateway/tls.key".
+    """
+
+@pulumi.input_type
+class TwingateGatewayConfigTlsArgs:
+    def __init__(__self__, *,
+                 certificate_file: Optional[pulumi.Input[_builtins.str]] = None,
+                 private_key_file: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] certificate_file: Path to the TLS certificate file. Default: "/etc/gateway/tls.crt".
+        :param pulumi.Input[_builtins.str] private_key_file: Path to the TLS private key file. Default: "/etc/gateway/tls.key".
+        """
+        if certificate_file is not None:
+            pulumi.set(__self__, "certificate_file", certificate_file)
+        if private_key_file is not None:
+            pulumi.set(__self__, "private_key_file", private_key_file)
+
+    @_builtins.property
+    @pulumi.getter(name="certificateFile")
+    def certificate_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Path to the TLS certificate file. Default: "/etc/gateway/tls.crt".
+        """
+        return pulumi.get(self, "certificate_file")
+
+    @certificate_file.setter
+    def certificate_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "certificate_file", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privateKeyFile")
+    def private_key_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Path to the TLS private key file. Default: "/etc/gateway/tls.key".
+        """
+        return pulumi.get(self, "private_key_file")
+
+    @private_key_file.setter
+    def private_key_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "private_key_file", value)
+
+
+class TwingateKubernetesResourceAccessGroupArgsDict(TypedDict):
+    access_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['TwingateKubernetesResourceAccessGroupAccessPolicyArgsDict']]]]
+    """
+    Restrict access according to JIT access policy
+    """
+    group_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Group ID that will have permission to access the Resource.
+    """
+    security_policy_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
+    """
+
+@pulumi.input_type
+class TwingateKubernetesResourceAccessGroupArgs:
+    def __init__(__self__, *,
+                 access_policies: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateKubernetesResourceAccessGroupAccessPolicyArgs']]]] = None,
+                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 security_policy_id: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['TwingateKubernetesResourceAccessGroupAccessPolicyArgs']]] access_policies: Restrict access according to JIT access policy
+        :param pulumi.Input[_builtins.str] group_id: Group ID that will have permission to access the Resource.
+        :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
+        """
+        if access_policies is not None:
+            pulumi.set(__self__, "access_policies", access_policies)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if security_policy_id is not None:
+            pulumi.set(__self__, "security_policy_id", security_policy_id)
+
+    @_builtins.property
+    @pulumi.getter(name="accessPolicies")
+    def access_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TwingateKubernetesResourceAccessGroupAccessPolicyArgs']]]]:
         """
         Restrict access according to JIT access policy
         """
-        group_id: NotRequired[pulumi.Input[_builtins.str]]
+        return pulumi.get(self, "access_policies")
+
+    @access_policies.setter
+    def access_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateKubernetesResourceAccessGroupAccessPolicyArgs']]]]):
+        pulumi.set(self, "access_policies", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Group ID that will have permission to access the Resource.
         """
-        security_policy_id: NotRequired[pulumi.Input[_builtins.str]]
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "group_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="securityPolicyId")
+    def security_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
         """
-elif False:
-    TwingateResourceAccessGroupArgsDict: TypeAlias = Mapping[str, Any]
+        return pulumi.get(self, "security_policy_id")
+
+    @security_policy_id.setter
+    def security_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "security_policy_id", value)
+
+
+class TwingateKubernetesResourceAccessGroupAccessPolicyArgsDict(TypedDict):
+    approval_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+    """
+    duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+    """
+    mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+    """
+
+@pulumi.input_type
+class TwingateKubernetesResourceAccessGroupAccessPolicyArgs:
+    def __init__(__self__, *,
+                 approval_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 duration: Optional[pulumi.Input[_builtins.str]] = None,
+                 mode: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] approval_mode: This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+        :param pulumi.Input[_builtins.str] duration: This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+        :param pulumi.Input[_builtins.str] mode: This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        """
+        if approval_mode is not None:
+            pulumi.set(__self__, "approval_mode", approval_mode)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @_builtins.property
+    @pulumi.getter(name="approvalMode")
+    def approval_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+        """
+        return pulumi.get(self, "approval_mode")
+
+    @approval_mode.setter
+    def approval_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "approval_mode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "duration", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "mode", value)
+
+
+class TwingateKubernetesResourceAccessPolicyArgsDict(TypedDict):
+    approval_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+    """
+    duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+    """
+    mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+    """
+
+@pulumi.input_type
+class TwingateKubernetesResourceAccessPolicyArgs:
+    def __init__(__self__, *,
+                 approval_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 duration: Optional[pulumi.Input[_builtins.str]] = None,
+                 mode: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] approval_mode: This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+        :param pulumi.Input[_builtins.str] duration: This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+        :param pulumi.Input[_builtins.str] mode: This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        """
+        if approval_mode is not None:
+            pulumi.set(__self__, "approval_mode", approval_mode)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @_builtins.property
+    @pulumi.getter(name="approvalMode")
+    def approval_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+        """
+        return pulumi.get(self, "approval_mode")
+
+    @approval_mode.setter
+    def approval_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "approval_mode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "duration", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "mode", value)
+
+
+class TwingateKubernetesResourceProtocolsArgsDict(TypedDict):
+    allow_icmp: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to allow ICMP (ping) traffic
+    """
+    tcp: NotRequired[pulumi.Input['TwingateKubernetesResourceProtocolsTcpArgsDict']]
+    udp: NotRequired[pulumi.Input['TwingateKubernetesResourceProtocolsUdpArgsDict']]
+
+@pulumi.input_type
+class TwingateKubernetesResourceProtocolsArgs:
+    def __init__(__self__, *,
+                 allow_icmp: Optional[pulumi.Input[_builtins.bool]] = None,
+                 tcp: Optional[pulumi.Input['TwingateKubernetesResourceProtocolsTcpArgs']] = None,
+                 udp: Optional[pulumi.Input['TwingateKubernetesResourceProtocolsUdpArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.bool] allow_icmp: Whether to allow ICMP (ping) traffic
+        """
+        if allow_icmp is not None:
+            pulumi.set(__self__, "allow_icmp", allow_icmp)
+        if tcp is not None:
+            pulumi.set(__self__, "tcp", tcp)
+        if udp is not None:
+            pulumi.set(__self__, "udp", udp)
+
+    @_builtins.property
+    @pulumi.getter(name="allowIcmp")
+    def allow_icmp(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to allow ICMP (ping) traffic
+        """
+        return pulumi.get(self, "allow_icmp")
+
+    @allow_icmp.setter
+    def allow_icmp(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "allow_icmp", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tcp(self) -> Optional[pulumi.Input['TwingateKubernetesResourceProtocolsTcpArgs']]:
+        return pulumi.get(self, "tcp")
+
+    @tcp.setter
+    def tcp(self, value: Optional[pulumi.Input['TwingateKubernetesResourceProtocolsTcpArgs']]):
+        pulumi.set(self, "tcp", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def udp(self) -> Optional[pulumi.Input['TwingateKubernetesResourceProtocolsUdpArgs']]:
+        return pulumi.get(self, "udp")
+
+    @udp.setter
+    def udp(self, value: Optional[pulumi.Input['TwingateKubernetesResourceProtocolsUdpArgs']]):
+        pulumi.set(self, "udp", value)
+
+
+class TwingateKubernetesResourceProtocolsTcpArgsDict(TypedDict):
+    policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+    """
+    ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+    """
+
+@pulumi.input_type
+class TwingateKubernetesResourceProtocolsTcpArgs:
+    def __init__(__self__, *,
+                 policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] policy: Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ports: List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "policy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+        """
+        return pulumi.get(self, "ports")
+
+    @ports.setter
+    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "ports", value)
+
+
+class TwingateKubernetesResourceProtocolsUdpArgsDict(TypedDict):
+    policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+    """
+    ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+    """
+
+@pulumi.input_type
+class TwingateKubernetesResourceProtocolsUdpArgs:
+    def __init__(__self__, *,
+                 policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] policy: Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ports: List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "policy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+        """
+        return pulumi.get(self, "ports")
+
+    @ports.setter
+    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "ports", value)
+
+
+class TwingateResourceAccessGroupArgsDict(TypedDict):
+    access_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupAccessPolicyArgsDict']]]]
+    """
+    Restrict access according to JIT access policy
+    """
+    group_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Group ID that will have permission to access the Resource.
+    """
+    security_policy_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
+    """
 
 @pulumi.input_type
 class TwingateResourceAccessGroupArgs:
@@ -1147,22 +2137,19 @@ class TwingateResourceAccessGroupArgs:
         pulumi.set(self, "security_policy_id", value)
 
 
-if not MYPY:
-    class TwingateResourceAccessGroupAccessPolicyArgsDict(TypedDict):
-        approval_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
-        """
-        duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
-        """
-        mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This will set the access_policy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
-        """
-elif False:
-    TwingateResourceAccessGroupAccessPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class TwingateResourceAccessGroupAccessPolicyArgsDict(TypedDict):
+    approval_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+    """
+    duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+    """
+    mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+    """
 
 @pulumi.input_type
 class TwingateResourceAccessGroupAccessPolicyArgs:
@@ -1171,9 +2158,9 @@ class TwingateResourceAccessGroupAccessPolicyArgs:
                  duration: Optional[pulumi.Input[_builtins.str]] = None,
                  mode: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] approval_mode: This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
-        :param pulumi.Input[_builtins.str] duration: This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
-        :param pulumi.Input[_builtins.str] mode: This will set the access_policy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        :param pulumi.Input[_builtins.str] approval_mode: This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+        :param pulumi.Input[_builtins.str] duration: This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+        :param pulumi.Input[_builtins.str] mode: This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
         """
         if approval_mode is not None:
             pulumi.set(__self__, "approval_mode", approval_mode)
@@ -1186,7 +2173,7 @@ class TwingateResourceAccessGroupAccessPolicyArgs:
     @pulumi.getter(name="approvalMode")
     def approval_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+        This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
         """
         return pulumi.get(self, "approval_mode")
 
@@ -1198,7 +2185,7 @@ class TwingateResourceAccessGroupAccessPolicyArgs:
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
+        This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
         """
         return pulumi.get(self, "duration")
 
@@ -1210,7 +2197,7 @@ class TwingateResourceAccessGroupAccessPolicyArgs:
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        This will set the access_policy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
         """
         return pulumi.get(self, "mode")
 
@@ -1219,22 +2206,19 @@ class TwingateResourceAccessGroupAccessPolicyArgs:
         pulumi.set(self, "mode", value)
 
 
-if not MYPY:
-    class TwingateResourceAccessPolicyArgsDict(TypedDict):
-        approval_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
-        """
-        duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
-        """
-        mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This will set the access_policy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
-        """
-elif False:
-    TwingateResourceAccessPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class TwingateResourceAccessPolicyArgsDict(TypedDict):
+    approval_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+    """
+    duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+    """
+    mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+    """
 
 @pulumi.input_type
 class TwingateResourceAccessPolicyArgs:
@@ -1243,9 +2227,9 @@ class TwingateResourceAccessPolicyArgs:
                  duration: Optional[pulumi.Input[_builtins.str]] = None,
                  mode: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] approval_mode: This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
-        :param pulumi.Input[_builtins.str] duration: This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
-        :param pulumi.Input[_builtins.str] mode: This will set the access_policy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        :param pulumi.Input[_builtins.str] approval_mode: This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+        :param pulumi.Input[_builtins.str] duration: This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+        :param pulumi.Input[_builtins.str] mode: This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
         """
         if approval_mode is not None:
             pulumi.set(__self__, "approval_mode", approval_mode)
@@ -1258,7 +2242,7 @@ class TwingateResourceAccessPolicyArgs:
     @pulumi.getter(name="approvalMode")
     def approval_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+        This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
         """
         return pulumi.get(self, "approval_mode")
 
@@ -1270,7 +2254,7 @@ class TwingateResourceAccessPolicyArgs:
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
+        This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
         """
         return pulumi.get(self, "duration")
 
@@ -1282,7 +2266,7 @@ class TwingateResourceAccessPolicyArgs:
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        This will set the access_policy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
         """
         return pulumi.get(self, "mode")
 
@@ -1291,14 +2275,11 @@ class TwingateResourceAccessPolicyArgs:
         pulumi.set(self, "mode", value)
 
 
-if not MYPY:
-    class TwingateResourceAccessServiceArgsDict(TypedDict):
-        service_account_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the service account that should have access to this Resource.
-        """
-elif False:
-    TwingateResourceAccessServiceArgsDict: TypeAlias = Mapping[str, Any]
+class TwingateResourceAccessServiceArgsDict(TypedDict):
+    service_account_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the service account that should have access to this Resource.
+    """
 
 @pulumi.input_type
 class TwingateResourceAccessServiceArgs:
@@ -1323,16 +2304,13 @@ class TwingateResourceAccessServiceArgs:
         pulumi.set(self, "service_account_id", value)
 
 
-if not MYPY:
-    class TwingateResourceProtocolsArgsDict(TypedDict):
-        allow_icmp: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to allow ICMP (ping) traffic
-        """
-        tcp: NotRequired[pulumi.Input['TwingateResourceProtocolsTcpArgsDict']]
-        udp: NotRequired[pulumi.Input['TwingateResourceProtocolsUdpArgsDict']]
-elif False:
-    TwingateResourceProtocolsArgsDict: TypeAlias = Mapping[str, Any]
+class TwingateResourceProtocolsArgsDict(TypedDict):
+    allow_icmp: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to allow ICMP (ping) traffic
+    """
+    tcp: NotRequired[pulumi.Input['TwingateResourceProtocolsTcpArgsDict']]
+    udp: NotRequired[pulumi.Input['TwingateResourceProtocolsUdpArgsDict']]
 
 @pulumi.input_type
 class TwingateResourceProtocolsArgs:
@@ -1381,18 +2359,15 @@ class TwingateResourceProtocolsArgs:
         pulumi.set(self, "udp", value)
 
 
-if not MYPY:
-    class TwingateResourceProtocolsTcpArgsDict(TypedDict):
-        policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
-        """
-        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
-        """
-elif False:
-    TwingateResourceProtocolsTcpArgsDict: TypeAlias = Mapping[str, Any]
+class TwingateResourceProtocolsTcpArgsDict(TypedDict):
+    policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+    """
+    ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+    """
 
 @pulumi.input_type
 class TwingateResourceProtocolsTcpArgs:
@@ -1433,18 +2408,15 @@ class TwingateResourceProtocolsTcpArgs:
         pulumi.set(self, "ports", value)
 
 
-if not MYPY:
-    class TwingateResourceProtocolsUdpArgsDict(TypedDict):
-        policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
-        """
-        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
-        """
-elif False:
-    TwingateResourceProtocolsUdpArgsDict: TypeAlias = Mapping[str, Any]
+class TwingateResourceProtocolsUdpArgsDict(TypedDict):
+    policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+    """
+    ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+    """
 
 @pulumi.input_type
 class TwingateResourceProtocolsUdpArgs:
@@ -1485,14 +2457,371 @@ class TwingateResourceProtocolsUdpArgs:
         pulumi.set(self, "ports", value)
 
 
-if not MYPY:
-    class GetTwingateDNSFilteringProfileAllowedDomainsArgsDict(TypedDict):
-        domains: Sequence[_builtins.str]
+class TwingateSSHResourceAccessGroupArgsDict(TypedDict):
+    access_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['TwingateSSHResourceAccessGroupAccessPolicyArgsDict']]]]
+    """
+    Restrict access according to JIT access policy
+    """
+    group_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Group ID that will have permission to access the Resource.
+    """
+    security_policy_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
+    """
+
+@pulumi.input_type
+class TwingateSSHResourceAccessGroupArgs:
+    def __init__(__self__, *,
+                 access_policies: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateSSHResourceAccessGroupAccessPolicyArgs']]]] = None,
+                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 security_policy_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        A set of allowed domains.
+        :param pulumi.Input[Sequence[pulumi.Input['TwingateSSHResourceAccessGroupAccessPolicyArgs']]] access_policies: Restrict access according to JIT access policy
+        :param pulumi.Input[_builtins.str] group_id: Group ID that will have permission to access the Resource.
+        :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
         """
-elif False:
-    GetTwingateDNSFilteringProfileAllowedDomainsArgsDict: TypeAlias = Mapping[str, Any]
+        if access_policies is not None:
+            pulumi.set(__self__, "access_policies", access_policies)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if security_policy_id is not None:
+            pulumi.set(__self__, "security_policy_id", security_policy_id)
+
+    @_builtins.property
+    @pulumi.getter(name="accessPolicies")
+    def access_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TwingateSSHResourceAccessGroupAccessPolicyArgs']]]]:
+        """
+        Restrict access according to JIT access policy
+        """
+        return pulumi.get(self, "access_policies")
+
+    @access_policies.setter
+    def access_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateSSHResourceAccessGroupAccessPolicyArgs']]]]):
+        pulumi.set(self, "access_policies", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Group ID that will have permission to access the Resource.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "group_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="securityPolicyId")
+    def security_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
+        """
+        return pulumi.get(self, "security_policy_id")
+
+    @security_policy_id.setter
+    def security_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "security_policy_id", value)
+
+
+class TwingateSSHResourceAccessGroupAccessPolicyArgsDict(TypedDict):
+    approval_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+    """
+    duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+    """
+    mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+    """
+
+@pulumi.input_type
+class TwingateSSHResourceAccessGroupAccessPolicyArgs:
+    def __init__(__self__, *,
+                 approval_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 duration: Optional[pulumi.Input[_builtins.str]] = None,
+                 mode: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] approval_mode: This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+        :param pulumi.Input[_builtins.str] duration: This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+        :param pulumi.Input[_builtins.str] mode: This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        """
+        if approval_mode is not None:
+            pulumi.set(__self__, "approval_mode", approval_mode)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @_builtins.property
+    @pulumi.getter(name="approvalMode")
+    def approval_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+        """
+        return pulumi.get(self, "approval_mode")
+
+    @approval_mode.setter
+    def approval_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "approval_mode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "duration", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "mode", value)
+
+
+class TwingateSSHResourceAccessPolicyArgsDict(TypedDict):
+    approval_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+    """
+    duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+    """
+    mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+    """
+
+@pulumi.input_type
+class TwingateSSHResourceAccessPolicyArgs:
+    def __init__(__self__, *,
+                 approval_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 duration: Optional[pulumi.Input[_builtins.str]] = None,
+                 mode: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] approval_mode: This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+        :param pulumi.Input[_builtins.str] duration: This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+        :param pulumi.Input[_builtins.str] mode: This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        """
+        if approval_mode is not None:
+            pulumi.set(__self__, "approval_mode", approval_mode)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @_builtins.property
+    @pulumi.getter(name="approvalMode")
+    def approval_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+        """
+        return pulumi.get(self, "approval_mode")
+
+    @approval_mode.setter
+    def approval_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "approval_mode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "duration", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "mode", value)
+
+
+class TwingateSSHResourceProtocolsArgsDict(TypedDict):
+    allow_icmp: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to allow ICMP (ping) traffic
+    """
+    tcp: NotRequired[pulumi.Input['TwingateSSHResourceProtocolsTcpArgsDict']]
+    udp: NotRequired[pulumi.Input['TwingateSSHResourceProtocolsUdpArgsDict']]
+
+@pulumi.input_type
+class TwingateSSHResourceProtocolsArgs:
+    def __init__(__self__, *,
+                 allow_icmp: Optional[pulumi.Input[_builtins.bool]] = None,
+                 tcp: Optional[pulumi.Input['TwingateSSHResourceProtocolsTcpArgs']] = None,
+                 udp: Optional[pulumi.Input['TwingateSSHResourceProtocolsUdpArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.bool] allow_icmp: Whether to allow ICMP (ping) traffic
+        """
+        if allow_icmp is not None:
+            pulumi.set(__self__, "allow_icmp", allow_icmp)
+        if tcp is not None:
+            pulumi.set(__self__, "tcp", tcp)
+        if udp is not None:
+            pulumi.set(__self__, "udp", udp)
+
+    @_builtins.property
+    @pulumi.getter(name="allowIcmp")
+    def allow_icmp(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to allow ICMP (ping) traffic
+        """
+        return pulumi.get(self, "allow_icmp")
+
+    @allow_icmp.setter
+    def allow_icmp(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "allow_icmp", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tcp(self) -> Optional[pulumi.Input['TwingateSSHResourceProtocolsTcpArgs']]:
+        return pulumi.get(self, "tcp")
+
+    @tcp.setter
+    def tcp(self, value: Optional[pulumi.Input['TwingateSSHResourceProtocolsTcpArgs']]):
+        pulumi.set(self, "tcp", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def udp(self) -> Optional[pulumi.Input['TwingateSSHResourceProtocolsUdpArgs']]:
+        return pulumi.get(self, "udp")
+
+    @udp.setter
+    def udp(self, value: Optional[pulumi.Input['TwingateSSHResourceProtocolsUdpArgs']]):
+        pulumi.set(self, "udp", value)
+
+
+class TwingateSSHResourceProtocolsTcpArgsDict(TypedDict):
+    policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+    """
+    ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+    """
+
+@pulumi.input_type
+class TwingateSSHResourceProtocolsTcpArgs:
+    def __init__(__self__, *,
+                 policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] policy: Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ports: List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "policy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+        """
+        return pulumi.get(self, "ports")
+
+    @ports.setter
+    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "ports", value)
+
+
+class TwingateSSHResourceProtocolsUdpArgsDict(TypedDict):
+    policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+    """
+    ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+    """
+
+@pulumi.input_type
+class TwingateSSHResourceProtocolsUdpArgs:
+    def __init__(__self__, *,
+                 policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] policy: Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ports: List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "policy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+        """
+        return pulumi.get(self, "ports")
+
+    @ports.setter
+    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "ports", value)
+
+
+class GetTwingateDNSFilteringProfileAllowedDomainsArgsDict(TypedDict):
+    domains: Sequence[_builtins.str]
+    """
+    A set of allowed domains.
+    """
 
 @pulumi.input_type
 class GetTwingateDNSFilteringProfileAllowedDomainsArgs:
@@ -1516,46 +2845,43 @@ class GetTwingateDNSFilteringProfileAllowedDomainsArgs:
         pulumi.set(self, "domains", value)
 
 
-if not MYPY:
-    class GetTwingateDNSFilteringProfileContentCategoriesArgsDict(TypedDict):
-        block_adult_content: _builtins.bool
-        """
-        Whether to block adult content.
-        """
-        block_dating: _builtins.bool
-        """
-        Whether to block dating content.
-        """
-        block_gambling: _builtins.bool
-        """
-        Whether to block gambling content.
-        """
-        block_games: _builtins.bool
-        """
-        Whether to block games.
-        """
-        block_piracy: _builtins.bool
-        """
-        Whether to block piracy sites.
-        """
-        block_social_media: _builtins.bool
-        """
-        Whether to block social media.
-        """
-        block_streaming: _builtins.bool
-        """
-        Whether to block streaming content.
-        """
-        enable_safesearch: _builtins.bool
-        """
-        Whether to force safe search.
-        """
-        enable_youtube_restricted_mode: _builtins.bool
-        """
-        Whether to force YouTube to use restricted mode.
-        """
-elif False:
-    GetTwingateDNSFilteringProfileContentCategoriesArgsDict: TypeAlias = Mapping[str, Any]
+class GetTwingateDNSFilteringProfileContentCategoriesArgsDict(TypedDict):
+    block_adult_content: _builtins.bool
+    """
+    Whether to block adult content.
+    """
+    block_dating: _builtins.bool
+    """
+    Whether to block dating content.
+    """
+    block_gambling: _builtins.bool
+    """
+    Whether to block gambling content.
+    """
+    block_games: _builtins.bool
+    """
+    Whether to block games.
+    """
+    block_piracy: _builtins.bool
+    """
+    Whether to block piracy sites.
+    """
+    block_social_media: _builtins.bool
+    """
+    Whether to block social media.
+    """
+    block_streaming: _builtins.bool
+    """
+    Whether to block streaming content.
+    """
+    enable_safesearch: _builtins.bool
+    """
+    Whether to force safe search.
+    """
+    enable_youtube_restricted_mode: _builtins.bool
+    """
+    Whether to force YouTube to use restricted mode.
+    """
 
 @pulumi.input_type
 class GetTwingateDNSFilteringProfileContentCategoriesArgs:
@@ -1699,14 +3025,11 @@ class GetTwingateDNSFilteringProfileContentCategoriesArgs:
         pulumi.set(self, "enable_youtube_restricted_mode", value)
 
 
-if not MYPY:
-    class GetTwingateDNSFilteringProfileDeniedDomainsArgsDict(TypedDict):
-        domains: Sequence[_builtins.str]
-        """
-        A set of denied domains.
-        """
-elif False:
-    GetTwingateDNSFilteringProfileDeniedDomainsArgsDict: TypeAlias = Mapping[str, Any]
+class GetTwingateDNSFilteringProfileDeniedDomainsArgsDict(TypedDict):
+    domains: Sequence[_builtins.str]
+    """
+    A set of denied domains.
+    """
 
 @pulumi.input_type
 class GetTwingateDNSFilteringProfileDeniedDomainsArgs:
@@ -1730,22 +3053,19 @@ class GetTwingateDNSFilteringProfileDeniedDomainsArgs:
         pulumi.set(self, "domains", value)
 
 
-if not MYPY:
-    class GetTwingateDNSFilteringProfilePrivacyCategoriesArgsDict(TypedDict):
-        block_ads_and_trackers: _builtins.bool
-        """
-        Whether to block ads and trackers.
-        """
-        block_affiliate_links: _builtins.bool
-        """
-        Whether to block affiliate links.
-        """
-        block_disguised_trackers: _builtins.bool
-        """
-        Whether to block disguised third party trackers.
-        """
-elif False:
-    GetTwingateDNSFilteringProfilePrivacyCategoriesArgsDict: TypeAlias = Mapping[str, Any]
+class GetTwingateDNSFilteringProfilePrivacyCategoriesArgsDict(TypedDict):
+    block_ads_and_trackers: _builtins.bool
+    """
+    Whether to block ads and trackers.
+    """
+    block_affiliate_links: _builtins.bool
+    """
+    Whether to block affiliate links.
+    """
+    block_disguised_trackers: _builtins.bool
+    """
+    Whether to block disguised third party trackers.
+    """
 
 @pulumi.input_type
 class GetTwingateDNSFilteringProfilePrivacyCategoriesArgs:
@@ -1799,46 +3119,43 @@ class GetTwingateDNSFilteringProfilePrivacyCategoriesArgs:
         pulumi.set(self, "block_disguised_trackers", value)
 
 
-if not MYPY:
-    class GetTwingateDNSFilteringProfileSecurityCategoriesArgsDict(TypedDict):
-        block_cryptojacking: _builtins.bool
-        """
-        Whether to block cryptojacking sites.
-        """
-        block_dns_rebinding: _builtins.bool
-        """
-        Blocks public DNS entries from returning private IP addresses.
-        """
-        block_domain_generation_algorithms: _builtins.bool
-        """
-        Blocks DGA domains.
-        """
-        block_idn_homoglyph: _builtins.bool
-        """
-        Whether to block homoglyph attacks.
-        """
-        block_newly_registered_domains: _builtins.bool
-        """
-        Blocks newly registered domains.
-        """
-        block_parked_domains: _builtins.bool
-        """
-        Block parked domains.
-        """
-        block_typosquatting: _builtins.bool
-        """
-        Blocks typosquatted domains.
-        """
-        enable_google_safe_browsing: _builtins.bool
-        """
-        Whether to use Google Safe browsing lists to block content.
-        """
-        enable_threat_intelligence_feeds: _builtins.bool
-        """
-        Whether to filter content using threat intelligence feeds.
-        """
-elif False:
-    GetTwingateDNSFilteringProfileSecurityCategoriesArgsDict: TypeAlias = Mapping[str, Any]
+class GetTwingateDNSFilteringProfileSecurityCategoriesArgsDict(TypedDict):
+    block_cryptojacking: _builtins.bool
+    """
+    Whether to block cryptojacking sites.
+    """
+    block_dns_rebinding: _builtins.bool
+    """
+    Blocks public DNS entries from returning private IP addresses.
+    """
+    block_domain_generation_algorithms: _builtins.bool
+    """
+    Blocks DGA domains.
+    """
+    block_idn_homoglyph: _builtins.bool
+    """
+    Whether to block homoglyph attacks.
+    """
+    block_newly_registered_domains: _builtins.bool
+    """
+    Blocks newly registered domains.
+    """
+    block_parked_domains: _builtins.bool
+    """
+    Block parked domains.
+    """
+    block_typosquatting: _builtins.bool
+    """
+    Blocks typosquatted domains.
+    """
+    enable_google_safe_browsing: _builtins.bool
+    """
+    Whether to use Google Safe browsing lists to block content.
+    """
+    enable_threat_intelligence_feeds: _builtins.bool
+    """
+    Whether to filter content using threat intelligence feeds.
+    """
 
 @pulumi.input_type
 class GetTwingateDNSFilteringProfileSecurityCategoriesArgs:
@@ -1982,16 +3299,13 @@ class GetTwingateDNSFilteringProfileSecurityCategoriesArgs:
         pulumi.set(self, "enable_threat_intelligence_feeds", value)
 
 
-if not MYPY:
-    class GetTwingateResourceProtocolsArgsDict(TypedDict):
-        allow_icmp: _builtins.bool
-        """
-        Whether to allow ICMP (ping) traffic
-        """
-        tcp: NotRequired['GetTwingateResourceProtocolsTcpArgsDict']
-        udp: NotRequired['GetTwingateResourceProtocolsUdpArgsDict']
-elif False:
-    GetTwingateResourceProtocolsArgsDict: TypeAlias = Mapping[str, Any]
+class GetTwingateResourceProtocolsArgsDict(TypedDict):
+    allow_icmp: _builtins.bool
+    """
+    Whether to allow ICMP (ping) traffic
+    """
+    tcp: NotRequired['GetTwingateResourceProtocolsTcpArgsDict']
+    udp: NotRequired['GetTwingateResourceProtocolsUdpArgsDict']
 
 @pulumi.input_type
 class GetTwingateResourceProtocolsArgs:
@@ -2039,18 +3353,15 @@ class GetTwingateResourceProtocolsArgs:
         pulumi.set(self, "udp", value)
 
 
-if not MYPY:
-    class GetTwingateResourceProtocolsTcpArgsDict(TypedDict):
-        policy: _builtins.str
-        """
-        Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
-        """
-        ports: Sequence[_builtins.str]
-        """
-        List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
-        """
-elif False:
-    GetTwingateResourceProtocolsTcpArgsDict: TypeAlias = Mapping[str, Any]
+class GetTwingateResourceProtocolsTcpArgsDict(TypedDict):
+    policy: _builtins.str
+    """
+    Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+    """
+    ports: Sequence[_builtins.str]
+    """
+    List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+    """
 
 @pulumi.input_type
 class GetTwingateResourceProtocolsTcpArgs:
@@ -2089,18 +3400,15 @@ class GetTwingateResourceProtocolsTcpArgs:
         pulumi.set(self, "ports", value)
 
 
-if not MYPY:
-    class GetTwingateResourceProtocolsUdpArgsDict(TypedDict):
-        policy: _builtins.str
-        """
-        Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
-        """
-        ports: Sequence[_builtins.str]
-        """
-        List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
-        """
-elif False:
-    GetTwingateResourceProtocolsUdpArgsDict: TypeAlias = Mapping[str, Any]
+class GetTwingateResourceProtocolsUdpArgsDict(TypedDict):
+    policy: _builtins.str
+    """
+    Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+    """
+    ports: Sequence[_builtins.str]
+    """
+    List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+    """
 
 @pulumi.input_type
 class GetTwingateResourceProtocolsUdpArgs:

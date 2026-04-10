@@ -15,15 +15,15 @@ namespace Twingate.Twingate.Outputs
     public sealed class TwingateResourceAccessPolicy
     {
         /// <summary>
-        /// This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+        /// This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
         /// </summary>
         public readonly string? ApprovalMode;
         /// <summary>
-        /// This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
+        /// This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
         /// </summary>
         public readonly string? Duration;
         /// <summary>
-        /// This will set the AccessPolicy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        /// This will set the AccessPolicy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
         /// </summary>
         public readonly string? Mode;
 

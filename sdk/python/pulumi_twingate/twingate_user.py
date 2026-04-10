@@ -27,6 +27,7 @@ class TwingateUserArgs:
                  send_invite: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a TwingateUser resource.
+
         :param pulumi.Input[_builtins.str] email: The User's email address
         :param pulumi.Input[_builtins.str] first_name: The User's first name
         :param pulumi.Input[_builtins.bool] is_active: Determines whether the User is active or not. Inactive users will be not able to sign in.
@@ -135,6 +136,7 @@ class _TwingateUserState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TwingateUser resources.
+
         :param pulumi.Input[_builtins.str] email: The User's email address
         :param pulumi.Input[_builtins.str] first_name: The User's first name
         :param pulumi.Input[_builtins.bool] is_active: Determines whether the User is active or not. Inactive users will be not able to sign in.
@@ -282,6 +284,7 @@ class TwingateUser(pulumi.CustomResource):
         $ pulumi import twingate:index/twingateUser:TwingateUser user VXNlcjo1ODk3MTM=
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] email: The User's email address
@@ -318,6 +321,7 @@ class TwingateUser(pulumi.CustomResource):
         ```sh
         $ pulumi import twingate:index/twingateUser:TwingateUser user VXNlcjo1ODk3MTM=
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TwingateUserArgs args: The arguments to use to populate this resource's properties.

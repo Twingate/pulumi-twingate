@@ -27,18 +27,30 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TwingateConnectorTokens{}
 	case "twingate:index/twingateDNSFilteringProfile:TwingateDNSFilteringProfile":
 		r = &TwingateDNSFilteringProfile{}
+	case "twingate:index/twingateGateway:TwingateGateway":
+		r = &TwingateGateway{}
+	case "twingate:index/twingateGatewayConfig:TwingateGatewayConfig":
+		r = &TwingateGatewayConfig{}
 	case "twingate:index/twingateGroup:TwingateGroup":
 		r = &TwingateGroup{}
+	case "twingate:index/twingateKubernetesResource:TwingateKubernetesResource":
+		r = &TwingateKubernetesResource{}
 	case "twingate:index/twingateRemoteNetwork:TwingateRemoteNetwork":
 		r = &TwingateRemoteNetwork{}
 	case "twingate:index/twingateResource:TwingateResource":
 		r = &TwingateResource{}
+	case "twingate:index/twingateSSHCertificateAuthority:TwingateSSHCertificateAuthority":
+		r = &TwingateSSHCertificateAuthority{}
+	case "twingate:index/twingateSSHResource:TwingateSSHResource":
+		r = &TwingateSSHResource{}
 	case "twingate:index/twingateServiceAccount:TwingateServiceAccount":
 		r = &TwingateServiceAccount{}
 	case "twingate:index/twingateServiceAccountKey:TwingateServiceAccountKey":
 		r = &TwingateServiceAccountKey{}
 	case "twingate:index/twingateUser:TwingateUser":
 		r = &TwingateUser{}
+	case "twingate:index/twingateX509CertificateAuthority:TwingateX509CertificateAuthority":
+		r = &TwingateX509CertificateAuthority{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -87,7 +99,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"twingate",
+		"index/twingateGateway",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"twingate",
+		"index/twingateGatewayConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"twingate",
 		"index/twingateGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"twingate",
+		"index/twingateKubernetesResource",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -98,6 +125,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"twingate",
 		"index/twingateResource",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"twingate",
+		"index/twingateSSHCertificateAuthority",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"twingate",
+		"index/twingateSSHResource",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -113,6 +150,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"twingate",
 		"index/twingateUser",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"twingate",
+		"index/twingateX509CertificateAuthority",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(
