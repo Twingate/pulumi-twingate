@@ -31,6 +31,8 @@ release:
   disable: false
   # Replace existing assets if release already exists (useful for re-runs)
   mode: replace
+checksum:
+  disable: true
 snapshot:
   version_template: '{{ .Tag }}-SNAPSHOT'
 project_name: "pulumi-twingate"

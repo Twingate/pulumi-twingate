@@ -20,6 +20,11 @@ export const getTwingateDNSFilteringProfile: typeof import("./getTwingateDNSFilt
 export const getTwingateDNSFilteringProfileOutput: typeof import("./getTwingateDNSFilteringProfile").getTwingateDNSFilteringProfileOutput = null as any;
 utilities.lazyLoad(exports, ["getTwingateDNSFilteringProfile","getTwingateDNSFilteringProfileOutput"], () => require("./getTwingateDNSFilteringProfile"));
 
+export { GetTwingateGatewayArgs, GetTwingateGatewayResult, GetTwingateGatewayOutputArgs } from "./getTwingateGateway";
+export const getTwingateGateway: typeof import("./getTwingateGateway").getTwingateGateway = null as any;
+export const getTwingateGatewayOutput: typeof import("./getTwingateGateway").getTwingateGatewayOutput = null as any;
+utilities.lazyLoad(exports, ["getTwingateGateway","getTwingateGatewayOutput"], () => require("./getTwingateGateway"));
+
 export { GetTwingateGroupArgs, GetTwingateGroupResult, GetTwingateGroupOutputArgs } from "./getTwingateGroup";
 export const getTwingateGroup: typeof import("./getTwingateGroup").getTwingateGroup = null as any;
 export const getTwingateGroupOutput: typeof import("./getTwingateGroup").getTwingateGroupOutput = null as any;
@@ -50,6 +55,11 @@ export const getTwingateResources: typeof import("./getTwingateResources").getTw
 export const getTwingateResourcesOutput: typeof import("./getTwingateResources").getTwingateResourcesOutput = null as any;
 utilities.lazyLoad(exports, ["getTwingateResources","getTwingateResourcesOutput"], () => require("./getTwingateResources"));
 
+export { GetTwingateSSHCertificateAuthorityArgs, GetTwingateSSHCertificateAuthorityResult, GetTwingateSSHCertificateAuthorityOutputArgs } from "./getTwingateSSHCertificateAuthority";
+export const getTwingateSSHCertificateAuthority: typeof import("./getTwingateSSHCertificateAuthority").getTwingateSSHCertificateAuthority = null as any;
+export const getTwingateSSHCertificateAuthorityOutput: typeof import("./getTwingateSSHCertificateAuthority").getTwingateSSHCertificateAuthorityOutput = null as any;
+utilities.lazyLoad(exports, ["getTwingateSSHCertificateAuthority","getTwingateSSHCertificateAuthorityOutput"], () => require("./getTwingateSSHCertificateAuthority"));
+
 export { GetTwingateSecurityPoliciesArgs, GetTwingateSecurityPoliciesResult, GetTwingateSecurityPoliciesOutputArgs } from "./getTwingateSecurityPolicies";
 export const getTwingateSecurityPolicies: typeof import("./getTwingateSecurityPolicies").getTwingateSecurityPolicies = null as any;
 export const getTwingateSecurityPoliciesOutput: typeof import("./getTwingateSecurityPolicies").getTwingateSecurityPoliciesOutput = null as any;
@@ -75,6 +85,11 @@ export const getTwingateUsers: typeof import("./getTwingateUsers").getTwingateUs
 export const getTwingateUsersOutput: typeof import("./getTwingateUsers").getTwingateUsersOutput = null as any;
 utilities.lazyLoad(exports, ["getTwingateUsers","getTwingateUsersOutput"], () => require("./getTwingateUsers"));
 
+export { GetTwingateX509CertificateAuthorityArgs, GetTwingateX509CertificateAuthorityResult, GetTwingateX509CertificateAuthorityOutputArgs } from "./getTwingateX509CertificateAuthority";
+export const getTwingateX509CertificateAuthority: typeof import("./getTwingateX509CertificateAuthority").getTwingateX509CertificateAuthority = null as any;
+export const getTwingateX509CertificateAuthorityOutput: typeof import("./getTwingateX509CertificateAuthority").getTwingateX509CertificateAuthorityOutput = null as any;
+utilities.lazyLoad(exports, ["getTwingateX509CertificateAuthority","getTwingateX509CertificateAuthorityOutput"], () => require("./getTwingateX509CertificateAuthority"));
+
 export * from "./provider";
 import { Provider } from "./provider";
 
@@ -93,10 +108,25 @@ export type TwingateDNSFilteringProfile = import("./twingateDNSFilteringProfile"
 export const TwingateDNSFilteringProfile: typeof import("./twingateDNSFilteringProfile").TwingateDNSFilteringProfile = null as any;
 utilities.lazyLoad(exports, ["TwingateDNSFilteringProfile"], () => require("./twingateDNSFilteringProfile"));
 
+export { TwingateGatewayArgs, TwingateGatewayState } from "./twingateGateway";
+export type TwingateGateway = import("./twingateGateway").TwingateGateway;
+export const TwingateGateway: typeof import("./twingateGateway").TwingateGateway = null as any;
+utilities.lazyLoad(exports, ["TwingateGateway"], () => require("./twingateGateway"));
+
+export { TwingateGatewayConfigArgs, TwingateGatewayConfigState } from "./twingateGatewayConfig";
+export type TwingateGatewayConfig = import("./twingateGatewayConfig").TwingateGatewayConfig;
+export const TwingateGatewayConfig: typeof import("./twingateGatewayConfig").TwingateGatewayConfig = null as any;
+utilities.lazyLoad(exports, ["TwingateGatewayConfig"], () => require("./twingateGatewayConfig"));
+
 export { TwingateGroupArgs, TwingateGroupState } from "./twingateGroup";
 export type TwingateGroup = import("./twingateGroup").TwingateGroup;
 export const TwingateGroup: typeof import("./twingateGroup").TwingateGroup = null as any;
 utilities.lazyLoad(exports, ["TwingateGroup"], () => require("./twingateGroup"));
+
+export { TwingateKubernetesResourceArgs, TwingateKubernetesResourceState } from "./twingateKubernetesResource";
+export type TwingateKubernetesResource = import("./twingateKubernetesResource").TwingateKubernetesResource;
+export const TwingateKubernetesResource: typeof import("./twingateKubernetesResource").TwingateKubernetesResource = null as any;
+utilities.lazyLoad(exports, ["TwingateKubernetesResource"], () => require("./twingateKubernetesResource"));
 
 export { TwingateRemoteNetworkArgs, TwingateRemoteNetworkState } from "./twingateRemoteNetwork";
 export type TwingateRemoteNetwork = import("./twingateRemoteNetwork").TwingateRemoteNetwork;
@@ -107,6 +137,16 @@ export { TwingateResourceArgs, TwingateResourceState } from "./twingateResource"
 export type TwingateResource = import("./twingateResource").TwingateResource;
 export const TwingateResource: typeof import("./twingateResource").TwingateResource = null as any;
 utilities.lazyLoad(exports, ["TwingateResource"], () => require("./twingateResource"));
+
+export { TwingateSSHCertificateAuthorityArgs, TwingateSSHCertificateAuthorityState } from "./twingateSSHCertificateAuthority";
+export type TwingateSSHCertificateAuthority = import("./twingateSSHCertificateAuthority").TwingateSSHCertificateAuthority;
+export const TwingateSSHCertificateAuthority: typeof import("./twingateSSHCertificateAuthority").TwingateSSHCertificateAuthority = null as any;
+utilities.lazyLoad(exports, ["TwingateSSHCertificateAuthority"], () => require("./twingateSSHCertificateAuthority"));
+
+export { TwingateSSHResourceArgs, TwingateSSHResourceState } from "./twingateSSHResource";
+export type TwingateSSHResource = import("./twingateSSHResource").TwingateSSHResource;
+export const TwingateSSHResource: typeof import("./twingateSSHResource").TwingateSSHResource = null as any;
+utilities.lazyLoad(exports, ["TwingateSSHResource"], () => require("./twingateSSHResource"));
 
 export { TwingateServiceAccountArgs, TwingateServiceAccountState } from "./twingateServiceAccount";
 export type TwingateServiceAccount = import("./twingateServiceAccount").TwingateServiceAccount;
@@ -122,6 +162,11 @@ export { TwingateUserArgs, TwingateUserState } from "./twingateUser";
 export type TwingateUser = import("./twingateUser").TwingateUser;
 export const TwingateUser: typeof import("./twingateUser").TwingateUser = null as any;
 utilities.lazyLoad(exports, ["TwingateUser"], () => require("./twingateUser"));
+
+export { TwingateX509CertificateAuthorityArgs, TwingateX509CertificateAuthorityState } from "./twingateX509CertificateAuthority";
+export type TwingateX509CertificateAuthority = import("./twingateX509CertificateAuthority").TwingateX509CertificateAuthority;
+export const TwingateX509CertificateAuthority: typeof import("./twingateX509CertificateAuthority").TwingateX509CertificateAuthority = null as any;
+utilities.lazyLoad(exports, ["TwingateX509CertificateAuthority"], () => require("./twingateX509CertificateAuthority"));
 
 
 // Export sub-modules:
@@ -143,18 +188,30 @@ const _module = {
                 return new TwingateConnectorTokens(name, <any>undefined, { urn })
             case "twingate:index/twingateDNSFilteringProfile:TwingateDNSFilteringProfile":
                 return new TwingateDNSFilteringProfile(name, <any>undefined, { urn })
+            case "twingate:index/twingateGateway:TwingateGateway":
+                return new TwingateGateway(name, <any>undefined, { urn })
+            case "twingate:index/twingateGatewayConfig:TwingateGatewayConfig":
+                return new TwingateGatewayConfig(name, <any>undefined, { urn })
             case "twingate:index/twingateGroup:TwingateGroup":
                 return new TwingateGroup(name, <any>undefined, { urn })
+            case "twingate:index/twingateKubernetesResource:TwingateKubernetesResource":
+                return new TwingateKubernetesResource(name, <any>undefined, { urn })
             case "twingate:index/twingateRemoteNetwork:TwingateRemoteNetwork":
                 return new TwingateRemoteNetwork(name, <any>undefined, { urn })
             case "twingate:index/twingateResource:TwingateResource":
                 return new TwingateResource(name, <any>undefined, { urn })
+            case "twingate:index/twingateSSHCertificateAuthority:TwingateSSHCertificateAuthority":
+                return new TwingateSSHCertificateAuthority(name, <any>undefined, { urn })
+            case "twingate:index/twingateSSHResource:TwingateSSHResource":
+                return new TwingateSSHResource(name, <any>undefined, { urn })
             case "twingate:index/twingateServiceAccount:TwingateServiceAccount":
                 return new TwingateServiceAccount(name, <any>undefined, { urn })
             case "twingate:index/twingateServiceAccountKey:TwingateServiceAccountKey":
                 return new TwingateServiceAccountKey(name, <any>undefined, { urn })
             case "twingate:index/twingateUser:TwingateUser":
                 return new TwingateUser(name, <any>undefined, { urn })
+            case "twingate:index/twingateX509CertificateAuthority:TwingateX509CertificateAuthority":
+                return new TwingateX509CertificateAuthority(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -163,12 +220,18 @@ const _module = {
 pulumi.runtime.registerResourceModule("twingate", "index/twingateConnector", _module)
 pulumi.runtime.registerResourceModule("twingate", "index/twingateConnectorTokens", _module)
 pulumi.runtime.registerResourceModule("twingate", "index/twingateDNSFilteringProfile", _module)
+pulumi.runtime.registerResourceModule("twingate", "index/twingateGateway", _module)
+pulumi.runtime.registerResourceModule("twingate", "index/twingateGatewayConfig", _module)
 pulumi.runtime.registerResourceModule("twingate", "index/twingateGroup", _module)
+pulumi.runtime.registerResourceModule("twingate", "index/twingateKubernetesResource", _module)
 pulumi.runtime.registerResourceModule("twingate", "index/twingateRemoteNetwork", _module)
 pulumi.runtime.registerResourceModule("twingate", "index/twingateResource", _module)
+pulumi.runtime.registerResourceModule("twingate", "index/twingateSSHCertificateAuthority", _module)
+pulumi.runtime.registerResourceModule("twingate", "index/twingateSSHResource", _module)
 pulumi.runtime.registerResourceModule("twingate", "index/twingateServiceAccount", _module)
 pulumi.runtime.registerResourceModule("twingate", "index/twingateServiceAccountKey", _module)
 pulumi.runtime.registerResourceModule("twingate", "index/twingateUser", _module)
+pulumi.runtime.registerResourceModule("twingate", "index/twingateX509CertificateAuthority", _module)
 pulumi.runtime.registerResourcePackage("twingate", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

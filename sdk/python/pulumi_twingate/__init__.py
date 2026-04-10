@@ -9,6 +9,7 @@ import typing
 from .get_twingate_connector import *
 from .get_twingate_connectors import *
 from .get_twingate_dns_filtering_profile import *
+from .get_twingate_gateway import *
 from .get_twingate_group import *
 from .get_twingate_groups import *
 from .get_twingate_remote_network import *
@@ -18,18 +19,26 @@ from .get_twingate_resources import *
 from .get_twingate_security_policies import *
 from .get_twingate_security_policy import *
 from .get_twingate_service_accounts import *
+from .get_twingate_ssh_certificate_authority import *
 from .get_twingate_user import *
 from .get_twingate_users import *
+from .get_twingate_x509_certificate_authority import *
 from .provider import *
 from .twingate_connector import *
 from .twingate_connector_tokens import *
 from .twingate_dns_filtering_profile import *
+from .twingate_gateway import *
+from .twingate_gateway_config import *
 from .twingate_group import *
+from .twingate_kubernetes_resource import *
 from .twingate_remote_network import *
 from .twingate_resource import *
 from .twingate_service_account import *
 from .twingate_service_account_key import *
+from .twingate_ssh_certificate_authority import *
+from .twingate_ssh_resource import *
 from .twingate_user import *
+from .twingate_x509_certificate_authority import *
 from ._inputs import *
 from . import outputs
 
@@ -69,10 +78,34 @@ _utilities.register(
  },
  {
   "pkg": "twingate",
+  "mod": "index/twingateGateway",
+  "fqn": "pulumi_twingate",
+  "classes": {
+   "twingate:index/twingateGateway:TwingateGateway": "TwingateGateway"
+  }
+ },
+ {
+  "pkg": "twingate",
+  "mod": "index/twingateGatewayConfig",
+  "fqn": "pulumi_twingate",
+  "classes": {
+   "twingate:index/twingateGatewayConfig:TwingateGatewayConfig": "TwingateGatewayConfig"
+  }
+ },
+ {
+  "pkg": "twingate",
   "mod": "index/twingateGroup",
   "fqn": "pulumi_twingate",
   "classes": {
    "twingate:index/twingateGroup:TwingateGroup": "TwingateGroup"
+  }
+ },
+ {
+  "pkg": "twingate",
+  "mod": "index/twingateKubernetesResource",
+  "fqn": "pulumi_twingate",
+  "classes": {
+   "twingate:index/twingateKubernetesResource:TwingateKubernetesResource": "TwingateKubernetesResource"
   }
  },
  {
@@ -89,6 +122,22 @@ _utilities.register(
   "fqn": "pulumi_twingate",
   "classes": {
    "twingate:index/twingateResource:TwingateResource": "TwingateResource"
+  }
+ },
+ {
+  "pkg": "twingate",
+  "mod": "index/twingateSSHCertificateAuthority",
+  "fqn": "pulumi_twingate",
+  "classes": {
+   "twingate:index/twingateSSHCertificateAuthority:TwingateSSHCertificateAuthority": "TwingateSSHCertificateAuthority"
+  }
+ },
+ {
+  "pkg": "twingate",
+  "mod": "index/twingateSSHResource",
+  "fqn": "pulumi_twingate",
+  "classes": {
+   "twingate:index/twingateSSHResource:TwingateSSHResource": "TwingateSSHResource"
   }
  },
  {
@@ -113,6 +162,14 @@ _utilities.register(
   "fqn": "pulumi_twingate",
   "classes": {
    "twingate:index/twingateUser:TwingateUser": "TwingateUser"
+  }
+ },
+ {
+  "pkg": "twingate",
+  "mod": "index/twingateX509CertificateAuthority",
+  "fqn": "pulumi_twingate",
+  "classes": {
+   "twingate:index/twingateX509CertificateAuthority:TwingateX509CertificateAuthority": "TwingateX509CertificateAuthority"
   }
  }
 ]
