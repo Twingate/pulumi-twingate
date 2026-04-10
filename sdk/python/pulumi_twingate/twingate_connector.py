@@ -24,6 +24,7 @@ class TwingateConnectorArgs:
                  status_updates_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a TwingateConnector resource.
+
         :param pulumi.Input[_builtins.str] remote_network_id: The ID of the Remote Network the Connector is attached to.
         :param pulumi.Input[_builtins.str] name: Name of the Connector, if not provided one will be generated.
         :param pulumi.Input[_builtins.bool] status_updates_enabled: Determines whether status notifications are enabled for the Connector. Default is `true`.
@@ -84,6 +85,7 @@ class _TwingateConnectorState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TwingateConnector resources.
+
         :param pulumi.Input[_builtins.str] hostname: The hostname of the machine hosting the Connector.
         :param pulumi.Input[_builtins.str] name: Name of the Connector, if not provided one will be generated.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: The Connector's private IP addresses.
@@ -238,6 +240,7 @@ class TwingateConnector(pulumi.CustomResource):
         $ pulumi import twingate:index/twingateConnector:TwingateConnector aws_connector Q29ubmVjdG9yOjI2NzM=
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: Name of the Connector, if not provided one will be generated.
@@ -270,6 +273,7 @@ class TwingateConnector(pulumi.CustomResource):
         ```sh
         $ pulumi import twingate:index/twingateConnector:TwingateConnector aws_connector Q29ubmVjdG9yOjI2NzM=
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TwingateConnectorArgs args: The arguments to use to populate this resource's properties.

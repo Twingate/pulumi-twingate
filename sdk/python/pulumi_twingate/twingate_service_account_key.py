@@ -24,6 +24,7 @@ class TwingateServiceAccountKeyArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TwingateServiceAccountKey resource.
+
         :param pulumi.Input[_builtins.str] service_account_id: The id of the Service Account
         :param pulumi.Input[_builtins.int] expiration_time: Specifies how many days until a Service Account Key expires. This should be an integer between 0 and 365 representing the number of days until the Service Account Key will expire. Defaults to 0, meaning the key will never expire.
         :param pulumi.Input[_builtins.str] name: The name of the Service Key
@@ -81,6 +82,7 @@ class _TwingateServiceAccountKeyState:
                  token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TwingateServiceAccountKey resources.
+
         :param pulumi.Input[_builtins.int] expiration_time: Specifies how many days until a Service Account Key expires. This should be an integer between 0 and 365 representing the number of days until the Service Account Key will expire. Defaults to 0, meaning the key will never expire.
         :param pulumi.Input[_builtins.bool] is_active: If the value of this attribute changes to false, Terraform will destroy and recreate the resource.
         :param pulumi.Input[_builtins.str] name: The name of the Service Key
@@ -172,6 +174,7 @@ class TwingateServiceAccountKey(pulumi.CustomResource):
         """
         A Service Key authorizes access to all Resources assigned to a Service Account.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] expiration_time: Specifies how many days until a Service Account Key expires. This should be an integer between 0 and 365 representing the number of days until the Service Account Key will expire. Defaults to 0, meaning the key will never expire.
@@ -186,6 +189,7 @@ class TwingateServiceAccountKey(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Service Key authorizes access to all Resources assigned to a Service Account.
+
 
         :param str resource_name: The name of the resource.
         :param TwingateServiceAccountKeyArgs args: The arguments to use to populate this resource's properties.

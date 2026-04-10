@@ -37,6 +37,7 @@ class TwingateResourceArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a TwingateResource resource.
+
         :param pulumi.Input[_builtins.str] address: The Resource's IP/CIDR or FQDN/DNS zone
         :param pulumi.Input[_builtins.str] remote_network_id: Remote Network ID where the Resource lives
         :param pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupArgs']]] access_groups: Restrict access to certain group
@@ -268,6 +269,7 @@ class _TwingateResourceState:
                  tags_all: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering TwingateResource resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupArgs']]] access_groups: Restrict access to certain group
         :param pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessPolicyArgs']]] access_policies: Restrict access according to JIT access policy
         :param pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]] access_services: Restrict access to certain service account
@@ -526,6 +528,7 @@ class TwingateResource(pulumi.CustomResource):
         $ pulumi import twingate:index/twingateResource:TwingateResource resource UmVzb3VyY2U6MzQwNDQ3
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessGroupArgs', 'TwingateResourceAccessGroupArgsDict']]]] access_groups: Restrict access to certain group
@@ -557,6 +560,7 @@ class TwingateResource(pulumi.CustomResource):
         ```sh
         $ pulumi import twingate:index/twingateResource:TwingateResource resource UmVzb3VyY2U6MzQwNDQ3
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TwingateResourceArgs args: The arguments to use to populate this resource's properties.

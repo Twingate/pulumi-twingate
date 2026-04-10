@@ -24,6 +24,7 @@ class TwingateRemoteNetworkArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TwingateRemoteNetwork resource.
+
         :param pulumi.Input[_builtins.str] location: The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
         :param pulumi.Input[_builtins.str] name: The name of the Remote Network
         :param pulumi.Input[_builtins.str] type: The type of the Remote Network. Must be one of the following: REGULAR, EXIT. Defaults to REGULAR.
@@ -80,6 +81,7 @@ class _TwingateRemoteNetworkState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TwingateRemoteNetwork resources.
+
         :param pulumi.Input[_builtins.str] location: The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
         :param pulumi.Input[_builtins.str] name: The name of the Remote Network
         :param pulumi.Input[_builtins.str] type: The type of the Remote Network. Must be one of the following: REGULAR, EXIT. Defaults to REGULAR.
@@ -156,6 +158,7 @@ class TwingateRemoteNetwork(pulumi.CustomResource):
         $ pulumi import twingate:index/twingateRemoteNetwork:TwingateRemoteNetwork network UmVtb3RlTmV0d29zaipgMKIkNg==
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] location: The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
@@ -185,6 +188,7 @@ class TwingateRemoteNetwork(pulumi.CustomResource):
         ```sh
         $ pulumi import twingate:index/twingateRemoteNetwork:TwingateRemoteNetwork network UmVtb3RlTmV0d29zaipgMKIkNg==
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TwingateRemoteNetworkArgs args: The arguments to use to populate this resource's properties.

@@ -21,6 +21,22 @@ __all__ = [
     'TwingateDNSFilteringProfileDeniedDomains',
     'TwingateDNSFilteringProfilePrivacyCategories',
     'TwingateDNSFilteringProfileSecurityCategories',
+    'TwingateGatewayConfigKubernetes',
+    'TwingateGatewayConfigKubernetesResource',
+    'TwingateGatewayConfigSsh',
+    'TwingateGatewayConfigSshCa',
+    'TwingateGatewayConfigSshCaVault',
+    'TwingateGatewayConfigSshCaVaultAuth',
+    'TwingateGatewayConfigSshCaVaultAuthGcp',
+    'TwingateGatewayConfigSshGateway',
+    'TwingateGatewayConfigSshResource',
+    'TwingateGatewayConfigTls',
+    'TwingateKubernetesResourceAccessGroup',
+    'TwingateKubernetesResourceAccessGroupAccessPolicy',
+    'TwingateKubernetesResourceAccessPolicy',
+    'TwingateKubernetesResourceProtocols',
+    'TwingateKubernetesResourceProtocolsTcp',
+    'TwingateKubernetesResourceProtocolsUdp',
     'TwingateResourceAccessGroup',
     'TwingateResourceAccessGroupAccessPolicy',
     'TwingateResourceAccessPolicy',
@@ -28,6 +44,12 @@ __all__ = [
     'TwingateResourceProtocols',
     'TwingateResourceProtocolsTcp',
     'TwingateResourceProtocolsUdp',
+    'TwingateSSHResourceAccessGroup',
+    'TwingateSSHResourceAccessGroupAccessPolicy',
+    'TwingateSSHResourceAccessPolicy',
+    'TwingateSSHResourceProtocols',
+    'TwingateSSHResourceProtocolsTcp',
+    'TwingateSSHResourceProtocolsUdp',
     'GetTwingateConnectorsConnectorResult',
     'GetTwingateDNSFilteringProfileAllowedDomainsResult',
     'GetTwingateDNSFilteringProfileContentCategoriesResult',
@@ -505,6 +527,796 @@ class TwingateDNSFilteringProfileSecurityCategories(dict):
 
 
 @pulumi.output_type
+class TwingateGatewayConfigKubernetes(dict):
+    def __init__(__self__, *,
+                 resources: Optional[Sequence['outputs.TwingateGatewayConfigKubernetesResource']] = None):
+        """
+        :param Sequence['TwingateGatewayConfigKubernetesResourceArgs'] resources: List of Kubernetes resources. Accepts full twingate*kubernetes*resource references.
+        """
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+
+    @_builtins.property
+    @pulumi.getter
+    def resources(self) -> Optional[Sequence['outputs.TwingateGatewayConfigKubernetesResource']]:
+        """
+        List of Kubernetes resources. Accepts full twingate*kubernetes*resource references.
+        """
+        return pulumi.get(self, "resources")
+
+
+@pulumi.output_type
+class TwingateGatewayConfigKubernetesResource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inCluster":
+            suggest = "in_cluster"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TwingateGatewayConfigKubernetesResource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TwingateGatewayConfigKubernetesResource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TwingateGatewayConfigKubernetesResource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 address: _builtins.str,
+                 in_cluster: _builtins.bool,
+                 name: _builtins.str):
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "in_cluster", in_cluster)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> _builtins.str:
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter(name="inCluster")
+    def in_cluster(self) -> _builtins.bool:
+        return pulumi.get(self, "in_cluster")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class TwingateGatewayConfigSsh(dict):
+    def __init__(__self__, *,
+                 ca: Optional['outputs.TwingateGatewayConfigSshCa'] = None,
+                 gateway: Optional['outputs.TwingateGatewayConfigSshGateway'] = None,
+                 resources: Optional[Sequence['outputs.TwingateGatewayConfigSshResource']] = None):
+        """
+        :param 'TwingateGatewayConfigSshCaArgs' ca: SSH CA configuration. Specify either vault.address or private*key*file, not both.
+        :param 'TwingateGatewayConfigSshGatewayArgs' gateway: SSH gateway settings. All fields are optional and fall back to built-in defaults.
+        :param Sequence['TwingateGatewayConfigSshResourceArgs'] resources: List of SSH resources. Accepts full twingate*ssh*resource references.
+        """
+        if ca is not None:
+            pulumi.set(__self__, "ca", ca)
+        if gateway is not None:
+            pulumi.set(__self__, "gateway", gateway)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+
+    @_builtins.property
+    @pulumi.getter
+    def ca(self) -> Optional['outputs.TwingateGatewayConfigSshCa']:
+        """
+        SSH CA configuration. Specify either vault.address or private*key*file, not both.
+        """
+        return pulumi.get(self, "ca")
+
+    @_builtins.property
+    @pulumi.getter
+    def gateway(self) -> Optional['outputs.TwingateGatewayConfigSshGateway']:
+        """
+        SSH gateway settings. All fields are optional and fall back to built-in defaults.
+        """
+        return pulumi.get(self, "gateway")
+
+    @_builtins.property
+    @pulumi.getter
+    def resources(self) -> Optional[Sequence['outputs.TwingateGatewayConfigSshResource']]:
+        """
+        List of SSH resources. Accepts full twingate*ssh*resource references.
+        """
+        return pulumi.get(self, "resources")
+
+
+@pulumi.output_type
+class TwingateGatewayConfigSshCa(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateKeyFile":
+            suggest = "private_key_file"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TwingateGatewayConfigSshCa. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TwingateGatewayConfigSshCa.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TwingateGatewayConfigSshCa.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 private_key_file: Optional[_builtins.str] = None,
+                 vault: Optional['outputs.TwingateGatewayConfigSshCaVault'] = None):
+        """
+        :param _builtins.str private_key_file: Path to the SSH CA private key file. Can't be used together with vault.address.
+        :param 'TwingateGatewayConfigSshCaVaultArgs' vault: Vault SSH CA configuration.
+        """
+        if private_key_file is not None:
+            pulumi.set(__self__, "private_key_file", private_key_file)
+        if vault is not None:
+            pulumi.set(__self__, "vault", vault)
+
+    @_builtins.property
+    @pulumi.getter(name="privateKeyFile")
+    def private_key_file(self) -> Optional[_builtins.str]:
+        """
+        Path to the SSH CA private key file. Can't be used together with vault.address.
+        """
+        return pulumi.get(self, "private_key_file")
+
+    @_builtins.property
+    @pulumi.getter
+    def vault(self) -> Optional['outputs.TwingateGatewayConfigSshCaVault']:
+        """
+        Vault SSH CA configuration.
+        """
+        return pulumi.get(self, "vault")
+
+
+@pulumi.output_type
+class TwingateGatewayConfigSshCaVault(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caBundleFile":
+            suggest = "ca_bundle_file"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TwingateGatewayConfigSshCaVault. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TwingateGatewayConfigSshCaVault.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TwingateGatewayConfigSshCaVault.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 address: Optional[_builtins.str] = None,
+                 auth: Optional['outputs.TwingateGatewayConfigSshCaVaultAuth'] = None,
+                 ca_bundle_file: Optional[_builtins.str] = None,
+                 mount: Optional[_builtins.str] = None,
+                 role: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str address: Vault server address. Can't be used together with ca.private*key*file.
+        :param 'TwingateGatewayConfigSshCaVaultAuthArgs' auth: Vault authentication configuration.
+        :param _builtins.str ca_bundle_file: Path to the Vault CA bundle file. Default: "/etc/ssl/vault-ca.crt".
+        :param _builtins.str mount: Vault SSH secrets engine mount path. Default: "ssh".
+        :param _builtins.str role: Vault role for signing certificates. Default: "gateway".
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if auth is not None:
+            pulumi.set(__self__, "auth", auth)
+        if ca_bundle_file is not None:
+            pulumi.set(__self__, "ca_bundle_file", ca_bundle_file)
+        if mount is not None:
+            pulumi.set(__self__, "mount", mount)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> Optional[_builtins.str]:
+        """
+        Vault server address. Can't be used together with ca.private*key*file.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter
+    def auth(self) -> Optional['outputs.TwingateGatewayConfigSshCaVaultAuth']:
+        """
+        Vault authentication configuration.
+        """
+        return pulumi.get(self, "auth")
+
+    @_builtins.property
+    @pulumi.getter(name="caBundleFile")
+    def ca_bundle_file(self) -> Optional[_builtins.str]:
+        """
+        Path to the Vault CA bundle file. Default: "/etc/ssl/vault-ca.crt".
+        """
+        return pulumi.get(self, "ca_bundle_file")
+
+    @_builtins.property
+    @pulumi.getter
+    def mount(self) -> Optional[_builtins.str]:
+        """
+        Vault SSH secrets engine mount path. Default: "ssh".
+        """
+        return pulumi.get(self, "mount")
+
+    @_builtins.property
+    @pulumi.getter
+    def role(self) -> Optional[_builtins.str]:
+        """
+        Vault role for signing certificates. Default: "gateway".
+        """
+        return pulumi.get(self, "role")
+
+
+@pulumi.output_type
+class TwingateGatewayConfigSshCaVaultAuth(dict):
+    def __init__(__self__, *,
+                 gcp: Optional['outputs.TwingateGatewayConfigSshCaVaultAuthGcp'] = None,
+                 token: Optional[_builtins.str] = None):
+        """
+        :param 'TwingateGatewayConfigSshCaVaultAuthGcpArgs' gcp: GCP authentication for Vault. Can't be used together with token.
+        :param _builtins.str token: Vault token used for authentication. Can't be used together with gcp.
+        """
+        if gcp is not None:
+            pulumi.set(__self__, "gcp", gcp)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+
+    @_builtins.property
+    @pulumi.getter
+    def gcp(self) -> Optional['outputs.TwingateGatewayConfigSshCaVaultAuthGcp']:
+        """
+        GCP authentication for Vault. Can't be used together with token.
+        """
+        return pulumi.get(self, "gcp")
+
+    @_builtins.property
+    @pulumi.getter
+    def token(self) -> Optional[_builtins.str]:
+        """
+        Vault token used for authentication. Can't be used together with gcp.
+        """
+        return pulumi.get(self, "token")
+
+
+@pulumi.output_type
+class TwingateGatewayConfigSshCaVaultAuthGcp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccountEmail":
+            suggest = "service_account_email"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TwingateGatewayConfigSshCaVaultAuthGcp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TwingateGatewayConfigSshCaVaultAuthGcp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TwingateGatewayConfigSshCaVaultAuthGcp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mount: Optional[_builtins.str] = None,
+                 role: Optional[_builtins.str] = None,
+                 service_account_email: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str mount: Vault GCP auth mount path. Default: "gcp".
+        :param _builtins.str role: GCP IAM role for Vault GCP authentication.
+        :param _builtins.str service_account_email: Service account email. Required when type is "iam".
+        :param _builtins.str type: GCP authentication type for Vault (e.g. "iam" or "gce"). When set to "iam", service*account*email is required.
+        """
+        if mount is not None:
+            pulumi.set(__self__, "mount", mount)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+        if service_account_email is not None:
+            pulumi.set(__self__, "service_account_email", service_account_email)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def mount(self) -> Optional[_builtins.str]:
+        """
+        Vault GCP auth mount path. Default: "gcp".
+        """
+        return pulumi.get(self, "mount")
+
+    @_builtins.property
+    @pulumi.getter
+    def role(self) -> Optional[_builtins.str]:
+        """
+        GCP IAM role for Vault GCP authentication.
+        """
+        return pulumi.get(self, "role")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> Optional[_builtins.str]:
+        """
+        Service account email. Required when type is "iam".
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        GCP authentication type for Vault (e.g. "iam" or "gce"). When set to "iam", service*account*email is required.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class TwingateGatewayConfigSshGateway(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hostCertTtl":
+            suggest = "host_cert_ttl"
+        elif key == "keyType":
+            suggest = "key_type"
+        elif key == "userCertTtl":
+            suggest = "user_cert_ttl"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TwingateGatewayConfigSshGateway. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TwingateGatewayConfigSshGateway.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TwingateGatewayConfigSshGateway.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 host_cert_ttl: Optional[_builtins.str] = None,
+                 key_type: Optional[_builtins.str] = None,
+                 user_cert_ttl: Optional[_builtins.str] = None,
+                 username: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str host_cert_ttl: Host certificate TTL. Default: "24h".
+        :param _builtins.str key_type: SSH key type. Default: "ed25519".
+        :param _builtins.str user_cert_ttl: User certificate TTL. Default: "5m".
+        :param _builtins.str username: SSH gateway username. Default: "gateway".
+        """
+        if host_cert_ttl is not None:
+            pulumi.set(__self__, "host_cert_ttl", host_cert_ttl)
+        if key_type is not None:
+            pulumi.set(__self__, "key_type", key_type)
+        if user_cert_ttl is not None:
+            pulumi.set(__self__, "user_cert_ttl", user_cert_ttl)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter(name="hostCertTtl")
+    def host_cert_ttl(self) -> Optional[_builtins.str]:
+        """
+        Host certificate TTL. Default: "24h".
+        """
+        return pulumi.get(self, "host_cert_ttl")
+
+    @_builtins.property
+    @pulumi.getter(name="keyType")
+    def key_type(self) -> Optional[_builtins.str]:
+        """
+        SSH key type. Default: "ed25519".
+        """
+        return pulumi.get(self, "key_type")
+
+    @_builtins.property
+    @pulumi.getter(name="userCertTtl")
+    def user_cert_ttl(self) -> Optional[_builtins.str]:
+        """
+        User certificate TTL. Default: "5m".
+        """
+        return pulumi.get(self, "user_cert_ttl")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> Optional[_builtins.str]:
+        """
+        SSH gateway username. Default: "gateway".
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class TwingateGatewayConfigSshResource(dict):
+    def __init__(__self__, *,
+                 address: _builtins.str,
+                 name: _builtins.str,
+                 username: _builtins.str):
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> _builtins.str:
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> _builtins.str:
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class TwingateGatewayConfigTls(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certificateFile":
+            suggest = "certificate_file"
+        elif key == "privateKeyFile":
+            suggest = "private_key_file"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TwingateGatewayConfigTls. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TwingateGatewayConfigTls.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TwingateGatewayConfigTls.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 certificate_file: Optional[_builtins.str] = None,
+                 private_key_file: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str certificate_file: Path to the TLS certificate file. Default: "/etc/gateway/tls.crt".
+        :param _builtins.str private_key_file: Path to the TLS private key file. Default: "/etc/gateway/tls.key".
+        """
+        if certificate_file is not None:
+            pulumi.set(__self__, "certificate_file", certificate_file)
+        if private_key_file is not None:
+            pulumi.set(__self__, "private_key_file", private_key_file)
+
+    @_builtins.property
+    @pulumi.getter(name="certificateFile")
+    def certificate_file(self) -> Optional[_builtins.str]:
+        """
+        Path to the TLS certificate file. Default: "/etc/gateway/tls.crt".
+        """
+        return pulumi.get(self, "certificate_file")
+
+    @_builtins.property
+    @pulumi.getter(name="privateKeyFile")
+    def private_key_file(self) -> Optional[_builtins.str]:
+        """
+        Path to the TLS private key file. Default: "/etc/gateway/tls.key".
+        """
+        return pulumi.get(self, "private_key_file")
+
+
+@pulumi.output_type
+class TwingateKubernetesResourceAccessGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessPolicies":
+            suggest = "access_policies"
+        elif key == "groupId":
+            suggest = "group_id"
+        elif key == "securityPolicyId":
+            suggest = "security_policy_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TwingateKubernetesResourceAccessGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TwingateKubernetesResourceAccessGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TwingateKubernetesResourceAccessGroup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_policies: Optional[Sequence['outputs.TwingateKubernetesResourceAccessGroupAccessPolicy']] = None,
+                 group_id: Optional[_builtins.str] = None,
+                 security_policy_id: Optional[_builtins.str] = None):
+        """
+        :param Sequence['TwingateKubernetesResourceAccessGroupAccessPolicyArgs'] access_policies: Restrict access according to JIT access policy
+        :param _builtins.str group_id: Group ID that will have permission to access the Resource.
+        :param _builtins.str security_policy_id: The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
+        """
+        if access_policies is not None:
+            pulumi.set(__self__, "access_policies", access_policies)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if security_policy_id is not None:
+            pulumi.set(__self__, "security_policy_id", security_policy_id)
+
+    @_builtins.property
+    @pulumi.getter(name="accessPolicies")
+    def access_policies(self) -> Optional[Sequence['outputs.TwingateKubernetesResourceAccessGroupAccessPolicy']]:
+        """
+        Restrict access according to JIT access policy
+        """
+        return pulumi.get(self, "access_policies")
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[_builtins.str]:
+        """
+        Group ID that will have permission to access the Resource.
+        """
+        return pulumi.get(self, "group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="securityPolicyId")
+    def security_policy_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
+        """
+        return pulumi.get(self, "security_policy_id")
+
+
+@pulumi.output_type
+class TwingateKubernetesResourceAccessGroupAccessPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "approvalMode":
+            suggest = "approval_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TwingateKubernetesResourceAccessGroupAccessPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TwingateKubernetesResourceAccessGroupAccessPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TwingateKubernetesResourceAccessGroupAccessPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 approval_mode: Optional[_builtins.str] = None,
+                 duration: Optional[_builtins.str] = None,
+                 mode: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str approval_mode: This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+        :param _builtins.str duration: This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+        :param _builtins.str mode: This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        """
+        if approval_mode is not None:
+            pulumi.set(__self__, "approval_mode", approval_mode)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @_builtins.property
+    @pulumi.getter(name="approvalMode")
+    def approval_mode(self) -> Optional[_builtins.str]:
+        """
+        This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+        """
+        return pulumi.get(self, "approval_mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> Optional[_builtins.str]:
+        """
+        This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+        """
+        return pulumi.get(self, "duration")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[_builtins.str]:
+        """
+        This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        """
+        return pulumi.get(self, "mode")
+
+
+@pulumi.output_type
+class TwingateKubernetesResourceAccessPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "approvalMode":
+            suggest = "approval_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TwingateKubernetesResourceAccessPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TwingateKubernetesResourceAccessPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TwingateKubernetesResourceAccessPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 approval_mode: Optional[_builtins.str] = None,
+                 duration: Optional[_builtins.str] = None,
+                 mode: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str approval_mode: This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+        :param _builtins.str duration: This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+        :param _builtins.str mode: This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        """
+        if approval_mode is not None:
+            pulumi.set(__self__, "approval_mode", approval_mode)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @_builtins.property
+    @pulumi.getter(name="approvalMode")
+    def approval_mode(self) -> Optional[_builtins.str]:
+        """
+        This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+        """
+        return pulumi.get(self, "approval_mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> Optional[_builtins.str]:
+        """
+        This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+        """
+        return pulumi.get(self, "duration")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[_builtins.str]:
+        """
+        This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        """
+        return pulumi.get(self, "mode")
+
+
+@pulumi.output_type
+class TwingateKubernetesResourceProtocols(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowIcmp":
+            suggest = "allow_icmp"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TwingateKubernetesResourceProtocols. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TwingateKubernetesResourceProtocols.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TwingateKubernetesResourceProtocols.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_icmp: Optional[_builtins.bool] = None,
+                 tcp: Optional['outputs.TwingateKubernetesResourceProtocolsTcp'] = None,
+                 udp: Optional['outputs.TwingateKubernetesResourceProtocolsUdp'] = None):
+        """
+        :param _builtins.bool allow_icmp: Whether to allow ICMP (ping) traffic
+        """
+        if allow_icmp is not None:
+            pulumi.set(__self__, "allow_icmp", allow_icmp)
+        if tcp is not None:
+            pulumi.set(__self__, "tcp", tcp)
+        if udp is not None:
+            pulumi.set(__self__, "udp", udp)
+
+    @_builtins.property
+    @pulumi.getter(name="allowIcmp")
+    def allow_icmp(self) -> Optional[_builtins.bool]:
+        """
+        Whether to allow ICMP (ping) traffic
+        """
+        return pulumi.get(self, "allow_icmp")
+
+    @_builtins.property
+    @pulumi.getter
+    def tcp(self) -> Optional['outputs.TwingateKubernetesResourceProtocolsTcp']:
+        return pulumi.get(self, "tcp")
+
+    @_builtins.property
+    @pulumi.getter
+    def udp(self) -> Optional['outputs.TwingateKubernetesResourceProtocolsUdp']:
+        return pulumi.get(self, "udp")
+
+
+@pulumi.output_type
+class TwingateKubernetesResourceProtocolsTcp(dict):
+    def __init__(__self__, *,
+                 policy: Optional[_builtins.str] = None,
+                 ports: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str policy: Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+        :param Sequence[_builtins.str] ports: List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> Optional[_builtins.str]:
+        """
+        Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+        """
+        return pulumi.get(self, "policy")
+
+    @_builtins.property
+    @pulumi.getter
+    def ports(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+        """
+        return pulumi.get(self, "ports")
+
+
+@pulumi.output_type
+class TwingateKubernetesResourceProtocolsUdp(dict):
+    def __init__(__self__, *,
+                 policy: Optional[_builtins.str] = None,
+                 ports: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str policy: Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+        :param Sequence[_builtins.str] ports: List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> Optional[_builtins.str]:
+        """
+        Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+        """
+        return pulumi.get(self, "policy")
+
+    @_builtins.property
+    @pulumi.getter
+    def ports(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+        """
+        return pulumi.get(self, "ports")
+
+
+@pulumi.output_type
 class TwingateResourceAccessGroup(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -592,9 +1404,9 @@ class TwingateResourceAccessGroupAccessPolicy(dict):
                  duration: Optional[_builtins.str] = None,
                  mode: Optional[_builtins.str] = None):
         """
-        :param _builtins.str approval_mode: This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
-        :param _builtins.str duration: This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
-        :param _builtins.str mode: This will set the access_policy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        :param _builtins.str approval_mode: This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+        :param _builtins.str duration: This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+        :param _builtins.str mode: This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
         """
         if approval_mode is not None:
             pulumi.set(__self__, "approval_mode", approval_mode)
@@ -607,7 +1419,7 @@ class TwingateResourceAccessGroupAccessPolicy(dict):
     @pulumi.getter(name="approvalMode")
     def approval_mode(self) -> Optional[_builtins.str]:
         """
-        This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+        This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
         """
         return pulumi.get(self, "approval_mode")
 
@@ -615,7 +1427,7 @@ class TwingateResourceAccessGroupAccessPolicy(dict):
     @pulumi.getter
     def duration(self) -> Optional[_builtins.str]:
         """
-        This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
+        This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
         """
         return pulumi.get(self, "duration")
 
@@ -623,7 +1435,7 @@ class TwingateResourceAccessGroupAccessPolicy(dict):
     @pulumi.getter
     def mode(self) -> Optional[_builtins.str]:
         """
-        This will set the access_policy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
         """
         return pulumi.get(self, "mode")
 
@@ -652,9 +1464,9 @@ class TwingateResourceAccessPolicy(dict):
                  duration: Optional[_builtins.str] = None,
                  mode: Optional[_builtins.str] = None):
         """
-        :param _builtins.str approval_mode: This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
-        :param _builtins.str duration: This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
-        :param _builtins.str mode: This will set the access_policy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        :param _builtins.str approval_mode: This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+        :param _builtins.str duration: This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+        :param _builtins.str mode: This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
         """
         if approval_mode is not None:
             pulumi.set(__self__, "approval_mode", approval_mode)
@@ -667,7 +1479,7 @@ class TwingateResourceAccessPolicy(dict):
     @pulumi.getter(name="approvalMode")
     def approval_mode(self) -> Optional[_builtins.str]:
         """
-        This will set the approval model on the edge. The valid values are `AUTOMATIC` and `MANUAL`.
+        This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
         """
         return pulumi.get(self, "approval_mode")
 
@@ -675,7 +1487,7 @@ class TwingateResourceAccessPolicy(dict):
     @pulumi.getter
     def duration(self) -> Optional[_builtins.str]:
         """
-        This will set the access duration on the edge. Duration must be between 1 hour and 365 days. The valid values are like `1h` and `2d`.
+        This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
         """
         return pulumi.get(self, "duration")
 
@@ -683,7 +1495,7 @@ class TwingateResourceAccessPolicy(dict):
     @pulumi.getter
     def mode(self) -> Optional[_builtins.str]:
         """
-        This will set the access_policy mode on the edge. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
         """
         return pulumi.get(self, "mode")
 
@@ -809,6 +1621,304 @@ class TwingateResourceProtocolsTcp(dict):
 
 @pulumi.output_type
 class TwingateResourceProtocolsUdp(dict):
+    def __init__(__self__, *,
+                 policy: Optional[_builtins.str] = None,
+                 ports: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str policy: Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+        :param Sequence[_builtins.str] ports: List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> Optional[_builtins.str]:
+        """
+        Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+        """
+        return pulumi.get(self, "policy")
+
+    @_builtins.property
+    @pulumi.getter
+    def ports(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+        """
+        return pulumi.get(self, "ports")
+
+
+@pulumi.output_type
+class TwingateSSHResourceAccessGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessPolicies":
+            suggest = "access_policies"
+        elif key == "groupId":
+            suggest = "group_id"
+        elif key == "securityPolicyId":
+            suggest = "security_policy_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TwingateSSHResourceAccessGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TwingateSSHResourceAccessGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TwingateSSHResourceAccessGroup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_policies: Optional[Sequence['outputs.TwingateSSHResourceAccessGroupAccessPolicy']] = None,
+                 group_id: Optional[_builtins.str] = None,
+                 security_policy_id: Optional[_builtins.str] = None):
+        """
+        :param Sequence['TwingateSSHResourceAccessGroupAccessPolicyArgs'] access_policies: Restrict access according to JIT access policy
+        :param _builtins.str group_id: Group ID that will have permission to access the Resource.
+        :param _builtins.str security_policy_id: The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
+        """
+        if access_policies is not None:
+            pulumi.set(__self__, "access_policies", access_policies)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if security_policy_id is not None:
+            pulumi.set(__self__, "security_policy_id", security_policy_id)
+
+    @_builtins.property
+    @pulumi.getter(name="accessPolicies")
+    def access_policies(self) -> Optional[Sequence['outputs.TwingateSSHResourceAccessGroupAccessPolicy']]:
+        """
+        Restrict access according to JIT access policy
+        """
+        return pulumi.get(self, "access_policies")
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[_builtins.str]:
+        """
+        Group ID that will have permission to access the Resource.
+        """
+        return pulumi.get(self, "group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="securityPolicyId")
+    def security_policy_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of a `get_twingate_security_policy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
+        """
+        return pulumi.get(self, "security_policy_id")
+
+
+@pulumi.output_type
+class TwingateSSHResourceAccessGroupAccessPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "approvalMode":
+            suggest = "approval_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TwingateSSHResourceAccessGroupAccessPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TwingateSSHResourceAccessGroupAccessPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TwingateSSHResourceAccessGroupAccessPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 approval_mode: Optional[_builtins.str] = None,
+                 duration: Optional[_builtins.str] = None,
+                 mode: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str approval_mode: This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+        :param _builtins.str duration: This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+        :param _builtins.str mode: This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        """
+        if approval_mode is not None:
+            pulumi.set(__self__, "approval_mode", approval_mode)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @_builtins.property
+    @pulumi.getter(name="approvalMode")
+    def approval_mode(self) -> Optional[_builtins.str]:
+        """
+        This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+        """
+        return pulumi.get(self, "approval_mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> Optional[_builtins.str]:
+        """
+        This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+        """
+        return pulumi.get(self, "duration")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[_builtins.str]:
+        """
+        This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        """
+        return pulumi.get(self, "mode")
+
+
+@pulumi.output_type
+class TwingateSSHResourceAccessPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "approvalMode":
+            suggest = "approval_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TwingateSSHResourceAccessPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TwingateSSHResourceAccessPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TwingateSSHResourceAccessPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 approval_mode: Optional[_builtins.str] = None,
+                 duration: Optional[_builtins.str] = None,
+                 mode: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str approval_mode: This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+        :param _builtins.str duration: This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+        :param _builtins.str mode: This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        """
+        if approval_mode is not None:
+            pulumi.set(__self__, "approval_mode", approval_mode)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @_builtins.property
+    @pulumi.getter(name="approvalMode")
+    def approval_mode(self) -> Optional[_builtins.str]:
+        """
+        This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+        """
+        return pulumi.get(self, "approval_mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> Optional[_builtins.str]:
+        """
+        This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+        """
+        return pulumi.get(self, "duration")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[_builtins.str]:
+        """
+        This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+        """
+        return pulumi.get(self, "mode")
+
+
+@pulumi.output_type
+class TwingateSSHResourceProtocols(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowIcmp":
+            suggest = "allow_icmp"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TwingateSSHResourceProtocols. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TwingateSSHResourceProtocols.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TwingateSSHResourceProtocols.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_icmp: Optional[_builtins.bool] = None,
+                 tcp: Optional['outputs.TwingateSSHResourceProtocolsTcp'] = None,
+                 udp: Optional['outputs.TwingateSSHResourceProtocolsUdp'] = None):
+        """
+        :param _builtins.bool allow_icmp: Whether to allow ICMP (ping) traffic
+        """
+        if allow_icmp is not None:
+            pulumi.set(__self__, "allow_icmp", allow_icmp)
+        if tcp is not None:
+            pulumi.set(__self__, "tcp", tcp)
+        if udp is not None:
+            pulumi.set(__self__, "udp", udp)
+
+    @_builtins.property
+    @pulumi.getter(name="allowIcmp")
+    def allow_icmp(self) -> Optional[_builtins.bool]:
+        """
+        Whether to allow ICMP (ping) traffic
+        """
+        return pulumi.get(self, "allow_icmp")
+
+    @_builtins.property
+    @pulumi.getter
+    def tcp(self) -> Optional['outputs.TwingateSSHResourceProtocolsTcp']:
+        return pulumi.get(self, "tcp")
+
+    @_builtins.property
+    @pulumi.getter
+    def udp(self) -> Optional['outputs.TwingateSSHResourceProtocolsUdp']:
+        return pulumi.get(self, "udp")
+
+
+@pulumi.output_type
+class TwingateSSHResourceProtocolsTcp(dict):
+    def __init__(__self__, *,
+                 policy: Optional[_builtins.str] = None,
+                 ports: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str policy: Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+        :param Sequence[_builtins.str] ports: List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> Optional[_builtins.str]:
+        """
+        Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+        """
+        return pulumi.get(self, "policy")
+
+    @_builtins.property
+    @pulumi.getter
+    def ports(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+        """
+        return pulumi.get(self, "ports")
+
+
+@pulumi.output_type
+class TwingateSSHResourceProtocolsUdp(dict):
     def __init__(__self__, *,
                  policy: Optional[_builtins.str] = None,
                  ports: Optional[Sequence[_builtins.str]] = None):

@@ -32,6 +32,7 @@ class TwingateDNSFilteringProfileArgs:
                  security_categories: Optional[pulumi.Input['TwingateDNSFilteringProfileSecurityCategoriesArgs']] = None):
         """
         The set of arguments for constructing a TwingateDNSFilteringProfile resource.
+
         :param pulumi.Input[_builtins.float] priority: A floating point number representing the profile's priority.
         :param pulumi.Input['TwingateDNSFilteringProfileAllowedDomainsArgs'] allowed_domains: A block with the following attributes.
         :param pulumi.Input['TwingateDNSFilteringProfileContentCategoriesArgs'] content_categories: A block with the following attributes.
@@ -183,6 +184,7 @@ class _TwingateDNSFilteringProfileState:
                  security_categories: Optional[pulumi.Input['TwingateDNSFilteringProfileSecurityCategoriesArgs']] = None):
         """
         Input properties used for looking up and filtering TwingateDNSFilteringProfile resources.
+
         :param pulumi.Input['TwingateDNSFilteringProfileAllowedDomainsArgs'] allowed_domains: A block with the following attributes.
         :param pulumi.Input['TwingateDNSFilteringProfileContentCategoriesArgs'] content_categories: A block with the following attributes.
         :param pulumi.Input['TwingateDNSFilteringProfileDeniedDomainsArgs'] denied_domains: A block with the following attributes.
@@ -384,6 +386,7 @@ class TwingateDNSFilteringProfile(pulumi.CustomResource):
         $ pulumi import twingate:index/twingateDNSFilteringProfile:TwingateDNSFilteringProfile example RG5zRmlsdGVyaW5nUHJvZmlsZToxY2I4YzM0YTc0
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['TwingateDNSFilteringProfileAllowedDomainsArgs', 'TwingateDNSFilteringProfileAllowedDomainsArgsDict']] allowed_domains: A block with the following attributes.
@@ -448,6 +451,7 @@ class TwingateDNSFilteringProfile(pulumi.CustomResource):
         ```sh
         $ pulumi import twingate:index/twingateDNSFilteringProfile:TwingateDNSFilteringProfile example RG5zRmlsdGVyaW5nUHJvZmlsZToxY2I4YzM0YTc0
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TwingateDNSFilteringProfileArgs args: The arguments to use to populate this resource's properties.
