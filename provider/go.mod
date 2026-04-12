@@ -5,7 +5,7 @@ go 1.25.8
 require (
 	github.com/Twingate/terraform-provider-twingate/v4 v4.1.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.126.0
-	github.com/pulumi/pulumi/sdk/v3 v3.229.0
+	github.com/pulumi/pulumi/sdk/v3 v3.230.0
 )
 
 require (
@@ -85,7 +85,7 @@ require (
 	github.com/felixge/httpsnoop v1.0.4 // indirect
 	github.com/go-git/gcfg v1.5.1-0.20230307220236-3a3c6141e376 // indirect
 	github.com/go-git/go-billy/v5 v5.8.0 // indirect
-	github.com/go-git/go-git/v5 v5.17.1 // indirect
+	github.com/go-git/go-git/v5 v5.17.2 // indirect
 	github.com/go-jose/go-jose/v4 v4.1.4 // indirect
 	github.com/go-logr/logr v1.4.3 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
