@@ -502,8 +502,8 @@ github.com/pulumi/pulumi-yaml v1.30.1 h1:8zXKxz3gZ8t0kXr0NZJMnLjySzajzKMX5JQlPiF
 github.com/pulumi/pulumi-yaml v1.30.1/go.mod h1:O+MmszO4Wjxvi2TBeRowbzxszn1BPTyC5wyyq/r6Dn4=
 github.com/pulumi/pulumi/pkg/v3 v3.228.0 h1:OxTpwvLaiMjxZp6E65DgrDE6faYTbPwxVdsjxMbjwqQ=
 github.com/pulumi/pulumi/pkg/v3 v3.228.0/go.mod h1:wbyNFINYuILaH/+kuN0XcMtGPZpQa3Ech3VDsk7Al2g=
-github.com/pulumi/pulumi/sdk/v3 v3.230.0 h1:0TtF82Hlor39DLU0QtM7RZPwRaOmjn5UtQKPi1Mxo9M=
-github.com/pulumi/pulumi/sdk/v3 v3.230.0/go.mod h1:u0fgmmPGwV5b4rmfuNABuYfRoqckuaTivufPn4EtfTk=
+github.com/pulumi/pulumi/sdk/v3 v3.231.0 h1:iAulagysgpFd3l2k3B2fsNtvcEy1ruOkyi++vwVQE2w=
+github.com/pulumi/pulumi/sdk/v3 v3.231.0/go.mod h1:l5TYGBUlKrkq3z/SbmTGIUD6JrzyRtPWI3wKZA+IXeo=
 github.com/pulumi/terraform-diff-reader v0.0.2 h1:kTE4nEXU3/SYXESvAIem+wyHMI3abqkI3OhJ0G04LLI=
 github.com/pulumi/terraform-diff-reader v0.0.2/go.mod h1:sZ9FUzGO+yM41hsQHs/yIcj/Y993qMdBxBU5mpDmAfQ=
 github.com/rhysd/go-fakeio v1.0.0 h1:+TjiKCOs32dONY7DaoVz/VPOdvRkPfBkEyUDIpM8FQY=
