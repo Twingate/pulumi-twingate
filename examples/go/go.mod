@@ -4,7 +4,7 @@ go 1.25.8
 
 require (
 	github.com/Twingate/pulumi-twingate/sdk/v4 v4.0.2
-	github.com/pulumi/pulumi/sdk/v3 v3.230.0
+	github.com/pulumi/pulumi/sdk/v3 v3.232.0
 )
 
 // Uncomment to use local SDK for development/testing
@@ -42,7 +42,6 @@ require (
 	github.com/go-logr/logr v1.4.3 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
-	github.com/golang/glog v1.2.5 // indirect
 	github.com/golang/groupcache v0.0.0-20241129210726-2c02b8208cf8 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.28.0 // indirect
