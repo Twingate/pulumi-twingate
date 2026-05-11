@@ -38,6 +38,8 @@ const (
 	mainPkg = "twingate"
 	// modules:
 	mainMod = "index" // the twingate module
+	// providerName is the display/publisher/org identity used across the bridge config.
+	providerName = "Twingate"
 )
 
 // preConfigureCallback is called before the providerConfigure function of the underlying provider.
@@ -65,12 +67,12 @@ func Provider() bridgev3.ProviderInfo {
 		Version:                 version.Version,
 		// DisplayName is a way to be able to change the casing of the provider
 		// name when being displayed on the Pulumi registry
-		DisplayName: "Twingate",
+		DisplayName: providerName,
 		// The default publisher for all packages is Pulumi.
 		// Change this to your personal name (or a company name) that you
 		// would like to be shown in the Pulumi Registry if this package is published
 		// there.
-		Publisher: "Twingate",
+		Publisher: providerName,
 		// LogoURL is optional but useful to help identify your package in the Pulumi Registry
 		// if this package is published there.
 		//
@@ -91,7 +93,7 @@ func Provider() bridgev3.ProviderInfo {
 		Repository: "https://github.com/Twingate/pulumi-twingate",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
-		GitHubOrg:    "Twingate",
+		GitHubOrg:    providerName,
 		MetadataInfo: bridgev3.NewProviderMetadata(metadata),
 		Config:       map[string]*bridgev3.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
@@ -188,7 +190,7 @@ func Provider() bridgev3.ProviderInfo {
 			GenerateResourceContainerTypes: true,
 		},
 		CSharp: &bridgev3.CSharpInfo{
-			RootNamespace: "Twingate",
+			RootNamespace: providerName,
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
 			},
