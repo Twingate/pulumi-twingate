@@ -12,6 +12,8 @@ jobs:
   build_sdk:
     name: Build SDKs ${{ matrix.language }}
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     strategy:
       fail-fast: true
       matrix:
