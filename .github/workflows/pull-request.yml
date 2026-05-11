@@ -12,6 +12,8 @@ jobs:
   build_sdk:
     name: Build SDKs ${{ matrix.language }}
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     strategy:
       fail-fast: true
       matrix:
@@ -46,7 +48,7 @@ jobs:
         repo: pulumi/pulumictl
 
     - name: Install pulumi
-      uses: pulumi/actions@v6
+      uses: pulumi/actions@v7
       with:
        pulumi-version: v3.218.0
 
