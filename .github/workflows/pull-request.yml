@@ -46,7 +46,7 @@ jobs:
         repo: pulumi/pulumictl
 
     - name: Install pulumi
-      uses: pulumi/actions@v6
+      uses: pulumi/actions@v7
       with:
        pulumi-version: v3.218.0
 
