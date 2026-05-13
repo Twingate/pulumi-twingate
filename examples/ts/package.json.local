@@ -5,8 +5,9 @@
     },
     "dependencies": {
         "@pulumi/pulumi": "^3.112.0",
-        // Use local SDK for development (built with make build_nodejs)
+        "@pulumi/tls": "^5.3.1",
         "@twingate/pulumi-twingate": "file:../../sdk/nodejs/bin",
-        "pulumi": "^0.0.1"
+        "pulumi": "^0.0.1",
+        "typescript": "^5.9.3"
     }
 }
