@@ -3,7 +3,8 @@ module twingate_go_example
 go 1.25.8
 
 require (
-	github.com/Twingate/pulumi-twingate/sdk/v4 v4.0.2
+	github.com/Twingate/pulumi-twingate/sdk/v4 v4.2.0
+	github.com/pulumi/pulumi-tls/sdk/v5 v5.3.1
 	github.com/pulumi/pulumi/sdk/v3 v3.239.0
 )
 
