@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/Twingate/pulumi-twingate/sdk/v4/go/twingate"
+	"github.com/pulumi/pulumi-tls/sdk/v5/go/tls"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -199,6 +200,201 @@ func main() {
 		})
 		if err != nil {
 			return err
+		}
+
+		// ---------------------------------------------------------------------
+		// Twingate Gateway, CAs, and SSH Resource
+		// ---------------------------------------------------------------------
+		// Generate an RSA CA key + self-signed X.509 certificate at deploy time using
+		// the Pulumi tls provider. For prod, replace with your own PKI material.
+		x509Key, err := tls.NewPrivateKey(ctx, "x509_key_go", &tls.PrivateKeyArgs{
+			Algorithm: pulumi.String("RSA"),
+			RsaBits:   pulumi.IntPtr(4096),
+		})
+		if err != nil {
+			return err
+		}
+		x509Cert, err := tls.NewSelfSignedCert(ctx, "x509_cert_go", &tls.SelfSignedCertArgs{
+			PrivateKeyPem:       x509Key.PrivateKeyPem,
+			IsCaCertificate:     pulumi.BoolPtr(true),
+			ValidityPeriodHours: pulumi.Int(8760), // 1 year
+			AllowedUses: pulumi.StringArray{
+				pulumi.String("key_encipherment"),
+				pulumi.String("digital_signature"),
+				pulumi.String("cert_signing"),
+				pulumi.String("crl_signing"),
+			},
+			Subject: &tls.SelfSignedCertSubjectArgs{
+				CommonName:   pulumi.StringPtr("pulumi-twingate-tls-ca-go"),
+				Organization: pulumi.StringPtr("Twingate Example"),
+			},
+		})
+		if err != nil {
+			return err
+		}
+
+		tlsCa, err := twingate.NewTwingateX509CertificateAuthority(ctx, "tls_ca_go", &twingate.TwingateX509CertificateAuthorityArgs{
+			Name:        pulumi.StringPtr("Pulumi TLS CA Go"),
+			Certificate: x509Cert.CertPem,
+		})
+		if err != nil {
+			return err
+		}
+
+		// Generate an ed25519 SSH CA key — its PublicKeyOpenssh is the OpenSSH-format key.
+		sshKey, err := tls.NewPrivateKey(ctx, "ssh_key_go", &tls.PrivateKeyArgs{
+			Algorithm: pulumi.String("ED25519"),
+		})
+		if err != nil {
+			return err
+		}
+		sshCa, err := twingate.NewTwingateSSHCertificateAuthority(ctx, "ssh_ca_go", &twingate.TwingateSSHCertificateAuthorityArgs{
+			Name:      pulumi.StringPtr("Pulumi SSH CA Go"),
+			PublicKey: sshKey.PublicKeyOpenssh,
+		})
+		if err != nil {
+			return err
+		}
+
+		// Gateway sits in the remote network and brokers traffic for downstream resources.
+		gateway, err := twingate.NewTwingateGateway(ctx, "gateway_go", &twingate.TwingateGatewayArgs{
+			Address:         pulumi.String("10.0.0.1:8443"),
+			RemoteNetworkId: remoteNetwork.ID(),
+			X509CaId:        tlsCa.ID(),
+			SshCaId:         sshCa.ID(),
+		})
+		if err != nil {
+			return err
+		}
+
+		// SSH Resource reachable through the Gateway.
+		sshResource, err := twingate.NewTwingateSSHResource(ctx, "ssh_resource_go", &twingate.TwingateSSHResourceArgs{
+			Name:            pulumi.StringPtr("Bastion SSH Go"),
+			Address:         pulumi.String("bastion.internal.example.com"),
+			RemoteNetworkId: gateway.RemoteNetworkId,
+			GatewayId:       gateway.ID(),
+			Username:        pulumi.StringPtr("ubuntu"),
+			AccessGroups: &twingate.TwingateSSHResourceAccessGroupArray{
+				&twingate.TwingateSSHResourceAccessGroupArgs{
+					GroupId: group.ID(),
+				},
+			},
+			Protocols: &twingate.TwingateSSHResourceProtocolsArgs{
+				Tcp: &twingate.TwingateSSHResourceProtocolsTcpArgs{
+					Policy: pulumi.StringPtr("RESTRICTED"),
+					Ports: pulumi.StringArray{
+						pulumi.String("22"),
+					},
+				},
+			},
+		})
+		if err != nil {
+			return err
+		}
+
+		// Rendered gateway config (e.g. for the gateway runtime to consume).
+		gatewayConfig, err := twingate.NewTwingateGatewayConfig(ctx, "gateway_config_go", &twingate.TwingateGatewayConfigArgs{
+			Port:        pulumi.IntPtr(8443),
+			MetricsPort: pulumi.IntPtr(9090),
+			Ssh: &twingate.TwingateGatewayConfigSshArgs{
+				Gateway: &twingate.TwingateGatewayConfigSshGatewayArgs{
+					Username:    pulumi.StringPtr("gateway"),
+					KeyType:     pulumi.StringPtr("ed25519"),
+					UserCertTtl: pulumi.StringPtr("5m"),
+					HostCertTtl: pulumi.StringPtr("24h"),
+				},
+				Ca: &twingate.TwingateGatewayConfigSshCaArgs{
+					PrivateKeyFile: pulumi.StringPtr("/etc/gateway/ssh-ca.key"),
+				},
+				Resources: &twingate.TwingateGatewayConfigSshResourceArray{
+					&twingate.TwingateGatewayConfigSshResourceArgs{
+						Name:     sshResource.Name,
+						Address:  sshResource.Address,
+						Username: pulumi.String("ubuntu"),
+					},
+				},
+			},
+			Tls: &twingate.TwingateGatewayConfigTlsArgs{
+				CertificateFile: pulumi.StringPtr("/etc/gateway/tls.crt"),
+				PrivateKeyFile:  pulumi.StringPtr("/etc/gateway/tls.key"),
+			},
+		})
+		if err != nil {
+			return err
+		}
+
+		ctx.Export("gateway_id", gateway.ID())
+		ctx.Export("gateway_config_content", gatewayConfig.Content)
+
+		// ---------------------------------------------------------------------
+		// Twingate User
+		// ---------------------------------------------------------------------
+		_, err = twingate.NewTwingateUser(ctx, "example_user_go", &twingate.TwingateUserArgs{
+			Email:      pulumi.String("example.user.go@example.com"),
+			FirstName:  pulumi.StringPtr("Example"),
+			LastName:   pulumi.StringPtr("User"),
+			Role:       pulumi.StringPtr("MEMBER"),
+			IsActive:   pulumi.BoolPtr(true),
+			SendInvite: pulumi.BoolPtr(false),
+		})
+		if err != nil {
+			return err
+		}
+
+		// ---------------------------------------------------------------------
+		// Connector tokens — bake into a deployment (EC2 user_data, Helm, ...)
+		// ---------------------------------------------------------------------
+		connectorTokens, err := twingate.NewTwingateConnectorTokens(ctx, "connector_tokens_go", &twingate.TwingateConnectorTokensArgs{
+			ConnectorId: connector.ID(),
+		})
+		if err != nil {
+			return err
+		}
+		ctx.Export("connector_access_token", pulumi.ToSecret(connectorTokens.AccessToken))
+		ctx.Export("connector_refresh_token", pulumi.ToSecret(connectorTokens.RefreshToken))
+
+		// ---------------------------------------------------------------------
+		// Look up a Security Policy by name and apply it to a group access block.
+		// ---------------------------------------------------------------------
+		defaultPolicy := twingate.GetTwingateSecurityPolicyOutput(ctx, twingate.GetTwingateSecurityPolicyOutputArgs{
+			Name: pulumi.String("Default Policy"),
+		})
+		_, err = twingate.NewTwingateResource(ctx, "policy_resource_go", &twingate.TwingateResourceArgs{
+			Name:            pulumi.StringPtr("Policy-bound Resource Go"),
+			Address:         pulumi.String("policy-app.example.com"),
+			RemoteNetworkId: remoteNetwork.ID(),
+			AccessGroups: &twingate.TwingateResourceAccessGroupArray{
+				&twingate.TwingateResourceAccessGroupArgs{
+					GroupId:          group.ID(),
+					SecurityPolicyId: defaultPolicy.Id(),
+				},
+			},
+		})
+		if err != nil {
+			return err
+		}
+
+		// ---------------------------------------------------------------------
+		// Data-source examples (mirroring TS/Python/.NET)
+		// ---------------------------------------------------------------------
+		connectorsResult, err := twingate.GetTwingateConnectors(ctx, &twingate.GetTwingateConnectorsArgs{
+			NameContains: pulumi.StringRef("t"),
+		}, nil)
+		if err != nil {
+			return err
+		}
+		for _, c := range connectorsResult.Connectors {
+			ctx.Log.Info("Connector "+c.Name+" -> "+c.RemoteNetworkId, nil)
+		}
+
+		groupsResult, err := twingate.GetTwingateGroups(ctx, &twingate.GetTwingateGroupsArgs{
+			NameContains: pulumi.StringRef("demo"),
+		}, nil)
+		if err != nil {
+			return err
+		}
+		for _, g := range groupsResult.Groups {
+			ctx.Log.Info("Group "+g.Name+" (id="+g.Id+")", nil)
 		}
 
 		return nil

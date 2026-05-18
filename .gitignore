@@ -21,3 +21,4 @@ provider/**/schema-embed.json
 **/version.txt
 **/nuget
 **/dist
+examples/go/twingate_go_example
