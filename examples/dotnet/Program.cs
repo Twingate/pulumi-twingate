@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using Pulumi;
+using Pulumi.Tls;
+using Pulumi.Tls.Inputs;
 using Twingate.Twingate;
 using Twingate.Twingate.Inputs;
 using Twingate.Twingate.Outputs;
@@ -236,4 +239,171 @@ await Deployment.RunAsync(() =>
             BlockDisguisedTrackers = true
         }
     });
+
+    // -----------------------------------------------------------------------
+    // Twingate Gateway, CAs, and SSH Resource
+    // -----------------------------------------------------------------------
+    // Generate an RSA CA key + self-signed X.509 certificate at deploy time using
+    // the Pulumi tls provider. For prod, replace with your own PKI material.
+    var x509Key = new PrivateKey("x509_key_cs", new PrivateKeyArgs
+    {
+        Algorithm = "RSA",
+        RsaBits = 4096,
+    });
+    var x509Cert = new SelfSignedCert("x509_cert_cs", new SelfSignedCertArgs
+    {
+        PrivateKeyPem = x509Key.PrivateKeyPem,
+        IsCaCertificate = true,
+        ValidityPeriodHours = 8760, // 1 year
+        AllowedUses =
+        {
+            "key_encipherment",
+            "digital_signature",
+            "cert_signing",
+            "crl_signing",
+        },
+        Subject = new SelfSignedCertSubjectArgs
+        {
+            CommonName = "pulumi-twingate-tls-ca-cs",
+            Organization = "Twingate Example",
+        },
+    });
+
+    var tlsCa = new TwingateX509CertificateAuthority("tls_ca_cs", new TwingateX509CertificateAuthorityArgs
+    {
+        Name = "Pulumi TLS CA CS",
+        Certificate = x509Cert.CertPem,
+    });
+
+    // Generate an ed25519 SSH CA key — its PublicKeyOpenssh is the OpenSSH-format key.
+    var sshKey = new PrivateKey("ssh_key_cs", new PrivateKeyArgs
+    {
+        Algorithm = "ED25519",
+    });
+    var sshCa = new TwingateSSHCertificateAuthority("ssh_ca_cs", new TwingateSSHCertificateAuthorityArgs
+    {
+        Name = "Pulumi SSH CA CS",
+        PublicKey = sshKey.PublicKeyOpenssh,
+    });
+
+    // Gateway sits in the remote network and brokers traffic for downstream resources.
+    var gateway = new TwingateGateway("gateway_cs", new TwingateGatewayArgs
+    {
+        Address = "10.0.0.1:8443",
+        RemoteNetworkId = remoteNetwork.Id,
+        X509CaId = tlsCa.Id,
+        SshCaId = sshCa.Id,
+    });
+
+    // SSH Resource reachable through the Gateway.
+    var sshResource = new TwingateSSHResource("ssh_resource_cs", new TwingateSSHResourceArgs
+    {
+        Name = "Bastion SSH CS",
+        Address = "bastion.internal.example.com",
+        RemoteNetworkId = remoteNetwork.Id,
+        GatewayId = gateway.Id,
+        Username = "ubuntu",
+        AccessGroups = new[]
+        {
+            new TwingateSSHResourceAccessGroupArgs
+            {
+                GroupId = tgGroup.Id,
+            },
+        },
+        Protocols = new TwingateSSHResourceProtocolsArgs
+        {
+            Tcp = new TwingateSSHResourceProtocolsTcpArgs
+            {
+                Policy = "RESTRICTED",
+                Ports = { "22" },
+            },
+        },
+    });
+
+    // Rendered gateway config (e.g. for the gateway runtime to consume).
+    var gatewayConfig = new TwingateGatewayConfig("gateway_config_cs", new TwingateGatewayConfigArgs
+    {
+        Port = 8443,
+        MetricsPort = 9090,
+        Ssh = new TwingateGatewayConfigSshArgs
+        {
+            Gateway = new TwingateGatewayConfigSshGatewayArgs
+            {
+                Username = "gateway",
+                KeyType = "ed25519",
+                UserCertTtl = "5m",
+                HostCertTtl = "24h",
+            },
+            Ca = new TwingateGatewayConfigSshCaArgs
+            {
+                PrivateKeyFile = "/etc/gateway/ssh-ca.key",
+            },
+            Resources =
+            {
+                new TwingateGatewayConfigSshResourceArgs
+                {
+                    Name = sshResource.Name,
+                    Address = sshResource.Address,
+                    Username = "ubuntu",
+                },
+            },
+        },
+        Tls = new TwingateGatewayConfigTlsArgs
+        {
+            CertificateFile = "/etc/gateway/tls.crt",
+            PrivateKeyFile = "/etc/gateway/tls.key",
+        },
+    });
+
+    // -----------------------------------------------------------------------
+    // Twingate User
+    // -----------------------------------------------------------------------
+    var exampleUser = new TwingateUser("example_user_cs", new TwingateUserArgs
+    {
+        Email = "example.user.cs@example.com",
+        FirstName = "Example",
+        LastName = "User",
+        Role = "MEMBER",
+        IsActive = true,
+        SendInvite = false,
+    });
+
+    // -----------------------------------------------------------------------
+    // Connector tokens — bake into a deployment (EC2 user_data, Helm, ...)
+    // -----------------------------------------------------------------------
+    var connectorTokens = new TwingateConnectorTokens("connector_tokens_cs", new TwingateConnectorTokensArgs
+    {
+        ConnectorId = tggcpConnector.Id,
+    });
+
+    // -----------------------------------------------------------------------
+    // Look up a Security Policy by name and apply it to a group access block.
+    // -----------------------------------------------------------------------
+    var defaultPolicy = GetTwingateSecurityPolicy.Invoke(new GetTwingateSecurityPolicyInvokeArgs
+    {
+        Name = "Default Policy",
+    });
+
+    var policyResource = new TwingateResource("policy_resource_cs", new TwingateResourceArgs
+    {
+        Name = "Policy-bound Resource CS",
+        Address = "policy-app.example.com",
+        RemoteNetworkId = remoteNetwork.Id,
+        AccessGroups = new[]
+        {
+            new TwingateResourceAccessGroupArgs
+            {
+                GroupId = tgGroup.Id,
+                SecurityPolicyId = defaultPolicy.Apply(p => p.Id),
+            },
+        },
+    });
+
+    return new Dictionary<string, object?>
+    {
+        ["gateway_id"] = gateway.Id,
+        ["gateway_config_content"] = gatewayConfig.Content,
+        ["connector_access_token"] = Output.CreateSecret(connectorTokens.AccessToken),
+        ["connector_refresh_token"] = Output.CreateSecret(connectorTokens.RefreshToken),
+    };
 });
