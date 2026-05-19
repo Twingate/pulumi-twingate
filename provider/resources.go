@@ -157,6 +157,9 @@ func Provider() bridgev3.ProviderInfo {
 			"twingate_x509_certificate_authority": {
 				Tok: bridgev3.MakeDataSource(mainPkg, mainMod, "getTwingateX509CertificateAuthority"),
 			},
+			"twingate_sync_to_s3": {
+				Tok: bridgev3.MakeDataSource(mainPkg, mainMod, "getTwingateSyncToS3"),
+			},
 		},
 		JavaScript: &bridgev3.JavaScriptInfo{
 			PackageName: "@twingate/pulumi-twingate",
