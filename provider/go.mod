@@ -1,9 +1,9 @@
 module github.com/Twingate/pulumi-twingate/provider
 
-go 1.25.8
+go 1.26
 
 require (
-	github.com/Twingate/terraform-provider-twingate/v4 v4.2.0
+	github.com/Twingate/terraform-provider-twingate/v4 v4.2.1
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.126.0
 	github.com/pulumi/pulumi/sdk/v3 v3.230.0
 )
@@ -224,15 +224,15 @@ require (
 	go.opentelemetry.io/proto/otlp v1.10.0 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
-	golang.org/x/crypto v0.50.0 // indirect
+	golang.org/x/crypto v0.52.0 // indirect
 	golang.org/x/exp v0.0.0-20260410095643-746e56fc9e2f // indirect
 	golang.org/x/mod v0.35.0 // indirect
-	golang.org/x/net v0.53.0 // indirect
+	golang.org/x/net v0.54.0 // indirect
 	golang.org/x/oauth2 v0.36.0 // indirect
-	golang.org/x/sync v0.20.0 // indirect
-	golang.org/x/sys v0.43.0 // indirect
-	golang.org/x/term v0.42.0 // indirect
-	golang.org/x/text v0.36.0 // indirect
+	golang.org/x/sync v0.21.0 // indirect
+	golang.org/x/sys v0.45.0 // indirect
+	golang.org/x/term v0.43.0 // indirect
+	golang.org/x/text v0.37.0 // indirect
 	golang.org/x/time v0.15.0 // indirect
 	golang.org/x/tools v0.44.0 // indirect
 	google.golang.org/api v0.271.0 // indirect
