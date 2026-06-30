@@ -157,7 +157,7 @@ func Provider() bridgev3.ProviderInfo {
 			"twingate_x509_certificate_authority": {
 				Tok: bridgev3.MakeDataSource(mainPkg, mainMod, "getTwingateX509CertificateAuthority"),
 			},
-			// twingate_sync_to_s3 was removed upstream in v4.2.1 (terraform-provider-twingate#879);
+			// twingate_sync_to_s3 was removed upstream in v4.2.1 (Twingate/terraform-provider-twingate#879);
 			// kept here in case it is re-added later.
 			// "twingate_sync_to_s3": {
 			// 	Tok: bridgev3.MakeDataSource(mainPkg, mainMod, "getTwingateSyncToS3"),
