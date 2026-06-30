@@ -20,7 +20,7 @@ jobs:
         dotnetversion:
           - 10.0.x
         goversion:
-          - 1.25.x
+          - 1.26.x
         nodeversion:
           - 25.x
         pythonversion:
