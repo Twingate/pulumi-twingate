@@ -8,8 +8,8 @@ require (
 	github.com/pulumi/pulumi/sdk/v3 v3.245.0
 )
 
-// Use local SDK for development/testing
-replace github.com/Twingate/pulumi-twingate/sdk/v4 => ../../sdk
+// Uncomment to use local SDK for development/testing
+// replace github.com/Twingate/pulumi-twingate/sdk/v4 => ../../sdk
 
 require (
 	dario.cat/mergo v1.0.1 // indirect
