@@ -9,7 +9,7 @@ require (
 )
 
 // Uncomment to use local SDK for development/testing
-replace github.com/Twingate/pulumi-twingate/sdk/v4 => ../../sdk
+// replace github.com/Twingate/pulumi-twingate/sdk/v4 => ../../sdk
 
 require (
 	github.com/BurntSushi/toml v1.6.0 // indirect
