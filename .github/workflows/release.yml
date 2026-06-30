@@ -30,7 +30,7 @@ jobs:
       id-token: write
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Unshallow clone for tags
         run: git fetch --prune --unshallow --tags
@@ -74,7 +74,7 @@ jobs:
       id-token: write  # Required for OIDC/npm provenance
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Unshallow clone for tags
         run: git fetch --prune --unshallow --tags
@@ -198,7 +198,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
