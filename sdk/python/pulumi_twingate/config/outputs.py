@@ -189,6 +189,8 @@ class CacheResourcesFilter(dict):
                  name_prefix: Optional[_builtins.str] = None,
                  name_regexp: Optional[_builtins.str] = None,
                  name_suffix: Optional[_builtins.str] = None,
+                 remote_network_id: Optional[_builtins.str] = None,
+                 remote_network_name: Optional[_builtins.str] = None,
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
         :param _builtins.str name: Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
@@ -197,6 +199,8 @@ class CacheResourcesFilter(dict):
         :param _builtins.str name_prefix: The name of the resource must start with the value.
         :param _builtins.str name_regexp: The regular expression match of the name of the resource.
         :param _builtins.str name_suffix: The name of the resource must end with the value.
+        :param _builtins.str remote_network_id: Returns only resources that are associated with the specified remote network ID.
+        :param _builtins.str remote_network_name: Returns only resources that are associated with the specified remote network name.
         :param Mapping[str, _builtins.str] tags: Returns only resources that exactly match the given tags.
         """
         if name is not None:
@@ -211,6 +215,10 @@ class CacheResourcesFilter(dict):
             pulumi.set(__self__, "name_regexp", name_regexp)
         if name_suffix is not None:
             pulumi.set(__self__, "name_suffix", name_suffix)
+        if remote_network_id is not None:
+            pulumi.set(__self__, "remote_network_id", remote_network_id)
+        if remote_network_name is not None:
+            pulumi.set(__self__, "remote_network_name", remote_network_name)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -261,6 +269,22 @@ class CacheResourcesFilter(dict):
         The name of the resource must end with the value.
         """
         return pulumi.get(self, "name_suffix")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteNetworkId")
+    def remote_network_id(self) -> Optional[_builtins.str]:
+        """
+        Returns only resources that are associated with the specified remote network ID.
+        """
+        return pulumi.get(self, "remote_network_id")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteNetworkName")
+    def remote_network_name(self) -> Optional[_builtins.str]:
+        """
+        Returns only resources that are associated with the specified remote network name.
+        """
+        return pulumi.get(self, "remote_network_name")
 
     @_builtins.property
     @pulumi.getter

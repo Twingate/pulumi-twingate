@@ -22,14 +22,14 @@ __all__ = ['TwingateDNSFilteringProfileArgs', 'TwingateDNSFilteringProfile']
 class TwingateDNSFilteringProfileArgs:
     def __init__(__self__, *,
                  priority: pulumi.Input[_builtins.float],
-                 allowed_domains: Optional[pulumi.Input['TwingateDNSFilteringProfileAllowedDomainsArgs']] = None,
-                 content_categories: Optional[pulumi.Input['TwingateDNSFilteringProfileContentCategoriesArgs']] = None,
-                 denied_domains: Optional[pulumi.Input['TwingateDNSFilteringProfileDeniedDomainsArgs']] = None,
-                 fallback_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 privacy_categories: Optional[pulumi.Input['TwingateDNSFilteringProfilePrivacyCategoriesArgs']] = None,
-                 security_categories: Optional[pulumi.Input['TwingateDNSFilteringProfileSecurityCategoriesArgs']] = None):
+                 allowed_domains: pulumi.Input[Optional['TwingateDNSFilteringProfileAllowedDomainsArgs']] = None,
+                 content_categories: pulumi.Input[Optional['TwingateDNSFilteringProfileContentCategoriesArgs']] = None,
+                 denied_domains: pulumi.Input[Optional['TwingateDNSFilteringProfileDeniedDomainsArgs']] = None,
+                 fallback_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 privacy_categories: pulumi.Input[Optional['TwingateDNSFilteringProfilePrivacyCategoriesArgs']] = None,
+                 security_categories: pulumi.Input[Optional['TwingateDNSFilteringProfileSecurityCategoriesArgs']] = None):
         """
         The set of arguments for constructing a TwingateDNSFilteringProfile resource.
 
@@ -75,113 +75,113 @@ class TwingateDNSFilteringProfileArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedDomains")
-    def allowed_domains(self) -> Optional[pulumi.Input['TwingateDNSFilteringProfileAllowedDomainsArgs']]:
+    def allowed_domains(self) -> pulumi.Input[Optional['TwingateDNSFilteringProfileAllowedDomainsArgs']]:
         """
         A block with the following attributes.
         """
         return pulumi.get(self, "allowed_domains")
 
     @allowed_domains.setter
-    def allowed_domains(self, value: Optional[pulumi.Input['TwingateDNSFilteringProfileAllowedDomainsArgs']]):
+    def allowed_domains(self, value: pulumi.Input[Optional['TwingateDNSFilteringProfileAllowedDomainsArgs']]):
         pulumi.set(self, "allowed_domains", value)
 
     @_builtins.property
     @pulumi.getter(name="contentCategories")
-    def content_categories(self) -> Optional[pulumi.Input['TwingateDNSFilteringProfileContentCategoriesArgs']]:
+    def content_categories(self) -> pulumi.Input[Optional['TwingateDNSFilteringProfileContentCategoriesArgs']]:
         """
         A block with the following attributes.
         """
         return pulumi.get(self, "content_categories")
 
     @content_categories.setter
-    def content_categories(self, value: Optional[pulumi.Input['TwingateDNSFilteringProfileContentCategoriesArgs']]):
+    def content_categories(self, value: pulumi.Input[Optional['TwingateDNSFilteringProfileContentCategoriesArgs']]):
         pulumi.set(self, "content_categories", value)
 
     @_builtins.property
     @pulumi.getter(name="deniedDomains")
-    def denied_domains(self) -> Optional[pulumi.Input['TwingateDNSFilteringProfileDeniedDomainsArgs']]:
+    def denied_domains(self) -> pulumi.Input[Optional['TwingateDNSFilteringProfileDeniedDomainsArgs']]:
         """
         A block with the following attributes.
         """
         return pulumi.get(self, "denied_domains")
 
     @denied_domains.setter
-    def denied_domains(self, value: Optional[pulumi.Input['TwingateDNSFilteringProfileDeniedDomainsArgs']]):
+    def denied_domains(self, value: pulumi.Input[Optional['TwingateDNSFilteringProfileDeniedDomainsArgs']]):
         pulumi.set(self, "denied_domains", value)
 
     @_builtins.property
     @pulumi.getter(name="fallbackMethod")
-    def fallback_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fallback_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DNS filtering profile's fallback method. One of "AUTO" or "STRICT". Defaults to "STRICT".
         """
         return pulumi.get(self, "fallback_method")
 
     @fallback_method.setter
-    def fallback_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fallback_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fallback_method", value)
 
     @_builtins.property
     @pulumi.getter
-    def groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of group IDs that have this as their DNS filtering profile. Defaults to an empty set.
         """
         return pulumi.get(self, "groups")
 
     @groups.setter
-    def groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "groups", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DNS filtering profile's name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="privacyCategories")
-    def privacy_categories(self) -> Optional[pulumi.Input['TwingateDNSFilteringProfilePrivacyCategoriesArgs']]:
+    def privacy_categories(self) -> pulumi.Input[Optional['TwingateDNSFilteringProfilePrivacyCategoriesArgs']]:
         """
         A block with the following attributes.
         """
         return pulumi.get(self, "privacy_categories")
 
     @privacy_categories.setter
-    def privacy_categories(self, value: Optional[pulumi.Input['TwingateDNSFilteringProfilePrivacyCategoriesArgs']]):
+    def privacy_categories(self, value: pulumi.Input[Optional['TwingateDNSFilteringProfilePrivacyCategoriesArgs']]):
         pulumi.set(self, "privacy_categories", value)
 
     @_builtins.property
     @pulumi.getter(name="securityCategories")
-    def security_categories(self) -> Optional[pulumi.Input['TwingateDNSFilteringProfileSecurityCategoriesArgs']]:
+    def security_categories(self) -> pulumi.Input[Optional['TwingateDNSFilteringProfileSecurityCategoriesArgs']]:
         """
         A block with the following attributes.
         """
         return pulumi.get(self, "security_categories")
 
     @security_categories.setter
-    def security_categories(self, value: Optional[pulumi.Input['TwingateDNSFilteringProfileSecurityCategoriesArgs']]):
+    def security_categories(self, value: pulumi.Input[Optional['TwingateDNSFilteringProfileSecurityCategoriesArgs']]):
         pulumi.set(self, "security_categories", value)
 
 
 @pulumi.input_type
 class _TwingateDNSFilteringProfileState:
     def __init__(__self__, *,
-                 allowed_domains: Optional[pulumi.Input['TwingateDNSFilteringProfileAllowedDomainsArgs']] = None,
-                 content_categories: Optional[pulumi.Input['TwingateDNSFilteringProfileContentCategoriesArgs']] = None,
-                 denied_domains: Optional[pulumi.Input['TwingateDNSFilteringProfileDeniedDomainsArgs']] = None,
-                 fallback_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.float]] = None,
-                 privacy_categories: Optional[pulumi.Input['TwingateDNSFilteringProfilePrivacyCategoriesArgs']] = None,
-                 security_categories: Optional[pulumi.Input['TwingateDNSFilteringProfileSecurityCategoriesArgs']] = None):
+                 allowed_domains: pulumi.Input[Optional['TwingateDNSFilteringProfileAllowedDomainsArgs']] = None,
+                 content_categories: pulumi.Input[Optional['TwingateDNSFilteringProfileContentCategoriesArgs']] = None,
+                 denied_domains: pulumi.Input[Optional['TwingateDNSFilteringProfileDeniedDomainsArgs']] = None,
+                 fallback_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.float]] = None,
+                 privacy_categories: pulumi.Input[Optional['TwingateDNSFilteringProfilePrivacyCategoriesArgs']] = None,
+                 security_categories: pulumi.Input[Optional['TwingateDNSFilteringProfileSecurityCategoriesArgs']] = None):
         """
         Input properties used for looking up and filtering TwingateDNSFilteringProfile resources.
 
@@ -216,110 +216,110 @@ class _TwingateDNSFilteringProfileState:
 
     @_builtins.property
     @pulumi.getter(name="allowedDomains")
-    def allowed_domains(self) -> Optional[pulumi.Input['TwingateDNSFilteringProfileAllowedDomainsArgs']]:
+    def allowed_domains(self) -> pulumi.Input[Optional['TwingateDNSFilteringProfileAllowedDomainsArgs']]:
         """
         A block with the following attributes.
         """
         return pulumi.get(self, "allowed_domains")
 
     @allowed_domains.setter
-    def allowed_domains(self, value: Optional[pulumi.Input['TwingateDNSFilteringProfileAllowedDomainsArgs']]):
+    def allowed_domains(self, value: pulumi.Input[Optional['TwingateDNSFilteringProfileAllowedDomainsArgs']]):
         pulumi.set(self, "allowed_domains", value)
 
     @_builtins.property
     @pulumi.getter(name="contentCategories")
-    def content_categories(self) -> Optional[pulumi.Input['TwingateDNSFilteringProfileContentCategoriesArgs']]:
+    def content_categories(self) -> pulumi.Input[Optional['TwingateDNSFilteringProfileContentCategoriesArgs']]:
         """
         A block with the following attributes.
         """
         return pulumi.get(self, "content_categories")
 
     @content_categories.setter
-    def content_categories(self, value: Optional[pulumi.Input['TwingateDNSFilteringProfileContentCategoriesArgs']]):
+    def content_categories(self, value: pulumi.Input[Optional['TwingateDNSFilteringProfileContentCategoriesArgs']]):
         pulumi.set(self, "content_categories", value)
 
     @_builtins.property
     @pulumi.getter(name="deniedDomains")
-    def denied_domains(self) -> Optional[pulumi.Input['TwingateDNSFilteringProfileDeniedDomainsArgs']]:
+    def denied_domains(self) -> pulumi.Input[Optional['TwingateDNSFilteringProfileDeniedDomainsArgs']]:
         """
         A block with the following attributes.
         """
         return pulumi.get(self, "denied_domains")
 
     @denied_domains.setter
-    def denied_domains(self, value: Optional[pulumi.Input['TwingateDNSFilteringProfileDeniedDomainsArgs']]):
+    def denied_domains(self, value: pulumi.Input[Optional['TwingateDNSFilteringProfileDeniedDomainsArgs']]):
         pulumi.set(self, "denied_domains", value)
 
     @_builtins.property
     @pulumi.getter(name="fallbackMethod")
-    def fallback_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fallback_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DNS filtering profile's fallback method. One of "AUTO" or "STRICT". Defaults to "STRICT".
         """
         return pulumi.get(self, "fallback_method")
 
     @fallback_method.setter
-    def fallback_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fallback_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fallback_method", value)
 
     @_builtins.property
     @pulumi.getter
-    def groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of group IDs that have this as their DNS filtering profile. Defaults to an empty set.
         """
         return pulumi.get(self, "groups")
 
     @groups.setter
-    def groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "groups", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DNS filtering profile's name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         A floating point number representing the profile's priority.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter(name="privacyCategories")
-    def privacy_categories(self) -> Optional[pulumi.Input['TwingateDNSFilteringProfilePrivacyCategoriesArgs']]:
+    def privacy_categories(self) -> pulumi.Input[Optional['TwingateDNSFilteringProfilePrivacyCategoriesArgs']]:
         """
         A block with the following attributes.
         """
         return pulumi.get(self, "privacy_categories")
 
     @privacy_categories.setter
-    def privacy_categories(self, value: Optional[pulumi.Input['TwingateDNSFilteringProfilePrivacyCategoriesArgs']]):
+    def privacy_categories(self, value: pulumi.Input[Optional['TwingateDNSFilteringProfilePrivacyCategoriesArgs']]):
         pulumi.set(self, "privacy_categories", value)
 
     @_builtins.property
     @pulumi.getter(name="securityCategories")
-    def security_categories(self) -> Optional[pulumi.Input['TwingateDNSFilteringProfileSecurityCategoriesArgs']]:
+    def security_categories(self) -> pulumi.Input[Optional['TwingateDNSFilteringProfileSecurityCategoriesArgs']]:
         """
         A block with the following attributes.
         """
         return pulumi.get(self, "security_categories")
 
     @security_categories.setter
-    def security_categories(self, value: Optional[pulumi.Input['TwingateDNSFilteringProfileSecurityCategoriesArgs']]):
+    def security_categories(self, value: pulumi.Input[Optional['TwingateDNSFilteringProfileSecurityCategoriesArgs']]):
         pulumi.set(self, "security_categories", value)
 
 
@@ -329,15 +329,15 @@ class TwingateDNSFilteringProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allowed_domains: Optional[pulumi.Input[Union['TwingateDNSFilteringProfileAllowedDomainsArgs', 'TwingateDNSFilteringProfileAllowedDomainsArgsDict']]] = None,
-                 content_categories: Optional[pulumi.Input[Union['TwingateDNSFilteringProfileContentCategoriesArgs', 'TwingateDNSFilteringProfileContentCategoriesArgsDict']]] = None,
-                 denied_domains: Optional[pulumi.Input[Union['TwingateDNSFilteringProfileDeniedDomainsArgs', 'TwingateDNSFilteringProfileDeniedDomainsArgsDict']]] = None,
-                 fallback_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.float]] = None,
-                 privacy_categories: Optional[pulumi.Input[Union['TwingateDNSFilteringProfilePrivacyCategoriesArgs', 'TwingateDNSFilteringProfilePrivacyCategoriesArgsDict']]] = None,
-                 security_categories: Optional[pulumi.Input[Union['TwingateDNSFilteringProfileSecurityCategoriesArgs', 'TwingateDNSFilteringProfileSecurityCategoriesArgsDict']]] = None,
+                 allowed_domains: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileAllowedDomainsArgs', 'TwingateDNSFilteringProfileAllowedDomainsArgsDict']]] = None,
+                 content_categories: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileContentCategoriesArgs', 'TwingateDNSFilteringProfileContentCategoriesArgsDict']]] = None,
+                 denied_domains: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileDeniedDomainsArgs', 'TwingateDNSFilteringProfileDeniedDomainsArgsDict']]] = None,
+                 fallback_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.float]] = None,
+                 privacy_categories: pulumi.Input[Optional[Union['TwingateDNSFilteringProfilePrivacyCategoriesArgs', 'TwingateDNSFilteringProfilePrivacyCategoriesArgsDict']]] = None,
+                 security_categories: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileSecurityCategoriesArgs', 'TwingateDNSFilteringProfileSecurityCategoriesArgsDict']]] = None,
                  __props__=None):
         """
         DNS filtering gives you the ability to control what websites your users can access. DNS filtering is only available on certain plans. For more information, see Twingate's [documentation](https://www.twingate.com/docs/dns-filtering). DNS filtering must be enabled for this resources to work. If DNS filtering isn't enabled, the provider will throw an error.
@@ -354,7 +354,7 @@ class TwingateDNSFilteringProfile(pulumi.CustomResource):
         example = twingate.get_twingate_groups(name_prefix="example")
         example_twingate_dns_filtering_profile = twingate.TwingateDNSFilteringProfile("example",
             name="Example DNS Filtering Profile",
-            priority=2,
+            priority=float(2),
             fallback_method="AUTO",
             groups=std.toset(input=[__item.id for __item in example.groups]).result,
             allowed_domains={
@@ -420,7 +420,7 @@ class TwingateDNSFilteringProfile(pulumi.CustomResource):
         example = twingate.get_twingate_groups(name_prefix="example")
         example_twingate_dns_filtering_profile = twingate.TwingateDNSFilteringProfile("example",
             name="Example DNS Filtering Profile",
-            priority=2,
+            priority=float(2),
             fallback_method="AUTO",
             groups=std.toset(input=[__item.id for __item in example.groups]).result,
             allowed_domains={
@@ -468,15 +468,15 @@ class TwingateDNSFilteringProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allowed_domains: Optional[pulumi.Input[Union['TwingateDNSFilteringProfileAllowedDomainsArgs', 'TwingateDNSFilteringProfileAllowedDomainsArgsDict']]] = None,
-                 content_categories: Optional[pulumi.Input[Union['TwingateDNSFilteringProfileContentCategoriesArgs', 'TwingateDNSFilteringProfileContentCategoriesArgsDict']]] = None,
-                 denied_domains: Optional[pulumi.Input[Union['TwingateDNSFilteringProfileDeniedDomainsArgs', 'TwingateDNSFilteringProfileDeniedDomainsArgsDict']]] = None,
-                 fallback_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.float]] = None,
-                 privacy_categories: Optional[pulumi.Input[Union['TwingateDNSFilteringProfilePrivacyCategoriesArgs', 'TwingateDNSFilteringProfilePrivacyCategoriesArgsDict']]] = None,
-                 security_categories: Optional[pulumi.Input[Union['TwingateDNSFilteringProfileSecurityCategoriesArgs', 'TwingateDNSFilteringProfileSecurityCategoriesArgsDict']]] = None,
+                 allowed_domains: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileAllowedDomainsArgs', 'TwingateDNSFilteringProfileAllowedDomainsArgsDict']]] = None,
+                 content_categories: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileContentCategoriesArgs', 'TwingateDNSFilteringProfileContentCategoriesArgsDict']]] = None,
+                 denied_domains: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileDeniedDomainsArgs', 'TwingateDNSFilteringProfileDeniedDomainsArgsDict']]] = None,
+                 fallback_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.float]] = None,
+                 privacy_categories: pulumi.Input[Optional[Union['TwingateDNSFilteringProfilePrivacyCategoriesArgs', 'TwingateDNSFilteringProfilePrivacyCategoriesArgsDict']]] = None,
+                 security_categories: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileSecurityCategoriesArgs', 'TwingateDNSFilteringProfileSecurityCategoriesArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -507,15 +507,15 @@ class TwingateDNSFilteringProfile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allowed_domains: Optional[pulumi.Input[Union['TwingateDNSFilteringProfileAllowedDomainsArgs', 'TwingateDNSFilteringProfileAllowedDomainsArgsDict']]] = None,
-            content_categories: Optional[pulumi.Input[Union['TwingateDNSFilteringProfileContentCategoriesArgs', 'TwingateDNSFilteringProfileContentCategoriesArgsDict']]] = None,
-            denied_domains: Optional[pulumi.Input[Union['TwingateDNSFilteringProfileDeniedDomainsArgs', 'TwingateDNSFilteringProfileDeniedDomainsArgsDict']]] = None,
-            fallback_method: Optional[pulumi.Input[_builtins.str]] = None,
-            groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            priority: Optional[pulumi.Input[_builtins.float]] = None,
-            privacy_categories: Optional[pulumi.Input[Union['TwingateDNSFilteringProfilePrivacyCategoriesArgs', 'TwingateDNSFilteringProfilePrivacyCategoriesArgsDict']]] = None,
-            security_categories: Optional[pulumi.Input[Union['TwingateDNSFilteringProfileSecurityCategoriesArgs', 'TwingateDNSFilteringProfileSecurityCategoriesArgsDict']]] = None) -> 'TwingateDNSFilteringProfile':
+            allowed_domains: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileAllowedDomainsArgs', 'TwingateDNSFilteringProfileAllowedDomainsArgsDict']]] = None,
+            content_categories: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileContentCategoriesArgs', 'TwingateDNSFilteringProfileContentCategoriesArgsDict']]] = None,
+            denied_domains: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileDeniedDomainsArgs', 'TwingateDNSFilteringProfileDeniedDomainsArgsDict']]] = None,
+            fallback_method: pulumi.Input[Optional[_builtins.str]] = None,
+            groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.float]] = None,
+            privacy_categories: pulumi.Input[Optional[Union['TwingateDNSFilteringProfilePrivacyCategoriesArgs', 'TwingateDNSFilteringProfilePrivacyCategoriesArgsDict']]] = None,
+            security_categories: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileSecurityCategoriesArgs', 'TwingateDNSFilteringProfileSecurityCategoriesArgsDict']]] = None) -> 'TwingateDNSFilteringProfile':
         """
         Get an existing TwingateDNSFilteringProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

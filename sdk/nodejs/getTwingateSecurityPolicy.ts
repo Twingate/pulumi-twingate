@@ -84,9 +84,9 @@ export interface GetTwingateSecurityPolicyOutputArgs {
     /**
      * Return a Security Policy by its ID. The ID for the Security Policy can be obtained from the Admin API or the URL string in the Admin Console.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Return a Security Policy that exactly matches this name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

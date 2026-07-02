@@ -22,7 +22,7 @@ class TwingateGatewayArgs:
                  address: pulumi.Input[_builtins.str],
                  remote_network_id: pulumi.Input[_builtins.str],
                  x509_ca_id: pulumi.Input[_builtins.str],
-                 ssh_ca_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 ssh_ca_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TwingateGateway resource.
 
@@ -75,24 +75,24 @@ class TwingateGatewayArgs:
 
     @_builtins.property
     @pulumi.getter(name="sshCaId")
-    def ssh_ca_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssh_ca_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the SSH Certificate Authority used for SSH access.
         """
         return pulumi.get(self, "ssh_ca_id")
 
     @ssh_ca_id.setter
-    def ssh_ca_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssh_ca_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssh_ca_id", value)
 
 
 @pulumi.input_type
 class _TwingateGatewayState:
     def __init__(__self__, *,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssh_ca_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 x509_ca_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssh_ca_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 x509_ca_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TwingateGateway resources.
 
@@ -112,50 +112,50 @@ class _TwingateGatewayState:
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address of the Gateway.
         """
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteNetworkId")
-    def remote_network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remote_network_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Remote Network the Gateway belongs to.
         """
         return pulumi.get(self, "remote_network_id")
 
     @remote_network_id.setter
-    def remote_network_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remote_network_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remote_network_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sshCaId")
-    def ssh_ca_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssh_ca_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the SSH Certificate Authority used for SSH access.
         """
         return pulumi.get(self, "ssh_ca_id")
 
     @ssh_ca_id.setter
-    def ssh_ca_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssh_ca_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssh_ca_id", value)
 
     @_builtins.property
     @pulumi.getter(name="x509CaId")
-    def x509_ca_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def x509_ca_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the X.509 Certificate Authority used for TLS.
         """
         return pulumi.get(self, "x509_ca_id")
 
     @x509_ca_id.setter
-    def x509_ca_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def x509_ca_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "x509_ca_id", value)
 
 
@@ -165,10 +165,10 @@ class TwingateGateway(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssh_ca_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 x509_ca_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssh_ca_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 x509_ca_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Gateways are the Twingate components that route traffic to remote networks.
@@ -260,10 +260,10 @@ class TwingateGateway(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssh_ca_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 x509_ca_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssh_ca_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 x509_ca_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -293,10 +293,10 @@ class TwingateGateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            address: Optional[pulumi.Input[_builtins.str]] = None,
-            remote_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ssh_ca_id: Optional[pulumi.Input[_builtins.str]] = None,
-            x509_ca_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'TwingateGateway':
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ssh_ca_id: pulumi.Input[Optional[_builtins.str]] = None,
+            x509_ca_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'TwingateGateway':
         """
         Get an existing TwingateGateway resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

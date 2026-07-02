@@ -104,5 +104,5 @@ export interface GetTwingateResourceOutputArgs {
     /**
      * By default (when this argument is not defined) no restriction is applied, and all protocols and ports are allowed.
      */
-    protocols?: pulumi.Input<inputs.GetTwingateResourceProtocolsArgs>;
+    protocols?: pulumi.Input<inputs.GetTwingateResourceProtocolsArgs | undefined>;
 }

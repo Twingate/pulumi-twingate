@@ -79,7 +79,7 @@ export interface TwingateServiceAccountState {
     /**
      * The name of the Service Account in Twingate
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -89,5 +89,5 @@ export interface TwingateServiceAccountArgs {
     /**
      * The name of the Service Account in Twingate
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

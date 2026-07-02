@@ -894,6 +894,14 @@ export namespace config {
          */
         nameSuffix?: string;
         /**
+         * Returns only resources that are associated with the specified remote network ID.
+         */
+        remoteNetworkId?: string;
+        /**
+         * Returns only resources that are associated with the specified remote network name.
+         */
+        remoteNetworkName?: string;
+        /**
          * Returns only resources that exactly match the given tags.
          */
         tags?: {[key: string]: string};

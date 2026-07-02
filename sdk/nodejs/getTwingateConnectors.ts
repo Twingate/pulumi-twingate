@@ -134,25 +134,25 @@ export interface GetTwingateConnectorsOutputArgs {
     /**
      * Returns only connectors that exactly match this name. If no options are passed it will return all connectors. Only one option can be used at a time.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Match when the value exist in the name of the connector.
      */
-    nameContains?: pulumi.Input<string>;
+    nameContains?: pulumi.Input<string | undefined>;
     /**
      * Match when the exact value does not exist in the name of the connector.
      */
-    nameExclude?: pulumi.Input<string>;
+    nameExclude?: pulumi.Input<string | undefined>;
     /**
      * The name of the connector must start with the value.
      */
-    namePrefix?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string | undefined>;
     /**
      * The regular expression match of the name of the connector.
      */
-    nameRegexp?: pulumi.Input<string>;
+    nameRegexp?: pulumi.Input<string | undefined>;
     /**
      * The name of the connector must end with the value.
      */
-    nameSuffix?: pulumi.Input<string>;
+    nameSuffix?: pulumi.Input<string | undefined>;
 }

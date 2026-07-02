@@ -112,7 +112,7 @@ def get_twingate_group(id: Optional[_builtins.str] = None,
         is_active=pulumi.get(__ret__, 'is_active'),
         name=pulumi.get(__ret__, 'name'),
         type=pulumi.get(__ret__, 'type'))
-def get_twingate_group_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_twingate_group_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTwingateGroupResult]:
     """
     Groups are how users are authorized to access Resources. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/groups).

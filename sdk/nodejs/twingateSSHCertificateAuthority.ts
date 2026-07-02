@@ -85,15 +85,15 @@ export interface TwingateSSHCertificateAuthorityState {
     /**
      * The fingerprint of the SSH public key.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * The name of the SSH Certificate Authority.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The SSH public key in OpenSSH authorizedKeys format.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -103,7 +103,7 @@ export interface TwingateSSHCertificateAuthorityArgs {
     /**
      * The name of the SSH Certificate Authority.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The SSH public key in OpenSSH authorizedKeys format.
      */

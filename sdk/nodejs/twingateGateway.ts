@@ -134,19 +134,19 @@ export interface TwingateGatewayState {
     /**
      * The address of the Gateway.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Remote Network the Gateway belongs to.
      */
-    remoteNetworkId?: pulumi.Input<string>;
+    remoteNetworkId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the SSH Certificate Authority used for SSH access.
      */
-    sshCaId?: pulumi.Input<string>;
+    sshCaId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the X.509 Certificate Authority used for TLS.
      */
-    x509CaId?: pulumi.Input<string>;
+    x509CaId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -164,7 +164,7 @@ export interface TwingateGatewayArgs {
     /**
      * The ID of the SSH Certificate Authority used for SSH access.
      */
-    sshCaId?: pulumi.Input<string>;
+    sshCaId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the X.509 Certificate Authority used for TLS.
      */

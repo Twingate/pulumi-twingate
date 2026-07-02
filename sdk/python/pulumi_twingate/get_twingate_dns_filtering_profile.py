@@ -207,12 +207,12 @@ def get_twingate_dns_filtering_profile(allowed_domains: Optional[Union['GetTwing
         priority=pulumi.get(__ret__, 'priority'),
         privacy_categories=pulumi.get(__ret__, 'privacy_categories'),
         security_categories=pulumi.get(__ret__, 'security_categories'))
-def get_twingate_dns_filtering_profile_output(allowed_domains: Optional[pulumi.Input[Optional[Union['GetTwingateDNSFilteringProfileAllowedDomainsArgs', 'GetTwingateDNSFilteringProfileAllowedDomainsArgsDict']]]] = None,
-                                              content_categories: Optional[pulumi.Input[Optional[Union['GetTwingateDNSFilteringProfileContentCategoriesArgs', 'GetTwingateDNSFilteringProfileContentCategoriesArgsDict']]]] = None,
-                                              denied_domains: Optional[pulumi.Input[Optional[Union['GetTwingateDNSFilteringProfileDeniedDomainsArgs', 'GetTwingateDNSFilteringProfileDeniedDomainsArgsDict']]]] = None,
-                                              id: Optional[pulumi.Input[_builtins.str]] = None,
-                                              privacy_categories: Optional[pulumi.Input[Optional[Union['GetTwingateDNSFilteringProfilePrivacyCategoriesArgs', 'GetTwingateDNSFilteringProfilePrivacyCategoriesArgsDict']]]] = None,
-                                              security_categories: Optional[pulumi.Input[Optional[Union['GetTwingateDNSFilteringProfileSecurityCategoriesArgs', 'GetTwingateDNSFilteringProfileSecurityCategoriesArgsDict']]]] = None,
+def get_twingate_dns_filtering_profile_output(allowed_domains: pulumi.Input[Optional[Optional[Union['GetTwingateDNSFilteringProfileAllowedDomainsArgs', 'GetTwingateDNSFilteringProfileAllowedDomainsArgsDict']]]] = None,
+                                              content_categories: pulumi.Input[Optional[Optional[Union['GetTwingateDNSFilteringProfileContentCategoriesArgs', 'GetTwingateDNSFilteringProfileContentCategoriesArgsDict']]]] = None,
+                                              denied_domains: pulumi.Input[Optional[Optional[Union['GetTwingateDNSFilteringProfileDeniedDomainsArgs', 'GetTwingateDNSFilteringProfileDeniedDomainsArgsDict']]]] = None,
+                                              id: pulumi.Input[Optional[_builtins.str]] = None,
+                                              privacy_categories: pulumi.Input[Optional[Optional[Union['GetTwingateDNSFilteringProfilePrivacyCategoriesArgs', 'GetTwingateDNSFilteringProfilePrivacyCategoriesArgsDict']]]] = None,
+                                              security_categories: pulumi.Input[Optional[Optional[Union['GetTwingateDNSFilteringProfileSecurityCategoriesArgs', 'GetTwingateDNSFilteringProfileSecurityCategoriesArgsDict']]]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTwingateDNSFilteringProfileResult]:
     """
     DNS filtering gives you the ability to control what websites your users can access. DNS filtering is only available on certain plans. For more information, see Twingate's [documentation](https://www.twingate.com/docs/dns-filtering). DNS filtering must be enabled for this data source to work. If DNS filtering isn't enabled, the provider will throw an error.

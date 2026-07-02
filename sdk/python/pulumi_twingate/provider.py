@@ -20,13 +20,13 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 api_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 cache: Optional[pulumi.Input['ProviderCacheArgs']] = None,
-                 default_tags: Optional[pulumi.Input['ProviderDefaultTagsArgs']] = None,
-                 http_max_retry: Optional[pulumi.Input[_builtins.int]] = None,
-                 http_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None):
+                 api_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache: pulumi.Input[Optional['ProviderCacheArgs']] = None,
+                 default_tags: pulumi.Input[Optional['ProviderDefaultTagsArgs']] = None,
+                 http_max_retry: pulumi.Input[Optional[_builtins.int]] = None,
+                 http_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
 
@@ -63,7 +63,7 @@ class ProviderArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiToken")
-    def api_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access key for API operations. You can retrieve this
         from the Twingate Admin Console ([documentation](https://docs.twingate.com/docs/api-overview)).
@@ -72,36 +72,36 @@ class ProviderArgs:
         return pulumi.get(self, "api_token")
 
     @api_token.setter
-    def api_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_token", value)
 
     @_builtins.property
     @pulumi.getter
-    def cache(self) -> Optional[pulumi.Input['ProviderCacheArgs']]:
+    def cache(self) -> pulumi.Input[Optional['ProviderCacheArgs']]:
         """
         Specifies the cache settings for the provider.
         """
         return pulumi.get(self, "cache")
 
     @cache.setter
-    def cache(self, value: Optional[pulumi.Input['ProviderCacheArgs']]):
+    def cache(self, value: pulumi.Input[Optional['ProviderCacheArgs']]):
         pulumi.set(self, "cache", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultTags")
-    def default_tags(self) -> Optional[pulumi.Input['ProviderDefaultTagsArgs']]:
+    def default_tags(self) -> pulumi.Input[Optional['ProviderDefaultTagsArgs']]:
         """
         A default set of tags applied globally to all resources created by the provider.
         """
         return pulumi.get(self, "default_tags")
 
     @default_tags.setter
-    def default_tags(self, value: Optional[pulumi.Input['ProviderDefaultTagsArgs']]):
+    def default_tags(self, value: pulumi.Input[Optional['ProviderDefaultTagsArgs']]):
         pulumi.set(self, "default_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="httpMaxRetry")
-    def http_max_retry(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def http_max_retry(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies a retry limit for the http requests made. The default value is 10.
         Alternatively, this can be specified using the TWINGATE_HTTP_MAX_RETRY environment variable
@@ -109,12 +109,12 @@ class ProviderArgs:
         return pulumi.get(self, "http_max_retry")
 
     @http_max_retry.setter
-    def http_max_retry(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def http_max_retry(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "http_max_retry", value)
 
     @_builtins.property
     @pulumi.getter(name="httpTimeout")
-    def http_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def http_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies a time limit in seconds for the http requests made. The default value is 35 seconds.
         Alternatively, this can be specified using the TWINGATE_HTTP_TIMEOUT environment variable
@@ -122,12 +122,12 @@ class ProviderArgs:
         return pulumi.get(self, "http_timeout")
 
     @http_timeout.setter
-    def http_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def http_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "http_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Your Twingate network ID for API operations.
         You can find it in the Admin Console URL, for example:
@@ -137,12 +137,12 @@ class ProviderArgs:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default is 'twingate.com'
         This is optional and shouldn't be changed under normal circumstances.
@@ -150,7 +150,7 @@ class ProviderArgs:
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
 
@@ -160,13 +160,13 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 cache: Optional[pulumi.Input[Union['ProviderCacheArgs', 'ProviderCacheArgsDict']]] = None,
-                 default_tags: Optional[pulumi.Input[Union['ProviderDefaultTagsArgs', 'ProviderDefaultTagsArgsDict']]] = None,
-                 http_max_retry: Optional[pulumi.Input[_builtins.int]] = None,
-                 http_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 api_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache: pulumi.Input[Optional[Union['ProviderCacheArgs', 'ProviderCacheArgsDict']]] = None,
+                 default_tags: pulumi.Input[Optional[Union['ProviderDefaultTagsArgs', 'ProviderDefaultTagsArgsDict']]] = None,
+                 http_max_retry: pulumi.Input[Optional[_builtins.int]] = None,
+                 http_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The provider type for the twingate package. By default, resources use package-wide configuration
@@ -221,13 +221,13 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 cache: Optional[pulumi.Input[Union['ProviderCacheArgs', 'ProviderCacheArgsDict']]] = None,
-                 default_tags: Optional[pulumi.Input[Union['ProviderDefaultTagsArgs', 'ProviderDefaultTagsArgsDict']]] = None,
-                 http_max_retry: Optional[pulumi.Input[_builtins.int]] = None,
-                 http_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 api_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache: pulumi.Input[Optional[Union['ProviderCacheArgs', 'ProviderCacheArgsDict']]] = None,
+                 default_tags: pulumi.Input[Optional[Union['ProviderDefaultTagsArgs', 'ProviderDefaultTagsArgsDict']]] = None,
+                 http_max_retry: pulumi.Input[Optional[_builtins.int]] = None,
+                 http_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

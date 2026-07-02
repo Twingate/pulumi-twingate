@@ -70,9 +70,9 @@ export interface GetTwingateRemoteNetworkOutputArgs {
     /**
      * The ID of the Remote Network
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The name of the Remote Network
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

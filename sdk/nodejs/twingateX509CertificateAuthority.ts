@@ -89,15 +89,15 @@ export interface TwingateX509CertificateAuthorityState {
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * The PEM-encoded X509 certificate. This field is write-only and will not be returned by the API.
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * The SHA-256 fingerprint of the X509 certificate.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * The name of the X509 Certificate Authority.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -112,5 +112,5 @@ export interface TwingateX509CertificateAuthorityArgs {
     /**
      * The name of the X509 Certificate Authority.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

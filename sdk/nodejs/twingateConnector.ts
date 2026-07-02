@@ -134,35 +134,35 @@ export interface TwingateConnectorState {
     /**
      * The hostname of the machine hosting the Connector.
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * Name of the Connector, if not provided one will be generated.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Connector's private IP addresses.
      */
-    privateIps?: pulumi.Input<pulumi.Input<string>[]>;
+    privateIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Connector's public IP address.
      */
-    publicIp?: pulumi.Input<string>;
+    publicIp?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Remote Network the Connector is attached to.
      */
-    remoteNetworkId?: pulumi.Input<string>;
+    remoteNetworkId?: pulumi.Input<string | undefined>;
     /**
      * The Connector's state. One of `ALIVE`, `DEAD_NO_HEARTBEAT`, `DEAD_HEARTBEAT_TOO_OLD` or `DEAD_NO_RELAYS`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Determines whether status notifications are enabled for the Connector. Default is `true`.
      */
-    statusUpdatesEnabled?: pulumi.Input<boolean>;
+    statusUpdatesEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The Connector's version.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -172,7 +172,7 @@ export interface TwingateConnectorArgs {
     /**
      * Name of the Connector, if not provided one will be generated.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Remote Network the Connector is attached to.
      */
@@ -180,5 +180,5 @@ export interface TwingateConnectorArgs {
     /**
      * Determines whether status notifications are enabled for the Connector. Default is `true`.
      */
-    statusUpdatesEnabled?: pulumi.Input<boolean>;
+    statusUpdatesEnabled?: pulumi.Input<boolean | undefined>;
 }

@@ -490,6 +490,10 @@ type ProviderCacheResourcesFilter struct {
 	NameRegexp *string `pulumi:"nameRegexp"`
 	// The name of the resource must end with the value.
 	NameSuffix *string `pulumi:"nameSuffix"`
+	// Returns only resources that are associated with the specified remote network ID.
+	RemoteNetworkId *string `pulumi:"remoteNetworkId"`
+	// Returns only resources that are associated with the specified remote network name.
+	RemoteNetworkName *string `pulumi:"remoteNetworkName"`
 	// Returns only resources that exactly match the given tags.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -518,6 +522,10 @@ type ProviderCacheResourcesFilterArgs struct {
 	NameRegexp pulumi.StringPtrInput `pulumi:"nameRegexp"`
 	// The name of the resource must end with the value.
 	NameSuffix pulumi.StringPtrInput `pulumi:"nameSuffix"`
+	// Returns only resources that are associated with the specified remote network ID.
+	RemoteNetworkId pulumi.StringPtrInput `pulumi:"remoteNetworkId"`
+	// Returns only resources that are associated with the specified remote network name.
+	RemoteNetworkName pulumi.StringPtrInput `pulumi:"remoteNetworkName"`
 	// Returns only resources that exactly match the given tags.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
@@ -629,6 +637,16 @@ func (o ProviderCacheResourcesFilterOutput) NameSuffix() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v ProviderCacheResourcesFilter) *string { return v.NameSuffix }).(pulumi.StringPtrOutput)
 }
 
+// Returns only resources that are associated with the specified remote network ID.
+func (o ProviderCacheResourcesFilterOutput) RemoteNetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderCacheResourcesFilter) *string { return v.RemoteNetworkId }).(pulumi.StringPtrOutput)
+}
+
+// Returns only resources that are associated with the specified remote network name.
+func (o ProviderCacheResourcesFilterOutput) RemoteNetworkName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderCacheResourcesFilter) *string { return v.RemoteNetworkName }).(pulumi.StringPtrOutput)
+}
+
 // Returns only resources that exactly match the given tags.
 func (o ProviderCacheResourcesFilterOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ProviderCacheResourcesFilter) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
@@ -715,6 +733,26 @@ func (o ProviderCacheResourcesFilterPtrOutput) NameSuffix() pulumi.StringPtrOutp
 			return nil
 		}
 		return v.NameSuffix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Returns only resources that are associated with the specified remote network ID.
+func (o ProviderCacheResourcesFilterPtrOutput) RemoteNetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderCacheResourcesFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RemoteNetworkId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Returns only resources that are associated with the specified remote network name.
+func (o ProviderCacheResourcesFilterPtrOutput) RemoteNetworkName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderCacheResourcesFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RemoteNetworkName
 	}).(pulumi.StringPtrOutput)
 }
 

@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := twingate.LookupTwingateGroup(ctx, &twingate.LookupTwingateGroupArgs{
+//			_, err := twingate.GetTwingateGroup(ctx, &twingate.LookupTwingateGroupArgs{
 //				Id: "<your group's id>",
 //			}, nil)
 //			if err != nil {

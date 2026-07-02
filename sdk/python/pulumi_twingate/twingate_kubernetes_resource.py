@@ -23,18 +23,18 @@ class TwingateKubernetesResourceArgs:
     def __init__(__self__, *,
                  gateway_id: pulumi.Input[_builtins.str],
                  remote_network_id: pulumi.Input[_builtins.str],
-                 access_groups: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateKubernetesResourceAccessGroupArgs']]]] = None,
-                 access_policies: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateKubernetesResourceAccessPolicyArgs']]]] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 bearer_token_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 in_cluster: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_visible: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocols: Optional[pulumi.Input['TwingateKubernetesResourceProtocolsArgs']] = None,
-                 security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input['TwingateKubernetesResourceAccessGroupArgs']]]] = None,
+                 access_policies: pulumi.Input[Optional[Sequence[pulumi.Input['TwingateKubernetesResourceAccessPolicyArgs']]]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 bearer_token_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 in_cluster: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocols: pulumi.Input[Optional['TwingateKubernetesResourceProtocolsArgs']] = None,
+                 security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a TwingateKubernetesResource resource.
 
@@ -106,166 +106,166 @@ class TwingateKubernetesResourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessGroups")
-    def access_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TwingateKubernetesResourceAccessGroupArgs']]]]:
+    def access_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TwingateKubernetesResourceAccessGroupArgs']]]]:
         """
         Restrict access to certain group
         """
         return pulumi.get(self, "access_groups")
 
     @access_groups.setter
-    def access_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateKubernetesResourceAccessGroupArgs']]]]):
+    def access_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TwingateKubernetesResourceAccessGroupArgs']]]]):
         pulumi.set(self, "access_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="accessPolicies")
-    def access_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TwingateKubernetesResourceAccessPolicyArgs']]]]:
+    def access_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TwingateKubernetesResourceAccessPolicyArgs']]]]:
         """
         Restrict access according to JIT access policy
         """
         return pulumi.get(self, "access_policies")
 
     @access_policies.setter
-    def access_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateKubernetesResourceAccessPolicyArgs']]]]):
+    def access_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TwingateKubernetesResourceAccessPolicyArgs']]]]):
         pulumi.set(self, "access_policies", value)
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address of the Kubernetes Resource (IP or FQDN).
         """
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter
-    def alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set a DNS alias address for the Resource. Must be a DNS-valid name string.
         """
         return pulumi.get(self, "alias")
 
     @alias.setter
-    def alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alias", value)
 
     @_builtins.property
     @pulumi.getter(name="bearerTokenFile")
-    def bearer_token_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bearer_token_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to bearer token file.
         """
         return pulumi.get(self, "bearer_token_file")
 
     @bearer_token_file.setter
-    def bearer_token_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bearer_token_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bearer_token_file", value)
 
     @_builtins.property
     @pulumi.getter(name="caFile")
-    def ca_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to CA certificate file.
         """
         return pulumi.get(self, "ca_file")
 
     @ca_file.setter
-    def ca_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_file", value)
 
     @_builtins.property
     @pulumi.getter(name="inCluster")
-    def in_cluster(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def in_cluster(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the Gateway is running inside the same Kubernetes cluster that is represented by the Kubernetes Resource. Default is `true`.
         """
         return pulumi.get(self, "in_cluster")
 
     @in_cluster.setter
-    def in_cluster(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def in_cluster(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "in_cluster", value)
 
     @_builtins.property
     @pulumi.getter(name="isVisible")
-    def is_visible(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_visible(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
         """
         return pulumi.get(self, "is_visible")
 
     @is_visible.setter
-    def is_visible(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_visible(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_visible", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Kubernetes Resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocols(self) -> Optional[pulumi.Input['TwingateKubernetesResourceProtocolsArgs']]:
+    def protocols(self) -> pulumi.Input[Optional['TwingateKubernetesResourceProtocolsArgs']]:
         """
         Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         """
         return pulumi.get(self, "protocols")
 
     @protocols.setter
-    def protocols(self, value: Optional[pulumi.Input['TwingateKubernetesResourceProtocolsArgs']]):
+    def protocols(self, value: pulumi.Input[Optional['TwingateKubernetesResourceProtocolsArgs']]):
         pulumi.set(self, "protocols", value)
 
     @_builtins.property
     @pulumi.getter(name="securityPolicyId")
-    def security_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         """
         return pulumi.get(self, "security_policy_id")
 
     @security_policy_id.setter
-    def security_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_policy_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of key-value pair tags to set on this resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _TwingateKubernetesResourceState:
     def __init__(__self__, *,
-                 access_groups: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateKubernetesResourceAccessGroupArgs']]]] = None,
-                 access_policies: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateKubernetesResourceAccessPolicyArgs']]]] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 bearer_token_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 in_cluster: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_visible: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocols: Optional[pulumi.Input['TwingateKubernetesResourceProtocolsArgs']] = None,
-                 remote_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input['TwingateKubernetesResourceAccessGroupArgs']]]] = None,
+                 access_policies: pulumi.Input[Optional[Sequence[pulumi.Input['TwingateKubernetesResourceAccessPolicyArgs']]]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 bearer_token_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 in_cluster: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocols: pulumi.Input[Optional['TwingateKubernetesResourceProtocolsArgs']] = None,
+                 remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering TwingateKubernetesResource resources.
 
@@ -315,170 +315,170 @@ class _TwingateKubernetesResourceState:
 
     @_builtins.property
     @pulumi.getter(name="accessGroups")
-    def access_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TwingateKubernetesResourceAccessGroupArgs']]]]:
+    def access_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TwingateKubernetesResourceAccessGroupArgs']]]]:
         """
         Restrict access to certain group
         """
         return pulumi.get(self, "access_groups")
 
     @access_groups.setter
-    def access_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateKubernetesResourceAccessGroupArgs']]]]):
+    def access_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TwingateKubernetesResourceAccessGroupArgs']]]]):
         pulumi.set(self, "access_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="accessPolicies")
-    def access_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TwingateKubernetesResourceAccessPolicyArgs']]]]:
+    def access_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TwingateKubernetesResourceAccessPolicyArgs']]]]:
         """
         Restrict access according to JIT access policy
         """
         return pulumi.get(self, "access_policies")
 
     @access_policies.setter
-    def access_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateKubernetesResourceAccessPolicyArgs']]]]):
+    def access_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TwingateKubernetesResourceAccessPolicyArgs']]]]):
         pulumi.set(self, "access_policies", value)
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address of the Kubernetes Resource (IP or FQDN).
         """
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter
-    def alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set a DNS alias address for the Resource. Must be a DNS-valid name string.
         """
         return pulumi.get(self, "alias")
 
     @alias.setter
-    def alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alias", value)
 
     @_builtins.property
     @pulumi.getter(name="bearerTokenFile")
-    def bearer_token_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bearer_token_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to bearer token file.
         """
         return pulumi.get(self, "bearer_token_file")
 
     @bearer_token_file.setter
-    def bearer_token_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bearer_token_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bearer_token_file", value)
 
     @_builtins.property
     @pulumi.getter(name="caFile")
-    def ca_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to CA certificate file.
         """
         return pulumi.get(self, "ca_file")
 
     @ca_file.setter
-    def ca_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_file", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayId")
-    def gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Gateway used to access this Kubernetes Resource.
         """
         return pulumi.get(self, "gateway_id")
 
     @gateway_id.setter
-    def gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_id", value)
 
     @_builtins.property
     @pulumi.getter(name="inCluster")
-    def in_cluster(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def in_cluster(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the Gateway is running inside the same Kubernetes cluster that is represented by the Kubernetes Resource. Default is `true`.
         """
         return pulumi.get(self, "in_cluster")
 
     @in_cluster.setter
-    def in_cluster(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def in_cluster(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "in_cluster", value)
 
     @_builtins.property
     @pulumi.getter(name="isVisible")
-    def is_visible(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_visible(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
         """
         return pulumi.get(self, "is_visible")
 
     @is_visible.setter
-    def is_visible(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_visible(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_visible", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Kubernetes Resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocols(self) -> Optional[pulumi.Input['TwingateKubernetesResourceProtocolsArgs']]:
+    def protocols(self) -> pulumi.Input[Optional['TwingateKubernetesResourceProtocolsArgs']]:
         """
         Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         """
         return pulumi.get(self, "protocols")
 
     @protocols.setter
-    def protocols(self, value: Optional[pulumi.Input['TwingateKubernetesResourceProtocolsArgs']]):
+    def protocols(self, value: pulumi.Input[Optional['TwingateKubernetesResourceProtocolsArgs']]):
         pulumi.set(self, "protocols", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteNetworkId")
-    def remote_network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remote_network_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Remote Network the Kubernetes Resource belongs to.
         """
         return pulumi.get(self, "remote_network_id")
 
     @remote_network_id.setter
-    def remote_network_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remote_network_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remote_network_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityPolicyId")
-    def security_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         """
         return pulumi.get(self, "security_policy_id")
 
     @security_policy_id.setter
-    def security_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_policy_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of key-value pair tags to set on this resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -488,20 +488,20 @@ class TwingateKubernetesResource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessGroupArgs', 'TwingateKubernetesResourceAccessGroupArgsDict']]]]] = None,
-                 access_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessPolicyArgs', 'TwingateKubernetesResourceAccessPolicyArgsDict']]]]] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 bearer_token_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 in_cluster: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_visible: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocols: Optional[pulumi.Input[Union['TwingateKubernetesResourceProtocolsArgs', 'TwingateKubernetesResourceProtocolsArgsDict']]] = None,
-                 remote_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessGroupArgs', 'TwingateKubernetesResourceAccessGroupArgsDict']]]]] = None,
+                 access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessPolicyArgs', 'TwingateKubernetesResourceAccessPolicyArgsDict']]]]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 bearer_token_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 in_cluster: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocols: pulumi.Input[Optional[Union['TwingateKubernetesResourceProtocolsArgs', 'TwingateKubernetesResourceProtocolsArgsDict']]] = None,
+                 remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Kubernetes Resources are Twingate resources accessed via a Gateway.
@@ -605,20 +605,20 @@ class TwingateKubernetesResource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessGroupArgs', 'TwingateKubernetesResourceAccessGroupArgsDict']]]]] = None,
-                 access_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessPolicyArgs', 'TwingateKubernetesResourceAccessPolicyArgsDict']]]]] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 bearer_token_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 in_cluster: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_visible: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocols: Optional[pulumi.Input[Union['TwingateKubernetesResourceProtocolsArgs', 'TwingateKubernetesResourceProtocolsArgsDict']]] = None,
-                 remote_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessGroupArgs', 'TwingateKubernetesResourceAccessGroupArgsDict']]]]] = None,
+                 access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessPolicyArgs', 'TwingateKubernetesResourceAccessPolicyArgsDict']]]]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 bearer_token_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 in_cluster: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocols: pulumi.Input[Optional[Union['TwingateKubernetesResourceProtocolsArgs', 'TwingateKubernetesResourceProtocolsArgsDict']]] = None,
+                 remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -656,20 +656,20 @@ class TwingateKubernetesResource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessGroupArgs', 'TwingateKubernetesResourceAccessGroupArgsDict']]]]] = None,
-            access_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessPolicyArgs', 'TwingateKubernetesResourceAccessPolicyArgsDict']]]]] = None,
-            address: Optional[pulumi.Input[_builtins.str]] = None,
-            alias: Optional[pulumi.Input[_builtins.str]] = None,
-            bearer_token_file: Optional[pulumi.Input[_builtins.str]] = None,
-            ca_file: Optional[pulumi.Input[_builtins.str]] = None,
-            gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-            in_cluster: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_visible: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            protocols: Optional[pulumi.Input[Union['TwingateKubernetesResourceProtocolsArgs', 'TwingateKubernetesResourceProtocolsArgsDict']]] = None,
-            remote_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-            security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'TwingateKubernetesResource':
+            access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessGroupArgs', 'TwingateKubernetesResourceAccessGroupArgsDict']]]]] = None,
+            access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessPolicyArgs', 'TwingateKubernetesResourceAccessPolicyArgsDict']]]]] = None,
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            alias: pulumi.Input[Optional[_builtins.str]] = None,
+            bearer_token_file: pulumi.Input[Optional[_builtins.str]] = None,
+            ca_file: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            in_cluster: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            protocols: pulumi.Input[Optional[Union['TwingateKubernetesResourceProtocolsArgs', 'TwingateKubernetesResourceProtocolsArgsDict']]] = None,
+            remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'TwingateKubernetesResource':
         """
         Get an existing TwingateKubernetesResource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -23,18 +23,18 @@ class TwingateResourceArgs:
     def __init__(__self__, *,
                  address: pulumi.Input[_builtins.str],
                  remote_network_id: pulumi.Input[_builtins.str],
-                 access_groups: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupArgs']]]] = None,
-                 access_policies: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessPolicyArgs']]]] = None,
-                 access_services: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]]] = None,
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_authoritative: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_browser_shortcut_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_visible: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocols: Optional[pulumi.Input['TwingateResourceProtocolsArgs']] = None,
-                 security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input['TwingateResourceAccessGroupArgs']]]] = None,
+                 access_policies: pulumi.Input[Optional[Sequence[pulumi.Input['TwingateResourceAccessPolicyArgs']]]] = None,
+                 access_services: pulumi.Input[Optional[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]]] = None,
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_authoritative: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_browser_shortcut_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocols: pulumi.Input[Optional['TwingateResourceProtocolsArgs']] = None,
+                 security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a TwingateResource resource.
 
@@ -106,167 +106,167 @@ class TwingateResourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessGroups")
-    def access_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupArgs']]]]:
+    def access_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TwingateResourceAccessGroupArgs']]]]:
         """
         Restrict access to certain group
         """
         return pulumi.get(self, "access_groups")
 
     @access_groups.setter
-    def access_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupArgs']]]]):
+    def access_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TwingateResourceAccessGroupArgs']]]]):
         pulumi.set(self, "access_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="accessPolicies")
-    def access_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessPolicyArgs']]]]:
+    def access_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TwingateResourceAccessPolicyArgs']]]]:
         """
         Restrict access according to JIT access policy
         """
         return pulumi.get(self, "access_policies")
 
     @access_policies.setter
-    def access_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessPolicyArgs']]]]):
+    def access_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TwingateResourceAccessPolicyArgs']]]]):
         pulumi.set(self, "access_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="accessServices")
-    def access_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]]]:
+    def access_services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]]]:
         """
         Restrict access to certain service account
         """
         return pulumi.get(self, "access_services")
 
     @access_services.setter
-    def access_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]]]):
+    def access_services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]]]):
         pulumi.set(self, "access_services", value)
 
     @_builtins.property
     @pulumi.getter
-    def alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set a DNS alias address for the Resource. Must be a DNS-valid name string.
         """
         return pulumi.get(self, "alias")
 
     @alias.setter
-    def alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alias", value)
 
     @_builtins.property
     @pulumi.getter(name="isActive")
-    def is_active(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_active(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set the resource as active or inactive. Default is `true`.
         """
         return pulumi.get(self, "is_active")
 
     @is_active.setter
-    def is_active(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_active(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_active", value)
 
     @_builtins.property
     @pulumi.getter(name="isAuthoritative")
-    def is_authoritative(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_authoritative(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to `false`, assignments made outside of Terraform will be ignored.
         """
         return pulumi.get(self, "is_authoritative")
 
     @is_authoritative.setter
-    def is_authoritative(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_authoritative(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_authoritative", value)
 
     @_builtins.property
     @pulumi.getter(name="isBrowserShortcutEnabled")
-    def is_browser_shortcut_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_browser_shortcut_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
         """
         return pulumi.get(self, "is_browser_shortcut_enabled")
 
     @is_browser_shortcut_enabled.setter
-    def is_browser_shortcut_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_browser_shortcut_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_browser_shortcut_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="isVisible")
-    def is_visible(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_visible(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
         """
         return pulumi.get(self, "is_visible")
 
     @is_visible.setter
-    def is_visible(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_visible(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_visible", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Resource
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocols(self) -> Optional[pulumi.Input['TwingateResourceProtocolsArgs']]:
+    def protocols(self) -> pulumi.Input[Optional['TwingateResourceProtocolsArgs']]:
         """
         Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         """
         return pulumi.get(self, "protocols")
 
     @protocols.setter
-    def protocols(self, value: Optional[pulumi.Input['TwingateResourceProtocolsArgs']]):
+    def protocols(self, value: pulumi.Input[Optional['TwingateResourceProtocolsArgs']]):
         pulumi.set(self, "protocols", value)
 
     @_builtins.property
     @pulumi.getter(name="securityPolicyId")
-    def security_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         """
         return pulumi.get(self, "security_policy_id")
 
     @security_policy_id.setter
-    def security_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_policy_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of key-value pair tags to set on this resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _TwingateResourceState:
     def __init__(__self__, *,
-                 access_groups: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupArgs']]]] = None,
-                 access_policies: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessPolicyArgs']]]] = None,
-                 access_services: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]]] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_authoritative: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_browser_shortcut_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_visible: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocols: Optional[pulumi.Input['TwingateResourceProtocolsArgs']] = None,
-                 remote_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tags_all: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input['TwingateResourceAccessGroupArgs']]]] = None,
+                 access_policies: pulumi.Input[Optional[Sequence[pulumi.Input['TwingateResourceAccessPolicyArgs']]]] = None,
+                 access_services: pulumi.Input[Optional[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_authoritative: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_browser_shortcut_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocols: pulumi.Input[Optional['TwingateResourceProtocolsArgs']] = None,
+                 remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tags_all: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering TwingateResource resources.
 
@@ -319,182 +319,182 @@ class _TwingateResourceState:
 
     @_builtins.property
     @pulumi.getter(name="accessGroups")
-    def access_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupArgs']]]]:
+    def access_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TwingateResourceAccessGroupArgs']]]]:
         """
         Restrict access to certain group
         """
         return pulumi.get(self, "access_groups")
 
     @access_groups.setter
-    def access_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessGroupArgs']]]]):
+    def access_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TwingateResourceAccessGroupArgs']]]]):
         pulumi.set(self, "access_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="accessPolicies")
-    def access_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessPolicyArgs']]]]:
+    def access_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TwingateResourceAccessPolicyArgs']]]]:
         """
         Restrict access according to JIT access policy
         """
         return pulumi.get(self, "access_policies")
 
     @access_policies.setter
-    def access_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessPolicyArgs']]]]):
+    def access_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TwingateResourceAccessPolicyArgs']]]]):
         pulumi.set(self, "access_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="accessServices")
-    def access_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]]]:
+    def access_services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]]]:
         """
         Restrict access to certain service account
         """
         return pulumi.get(self, "access_services")
 
     @access_services.setter
-    def access_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]]]):
+    def access_services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TwingateResourceAccessServiceArgs']]]]):
         pulumi.set(self, "access_services", value)
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Resource's IP/CIDR or FQDN/DNS zone
         """
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter
-    def alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set a DNS alias address for the Resource. Must be a DNS-valid name string.
         """
         return pulumi.get(self, "alias")
 
     @alias.setter
-    def alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alias", value)
 
     @_builtins.property
     @pulumi.getter(name="isActive")
-    def is_active(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_active(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set the resource as active or inactive. Default is `true`.
         """
         return pulumi.get(self, "is_active")
 
     @is_active.setter
-    def is_active(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_active(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_active", value)
 
     @_builtins.property
     @pulumi.getter(name="isAuthoritative")
-    def is_authoritative(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_authoritative(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to `false`, assignments made outside of Terraform will be ignored.
         """
         return pulumi.get(self, "is_authoritative")
 
     @is_authoritative.setter
-    def is_authoritative(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_authoritative(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_authoritative", value)
 
     @_builtins.property
     @pulumi.getter(name="isBrowserShortcutEnabled")
-    def is_browser_shortcut_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_browser_shortcut_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
         """
         return pulumi.get(self, "is_browser_shortcut_enabled")
 
     @is_browser_shortcut_enabled.setter
-    def is_browser_shortcut_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_browser_shortcut_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_browser_shortcut_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="isVisible")
-    def is_visible(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_visible(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
         """
         return pulumi.get(self, "is_visible")
 
     @is_visible.setter
-    def is_visible(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_visible(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_visible", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Resource
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocols(self) -> Optional[pulumi.Input['TwingateResourceProtocolsArgs']]:
+    def protocols(self) -> pulumi.Input[Optional['TwingateResourceProtocolsArgs']]:
         """
         Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         """
         return pulumi.get(self, "protocols")
 
     @protocols.setter
-    def protocols(self, value: Optional[pulumi.Input['TwingateResourceProtocolsArgs']]):
+    def protocols(self, value: pulumi.Input[Optional['TwingateResourceProtocolsArgs']]):
         pulumi.set(self, "protocols", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteNetworkId")
-    def remote_network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remote_network_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Remote Network ID where the Resource lives
         """
         return pulumi.get(self, "remote_network_id")
 
     @remote_network_id.setter
-    def remote_network_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remote_network_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remote_network_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityPolicyId")
-    def security_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         """
         return pulumi.get(self, "security_policy_id")
 
     @security_policy_id.setter
-    def security_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_policy_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of key-value pair tags to set on this resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tagsAll")
-    def tags_all(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags_all(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
         """
         return pulumi.get(self, "tags_all")
 
     @tags_all.setter
-    def tags_all(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags_all(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags_all", value)
 
 
@@ -504,20 +504,20 @@ class TwingateResource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessGroupArgs', 'TwingateResourceAccessGroupArgsDict']]]]] = None,
-                 access_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessPolicyArgs', 'TwingateResourceAccessPolicyArgsDict']]]]] = None,
-                 access_services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessServiceArgs', 'TwingateResourceAccessServiceArgsDict']]]]] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_authoritative: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_browser_shortcut_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_visible: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocols: Optional[pulumi.Input[Union['TwingateResourceProtocolsArgs', 'TwingateResourceProtocolsArgsDict']]] = None,
-                 remote_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateResourceAccessGroupArgs', 'TwingateResourceAccessGroupArgsDict']]]]] = None,
+                 access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateResourceAccessPolicyArgs', 'TwingateResourceAccessPolicyArgsDict']]]]] = None,
+                 access_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateResourceAccessServiceArgs', 'TwingateResourceAccessServiceArgsDict']]]]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_authoritative: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_browser_shortcut_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocols: pulumi.Input[Optional[Union['TwingateResourceProtocolsArgs', 'TwingateResourceProtocolsArgsDict']]] = None,
+                 remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Resources in Twingate represent servers on the private network that clients can connect to. Resources can be defined by IP, CIDR range, FQDN, or DNS zone. For more information, see the Twingate [documentation](https://docs.twingate.com/docs/resources-and-access-nodes).
@@ -577,20 +577,20 @@ class TwingateResource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessGroupArgs', 'TwingateResourceAccessGroupArgsDict']]]]] = None,
-                 access_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessPolicyArgs', 'TwingateResourceAccessPolicyArgsDict']]]]] = None,
-                 access_services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessServiceArgs', 'TwingateResourceAccessServiceArgsDict']]]]] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_authoritative: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_browser_shortcut_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_visible: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocols: Optional[pulumi.Input[Union['TwingateResourceProtocolsArgs', 'TwingateResourceProtocolsArgsDict']]] = None,
-                 remote_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateResourceAccessGroupArgs', 'TwingateResourceAccessGroupArgsDict']]]]] = None,
+                 access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateResourceAccessPolicyArgs', 'TwingateResourceAccessPolicyArgsDict']]]]] = None,
+                 access_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateResourceAccessServiceArgs', 'TwingateResourceAccessServiceArgsDict']]]]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_authoritative: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_browser_shortcut_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocols: pulumi.Input[Optional[Union['TwingateResourceProtocolsArgs', 'TwingateResourceProtocolsArgsDict']]] = None,
+                 remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -629,21 +629,21 @@ class TwingateResource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessGroupArgs', 'TwingateResourceAccessGroupArgsDict']]]]] = None,
-            access_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessPolicyArgs', 'TwingateResourceAccessPolicyArgsDict']]]]] = None,
-            access_services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessServiceArgs', 'TwingateResourceAccessServiceArgsDict']]]]] = None,
-            address: Optional[pulumi.Input[_builtins.str]] = None,
-            alias: Optional[pulumi.Input[_builtins.str]] = None,
-            is_active: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_authoritative: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_browser_shortcut_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_visible: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            protocols: Optional[pulumi.Input[Union['TwingateResourceProtocolsArgs', 'TwingateResourceProtocolsArgsDict']]] = None,
-            remote_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-            security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            tags_all: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'TwingateResource':
+            access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateResourceAccessGroupArgs', 'TwingateResourceAccessGroupArgsDict']]]]] = None,
+            access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateResourceAccessPolicyArgs', 'TwingateResourceAccessPolicyArgsDict']]]]] = None,
+            access_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateResourceAccessServiceArgs', 'TwingateResourceAccessServiceArgsDict']]]]] = None,
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            alias: pulumi.Input[Optional[_builtins.str]] = None,
+            is_active: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_authoritative: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_browser_shortcut_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            protocols: pulumi.Input[Optional[Union['TwingateResourceProtocolsArgs', 'TwingateResourceProtocolsArgsDict']]] = None,
+            remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            tags_all: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'TwingateResource':
         """
         Get an existing TwingateResource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

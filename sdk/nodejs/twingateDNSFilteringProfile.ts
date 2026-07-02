@@ -172,39 +172,39 @@ export interface TwingateDNSFilteringProfileState {
     /**
      * A block with the following attributes.
      */
-    allowedDomains?: pulumi.Input<inputs.TwingateDNSFilteringProfileAllowedDomains>;
+    allowedDomains?: pulumi.Input<inputs.TwingateDNSFilteringProfileAllowedDomains | undefined>;
     /**
      * A block with the following attributes.
      */
-    contentCategories?: pulumi.Input<inputs.TwingateDNSFilteringProfileContentCategories>;
+    contentCategories?: pulumi.Input<inputs.TwingateDNSFilteringProfileContentCategories | undefined>;
     /**
      * A block with the following attributes.
      */
-    deniedDomains?: pulumi.Input<inputs.TwingateDNSFilteringProfileDeniedDomains>;
+    deniedDomains?: pulumi.Input<inputs.TwingateDNSFilteringProfileDeniedDomains | undefined>;
     /**
      * The DNS filtering profile's fallback method. One of "AUTO" or "STRICT". Defaults to "STRICT".
      */
-    fallbackMethod?: pulumi.Input<string>;
+    fallbackMethod?: pulumi.Input<string | undefined>;
     /**
      * A set of group IDs that have this as their DNS filtering profile. Defaults to an empty set.
      */
-    groups?: pulumi.Input<pulumi.Input<string>[]>;
+    groups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The DNS filtering profile's name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A floating point number representing the profile's priority.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * A block with the following attributes.
      */
-    privacyCategories?: pulumi.Input<inputs.TwingateDNSFilteringProfilePrivacyCategories>;
+    privacyCategories?: pulumi.Input<inputs.TwingateDNSFilteringProfilePrivacyCategories | undefined>;
     /**
      * A block with the following attributes.
      */
-    securityCategories?: pulumi.Input<inputs.TwingateDNSFilteringProfileSecurityCategories>;
+    securityCategories?: pulumi.Input<inputs.TwingateDNSFilteringProfileSecurityCategories | undefined>;
 }
 
 /**
@@ -214,27 +214,27 @@ export interface TwingateDNSFilteringProfileArgs {
     /**
      * A block with the following attributes.
      */
-    allowedDomains?: pulumi.Input<inputs.TwingateDNSFilteringProfileAllowedDomains>;
+    allowedDomains?: pulumi.Input<inputs.TwingateDNSFilteringProfileAllowedDomains | undefined>;
     /**
      * A block with the following attributes.
      */
-    contentCategories?: pulumi.Input<inputs.TwingateDNSFilteringProfileContentCategories>;
+    contentCategories?: pulumi.Input<inputs.TwingateDNSFilteringProfileContentCategories | undefined>;
     /**
      * A block with the following attributes.
      */
-    deniedDomains?: pulumi.Input<inputs.TwingateDNSFilteringProfileDeniedDomains>;
+    deniedDomains?: pulumi.Input<inputs.TwingateDNSFilteringProfileDeniedDomains | undefined>;
     /**
      * The DNS filtering profile's fallback method. One of "AUTO" or "STRICT". Defaults to "STRICT".
      */
-    fallbackMethod?: pulumi.Input<string>;
+    fallbackMethod?: pulumi.Input<string | undefined>;
     /**
      * A set of group IDs that have this as their DNS filtering profile. Defaults to an empty set.
      */
-    groups?: pulumi.Input<pulumi.Input<string>[]>;
+    groups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The DNS filtering profile's name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A floating point number representing the profile's priority.
      */
@@ -242,9 +242,9 @@ export interface TwingateDNSFilteringProfileArgs {
     /**
      * A block with the following attributes.
      */
-    privacyCategories?: pulumi.Input<inputs.TwingateDNSFilteringProfilePrivacyCategories>;
+    privacyCategories?: pulumi.Input<inputs.TwingateDNSFilteringProfilePrivacyCategories | undefined>;
     /**
      * A block with the following attributes.
      */
-    securityCategories?: pulumi.Input<inputs.TwingateDNSFilteringProfileSecurityCategories>;
+    securityCategories?: pulumi.Input<inputs.TwingateDNSFilteringProfileSecurityCategories | undefined>;
 }

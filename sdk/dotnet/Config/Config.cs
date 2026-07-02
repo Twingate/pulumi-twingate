@@ -196,6 +196,14 @@ namespace Twingate.Twingate
             /// </summary>
                 public string? NameSuffix { get; set; } = null!;
             /// <summary>
+            /// Returns only resources that are associated with the specified remote network ID.
+            /// </summary>
+                public string? RemoteNetworkId { get; set; } = null!;
+            /// <summary>
+            /// Returns only resources that are associated with the specified remote network name.
+            /// </summary>
+                public string? RemoteNetworkName { get; set; } = null!;
+            /// <summary>
             /// Returns only resources that exactly match the given tags.
             /// </summary>
                 public ImmutableDictionary<string, string>? Tags { get; set; } = null!;

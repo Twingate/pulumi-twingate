@@ -177,12 +177,12 @@ def get_twingate_security_policies(name: Optional[_builtins.str] = None,
         name_regexp=pulumi.get(__ret__, 'name_regexp'),
         name_suffix=pulumi.get(__ret__, 'name_suffix'),
         security_policies=pulumi.get(__ret__, 'security_policies'))
-def get_twingate_security_policies_output(name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                          name_contains: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                          name_exclude: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                          name_prefix: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                          name_regexp: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                          name_suffix: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_twingate_security_policies_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                          name_contains: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                          name_exclude: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                          name_prefix: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                          name_regexp: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                          name_suffix: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTwingateSecurityPoliciesResult]:
     """
     Security Policies are defined in the Twingate Admin Console and determine user and device authentication requirements for Resources.

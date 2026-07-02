@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := twingate.LookupTwingateX509CertificateAuthority(ctx, &twingate.LookupTwingateX509CertificateAuthorityArgs{
+//			_, err := twingate.GetTwingateX509CertificateAuthority(ctx, &twingate.LookupTwingateX509CertificateAuthorityArgs{
 //				Id: "<your x509 certificate authority's id>",
 //			}, nil)
 //			if err != nil {

@@ -143,8 +143,8 @@ def get_twingate_resource(id: Optional[_builtins.str] = None,
         protocols=pulumi.get(__ret__, 'protocols'),
         remote_network_id=pulumi.get(__ret__, 'remote_network_id'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_twingate_resource_output(id: Optional[pulumi.Input[_builtins.str]] = None,
-                                 protocols: Optional[pulumi.Input[Optional[Union['GetTwingateResourceProtocolsArgs', 'GetTwingateResourceProtocolsArgsDict']]]] = None,
+def get_twingate_resource_output(id: pulumi.Input[Optional[_builtins.str]] = None,
+                                 protocols: pulumi.Input[Optional[Optional[Union['GetTwingateResourceProtocolsArgs', 'GetTwingateResourceProtocolsArgsDict']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTwingateResourceResult]:
     """
     Resources in Twingate represent any network destination address that you wish to provide private access to for users authorized via the Twingate Client application. Resources can be defined by either IP or DNS address, and all private DNS addresses will be automatically resolved with no client configuration changes. For more information, see the Twingate [documentation](https://docs.twingate.com/docs/resources-and-access-nodes).

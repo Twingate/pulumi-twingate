@@ -180,12 +180,12 @@ def get_twingate_service_accounts(name: Optional[_builtins.str] = None,
         name_regexp=pulumi.get(__ret__, 'name_regexp'),
         name_suffix=pulumi.get(__ret__, 'name_suffix'),
         service_accounts=pulumi.get(__ret__, 'service_accounts'))
-def get_twingate_service_accounts_output(name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         name_contains: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         name_exclude: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         name_prefix: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         name_regexp: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         name_suffix: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_twingate_service_accounts_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                         name_contains: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                         name_exclude: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                         name_prefix: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                         name_regexp: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                         name_suffix: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTwingateServiceAccountsResult]:
     """
     Service Accounts offer a way to provide programmatic, centrally-controlled, and consistent access controls.

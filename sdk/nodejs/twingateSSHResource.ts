@@ -181,51 +181,51 @@ export interface TwingateSSHResourceState {
     /**
      * Restrict access to certain group
      */
-    accessGroups?: pulumi.Input<pulumi.Input<inputs.TwingateSSHResourceAccessGroup>[]>;
+    accessGroups?: pulumi.Input<pulumi.Input<inputs.TwingateSSHResourceAccessGroup>[] | undefined>;
     /**
      * Restrict access according to JIT access policy
      */
-    accessPolicies?: pulumi.Input<pulumi.Input<inputs.TwingateSSHResourceAccessPolicy>[]>;
+    accessPolicies?: pulumi.Input<pulumi.Input<inputs.TwingateSSHResourceAccessPolicy>[] | undefined>;
     /**
      * The address of the SSH Resource (IP or FQDN).
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * Set a DNS alias address for the Resource. Must be a DNS-valid name string.
      */
-    alias?: pulumi.Input<string>;
+    alias?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Gateway used to access this SSH Resource.
      */
-    gatewayId?: pulumi.Input<string>;
+    gatewayId?: pulumi.Input<string | undefined>;
     /**
      * Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
      */
-    isVisible?: pulumi.Input<boolean>;
+    isVisible?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the SSH Resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
      */
-    protocols?: pulumi.Input<inputs.TwingateSSHResourceProtocols>;
+    protocols?: pulumi.Input<inputs.TwingateSSHResourceProtocols | undefined>;
     /**
      * The ID of the Remote Network the SSH Resource belongs to.
      */
-    remoteNetworkId?: pulumi.Input<string>;
+    remoteNetworkId?: pulumi.Input<string | undefined>;
     /**
      * The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
      */
-    securityPolicyId?: pulumi.Input<string>;
+    securityPolicyId?: pulumi.Input<string | undefined>;
     /**
      * A map of key-value pair tags to set on this resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The username to use when connecting to the SSH Resource.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -235,11 +235,11 @@ export interface TwingateSSHResourceArgs {
     /**
      * Restrict access to certain group
      */
-    accessGroups?: pulumi.Input<pulumi.Input<inputs.TwingateSSHResourceAccessGroup>[]>;
+    accessGroups?: pulumi.Input<pulumi.Input<inputs.TwingateSSHResourceAccessGroup>[] | undefined>;
     /**
      * Restrict access according to JIT access policy
      */
-    accessPolicies?: pulumi.Input<pulumi.Input<inputs.TwingateSSHResourceAccessPolicy>[]>;
+    accessPolicies?: pulumi.Input<pulumi.Input<inputs.TwingateSSHResourceAccessPolicy>[] | undefined>;
     /**
      * The address of the SSH Resource (IP or FQDN).
      */
@@ -247,7 +247,7 @@ export interface TwingateSSHResourceArgs {
     /**
      * Set a DNS alias address for the Resource. Must be a DNS-valid name string.
      */
-    alias?: pulumi.Input<string>;
+    alias?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Gateway used to access this SSH Resource.
      */
@@ -255,15 +255,15 @@ export interface TwingateSSHResourceArgs {
     /**
      * Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
      */
-    isVisible?: pulumi.Input<boolean>;
+    isVisible?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the SSH Resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
      */
-    protocols?: pulumi.Input<inputs.TwingateSSHResourceProtocols>;
+    protocols?: pulumi.Input<inputs.TwingateSSHResourceProtocols | undefined>;
     /**
      * The ID of the Remote Network the SSH Resource belongs to.
      */
@@ -271,13 +271,13 @@ export interface TwingateSSHResourceArgs {
     /**
      * The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
      */
-    securityPolicyId?: pulumi.Input<string>;
+    securityPolicyId?: pulumi.Input<string | undefined>;
     /**
      * A map of key-value pair tags to set on this resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The username to use when connecting to the SSH Resource.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }

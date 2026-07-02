@@ -97,15 +97,15 @@ export interface TwingateGroupState {
     /**
      * Determines whether User assignments to this Group will override any existing assignments. Default is `true`. If set to `false`, assignments made outside of Terraform will be ignored.
      */
-    isAuthoritative?: pulumi.Input<boolean>;
+    isAuthoritative?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the group
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * List of User IDs that have permission to access the Group.
      */
-    userIds?: pulumi.Input<pulumi.Input<string>[]>;
+    userIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -115,13 +115,13 @@ export interface TwingateGroupArgs {
     /**
      * Determines whether User assignments to this Group will override any existing assignments. Default is `true`. If set to `false`, assignments made outside of Terraform will be ignored.
      */
-    isAuthoritative?: pulumi.Input<boolean>;
+    isAuthoritative?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the group
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * List of User IDs that have permission to access the Group.
      */
-    userIds?: pulumi.Input<pulumi.Input<string>[]>;
+    userIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
