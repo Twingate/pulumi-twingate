@@ -1,3 +1,6 @@
 name: twingate-example-python
-runtime: python
+runtime:
+  name: python
+  options:
+    virtualenv: venv
 description: python example for twingate

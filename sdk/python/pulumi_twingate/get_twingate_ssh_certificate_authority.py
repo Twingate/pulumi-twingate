@@ -99,7 +99,7 @@ def get_twingate_ssh_certificate_authority(id: Optional[_builtins.str] = None,
         fingerprint=pulumi.get(__ret__, 'fingerprint'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'))
-def get_twingate_ssh_certificate_authority_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_twingate_ssh_certificate_authority_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTwingateSSHCertificateAuthorityResult]:
     """
     SSH Certificate Authorities allow Twingate to sign SSH certificates for authenticating users to resources.

@@ -49,6 +49,18 @@ namespace Twingate.Twingate.Inputs
         [Input("nameSuffix")]
         public Input<string>? NameSuffix { get; set; }
 
+        /// <summary>
+        /// Returns only resources that are associated with the specified remote network ID.
+        /// </summary>
+        [Input("remoteNetworkId")]
+        public Input<string>? RemoteNetworkId { get; set; }
+
+        /// <summary>
+        /// Returns only resources that are associated with the specified remote network name.
+        /// </summary>
+        [Input("remoteNetworkName")]
+        public Input<string>? RemoteNetworkName { get; set; }
+
         [Input("tags")]
         private InputMap<string>? _tags;
 

@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := twingate.LookupTwingateGateway(ctx, &twingate.LookupTwingateGatewayArgs{
+//			_, err := twingate.GetTwingateGateway(ctx, &twingate.LookupTwingateGatewayArgs{
 //				Id: "<your gateway's id>",
 //			}, nil)
 //			if err != nil {

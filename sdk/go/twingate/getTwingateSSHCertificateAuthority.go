@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := twingate.LookupTwingateSSHCertificateAuthority(ctx, &twingate.LookupTwingateSSHCertificateAuthorityArgs{
+//			_, err := twingate.GetTwingateSSHCertificateAuthority(ctx, &twingate.LookupTwingateSSHCertificateAuthorityArgs{
 //				Id: "<your ssh certificate authority's id>",
 //			}, nil)
 //			if err != nil {

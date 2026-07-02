@@ -3,13 +3,13 @@ module twingate_go_example
 go 1.25.11
 
 require (
-	github.com/Twingate/pulumi-twingate/sdk/v4 v4.2.0
+	github.com/Twingate/pulumi-twingate/sdk/v4 v4.2.2
 	github.com/pulumi/pulumi-tls/sdk/v5 v5.5.0
 	github.com/pulumi/pulumi/sdk/v3 v3.248.0
 )
 
 // Uncomment to use local SDK for development/testing
-// replace github.com/Twingate/pulumi-twingate/sdk/v4 => ../../sdk
+replace github.com/Twingate/pulumi-twingate/sdk/v4 => ../../sdk
 
 require (
 	github.com/BurntSushi/toml v1.6.0 // indirect

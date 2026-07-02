@@ -90,37 +90,37 @@ export interface ProviderArgs {
      * from the Twingate Admin Console ([documentation](https://docs.twingate.com/docs/api-overview)).
      * Alternatively, this can be specified using the TWINGATE_API_TOKEN environment variable.
      */
-    apiToken?: pulumi.Input<string>;
+    apiToken?: pulumi.Input<string | undefined>;
     /**
      * Specifies the cache settings for the provider.
      */
-    cache?: pulumi.Input<inputs.ProviderCache>;
+    cache?: pulumi.Input<inputs.ProviderCache | undefined>;
     /**
      * A default set of tags applied globally to all resources created by the provider.
      */
-    defaultTags?: pulumi.Input<inputs.ProviderDefaultTags>;
+    defaultTags?: pulumi.Input<inputs.ProviderDefaultTags | undefined>;
     /**
      * Specifies a retry limit for the http requests made. The default value is 10.
      * Alternatively, this can be specified using the TWINGATE_HTTP_MAX_RETRY environment variable
      */
-    httpMaxRetry?: pulumi.Input<number>;
+    httpMaxRetry?: pulumi.Input<number | undefined>;
     /**
      * Specifies a time limit in seconds for the http requests made. The default value is 35 seconds.
      * Alternatively, this can be specified using the TWINGATE_HTTP_TIMEOUT environment variable
      */
-    httpTimeout?: pulumi.Input<number>;
+    httpTimeout?: pulumi.Input<number | undefined>;
     /**
      * Your Twingate network ID for API operations.
      * You can find it in the Admin Console URL, for example:
      * `autoco.twingate.com`, where `autoco` is your network ID
      * Alternatively, this can be specified using the TWINGATE_NETWORK environment variable.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The default is 'twingate.com'
      * This is optional and shouldn't be changed under normal circumstances.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 export namespace Provider {

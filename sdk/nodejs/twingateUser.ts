@@ -131,33 +131,33 @@ export interface TwingateUserState {
     /**
      * The User's email address
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The User's first name
      */
-    firstName?: pulumi.Input<string>;
+    firstName?: pulumi.Input<string | undefined>;
     /**
      * Determines whether the User is active or not. Inactive users will be not able to sign in.
      */
-    isActive?: pulumi.Input<boolean>;
+    isActive?: pulumi.Input<boolean | undefined>;
     /**
      * The User's last name
      */
-    lastName?: pulumi.Input<string>;
+    lastName?: pulumi.Input<string | undefined>;
     /**
      * Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * Determines whether to send an email invitation to the User. True by default.
      *
      * @deprecated This attribute is no longer used and will be removed in a future release.
      */
-    sendInvite?: pulumi.Input<boolean>;
+    sendInvite?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates the User's type. Either MANUAL or SYNCED.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -171,23 +171,23 @@ export interface TwingateUserArgs {
     /**
      * The User's first name
      */
-    firstName?: pulumi.Input<string>;
+    firstName?: pulumi.Input<string | undefined>;
     /**
      * Determines whether the User is active or not. Inactive users will be not able to sign in.
      */
-    isActive?: pulumi.Input<boolean>;
+    isActive?: pulumi.Input<boolean | undefined>;
     /**
      * The User's last name
      */
-    lastName?: pulumi.Input<string>;
+    lastName?: pulumi.Input<string | undefined>;
     /**
      * Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * Determines whether to send an email invitation to the User. True by default.
      *
      * @deprecated This attribute is no longer used and will be removed in a future release.
      */
-    sendInvite?: pulumi.Input<boolean>;
+    sendInvite?: pulumi.Input<boolean | undefined>;
 }

@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := twingate.LookupTwingateConnector(ctx, &twingate.LookupTwingateConnectorArgs{
+//			_, err := twingate.GetTwingateConnector(ctx, &twingate.LookupTwingateConnectorArgs{
 //				Id: "<your connector's id>",
 //			}, nil)
 //			if err != nil {

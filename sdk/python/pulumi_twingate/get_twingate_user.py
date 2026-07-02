@@ -138,7 +138,7 @@ def get_twingate_user(id: Optional[_builtins.str] = None,
         last_name=pulumi.get(__ret__, 'last_name'),
         role=pulumi.get(__ret__, 'role'),
         type=pulumi.get(__ret__, 'type'))
-def get_twingate_user_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_twingate_user_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTwingateUserResult]:
     """
     Users in Twingate can be given access to Twingate Resources and may either be added manually or automatically synchronized with a 3rd party identity provider. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/users).

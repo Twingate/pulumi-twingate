@@ -140,15 +140,15 @@ export interface GetTwingateDNSFilteringProfileOutputArgs {
     /**
      * A block with the following attributes.
      */
-    allowedDomains?: pulumi.Input<inputs.GetTwingateDNSFilteringProfileAllowedDomainsArgs>;
+    allowedDomains?: pulumi.Input<inputs.GetTwingateDNSFilteringProfileAllowedDomainsArgs | undefined>;
     /**
      * A block with the following attributes.
      */
-    contentCategories?: pulumi.Input<inputs.GetTwingateDNSFilteringProfileContentCategoriesArgs>;
+    contentCategories?: pulumi.Input<inputs.GetTwingateDNSFilteringProfileContentCategoriesArgs | undefined>;
     /**
      * A block with the following attributes.
      */
-    deniedDomains?: pulumi.Input<inputs.GetTwingateDNSFilteringProfileDeniedDomainsArgs>;
+    deniedDomains?: pulumi.Input<inputs.GetTwingateDNSFilteringProfileDeniedDomainsArgs | undefined>;
     /**
      * The DNS filtering profile's ID.
      */
@@ -156,9 +156,9 @@ export interface GetTwingateDNSFilteringProfileOutputArgs {
     /**
      * A block with the following attributes.
      */
-    privacyCategories?: pulumi.Input<inputs.GetTwingateDNSFilteringProfilePrivacyCategoriesArgs>;
+    privacyCategories?: pulumi.Input<inputs.GetTwingateDNSFilteringProfilePrivacyCategoriesArgs | undefined>;
     /**
      * A block with the following attributes.
      */
-    securityCategories?: pulumi.Input<inputs.GetTwingateDNSFilteringProfileSecurityCategoriesArgs>;
+    securityCategories?: pulumi.Input<inputs.GetTwingateDNSFilteringProfileSecurityCategoriesArgs | undefined>;
 }

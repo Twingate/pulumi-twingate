@@ -3,7 +3,7 @@ module github.com/Twingate/pulumi-twingate/provider
 go 1.26
 
 require (
-	github.com/Twingate/terraform-provider-twingate/v4 v4.2.1
+	github.com/Twingate/terraform-provider-twingate/v4 v4.2.2
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.133.0
 	github.com/pulumi/pulumi/sdk/v3 v3.246.0
 )

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
@@ -15,14 +15,15 @@
     - Installed the provider plugin to Pulumi's plugin directory at ~/.pulumi/plugins/resource-twingate-v3.7.0-alpha.1767838167+dirty/
     - Rebuilt the dotnet SDK using make build_dotnet to ensure the SDK version matches the provider version
     -->
-    <!-- <ProjectReference Include="../../sdk/dotnet/Twingate.Twingate.csproj" /> -->
+    <ProjectReference Include="../../sdk/dotnet/Twingate.Twingate.csproj" />
     <!-- Use NuGet package for production -->
-    <PackageReference Include="Twingate.Twingate" Version="4.2.0" />
+    <!-- <PackageReference Include="Twingate.Twingate" Version="4.2.2" /> -->
   </ItemGroup>
 
-  <!-- Comment this out if you are not using a Mac -->
-  <PropertyGroup Condition="'$(NETCoreSdkRuntimeIdentifier)'=='osx-arm64'">
+  <!-- On Apple Silicon, build native arm64. Forcing osx-x64 requires an x64
+       .NET runtime (via Rosetta) that isn't present with an arm64-only dotnet. -->
+  <!-- <PropertyGroup Condition="'$(NETCoreSdkRuntimeIdentifier)'=='osx-arm64'">
       <RuntimeIdentifier>osx-x64</RuntimeIdentifier>
-  </PropertyGroup>
+  </PropertyGroup> -->
 
 </Project>

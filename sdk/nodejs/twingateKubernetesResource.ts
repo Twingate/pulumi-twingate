@@ -190,59 +190,59 @@ export interface TwingateKubernetesResourceState {
     /**
      * Restrict access to certain group
      */
-    accessGroups?: pulumi.Input<pulumi.Input<inputs.TwingateKubernetesResourceAccessGroup>[]>;
+    accessGroups?: pulumi.Input<pulumi.Input<inputs.TwingateKubernetesResourceAccessGroup>[] | undefined>;
     /**
      * Restrict access according to JIT access policy
      */
-    accessPolicies?: pulumi.Input<pulumi.Input<inputs.TwingateKubernetesResourceAccessPolicy>[]>;
+    accessPolicies?: pulumi.Input<pulumi.Input<inputs.TwingateKubernetesResourceAccessPolicy>[] | undefined>;
     /**
      * The address of the Kubernetes Resource (IP or FQDN).
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * Set a DNS alias address for the Resource. Must be a DNS-valid name string.
      */
-    alias?: pulumi.Input<string>;
+    alias?: pulumi.Input<string | undefined>;
     /**
      * Path to bearer token file.
      */
-    bearerTokenFile?: pulumi.Input<string>;
+    bearerTokenFile?: pulumi.Input<string | undefined>;
     /**
      * Path to CA certificate file.
      */
-    caFile?: pulumi.Input<string>;
+    caFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Gateway used to access this Kubernetes Resource.
      */
-    gatewayId?: pulumi.Input<string>;
+    gatewayId?: pulumi.Input<string | undefined>;
     /**
      * Whether the Gateway is running inside the same Kubernetes cluster that is represented by the Kubernetes Resource. Default is `true`.
      */
-    inCluster?: pulumi.Input<boolean>;
+    inCluster?: pulumi.Input<boolean | undefined>;
     /**
      * Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
      */
-    isVisible?: pulumi.Input<boolean>;
+    isVisible?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the Kubernetes Resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
      */
-    protocols?: pulumi.Input<inputs.TwingateKubernetesResourceProtocols>;
+    protocols?: pulumi.Input<inputs.TwingateKubernetesResourceProtocols | undefined>;
     /**
      * The ID of the Remote Network the Kubernetes Resource belongs to.
      */
-    remoteNetworkId?: pulumi.Input<string>;
+    remoteNetworkId?: pulumi.Input<string | undefined>;
     /**
      * The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
      */
-    securityPolicyId?: pulumi.Input<string>;
+    securityPolicyId?: pulumi.Input<string | undefined>;
     /**
      * A map of key-value pair tags to set on this resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -252,27 +252,27 @@ export interface TwingateKubernetesResourceArgs {
     /**
      * Restrict access to certain group
      */
-    accessGroups?: pulumi.Input<pulumi.Input<inputs.TwingateKubernetesResourceAccessGroup>[]>;
+    accessGroups?: pulumi.Input<pulumi.Input<inputs.TwingateKubernetesResourceAccessGroup>[] | undefined>;
     /**
      * Restrict access according to JIT access policy
      */
-    accessPolicies?: pulumi.Input<pulumi.Input<inputs.TwingateKubernetesResourceAccessPolicy>[]>;
+    accessPolicies?: pulumi.Input<pulumi.Input<inputs.TwingateKubernetesResourceAccessPolicy>[] | undefined>;
     /**
      * The address of the Kubernetes Resource (IP or FQDN).
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * Set a DNS alias address for the Resource. Must be a DNS-valid name string.
      */
-    alias?: pulumi.Input<string>;
+    alias?: pulumi.Input<string | undefined>;
     /**
      * Path to bearer token file.
      */
-    bearerTokenFile?: pulumi.Input<string>;
+    bearerTokenFile?: pulumi.Input<string | undefined>;
     /**
      * Path to CA certificate file.
      */
-    caFile?: pulumi.Input<string>;
+    caFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Gateway used to access this Kubernetes Resource.
      */
@@ -280,19 +280,19 @@ export interface TwingateKubernetesResourceArgs {
     /**
      * Whether the Gateway is running inside the same Kubernetes cluster that is represented by the Kubernetes Resource. Default is `true`.
      */
-    inCluster?: pulumi.Input<boolean>;
+    inCluster?: pulumi.Input<boolean | undefined>;
     /**
      * Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
      */
-    isVisible?: pulumi.Input<boolean>;
+    isVisible?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the Kubernetes Resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
      */
-    protocols?: pulumi.Input<inputs.TwingateKubernetesResourceProtocols>;
+    protocols?: pulumi.Input<inputs.TwingateKubernetesResourceProtocols | undefined>;
     /**
      * The ID of the Remote Network the Kubernetes Resource belongs to.
      */
@@ -300,9 +300,9 @@ export interface TwingateKubernetesResourceArgs {
     /**
      * The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
      */
-    securityPolicyId?: pulumi.Input<string>;
+    securityPolicyId?: pulumi.Input<string | undefined>;
     /**
      * A map of key-value pair tags to set on this resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

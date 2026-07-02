@@ -177,7 +177,7 @@ def get_twingate_connector(id: Optional[_builtins.str] = None,
         state=pulumi.get(__ret__, 'state'),
         status_updates_enabled=pulumi.get(__ret__, 'status_updates_enabled'),
         version=pulumi.get(__ret__, 'version'))
-def get_twingate_connector_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_twingate_connector_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTwingateConnectorResult]:
     """
     Connectors provide connectivity to Remote Networks. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/understanding-access-nodes).

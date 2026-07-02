@@ -125,7 +125,7 @@ def get_twingate_gateway(id: Optional[_builtins.str] = None,
         remote_network_id=pulumi.get(__ret__, 'remote_network_id'),
         ssh_ca_id=pulumi.get(__ret__, 'ssh_ca_id'),
         x509_ca_id=pulumi.get(__ret__, 'x509_ca_id'))
-def get_twingate_gateway_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_twingate_gateway_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTwingateGatewayResult]:
     """
     Gateways are the Twingate components that route traffic to remote networks.

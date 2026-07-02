@@ -99,7 +99,7 @@ def get_twingate_x509_certificate_authority(id: Optional[_builtins.str] = None,
         fingerprint=pulumi.get(__ret__, 'fingerprint'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'))
-def get_twingate_x509_certificate_authority_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_twingate_x509_certificate_authority_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTwingateX509CertificateAuthorityResult]:
     """
     X509 Certificate Authorities allow Twingate to verify certificates presented by resources during TLS connections.

@@ -196,13 +196,13 @@ def get_twingate_resources(name: Optional[_builtins.str] = None,
         name_suffix=pulumi.get(__ret__, 'name_suffix'),
         resources=pulumi.get(__ret__, 'resources'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_twingate_resources_output(name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  name_contains: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  name_exclude: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  name_prefix: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  name_regexp: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  name_suffix: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
+def get_twingate_resources_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  name_contains: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  name_exclude: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  name_prefix: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  name_regexp: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  name_suffix: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  tags: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTwingateResourcesResult]:
     """
     Resources in Twingate represent servers on the private network that clients can connect to. Resources can be defined by IP, CIDR range, FQDN, or DNS zone. For more information, see the Twingate [documentation](https://docs.twingate.com/docs/resources-and-access-nodes).

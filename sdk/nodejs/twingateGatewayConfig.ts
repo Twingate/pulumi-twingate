@@ -104,27 +104,27 @@ export interface TwingateGatewayConfigState {
     /**
      * The generated YAML configuration content.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * Kubernetes configuration block containing resource settings.
      */
-    kubernetes?: pulumi.Input<inputs.TwingateGatewayConfigKubernetes>;
+    kubernetes?: pulumi.Input<inputs.TwingateGatewayConfigKubernetes | undefined>;
     /**
      * Gateway metrics port. Default: 9090.
      */
-    metricsPort?: pulumi.Input<number>;
+    metricsPort?: pulumi.Input<number | undefined>;
     /**
      * Gateway listen port. Default: 8443.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * SSH configuration block containing gateway, CA, and resource settings.
      */
-    ssh?: pulumi.Input<inputs.TwingateGatewayConfigSsh>;
+    ssh?: pulumi.Input<inputs.TwingateGatewayConfigSsh | undefined>;
     /**
      * TLS configuration for the gateway.
      */
-    tls?: pulumi.Input<inputs.TwingateGatewayConfigTls>;
+    tls?: pulumi.Input<inputs.TwingateGatewayConfigTls | undefined>;
 }
 
 /**
@@ -134,21 +134,21 @@ export interface TwingateGatewayConfigArgs {
     /**
      * Kubernetes configuration block containing resource settings.
      */
-    kubernetes?: pulumi.Input<inputs.TwingateGatewayConfigKubernetes>;
+    kubernetes?: pulumi.Input<inputs.TwingateGatewayConfigKubernetes | undefined>;
     /**
      * Gateway metrics port. Default: 9090.
      */
-    metricsPort?: pulumi.Input<number>;
+    metricsPort?: pulumi.Input<number | undefined>;
     /**
      * Gateway listen port. Default: 8443.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * SSH configuration block containing gateway, CA, and resource settings.
      */
-    ssh?: pulumi.Input<inputs.TwingateGatewayConfigSsh>;
+    ssh?: pulumi.Input<inputs.TwingateGatewayConfigSsh | undefined>;
     /**
      * TLS configuration for the gateway.
      */
-    tls?: pulumi.Input<inputs.TwingateGatewayConfigTls>;
+    tls?: pulumi.Input<inputs.TwingateGatewayConfigTls | undefined>;
 }

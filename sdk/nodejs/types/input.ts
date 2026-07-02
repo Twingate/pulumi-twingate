@@ -16,7 +16,7 @@ export interface GetTwingateDNSFilteringProfileAllowedDomainsArgs {
     /**
      * A set of allowed domains.
      */
-    domains?: pulumi.Input<pulumi.Input<string>[]>;
+    domains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface GetTwingateDNSFilteringProfileContentCategories {
@@ -62,39 +62,39 @@ export interface GetTwingateDNSFilteringProfileContentCategoriesArgs {
     /**
      * Whether to block adult content.
      */
-    blockAdultContent?: pulumi.Input<boolean>;
+    blockAdultContent?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to block dating content.
      */
-    blockDating?: pulumi.Input<boolean>;
+    blockDating?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to block gambling content.
      */
-    blockGambling?: pulumi.Input<boolean>;
+    blockGambling?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to block games.
      */
-    blockGames?: pulumi.Input<boolean>;
+    blockGames?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to block piracy sites.
      */
-    blockPiracy?: pulumi.Input<boolean>;
+    blockPiracy?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to block social media.
      */
-    blockSocialMedia?: pulumi.Input<boolean>;
+    blockSocialMedia?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to block streaming content.
      */
-    blockStreaming?: pulumi.Input<boolean>;
+    blockStreaming?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to force safe search.
      */
-    enableSafesearch?: pulumi.Input<boolean>;
+    enableSafesearch?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to force YouTube to use restricted mode.
      */
-    enableYoutubeRestrictedMode?: pulumi.Input<boolean>;
+    enableYoutubeRestrictedMode?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetTwingateDNSFilteringProfileDeniedDomains {
@@ -108,7 +108,7 @@ export interface GetTwingateDNSFilteringProfileDeniedDomainsArgs {
     /**
      * A set of denied domains.
      */
-    domains?: pulumi.Input<pulumi.Input<string>[]>;
+    domains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface GetTwingateDNSFilteringProfilePrivacyCategories {
@@ -130,15 +130,15 @@ export interface GetTwingateDNSFilteringProfilePrivacyCategoriesArgs {
     /**
      * Whether to block ads and trackers.
      */
-    blockAdsAndTrackers?: pulumi.Input<boolean>;
+    blockAdsAndTrackers?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to block affiliate links.
      */
-    blockAffiliateLinks?: pulumi.Input<boolean>;
+    blockAffiliateLinks?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to block disguised third party trackers.
      */
-    blockDisguisedTrackers?: pulumi.Input<boolean>;
+    blockDisguisedTrackers?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetTwingateDNSFilteringProfileSecurityCategories {
@@ -184,39 +184,39 @@ export interface GetTwingateDNSFilteringProfileSecurityCategoriesArgs {
     /**
      * Whether to block cryptojacking sites.
      */
-    blockCryptojacking?: pulumi.Input<boolean>;
+    blockCryptojacking?: pulumi.Input<boolean | undefined>;
     /**
      * Blocks public DNS entries from returning private IP addresses.
      */
-    blockDnsRebinding?: pulumi.Input<boolean>;
+    blockDnsRebinding?: pulumi.Input<boolean | undefined>;
     /**
      * Blocks DGA domains.
      */
-    blockDomainGenerationAlgorithms?: pulumi.Input<boolean>;
+    blockDomainGenerationAlgorithms?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to block homoglyph attacks.
      */
-    blockIdnHomoglyph?: pulumi.Input<boolean>;
+    blockIdnHomoglyph?: pulumi.Input<boolean | undefined>;
     /**
      * Blocks newly registered domains.
      */
-    blockNewlyRegisteredDomains?: pulumi.Input<boolean>;
+    blockNewlyRegisteredDomains?: pulumi.Input<boolean | undefined>;
     /**
      * Block parked domains.
      */
-    blockParkedDomains?: pulumi.Input<boolean>;
+    blockParkedDomains?: pulumi.Input<boolean | undefined>;
     /**
      * Blocks typosquatted domains.
      */
-    blockTyposquatting?: pulumi.Input<boolean>;
+    blockTyposquatting?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to use Google Safe browsing lists to block content.
      */
-    enableGoogleSafeBrowsing?: pulumi.Input<boolean>;
+    enableGoogleSafeBrowsing?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to filter content using threat intelligence feeds.
      */
-    enableThreatIntelligenceFeeds?: pulumi.Input<boolean>;
+    enableThreatIntelligenceFeeds?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetTwingateResourceProtocols {
@@ -232,9 +232,9 @@ export interface GetTwingateResourceProtocolsArgs {
     /**
      * Whether to allow ICMP (ping) traffic
      */
-    allowIcmp?: pulumi.Input<boolean>;
-    tcp?: pulumi.Input<inputs.GetTwingateResourceProtocolsTcpArgs>;
-    udp?: pulumi.Input<inputs.GetTwingateResourceProtocolsUdpArgs>;
+    allowIcmp?: pulumi.Input<boolean | undefined>;
+    tcp?: pulumi.Input<inputs.GetTwingateResourceProtocolsTcpArgs | undefined>;
+    udp?: pulumi.Input<inputs.GetTwingateResourceProtocolsUdpArgs | undefined>;
 }
 
 export interface GetTwingateResourceProtocolsTcp {
@@ -252,11 +252,11 @@ export interface GetTwingateResourceProtocolsTcpArgs {
     /**
      * Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
     /**
      * List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
      */
-    ports?: pulumi.Input<pulumi.Input<string>[]>;
+    ports?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface GetTwingateResourceProtocolsUdp {
@@ -274,225 +274,233 @@ export interface GetTwingateResourceProtocolsUdpArgs {
     /**
      * Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
     /**
      * List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
      */
-    ports?: pulumi.Input<pulumi.Input<string>[]>;
+    ports?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ProviderCache {
     /**
      * Specifies whether the provider should cache groups. The default value is `true`.
      */
-    groupsEnabled?: pulumi.Input<boolean>;
+    groupsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the filter for the groups to be cached.
      */
-    groupsFilter?: pulumi.Input<inputs.ProviderCacheGroupsFilter>;
+    groupsFilter?: pulumi.Input<inputs.ProviderCacheGroupsFilter | undefined>;
     /**
      * Specifies whether the provider should cache resources. The default value is `true`.
      */
-    resourceEnabled?: pulumi.Input<boolean>;
+    resourceEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the filter for the resources to be cached.
      */
-    resourcesFilter?: pulumi.Input<inputs.ProviderCacheResourcesFilter>;
+    resourcesFilter?: pulumi.Input<inputs.ProviderCacheResourcesFilter | undefined>;
 }
 
 export interface ProviderCacheGroupsFilter {
     /**
      * Returns only Groups matching the specified state.
      */
-    isActive?: pulumi.Input<boolean>;
+    isActive?: pulumi.Input<boolean | undefined>;
     /**
      * Returns only groups that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Match when the value exist in the name of the group.
      */
-    nameContains?: pulumi.Input<string>;
+    nameContains?: pulumi.Input<string | undefined>;
     /**
      * Match when the exact value does not exist in the name of the group.
      */
-    nameExclude?: pulumi.Input<string>;
+    nameExclude?: pulumi.Input<string | undefined>;
     /**
      * The name of the group must start with the value.
      */
-    namePrefix?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string | undefined>;
     /**
      * The regular expression match of the name of the group.
      */
-    nameRegexp?: pulumi.Input<string>;
+    nameRegexp?: pulumi.Input<string | undefined>;
     /**
      * The name of the group must end with the value.
      */
-    nameSuffix?: pulumi.Input<string>;
+    nameSuffix?: pulumi.Input<string | undefined>;
     /**
      * Returns groups that match a list of types. valid types: `MANUAL`, `SYNCED`, `SYSTEM`.
      */
-    types?: pulumi.Input<pulumi.Input<string>[]>;
+    types?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ProviderCacheResourcesFilter {
     /**
      * Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Match when the value exist in the name of the resource.
      */
-    nameContains?: pulumi.Input<string>;
+    nameContains?: pulumi.Input<string | undefined>;
     /**
      * Match when the exact value does not exist in the name of the resource.
      */
-    nameExclude?: pulumi.Input<string>;
+    nameExclude?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource must start with the value.
      */
-    namePrefix?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string | undefined>;
     /**
      * The regular expression match of the name of the resource.
      */
-    nameRegexp?: pulumi.Input<string>;
+    nameRegexp?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource must end with the value.
      */
-    nameSuffix?: pulumi.Input<string>;
+    nameSuffix?: pulumi.Input<string | undefined>;
+    /**
+     * Returns only resources that are associated with the specified remote network ID.
+     */
+    remoteNetworkId?: pulumi.Input<string | undefined>;
+    /**
+     * Returns only resources that are associated with the specified remote network name.
+     */
+    remoteNetworkName?: pulumi.Input<string | undefined>;
     /**
      * Returns only resources that exactly match the given tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 export interface ProviderDefaultTags {
     /**
      * A map of key-value pair tags to be set on all resources by default.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 export interface TwingateDNSFilteringProfileAllowedDomains {
     /**
      * A set of allowed domains. Defaults to an empty set.
      */
-    domains?: pulumi.Input<pulumi.Input<string>[]>;
+    domains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether Terraform should override changes made outside of Terraform. Defaults to true.
      */
-    isAuthoritative?: pulumi.Input<boolean>;
+    isAuthoritative?: pulumi.Input<boolean | undefined>;
 }
 
 export interface TwingateDNSFilteringProfileContentCategories {
     /**
      * Whether to block adult content. Defaults to false.
      */
-    blockAdultContent?: pulumi.Input<boolean>;
+    blockAdultContent?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to block dating content. Defaults to false.
      */
-    blockDating?: pulumi.Input<boolean>;
+    blockDating?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to block gambling content. Defaults to false.
      */
-    blockGambling?: pulumi.Input<boolean>;
+    blockGambling?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to block games. Defaults to false.
      */
-    blockGames?: pulumi.Input<boolean>;
+    blockGames?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to block piracy sites. Defaults to false.
      */
-    blockPiracy?: pulumi.Input<boolean>;
+    blockPiracy?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to block social media. Defaults to false.
      */
-    blockSocialMedia?: pulumi.Input<boolean>;
+    blockSocialMedia?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to block streaming content. Defaults to false.
      */
-    blockStreaming?: pulumi.Input<boolean>;
+    blockStreaming?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to force safe search. Defaults to false.
      */
-    enableSafesearch?: pulumi.Input<boolean>;
+    enableSafesearch?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to force YouTube to use restricted mode. Defaults to false.
      */
-    enableYoutubeRestrictedMode?: pulumi.Input<boolean>;
+    enableYoutubeRestrictedMode?: pulumi.Input<boolean | undefined>;
 }
 
 export interface TwingateDNSFilteringProfileDeniedDomains {
     /**
      * A set of denied domains. Defaults to an empty set.
      */
-    domains?: pulumi.Input<pulumi.Input<string>[]>;
+    domains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether Terraform should override changes made outside of Terraform. Defaults to true.
      */
-    isAuthoritative?: pulumi.Input<boolean>;
+    isAuthoritative?: pulumi.Input<boolean | undefined>;
 }
 
 export interface TwingateDNSFilteringProfilePrivacyCategories {
     /**
      * Whether to block ads and trackers. Defaults to false.
      */
-    blockAdsAndTrackers?: pulumi.Input<boolean>;
+    blockAdsAndTrackers?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to block affiliate links. Defaults to false.
      */
-    blockAffiliateLinks?: pulumi.Input<boolean>;
+    blockAffiliateLinks?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to block disguised third party trackers. Defaults to false.
      */
-    blockDisguisedTrackers?: pulumi.Input<boolean>;
+    blockDisguisedTrackers?: pulumi.Input<boolean | undefined>;
 }
 
 export interface TwingateDNSFilteringProfileSecurityCategories {
     /**
      * Whether to block cryptojacking sites. Defaults to true.
      */
-    blockCryptojacking?: pulumi.Input<boolean>;
+    blockCryptojacking?: pulumi.Input<boolean | undefined>;
     /**
      * Blocks public DNS entries from returning private IP addresses. Defaults to true.
      */
-    blockDnsRebinding?: pulumi.Input<boolean>;
+    blockDnsRebinding?: pulumi.Input<boolean | undefined>;
     /**
      * Blocks DGA domains. Defaults to true.
      */
-    blockDomainGenerationAlgorithms?: pulumi.Input<boolean>;
+    blockDomainGenerationAlgorithms?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to block homoglyph attacks. Defaults to true.
      */
-    blockIdnHomoglyph?: pulumi.Input<boolean>;
+    blockIdnHomoglyph?: pulumi.Input<boolean | undefined>;
     /**
      * Blocks newly registered domains. Defaults to true.
      */
-    blockNewlyRegisteredDomains?: pulumi.Input<boolean>;
+    blockNewlyRegisteredDomains?: pulumi.Input<boolean | undefined>;
     /**
      * Block parked domains. Defaults to true.
      */
-    blockParkedDomains?: pulumi.Input<boolean>;
+    blockParkedDomains?: pulumi.Input<boolean | undefined>;
     /**
      * Blocks typosquatted domains. Defaults to true.
      */
-    blockTyposquatting?: pulumi.Input<boolean>;
+    blockTyposquatting?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to use Google Safe browsing lists to block content. Defaults to true.
      */
-    enableGoogleSafeBrowsing?: pulumi.Input<boolean>;
+    enableGoogleSafeBrowsing?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to filter content using threat intelligence feeds. Defaults to true.
      */
-    enableThreatIntelligenceFeeds?: pulumi.Input<boolean>;
+    enableThreatIntelligenceFeeds?: pulumi.Input<boolean | undefined>;
 }
 
 export interface TwingateGatewayConfigKubernetes {
     /**
      * List of Kubernetes resources. Accepts full twingate*kubernetes*resource references.
      */
-    resources?: pulumi.Input<pulumi.Input<inputs.TwingateGatewayConfigKubernetesResource>[]>;
+    resources?: pulumi.Input<pulumi.Input<inputs.TwingateGatewayConfigKubernetesResource>[] | undefined>;
 }
 
 export interface TwingateGatewayConfigKubernetesResource {
@@ -505,98 +513,98 @@ export interface TwingateGatewayConfigSsh {
     /**
      * SSH CA configuration. Specify either vault.address or private*key*file, not both.
      */
-    ca?: pulumi.Input<inputs.TwingateGatewayConfigSshCa>;
+    ca?: pulumi.Input<inputs.TwingateGatewayConfigSshCa | undefined>;
     /**
      * SSH gateway settings. All fields are optional and fall back to built-in defaults.
      */
-    gateway?: pulumi.Input<inputs.TwingateGatewayConfigSshGateway>;
+    gateway?: pulumi.Input<inputs.TwingateGatewayConfigSshGateway | undefined>;
     /**
      * List of SSH resources. Accepts full twingate*ssh*resource references.
      */
-    resources?: pulumi.Input<pulumi.Input<inputs.TwingateGatewayConfigSshResource>[]>;
+    resources?: pulumi.Input<pulumi.Input<inputs.TwingateGatewayConfigSshResource>[] | undefined>;
 }
 
 export interface TwingateGatewayConfigSshCa {
     /**
      * Path to the SSH CA private key file. Can't be used together with vault.address.
      */
-    privateKeyFile?: pulumi.Input<string>;
+    privateKeyFile?: pulumi.Input<string | undefined>;
     /**
      * Vault SSH CA configuration.
      */
-    vault?: pulumi.Input<inputs.TwingateGatewayConfigSshCaVault>;
+    vault?: pulumi.Input<inputs.TwingateGatewayConfigSshCaVault | undefined>;
 }
 
 export interface TwingateGatewayConfigSshCaVault {
     /**
      * Vault server address. Can't be used together with ca.private*key*file.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * Vault authentication configuration.
      */
-    auth?: pulumi.Input<inputs.TwingateGatewayConfigSshCaVaultAuth>;
+    auth?: pulumi.Input<inputs.TwingateGatewayConfigSshCaVaultAuth | undefined>;
     /**
      * Path to the Vault CA bundle file. Default: "/etc/ssl/vault-ca.crt".
      */
-    caBundleFile?: pulumi.Input<string>;
+    caBundleFile?: pulumi.Input<string | undefined>;
     /**
      * Vault SSH secrets engine mount path. Default: "ssh".
      */
-    mount?: pulumi.Input<string>;
+    mount?: pulumi.Input<string | undefined>;
     /**
      * Vault role for signing certificates. Default: "gateway".
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 export interface TwingateGatewayConfigSshCaVaultAuth {
     /**
      * GCP authentication for Vault. Can't be used together with token.
      */
-    gcp?: pulumi.Input<inputs.TwingateGatewayConfigSshCaVaultAuthGcp>;
+    gcp?: pulumi.Input<inputs.TwingateGatewayConfigSshCaVaultAuthGcp | undefined>;
     /**
      * Vault token used for authentication. Can't be used together with gcp.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
 }
 
 export interface TwingateGatewayConfigSshCaVaultAuthGcp {
     /**
      * Vault GCP auth mount path. Default: "gcp".
      */
-    mount?: pulumi.Input<string>;
+    mount?: pulumi.Input<string | undefined>;
     /**
      * GCP IAM role for Vault GCP authentication.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * Service account email. Required when type is "iam".
      */
-    serviceAccountEmail?: pulumi.Input<string>;
+    serviceAccountEmail?: pulumi.Input<string | undefined>;
     /**
      * GCP authentication type for Vault (e.g. "iam" or "gce"). When set to "iam", service*account*email is required.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 export interface TwingateGatewayConfigSshGateway {
     /**
      * Host certificate TTL. Default: "24h".
      */
-    hostCertTtl?: pulumi.Input<string>;
+    hostCertTtl?: pulumi.Input<string | undefined>;
     /**
      * SSH key type. Default: "ed25519".
      */
-    keyType?: pulumi.Input<string>;
+    keyType?: pulumi.Input<string | undefined>;
     /**
      * User certificate TTL. Default: "5m".
      */
-    userCertTtl?: pulumi.Input<string>;
+    userCertTtl?: pulumi.Input<string | undefined>;
     /**
      * SSH gateway username. Default: "gateway".
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 export interface TwingateGatewayConfigSshResource {
@@ -609,246 +617,246 @@ export interface TwingateGatewayConfigTls {
     /**
      * Path to the TLS certificate file. Default: "/etc/gateway/tls.crt".
      */
-    certificateFile?: pulumi.Input<string>;
+    certificateFile?: pulumi.Input<string | undefined>;
     /**
      * Path to the TLS private key file. Default: "/etc/gateway/tls.key".
      */
-    privateKeyFile?: pulumi.Input<string>;
+    privateKeyFile?: pulumi.Input<string | undefined>;
 }
 
 export interface TwingateKubernetesResourceAccessGroup {
     /**
      * Restrict access according to JIT access policy
      */
-    accessPolicies?: pulumi.Input<pulumi.Input<inputs.TwingateKubernetesResourceAccessGroupAccessPolicy>[]>;
+    accessPolicies?: pulumi.Input<pulumi.Input<inputs.TwingateKubernetesResourceAccessGroupAccessPolicy>[] | undefined>;
     /**
      * Group ID that will have permission to access the Resource.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
      */
-    securityPolicyId?: pulumi.Input<string>;
+    securityPolicyId?: pulumi.Input<string | undefined>;
 }
 
 export interface TwingateKubernetesResourceAccessGroupAccessPolicy {
     /**
      * This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
      */
-    approvalMode?: pulumi.Input<string>;
+    approvalMode?: pulumi.Input<string | undefined>;
     /**
      * This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
      */
-    duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string | undefined>;
     /**
      * This will set the accessPolicy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
 }
 
 export interface TwingateKubernetesResourceAccessPolicy {
     /**
      * This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
      */
-    approvalMode?: pulumi.Input<string>;
+    approvalMode?: pulumi.Input<string | undefined>;
     /**
      * This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
      */
-    duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string | undefined>;
     /**
      * This will set the accessPolicy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
 }
 
 export interface TwingateKubernetesResourceProtocols {
     /**
      * Whether to allow ICMP (ping) traffic
      */
-    allowIcmp?: pulumi.Input<boolean>;
-    tcp?: pulumi.Input<inputs.TwingateKubernetesResourceProtocolsTcp>;
-    udp?: pulumi.Input<inputs.TwingateKubernetesResourceProtocolsUdp>;
+    allowIcmp?: pulumi.Input<boolean | undefined>;
+    tcp?: pulumi.Input<inputs.TwingateKubernetesResourceProtocolsTcp | undefined>;
+    udp?: pulumi.Input<inputs.TwingateKubernetesResourceProtocolsUdp | undefined>;
 }
 
 export interface TwingateKubernetesResourceProtocolsTcp {
     /**
      * Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
     /**
      * List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
      */
-    ports?: pulumi.Input<pulumi.Input<string>[]>;
+    ports?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface TwingateKubernetesResourceProtocolsUdp {
     /**
      * Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
     /**
      * List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
      */
-    ports?: pulumi.Input<pulumi.Input<string>[]>;
+    ports?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface TwingateResourceAccessGroup {
     /**
      * Restrict access according to JIT access policy
      */
-    accessPolicies?: pulumi.Input<pulumi.Input<inputs.TwingateResourceAccessGroupAccessPolicy>[]>;
+    accessPolicies?: pulumi.Input<pulumi.Input<inputs.TwingateResourceAccessGroupAccessPolicy>[] | undefined>;
     /**
      * Group ID that will have permission to access the Resource.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
      */
-    securityPolicyId?: pulumi.Input<string>;
+    securityPolicyId?: pulumi.Input<string | undefined>;
 }
 
 export interface TwingateResourceAccessGroupAccessPolicy {
     /**
      * This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
      */
-    approvalMode?: pulumi.Input<string>;
+    approvalMode?: pulumi.Input<string | undefined>;
     /**
      * This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
      */
-    duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string | undefined>;
     /**
      * This will set the accessPolicy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
 }
 
 export interface TwingateResourceAccessPolicy {
     /**
      * This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
      */
-    approvalMode?: pulumi.Input<string>;
+    approvalMode?: pulumi.Input<string | undefined>;
     /**
      * This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
      */
-    duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string | undefined>;
     /**
      * This will set the accessPolicy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
 }
 
 export interface TwingateResourceAccessService {
     /**
      * The ID of the service account that should have access to this Resource.
      */
-    serviceAccountId?: pulumi.Input<string>;
+    serviceAccountId?: pulumi.Input<string | undefined>;
 }
 
 export interface TwingateResourceProtocols {
     /**
      * Whether to allow ICMP (ping) traffic
      */
-    allowIcmp?: pulumi.Input<boolean>;
-    tcp?: pulumi.Input<inputs.TwingateResourceProtocolsTcp>;
-    udp?: pulumi.Input<inputs.TwingateResourceProtocolsUdp>;
+    allowIcmp?: pulumi.Input<boolean | undefined>;
+    tcp?: pulumi.Input<inputs.TwingateResourceProtocolsTcp | undefined>;
+    udp?: pulumi.Input<inputs.TwingateResourceProtocolsUdp | undefined>;
 }
 
 export interface TwingateResourceProtocolsTcp {
     /**
      * Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
     /**
      * List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
      */
-    ports?: pulumi.Input<pulumi.Input<string>[]>;
+    ports?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface TwingateResourceProtocolsUdp {
     /**
      * Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
     /**
      * List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
      */
-    ports?: pulumi.Input<pulumi.Input<string>[]>;
+    ports?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface TwingateSSHResourceAccessGroup {
     /**
      * Restrict access according to JIT access policy
      */
-    accessPolicies?: pulumi.Input<pulumi.Input<inputs.TwingateSSHResourceAccessGroupAccessPolicy>[]>;
+    accessPolicies?: pulumi.Input<pulumi.Input<inputs.TwingateSSHResourceAccessGroupAccessPolicy>[] | undefined>;
     /**
      * Group ID that will have permission to access the Resource.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
      */
-    securityPolicyId?: pulumi.Input<string>;
+    securityPolicyId?: pulumi.Input<string | undefined>;
 }
 
 export interface TwingateSSHResourceAccessGroupAccessPolicy {
     /**
      * This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
      */
-    approvalMode?: pulumi.Input<string>;
+    approvalMode?: pulumi.Input<string | undefined>;
     /**
      * This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
      */
-    duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string | undefined>;
     /**
      * This will set the accessPolicy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
 }
 
 export interface TwingateSSHResourceAccessPolicy {
     /**
      * This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
      */
-    approvalMode?: pulumi.Input<string>;
+    approvalMode?: pulumi.Input<string | undefined>;
     /**
      * This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
      */
-    duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string | undefined>;
     /**
      * This will set the accessPolicy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
 }
 
 export interface TwingateSSHResourceProtocols {
     /**
      * Whether to allow ICMP (ping) traffic
      */
-    allowIcmp?: pulumi.Input<boolean>;
-    tcp?: pulumi.Input<inputs.TwingateSSHResourceProtocolsTcp>;
-    udp?: pulumi.Input<inputs.TwingateSSHResourceProtocolsUdp>;
+    allowIcmp?: pulumi.Input<boolean | undefined>;
+    tcp?: pulumi.Input<inputs.TwingateSSHResourceProtocolsTcp | undefined>;
+    udp?: pulumi.Input<inputs.TwingateSSHResourceProtocolsUdp | undefined>;
 }
 
 export interface TwingateSSHResourceProtocolsTcp {
     /**
      * Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
     /**
      * List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
      */
-    ports?: pulumi.Input<pulumi.Input<string>[]>;
+    ports?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface TwingateSSHResourceProtocolsUdp {
     /**
      * Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
     /**
      * List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
      */
-    ports?: pulumi.Input<pulumi.Input<string>[]>;
+    ports?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 export namespace config {
 }

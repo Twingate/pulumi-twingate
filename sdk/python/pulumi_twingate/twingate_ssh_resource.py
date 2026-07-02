@@ -24,15 +24,15 @@ class TwingateSSHResourceArgs:
                  address: pulumi.Input[_builtins.str],
                  gateway_id: pulumi.Input[_builtins.str],
                  remote_network_id: pulumi.Input[_builtins.str],
-                 access_groups: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateSSHResourceAccessGroupArgs']]]] = None,
-                 access_policies: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateSSHResourceAccessPolicyArgs']]]] = None,
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_visible: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocols: Optional[pulumi.Input['TwingateSSHResourceProtocolsArgs']] = None,
-                 security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input['TwingateSSHResourceAccessGroupArgs']]]] = None,
+                 access_policies: pulumi.Input[Optional[Sequence[pulumi.Input['TwingateSSHResourceAccessPolicyArgs']]]] = None,
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocols: pulumi.Input[Optional['TwingateSSHResourceProtocolsArgs']] = None,
+                 security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TwingateSSHResource resource.
 
@@ -109,128 +109,128 @@ class TwingateSSHResourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessGroups")
-    def access_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TwingateSSHResourceAccessGroupArgs']]]]:
+    def access_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TwingateSSHResourceAccessGroupArgs']]]]:
         """
         Restrict access to certain group
         """
         return pulumi.get(self, "access_groups")
 
     @access_groups.setter
-    def access_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateSSHResourceAccessGroupArgs']]]]):
+    def access_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TwingateSSHResourceAccessGroupArgs']]]]):
         pulumi.set(self, "access_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="accessPolicies")
-    def access_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TwingateSSHResourceAccessPolicyArgs']]]]:
+    def access_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TwingateSSHResourceAccessPolicyArgs']]]]:
         """
         Restrict access according to JIT access policy
         """
         return pulumi.get(self, "access_policies")
 
     @access_policies.setter
-    def access_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateSSHResourceAccessPolicyArgs']]]]):
+    def access_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TwingateSSHResourceAccessPolicyArgs']]]]):
         pulumi.set(self, "access_policies", value)
 
     @_builtins.property
     @pulumi.getter
-    def alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set a DNS alias address for the Resource. Must be a DNS-valid name string.
         """
         return pulumi.get(self, "alias")
 
     @alias.setter
-    def alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alias", value)
 
     @_builtins.property
     @pulumi.getter(name="isVisible")
-    def is_visible(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_visible(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
         """
         return pulumi.get(self, "is_visible")
 
     @is_visible.setter
-    def is_visible(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_visible(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_visible", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the SSH Resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocols(self) -> Optional[pulumi.Input['TwingateSSHResourceProtocolsArgs']]:
+    def protocols(self) -> pulumi.Input[Optional['TwingateSSHResourceProtocolsArgs']]:
         """
         Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         """
         return pulumi.get(self, "protocols")
 
     @protocols.setter
-    def protocols(self, value: Optional[pulumi.Input['TwingateSSHResourceProtocolsArgs']]):
+    def protocols(self, value: pulumi.Input[Optional['TwingateSSHResourceProtocolsArgs']]):
         pulumi.set(self, "protocols", value)
 
     @_builtins.property
     @pulumi.getter(name="securityPolicyId")
-    def security_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         """
         return pulumi.get(self, "security_policy_id")
 
     @security_policy_id.setter
-    def security_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_policy_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of key-value pair tags to set on this resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username to use when connecting to the SSH Resource.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
 @pulumi.input_type
 class _TwingateSSHResourceState:
     def __init__(__self__, *,
-                 access_groups: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateSSHResourceAccessGroupArgs']]]] = None,
-                 access_policies: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateSSHResourceAccessPolicyArgs']]]] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_visible: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocols: Optional[pulumi.Input['TwingateSSHResourceProtocolsArgs']] = None,
-                 remote_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input['TwingateSSHResourceAccessGroupArgs']]]] = None,
+                 access_policies: pulumi.Input[Optional[Sequence[pulumi.Input['TwingateSSHResourceAccessPolicyArgs']]]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocols: pulumi.Input[Optional['TwingateSSHResourceProtocolsArgs']] = None,
+                 remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TwingateSSHResource resources.
 
@@ -274,146 +274,146 @@ class _TwingateSSHResourceState:
 
     @_builtins.property
     @pulumi.getter(name="accessGroups")
-    def access_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TwingateSSHResourceAccessGroupArgs']]]]:
+    def access_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TwingateSSHResourceAccessGroupArgs']]]]:
         """
         Restrict access to certain group
         """
         return pulumi.get(self, "access_groups")
 
     @access_groups.setter
-    def access_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateSSHResourceAccessGroupArgs']]]]):
+    def access_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TwingateSSHResourceAccessGroupArgs']]]]):
         pulumi.set(self, "access_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="accessPolicies")
-    def access_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TwingateSSHResourceAccessPolicyArgs']]]]:
+    def access_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TwingateSSHResourceAccessPolicyArgs']]]]:
         """
         Restrict access according to JIT access policy
         """
         return pulumi.get(self, "access_policies")
 
     @access_policies.setter
-    def access_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TwingateSSHResourceAccessPolicyArgs']]]]):
+    def access_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TwingateSSHResourceAccessPolicyArgs']]]]):
         pulumi.set(self, "access_policies", value)
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address of the SSH Resource (IP or FQDN).
         """
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter
-    def alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set a DNS alias address for the Resource. Must be a DNS-valid name string.
         """
         return pulumi.get(self, "alias")
 
     @alias.setter
-    def alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alias", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayId")
-    def gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Gateway used to access this SSH Resource.
         """
         return pulumi.get(self, "gateway_id")
 
     @gateway_id.setter
-    def gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_id", value)
 
     @_builtins.property
     @pulumi.getter(name="isVisible")
-    def is_visible(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_visible(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
         """
         return pulumi.get(self, "is_visible")
 
     @is_visible.setter
-    def is_visible(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_visible(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_visible", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the SSH Resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocols(self) -> Optional[pulumi.Input['TwingateSSHResourceProtocolsArgs']]:
+    def protocols(self) -> pulumi.Input[Optional['TwingateSSHResourceProtocolsArgs']]:
         """
         Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         """
         return pulumi.get(self, "protocols")
 
     @protocols.setter
-    def protocols(self, value: Optional[pulumi.Input['TwingateSSHResourceProtocolsArgs']]):
+    def protocols(self, value: pulumi.Input[Optional['TwingateSSHResourceProtocolsArgs']]):
         pulumi.set(self, "protocols", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteNetworkId")
-    def remote_network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remote_network_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Remote Network the SSH Resource belongs to.
         """
         return pulumi.get(self, "remote_network_id")
 
     @remote_network_id.setter
-    def remote_network_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remote_network_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remote_network_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityPolicyId")
-    def security_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         """
         return pulumi.get(self, "security_policy_id")
 
     @security_policy_id.setter
-    def security_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_policy_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of key-value pair tags to set on this resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username to use when connecting to the SSH Resource.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -423,18 +423,18 @@ class TwingateSSHResource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessGroupArgs', 'TwingateSSHResourceAccessGroupArgsDict']]]]] = None,
-                 access_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessPolicyArgs', 'TwingateSSHResourceAccessPolicyArgsDict']]]]] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_visible: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocols: Optional[pulumi.Input[Union['TwingateSSHResourceProtocolsArgs', 'TwingateSSHResourceProtocolsArgsDict']]] = None,
-                 remote_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessGroupArgs', 'TwingateSSHResourceAccessGroupArgsDict']]]]] = None,
+                 access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessPolicyArgs', 'TwingateSSHResourceAccessPolicyArgsDict']]]]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocols: pulumi.Input[Optional[Union['TwingateSSHResourceProtocolsArgs', 'TwingateSSHResourceProtocolsArgsDict']]] = None,
+                 remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         SSH Resources are Twingate resources accessed via a Gateway.
@@ -536,18 +536,18 @@ class TwingateSSHResource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessGroupArgs', 'TwingateSSHResourceAccessGroupArgsDict']]]]] = None,
-                 access_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessPolicyArgs', 'TwingateSSHResourceAccessPolicyArgsDict']]]]] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_visible: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocols: Optional[pulumi.Input[Union['TwingateSSHResourceProtocolsArgs', 'TwingateSSHResourceProtocolsArgsDict']]] = None,
-                 remote_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessGroupArgs', 'TwingateSSHResourceAccessGroupArgsDict']]]]] = None,
+                 access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessPolicyArgs', 'TwingateSSHResourceAccessPolicyArgsDict']]]]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocols: pulumi.Input[Optional[Union['TwingateSSHResourceProtocolsArgs', 'TwingateSSHResourceProtocolsArgsDict']]] = None,
+                 remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -585,18 +585,18 @@ class TwingateSSHResource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessGroupArgs', 'TwingateSSHResourceAccessGroupArgsDict']]]]] = None,
-            access_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessPolicyArgs', 'TwingateSSHResourceAccessPolicyArgsDict']]]]] = None,
-            address: Optional[pulumi.Input[_builtins.str]] = None,
-            alias: Optional[pulumi.Input[_builtins.str]] = None,
-            gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-            is_visible: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            protocols: Optional[pulumi.Input[Union['TwingateSSHResourceProtocolsArgs', 'TwingateSSHResourceProtocolsArgsDict']]] = None,
-            remote_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-            security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            username: Optional[pulumi.Input[_builtins.str]] = None) -> 'TwingateSSHResource':
+            access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessGroupArgs', 'TwingateSSHResourceAccessGroupArgsDict']]]]] = None,
+            access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessPolicyArgs', 'TwingateSSHResourceAccessPolicyArgsDict']]]]] = None,
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            alias: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            protocols: pulumi.Input[Optional[Union['TwingateSSHResourceProtocolsArgs', 'TwingateSSHResourceProtocolsArgsDict']]] = None,
+            remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> 'TwingateSSHResource':
         """
         Get an existing TwingateSSHResource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

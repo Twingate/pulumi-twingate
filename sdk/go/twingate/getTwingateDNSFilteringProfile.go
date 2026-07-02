@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := twingate.LookupTwingateDNSFilteringProfile(ctx, &twingate.LookupTwingateDNSFilteringProfileArgs{
+//			_, err := twingate.GetTwingateDNSFilteringProfile(ctx, &twingate.LookupTwingateDNSFilteringProfileArgs{
 //				Id: "<your dns profile's id>",
 //			}, nil)
 //			if err != nil {

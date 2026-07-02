@@ -21,11 +21,11 @@ __all__ = ['TwingateGatewayConfigArgs', 'TwingateGatewayConfig']
 @pulumi.input_type
 class TwingateGatewayConfigArgs:
     def __init__(__self__, *,
-                 kubernetes: Optional[pulumi.Input['TwingateGatewayConfigKubernetesArgs']] = None,
-                 metrics_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 ssh: Optional[pulumi.Input['TwingateGatewayConfigSshArgs']] = None,
-                 tls: Optional[pulumi.Input['TwingateGatewayConfigTlsArgs']] = None):
+                 kubernetes: pulumi.Input[Optional['TwingateGatewayConfigKubernetesArgs']] = None,
+                 metrics_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 ssh: pulumi.Input[Optional['TwingateGatewayConfigSshArgs']] = None,
+                 tls: pulumi.Input[Optional['TwingateGatewayConfigTlsArgs']] = None):
         """
         The set of arguments for constructing a TwingateGatewayConfig resource.
 
@@ -48,74 +48,74 @@ class TwingateGatewayConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def kubernetes(self) -> Optional[pulumi.Input['TwingateGatewayConfigKubernetesArgs']]:
+    def kubernetes(self) -> pulumi.Input[Optional['TwingateGatewayConfigKubernetesArgs']]:
         """
         Kubernetes configuration block containing resource settings.
         """
         return pulumi.get(self, "kubernetes")
 
     @kubernetes.setter
-    def kubernetes(self, value: Optional[pulumi.Input['TwingateGatewayConfigKubernetesArgs']]):
+    def kubernetes(self, value: pulumi.Input[Optional['TwingateGatewayConfigKubernetesArgs']]):
         pulumi.set(self, "kubernetes", value)
 
     @_builtins.property
     @pulumi.getter(name="metricsPort")
-    def metrics_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def metrics_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Gateway metrics port. Default: 9090.
         """
         return pulumi.get(self, "metrics_port")
 
     @metrics_port.setter
-    def metrics_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def metrics_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "metrics_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Gateway listen port. Default: 8443.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def ssh(self) -> Optional[pulumi.Input['TwingateGatewayConfigSshArgs']]:
+    def ssh(self) -> pulumi.Input[Optional['TwingateGatewayConfigSshArgs']]:
         """
         SSH configuration block containing gateway, CA, and resource settings.
         """
         return pulumi.get(self, "ssh")
 
     @ssh.setter
-    def ssh(self, value: Optional[pulumi.Input['TwingateGatewayConfigSshArgs']]):
+    def ssh(self, value: pulumi.Input[Optional['TwingateGatewayConfigSshArgs']]):
         pulumi.set(self, "ssh", value)
 
     @_builtins.property
     @pulumi.getter
-    def tls(self) -> Optional[pulumi.Input['TwingateGatewayConfigTlsArgs']]:
+    def tls(self) -> pulumi.Input[Optional['TwingateGatewayConfigTlsArgs']]:
         """
         TLS configuration for the gateway.
         """
         return pulumi.get(self, "tls")
 
     @tls.setter
-    def tls(self, value: Optional[pulumi.Input['TwingateGatewayConfigTlsArgs']]):
+    def tls(self, value: pulumi.Input[Optional['TwingateGatewayConfigTlsArgs']]):
         pulumi.set(self, "tls", value)
 
 
 @pulumi.input_type
 class _TwingateGatewayConfigState:
     def __init__(__self__, *,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 kubernetes: Optional[pulumi.Input['TwingateGatewayConfigKubernetesArgs']] = None,
-                 metrics_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 ssh: Optional[pulumi.Input['TwingateGatewayConfigSshArgs']] = None,
-                 tls: Optional[pulumi.Input['TwingateGatewayConfigTlsArgs']] = None):
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 kubernetes: pulumi.Input[Optional['TwingateGatewayConfigKubernetesArgs']] = None,
+                 metrics_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 ssh: pulumi.Input[Optional['TwingateGatewayConfigSshArgs']] = None,
+                 tls: pulumi.Input[Optional['TwingateGatewayConfigTlsArgs']] = None):
         """
         Input properties used for looking up and filtering TwingateGatewayConfig resources.
 
@@ -141,74 +141,74 @@ class _TwingateGatewayConfigState:
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The generated YAML configuration content.
         """
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter
-    def kubernetes(self) -> Optional[pulumi.Input['TwingateGatewayConfigKubernetesArgs']]:
+    def kubernetes(self) -> pulumi.Input[Optional['TwingateGatewayConfigKubernetesArgs']]:
         """
         Kubernetes configuration block containing resource settings.
         """
         return pulumi.get(self, "kubernetes")
 
     @kubernetes.setter
-    def kubernetes(self, value: Optional[pulumi.Input['TwingateGatewayConfigKubernetesArgs']]):
+    def kubernetes(self, value: pulumi.Input[Optional['TwingateGatewayConfigKubernetesArgs']]):
         pulumi.set(self, "kubernetes", value)
 
     @_builtins.property
     @pulumi.getter(name="metricsPort")
-    def metrics_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def metrics_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Gateway metrics port. Default: 9090.
         """
         return pulumi.get(self, "metrics_port")
 
     @metrics_port.setter
-    def metrics_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def metrics_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "metrics_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Gateway listen port. Default: 8443.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def ssh(self) -> Optional[pulumi.Input['TwingateGatewayConfigSshArgs']]:
+    def ssh(self) -> pulumi.Input[Optional['TwingateGatewayConfigSshArgs']]:
         """
         SSH configuration block containing gateway, CA, and resource settings.
         """
         return pulumi.get(self, "ssh")
 
     @ssh.setter
-    def ssh(self, value: Optional[pulumi.Input['TwingateGatewayConfigSshArgs']]):
+    def ssh(self, value: pulumi.Input[Optional['TwingateGatewayConfigSshArgs']]):
         pulumi.set(self, "ssh", value)
 
     @_builtins.property
     @pulumi.getter
-    def tls(self) -> Optional[pulumi.Input['TwingateGatewayConfigTlsArgs']]:
+    def tls(self) -> pulumi.Input[Optional['TwingateGatewayConfigTlsArgs']]:
         """
         TLS configuration for the gateway.
         """
         return pulumi.get(self, "tls")
 
     @tls.setter
-    def tls(self, value: Optional[pulumi.Input['TwingateGatewayConfigTlsArgs']]):
+    def tls(self, value: pulumi.Input[Optional['TwingateGatewayConfigTlsArgs']]):
         pulumi.set(self, "tls", value)
 
 
@@ -218,11 +218,11 @@ class TwingateGatewayConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 kubernetes: Optional[pulumi.Input[Union['TwingateGatewayConfigKubernetesArgs', 'TwingateGatewayConfigKubernetesArgsDict']]] = None,
-                 metrics_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 ssh: Optional[pulumi.Input[Union['TwingateGatewayConfigSshArgs', 'TwingateGatewayConfigSshArgsDict']]] = None,
-                 tls: Optional[pulumi.Input[Union['TwingateGatewayConfigTlsArgs', 'TwingateGatewayConfigTlsArgsDict']]] = None,
+                 kubernetes: pulumi.Input[Optional[Union['TwingateGatewayConfigKubernetesArgs', 'TwingateGatewayConfigKubernetesArgsDict']]] = None,
+                 metrics_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 ssh: pulumi.Input[Optional[Union['TwingateGatewayConfigSshArgs', 'TwingateGatewayConfigSshArgsDict']]] = None,
+                 tls: pulumi.Input[Optional[Union['TwingateGatewayConfigTlsArgs', 'TwingateGatewayConfigTlsArgsDict']]] = None,
                  __props__=None):
         """
         Generates a Gateway configuration YAML from SSH and Kubernetes resources.
@@ -261,11 +261,11 @@ class TwingateGatewayConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 kubernetes: Optional[pulumi.Input[Union['TwingateGatewayConfigKubernetesArgs', 'TwingateGatewayConfigKubernetesArgsDict']]] = None,
-                 metrics_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 ssh: Optional[pulumi.Input[Union['TwingateGatewayConfigSshArgs', 'TwingateGatewayConfigSshArgsDict']]] = None,
-                 tls: Optional[pulumi.Input[Union['TwingateGatewayConfigTlsArgs', 'TwingateGatewayConfigTlsArgsDict']]] = None,
+                 kubernetes: pulumi.Input[Optional[Union['TwingateGatewayConfigKubernetesArgs', 'TwingateGatewayConfigKubernetesArgsDict']]] = None,
+                 metrics_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 ssh: pulumi.Input[Optional[Union['TwingateGatewayConfigSshArgs', 'TwingateGatewayConfigSshArgsDict']]] = None,
+                 tls: pulumi.Input[Optional[Union['TwingateGatewayConfigTlsArgs', 'TwingateGatewayConfigTlsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -293,12 +293,12 @@ class TwingateGatewayConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            content: Optional[pulumi.Input[_builtins.str]] = None,
-            kubernetes: Optional[pulumi.Input[Union['TwingateGatewayConfigKubernetesArgs', 'TwingateGatewayConfigKubernetesArgsDict']]] = None,
-            metrics_port: Optional[pulumi.Input[_builtins.int]] = None,
-            port: Optional[pulumi.Input[_builtins.int]] = None,
-            ssh: Optional[pulumi.Input[Union['TwingateGatewayConfigSshArgs', 'TwingateGatewayConfigSshArgsDict']]] = None,
-            tls: Optional[pulumi.Input[Union['TwingateGatewayConfigTlsArgs', 'TwingateGatewayConfigTlsArgsDict']]] = None) -> 'TwingateGatewayConfig':
+            content: pulumi.Input[Optional[_builtins.str]] = None,
+            kubernetes: pulumi.Input[Optional[Union['TwingateGatewayConfigKubernetesArgs', 'TwingateGatewayConfigKubernetesArgsDict']]] = None,
+            metrics_port: pulumi.Input[Optional[_builtins.int]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            ssh: pulumi.Input[Optional[Union['TwingateGatewayConfigSshArgs', 'TwingateGatewayConfigSshArgsDict']]] = None,
+            tls: pulumi.Input[Optional[Union['TwingateGatewayConfigTlsArgs', 'TwingateGatewayConfigTlsArgsDict']]] = None) -> 'TwingateGatewayConfig':
         """
         Get an existing TwingateGatewayConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

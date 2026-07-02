@@ -257,77 +257,77 @@ export interface GetTwingateUsersOutputArgs {
     /**
      * Returns only users that exactly match this email.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * Match when the value exist in the email of the user.
      */
-    emailContains?: pulumi.Input<string>;
+    emailContains?: pulumi.Input<string | undefined>;
     /**
      * Match when the value does not exist in the email of the user.
      */
-    emailExclude?: pulumi.Input<string>;
+    emailExclude?: pulumi.Input<string | undefined>;
     /**
      * The email of the user must start with the value.
      */
-    emailPrefix?: pulumi.Input<string>;
+    emailPrefix?: pulumi.Input<string | undefined>;
     /**
      * The regular expression match of the email of the user.
      */
-    emailRegexp?: pulumi.Input<string>;
+    emailRegexp?: pulumi.Input<string | undefined>;
     /**
      * The email of the user must end with the value.
      */
-    emailSuffix?: pulumi.Input<string>;
+    emailSuffix?: pulumi.Input<string | undefined>;
     /**
      * Returns only users that exactly match the first name.
      */
-    firstName?: pulumi.Input<string>;
+    firstName?: pulumi.Input<string | undefined>;
     /**
      * Match when the value exist in the first name of the user.
      */
-    firstNameContains?: pulumi.Input<string>;
+    firstNameContains?: pulumi.Input<string | undefined>;
     /**
      * Match when the value does not exist in the first name of the user.
      */
-    firstNameExclude?: pulumi.Input<string>;
+    firstNameExclude?: pulumi.Input<string | undefined>;
     /**
      * The first name of the user must start with the value.
      */
-    firstNamePrefix?: pulumi.Input<string>;
+    firstNamePrefix?: pulumi.Input<string | undefined>;
     /**
      * The regular expression match of the first name of the user.
      */
-    firstNameRegexp?: pulumi.Input<string>;
+    firstNameRegexp?: pulumi.Input<string | undefined>;
     /**
      * The first name of the user must end with the value.
      */
-    firstNameSuffix?: pulumi.Input<string>;
+    firstNameSuffix?: pulumi.Input<string | undefined>;
     /**
      * Returns only users that exactly match the last name.
      */
-    lastName?: pulumi.Input<string>;
+    lastName?: pulumi.Input<string | undefined>;
     /**
      * Match when the value exist in the last name of the user.
      */
-    lastNameContains?: pulumi.Input<string>;
+    lastNameContains?: pulumi.Input<string | undefined>;
     /**
      * Match when the value does not exist in the last name of the user.
      */
-    lastNameExclude?: pulumi.Input<string>;
+    lastNameExclude?: pulumi.Input<string | undefined>;
     /**
      * The last name of the user must start with the value.
      */
-    lastNamePrefix?: pulumi.Input<string>;
+    lastNamePrefix?: pulumi.Input<string | undefined>;
     /**
      * The regular expression match of the last name of the user.
      */
-    lastNameRegexp?: pulumi.Input<string>;
+    lastNameRegexp?: pulumi.Input<string | undefined>;
     /**
      * The last name of the user must end with the value.
      */
-    lastNameSuffix?: pulumi.Input<string>;
+    lastNameSuffix?: pulumi.Input<string | undefined>;
     /**
      * Returns users that match a list of roles. Valid roles: `ADMIN`, `DEVOPS`, `SUPPORT`, `MEMBER`.
      */
-    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    roles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

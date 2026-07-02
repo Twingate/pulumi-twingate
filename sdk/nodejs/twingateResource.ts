@@ -168,63 +168,63 @@ export interface TwingateResourceState {
     /**
      * Restrict access to certain group
      */
-    accessGroups?: pulumi.Input<pulumi.Input<inputs.TwingateResourceAccessGroup>[]>;
+    accessGroups?: pulumi.Input<pulumi.Input<inputs.TwingateResourceAccessGroup>[] | undefined>;
     /**
      * Restrict access according to JIT access policy
      */
-    accessPolicies?: pulumi.Input<pulumi.Input<inputs.TwingateResourceAccessPolicy>[]>;
+    accessPolicies?: pulumi.Input<pulumi.Input<inputs.TwingateResourceAccessPolicy>[] | undefined>;
     /**
      * Restrict access to certain service account
      */
-    accessServices?: pulumi.Input<pulumi.Input<inputs.TwingateResourceAccessService>[]>;
+    accessServices?: pulumi.Input<pulumi.Input<inputs.TwingateResourceAccessService>[] | undefined>;
     /**
      * The Resource's IP/CIDR or FQDN/DNS zone
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * Set a DNS alias address for the Resource. Must be a DNS-valid name string.
      */
-    alias?: pulumi.Input<string>;
+    alias?: pulumi.Input<string | undefined>;
     /**
      * Set the resource as active or inactive. Default is `true`.
      */
-    isActive?: pulumi.Input<boolean>;
+    isActive?: pulumi.Input<boolean | undefined>;
     /**
      * Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to `false`, assignments made outside of Terraform will be ignored.
      */
-    isAuthoritative?: pulumi.Input<boolean>;
+    isAuthoritative?: pulumi.Input<boolean | undefined>;
     /**
      * Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
      */
-    isBrowserShortcutEnabled?: pulumi.Input<boolean>;
+    isBrowserShortcutEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
      */
-    isVisible?: pulumi.Input<boolean>;
+    isVisible?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the Resource
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
      */
-    protocols?: pulumi.Input<inputs.TwingateResourceProtocols>;
+    protocols?: pulumi.Input<inputs.TwingateResourceProtocols | undefined>;
     /**
      * Remote Network ID where the Resource lives
      */
-    remoteNetworkId?: pulumi.Input<string>;
+    remoteNetworkId?: pulumi.Input<string | undefined>;
     /**
      * The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
      */
-    securityPolicyId?: pulumi.Input<string>;
+    securityPolicyId?: pulumi.Input<string | undefined>;
     /**
      * A map of key-value pair tags to set on this resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
      */
-    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -234,15 +234,15 @@ export interface TwingateResourceArgs {
     /**
      * Restrict access to certain group
      */
-    accessGroups?: pulumi.Input<pulumi.Input<inputs.TwingateResourceAccessGroup>[]>;
+    accessGroups?: pulumi.Input<pulumi.Input<inputs.TwingateResourceAccessGroup>[] | undefined>;
     /**
      * Restrict access according to JIT access policy
      */
-    accessPolicies?: pulumi.Input<pulumi.Input<inputs.TwingateResourceAccessPolicy>[]>;
+    accessPolicies?: pulumi.Input<pulumi.Input<inputs.TwingateResourceAccessPolicy>[] | undefined>;
     /**
      * Restrict access to certain service account
      */
-    accessServices?: pulumi.Input<pulumi.Input<inputs.TwingateResourceAccessService>[]>;
+    accessServices?: pulumi.Input<pulumi.Input<inputs.TwingateResourceAccessService>[] | undefined>;
     /**
      * The Resource's IP/CIDR or FQDN/DNS zone
      */
@@ -250,31 +250,31 @@ export interface TwingateResourceArgs {
     /**
      * Set a DNS alias address for the Resource. Must be a DNS-valid name string.
      */
-    alias?: pulumi.Input<string>;
+    alias?: pulumi.Input<string | undefined>;
     /**
      * Set the resource as active or inactive. Default is `true`.
      */
-    isActive?: pulumi.Input<boolean>;
+    isActive?: pulumi.Input<boolean | undefined>;
     /**
      * Determines whether assignments in the access block will override any existing assignments. Default is `true`. If set to `false`, assignments made outside of Terraform will be ignored.
      */
-    isAuthoritative?: pulumi.Input<boolean>;
+    isAuthoritative?: pulumi.Input<boolean | undefined>;
     /**
      * Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
      */
-    isBrowserShortcutEnabled?: pulumi.Input<boolean>;
+    isBrowserShortcutEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
      */
-    isVisible?: pulumi.Input<boolean>;
+    isVisible?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the Resource
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
      */
-    protocols?: pulumi.Input<inputs.TwingateResourceProtocols>;
+    protocols?: pulumi.Input<inputs.TwingateResourceProtocols | undefined>;
     /**
      * Remote Network ID where the Resource lives
      */
@@ -282,9 +282,9 @@ export interface TwingateResourceArgs {
     /**
      * The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
      */
-    securityPolicyId?: pulumi.Input<string>;
+    securityPolicyId?: pulumi.Input<string | undefined>;
     /**
      * A map of key-value pair tags to set on this resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

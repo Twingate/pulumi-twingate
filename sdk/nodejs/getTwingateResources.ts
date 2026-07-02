@@ -144,29 +144,29 @@ export interface GetTwingateResourcesOutputArgs {
     /**
      * Returns only resources that exactly match this name. If no options are passed it will return all resources. Only one option can be used at a time.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Match when the value exist in the name of the resource.
      */
-    nameContains?: pulumi.Input<string>;
+    nameContains?: pulumi.Input<string | undefined>;
     /**
      * Match when the exact value does not exist in the name of the resource.
      */
-    nameExclude?: pulumi.Input<string>;
+    nameExclude?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource must start with the value.
      */
-    namePrefix?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string | undefined>;
     /**
      * The regular expression match of the name of the resource.
      */
-    nameRegexp?: pulumi.Input<string>;
+    nameRegexp?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource must end with the value.
      */
-    nameSuffix?: pulumi.Input<string>;
+    nameSuffix?: pulumi.Input<string | undefined>;
     /**
      * Returns only resources that exactly match the given tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
