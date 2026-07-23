@@ -36,7 +36,7 @@ jobs:
         run: git fetch --prune --unshallow --tags
 
       - name: Install Go
-        uses: actions/setup-go@v6
+        uses: actions/setup-go@v7
         with:
           go-version: ${{matrix.goversion}}
 
@@ -80,7 +80,7 @@ jobs:
         run: git fetch --prune --unshallow --tags
 
       - name: Install Go
-        uses: actions/setup-go@v6
+        uses: actions/setup-go@v7
         with:
           go-version: ${{ matrix.goversion }}
 
@@ -102,7 +102,7 @@ jobs:
 
       - if: ${{ matrix.language == 'dotnet'}}
         name: Setup DotNet
-        uses: actions/setup-dotnet@v5
+        uses: actions/setup-dotnet@v6
         with:
           dotnet-version: ${{matrix.dotnetversion}}
 
