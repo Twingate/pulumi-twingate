@@ -22,7 +22,7 @@ jobs:
     - name: Checkout Repo
       uses: actions/checkout@v7
     - name: Install go
-      uses: actions/setup-go@v6
+      uses: actions/setup-go@v7
       with:
         go-version-file: provider/go.mod
         cache: false
