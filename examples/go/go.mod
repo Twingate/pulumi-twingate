@@ -5,7 +5,7 @@ go 1.25.11
 require (
 	github.com/Twingate/pulumi-twingate/sdk/v4 v4.2.2
 	github.com/pulumi/pulumi-tls/sdk/v5 v5.5.0
-	github.com/pulumi/pulumi/sdk/v3 v3.253.0
+	github.com/pulumi/pulumi/sdk/v3 v3.254.0
 )
 
 // Uncomment to use local SDK for development/testing
@@ -17,7 +17,6 @@ require (
 	github.com/ProtonMail/go-crypto v1.4.1 // indirect
 	github.com/agext/levenshtein v1.2.3 // indirect
 	github.com/apparentlymart/go-textseg/v15 v15.0.0 // indirect
-	github.com/atotto/clipboard v0.1.4 // indirect
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
 	github.com/blang/semver v3.5.1+incompatible // indirect
 	github.com/cenkalti/backoff/v5 v5.0.3 // indirect
@@ -102,7 +101,6 @@ require (
 	go.uber.org/atomic v1.11.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	golang.org/x/crypto v0.52.0 // indirect
-	golang.org/x/exp v0.0.0-20260410095643-746e56fc9e2f // indirect
 	golang.org/x/mod v0.35.0 // indirect
 	golang.org/x/net v0.55.0 // indirect
 	golang.org/x/sync v0.20.0 // indirect
