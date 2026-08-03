@@ -54,10 +54,13 @@ jobs:
 
     - if: ${{ matrix.language == 'nodejs'}}
       name: Setup Node
-      uses: actions/setup-node@v6
+      uses: actions/setup-node@v7
       with:
+        # No registry-url: it makes setup-node write an .npmrc containing
+        # ${NODE_AUTH_TOKEN}, and yarn v1 hard-fails ("Failed to replace env in
+        # config") when that variable is unset. This job only installs public
+        # deps; publishing happens in release.yml via npm-publish + NPM_TOKEN.
         node-version: ${{matrix.nodeversion}}
-        registry-url: https://registry.npmjs.org
 
     - if: ${{ matrix.language == 'dotnet'}}
       name: Setup DotNet
