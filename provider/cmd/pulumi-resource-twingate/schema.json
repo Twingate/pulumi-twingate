@@ -1613,6 +1613,10 @@
                     "type": "string",
                     "description": "Remote Network ID where the Resource lives\n"
                 },
+                "routingMode": {
+                    "type": "string",
+                    "description": "The routing mode of the Resource.\n"
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -1628,6 +1632,7 @@
                 "name",
                 "protocols",
                 "remoteNetworkId",
+                "routingMode",
                 "tags"
             ],
             "language": {
@@ -2767,6 +2772,10 @@
                     "type": "string",
                     "description": "Remote Network ID where the Resource lives\n"
                 },
+                "routingMode": {
+                    "type": "string",
+                    "description": "Controls whether traffic to this Resource is routed through Twingate or bypassed. Valid values are `THROUGH_TWINGATE` (default) and `BYPASS_TWINGATE`. `BYPASS_TWINGATE` requires a Resource with no security policy, a non-wildcard address and cannot have port restrictions.\n"
+                },
                 "securityPolicyId": {
                     "type": "string",
                     "description": "The ID of a \u003cspan pulumi-lang-nodejs=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-dotnet=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-go=\"`getTwingateSecurityPolicy`\" pulumi-lang-python=\"`get_twingate_security_policy`\" pulumi-lang-yaml=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-java=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-hcl=\"`data.twingate_security_policy`\"\u003e`twingate.getTwingateSecurityPolicy`\u003c/span\u003e to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.\n"
@@ -2795,6 +2804,7 @@
                 "name",
                 "protocols",
                 "remoteNetworkId",
+                "routingMode",
                 "securityPolicyId",
                 "tags",
                 "tagsAll"
@@ -2856,6 +2866,10 @@
                 "remoteNetworkId": {
                     "type": "string",
                     "description": "Remote Network ID where the Resource lives\n"
+                },
+                "routingMode": {
+                    "type": "string",
+                    "description": "Controls whether traffic to this Resource is routed through Twingate or bypassed. Valid values are `THROUGH_TWINGATE` (default) and `BYPASS_TWINGATE`. `BYPASS_TWINGATE` requires a Resource with no security policy, a non-wildcard address and cannot have port restrictions.\n"
                 },
                 "securityPolicyId": {
                     "type": "string",
@@ -2932,6 +2946,10 @@
                     "remoteNetworkId": {
                         "type": "string",
                         "description": "Remote Network ID where the Resource lives\n"
+                    },
+                    "routingMode": {
+                        "type": "string",
+                        "description": "Controls whether traffic to this Resource is routed through Twingate or bypassed. Valid values are `THROUGH_TWINGATE` (default) and `BYPASS_TWINGATE`. `BYPASS_TWINGATE` requires a Resource with no security policy, a non-wildcard address and cannot have port restrictions.\n"
                     },
                     "securityPolicyId": {
                         "type": "string",
@@ -4105,6 +4123,10 @@
                         "description": "The Remote Network ID that the Resource is associated with. Resources may only be associated with a single Remote Network.\n",
                         "type": "string"
                     },
+                    "routingMode": {
+                        "description": "The routing mode of the Resource. Either `THROUGH_TWINGATE` or `BYPASS_TWINGATE`.\n",
+                        "type": "string"
+                    },
                     "tags": {
                         "additionalProperties": {
                             "type": "string"
@@ -4118,6 +4140,7 @@
                     "id",
                     "name",
                     "remoteNetworkId",
+                    "routingMode",
                     "tags"
                 ],
                 "type": "object"
@@ -4436,6 +4459,47 @@
                 "required": [
                     "id",
                     "serviceAccounts"
+                ],
+                "type": "object"
+            }
+        },
+        "twingate:index/getTwingateSyncToS3:getTwingateSyncToS3": {
+            "description": "The datasource would allow users automate and get the oidc url used for the resources aws_iam_role, aws_iam_openid_connect_provider. For more information, see Twingate's [documentation](https://www.twingate.com/docs/syncing-data-to-s3).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@twingate/pulumi-twingate\";\n\nconst example = twingate.getTwingateSyncToS3({});\nexport const oidcUrl = example.then(example =\u003e example.oidcUrl);\nexport const oidcPrefix = example.then(example =\u003e example.oidcPrefix);\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nexample = twingate.get_twingate_sync_to_s3()\npulumi.export(\"oidcUrl\", example.oidc_url)\npulumi.export(\"oidcPrefix\", example.oidc_prefix)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Twingate.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Twingate.GetTwingateSyncToS3.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"oidcUrl\"] = example.Apply(getTwingateSyncToS3Result =\u003e getTwingateSyncToS3Result.OidcUrl),\n        [\"oidcPrefix\"] = example.Apply(getTwingateSyncToS3Result =\u003e getTwingateSyncToS3Result.OidcPrefix),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/v4/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := twingate.GetTwingateSyncToS3(ctx, \u0026twingate.GetTwingateSyncToS3Args{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"oidcUrl\", example.OidcUrl)\n\t\tctx.Export(\"oidcPrefix\", example.OidcPrefix)\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    twingate = {\n      source = \"pulumi/twingate\"\n    }\n  }\n}\n\ndata \"twingate_gettwingatesynctos3\" \"example\" {\n}\n\noutput \"oidcUrl\" {\n  value = data.twingate_gettwingatesynctos3.example.oidc_url\n}\noutput \"oidcPrefix\" {\n  value = data.twingate_gettwingatesynctos3.example.oidc_prefix\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateSyncToS3Args;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = TwingateFunctions.getTwingateSyncToS3(GetTwingateSyncToS3Args.builder()\n            .build());\n\n        ctx.export(\"oidcUrl\", example.oidcUrl());\n        ctx.export(\"oidcPrefix\", example.oidcPrefix());\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: twingate:getTwingateSyncToS3\n      arguments: {}\noutputs:\n  oidcUrl: ${example.oidcUrl}\n  oidcPrefix: ${example.oidcPrefix}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getTwingateSyncToS3.\n",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "description": "The type of the resource. One of: oidc or iam. Defaults to \"oidc\".\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getTwingateSyncToS3.\n",
+                "properties": {
+                    "id": {
+                        "description": "The ID of this resource.\n",
+                        "type": "string"
+                    },
+                    "oidcPrefix": {
+                        "description": "The IAM Identity Provider prefix (return only if type \"oidc\"). Example: tenant.twingate.com/oidc/v2\n",
+                        "type": "string"
+                    },
+                    "oidcUrl": {
+                        "description": "The IAM Identity Provider URL (return only if type \"oidc\"). Example: https://tenant.twingate.com/oidc/v2\n",
+                        "type": "string"
+                    },
+                    "type": {
+                        "description": "The type of the resource. One of: oidc or iam. Defaults to \"oidc\".\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "oidcPrefix",
+                    "oidcUrl",
+                    "type"
                 ],
                 "type": "object"
             }
