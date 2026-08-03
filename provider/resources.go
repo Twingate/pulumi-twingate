@@ -25,7 +25,7 @@ import (
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	bridgev3 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
+	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 
 	"github.com/Twingate/pulumi-twingate/provider/pkg/version"
@@ -157,11 +157,9 @@ func Provider() bridgev3.ProviderInfo {
 			"twingate_x509_certificate_authority": {
 				Tok: bridgev3.MakeDataSource(mainPkg, mainMod, "getTwingateX509CertificateAuthority"),
 			},
-			// twingate_sync_to_s3 was removed upstream in v4.2.1 (Twingate/terraform-provider-twingate#879);
-			// kept here in case it is re-added later.
-			// "twingate_sync_to_s3": {
-			// 	Tok: bridgev3.MakeDataSource(mainPkg, mainMod, "getTwingateSyncToS3"),
-			// },
+			"twingate_sync_to_s3": {
+				Tok: bridgev3.MakeDataSource(mainPkg, mainMod, "getTwingateSyncToS3"),
+			},
 		},
 		JavaScript: &bridgev3.JavaScriptInfo{
 			PackageName: "@twingate/pulumi-twingate",
