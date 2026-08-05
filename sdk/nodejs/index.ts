@@ -75,6 +75,11 @@ export const getTwingateServiceAccounts: typeof import("./getTwingateServiceAcco
 export const getTwingateServiceAccountsOutput: typeof import("./getTwingateServiceAccounts").getTwingateServiceAccountsOutput = null as any;
 utilities.lazyLoad(exports, ["getTwingateServiceAccounts","getTwingateServiceAccountsOutput"], () => require("./getTwingateServiceAccounts"));
 
+export { GetTwingateSyncToS3Args, GetTwingateSyncToS3Result, GetTwingateSyncToS3OutputArgs } from "./getTwingateSyncToS3";
+export const getTwingateSyncToS3: typeof import("./getTwingateSyncToS3").getTwingateSyncToS3 = null as any;
+export const getTwingateSyncToS3Output: typeof import("./getTwingateSyncToS3").getTwingateSyncToS3Output = null as any;
+utilities.lazyLoad(exports, ["getTwingateSyncToS3","getTwingateSyncToS3Output"], () => require("./getTwingateSyncToS3"));
+
 export { GetTwingateUserArgs, GetTwingateUserResult, GetTwingateUserOutputArgs } from "./getTwingateUser";
 export const getTwingateUser: typeof import("./getTwingateUser").getTwingateUser = null as any;
 export const getTwingateUserOutput: typeof import("./getTwingateUser").getTwingateUserOutput = null as any;

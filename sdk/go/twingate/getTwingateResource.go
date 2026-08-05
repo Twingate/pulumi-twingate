@@ -68,6 +68,8 @@ type LookupTwingateResourceResult struct {
 	Protocols *GetTwingateResourceProtocols `pulumi:"protocols"`
 	// The Remote Network ID that the Resource is associated with. Resources may only be associated with a single Remote Network.
 	RemoteNetworkId string `pulumi:"remoteNetworkId"`
+	// The routing mode of the Resource. Either `THROUGH_TWINGATE` or `BYPASS_TWINGATE`.
+	RoutingMode string `pulumi:"routingMode"`
 	// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -131,6 +133,11 @@ func (o LookupTwingateResourceResultOutput) Protocols() GetTwingateResourceProto
 // The Remote Network ID that the Resource is associated with. Resources may only be associated with a single Remote Network.
 func (o LookupTwingateResourceResultOutput) RemoteNetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTwingateResourceResult) string { return v.RemoteNetworkId }).(pulumi.StringOutput)
+}
+
+// The routing mode of the Resource. Either `THROUGH_TWINGATE` or `BYPASS_TWINGATE`.
+func (o LookupTwingateResourceResultOutput) RoutingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTwingateResourceResult) string { return v.RoutingMode }).(pulumi.StringOutput)
 }
 
 // The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.

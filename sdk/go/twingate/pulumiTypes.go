@@ -8070,6 +8070,8 @@ type GetTwingateResourcesResource struct {
 	Protocols GetTwingateResourcesResourceProtocols `pulumi:"protocols"`
 	// Remote Network ID where the Resource lives
 	RemoteNetworkId string `pulumi:"remoteNetworkId"`
+	// The routing mode of the Resource.
+	RoutingMode string `pulumi:"routingMode"`
 	// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -8096,6 +8098,8 @@ type GetTwingateResourcesResourceArgs struct {
 	Protocols GetTwingateResourcesResourceProtocolsInput `pulumi:"protocols"`
 	// Remote Network ID where the Resource lives
 	RemoteNetworkId pulumi.StringInput `pulumi:"remoteNetworkId"`
+	// The routing mode of the Resource.
+	RoutingMode pulumi.StringInput `pulumi:"routingMode"`
 	// The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
@@ -8174,6 +8178,11 @@ func (o GetTwingateResourcesResourceOutput) Protocols() GetTwingateResourcesReso
 // Remote Network ID where the Resource lives
 func (o GetTwingateResourcesResourceOutput) RemoteNetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTwingateResourcesResource) string { return v.RemoteNetworkId }).(pulumi.StringOutput)
+}
+
+// The routing mode of the Resource.
+func (o GetTwingateResourcesResourceOutput) RoutingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTwingateResourcesResource) string { return v.RoutingMode }).(pulumi.StringOutput)
 }
 
 // The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.

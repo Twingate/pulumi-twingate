@@ -20,6 +20,7 @@ from .get_twingate_security_policies import *
 from .get_twingate_security_policy import *
 from .get_twingate_service_accounts import *
 from .get_twingate_ssh_certificate_authority import *
+from .get_twingate_sync_to_s3 import *
 from .get_twingate_user import *
 from .get_twingate_users import *
 from .get_twingate_x509_certificate_authority import *

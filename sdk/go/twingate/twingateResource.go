@@ -46,6 +46,8 @@ type TwingateResource struct {
 	Protocols TwingateResourceProtocolsOutput `pulumi:"protocols"`
 	// Remote Network ID where the Resource lives
 	RemoteNetworkId pulumi.StringOutput `pulumi:"remoteNetworkId"`
+	// Controls whether traffic to this Resource is routed through Twingate or bypassed. Valid values are `THROUGH_TWINGATE` (default) and `BYPASS_TWINGATE`. `BYPASS_TWINGATE` requires a Resource with no security policy, a non-wildcard address and cannot have port restrictions.
+	RoutingMode pulumi.StringOutput `pulumi:"routingMode"`
 	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
 	SecurityPolicyId pulumi.StringOutput `pulumi:"securityPolicyId"`
 	// A map of key-value pair tags to set on this resource.
@@ -114,6 +116,8 @@ type twingateResourceState struct {
 	Protocols *TwingateResourceProtocols `pulumi:"protocols"`
 	// Remote Network ID where the Resource lives
 	RemoteNetworkId *string `pulumi:"remoteNetworkId"`
+	// Controls whether traffic to this Resource is routed through Twingate or bypassed. Valid values are `THROUGH_TWINGATE` (default) and `BYPASS_TWINGATE`. `BYPASS_TWINGATE` requires a Resource with no security policy, a non-wildcard address and cannot have port restrictions.
+	RoutingMode *string `pulumi:"routingMode"`
 	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 	// A map of key-value pair tags to set on this resource.
@@ -147,6 +151,8 @@ type TwingateResourceState struct {
 	Protocols TwingateResourceProtocolsPtrInput
 	// Remote Network ID where the Resource lives
 	RemoteNetworkId pulumi.StringPtrInput
+	// Controls whether traffic to this Resource is routed through Twingate or bypassed. Valid values are `THROUGH_TWINGATE` (default) and `BYPASS_TWINGATE`. `BYPASS_TWINGATE` requires a Resource with no security policy, a non-wildcard address and cannot have port restrictions.
+	RoutingMode pulumi.StringPtrInput
 	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
 	SecurityPolicyId pulumi.StringPtrInput
 	// A map of key-value pair tags to set on this resource.
@@ -184,6 +190,8 @@ type twingateResourceArgs struct {
 	Protocols *TwingateResourceProtocols `pulumi:"protocols"`
 	// Remote Network ID where the Resource lives
 	RemoteNetworkId string `pulumi:"remoteNetworkId"`
+	// Controls whether traffic to this Resource is routed through Twingate or bypassed. Valid values are `THROUGH_TWINGATE` (default) and `BYPASS_TWINGATE`. `BYPASS_TWINGATE` requires a Resource with no security policy, a non-wildcard address and cannot have port restrictions.
+	RoutingMode *string `pulumi:"routingMode"`
 	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 	// A map of key-value pair tags to set on this resource.
@@ -216,6 +224,8 @@ type TwingateResourceArgs struct {
 	Protocols TwingateResourceProtocolsPtrInput
 	// Remote Network ID where the Resource lives
 	RemoteNetworkId pulumi.StringInput
+	// Controls whether traffic to this Resource is routed through Twingate or bypassed. Valid values are `THROUGH_TWINGATE` (default) and `BYPASS_TWINGATE`. `BYPASS_TWINGATE` requires a Resource with no security policy, a non-wildcard address and cannot have port restrictions.
+	RoutingMode pulumi.StringPtrInput
 	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
 	SecurityPolicyId pulumi.StringPtrInput
 	// A map of key-value pair tags to set on this resource.
@@ -367,6 +377,11 @@ func (o TwingateResourceOutput) Protocols() TwingateResourceProtocolsOutput {
 // Remote Network ID where the Resource lives
 func (o TwingateResourceOutput) RemoteNetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TwingateResource) pulumi.StringOutput { return v.RemoteNetworkId }).(pulumi.StringOutput)
+}
+
+// Controls whether traffic to this Resource is routed through Twingate or bypassed. Valid values are `THROUGH_TWINGATE` (default) and `BYPASS_TWINGATE`. `BYPASS_TWINGATE` requires a Resource with no security policy, a non-wildcard address and cannot have port restrictions.
+func (o TwingateResourceOutput) RoutingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *TwingateResource) pulumi.StringOutput { return v.RoutingMode }).(pulumi.StringOutput)
 }
 
 // The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.

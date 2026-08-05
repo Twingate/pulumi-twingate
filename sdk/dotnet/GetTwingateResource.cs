@@ -151,6 +151,10 @@ namespace Twingate.Twingate
         /// </summary>
         public readonly string RemoteNetworkId;
         /// <summary>
+        /// The routing mode of the Resource. Either `THROUGH_TWINGATE` or `BYPASS_TWINGATE`.
+        /// </summary>
+        public readonly string RoutingMode;
+        /// <summary>
         /// The `Tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
@@ -167,6 +171,8 @@ namespace Twingate.Twingate
 
             string remoteNetworkId,
 
+            string routingMode,
+
             ImmutableDictionary<string, string> tags)
         {
             Address = address;
@@ -174,6 +180,7 @@ namespace Twingate.Twingate
             Name = name;
             Protocols = protocols;
             RemoteNetworkId = remoteNetworkId;
+            RoutingMode = routingMode;
             Tags = tags;
         }
     }

@@ -242,6 +242,10 @@ export interface GetTwingateResourcesResource {
      */
     remoteNetworkId: string;
     /**
+     * The routing mode of the Resource.
+     */
+    routingMode: string;
+    /**
      * The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
      */
     tags: {[key: string]: string};
