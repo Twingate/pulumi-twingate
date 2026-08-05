@@ -95,6 +95,12 @@ namespace Twingate.Twingate
         public Output<string> RemoteNetworkId { get; private set; } = null!;
 
         /// <summary>
+        /// Controls whether traffic to this Resource is routed through Twingate or bypassed. Valid values are `THROUGH_TWINGATE` (default) and `BYPASS_TWINGATE`. `BYPASS_TWINGATE` requires a Resource with no security policy, a non-wildcard address and cannot have port restrictions.
+        /// </summary>
+        [Output("routingMode")]
+        public Output<string> RoutingMode { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         /// </summary>
         [Output("securityPolicyId")]
@@ -250,6 +256,12 @@ namespace Twingate.Twingate
         public Input<string> RemoteNetworkId { get; set; } = null!;
 
         /// <summary>
+        /// Controls whether traffic to this Resource is routed through Twingate or bypassed. Valid values are `THROUGH_TWINGATE` (default) and `BYPASS_TWINGATE`. `BYPASS_TWINGATE` requires a Resource with no security policy, a non-wildcard address and cannot have port restrictions.
+        /// </summary>
+        [Input("routingMode")]
+        public Input<string>? RoutingMode { get; set; }
+
+        /// <summary>
         /// The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         /// </summary>
         [Input("securityPolicyId")]
@@ -364,6 +376,12 @@ namespace Twingate.Twingate
         /// </summary>
         [Input("remoteNetworkId")]
         public Input<string>? RemoteNetworkId { get; set; }
+
+        /// <summary>
+        /// Controls whether traffic to this Resource is routed through Twingate or bypassed. Valid values are `THROUGH_TWINGATE` (default) and `BYPASS_TWINGATE`. `BYPASS_TWINGATE` requires a Resource with no security policy, a non-wildcard address and cannot have port restrictions.
+        /// </summary>
+        [Input("routingMode")]
+        public Input<string>? RoutingMode { get; set; }
 
         /// <summary>
         /// The ID of a `twingate.getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.

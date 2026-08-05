@@ -35,6 +35,7 @@
         "getTwingateSecurityPolicies.ts",
         "getTwingateSecurityPolicy.ts",
         "getTwingateServiceAccounts.ts",
+        "getTwingateSyncToS3.ts",
         "getTwingateUser.ts",
         "getTwingateUsers.ts",
         "getTwingateX509CertificateAuthority.ts",

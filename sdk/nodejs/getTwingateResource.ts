@@ -67,6 +67,10 @@ export interface GetTwingateResourceResult {
      */
     readonly remoteNetworkId: string;
     /**
+     * The routing mode of the Resource. Either `THROUGH_TWINGATE` or `BYPASS_TWINGATE`.
+     */
+    readonly routingMode: string;
+    /**
      * The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
      */
     readonly tags: {[key: string]: string};

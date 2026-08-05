@@ -2545,6 +2545,7 @@ class GetTwingateResourcesResourceResult(dict):
                  name: _builtins.str,
                  protocols: 'outputs.GetTwingateResourcesResourceProtocolsResult',
                  remote_network_id: _builtins.str,
+                 routing_mode: _builtins.str,
                  tags: Mapping[str, _builtins.str]):
         """
         :param _builtins.str address: The Resource's IP/CIDR or FQDN/DNS zone
@@ -2552,6 +2553,7 @@ class GetTwingateResourcesResourceResult(dict):
         :param _builtins.str name: The name of the Resource
         :param 'GetTwingateResourcesResourceProtocolsArgs' protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param _builtins.str remote_network_id: Remote Network ID where the Resource lives
+        :param _builtins.str routing_mode: The routing mode of the Resource.
         :param Mapping[str, _builtins.str] tags: The `tags` attribute consists of a key-value pairs that correspond with tags to be set on the resource.
         """
         pulumi.set(__self__, "address", address)
@@ -2559,6 +2561,7 @@ class GetTwingateResourcesResourceResult(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "protocols", protocols)
         pulumi.set(__self__, "remote_network_id", remote_network_id)
+        pulumi.set(__self__, "routing_mode", routing_mode)
         pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
@@ -2600,6 +2603,14 @@ class GetTwingateResourcesResourceResult(dict):
         Remote Network ID where the Resource lives
         """
         return pulumi.get(self, "remote_network_id")
+
+    @_builtins.property
+    @pulumi.getter(name="routingMode")
+    def routing_mode(self) -> _builtins.str:
+        """
+        The routing mode of the Resource.
+        """
+        return pulumi.get(self, "routing_mode")
 
     @_builtins.property
     @pulumi.getter

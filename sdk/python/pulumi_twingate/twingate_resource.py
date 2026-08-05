@@ -33,6 +33,7 @@ class TwingateResourceArgs:
                  is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  protocols: pulumi.Input[Optional['TwingateResourceProtocolsArgs']] = None,
+                 routing_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
@@ -50,6 +51,7 @@ class TwingateResourceArgs:
         :param pulumi.Input[_builtins.bool] is_visible: Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
         :param pulumi.Input[_builtins.str] name: The name of the Resource
         :param pulumi.Input['TwingateResourceProtocolsArgs'] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
+        :param pulumi.Input[_builtins.str] routing_mode: Controls whether traffic to this Resource is routed through Twingate or bypassed. Valid values are `THROUGH_TWINGATE` (default) and `BYPASS_TWINGATE`. `BYPASS_TWINGATE` requires a Resource with no security policy, a non-wildcard address and cannot have port restrictions.
         :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of key-value pair tags to set on this resource.
         """
@@ -75,6 +77,8 @@ class TwingateResourceArgs:
             pulumi.set(__self__, "name", name)
         if protocols is not None:
             pulumi.set(__self__, "protocols", protocols)
+        if routing_mode is not None:
+            pulumi.set(__self__, "routing_mode", routing_mode)
         if security_policy_id is not None:
             pulumi.set(__self__, "security_policy_id", security_policy_id)
         if tags is not None:
@@ -225,6 +229,18 @@ class TwingateResourceArgs:
         pulumi.set(self, "protocols", value)
 
     @_builtins.property
+    @pulumi.getter(name="routingMode")
+    def routing_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Controls whether traffic to this Resource is routed through Twingate or bypassed. Valid values are `THROUGH_TWINGATE` (default) and `BYPASS_TWINGATE`. `BYPASS_TWINGATE` requires a Resource with no security policy, a non-wildcard address and cannot have port restrictions.
+        """
+        return pulumi.get(self, "routing_mode")
+
+    @routing_mode.setter
+    def routing_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "routing_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="securityPolicyId")
     def security_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -264,6 +280,7 @@ class _TwingateResourceState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  protocols: pulumi.Input[Optional['TwingateResourceProtocolsArgs']] = None,
                  remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 routing_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  tags_all: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
@@ -282,6 +299,7 @@ class _TwingateResourceState:
         :param pulumi.Input[_builtins.str] name: The name of the Resource
         :param pulumi.Input['TwingateResourceProtocolsArgs'] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param pulumi.Input[_builtins.str] remote_network_id: Remote Network ID where the Resource lives
+        :param pulumi.Input[_builtins.str] routing_mode: Controls whether traffic to this Resource is routed through Twingate or bypassed. Valid values are `THROUGH_TWINGATE` (default) and `BYPASS_TWINGATE`. `BYPASS_TWINGATE` requires a Resource with no security policy, a non-wildcard address and cannot have port restrictions.
         :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of key-value pair tags to set on this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags_all: A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
@@ -310,6 +328,8 @@ class _TwingateResourceState:
             pulumi.set(__self__, "protocols", protocols)
         if remote_network_id is not None:
             pulumi.set(__self__, "remote_network_id", remote_network_id)
+        if routing_mode is not None:
+            pulumi.set(__self__, "routing_mode", routing_mode)
         if security_policy_id is not None:
             pulumi.set(__self__, "security_policy_id", security_policy_id)
         if tags is not None:
@@ -462,6 +482,18 @@ class _TwingateResourceState:
         pulumi.set(self, "remote_network_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="routingMode")
+    def routing_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Controls whether traffic to this Resource is routed through Twingate or bypassed. Valid values are `THROUGH_TWINGATE` (default) and `BYPASS_TWINGATE`. `BYPASS_TWINGATE` requires a Resource with no security policy, a non-wildcard address and cannot have port restrictions.
+        """
+        return pulumi.get(self, "routing_mode")
+
+    @routing_mode.setter
+    def routing_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "routing_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="securityPolicyId")
     def security_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -516,6 +548,7 @@ class TwingateResource(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  protocols: pulumi.Input[Optional[Union['TwingateResourceProtocolsArgs', 'TwingateResourceProtocolsArgsDict']]] = None,
                  remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 routing_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -543,6 +576,7 @@ class TwingateResource(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the Resource
         :param pulumi.Input[Union['TwingateResourceProtocolsArgs', 'TwingateResourceProtocolsArgsDict']] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param pulumi.Input[_builtins.str] remote_network_id: Remote Network ID where the Resource lives
+        :param pulumi.Input[_builtins.str] routing_mode: Controls whether traffic to this Resource is routed through Twingate or bypassed. Valid values are `THROUGH_TWINGATE` (default) and `BYPASS_TWINGATE`. `BYPASS_TWINGATE` requires a Resource with no security policy, a non-wildcard address and cannot have port restrictions.
         :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of key-value pair tags to set on this resource.
         """
@@ -589,6 +623,7 @@ class TwingateResource(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  protocols: pulumi.Input[Optional[Union['TwingateResourceProtocolsArgs', 'TwingateResourceProtocolsArgsDict']]] = None,
                  remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 routing_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -616,6 +651,7 @@ class TwingateResource(pulumi.CustomResource):
             if remote_network_id is None and not opts.urn:
                 raise TypeError("Missing required property 'remote_network_id'")
             __props__.__dict__["remote_network_id"] = remote_network_id
+            __props__.__dict__["routing_mode"] = routing_mode
             __props__.__dict__["security_policy_id"] = security_policy_id
             __props__.__dict__["tags"] = tags
             __props__.__dict__["tags_all"] = None
@@ -641,6 +677,7 @@ class TwingateResource(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             protocols: pulumi.Input[Optional[Union['TwingateResourceProtocolsArgs', 'TwingateResourceProtocolsArgsDict']]] = None,
             remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+            routing_mode: pulumi.Input[Optional[_builtins.str]] = None,
             security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             tags_all: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'TwingateResource':
@@ -663,6 +700,7 @@ class TwingateResource(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the Resource
         :param pulumi.Input[Union['TwingateResourceProtocolsArgs', 'TwingateResourceProtocolsArgsDict']] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param pulumi.Input[_builtins.str] remote_network_id: Remote Network ID where the Resource lives
+        :param pulumi.Input[_builtins.str] routing_mode: Controls whether traffic to this Resource is routed through Twingate or bypassed. Valid values are `THROUGH_TWINGATE` (default) and `BYPASS_TWINGATE`. `BYPASS_TWINGATE` requires a Resource with no security policy, a non-wildcard address and cannot have port restrictions.
         :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of key-value pair tags to set on this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags_all: A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
@@ -683,6 +721,7 @@ class TwingateResource(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["protocols"] = protocols
         __props__.__dict__["remote_network_id"] = remote_network_id
+        __props__.__dict__["routing_mode"] = routing_mode
         __props__.__dict__["security_policy_id"] = security_policy_id
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tags_all"] = tags_all
@@ -783,6 +822,14 @@ class TwingateResource(pulumi.CustomResource):
         Remote Network ID where the Resource lives
         """
         return pulumi.get(self, "remote_network_id")
+
+    @_builtins.property
+    @pulumi.getter(name="routingMode")
+    def routing_mode(self) -> pulumi.Output[_builtins.str]:
+        """
+        Controls whether traffic to this Resource is routed through Twingate or bypassed. Valid values are `THROUGH_TWINGATE` (default) and `BYPASS_TWINGATE`. `BYPASS_TWINGATE` requires a Resource with no security policy, a non-wildcard address and cannot have port restrictions.
+        """
+        return pulumi.get(self, "routing_mode")
 
     @_builtins.property
     @pulumi.getter(name="securityPolicyId")

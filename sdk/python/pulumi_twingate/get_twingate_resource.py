@@ -28,7 +28,7 @@ class GetTwingateResourceResult:
     """
     A collection of values returned by getTwingateResource.
     """
-    def __init__(__self__, address=None, id=None, name=None, protocols=None, remote_network_id=None, tags=None):
+    def __init__(__self__, address=None, id=None, name=None, protocols=None, remote_network_id=None, routing_mode=None, tags=None):
         if address and not isinstance(address, str):
             raise TypeError("Expected argument 'address' to be a str")
         pulumi.set(__self__, "address", address)
@@ -44,6 +44,9 @@ class GetTwingateResourceResult:
         if remote_network_id and not isinstance(remote_network_id, str):
             raise TypeError("Expected argument 'remote_network_id' to be a str")
         pulumi.set(__self__, "remote_network_id", remote_network_id)
+        if routing_mode and not isinstance(routing_mode, str):
+            raise TypeError("Expected argument 'routing_mode' to be a str")
+        pulumi.set(__self__, "routing_mode", routing_mode)
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         pulumi.set(__self__, "tags", tags)
@@ -89,6 +92,14 @@ class GetTwingateResourceResult:
         return pulumi.get(self, "remote_network_id")
 
     @_builtins.property
+    @pulumi.getter(name="routingMode")
+    def routing_mode(self) -> _builtins.str:
+        """
+        The routing mode of the Resource. Either `THROUGH_TWINGATE` or `BYPASS_TWINGATE`.
+        """
+        return pulumi.get(self, "routing_mode")
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
         """
@@ -108,6 +119,7 @@ class AwaitableGetTwingateResourceResult(GetTwingateResourceResult):
             name=self.name,
             protocols=self.protocols,
             remote_network_id=self.remote_network_id,
+            routing_mode=self.routing_mode,
             tags=self.tags)
 
 
@@ -142,6 +154,7 @@ def get_twingate_resource(id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         protocols=pulumi.get(__ret__, 'protocols'),
         remote_network_id=pulumi.get(__ret__, 'remote_network_id'),
+        routing_mode=pulumi.get(__ret__, 'routing_mode'),
         tags=pulumi.get(__ret__, 'tags'))
 def get_twingate_resource_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                                  protocols: pulumi.Input[Optional[Optional[Union['GetTwingateResourceProtocolsArgs', 'GetTwingateResourceProtocolsArgsDict']]]] = None,
@@ -173,4 +186,5 @@ def get_twingate_resource_output(id: pulumi.Input[Optional[_builtins.str]] = Non
         name=pulumi.get(__response__, 'name'),
         protocols=pulumi.get(__response__, 'protocols'),
         remote_network_id=pulumi.get(__response__, 'remote_network_id'),
+        routing_mode=pulumi.get(__response__, 'routing_mode'),
         tags=pulumi.get(__response__, 'tags')))
