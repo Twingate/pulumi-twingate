@@ -47,16 +47,12 @@ import (
 // return err
 // }
 // invokeToset, err := std.Toset(ctx, &std.TosetArgs{
-// Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:19,13-33),
+// Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:37,13-33),
 // }, nil)
 // if err != nil {
 // return err
 // }
 // _, err = twingate.NewTwingateDNSFilteringProfile(ctx, "example", &twingate.TwingateDNSFilteringProfileArgs{
-// Name: pulumi.String("Example DNS Filtering Profile"),
-// Priority: pulumi.Float64(2),
-// FallbackMethod: pulumi.String("AUTO"),
-// Groups: pulumi.StringArray(invokeToset.Result),
 // AllowedDomains: &twingate.TwingateDNSFilteringProfileAllowedDomainsArgs{
 // IsAuthoritative: pulumi.Bool(false),
 // Domains: pulumi.StringArray{
@@ -80,6 +76,10 @@ import (
 // PrivacyCategories: &twingate.TwingateDNSFilteringProfilePrivacyCategoriesArgs{
 // BlockDisguisedTrackers: pulumi.Bool(true),
 // },
+// Name: pulumi.String("Example DNS Filtering Profile"),
+// Priority: pulumi.Float64(2),
+// FallbackMethod: pulumi.String("AUTO"),
+// Groups: pulumi.StringArray(invokeToset.Result),
 // })
 // if err != nil {
 // return err

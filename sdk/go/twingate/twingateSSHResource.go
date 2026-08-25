@@ -56,19 +56,19 @@ import (
 //				return err
 //			}
 //			main, err := twingate.NewTwingateGateway(ctx, "main", &twingate.TwingateGatewayArgs{
-//				RemoteNetworkId: prod.ID(),
+//				RemoteNetworkId: prod.ID().ToIDOutput().ToStringOutput(),
 //				Address:         pulumi.String("10.0.0.1:8443"),
-//				X509CaId:        tls.ID(),
-//				SshCaId:         ssh.ID(),
+//				X509CaId:        tls.ID().ToIDOutput().ToStringOutput(),
+//				SshCaId:         ssh.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = twingate.NewTwingateSSHResource(ctx, "ssh_server", &twingate.TwingateSSHResourceArgs{
 //				Name:            pulumi.String("SSH Server"),
-//				GatewayId:       main.ID(),
+//				GatewayId:       main.ID().ToIDOutput().ToStringOutput(),
 //				Alias:           pulumi.String("test.int"),
-//				RemoteNetworkId: prod.ID(),
+//				RemoteNetworkId: prod.ID().ToIDOutput().ToStringOutput(),
 //				Address:         pulumi.String("10.128.0.105"),
 //				Username:        pulumi.String("ubuntu"),
 //			})
@@ -98,6 +98,8 @@ type TwingateSSHResource struct {
 	// The name of the SSH Resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
+	//
+	// Deprecated: This argument is deprecated and will be removed in a future release.
 	Protocols TwingateSSHResourceProtocolsOutput `pulumi:"protocols"`
 	// The ID of the Remote Network the SSH Resource belongs to.
 	RemoteNetworkId pulumi.StringOutput `pulumi:"remoteNetworkId"`
@@ -106,6 +108,8 @@ type TwingateSSHResource struct {
 	// A map of key-value pair tags to set on this resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The username to use when connecting to the SSH Resource.
+	//
+	// Deprecated: This argument is deprecated and will be removed in a future release.
 	Username pulumi.StringPtrOutput `pulumi:"username"`
 }
 
@@ -163,6 +167,8 @@ type twingateSSHResourceState struct {
 	// The name of the SSH Resource.
 	Name *string `pulumi:"name"`
 	// Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
+	//
+	// Deprecated: This argument is deprecated and will be removed in a future release.
 	Protocols *TwingateSSHResourceProtocols `pulumi:"protocols"`
 	// The ID of the Remote Network the SSH Resource belongs to.
 	RemoteNetworkId *string `pulumi:"remoteNetworkId"`
@@ -171,6 +177,8 @@ type twingateSSHResourceState struct {
 	// A map of key-value pair tags to set on this resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The username to use when connecting to the SSH Resource.
+	//
+	// Deprecated: This argument is deprecated and will be removed in a future release.
 	Username *string `pulumi:"username"`
 }
 
@@ -190,6 +198,8 @@ type TwingateSSHResourceState struct {
 	// The name of the SSH Resource.
 	Name pulumi.StringPtrInput
 	// Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
+	//
+	// Deprecated: This argument is deprecated and will be removed in a future release.
 	Protocols TwingateSSHResourceProtocolsPtrInput
 	// The ID of the Remote Network the SSH Resource belongs to.
 	RemoteNetworkId pulumi.StringPtrInput
@@ -198,6 +208,8 @@ type TwingateSSHResourceState struct {
 	// A map of key-value pair tags to set on this resource.
 	Tags pulumi.StringMapInput
 	// The username to use when connecting to the SSH Resource.
+	//
+	// Deprecated: This argument is deprecated and will be removed in a future release.
 	Username pulumi.StringPtrInput
 }
 
@@ -221,6 +233,8 @@ type twingateSSHResourceArgs struct {
 	// The name of the SSH Resource.
 	Name *string `pulumi:"name"`
 	// Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
+	//
+	// Deprecated: This argument is deprecated and will be removed in a future release.
 	Protocols *TwingateSSHResourceProtocols `pulumi:"protocols"`
 	// The ID of the Remote Network the SSH Resource belongs to.
 	RemoteNetworkId string `pulumi:"remoteNetworkId"`
@@ -229,6 +243,8 @@ type twingateSSHResourceArgs struct {
 	// A map of key-value pair tags to set on this resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The username to use when connecting to the SSH Resource.
+	//
+	// Deprecated: This argument is deprecated and will be removed in a future release.
 	Username *string `pulumi:"username"`
 }
 
@@ -249,6 +265,8 @@ type TwingateSSHResourceArgs struct {
 	// The name of the SSH Resource.
 	Name pulumi.StringPtrInput
 	// Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
+	//
+	// Deprecated: This argument is deprecated and will be removed in a future release.
 	Protocols TwingateSSHResourceProtocolsPtrInput
 	// The ID of the Remote Network the SSH Resource belongs to.
 	RemoteNetworkId pulumi.StringInput
@@ -257,6 +275,8 @@ type TwingateSSHResourceArgs struct {
 	// A map of key-value pair tags to set on this resource.
 	Tags pulumi.StringMapInput
 	// The username to use when connecting to the SSH Resource.
+	//
+	// Deprecated: This argument is deprecated and will be removed in a future release.
 	Username pulumi.StringPtrInput
 }
 
@@ -383,6 +403,8 @@ func (o TwingateSSHResourceOutput) Name() pulumi.StringOutput {
 }
 
 // Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
+//
+// Deprecated: This argument is deprecated and will be removed in a future release.
 func (o TwingateSSHResourceOutput) Protocols() TwingateSSHResourceProtocolsOutput {
 	return o.ApplyT(func(v *TwingateSSHResource) TwingateSSHResourceProtocolsOutput { return v.Protocols }).(TwingateSSHResourceProtocolsOutput)
 }
@@ -403,6 +425,8 @@ func (o TwingateSSHResourceOutput) Tags() pulumi.StringMapOutput {
 }
 
 // The username to use when connecting to the SSH Resource.
+//
+// Deprecated: This argument is deprecated and will be removed in a future release.
 func (o TwingateSSHResourceOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TwingateSSHResource) pulumi.StringPtrOutput { return v.Username }).(pulumi.StringPtrOutput)
 }

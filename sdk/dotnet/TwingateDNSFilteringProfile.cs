@@ -41,13 +41,6 @@ namespace Twingate.Twingate
     /// 
     ///     var exampleTwingateDNSFilteringProfile = new Twingate.TwingateDNSFilteringProfile("example", new()
     ///     {
-    ///         Name = "Example DNS Filtering Profile",
-    ///         Priority = 2,
-    ///         FallbackMethod = "AUTO",
-    ///         Groups = Std.Toset.Invoke(new()
-    ///         {
-    ///             Input = example.Apply(getTwingateGroupsResult =&gt; getTwingateGroupsResult.Groups).Select(__item =&gt; __item.Id).ToList(),
-    ///         }).Apply(invoke =&gt; invoke.Result),
     ///         AllowedDomains = new Twingate.Inputs.TwingateDNSFilteringProfileAllowedDomainsArgs
     ///         {
     ///             IsAuthoritative = false,
@@ -78,6 +71,13 @@ namespace Twingate.Twingate
     ///         {
     ///             BlockDisguisedTrackers = true,
     ///         },
+    ///         Name = "Example DNS Filtering Profile",
+    ///         Priority = 2,
+    ///         FallbackMethod = "AUTO",
+    ///         Groups = Std.Toset.Invoke(new()
+    ///         {
+    ///             Input = example.Apply(getTwingateGroupsResult =&gt; getTwingateGroupsResult.Groups).Select(__item =&gt; __item.Id).ToList(),
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
     /// });

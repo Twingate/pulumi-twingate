@@ -22,12 +22,6 @@ import * as utilities from "./utilities";
  *     namePrefix: "example",
  * });
  * const exampleTwingateDNSFilteringProfile = new twingate.TwingateDNSFilteringProfile("example", {
- *     name: "Example DNS Filtering Profile",
- *     priority: 2,
- *     fallbackMethod: "AUTO",
- *     groups: example.then(example => std.toset({
- *         input: example.groups.map(__item => __item.id),
- *     })).then(invoke => invoke.result),
  *     allowedDomains: {
  *         isAuthoritative: false,
  *         domains: [
@@ -49,6 +43,12 @@ import * as utilities from "./utilities";
  *     privacyCategories: {
  *         blockDisguisedTrackers: true,
  *     },
+ *     name: "Example DNS Filtering Profile",
+ *     priority: 2,
+ *     fallbackMethod: "AUTO",
+ *     groups: example.then(example => std.toset({
+ *         input: example.groups.map(__item => __item.id),
+ *     })).then(invoke => invoke.result),
  * });
  * ```
  *

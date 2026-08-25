@@ -353,10 +353,6 @@ class TwingateDNSFilteringProfile(pulumi.CustomResource):
         example2 = twingate.TwingateGroup("example2", name="example_2")
         example = twingate.get_twingate_groups(name_prefix="example")
         example_twingate_dns_filtering_profile = twingate.TwingateDNSFilteringProfile("example",
-            name="Example DNS Filtering Profile",
-            priority=float(2),
-            fallback_method="AUTO",
-            groups=std.toset(input=[__item.id for __item in example.groups]).result,
             allowed_domains={
                 "is_authoritative": False,
                 "domains": [
@@ -377,7 +373,11 @@ class TwingateDNSFilteringProfile(pulumi.CustomResource):
             },
             privacy_categories={
                 "block_disguised_trackers": True,
-            })
+            },
+            name="Example DNS Filtering Profile",
+            priority=float(2),
+            fallback_method="AUTO",
+            groups=std.toset(input=[__item.id for __item in example.groups]).result)
         ```
 
         ## Import
@@ -419,10 +419,6 @@ class TwingateDNSFilteringProfile(pulumi.CustomResource):
         example2 = twingate.TwingateGroup("example2", name="example_2")
         example = twingate.get_twingate_groups(name_prefix="example")
         example_twingate_dns_filtering_profile = twingate.TwingateDNSFilteringProfile("example",
-            name="Example DNS Filtering Profile",
-            priority=float(2),
-            fallback_method="AUTO",
-            groups=std.toset(input=[__item.id for __item in example.groups]).result,
             allowed_domains={
                 "is_authoritative": False,
                 "domains": [
@@ -443,7 +439,11 @@ class TwingateDNSFilteringProfile(pulumi.CustomResource):
             },
             privacy_categories={
                 "block_disguised_trackers": True,
-            })
+            },
+            name="Example DNS Filtering Profile",
+            priority=float(2),
+            fallback_method="AUTO",
+            groups=std.toset(input=[__item.id for __item in example.groups]).result)
         ```
 
         ## Import

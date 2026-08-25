@@ -49,7 +49,7 @@ import (
 //				return err
 //			}
 //			invokeTrimspace1, err := std.Trimspace(ctx, &std.TrimspaceArgs{
-//				Input: std.File(ctx, &std.FileArgs{
+//				Input: std.File(ctx, std.FileArgs{
 //					Input: "~/.ssh/id_ed25519.pub",
 //				}, nil).Result,
 //			}, nil)
@@ -65,19 +65,19 @@ import (
 //			}
 //			// Gateway with both X.509 and SSH CAs
 //			_, err = twingate.NewTwingateGateway(ctx, "main", &twingate.TwingateGatewayArgs{
-//				RemoteNetworkId: gcp.ID(),
+//				RemoteNetworkId: gcp.ID().ToIDOutput().ToStringOutput(),
 //				Address:         pulumi.String("10.0.0.1:8443"),
-//				X509CaId:        tls.ID(),
-//				SshCaId:         ssh.ID(),
+//				X509CaId:        tls.ID().ToIDOutput().ToStringOutput(),
+//				SshCaId:         ssh.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Gateway with only X.509 CA (ssh_ca_id is optional)
 //			_, err = twingate.NewTwingateGateway(ctx, "minimal", &twingate.TwingateGatewayArgs{
-//				RemoteNetworkId: gcp.ID(),
+//				RemoteNetworkId: gcp.ID().ToIDOutput().ToStringOutput(),
 //				Address:         pulumi.String("10.0.0.2:9001"),
-//				X509CaId:        tls.ID(),
+//				X509CaId:        tls.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

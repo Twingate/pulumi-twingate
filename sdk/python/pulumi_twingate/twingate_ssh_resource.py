@@ -63,11 +63,17 @@ class TwingateSSHResourceArgs:
         if name is not None:
             pulumi.set(__self__, "name", name)
         if protocols is not None:
+            warnings.warn("""This argument is deprecated and will be removed in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""protocols is deprecated: This argument is deprecated and will be removed in a future release.""")
+        if protocols is not None:
             pulumi.set(__self__, "protocols", protocols)
         if security_policy_id is not None:
             pulumi.set(__self__, "security_policy_id", security_policy_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if username is not None:
+            warnings.warn("""This argument is deprecated and will be removed in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""username is deprecated: This argument is deprecated and will be removed in a future release.""")
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -169,6 +175,7 @@ class TwingateSSHResourceArgs:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This argument is deprecated and will be removed in a future release.""")
     def protocols(self) -> pulumi.Input[Optional['TwingateSSHResourceProtocolsArgs']]:
         """
         Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
@@ -205,6 +212,7 @@ class TwingateSSHResourceArgs:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This argument is deprecated and will be removed in a future release.""")
     def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username to use when connecting to the SSH Resource.
@@ -262,6 +270,9 @@ class _TwingateSSHResourceState:
         if name is not None:
             pulumi.set(__self__, "name", name)
         if protocols is not None:
+            warnings.warn("""This argument is deprecated and will be removed in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""protocols is deprecated: This argument is deprecated and will be removed in a future release.""")
+        if protocols is not None:
             pulumi.set(__self__, "protocols", protocols)
         if remote_network_id is not None:
             pulumi.set(__self__, "remote_network_id", remote_network_id)
@@ -269,6 +280,9 @@ class _TwingateSSHResourceState:
             pulumi.set(__self__, "security_policy_id", security_policy_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if username is not None:
+            warnings.warn("""This argument is deprecated and will be removed in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""username is deprecated: This argument is deprecated and will be removed in a future release.""")
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -358,6 +372,7 @@ class _TwingateSSHResourceState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This argument is deprecated and will be removed in a future release.""")
     def protocols(self) -> pulumi.Input[Optional['TwingateSSHResourceProtocolsArgs']]:
         """
         Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
@@ -406,6 +421,7 @@ class _TwingateSSHResourceState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This argument is deprecated and will be removed in a future release.""")
     def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username to use when connecting to the SSH Resource.
@@ -693,6 +709,7 @@ class TwingateSSHResource(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This argument is deprecated and will be removed in a future release.""")
     def protocols(self) -> pulumi.Output['outputs.TwingateSSHResourceProtocols']:
         """
         Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
@@ -725,6 +742,7 @@ class TwingateSSHResource(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This argument is deprecated and will be removed in a future release.""")
     def username(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The username to use when connecting to the SSH Resource.
