@@ -113,6 +113,8 @@ export class TwingateKubernetesResource extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     /**
      * Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
+     *
+     * @deprecated This argument is deprecated and will be removed in a future release.
      */
     declare public readonly protocols: pulumi.Output<outputs.TwingateKubernetesResourceProtocols>;
     /**
@@ -229,6 +231,8 @@ export interface TwingateKubernetesResourceState {
     name?: pulumi.Input<string | undefined>;
     /**
      * Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
+     *
+     * @deprecated This argument is deprecated and will be removed in a future release.
      */
     protocols?: pulumi.Input<inputs.TwingateKubernetesResourceProtocols | undefined>;
     /**
@@ -291,6 +295,8 @@ export interface TwingateKubernetesResourceArgs {
     name?: pulumi.Input<string | undefined>;
     /**
      * Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
+     *
+     * @deprecated This argument is deprecated and will be removed in a future release.
      */
     protocols?: pulumi.Input<inputs.TwingateKubernetesResourceProtocols | undefined>;
     /**

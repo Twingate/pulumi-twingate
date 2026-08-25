@@ -74,6 +74,9 @@ class TwingateKubernetesResourceArgs:
         if name is not None:
             pulumi.set(__self__, "name", name)
         if protocols is not None:
+            warnings.warn("""This argument is deprecated and will be removed in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""protocols is deprecated: This argument is deprecated and will be removed in a future release.""")
+        if protocols is not None:
             pulumi.set(__self__, "protocols", protocols)
         if security_policy_id is not None:
             pulumi.set(__self__, "security_policy_id", security_policy_id)
@@ -214,6 +217,7 @@ class TwingateKubernetesResourceArgs:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This argument is deprecated and will be removed in a future release.""")
     def protocols(self) -> pulumi.Input[Optional['TwingateKubernetesResourceProtocolsArgs']]:
         """
         Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
@@ -304,6 +308,9 @@ class _TwingateKubernetesResourceState:
             pulumi.set(__self__, "is_visible", is_visible)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if protocols is not None:
+            warnings.warn("""This argument is deprecated and will be removed in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""protocols is deprecated: This argument is deprecated and will be removed in a future release.""")
         if protocols is not None:
             pulumi.set(__self__, "protocols", protocols)
         if remote_network_id is not None:
@@ -435,6 +442,7 @@ class _TwingateKubernetesResourceState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This argument is deprecated and will be removed in a future release.""")
     def protocols(self) -> pulumi.Input[Optional['TwingateKubernetesResourceProtocolsArgs']]:
         """
         Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
@@ -794,6 +802,7 @@ class TwingateKubernetesResource(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This argument is deprecated and will be removed in a future release.""")
     def protocols(self) -> pulumi.Output['outputs.TwingateKubernetesResourceProtocols']:
         """
         Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.

@@ -101,6 +101,8 @@ export class TwingateSSHResource extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     /**
      * Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
+     *
+     * @deprecated This argument is deprecated and will be removed in a future release.
      */
     declare public readonly protocols: pulumi.Output<outputs.TwingateSSHResourceProtocols>;
     /**
@@ -117,6 +119,8 @@ export class TwingateSSHResource extends pulumi.CustomResource {
     declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     /**
      * The username to use when connecting to the SSH Resource.
+     *
+     * @deprecated This argument is deprecated and will be removed in a future release.
      */
     declare public readonly username: pulumi.Output<string | undefined>;
 
@@ -208,6 +212,8 @@ export interface TwingateSSHResourceState {
     name?: pulumi.Input<string | undefined>;
     /**
      * Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
+     *
+     * @deprecated This argument is deprecated and will be removed in a future release.
      */
     protocols?: pulumi.Input<inputs.TwingateSSHResourceProtocols | undefined>;
     /**
@@ -224,6 +230,8 @@ export interface TwingateSSHResourceState {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The username to use when connecting to the SSH Resource.
+     *
+     * @deprecated This argument is deprecated and will be removed in a future release.
      */
     username?: pulumi.Input<string | undefined>;
 }
@@ -262,6 +270,8 @@ export interface TwingateSSHResourceArgs {
     name?: pulumi.Input<string | undefined>;
     /**
      * Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
+     *
+     * @deprecated This argument is deprecated and will be removed in a future release.
      */
     protocols?: pulumi.Input<inputs.TwingateSSHResourceProtocols | undefined>;
     /**
@@ -278,6 +288,8 @@ export interface TwingateSSHResourceArgs {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The username to use when connecting to the SSH Resource.
+     *
+     * @deprecated This argument is deprecated and will be removed in a future release.
      */
     username?: pulumi.Input<string | undefined>;
 }

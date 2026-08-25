@@ -49,9 +49,9 @@ import (
 //				return err
 //			}
 //			main, err := twingate.NewTwingateGateway(ctx, "main", &twingate.TwingateGatewayArgs{
-//				RemoteNetworkId: prod.ID(),
+//				RemoteNetworkId: prod.ID().ToIDOutput().ToStringOutput(),
 //				Address:         pulumi.String("10.0.0.1:8443"),
-//				X509CaId:        tls.ID(),
+//				X509CaId:        tls.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -59,8 +59,8 @@ import (
 //			// Kubernetes resource accessed via in-cluster DNS
 //			_, err = twingate.NewTwingateKubernetesResource(ctx, "prod_cluster", &twingate.TwingateKubernetesResourceArgs{
 //				Name:            pulumi.String("Production K8s"),
-//				GatewayId:       main.ID(),
-//				RemoteNetworkId: prod.ID(),
+//				GatewayId:       main.ID().ToIDOutput().ToStringOutput(),
+//				RemoteNetworkId: prod.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -69,8 +69,8 @@ import (
 //			_, err = twingate.NewTwingateKubernetesResource(ctx, "external_cluster", &twingate.TwingateKubernetesResourceArgs{
 //				Name:            pulumi.String("External K8s"),
 //				Address:         pulumi.String("k8s-api.example.com"),
-//				GatewayId:       main.ID(),
-//				RemoteNetworkId: prod.ID(),
+//				GatewayId:       main.ID().ToIDOutput().ToStringOutput(),
+//				RemoteNetworkId: prod.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -104,6 +104,8 @@ type TwingateKubernetesResource struct {
 	// The name of the Kubernetes Resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
+	//
+	// Deprecated: This argument is deprecated and will be removed in a future release.
 	Protocols TwingateKubernetesResourceProtocolsOutput `pulumi:"protocols"`
 	// The ID of the Remote Network the Kubernetes Resource belongs to.
 	RemoteNetworkId pulumi.StringOutput `pulumi:"remoteNetworkId"`
@@ -170,6 +172,8 @@ type twingateKubernetesResourceState struct {
 	// The name of the Kubernetes Resource.
 	Name *string `pulumi:"name"`
 	// Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
+	//
+	// Deprecated: This argument is deprecated and will be removed in a future release.
 	Protocols *TwingateKubernetesResourceProtocols `pulumi:"protocols"`
 	// The ID of the Remote Network the Kubernetes Resource belongs to.
 	RemoteNetworkId *string `pulumi:"remoteNetworkId"`
@@ -201,6 +205,8 @@ type TwingateKubernetesResourceState struct {
 	// The name of the Kubernetes Resource.
 	Name pulumi.StringPtrInput
 	// Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
+	//
+	// Deprecated: This argument is deprecated and will be removed in a future release.
 	Protocols TwingateKubernetesResourceProtocolsPtrInput
 	// The ID of the Remote Network the Kubernetes Resource belongs to.
 	RemoteNetworkId pulumi.StringPtrInput
@@ -236,6 +242,8 @@ type twingateKubernetesResourceArgs struct {
 	// The name of the Kubernetes Resource.
 	Name *string `pulumi:"name"`
 	// Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
+	//
+	// Deprecated: This argument is deprecated and will be removed in a future release.
 	Protocols *TwingateKubernetesResourceProtocols `pulumi:"protocols"`
 	// The ID of the Remote Network the Kubernetes Resource belongs to.
 	RemoteNetworkId string `pulumi:"remoteNetworkId"`
@@ -268,6 +276,8 @@ type TwingateKubernetesResourceArgs struct {
 	// The name of the Kubernetes Resource.
 	Name pulumi.StringPtrInput
 	// Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
+	//
+	// Deprecated: This argument is deprecated and will be removed in a future release.
 	Protocols TwingateKubernetesResourceProtocolsPtrInput
 	// The ID of the Remote Network the Kubernetes Resource belongs to.
 	RemoteNetworkId pulumi.StringInput
@@ -419,6 +429,8 @@ func (o TwingateKubernetesResourceOutput) Name() pulumi.StringOutput {
 }
 
 // Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
+//
+// Deprecated: This argument is deprecated and will be removed in a future release.
 func (o TwingateKubernetesResourceOutput) Protocols() TwingateKubernetesResourceProtocolsOutput {
 	return o.ApplyT(func(v *TwingateKubernetesResource) TwingateKubernetesResourceProtocolsOutput { return v.Protocols }).(TwingateKubernetesResourceProtocolsOutput)
 }

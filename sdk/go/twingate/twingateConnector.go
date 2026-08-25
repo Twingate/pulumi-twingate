@@ -35,7 +35,7 @@ import (
 //				return err
 //			}
 //			_, err = twingate.NewTwingateConnector(ctx, "aws_connector", &twingate.TwingateConnectorArgs{
-//				RemoteNetworkId:      awsNetwork.ID(),
+//				RemoteNetworkId:      awsNetwork.ID().ToIDOutput().ToStringOutput(),
 //				StatusUpdatesEnabled: pulumi.Bool(true),
 //			})
 //			if err != nil {
