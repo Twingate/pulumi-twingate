@@ -29,10 +29,8 @@ class TwingateSSHResourceArgs:
                  alias: pulumi.Input[Optional[_builtins.str]] = None,
                  is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 protocols: pulumi.Input[Optional['TwingateSSHResourceProtocolsArgs']] = None,
                  security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 username: pulumi.Input[Optional[_builtins.str]] = None):
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a TwingateSSHResource resource.
 
@@ -44,10 +42,8 @@ class TwingateSSHResourceArgs:
         :param pulumi.Input[_builtins.str] alias: Set a DNS alias address for the Resource. Must be a DNS-valid name string.
         :param pulumi.Input[_builtins.bool] is_visible: Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
         :param pulumi.Input[_builtins.str] name: The name of the SSH Resource.
-        :param pulumi.Input['TwingateSSHResourceProtocolsArgs'] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of key-value pair tags to set on this resource.
-        :param pulumi.Input[_builtins.str] username: The username to use when connecting to the SSH Resource.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "gateway_id", gateway_id)
@@ -62,20 +58,10 @@ class TwingateSSHResourceArgs:
             pulumi.set(__self__, "is_visible", is_visible)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if protocols is not None:
-            warnings.warn("""This argument is deprecated and will be removed in a future release.""", DeprecationWarning)
-            pulumi.log.warn("""protocols is deprecated: This argument is deprecated and will be removed in a future release.""")
-        if protocols is not None:
-            pulumi.set(__self__, "protocols", protocols)
         if security_policy_id is not None:
             pulumi.set(__self__, "security_policy_id", security_policy_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-        if username is not None:
-            warnings.warn("""This argument is deprecated and will be removed in a future release.""", DeprecationWarning)
-            pulumi.log.warn("""username is deprecated: This argument is deprecated and will be removed in a future release.""")
-        if username is not None:
-            pulumi.set(__self__, "username", username)
 
     @_builtins.property
     @pulumi.getter
@@ -174,19 +160,6 @@ class TwingateSSHResourceArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""This argument is deprecated and will be removed in a future release.""")
-    def protocols(self) -> pulumi.Input[Optional['TwingateSSHResourceProtocolsArgs']]:
-        """
-        Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-        """
-        return pulumi.get(self, "protocols")
-
-    @protocols.setter
-    def protocols(self, value: pulumi.Input[Optional['TwingateSSHResourceProtocolsArgs']]):
-        pulumi.set(self, "protocols", value)
-
-    @_builtins.property
     @pulumi.getter(name="securityPolicyId")
     def security_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -210,19 +183,6 @@ class TwingateSSHResourceArgs:
     def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""This argument is deprecated and will be removed in a future release.""")
-    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The username to use when connecting to the SSH Resource.
-        """
-        return pulumi.get(self, "username")
-
-    @username.setter
-    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "username", value)
-
 
 @pulumi.input_type
 class _TwingateSSHResourceState:
@@ -234,11 +194,9 @@ class _TwingateSSHResourceState:
                  gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 protocols: pulumi.Input[Optional['TwingateSSHResourceProtocolsArgs']] = None,
                  remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 username: pulumi.Input[Optional[_builtins.str]] = None):
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering TwingateSSHResource resources.
 
@@ -249,11 +207,9 @@ class _TwingateSSHResourceState:
         :param pulumi.Input[_builtins.str] gateway_id: The ID of the Gateway used to access this SSH Resource.
         :param pulumi.Input[_builtins.bool] is_visible: Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
         :param pulumi.Input[_builtins.str] name: The name of the SSH Resource.
-        :param pulumi.Input['TwingateSSHResourceProtocolsArgs'] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param pulumi.Input[_builtins.str] remote_network_id: The ID of the Remote Network the SSH Resource belongs to.
         :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of key-value pair tags to set on this resource.
-        :param pulumi.Input[_builtins.str] username: The username to use when connecting to the SSH Resource.
         """
         if access_groups is not None:
             pulumi.set(__self__, "access_groups", access_groups)
@@ -269,22 +225,12 @@ class _TwingateSSHResourceState:
             pulumi.set(__self__, "is_visible", is_visible)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if protocols is not None:
-            warnings.warn("""This argument is deprecated and will be removed in a future release.""", DeprecationWarning)
-            pulumi.log.warn("""protocols is deprecated: This argument is deprecated and will be removed in a future release.""")
-        if protocols is not None:
-            pulumi.set(__self__, "protocols", protocols)
         if remote_network_id is not None:
             pulumi.set(__self__, "remote_network_id", remote_network_id)
         if security_policy_id is not None:
             pulumi.set(__self__, "security_policy_id", security_policy_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-        if username is not None:
-            warnings.warn("""This argument is deprecated and will be removed in a future release.""", DeprecationWarning)
-            pulumi.log.warn("""username is deprecated: This argument is deprecated and will be removed in a future release.""")
-        if username is not None:
-            pulumi.set(__self__, "username", username)
 
     @_builtins.property
     @pulumi.getter(name="accessGroups")
@@ -371,19 +317,6 @@ class _TwingateSSHResourceState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""This argument is deprecated and will be removed in a future release.""")
-    def protocols(self) -> pulumi.Input[Optional['TwingateSSHResourceProtocolsArgs']]:
-        """
-        Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-        """
-        return pulumi.get(self, "protocols")
-
-    @protocols.setter
-    def protocols(self, value: pulumi.Input[Optional['TwingateSSHResourceProtocolsArgs']]):
-        pulumi.set(self, "protocols", value)
-
-    @_builtins.property
     @pulumi.getter(name="remoteNetworkId")
     def remote_network_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -419,19 +352,6 @@ class _TwingateSSHResourceState:
     def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""This argument is deprecated and will be removed in a future release.""")
-    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The username to use when connecting to the SSH Resource.
-        """
-        return pulumi.get(self, "username")
-
-    @username.setter
-    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "username", value)
-
 
 @pulumi.type_token("twingate:index/twingateSSHResource:TwingateSSHResource")
 class TwingateSSHResource(pulumi.CustomResource):
@@ -446,11 +366,9 @@ class TwingateSSHResource(pulumi.CustomResource):
                  gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 protocols: pulumi.Input[Optional[Union['TwingateSSHResourceProtocolsArgs', 'TwingateSSHResourceProtocolsArgsDict']]] = None,
                  remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         SSH Resources are Twingate resources accessed via a Gateway.
@@ -479,8 +397,7 @@ class TwingateSSHResource(pulumi.CustomResource):
             gateway_id=main.id,
             alias="test.int",
             remote_network_id=prod.id,
-            address="10.128.0.105",
-            username="ubuntu")
+            address="10.128.0.105")
         ```
 
 
@@ -493,11 +410,9 @@ class TwingateSSHResource(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] gateway_id: The ID of the Gateway used to access this SSH Resource.
         :param pulumi.Input[_builtins.bool] is_visible: Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
         :param pulumi.Input[_builtins.str] name: The name of the SSH Resource.
-        :param pulumi.Input[Union['TwingateSSHResourceProtocolsArgs', 'TwingateSSHResourceProtocolsArgsDict']] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param pulumi.Input[_builtins.str] remote_network_id: The ID of the Remote Network the SSH Resource belongs to.
         :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of key-value pair tags to set on this resource.
-        :param pulumi.Input[_builtins.str] username: The username to use when connecting to the SSH Resource.
         """
         ...
     @overload
@@ -532,8 +447,7 @@ class TwingateSSHResource(pulumi.CustomResource):
             gateway_id=main.id,
             alias="test.int",
             remote_network_id=prod.id,
-            address="10.128.0.105",
-            username="ubuntu")
+            address="10.128.0.105")
         ```
 
 
@@ -559,11 +473,9 @@ class TwingateSSHResource(pulumi.CustomResource):
                  gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 protocols: pulumi.Input[Optional[Union['TwingateSSHResourceProtocolsArgs', 'TwingateSSHResourceProtocolsArgsDict']]] = None,
                  remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -584,13 +496,11 @@ class TwingateSSHResource(pulumi.CustomResource):
             __props__.__dict__["gateway_id"] = gateway_id
             __props__.__dict__["is_visible"] = is_visible
             __props__.__dict__["name"] = name
-            __props__.__dict__["protocols"] = protocols
             if remote_network_id is None and not opts.urn:
                 raise TypeError("Missing required property 'remote_network_id'")
             __props__.__dict__["remote_network_id"] = remote_network_id
             __props__.__dict__["security_policy_id"] = security_policy_id
             __props__.__dict__["tags"] = tags
-            __props__.__dict__["username"] = username
         super(TwingateSSHResource, __self__).__init__(
             'twingate:index/twingateSSHResource:TwingateSSHResource',
             resource_name,
@@ -608,11 +518,9 @@ class TwingateSSHResource(pulumi.CustomResource):
             gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
             is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            protocols: pulumi.Input[Optional[Union['TwingateSSHResourceProtocolsArgs', 'TwingateSSHResourceProtocolsArgsDict']]] = None,
             remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
             security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
-            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            username: pulumi.Input[Optional[_builtins.str]] = None) -> 'TwingateSSHResource':
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'TwingateSSHResource':
         """
         Get an existing TwingateSSHResource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -627,11 +535,9 @@ class TwingateSSHResource(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] gateway_id: The ID of the Gateway used to access this SSH Resource.
         :param pulumi.Input[_builtins.bool] is_visible: Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
         :param pulumi.Input[_builtins.str] name: The name of the SSH Resource.
-        :param pulumi.Input[Union['TwingateSSHResourceProtocolsArgs', 'TwingateSSHResourceProtocolsArgsDict']] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param pulumi.Input[_builtins.str] remote_network_id: The ID of the Remote Network the SSH Resource belongs to.
         :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of key-value pair tags to set on this resource.
-        :param pulumi.Input[_builtins.str] username: The username to use when connecting to the SSH Resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -644,11 +550,9 @@ class TwingateSSHResource(pulumi.CustomResource):
         __props__.__dict__["gateway_id"] = gateway_id
         __props__.__dict__["is_visible"] = is_visible
         __props__.__dict__["name"] = name
-        __props__.__dict__["protocols"] = protocols
         __props__.__dict__["remote_network_id"] = remote_network_id
         __props__.__dict__["security_policy_id"] = security_policy_id
         __props__.__dict__["tags"] = tags
-        __props__.__dict__["username"] = username
         return TwingateSSHResource(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -708,15 +612,6 @@ class TwingateSSHResource(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""This argument is deprecated and will be removed in a future release.""")
-    def protocols(self) -> pulumi.Output['outputs.TwingateSSHResourceProtocols']:
-        """
-        Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-        """
-        return pulumi.get(self, "protocols")
-
-    @_builtins.property
     @pulumi.getter(name="remoteNetworkId")
     def remote_network_id(self) -> pulumi.Output[_builtins.str]:
         """
@@ -739,13 +634,4 @@ class TwingateSSHResource(pulumi.CustomResource):
         A map of key-value pair tags to set on this resource.
         """
         return pulumi.get(self, "tags")
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""This argument is deprecated and will be removed in a future release.""")
-    def username(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        The username to use when connecting to the SSH Resource.
-        """
-        return pulumi.get(self, "username")
 

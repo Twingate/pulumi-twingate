@@ -12,17 +12,17 @@ namespace Twingate.Twingate.Outputs
 {
 
     [OutputType]
-    public sealed class TwingateGatewayConfigKubernetes
+    public sealed class TwingateWebAppResourceUpstream
     {
         /// <summary>
-        /// List of Kubernetes resources. Accepts full twingate*kubernetes*resource references.
+        /// The port number. Must be between 1 and 65535 inclusive.
         /// </summary>
-        public readonly ImmutableArray<Outputs.TwingateGatewayConfigKubernetesResource> Resources;
+        public readonly int Port;
 
         [OutputConstructor]
-        private TwingateGatewayConfigKubernetes(ImmutableArray<Outputs.TwingateGatewayConfigKubernetesResource> resources)
+        private TwingateWebAppResourceUpstream(int port)
         {
-            Resources = resources;
+            Port = port;
         }
     }
 }

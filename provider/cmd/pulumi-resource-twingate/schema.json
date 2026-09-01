@@ -508,240 +508,6 @@
                 }
             }
         },
-        "twingate:index/TwingateGatewayConfigKubernetes:TwingateGatewayConfigKubernetes": {
-            "properties": {
-                "resources": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/twingate:index/TwingateGatewayConfigKubernetesResource:TwingateGatewayConfigKubernetesResource"
-                    },
-                    "description": "List of Kubernetes resources. Accepts full twingate*kubernetes*resource references.\n"
-                }
-            },
-            "type": "object"
-        },
-        "twingate:index/TwingateGatewayConfigKubernetesResource:TwingateGatewayConfigKubernetesResource": {
-            "properties": {
-                "address": {
-                    "type": "string"
-                },
-                "inCluster": {
-                    "type": "boolean"
-                },
-                "name": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "address",
-                "inCluster",
-                "name"
-            ]
-        },
-        "twingate:index/TwingateGatewayConfigSsh:TwingateGatewayConfigSsh": {
-            "properties": {
-                "ca": {
-                    "$ref": "#/types/twingate:index/TwingateGatewayConfigSshCa:TwingateGatewayConfigSshCa",
-                    "description": "SSH CA configuration. Specify either vault.address or private*key*file, not both.\n"
-                },
-                "gateway": {
-                    "$ref": "#/types/twingate:index/TwingateGatewayConfigSshGateway:TwingateGatewayConfigSshGateway",
-                    "description": "SSH gateway settings. All fields are optional and fall back to built-in defaults.\n"
-                },
-                "resources": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/twingate:index/TwingateGatewayConfigSshResource:TwingateGatewayConfigSshResource"
-                    },
-                    "description": "List of SSH resources. Accepts full twingate*ssh*resource references.\n"
-                }
-            },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "ca",
-                        "gateway"
-                    ]
-                }
-            }
-        },
-        "twingate:index/TwingateGatewayConfigSshCa:TwingateGatewayConfigSshCa": {
-            "properties": {
-                "privateKeyFile": {
-                    "type": "string",
-                    "description": "Path to the SSH CA private key file. Can't be used together with vault.address.\n"
-                },
-                "vault": {
-                    "$ref": "#/types/twingate:index/TwingateGatewayConfigSshCaVault:TwingateGatewayConfigSshCaVault",
-                    "description": "Vault SSH CA configuration.\n"
-                }
-            },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "vault"
-                    ]
-                }
-            }
-        },
-        "twingate:index/TwingateGatewayConfigSshCaVault:TwingateGatewayConfigSshCaVault": {
-            "properties": {
-                "address": {
-                    "type": "string",
-                    "description": "Vault server address. Can't be used together with ca.private*key*file.\n"
-                },
-                "auth": {
-                    "$ref": "#/types/twingate:index/TwingateGatewayConfigSshCaVaultAuth:TwingateGatewayConfigSshCaVaultAuth",
-                    "description": "Vault authentication configuration.\n"
-                },
-                "caBundleFile": {
-                    "type": "string",
-                    "description": "Path to the Vault CA bundle file. Default: \"/etc/ssl/vault-ca.crt\".\n"
-                },
-                "mount": {
-                    "type": "string",
-                    "description": "Vault SSH secrets engine mount path. Default: \"ssh\".\n"
-                },
-                "role": {
-                    "type": "string",
-                    "description": "Vault role for signing certificates. Default: \"gateway\".\n"
-                }
-            },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "auth",
-                        "caBundleFile",
-                        "mount",
-                        "role"
-                    ]
-                }
-            }
-        },
-        "twingate:index/TwingateGatewayConfigSshCaVaultAuth:TwingateGatewayConfigSshCaVaultAuth": {
-            "properties": {
-                "gcp": {
-                    "$ref": "#/types/twingate:index/TwingateGatewayConfigSshCaVaultAuthGcp:TwingateGatewayConfigSshCaVaultAuthGcp",
-                    "description": "GCP authentication for Vault. Can't be used together with token.\n"
-                },
-                "token": {
-                    "type": "string",
-                    "description": "Vault token used for authentication. Can't be used together with gcp.\n",
-                    "secret": true
-                }
-            },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "gcp"
-                    ]
-                }
-            }
-        },
-        "twingate:index/TwingateGatewayConfigSshCaVaultAuthGcp:TwingateGatewayConfigSshCaVaultAuthGcp": {
-            "properties": {
-                "mount": {
-                    "type": "string",
-                    "description": "Vault GCP auth mount path. Default: \"gcp\".\n"
-                },
-                "role": {
-                    "type": "string",
-                    "description": "GCP IAM role for Vault GCP authentication.\n"
-                },
-                "serviceAccountEmail": {
-                    "type": "string",
-                    "description": "Service account email. Required when type is \"iam\".\n"
-                },
-                "type": {
-                    "type": "string",
-                    "description": "GCP authentication type for Vault (e.g. \"iam\" or \"gce\"). When set to \"iam\", service*account*email is required.\n"
-                }
-            },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "mount"
-                    ]
-                }
-            }
-        },
-        "twingate:index/TwingateGatewayConfigSshGateway:TwingateGatewayConfigSshGateway": {
-            "properties": {
-                "hostCertTtl": {
-                    "type": "string",
-                    "description": "Host certificate TTL. Default: \"24h\".\n"
-                },
-                "keyType": {
-                    "type": "string",
-                    "description": "SSH key type. Default: \"ed25519\".\n"
-                },
-                "userCertTtl": {
-                    "type": "string",
-                    "description": "User certificate TTL. Default: \"5m\".\n"
-                },
-                "username": {
-                    "type": "string",
-                    "description": "SSH gateway username. Default: \"gateway\".\n"
-                }
-            },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "hostCertTtl",
-                        "keyType",
-                        "userCertTtl",
-                        "username"
-                    ]
-                }
-            }
-        },
-        "twingate:index/TwingateGatewayConfigSshResource:TwingateGatewayConfigSshResource": {
-            "properties": {
-                "address": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "username": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "address",
-                "name",
-                "username"
-            ]
-        },
-        "twingate:index/TwingateGatewayConfigTls:TwingateGatewayConfigTls": {
-            "properties": {
-                "certificateFile": {
-                    "type": "string",
-                    "description": "Path to the TLS certificate file. Default: \"/etc/gateway/tls.crt\".\n"
-                },
-                "privateKeyFile": {
-                    "type": "string",
-                    "description": "Path to the TLS private key file. Default: \"/etc/gateway/tls.key\".\n"
-                }
-            },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "certificateFile",
-                        "privateKeyFile"
-                    ]
-                }
-            }
-        },
         "twingate:index/TwingateKubernetesResourceAccessGroup:TwingateKubernetesResourceAccessGroup": {
             "properties": {
                 "accessPolicies": {
@@ -818,78 +584,6 @@
                         "approvalMode",
                         "duration",
                         "mode"
-                    ]
-                }
-            }
-        },
-        "twingate:index/TwingateKubernetesResourceProtocols:TwingateKubernetesResourceProtocols": {
-            "properties": {
-                "allowIcmp": {
-                    "type": "boolean",
-                    "description": "Whether to allow ICMP (ping) traffic\n"
-                },
-                "tcp": {
-                    "$ref": "#/types/twingate:index/TwingateKubernetesResourceProtocolsTcp:TwingateKubernetesResourceProtocolsTcp"
-                },
-                "udp": {
-                    "$ref": "#/types/twingate:index/TwingateKubernetesResourceProtocolsUdp:TwingateKubernetesResourceProtocolsUdp"
-                }
-            },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "allowIcmp",
-                        "tcp",
-                        "udp"
-                    ]
-                }
-            }
-        },
-        "twingate:index/TwingateKubernetesResourceProtocolsTcp:TwingateKubernetesResourceProtocolsTcp": {
-            "properties": {
-                "policy": {
-                    "type": "string",
-                    "description": "Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`\n"
-                },
-                "ports": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or \u003cspan pulumi-lang-nodejs=\"`8080`\" pulumi-lang-dotnet=\"`8080`\" pulumi-lang-go=\"`8080`\" pulumi-lang-python=\"`8080`\" pulumi-lang-yaml=\"`8080`\" pulumi-lang-java=\"`8080`\" pulumi-lang-hcl=\"`8080`\"\u003e`8080`\u003c/span\u003e for a single port\n"
-                }
-            },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "policy",
-                        "ports"
-                    ]
-                }
-            }
-        },
-        "twingate:index/TwingateKubernetesResourceProtocolsUdp:TwingateKubernetesResourceProtocolsUdp": {
-            "properties": {
-                "policy": {
-                    "type": "string",
-                    "description": "Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`\n"
-                },
-                "ports": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or \u003cspan pulumi-lang-nodejs=\"`8080`\" pulumi-lang-dotnet=\"`8080`\" pulumi-lang-go=\"`8080`\" pulumi-lang-python=\"`8080`\" pulumi-lang-yaml=\"`8080`\" pulumi-lang-java=\"`8080`\" pulumi-lang-hcl=\"`8080`\"\u003e`8080`\u003c/span\u003e for a single port\n"
-                }
-            },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "policy",
-                        "ports"
                     ]
                 }
             }
@@ -1142,77 +836,109 @@
                 }
             }
         },
-        "twingate:index/TwingateSSHResourceProtocols:TwingateSSHResourceProtocols": {
+        "twingate:index/TwingateWebAppResourceAccessGroup:TwingateWebAppResourceAccessGroup": {
             "properties": {
-                "allowIcmp": {
-                    "type": "boolean",
-                    "description": "Whether to allow ICMP (ping) traffic\n"
+                "accessPolicies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/twingate:index/TwingateWebAppResourceAccessGroupAccessPolicy:TwingateWebAppResourceAccessGroupAccessPolicy"
+                    },
+                    "description": "Restrict access according to JIT access policy\n"
                 },
-                "tcp": {
-                    "$ref": "#/types/twingate:index/TwingateSSHResourceProtocolsTcp:TwingateSSHResourceProtocolsTcp"
+                "groupId": {
+                    "type": "string",
+                    "description": "Group ID that will have permission to access the Resource.\n"
                 },
-                "udp": {
-                    "$ref": "#/types/twingate:index/TwingateSSHResourceProtocolsUdp:TwingateSSHResourceProtocolsUdp"
+                "securityPolicyId": {
+                    "type": "string",
+                    "description": "The ID of a \u003cspan pulumi-lang-nodejs=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-dotnet=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-go=\"`getTwingateSecurityPolicy`\" pulumi-lang-python=\"`get_twingate_security_policy`\" pulumi-lang-yaml=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-java=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-hcl=\"`data.twingate_security_policy`\"\u003e`twingate.getTwingateSecurityPolicy`\u003c/span\u003e to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.\n"
                 }
             },
             "type": "object",
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "allowIcmp",
-                        "tcp",
-                        "udp"
+                        "groupId",
+                        "securityPolicyId"
                     ]
                 }
             }
         },
-        "twingate:index/TwingateSSHResourceProtocolsTcp:TwingateSSHResourceProtocolsTcp": {
+        "twingate:index/TwingateWebAppResourceAccessGroupAccessPolicy:TwingateWebAppResourceAccessGroupAccessPolicy": {
             "properties": {
-                "policy": {
+                "approvalMode": {
                     "type": "string",
-                    "description": "Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`\n"
+                    "description": "This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.\n"
                 },
-                "ports": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or \u003cspan pulumi-lang-nodejs=\"`8080`\" pulumi-lang-dotnet=\"`8080`\" pulumi-lang-go=\"`8080`\" pulumi-lang-python=\"`8080`\" pulumi-lang-yaml=\"`8080`\" pulumi-lang-java=\"`8080`\" pulumi-lang-hcl=\"`8080`\"\u003e`8080`\u003c/span\u003e for a single port\n"
+                "duration": {
+                    "type": "string",
+                    "description": "This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include \u003cspan pulumi-lang-nodejs=\"`1h`\" pulumi-lang-dotnet=\"`1h`\" pulumi-lang-go=\"`1h`\" pulumi-lang-python=\"`1h`\" pulumi-lang-yaml=\"`1h`\" pulumi-lang-java=\"`1h`\" pulumi-lang-hcl=\"`1h`\"\u003e`1h`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`2d`\" pulumi-lang-dotnet=\"`2d`\" pulumi-lang-go=\"`2d`\" pulumi-lang-python=\"`2d`\" pulumi-lang-yaml=\"`2d`\" pulumi-lang-java=\"`2d`\" pulumi-lang-hcl=\"`2d`\"\u003e`2d`\u003c/span\u003e.\n"
+                },
+                "mode": {
+                    "type": "string",
+                    "description": "This will set the\u003cspan pulumi-lang-nodejs=\" accessPolicy \" pulumi-lang-dotnet=\" AccessPolicy \" pulumi-lang-go=\" accessPolicy \" pulumi-lang-python=\" access_policy \" pulumi-lang-yaml=\" accessPolicy \" pulumi-lang-java=\" accessPolicy \" pulumi-lang-hcl=\" access_policy \"\u003e accessPolicy \u003c/span\u003emode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.\n"
                 }
             },
             "type": "object",
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "policy",
-                        "ports"
+                        "approvalMode",
+                        "duration",
+                        "mode"
                     ]
                 }
             }
         },
-        "twingate:index/TwingateSSHResourceProtocolsUdp:TwingateSSHResourceProtocolsUdp": {
+        "twingate:index/TwingateWebAppResourceAccessPolicy:TwingateWebAppResourceAccessPolicy": {
             "properties": {
-                "policy": {
+                "approvalMode": {
                     "type": "string",
-                    "description": "Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`\n"
+                    "description": "This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.\n"
                 },
-                "ports": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or \u003cspan pulumi-lang-nodejs=\"`8080`\" pulumi-lang-dotnet=\"`8080`\" pulumi-lang-go=\"`8080`\" pulumi-lang-python=\"`8080`\" pulumi-lang-yaml=\"`8080`\" pulumi-lang-java=\"`8080`\" pulumi-lang-hcl=\"`8080`\"\u003e`8080`\u003c/span\u003e for a single port\n"
+                "duration": {
+                    "type": "string",
+                    "description": "This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include \u003cspan pulumi-lang-nodejs=\"`1h`\" pulumi-lang-dotnet=\"`1h`\" pulumi-lang-go=\"`1h`\" pulumi-lang-python=\"`1h`\" pulumi-lang-yaml=\"`1h`\" pulumi-lang-java=\"`1h`\" pulumi-lang-hcl=\"`1h`\"\u003e`1h`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`2d`\" pulumi-lang-dotnet=\"`2d`\" pulumi-lang-go=\"`2d`\" pulumi-lang-python=\"`2d`\" pulumi-lang-yaml=\"`2d`\" pulumi-lang-java=\"`2d`\" pulumi-lang-hcl=\"`2d`\"\u003e`2d`\u003c/span\u003e.\n"
+                },
+                "mode": {
+                    "type": "string",
+                    "description": "This will set the\u003cspan pulumi-lang-nodejs=\" accessPolicy \" pulumi-lang-dotnet=\" AccessPolicy \" pulumi-lang-go=\" accessPolicy \" pulumi-lang-python=\" access_policy \" pulumi-lang-yaml=\" accessPolicy \" pulumi-lang-java=\" accessPolicy \" pulumi-lang-hcl=\" access_policy \"\u003e accessPolicy \u003c/span\u003emode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.\n"
                 }
             },
             "type": "object",
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "policy",
-                        "ports"
+                        "approvalMode",
+                        "duration",
+                        "mode"
                     ]
                 }
             }
+        },
+        "twingate:index/TwingateWebAppResourceDownstream:TwingateWebAppResourceDownstream": {
+            "properties": {
+                "port": {
+                    "type": "integer",
+                    "description": "The port number. Must be between 1 and 65535 inclusive.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "port"
+            ]
+        },
+        "twingate:index/TwingateWebAppResourceUpstream:TwingateWebAppResourceUpstream": {
+            "properties": {
+                "port": {
+                    "type": "integer",
+                    "description": "The port number. Must be between 1 and 65535 inclusive.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "port"
+            ]
         },
         "twingate:index/getTwingateConnectorsConnector:getTwingateConnectorsConnector": {
             "properties": {
@@ -2280,97 +2006,6 @@
                 "type": "object"
             }
         },
-        "twingate:index/twingateGatewayConfig:TwingateGatewayConfig": {
-            "description": "Generates a Gateway configuration YAML from SSH and Kubernetes resources.\n\n",
-            "properties": {
-                "content": {
-                    "type": "string",
-                    "description": "The generated YAML configuration content.\n",
-                    "secret": true
-                },
-                "kubernetes": {
-                    "$ref": "#/types/twingate:index/TwingateGatewayConfigKubernetes:TwingateGatewayConfigKubernetes",
-                    "description": "Kubernetes configuration block containing resource settings.\n"
-                },
-                "metricsPort": {
-                    "type": "integer",
-                    "description": "Gateway metrics port. Default: 9090.\n"
-                },
-                "port": {
-                    "type": "integer",
-                    "description": "Gateway listen port. Default: 8443.\n"
-                },
-                "ssh": {
-                    "$ref": "#/types/twingate:index/TwingateGatewayConfigSsh:TwingateGatewayConfigSsh",
-                    "description": "SSH configuration block containing gateway, CA, and resource settings.\n"
-                },
-                "tls": {
-                    "$ref": "#/types/twingate:index/TwingateGatewayConfigTls:TwingateGatewayConfigTls",
-                    "description": "TLS configuration for the gateway.\n"
-                }
-            },
-            "required": [
-                "content",
-                "kubernetes",
-                "metricsPort",
-                "port",
-                "ssh",
-                "tls"
-            ],
-            "inputProperties": {
-                "kubernetes": {
-                    "$ref": "#/types/twingate:index/TwingateGatewayConfigKubernetes:TwingateGatewayConfigKubernetes",
-                    "description": "Kubernetes configuration block containing resource settings.\n"
-                },
-                "metricsPort": {
-                    "type": "integer",
-                    "description": "Gateway metrics port. Default: 9090.\n"
-                },
-                "port": {
-                    "type": "integer",
-                    "description": "Gateway listen port. Default: 8443.\n"
-                },
-                "ssh": {
-                    "$ref": "#/types/twingate:index/TwingateGatewayConfigSsh:TwingateGatewayConfigSsh",
-                    "description": "SSH configuration block containing gateway, CA, and resource settings.\n"
-                },
-                "tls": {
-                    "$ref": "#/types/twingate:index/TwingateGatewayConfigTls:TwingateGatewayConfigTls",
-                    "description": "TLS configuration for the gateway.\n"
-                }
-            },
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering TwingateGatewayConfig resources.\n",
-                "properties": {
-                    "content": {
-                        "type": "string",
-                        "description": "The generated YAML configuration content.\n",
-                        "secret": true
-                    },
-                    "kubernetes": {
-                        "$ref": "#/types/twingate:index/TwingateGatewayConfigKubernetes:TwingateGatewayConfigKubernetes",
-                        "description": "Kubernetes configuration block containing resource settings.\n"
-                    },
-                    "metricsPort": {
-                        "type": "integer",
-                        "description": "Gateway metrics port. Default: 9090.\n"
-                    },
-                    "port": {
-                        "type": "integer",
-                        "description": "Gateway listen port. Default: 8443.\n"
-                    },
-                    "ssh": {
-                        "$ref": "#/types/twingate:index/TwingateGatewayConfigSsh:TwingateGatewayConfigSsh",
-                        "description": "SSH configuration block containing gateway, CA, and resource settings.\n"
-                    },
-                    "tls": {
-                        "$ref": "#/types/twingate:index/TwingateGatewayConfigTls:TwingateGatewayConfigTls",
-                        "description": "TLS configuration for the gateway.\n"
-                    }
-                },
-                "type": "object"
-            }
-        },
         "twingate:index/twingateGroup:TwingateGroup": {
             "description": "Groups are how users are authorized to access Resources. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/groups).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@twingate/pulumi-twingate\";\n\nconst aws = new twingate.TwingateGroup(\"aws\", {name: \"aws_group\"});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\naws = twingate.TwingateGroup(\"aws\", name=\"aws_group\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Twingate.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var aws = new Twingate.TwingateGroup(\"aws\", new()\n    {\n        Name = \"aws_group\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/v4/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.NewTwingateGroup(ctx, \"aws\", \u0026twingate.TwingateGroupArgs{\n\t\t\tName: pulumi.String(\"aws_group\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    twingate = {\n      source = \"pulumi/twingate\"\n    }\n  }\n}\n\nresource \"twingate_twingategroup\" \"aws\" {\n  name = \"aws_group\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateGroup;\nimport com.pulumi.twingate.TwingateGroupArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var aws = new TwingateGroup(\"aws\", TwingateGroupArgs.builder()\n            .name(\"aws_group\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  aws:\n    type: twingate:TwingateGroup\n    properties:\n      name: aws_group\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import twingate:index/twingateGroup:TwingateGroup aws R3JvdXA6MzQ4OTE=\n```\n\n",
             "properties": {
@@ -2482,11 +2117,6 @@
                     "type": "string",
                     "description": "The name of the Kubernetes Resource.\n"
                 },
-                "protocols": {
-                    "$ref": "#/types/twingate:index/TwingateKubernetesResourceProtocols:TwingateKubernetesResourceProtocols",
-                    "description": "Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.\n",
-                    "deprecationMessage": "This argument is deprecated and will be removed in a future release."
-                },
                 "remoteNetworkId": {
                     "type": "string",
                     "description": "The ID of the Remote Network the Kubernetes Resource belongs to.\n"
@@ -2511,7 +2141,6 @@
                 "inCluster",
                 "isVisible",
                 "name",
-                "protocols",
                 "remoteNetworkId",
                 "securityPolicyId",
                 "tags"
@@ -2562,11 +2191,6 @@
                 "name": {
                     "type": "string",
                     "description": "The name of the Kubernetes Resource.\n"
-                },
-                "protocols": {
-                    "$ref": "#/types/twingate:index/TwingateKubernetesResourceProtocols:TwingateKubernetesResourceProtocols",
-                    "description": "Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.\n",
-                    "deprecationMessage": "This argument is deprecated and will be removed in a future release."
                 },
                 "remoteNetworkId": {
                     "type": "string",
@@ -2636,11 +2260,6 @@
                     "name": {
                         "type": "string",
                         "description": "The name of the Kubernetes Resource.\n"
-                    },
-                    "protocols": {
-                        "$ref": "#/types/twingate:index/TwingateKubernetesResourceProtocols:TwingateKubernetesResourceProtocols",
-                        "description": "Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.\n",
-                        "deprecationMessage": "This argument is deprecated and will be removed in a future release."
                     },
                     "remoteNetworkId": {
                         "type": "string",
@@ -3030,7 +2649,7 @@
             }
         },
         "twingate:index/twingateSSHResource:TwingateSSHResource": {
-            "description": "SSH Resources are Twingate resources accessed via a Gateway.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as std from \"@pulumi/std\";\nimport * as twingate from \"@twingate/pulumi-twingate\";\n\nconst prod = new twingate.TwingateRemoteNetwork(\"prod\", {name: \"Production Network\"});\nconst tls = new twingate.TwingateX509CertificateAuthority(\"tls\", {\n    name: \"My TLS CA\",\n    certificate: std.file({\n        input: \"ca.pem\",\n    }).then(invoke =\u003e invoke.result),\n});\nconst ssh = new twingate.TwingateSSHCertificateAuthority(\"ssh\", {\n    name: \"My SSH CA\",\n    publicKey: \"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIr+Aj3O8csUrFRNWS7wViafil3rMlZ0glQ/OZ0CjCti\",\n});\nconst main = new twingate.TwingateGateway(\"main\", {\n    remoteNetworkId: prod.id,\n    address: \"10.0.0.1:8443\",\n    x509CaId: tls.id,\n    sshCaId: ssh.id,\n});\nconst sshServer = new twingate.TwingateSSHResource(\"ssh_server\", {\n    name: \"SSH Server\",\n    gatewayId: main.id,\n    alias: \"test.int\",\n    remoteNetworkId: prod.id,\n    address: \"10.128.0.105\",\n    username: \"ubuntu\",\n});\n```\n```python\nimport pulumi\nimport pulumi_std as std\nimport pulumi_twingate as twingate\n\nprod = twingate.TwingateRemoteNetwork(\"prod\", name=\"Production Network\")\ntls = twingate.TwingateX509CertificateAuthority(\"tls\",\n    name=\"My TLS CA\",\n    certificate=std.file(input=\"ca.pem\").result)\nssh = twingate.TwingateSSHCertificateAuthority(\"ssh\",\n    name=\"My SSH CA\",\n    public_key=\"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIr+Aj3O8csUrFRNWS7wViafil3rMlZ0glQ/OZ0CjCti\")\nmain = twingate.TwingateGateway(\"main\",\n    remote_network_id=prod.id,\n    address=\"10.0.0.1:8443\",\n    x509_ca_id=tls.id,\n    ssh_ca_id=ssh.id)\nssh_server = twingate.TwingateSSHResource(\"ssh_server\",\n    name=\"SSH Server\",\n    gateway_id=main.id,\n    alias=\"test.int\",\n    remote_network_id=prod.id,\n    address=\"10.128.0.105\",\n    username=\"ubuntu\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Std = Pulumi.Std;\nusing Twingate = Twingate.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var prod = new Twingate.TwingateRemoteNetwork(\"prod\", new()\n    {\n        Name = \"Production Network\",\n    });\n\n    var tls = new Twingate.TwingateX509CertificateAuthority(\"tls\", new()\n    {\n        Name = \"My TLS CA\",\n        Certificate = Std.File.Invoke(new()\n        {\n            Input = \"ca.pem\",\n        }).Apply(invoke =\u003e invoke.Result),\n    });\n\n    var ssh = new Twingate.TwingateSSHCertificateAuthority(\"ssh\", new()\n    {\n        Name = \"My SSH CA\",\n        PublicKey = \"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIr+Aj3O8csUrFRNWS7wViafil3rMlZ0glQ/OZ0CjCti\",\n    });\n\n    var main = new Twingate.TwingateGateway(\"main\", new()\n    {\n        RemoteNetworkId = prod.Id,\n        Address = \"10.0.0.1:8443\",\n        X509CaId = tls.Id,\n        SshCaId = ssh.Id,\n    });\n\n    var sshServer = new Twingate.TwingateSSHResource(\"ssh_server\", new()\n    {\n        Name = \"SSH Server\",\n        GatewayId = main.Id,\n        Alias = \"test.int\",\n        RemoteNetworkId = prod.Id,\n        Address = \"10.128.0.105\",\n        Username = \"ubuntu\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/v4/go/twingate\"\n\t\"github.com/pulumi/pulumi-std/sdk/v2/go/std\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprod, err := twingate.NewTwingateRemoteNetwork(ctx, \"prod\", \u0026twingate.TwingateRemoteNetworkArgs{\n\t\t\tName: pulumi.String(\"Production Network\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tinvokeFile, err := std.File(ctx, \u0026std.FileArgs{\n\t\t\tInput: \"ca.pem\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttls, err := twingate.NewTwingateX509CertificateAuthority(ctx, \"tls\", \u0026twingate.TwingateX509CertificateAuthorityArgs{\n\t\t\tName:        pulumi.String(\"My TLS CA\"),\n\t\t\tCertificate: pulumi.String(invokeFile.Result),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tssh, err := twingate.NewTwingateSSHCertificateAuthority(ctx, \"ssh\", \u0026twingate.TwingateSSHCertificateAuthorityArgs{\n\t\t\tName:      pulumi.String(\"My SSH CA\"),\n\t\t\tPublicKey: pulumi.String(\"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIr+Aj3O8csUrFRNWS7wViafil3rMlZ0glQ/OZ0CjCti\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmain, err := twingate.NewTwingateGateway(ctx, \"main\", \u0026twingate.TwingateGatewayArgs{\n\t\t\tRemoteNetworkId: prod.ID().ToIDOutput().ToStringOutput(),\n\t\t\tAddress:         pulumi.String(\"10.0.0.1:8443\"),\n\t\t\tX509CaId:        tls.ID().ToIDOutput().ToStringOutput(),\n\t\t\tSshCaId:         ssh.ID().ToIDOutput().ToStringOutput(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = twingate.NewTwingateSSHResource(ctx, \"ssh_server\", \u0026twingate.TwingateSSHResourceArgs{\n\t\t\tName:            pulumi.String(\"SSH Server\"),\n\t\t\tGatewayId:       main.ID().ToIDOutput().ToStringOutput(),\n\t\t\tAlias:           pulumi.String(\"test.int\"),\n\t\t\tRemoteNetworkId: prod.ID().ToIDOutput().ToStringOutput(),\n\t\t\tAddress:         pulumi.String(\"10.128.0.105\"),\n\t\t\tUsername:        pulumi.String(\"ubuntu\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    std = {\n      source = \"pulumi/std\"\n    }\n    twingate = {\n      source = \"pulumi/twingate\"\n    }\n  }\n}\n\nresource \"twingate_twingateremotenetwork\" \"prod\" {\n  name = \"Production Network\"\n}\nresource \"twingate_twingatex509certificateauthority\" \"tls\" {\n  name        = \"My TLS CA\"\n  certificate = file(\"ca.pem\")\n}\nresource \"twingate_twingatesshcertificateauthority\" \"ssh\" {\n  name       = \"My SSH CA\"\n  public_key = \"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIr+Aj3O8csUrFRNWS7wViafil3rMlZ0glQ/OZ0CjCti\"\n}\nresource \"twingate_twingategateway\" \"main\" {\n  remote_network_id = twingate_twingateremotenetwork.prod.id\n  address           = \"10.0.0.1:8443\"\n  x509_ca_id        = twingate_twingatex509certificateauthority.tls.id\n  ssh_ca_id         = twingate_twingatesshcertificateauthority.ssh.id\n}\nresource \"twingate_twingatesshresource\" \"ssh_server\" {\n  name              = \"SSH Server\"\n  gateway_id        = twingate_twingategateway.main.id\n  alias             = \"test.int\"\n  remote_network_id = twingate_twingateremotenetwork.prod.id\n  address           = \"10.128.0.105\"\n  username          = \"ubuntu\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateRemoteNetwork;\nimport com.pulumi.twingate.TwingateRemoteNetworkArgs;\nimport com.pulumi.twingate.TwingateX509CertificateAuthority;\nimport com.pulumi.twingate.TwingateX509CertificateAuthorityArgs;\nimport com.pulumi.std.StdFunctions;\nimport com.pulumi.std.inputs.FileArgs;\nimport com.pulumi.twingate.TwingateSSHCertificateAuthority;\nimport com.pulumi.twingate.TwingateSSHCertificateAuthorityArgs;\nimport com.pulumi.twingate.TwingateGateway;\nimport com.pulumi.twingate.TwingateGatewayArgs;\nimport com.pulumi.twingate.TwingateSSHResource;\nimport com.pulumi.twingate.TwingateSSHResourceArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var prod = new TwingateRemoteNetwork(\"prod\", TwingateRemoteNetworkArgs.builder()\n            .name(\"Production Network\")\n            .build());\n\n        var tls = new TwingateX509CertificateAuthority(\"tls\", TwingateX509CertificateAuthorityArgs.builder()\n            .name(\"My TLS CA\")\n            .certificate(StdFunctions.file(FileArgs.builder()\n                .input(\"ca.pem\")\n                .build()).result())\n            .build());\n\n        var ssh = new TwingateSSHCertificateAuthority(\"ssh\", TwingateSSHCertificateAuthorityArgs.builder()\n            .name(\"My SSH CA\")\n            .publicKey(\"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIr+Aj3O8csUrFRNWS7wViafil3rMlZ0glQ/OZ0CjCti\")\n            .build());\n\n        var main = new TwingateGateway(\"main\", TwingateGatewayArgs.builder()\n            .remoteNetworkId(prod.id())\n            .address(\"10.0.0.1:8443\")\n            .x509CaId(tls.id())\n            .sshCaId(ssh.id())\n            .build());\n\n        var sshServer = new TwingateSSHResource(\"sshServer\", TwingateSSHResourceArgs.builder()\n            .name(\"SSH Server\")\n            .gatewayId(main.id())\n            .alias(\"test.int\")\n            .remoteNetworkId(prod.id())\n            .address(\"10.128.0.105\")\n            .username(\"ubuntu\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  prod:\n    type: twingate:TwingateRemoteNetwork\n    properties:\n      name: Production Network\n  tls:\n    type: twingate:TwingateX509CertificateAuthority\n    properties:\n      name: My TLS CA\n      certificate:\n        fn::invoke:\n          function: std:file\n          arguments:\n            input: ca.pem\n          return: result\n  ssh:\n    type: twingate:TwingateSSHCertificateAuthority\n    properties:\n      name: My SSH CA\n      publicKey: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIr+Aj3O8csUrFRNWS7wViafil3rMlZ0glQ/OZ0CjCti\n  main:\n    type: twingate:TwingateGateway\n    properties:\n      remoteNetworkId: ${prod.id}\n      address: 10.0.0.1:8443\n      x509CaId: ${tls.id}\n      sshCaId: ${ssh.id}\n  sshServer:\n    type: twingate:TwingateSSHResource\n    name: ssh_server\n    properties:\n      name: SSH Server\n      gatewayId: ${main.id}\n      alias: test.int\n      remoteNetworkId: ${prod.id}\n      address: 10.128.0.105\n      username: ubuntu\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "SSH Resources are Twingate resources accessed via a Gateway.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as std from \"@pulumi/std\";\nimport * as twingate from \"@twingate/pulumi-twingate\";\n\nconst prod = new twingate.TwingateRemoteNetwork(\"prod\", {name: \"Production Network\"});\nconst tls = new twingate.TwingateX509CertificateAuthority(\"tls\", {\n    name: \"My TLS CA\",\n    certificate: std.file({\n        input: \"ca.pem\",\n    }).then(invoke =\u003e invoke.result),\n});\nconst ssh = new twingate.TwingateSSHCertificateAuthority(\"ssh\", {\n    name: \"My SSH CA\",\n    publicKey: \"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIr+Aj3O8csUrFRNWS7wViafil3rMlZ0glQ/OZ0CjCti\",\n});\nconst main = new twingate.TwingateGateway(\"main\", {\n    remoteNetworkId: prod.id,\n    address: \"10.0.0.1:8443\",\n    x509CaId: tls.id,\n    sshCaId: ssh.id,\n});\nconst sshServer = new twingate.TwingateSSHResource(\"ssh_server\", {\n    name: \"SSH Server\",\n    gatewayId: main.id,\n    alias: \"test.int\",\n    remoteNetworkId: prod.id,\n    address: \"10.128.0.105\",\n});\n```\n```python\nimport pulumi\nimport pulumi_std as std\nimport pulumi_twingate as twingate\n\nprod = twingate.TwingateRemoteNetwork(\"prod\", name=\"Production Network\")\ntls = twingate.TwingateX509CertificateAuthority(\"tls\",\n    name=\"My TLS CA\",\n    certificate=std.file(input=\"ca.pem\").result)\nssh = twingate.TwingateSSHCertificateAuthority(\"ssh\",\n    name=\"My SSH CA\",\n    public_key=\"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIr+Aj3O8csUrFRNWS7wViafil3rMlZ0glQ/OZ0CjCti\")\nmain = twingate.TwingateGateway(\"main\",\n    remote_network_id=prod.id,\n    address=\"10.0.0.1:8443\",\n    x509_ca_id=tls.id,\n    ssh_ca_id=ssh.id)\nssh_server = twingate.TwingateSSHResource(\"ssh_server\",\n    name=\"SSH Server\",\n    gateway_id=main.id,\n    alias=\"test.int\",\n    remote_network_id=prod.id,\n    address=\"10.128.0.105\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Std = Pulumi.Std;\nusing Twingate = Twingate.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var prod = new Twingate.TwingateRemoteNetwork(\"prod\", new()\n    {\n        Name = \"Production Network\",\n    });\n\n    var tls = new Twingate.TwingateX509CertificateAuthority(\"tls\", new()\n    {\n        Name = \"My TLS CA\",\n        Certificate = Std.File.Invoke(new()\n        {\n            Input = \"ca.pem\",\n        }).Apply(invoke =\u003e invoke.Result),\n    });\n\n    var ssh = new Twingate.TwingateSSHCertificateAuthority(\"ssh\", new()\n    {\n        Name = \"My SSH CA\",\n        PublicKey = \"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIr+Aj3O8csUrFRNWS7wViafil3rMlZ0glQ/OZ0CjCti\",\n    });\n\n    var main = new Twingate.TwingateGateway(\"main\", new()\n    {\n        RemoteNetworkId = prod.Id,\n        Address = \"10.0.0.1:8443\",\n        X509CaId = tls.Id,\n        SshCaId = ssh.Id,\n    });\n\n    var sshServer = new Twingate.TwingateSSHResource(\"ssh_server\", new()\n    {\n        Name = \"SSH Server\",\n        GatewayId = main.Id,\n        Alias = \"test.int\",\n        RemoteNetworkId = prod.Id,\n        Address = \"10.128.0.105\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/v4/go/twingate\"\n\t\"github.com/pulumi/pulumi-std/sdk/v2/go/std\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprod, err := twingate.NewTwingateRemoteNetwork(ctx, \"prod\", \u0026twingate.TwingateRemoteNetworkArgs{\n\t\t\tName: pulumi.String(\"Production Network\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tinvokeFile, err := std.File(ctx, \u0026std.FileArgs{\n\t\t\tInput: \"ca.pem\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttls, err := twingate.NewTwingateX509CertificateAuthority(ctx, \"tls\", \u0026twingate.TwingateX509CertificateAuthorityArgs{\n\t\t\tName:        pulumi.String(\"My TLS CA\"),\n\t\t\tCertificate: pulumi.String(invokeFile.Result),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tssh, err := twingate.NewTwingateSSHCertificateAuthority(ctx, \"ssh\", \u0026twingate.TwingateSSHCertificateAuthorityArgs{\n\t\t\tName:      pulumi.String(\"My SSH CA\"),\n\t\t\tPublicKey: pulumi.String(\"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIr+Aj3O8csUrFRNWS7wViafil3rMlZ0glQ/OZ0CjCti\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmain, err := twingate.NewTwingateGateway(ctx, \"main\", \u0026twingate.TwingateGatewayArgs{\n\t\t\tRemoteNetworkId: prod.ID().ToIDOutput().ToStringOutput(),\n\t\t\tAddress:         pulumi.String(\"10.0.0.1:8443\"),\n\t\t\tX509CaId:        tls.ID().ToIDOutput().ToStringOutput(),\n\t\t\tSshCaId:         ssh.ID().ToIDOutput().ToStringOutput(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = twingate.NewTwingateSSHResource(ctx, \"ssh_server\", \u0026twingate.TwingateSSHResourceArgs{\n\t\t\tName:            pulumi.String(\"SSH Server\"),\n\t\t\tGatewayId:       main.ID().ToIDOutput().ToStringOutput(),\n\t\t\tAlias:           pulumi.String(\"test.int\"),\n\t\t\tRemoteNetworkId: prod.ID().ToIDOutput().ToStringOutput(),\n\t\t\tAddress:         pulumi.String(\"10.128.0.105\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    std = {\n      source = \"pulumi/std\"\n    }\n    twingate = {\n      source = \"pulumi/twingate\"\n    }\n  }\n}\n\nresource \"twingate_twingateremotenetwork\" \"prod\" {\n  name = \"Production Network\"\n}\nresource \"twingate_twingatex509certificateauthority\" \"tls\" {\n  name        = \"My TLS CA\"\n  certificate = file(\"ca.pem\")\n}\nresource \"twingate_twingatesshcertificateauthority\" \"ssh\" {\n  name       = \"My SSH CA\"\n  public_key = \"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIr+Aj3O8csUrFRNWS7wViafil3rMlZ0glQ/OZ0CjCti\"\n}\nresource \"twingate_twingategateway\" \"main\" {\n  remote_network_id = twingate_twingateremotenetwork.prod.id\n  address           = \"10.0.0.1:8443\"\n  x509_ca_id        = twingate_twingatex509certificateauthority.tls.id\n  ssh_ca_id         = twingate_twingatesshcertificateauthority.ssh.id\n}\nresource \"twingate_twingatesshresource\" \"ssh_server\" {\n  name              = \"SSH Server\"\n  gateway_id        = twingate_twingategateway.main.id\n  alias             = \"test.int\"\n  remote_network_id = twingate_twingateremotenetwork.prod.id\n  address           = \"10.128.0.105\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateRemoteNetwork;\nimport com.pulumi.twingate.TwingateRemoteNetworkArgs;\nimport com.pulumi.twingate.TwingateX509CertificateAuthority;\nimport com.pulumi.twingate.TwingateX509CertificateAuthorityArgs;\nimport com.pulumi.std.StdFunctions;\nimport com.pulumi.std.inputs.FileArgs;\nimport com.pulumi.twingate.TwingateSSHCertificateAuthority;\nimport com.pulumi.twingate.TwingateSSHCertificateAuthorityArgs;\nimport com.pulumi.twingate.TwingateGateway;\nimport com.pulumi.twingate.TwingateGatewayArgs;\nimport com.pulumi.twingate.TwingateSSHResource;\nimport com.pulumi.twingate.TwingateSSHResourceArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var prod = new TwingateRemoteNetwork(\"prod\", TwingateRemoteNetworkArgs.builder()\n            .name(\"Production Network\")\n            .build());\n\n        var tls = new TwingateX509CertificateAuthority(\"tls\", TwingateX509CertificateAuthorityArgs.builder()\n            .name(\"My TLS CA\")\n            .certificate(StdFunctions.file(FileArgs.builder()\n                .input(\"ca.pem\")\n                .build()).result())\n            .build());\n\n        var ssh = new TwingateSSHCertificateAuthority(\"ssh\", TwingateSSHCertificateAuthorityArgs.builder()\n            .name(\"My SSH CA\")\n            .publicKey(\"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIr+Aj3O8csUrFRNWS7wViafil3rMlZ0glQ/OZ0CjCti\")\n            .build());\n\n        var main = new TwingateGateway(\"main\", TwingateGatewayArgs.builder()\n            .remoteNetworkId(prod.id())\n            .address(\"10.0.0.1:8443\")\n            .x509CaId(tls.id())\n            .sshCaId(ssh.id())\n            .build());\n\n        var sshServer = new TwingateSSHResource(\"sshServer\", TwingateSSHResourceArgs.builder()\n            .name(\"SSH Server\")\n            .gatewayId(main.id())\n            .alias(\"test.int\")\n            .remoteNetworkId(prod.id())\n            .address(\"10.128.0.105\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  prod:\n    type: twingate:TwingateRemoteNetwork\n    properties:\n      name: Production Network\n  tls:\n    type: twingate:TwingateX509CertificateAuthority\n    properties:\n      name: My TLS CA\n      certificate:\n        fn::invoke:\n          function: std:file\n          arguments:\n            input: ca.pem\n          return: result\n  ssh:\n    type: twingate:TwingateSSHCertificateAuthority\n    properties:\n      name: My SSH CA\n      publicKey: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIr+Aj3O8csUrFRNWS7wViafil3rMlZ0glQ/OZ0CjCti\n  main:\n    type: twingate:TwingateGateway\n    properties:\n      remoteNetworkId: ${prod.id}\n      address: 10.0.0.1:8443\n      x509CaId: ${tls.id}\n      sshCaId: ${ssh.id}\n  sshServer:\n    type: twingate:TwingateSSHResource\n    name: ssh_server\n    properties:\n      name: SSH Server\n      gatewayId: ${main.id}\n      alias: test.int\n      remoteNetworkId: ${prod.id}\n      address: 10.128.0.105\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "accessGroups": {
                     "type": "array",
@@ -3066,11 +2685,6 @@
                     "type": "string",
                     "description": "The name of the SSH Resource.\n"
                 },
-                "protocols": {
-                    "$ref": "#/types/twingate:index/TwingateSSHResourceProtocols:TwingateSSHResourceProtocols",
-                    "description": "Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.\n",
-                    "deprecationMessage": "This argument is deprecated and will be removed in a future release."
-                },
                 "remoteNetworkId": {
                     "type": "string",
                     "description": "The ID of the Remote Network the SSH Resource belongs to.\n"
@@ -3085,11 +2699,6 @@
                         "type": "string"
                     },
                     "description": "A map of key-value pair tags to set on this resource.\n"
-                },
-                "username": {
-                    "type": "string",
-                    "description": "The username to use when connecting to the SSH Resource.\n",
-                    "deprecationMessage": "This argument is deprecated and will be removed in a future release."
                 }
             },
             "required": [
@@ -3097,7 +2706,6 @@
                 "gatewayId",
                 "isVisible",
                 "name",
-                "protocols",
                 "remoteNetworkId",
                 "securityPolicyId",
                 "tags"
@@ -3137,11 +2745,6 @@
                     "type": "string",
                     "description": "The name of the SSH Resource.\n"
                 },
-                "protocols": {
-                    "$ref": "#/types/twingate:index/TwingateSSHResourceProtocols:TwingateSSHResourceProtocols",
-                    "description": "Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.\n",
-                    "deprecationMessage": "This argument is deprecated and will be removed in a future release."
-                },
                 "remoteNetworkId": {
                     "type": "string",
                     "description": "The ID of the Remote Network the SSH Resource belongs to.\n"
@@ -3156,11 +2759,6 @@
                         "type": "string"
                     },
                     "description": "A map of key-value pair tags to set on this resource.\n"
-                },
-                "username": {
-                    "type": "string",
-                    "description": "The username to use when connecting to the SSH Resource.\n",
-                    "deprecationMessage": "This argument is deprecated and will be removed in a future release."
                 }
             },
             "requiredInputs": [
@@ -3205,11 +2803,6 @@
                         "type": "string",
                         "description": "The name of the SSH Resource.\n"
                     },
-                    "protocols": {
-                        "$ref": "#/types/twingate:index/TwingateSSHResourceProtocols:TwingateSSHResourceProtocols",
-                        "description": "Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.\n",
-                        "deprecationMessage": "This argument is deprecated and will be removed in a future release."
-                    },
                     "remoteNetworkId": {
                         "type": "string",
                         "description": "The ID of the Remote Network the SSH Resource belongs to.\n"
@@ -3224,11 +2817,6 @@
                             "type": "string"
                         },
                         "description": "A map of key-value pair tags to set on this resource.\n"
-                    },
-                    "username": {
-                        "type": "string",
-                        "description": "The username to use when connecting to the SSH Resource.\n",
-                        "deprecationMessage": "This argument is deprecated and will be removed in a future release."
                     }
                 },
                 "type": "object"
@@ -3442,6 +3030,229 @@
                     "type": {
                         "type": "string",
                         "description": "Indicates the User's type. Either MANUAL or SYNCED.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "twingate:index/twingateWebAppResource:TwingateWebAppResource": {
+            "description": "Web App Resources are Twingate resources accessed via a Gateway.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as std from \"@pulumi/std\";\nimport * as twingate from \"@twingate/pulumi-twingate\";\n\nconst prod = new twingate.TwingateRemoteNetwork(\"prod\", {name: \"Production Network\"});\nconst tls = new twingate.TwingateX509CertificateAuthority(\"tls\", {\n    name: \"My TLS CA\",\n    certificate: std.file({\n        input: \"ca.pem\",\n    }).then(invoke =\u003e invoke.result),\n});\nconst main = new twingate.TwingateGateway(\"main\", {\n    remoteNetworkId: prod.id,\n    address: \"10.0.0.1:8443\",\n    x509CaId: tls.id,\n});\nconst internalApp = new twingate.TwingateWebAppResource(\"internal_app\", {\n    name: \"Internal App\",\n    gatewayId: main.id,\n    remoteNetworkId: prod.id,\n    address: \"internal.acme.com\",\n    alias: \"app.int\",\n    downstream: {\n        port: 80,\n    },\n    upstream: {\n        port: 8080,\n    },\n    requestHeaderRewrites: {\n        \"X-Twingate-User\": \"{{username}}\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_std as std\nimport pulumi_twingate as twingate\n\nprod = twingate.TwingateRemoteNetwork(\"prod\", name=\"Production Network\")\ntls = twingate.TwingateX509CertificateAuthority(\"tls\",\n    name=\"My TLS CA\",\n    certificate=std.file(input=\"ca.pem\").result)\nmain = twingate.TwingateGateway(\"main\",\n    remote_network_id=prod.id,\n    address=\"10.0.0.1:8443\",\n    x509_ca_id=tls.id)\ninternal_app = twingate.TwingateWebAppResource(\"internal_app\",\n    name=\"Internal App\",\n    gateway_id=main.id,\n    remote_network_id=prod.id,\n    address=\"internal.acme.com\",\n    alias=\"app.int\",\n    downstream={\n        \"port\": 80,\n    },\n    upstream={\n        \"port\": 8080,\n    },\n    request_header_rewrites={\n        \"X-Twingate-User\": \"{{username}}\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Std = Pulumi.Std;\nusing Twingate = Twingate.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var prod = new Twingate.TwingateRemoteNetwork(\"prod\", new()\n    {\n        Name = \"Production Network\",\n    });\n\n    var tls = new Twingate.TwingateX509CertificateAuthority(\"tls\", new()\n    {\n        Name = \"My TLS CA\",\n        Certificate = Std.File.Invoke(new()\n        {\n            Input = \"ca.pem\",\n        }).Apply(invoke =\u003e invoke.Result),\n    });\n\n    var main = new Twingate.TwingateGateway(\"main\", new()\n    {\n        RemoteNetworkId = prod.Id,\n        Address = \"10.0.0.1:8443\",\n        X509CaId = tls.Id,\n    });\n\n    var internalApp = new Twingate.TwingateWebAppResource(\"internal_app\", new()\n    {\n        Name = \"Internal App\",\n        GatewayId = main.Id,\n        RemoteNetworkId = prod.Id,\n        Address = \"internal.acme.com\",\n        Alias = \"app.int\",\n        Downstream = new Twingate.Inputs.TwingateWebAppResourceDownstreamArgs\n        {\n            Port = 80,\n        },\n        Upstream = new Twingate.Inputs.TwingateWebAppResourceUpstreamArgs\n        {\n            Port = 8080,\n        },\n        RequestHeaderRewrites = \n        {\n            { \"X-Twingate-User\", \"{{username}}\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/v4/go/twingate\"\n\t\"github.com/pulumi/pulumi-std/sdk/v2/go/std\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprod, err := twingate.NewTwingateRemoteNetwork(ctx, \"prod\", \u0026twingate.TwingateRemoteNetworkArgs{\n\t\t\tName: pulumi.String(\"Production Network\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tinvokeFile, err := std.File(ctx, \u0026std.FileArgs{\n\t\t\tInput: \"ca.pem\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttls, err := twingate.NewTwingateX509CertificateAuthority(ctx, \"tls\", \u0026twingate.TwingateX509CertificateAuthorityArgs{\n\t\t\tName:        pulumi.String(\"My TLS CA\"),\n\t\t\tCertificate: pulumi.String(invokeFile.Result),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmain, err := twingate.NewTwingateGateway(ctx, \"main\", \u0026twingate.TwingateGatewayArgs{\n\t\t\tRemoteNetworkId: prod.ID().ToIDOutput().ToStringOutput(),\n\t\t\tAddress:         pulumi.String(\"10.0.0.1:8443\"),\n\t\t\tX509CaId:        tls.ID().ToIDOutput().ToStringOutput(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = twingate.NewTwingateWebAppResource(ctx, \"internal_app\", \u0026twingate.TwingateWebAppResourceArgs{\n\t\t\tName:            pulumi.String(\"Internal App\"),\n\t\t\tGatewayId:       main.ID().ToIDOutput().ToStringOutput(),\n\t\t\tRemoteNetworkId: prod.ID().ToIDOutput().ToStringOutput(),\n\t\t\tAddress:         pulumi.String(\"internal.acme.com\"),\n\t\t\tAlias:           pulumi.String(\"app.int\"),\n\t\t\tDownstream: \u0026twingate.TwingateWebAppResourceDownstreamArgs{\n\t\t\t\tPort: pulumi.Int(80),\n\t\t\t},\n\t\t\tUpstream: \u0026twingate.TwingateWebAppResourceUpstreamArgs{\n\t\t\t\tPort: pulumi.Int(8080),\n\t\t\t},\n\t\t\tRequestHeaderRewrites: pulumi.StringMap{\n\t\t\t\t\"X-Twingate-User\": pulumi.String(\"{{username}}\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    std = {\n      source = \"pulumi/std\"\n    }\n    twingate = {\n      source = \"pulumi/twingate\"\n    }\n  }\n}\n\nresource \"twingate_twingateremotenetwork\" \"prod\" {\n  name = \"Production Network\"\n}\nresource \"twingate_twingatex509certificateauthority\" \"tls\" {\n  name        = \"My TLS CA\"\n  certificate = file(\"ca.pem\")\n}\nresource \"twingate_twingategateway\" \"main\" {\n  remote_network_id = twingate_twingateremotenetwork.prod.id\n  address           = \"10.0.0.1:8443\"\n  x509_ca_id        = twingate_twingatex509certificateauthority.tls.id\n}\nresource \"twingate_twingatewebappresource\" \"internal_app\" {\n  name              = \"Internal App\"\n  gateway_id        = twingate_twingategateway.main.id\n  remote_network_id = twingate_twingateremotenetwork.prod.id\n  address           = \"internal.acme.com\"\n  alias             = \"app.int\"\n  downstream = {\n    port = 80\n  }\n  upstream = {\n    port = 8080\n  }\n  request_header_rewrites = {\n    \"X-Twingate-User\" = \"{{username}}\"\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateRemoteNetwork;\nimport com.pulumi.twingate.TwingateRemoteNetworkArgs;\nimport com.pulumi.twingate.TwingateX509CertificateAuthority;\nimport com.pulumi.twingate.TwingateX509CertificateAuthorityArgs;\nimport com.pulumi.std.StdFunctions;\nimport com.pulumi.std.inputs.FileArgs;\nimport com.pulumi.twingate.TwingateGateway;\nimport com.pulumi.twingate.TwingateGatewayArgs;\nimport com.pulumi.twingate.TwingateWebAppResource;\nimport com.pulumi.twingate.TwingateWebAppResourceArgs;\nimport com.pulumi.twingate.inputs.TwingateWebAppResourceDownstreamArgs;\nimport com.pulumi.twingate.inputs.TwingateWebAppResourceUpstreamArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var prod = new TwingateRemoteNetwork(\"prod\", TwingateRemoteNetworkArgs.builder()\n            .name(\"Production Network\")\n            .build());\n\n        var tls = new TwingateX509CertificateAuthority(\"tls\", TwingateX509CertificateAuthorityArgs.builder()\n            .name(\"My TLS CA\")\n            .certificate(StdFunctions.file(FileArgs.builder()\n                .input(\"ca.pem\")\n                .build()).result())\n            .build());\n\n        var main = new TwingateGateway(\"main\", TwingateGatewayArgs.builder()\n            .remoteNetworkId(prod.id())\n            .address(\"10.0.0.1:8443\")\n            .x509CaId(tls.id())\n            .build());\n\n        var internalApp = new TwingateWebAppResource(\"internalApp\", TwingateWebAppResourceArgs.builder()\n            .name(\"Internal App\")\n            .gatewayId(main.id())\n            .remoteNetworkId(prod.id())\n            .address(\"internal.acme.com\")\n            .alias(\"app.int\")\n            .downstream(TwingateWebAppResourceDownstreamArgs.builder()\n                .port(80)\n                .build())\n            .upstream(TwingateWebAppResourceUpstreamArgs.builder()\n                .port(8080)\n                .build())\n            .requestHeaderRewrites(Map.of(\"X-Twingate-User\", \"{{username}}\"))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  prod:\n    type: twingate:TwingateRemoteNetwork\n    properties:\n      name: Production Network\n  tls:\n    type: twingate:TwingateX509CertificateAuthority\n    properties:\n      name: My TLS CA\n      certificate:\n        fn::invoke:\n          function: std:file\n          arguments:\n            input: ca.pem\n          return: result\n  main:\n    type: twingate:TwingateGateway\n    properties:\n      remoteNetworkId: ${prod.id}\n      address: 10.0.0.1:8443\n      x509CaId: ${tls.id}\n  internalApp:\n    type: twingate:TwingateWebAppResource\n    name: internal_app\n    properties:\n      name: Internal App\n      gatewayId: ${main.id}\n      remoteNetworkId: ${prod.id}\n      address: internal.acme.com\n      alias: app.int\n      downstream:\n        port: 80\n      upstream:\n        port: 8080\n      requestHeaderRewrites:\n        X-Twingate-User: '{{username}}'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "accessGroups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/twingate:index/TwingateWebAppResourceAccessGroup:TwingateWebAppResourceAccessGroup"
+                    },
+                    "description": "Restrict access to certain group\n"
+                },
+                "accessPolicies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/twingate:index/TwingateWebAppResourceAccessPolicy:TwingateWebAppResourceAccessPolicy"
+                    },
+                    "description": "Restrict access according to JIT access policy\n"
+                },
+                "address": {
+                    "type": "string",
+                    "description": "The address of the Web App Resource (IP or FQDN).\n"
+                },
+                "alias": {
+                    "type": "string",
+                    "description": "Set a DNS alias address for the Resource. Must be a DNS-valid name string.\n"
+                },
+                "downstream": {
+                    "$ref": "#/types/twingate:index/TwingateWebAppResourceDownstream:TwingateWebAppResourceDownstream",
+                    "description": "The downstream configuration. The connection between the protocol client and the Gateway.\n"
+                },
+                "gatewayId": {
+                    "type": "string",
+                    "description": "The ID of the Gateway used to access this Web App Resource.\n"
+                },
+                "isVisible": {
+                    "type": "boolean",
+                    "description": "Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the Web App Resource.\n"
+                },
+                "remoteNetworkId": {
+                    "type": "string",
+                    "description": "The ID of the Remote Network the Web App Resource belongs to.\n"
+                },
+                "requestHeaderRewrites": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of HTTP headers to rewrite on requests forwarded to the upstream resource. Header names are compared case-insensitively.\n"
+                },
+                "securityPolicyId": {
+                    "type": "string",
+                    "description": "The ID of a \u003cspan pulumi-lang-nodejs=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-dotnet=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-go=\"`getTwingateSecurityPolicy`\" pulumi-lang-python=\"`get_twingate_security_policy`\" pulumi-lang-yaml=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-java=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-hcl=\"`data.twingate_security_policy`\"\u003e`twingate.getTwingateSecurityPolicy`\u003c/span\u003e to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of key-value pair tags to set on this resource.\n"
+                },
+                "upstream": {
+                    "$ref": "#/types/twingate:index/TwingateWebAppResourceUpstream:TwingateWebAppResourceUpstream",
+                    "description": "The upstream configuration. The connection between the Gateway and the upstream resource.\n"
+                }
+            },
+            "required": [
+                "address",
+                "downstream",
+                "gatewayId",
+                "isVisible",
+                "name",
+                "remoteNetworkId",
+                "securityPolicyId",
+                "tags",
+                "upstream"
+            ],
+            "inputProperties": {
+                "accessGroups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/twingate:index/TwingateWebAppResourceAccessGroup:TwingateWebAppResourceAccessGroup"
+                    },
+                    "description": "Restrict access to certain group\n"
+                },
+                "accessPolicies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/twingate:index/TwingateWebAppResourceAccessPolicy:TwingateWebAppResourceAccessPolicy"
+                    },
+                    "description": "Restrict access according to JIT access policy\n"
+                },
+                "address": {
+                    "type": "string",
+                    "description": "The address of the Web App Resource (IP or FQDN).\n"
+                },
+                "alias": {
+                    "type": "string",
+                    "description": "Set a DNS alias address for the Resource. Must be a DNS-valid name string.\n"
+                },
+                "downstream": {
+                    "$ref": "#/types/twingate:index/TwingateWebAppResourceDownstream:TwingateWebAppResourceDownstream",
+                    "description": "The downstream configuration. The connection between the protocol client and the Gateway.\n"
+                },
+                "gatewayId": {
+                    "type": "string",
+                    "description": "The ID of the Gateway used to access this Web App Resource.\n"
+                },
+                "isVisible": {
+                    "type": "boolean",
+                    "description": "Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the Web App Resource.\n"
+                },
+                "remoteNetworkId": {
+                    "type": "string",
+                    "description": "The ID of the Remote Network the Web App Resource belongs to.\n"
+                },
+                "requestHeaderRewrites": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of HTTP headers to rewrite on requests forwarded to the upstream resource. Header names are compared case-insensitively.\n"
+                },
+                "securityPolicyId": {
+                    "type": "string",
+                    "description": "The ID of a \u003cspan pulumi-lang-nodejs=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-dotnet=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-go=\"`getTwingateSecurityPolicy`\" pulumi-lang-python=\"`get_twingate_security_policy`\" pulumi-lang-yaml=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-java=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-hcl=\"`data.twingate_security_policy`\"\u003e`twingate.getTwingateSecurityPolicy`\u003c/span\u003e to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of key-value pair tags to set on this resource.\n"
+                },
+                "upstream": {
+                    "$ref": "#/types/twingate:index/TwingateWebAppResourceUpstream:TwingateWebAppResourceUpstream",
+                    "description": "The upstream configuration. The connection between the Gateway and the upstream resource.\n"
+                }
+            },
+            "requiredInputs": [
+                "address",
+                "downstream",
+                "gatewayId",
+                "remoteNetworkId",
+                "upstream"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering TwingateWebAppResource resources.\n",
+                "properties": {
+                    "accessGroups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/twingate:index/TwingateWebAppResourceAccessGroup:TwingateWebAppResourceAccessGroup"
+                        },
+                        "description": "Restrict access to certain group\n"
+                    },
+                    "accessPolicies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/twingate:index/TwingateWebAppResourceAccessPolicy:TwingateWebAppResourceAccessPolicy"
+                        },
+                        "description": "Restrict access according to JIT access policy\n"
+                    },
+                    "address": {
+                        "type": "string",
+                        "description": "The address of the Web App Resource (IP or FQDN).\n"
+                    },
+                    "alias": {
+                        "type": "string",
+                        "description": "Set a DNS alias address for the Resource. Must be a DNS-valid name string.\n"
+                    },
+                    "downstream": {
+                        "$ref": "#/types/twingate:index/TwingateWebAppResourceDownstream:TwingateWebAppResourceDownstream",
+                        "description": "The downstream configuration. The connection between the protocol client and the Gateway.\n"
+                    },
+                    "gatewayId": {
+                        "type": "string",
+                        "description": "The ID of the Gateway used to access this Web App Resource.\n"
+                    },
+                    "isVisible": {
+                        "type": "boolean",
+                        "description": "Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the Web App Resource.\n"
+                    },
+                    "remoteNetworkId": {
+                        "type": "string",
+                        "description": "The ID of the Remote Network the Web App Resource belongs to.\n"
+                    },
+                    "requestHeaderRewrites": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A map of HTTP headers to rewrite on requests forwarded to the upstream resource. Header names are compared case-insensitively.\n"
+                    },
+                    "securityPolicyId": {
+                        "type": "string",
+                        "description": "The ID of a \u003cspan pulumi-lang-nodejs=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-dotnet=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-go=\"`getTwingateSecurityPolicy`\" pulumi-lang-python=\"`get_twingate_security_policy`\" pulumi-lang-yaml=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-java=\"`twingate.getTwingateSecurityPolicy`\" pulumi-lang-hcl=\"`data.twingate_security_policy`\"\u003e`twingate.getTwingateSecurityPolicy`\u003c/span\u003e to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.\n"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A map of key-value pair tags to set on this resource.\n"
+                    },
+                    "upstream": {
+                        "$ref": "#/types/twingate:index/TwingateWebAppResourceUpstream:TwingateWebAppResourceUpstream",
+                        "description": "The upstream configuration. The connection between the Gateway and the upstream resource.\n"
                     }
                 },
                 "type": "object"

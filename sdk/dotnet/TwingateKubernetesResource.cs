@@ -129,12 +129,6 @@ namespace Twingate.Twingate
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-        /// </summary>
-        [Output("protocols")]
-        public Output<Outputs.TwingateKubernetesResourceProtocols> Protocols { get; private set; } = null!;
-
-        /// <summary>
         /// The ID of the Remote Network the Kubernetes Resource belongs to.
         /// </summary>
         [Output("remoteNetworkId")]
@@ -272,12 +266,6 @@ namespace Twingate.Twingate
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-        /// </summary>
-        [Input("protocols")]
-        public Input<Inputs.TwingateKubernetesResourceProtocolsArgs>? Protocols { get; set; }
-
-        /// <summary>
         /// The ID of the Remote Network the Kubernetes Resource belongs to.
         /// </summary>
         [Input("remoteNetworkId", required: true)]
@@ -380,12 +368,6 @@ namespace Twingate.Twingate
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-        /// </summary>
-        [Input("protocols")]
-        public Input<Inputs.TwingateKubernetesResourceProtocolsGetArgs>? Protocols { get; set; }
 
         /// <summary>
         /// The ID of the Remote Network the Kubernetes Resource belongs to.

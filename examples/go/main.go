@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/Twingate/pulumi-twingate/sdk/v4/go/twingate"
+	"github.com/Twingate/pulumi-twingate/sdk/v5/go/twingate"
 	"github.com/pulumi/pulumi-tls/sdk/v5/go/tls"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -268,23 +268,14 @@ func main() {
 		}
 
 		// SSH Resource reachable through the Gateway.
-		sshResource, err := twingate.NewTwingateSSHResource(ctx, "ssh_resource_go", &twingate.TwingateSSHResourceArgs{
+		_, err = twingate.NewTwingateSSHResource(ctx, "ssh_resource_go", &twingate.TwingateSSHResourceArgs{
 			Name:            pulumi.StringPtr("Bastion SSH Go"),
 			Address:         pulumi.String("bastion.internal.example.com"),
 			RemoteNetworkId: gateway.RemoteNetworkId,
 			GatewayId:       gateway.ID(),
-			Username:        pulumi.StringPtr("ubuntu"),
 			AccessGroups: &twingate.TwingateSSHResourceAccessGroupArray{
 				&twingate.TwingateSSHResourceAccessGroupArgs{
 					GroupId: group.ID(),
-				},
-			},
-			Protocols: &twingate.TwingateSSHResourceProtocolsArgs{
-				Tcp: &twingate.TwingateSSHResourceProtocolsTcpArgs{
-					Policy: pulumi.StringPtr("RESTRICTED"),
-					Ports: pulumi.StringArray{
-						pulumi.String("22"),
-					},
 				},
 			},
 		})
@@ -292,31 +283,22 @@ func main() {
 			return err
 		}
 
-		// Rendered gateway config (e.g. for the gateway runtime to consume).
-		gatewayConfig, err := twingate.NewTwingateGatewayConfig(ctx, "gateway_config_go", &twingate.TwingateGatewayConfigArgs{
-			Port:        pulumi.IntPtr(8443),
-			MetricsPort: pulumi.IntPtr(9090),
-			Ssh: &twingate.TwingateGatewayConfigSshArgs{
-				Gateway: &twingate.TwingateGatewayConfigSshGatewayArgs{
-					Username:    pulumi.StringPtr("gateway"),
-					KeyType:     pulumi.StringPtr("ed25519"),
-					UserCertTtl: pulumi.StringPtr("5m"),
-					HostCertTtl: pulumi.StringPtr("24h"),
-				},
-				Ca: &twingate.TwingateGatewayConfigSshCaArgs{
-					PrivateKeyFile: pulumi.StringPtr("/etc/gateway/ssh-ca.key"),
-				},
-				Resources: &twingate.TwingateGatewayConfigSshResourceArray{
-					&twingate.TwingateGatewayConfigSshResourceArgs{
-						Name:     sshResource.Name,
-						Address:  sshResource.Address,
-						Username: pulumi.String("ubuntu"),
-					},
-				},
+		// Web App Resource reachable through the Gateway (added in provider v5).
+		webAppResource, err := twingate.NewTwingateWebAppResource(ctx, "web_app_resource_go", &twingate.TwingateWebAppResourceArgs{
+			Name:            pulumi.StringPtr("Internal Wiki Go"),
+			Address:         pulumi.String("wiki.internal.example.com"),
+			RemoteNetworkId: gateway.RemoteNetworkId,
+			GatewayId:       gateway.ID(),
+			Upstream: &twingate.TwingateWebAppResourceUpstreamArgs{
+				Port: pulumi.Int(8443),
 			},
-			Tls: &twingate.TwingateGatewayConfigTlsArgs{
-				CertificateFile: pulumi.StringPtr("/etc/gateway/tls.crt"),
-				PrivateKeyFile:  pulumi.StringPtr("/etc/gateway/tls.key"),
+			Downstream: &twingate.TwingateWebAppResourceDownstreamArgs{
+				Port: pulumi.Int(443),
+			},
+			AccessGroups: &twingate.TwingateWebAppResourceAccessGroupArray{
+				&twingate.TwingateWebAppResourceAccessGroupArgs{
+					GroupId: group.ID(),
+				},
 			},
 		})
 		if err != nil {
@@ -324,7 +306,7 @@ func main() {
 		}
 
 		ctx.Export("gateway_id", gateway.ID())
-		ctx.Export("gateway_config_content", gatewayConfig.Content)
+		ctx.Export("web_app_resource_id", webAppResource.ID())
 
 		// ---------------------------------------------------------------------
 		// Twingate User
@@ -334,7 +316,6 @@ func main() {
 			FirstName:  pulumi.StringPtr("Example"),
 			LastName:   pulumi.StringPtr("User"),
 			Role:       pulumi.StringPtr("MEMBER"),
-			IsActive:   pulumi.BoolPtr(true),
 			SendInvite: pulumi.BoolPtr(false),
 		})
 		if err != nil {

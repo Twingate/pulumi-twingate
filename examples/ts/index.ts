@@ -206,50 +206,34 @@ const sshResource = new tg.TwingateSSHResource("ssh_resource_js", {
     address: "bastion.internal.example.com",
     remoteNetworkId: remoteNetwork.id,
     gatewayId: gateway.id,
-    username: "ubuntu",
     accessGroups: [
         {
             groupId: tgGroup.id,
         },
     ],
-    protocols: {
-        tcp: {
-            policy: "RESTRICTED",
-            ports: ["22"],
-        },
-    },
 });
 
-// Rendered gateway config (e.g. for the gateway runtime to consume).
-const gatewayConfig = new tg.TwingateGatewayConfig("gateway_config_js", {
-    port: 8443,
-    metricsPort: 9090,
-    ssh: {
-        gateway: {
-            username: "gateway",
-            keyType: "ed25519",
-            userCertTtl: "5m",
-            hostCertTtl: "24h",
-        },
-        ca: {
-            privateKeyFile: "/etc/gateway/ssh-ca.key",
-        },
-        resources: [
-            {
-                name: sshResource.name,
-                address: sshResource.address,
-                username: "ubuntu",
-            },
-        ],
+// Web App Resource reachable through the Gateway (added in provider v5).
+const webAppResource = new tg.TwingateWebAppResource("web_app_resource_js", {
+    name: "Internal Wiki JS",
+    address: "wiki.internal.example.com",
+    remoteNetworkId: remoteNetwork.id,
+    gatewayId: gateway.id,
+    upstream: {
+        port: 8443,
     },
-    tls: {
-        certificateFile: "/etc/gateway/tls.crt",
-        privateKeyFile: "/etc/gateway/tls.key",
+    downstream: {
+        port: 443,
     },
+    accessGroups: [
+        {
+            groupId: tgGroup.id,
+        },
+    ],
 });
 
 export const gatewayId = gateway.id;
-export const gatewayConfigContent = gatewayConfig.content;
+export const webAppResourceId = webAppResource.id;
 
 // ---------------------------------------------------------------------------
 // Twingate User

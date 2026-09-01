@@ -6,7 +6,7 @@ package twingate
 import (
 	"fmt"
 
-	"github.com/Twingate/pulumi-twingate/sdk/v4/go/twingate/internal"
+	"github.com/Twingate/pulumi-twingate/sdk/v5/go/twingate/internal"
 	"github.com/blang/semver"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -29,8 +29,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TwingateDNSFilteringProfile{}
 	case "twingate:index/twingateGateway:TwingateGateway":
 		r = &TwingateGateway{}
-	case "twingate:index/twingateGatewayConfig:TwingateGatewayConfig":
-		r = &TwingateGatewayConfig{}
 	case "twingate:index/twingateGroup:TwingateGroup":
 		r = &TwingateGroup{}
 	case "twingate:index/twingateKubernetesResource:TwingateKubernetesResource":
@@ -49,6 +47,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TwingateServiceAccountKey{}
 	case "twingate:index/twingateUser:TwingateUser":
 		r = &TwingateUser{}
+	case "twingate:index/twingateWebAppResource:TwingateWebAppResource":
+		r = &TwingateWebAppResource{}
 	case "twingate:index/twingateX509CertificateAuthority:TwingateX509CertificateAuthority":
 		r = &TwingateX509CertificateAuthority{}
 	default:
@@ -104,11 +104,6 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"twingate",
-		"index/twingateGatewayConfig",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"twingate",
 		"index/twingateGroup",
 		&module{version},
 	)
@@ -150,6 +145,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"twingate",
 		"index/twingateUser",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"twingate",
+		"index/twingateWebAppResource",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

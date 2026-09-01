@@ -112,12 +112,6 @@ export class TwingateKubernetesResource extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-     *
-     * @deprecated This argument is deprecated and will be removed in a future release.
-     */
-    declare public readonly protocols: pulumi.Output<outputs.TwingateKubernetesResourceProtocols>;
-    /**
      * The ID of the Remote Network the Kubernetes Resource belongs to.
      */
     declare public readonly remoteNetworkId: pulumi.Output<string>;
@@ -153,7 +147,6 @@ export class TwingateKubernetesResource extends pulumi.CustomResource {
             resourceInputs["inCluster"] = state?.inCluster;
             resourceInputs["isVisible"] = state?.isVisible;
             resourceInputs["name"] = state?.name;
-            resourceInputs["protocols"] = state?.protocols;
             resourceInputs["remoteNetworkId"] = state?.remoteNetworkId;
             resourceInputs["securityPolicyId"] = state?.securityPolicyId;
             resourceInputs["tags"] = state?.tags;
@@ -175,7 +168,6 @@ export class TwingateKubernetesResource extends pulumi.CustomResource {
             resourceInputs["inCluster"] = args?.inCluster;
             resourceInputs["isVisible"] = args?.isVisible;
             resourceInputs["name"] = args?.name;
-            resourceInputs["protocols"] = args?.protocols;
             resourceInputs["remoteNetworkId"] = args?.remoteNetworkId;
             resourceInputs["securityPolicyId"] = args?.securityPolicyId;
             resourceInputs["tags"] = args?.tags;
@@ -229,12 +221,6 @@ export interface TwingateKubernetesResourceState {
      * The name of the Kubernetes Resource.
      */
     name?: pulumi.Input<string | undefined>;
-    /**
-     * Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-     *
-     * @deprecated This argument is deprecated and will be removed in a future release.
-     */
-    protocols?: pulumi.Input<inputs.TwingateKubernetesResourceProtocols | undefined>;
     /**
      * The ID of the Remote Network the Kubernetes Resource belongs to.
      */
@@ -293,12 +279,6 @@ export interface TwingateKubernetesResourceArgs {
      * The name of the Kubernetes Resource.
      */
     name?: pulumi.Input<string | undefined>;
-    /**
-     * Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-     *
-     * @deprecated This argument is deprecated and will be removed in a future release.
-     */
-    protocols?: pulumi.Input<inputs.TwingateKubernetesResourceProtocols | undefined>;
     /**
      * The ID of the Remote Network the Kubernetes Resource belongs to.
      */
