@@ -296,7 +296,7 @@ await Deployment.RunAsync(() =>
     });
 
     // SSH Resource reachable through the Gateway.
-    var sshResource = new TwingateSSHResource("ssh_resource_cs", new TwingateSSHResourceArgs
+    new TwingateSSHResource("ssh_resource_cs", new TwingateSSHResourceArgs
     {
         Name = "Bastion SSH CS",
         Address = "bastion.internal.example.com",

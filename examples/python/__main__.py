@@ -202,7 +202,7 @@ gateway = tg.TwingateGateway(
 )
 
 # SSH Resource reachable through the Gateway.
-ssh_resource = tg.TwingateSSHResource(
+tg.TwingateSSHResource(
     "ssh_resource_py",
     name="Bastion SSH PY",
     address="bastion.internal.example.com",

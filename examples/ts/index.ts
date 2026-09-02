@@ -201,7 +201,7 @@ const gateway = new tg.TwingateGateway("gateway_js", {
 });
 
 // SSH Resource reachable through the Gateway.
-const sshResource = new tg.TwingateSSHResource("ssh_resource_js", {
+new tg.TwingateSSHResource("ssh_resource_js", {
     name: "Bastion SSH JS",
     address: "bastion.internal.example.com",
     remoteNetworkId: remoteNetwork.id,
