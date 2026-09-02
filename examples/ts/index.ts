@@ -244,7 +244,6 @@ const exampleUser = new tg.TwingateUser("example_user_js", {
     lastName: "User",
     role: "MEMBER",
     isActive: true,
-    sendInvite: false,
 });
 
 // ---------------------------------------------------------------------------

@@ -316,7 +316,7 @@ func main() {
 			FirstName:  pulumi.StringPtr("Example"),
 			LastName:   pulumi.StringPtr("User"),
 			Role:       pulumi.StringPtr("MEMBER"),
-			SendInvite: pulumi.BoolPtr(false),
+			IsActive:   pulumi.BoolPtr(true),
 		})
 		if err != nil {
 			return err
