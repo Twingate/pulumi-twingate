@@ -8,7 +8,7 @@ This example demonstrate how Twingate remote network, service account, service k
 * `TwingateResource` (including JIT access policies and a security-policy-bound access group)
 * `TwingateDNSFilteringProfile`
 * `TwingateX509CertificateAuthority`, `TwingateSSHCertificateAuthority`
-* `TwingateGateway`, `TwingateSSHResource`, `TwingateGatewayConfig`
+* `TwingateGateway`, `TwingateSSHResource`, `TwingateWebAppResource`
 
 ## Data sources demonstrated
 * `getTwingateConnectors` — filter connectors by name substring

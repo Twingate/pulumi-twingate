@@ -296,13 +296,12 @@ await Deployment.RunAsync(() =>
     });
 
     // SSH Resource reachable through the Gateway.
-    var sshResource = new TwingateSSHResource("ssh_resource_cs", new TwingateSSHResourceArgs
+    new TwingateSSHResource("ssh_resource_cs", new TwingateSSHResourceArgs
     {
         Name = "Bastion SSH CS",
         Address = "bastion.internal.example.com",
         RemoteNetworkId = remoteNetwork.Id,
         GatewayId = gateway.Id,
-        Username = "ubuntu",
         AccessGroups = new[]
         {
             new TwingateSSHResourceAccessGroupArgs
@@ -310,48 +309,29 @@ await Deployment.RunAsync(() =>
                 GroupId = tgGroup.Id,
             },
         },
-        Protocols = new TwingateSSHResourceProtocolsArgs
-        {
-            Tcp = new TwingateSSHResourceProtocolsTcpArgs
-            {
-                Policy = "RESTRICTED",
-                Ports = { "22" },
-            },
-        },
     });
 
-    // Rendered gateway config (e.g. for the gateway runtime to consume).
-    var gatewayConfig = new TwingateGatewayConfig("gateway_config_cs", new TwingateGatewayConfigArgs
+    // Web App Resource reachable through the Gateway (added in provider v5).
+    var webAppResource = new TwingateWebAppResource("web_app_resource_cs", new TwingateWebAppResourceArgs
     {
-        Port = 8443,
-        MetricsPort = 9090,
-        Ssh = new TwingateGatewayConfigSshArgs
+        Name = "Internal Wiki CS",
+        Address = "wiki.internal.example.com",
+        RemoteNetworkId = remoteNetwork.Id,
+        GatewayId = gateway.Id,
+        Upstream = new TwingateWebAppResourceUpstreamArgs
         {
-            Gateway = new TwingateGatewayConfigSshGatewayArgs
-            {
-                Username = "gateway",
-                KeyType = "ed25519",
-                UserCertTtl = "5m",
-                HostCertTtl = "24h",
-            },
-            Ca = new TwingateGatewayConfigSshCaArgs
-            {
-                PrivateKeyFile = "/etc/gateway/ssh-ca.key",
-            },
-            Resources =
-            {
-                new TwingateGatewayConfigSshResourceArgs
-                {
-                    Name = sshResource.Name,
-                    Address = sshResource.Address,
-                    Username = "ubuntu",
-                },
-            },
+            Port = 8443,
         },
-        Tls = new TwingateGatewayConfigTlsArgs
+        Downstream = new TwingateWebAppResourceDownstreamArgs
         {
-            CertificateFile = "/etc/gateway/tls.crt",
-            PrivateKeyFile = "/etc/gateway/tls.key",
+            Port = 443,
+        },
+        AccessGroups = new[]
+        {
+            new TwingateWebAppResourceAccessGroupArgs
+            {
+                GroupId = tgGroup.Id,
+            },
         },
     });
 
@@ -365,7 +345,6 @@ await Deployment.RunAsync(() =>
         LastName = "User",
         Role = "MEMBER",
         IsActive = true,
-        SendInvite = false,
     });
 
     // -----------------------------------------------------------------------
@@ -402,7 +381,7 @@ await Deployment.RunAsync(() =>
     return new Dictionary<string, object?>
     {
         ["gateway_id"] = gateway.Id,
-        ["gateway_config_content"] = gatewayConfig.Content,
+        ["web_app_resource_id"] = webAppResource.Id,
         ["connector_access_token"] = Output.CreateSecret(connectorTokens.AccessToken),
         ["connector_refresh_token"] = Output.CreateSecret(connectorTokens.RefreshToken),
     };

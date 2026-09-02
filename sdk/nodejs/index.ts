@@ -118,11 +118,6 @@ export type TwingateGateway = import("./twingateGateway").TwingateGateway;
 export const TwingateGateway: typeof import("./twingateGateway").TwingateGateway = null as any;
 utilities.lazyLoad(exports, ["TwingateGateway"], () => require("./twingateGateway"));
 
-export { TwingateGatewayConfigArgs, TwingateGatewayConfigState } from "./twingateGatewayConfig";
-export type TwingateGatewayConfig = import("./twingateGatewayConfig").TwingateGatewayConfig;
-export const TwingateGatewayConfig: typeof import("./twingateGatewayConfig").TwingateGatewayConfig = null as any;
-utilities.lazyLoad(exports, ["TwingateGatewayConfig"], () => require("./twingateGatewayConfig"));
-
 export { TwingateGroupArgs, TwingateGroupState } from "./twingateGroup";
 export type TwingateGroup = import("./twingateGroup").TwingateGroup;
 export const TwingateGroup: typeof import("./twingateGroup").TwingateGroup = null as any;
@@ -168,6 +163,11 @@ export type TwingateUser = import("./twingateUser").TwingateUser;
 export const TwingateUser: typeof import("./twingateUser").TwingateUser = null as any;
 utilities.lazyLoad(exports, ["TwingateUser"], () => require("./twingateUser"));
 
+export { TwingateWebAppResourceArgs, TwingateWebAppResourceState } from "./twingateWebAppResource";
+export type TwingateWebAppResource = import("./twingateWebAppResource").TwingateWebAppResource;
+export const TwingateWebAppResource: typeof import("./twingateWebAppResource").TwingateWebAppResource = null as any;
+utilities.lazyLoad(exports, ["TwingateWebAppResource"], () => require("./twingateWebAppResource"));
+
 export { TwingateX509CertificateAuthorityArgs, TwingateX509CertificateAuthorityState } from "./twingateX509CertificateAuthority";
 export type TwingateX509CertificateAuthority = import("./twingateX509CertificateAuthority").TwingateX509CertificateAuthority;
 export const TwingateX509CertificateAuthority: typeof import("./twingateX509CertificateAuthority").TwingateX509CertificateAuthority = null as any;
@@ -195,8 +195,6 @@ const _module = {
                 return new TwingateDNSFilteringProfile(name, <any>undefined, { urn })
             case "twingate:index/twingateGateway:TwingateGateway":
                 return new TwingateGateway(name, <any>undefined, { urn })
-            case "twingate:index/twingateGatewayConfig:TwingateGatewayConfig":
-                return new TwingateGatewayConfig(name, <any>undefined, { urn })
             case "twingate:index/twingateGroup:TwingateGroup":
                 return new TwingateGroup(name, <any>undefined, { urn })
             case "twingate:index/twingateKubernetesResource:TwingateKubernetesResource":
@@ -215,6 +213,8 @@ const _module = {
                 return new TwingateServiceAccountKey(name, <any>undefined, { urn })
             case "twingate:index/twingateUser:TwingateUser":
                 return new TwingateUser(name, <any>undefined, { urn })
+            case "twingate:index/twingateWebAppResource:TwingateWebAppResource":
+                return new TwingateWebAppResource(name, <any>undefined, { urn })
             case "twingate:index/twingateX509CertificateAuthority:TwingateX509CertificateAuthority":
                 return new TwingateX509CertificateAuthority(name, <any>undefined, { urn })
             default:
@@ -226,7 +226,6 @@ pulumi.runtime.registerResourceModule("twingate", "index/twingateConnector", _mo
 pulumi.runtime.registerResourceModule("twingate", "index/twingateConnectorTokens", _module)
 pulumi.runtime.registerResourceModule("twingate", "index/twingateDNSFilteringProfile", _module)
 pulumi.runtime.registerResourceModule("twingate", "index/twingateGateway", _module)
-pulumi.runtime.registerResourceModule("twingate", "index/twingateGatewayConfig", _module)
 pulumi.runtime.registerResourceModule("twingate", "index/twingateGroup", _module)
 pulumi.runtime.registerResourceModule("twingate", "index/twingateKubernetesResource", _module)
 pulumi.runtime.registerResourceModule("twingate", "index/twingateRemoteNetwork", _module)
@@ -236,6 +235,7 @@ pulumi.runtime.registerResourceModule("twingate", "index/twingateSSHResource", _
 pulumi.runtime.registerResourceModule("twingate", "index/twingateServiceAccount", _module)
 pulumi.runtime.registerResourceModule("twingate", "index/twingateServiceAccountKey", _module)
 pulumi.runtime.registerResourceModule("twingate", "index/twingateUser", _module)
+pulumi.runtime.registerResourceModule("twingate", "index/twingateWebAppResource", _module)
 pulumi.runtime.registerResourceModule("twingate", "index/twingateX509CertificateAuthority", _module)
 pulumi.runtime.registerResourcePackage("twingate", {
     version: utilities.getVersion(),
