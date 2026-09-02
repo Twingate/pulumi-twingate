@@ -29,7 +29,6 @@ from .twingate_connector import *
 from .twingate_connector_tokens import *
 from .twingate_dns_filtering_profile import *
 from .twingate_gateway import *
-from .twingate_gateway_config import *
 from .twingate_group import *
 from .twingate_kubernetes_resource import *
 from .twingate_remote_network import *
@@ -39,6 +38,7 @@ from .twingate_service_account_key import *
 from .twingate_ssh_certificate_authority import *
 from .twingate_ssh_resource import *
 from .twingate_user import *
+from .twingate_web_app_resource import *
 from .twingate_x509_certificate_authority import *
 from ._inputs import *
 from . import outputs
@@ -83,14 +83,6 @@ _utilities.register(
   "fqn": "pulumi_twingate",
   "classes": {
    "twingate:index/twingateGateway:TwingateGateway": "TwingateGateway"
-  }
- },
- {
-  "pkg": "twingate",
-  "mod": "index/twingateGatewayConfig",
-  "fqn": "pulumi_twingate",
-  "classes": {
-   "twingate:index/twingateGatewayConfig:TwingateGatewayConfig": "TwingateGatewayConfig"
   }
  },
  {
@@ -163,6 +155,14 @@ _utilities.register(
   "fqn": "pulumi_twingate",
   "classes": {
    "twingate:index/twingateUser:TwingateUser": "TwingateUser"
+  }
+ },
+ {
+  "pkg": "twingate",
+  "mod": "index/twingateWebAppResource",
+  "fqn": "pulumi_twingate",
+  "classes": {
+   "twingate:index/twingateWebAppResource:TwingateWebAppResource": "TwingateWebAppResource"
   }
  },
  {

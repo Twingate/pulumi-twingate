@@ -21,7 +21,7 @@ import (
 	// Allow embedding bridge-metadata.json in the provider.
 	_ "embed"
 
-	"github.com/Twingate/terraform-provider-twingate/v4/twingate"
+	"github.com/Twingate/terraform-provider-twingate/v5/twingate"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	bridgev3 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
@@ -62,7 +62,7 @@ func Provider() bridgev3.ProviderInfo {
 	prov := bridgev3.ProviderInfo{
 		// Instantiate the Terraform provider
 		P:                       tfbridge.ShimProvider(provider),
-		TFProviderModuleVersion: "v4",
+		TFProviderModuleVersion: "v5",
 		Name:                    "twingate",
 		Version:                 version.Version,
 		// DisplayName is a way to be able to change the casing of the provider
@@ -111,7 +111,6 @@ func Provider() bridgev3.ProviderInfo {
 			"twingate_connector_tokens":      {Tok: bridgev3.MakeResource(mainPkg, mainMod, "TwingateConnectorTokens")},
 			"twingate_dns_filtering_profile": {Tok: bridgev3.MakeResource(mainPkg, mainMod, "TwingateDNSFilteringProfile")},
 			"twingate_gateway":               {Tok: bridgev3.MakeResource(mainPkg, mainMod, "TwingateGateway")},
-			"twingate_gateway_config":        {Tok: bridgev3.MakeResource(mainPkg, mainMod, "TwingateGatewayConfig")},
 			"twingate_group":                 {Tok: bridgev3.MakeResource(mainPkg, mainMod, "TwingateGroup")},
 			"twingate_kubernetes_resource":   {Tok: bridgev3.MakeResource(mainPkg, mainMod, "TwingateKubernetesResource")},
 			"twingate_remote_network":        {Tok: bridgev3.MakeResource(mainPkg, mainMod, "TwingateRemoteNetwork")},
@@ -124,6 +123,9 @@ func Provider() bridgev3.ProviderInfo {
 			},
 			"twingate_ssh_resource": {
 				Tok: bridgev3.MakeResource(mainPkg, mainMod, "TwingateSSHResource"),
+			},
+			"twingate_web_app_resource": {
+				Tok: bridgev3.MakeResource(mainPkg, mainMod, "TwingateWebAppResource"),
 			},
 			"twingate_x509_certificate_authority": {
 				Tok: bridgev3.MakeResource(mainPkg, mainMod, "TwingateX509CertificateAuthority"),
