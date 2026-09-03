@@ -39,7 +39,6 @@ import * as utilities from "./utilities";
  *     alias: "test.int",
  *     remoteNetworkId: prod.id,
  *     address: "10.128.0.105",
- *     username: "ubuntu",
  * });
  * ```
  */
@@ -100,12 +99,6 @@ export class TwingateSSHResource extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-     *
-     * @deprecated This argument is deprecated and will be removed in a future release.
-     */
-    declare public readonly protocols: pulumi.Output<outputs.TwingateSSHResourceProtocols>;
-    /**
      * The ID of the Remote Network the SSH Resource belongs to.
      */
     declare public readonly remoteNetworkId: pulumi.Output<string>;
@@ -117,12 +110,6 @@ export class TwingateSSHResource extends pulumi.CustomResource {
      * A map of key-value pair tags to set on this resource.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string}>;
-    /**
-     * The username to use when connecting to the SSH Resource.
-     *
-     * @deprecated This argument is deprecated and will be removed in a future release.
-     */
-    declare public readonly username: pulumi.Output<string | undefined>;
 
     /**
      * Create a TwingateSSHResource resource with the given unique name, arguments, and options.
@@ -144,11 +131,9 @@ export class TwingateSSHResource extends pulumi.CustomResource {
             resourceInputs["gatewayId"] = state?.gatewayId;
             resourceInputs["isVisible"] = state?.isVisible;
             resourceInputs["name"] = state?.name;
-            resourceInputs["protocols"] = state?.protocols;
             resourceInputs["remoteNetworkId"] = state?.remoteNetworkId;
             resourceInputs["securityPolicyId"] = state?.securityPolicyId;
             resourceInputs["tags"] = state?.tags;
-            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as TwingateSSHResourceArgs | undefined;
             if (args?.address === undefined && !opts.urn) {
@@ -167,11 +152,9 @@ export class TwingateSSHResource extends pulumi.CustomResource {
             resourceInputs["gatewayId"] = args?.gatewayId;
             resourceInputs["isVisible"] = args?.isVisible;
             resourceInputs["name"] = args?.name;
-            resourceInputs["protocols"] = args?.protocols;
             resourceInputs["remoteNetworkId"] = args?.remoteNetworkId;
             resourceInputs["securityPolicyId"] = args?.securityPolicyId;
             resourceInputs["tags"] = args?.tags;
-            resourceInputs["username"] = args?.username;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TwingateSSHResource.__pulumiType, name, resourceInputs, opts);
@@ -211,12 +194,6 @@ export interface TwingateSSHResourceState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-     *
-     * @deprecated This argument is deprecated and will be removed in a future release.
-     */
-    protocols?: pulumi.Input<inputs.TwingateSSHResourceProtocols | undefined>;
-    /**
      * The ID of the Remote Network the SSH Resource belongs to.
      */
     remoteNetworkId?: pulumi.Input<string | undefined>;
@@ -228,12 +205,6 @@ export interface TwingateSSHResourceState {
      * A map of key-value pair tags to set on this resource.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
-    /**
-     * The username to use when connecting to the SSH Resource.
-     *
-     * @deprecated This argument is deprecated and will be removed in a future release.
-     */
-    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -269,12 +240,6 @@ export interface TwingateSSHResourceArgs {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-     *
-     * @deprecated This argument is deprecated and will be removed in a future release.
-     */
-    protocols?: pulumi.Input<inputs.TwingateSSHResourceProtocols | undefined>;
-    /**
      * The ID of the Remote Network the SSH Resource belongs to.
      */
     remoteNetworkId: pulumi.Input<string>;
@@ -286,10 +251,4 @@ export interface TwingateSSHResourceArgs {
      * A map of key-value pair tags to set on this resource.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
-    /**
-     * The username to use when connecting to the SSH Resource.
-     *
-     * @deprecated This argument is deprecated and will be removed in a future release.
-     */
-    username?: pulumi.Input<string | undefined>;
 }

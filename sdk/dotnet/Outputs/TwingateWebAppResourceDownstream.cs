@@ -12,23 +12,17 @@ namespace Twingate.Twingate.Outputs
 {
 
     [OutputType]
-    public sealed class TwingateGatewayConfigKubernetesResource
+    public sealed class TwingateWebAppResourceDownstream
     {
-        public readonly string Address;
-        public readonly bool InCluster;
-        public readonly string Name;
+        /// <summary>
+        /// The port number. Must be between 1 and 65535 inclusive.
+        /// </summary>
+        public readonly int Port;
 
         [OutputConstructor]
-        private TwingateGatewayConfigKubernetesResource(
-            string address,
-
-            bool inCluster,
-
-            string name)
+        private TwingateWebAppResourceDownstream(int port)
         {
-            Address = address;
-            InCluster = inCluster;
-            Name = name;
+            Port = port;
         }
     }
 }

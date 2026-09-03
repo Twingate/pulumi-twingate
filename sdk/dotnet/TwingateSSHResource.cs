@@ -59,7 +59,6 @@ namespace Twingate.Twingate
     ///         Alias = "test.int",
     ///         RemoteNetworkId = prod.Id,
     ///         Address = "10.128.0.105",
-    ///         Username = "ubuntu",
     ///     });
     /// 
     /// });
@@ -111,12 +110,6 @@ namespace Twingate.Twingate
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-        /// </summary>
-        [Output("protocols")]
-        public Output<Outputs.TwingateSSHResourceProtocols> Protocols { get; private set; } = null!;
-
-        /// <summary>
         /// The ID of the Remote Network the SSH Resource belongs to.
         /// </summary>
         [Output("remoteNetworkId")]
@@ -133,12 +126,6 @@ namespace Twingate.Twingate
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>> Tags { get; private set; } = null!;
-
-        /// <summary>
-        /// The username to use when connecting to the SSH Resource.
-        /// </summary>
-        [Output("username")]
-        public Output<string?> Username { get; private set; } = null!;
 
 
         /// <summary>
@@ -242,12 +229,6 @@ namespace Twingate.Twingate
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-        /// </summary>
-        [Input("protocols")]
-        public Input<Inputs.TwingateSSHResourceProtocolsArgs>? Protocols { get; set; }
-
-        /// <summary>
         /// The ID of the Remote Network the SSH Resource belongs to.
         /// </summary>
         [Input("remoteNetworkId", required: true)]
@@ -270,12 +251,6 @@ namespace Twingate.Twingate
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
-
-        /// <summary>
-        /// The username to use when connecting to the SSH Resource.
-        /// </summary>
-        [Input("username")]
-        public Input<string>? Username { get; set; }
 
         public TwingateSSHResourceArgs()
         {
@@ -340,12 +315,6 @@ namespace Twingate.Twingate
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-        /// </summary>
-        [Input("protocols")]
-        public Input<Inputs.TwingateSSHResourceProtocolsGetArgs>? Protocols { get; set; }
-
-        /// <summary>
         /// The ID of the Remote Network the SSH Resource belongs to.
         /// </summary>
         [Input("remoteNetworkId")]
@@ -368,12 +337,6 @@ namespace Twingate.Twingate
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
-
-        /// <summary>
-        /// The username to use when connecting to the SSH Resource.
-        /// </summary>
-        [Input("username")]
-        public Input<string>? Username { get; set; }
 
         public TwingateSSHResourceState()
         {

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/Twingate/pulumi-twingate/sdk/v4/go/twingate/internal"
+	"github.com/Twingate/pulumi-twingate/sdk/v5/go/twingate/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/Twingate/pulumi-twingate/sdk/v4/go/twingate"
+//	"github.com/Twingate/pulumi-twingate/sdk/v5/go/twingate"
 //	"github.com/pulumi/pulumi-std/sdk/v2/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -103,10 +103,6 @@ type TwingateKubernetesResource struct {
 	IsVisible pulumi.BoolOutput `pulumi:"isVisible"`
 	// The name of the Kubernetes Resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-	//
-	// Deprecated: This argument is deprecated and will be removed in a future release.
-	Protocols TwingateKubernetesResourceProtocolsOutput `pulumi:"protocols"`
 	// The ID of the Remote Network the Kubernetes Resource belongs to.
 	RemoteNetworkId pulumi.StringOutput `pulumi:"remoteNetworkId"`
 	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
@@ -171,10 +167,6 @@ type twingateKubernetesResourceState struct {
 	IsVisible *bool `pulumi:"isVisible"`
 	// The name of the Kubernetes Resource.
 	Name *string `pulumi:"name"`
-	// Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-	//
-	// Deprecated: This argument is deprecated and will be removed in a future release.
-	Protocols *TwingateKubernetesResourceProtocols `pulumi:"protocols"`
 	// The ID of the Remote Network the Kubernetes Resource belongs to.
 	RemoteNetworkId *string `pulumi:"remoteNetworkId"`
 	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
@@ -204,10 +196,6 @@ type TwingateKubernetesResourceState struct {
 	IsVisible pulumi.BoolPtrInput
 	// The name of the Kubernetes Resource.
 	Name pulumi.StringPtrInput
-	// Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-	//
-	// Deprecated: This argument is deprecated and will be removed in a future release.
-	Protocols TwingateKubernetesResourceProtocolsPtrInput
 	// The ID of the Remote Network the Kubernetes Resource belongs to.
 	RemoteNetworkId pulumi.StringPtrInput
 	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
@@ -241,10 +229,6 @@ type twingateKubernetesResourceArgs struct {
 	IsVisible *bool `pulumi:"isVisible"`
 	// The name of the Kubernetes Resource.
 	Name *string `pulumi:"name"`
-	// Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-	//
-	// Deprecated: This argument is deprecated and will be removed in a future release.
-	Protocols *TwingateKubernetesResourceProtocols `pulumi:"protocols"`
 	// The ID of the Remote Network the Kubernetes Resource belongs to.
 	RemoteNetworkId string `pulumi:"remoteNetworkId"`
 	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
@@ -275,10 +259,6 @@ type TwingateKubernetesResourceArgs struct {
 	IsVisible pulumi.BoolPtrInput
 	// The name of the Kubernetes Resource.
 	Name pulumi.StringPtrInput
-	// Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-	//
-	// Deprecated: This argument is deprecated and will be removed in a future release.
-	Protocols TwingateKubernetesResourceProtocolsPtrInput
 	// The ID of the Remote Network the Kubernetes Resource belongs to.
 	RemoteNetworkId pulumi.StringInput
 	// The ID of a `getTwingateSecurityPolicy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
@@ -426,13 +406,6 @@ func (o TwingateKubernetesResourceOutput) IsVisible() pulumi.BoolOutput {
 // The name of the Kubernetes Resource.
 func (o TwingateKubernetesResourceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TwingateKubernetesResource) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
-}
-
-// Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-//
-// Deprecated: This argument is deprecated and will be removed in a future release.
-func (o TwingateKubernetesResourceOutput) Protocols() TwingateKubernetesResourceProtocolsOutput {
-	return o.ApplyT(func(v *TwingateKubernetesResource) TwingateKubernetesResourceProtocolsOutput { return v.Protocols }).(TwingateKubernetesResourceProtocolsOutput)
 }
 
 // The ID of the Remote Network the Kubernetes Resource belongs to.

@@ -32,7 +32,6 @@ class TwingateKubernetesResourceArgs:
                  in_cluster: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 protocols: pulumi.Input[Optional['TwingateKubernetesResourceProtocolsArgs']] = None,
                  security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
@@ -49,7 +48,6 @@ class TwingateKubernetesResourceArgs:
         :param pulumi.Input[_builtins.bool] in_cluster: Whether the Gateway is running inside the same Kubernetes cluster that is represented by the Kubernetes Resource. Default is `true`.
         :param pulumi.Input[_builtins.bool] is_visible: Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
         :param pulumi.Input[_builtins.str] name: The name of the Kubernetes Resource.
-        :param pulumi.Input['TwingateKubernetesResourceProtocolsArgs'] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of key-value pair tags to set on this resource.
         """
@@ -73,11 +71,6 @@ class TwingateKubernetesResourceArgs:
             pulumi.set(__self__, "is_visible", is_visible)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if protocols is not None:
-            warnings.warn("""This argument is deprecated and will be removed in a future release.""", DeprecationWarning)
-            pulumi.log.warn("""protocols is deprecated: This argument is deprecated and will be removed in a future release.""")
-        if protocols is not None:
-            pulumi.set(__self__, "protocols", protocols)
         if security_policy_id is not None:
             pulumi.set(__self__, "security_policy_id", security_policy_id)
         if tags is not None:
@@ -216,19 +209,6 @@ class TwingateKubernetesResourceArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""This argument is deprecated and will be removed in a future release.""")
-    def protocols(self) -> pulumi.Input[Optional['TwingateKubernetesResourceProtocolsArgs']]:
-        """
-        Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-        """
-        return pulumi.get(self, "protocols")
-
-    @protocols.setter
-    def protocols(self, value: pulumi.Input[Optional['TwingateKubernetesResourceProtocolsArgs']]):
-        pulumi.set(self, "protocols", value)
-
-    @_builtins.property
     @pulumi.getter(name="securityPolicyId")
     def security_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -266,7 +246,6 @@ class _TwingateKubernetesResourceState:
                  in_cluster: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 protocols: pulumi.Input[Optional['TwingateKubernetesResourceProtocolsArgs']] = None,
                  remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
@@ -283,7 +262,6 @@ class _TwingateKubernetesResourceState:
         :param pulumi.Input[_builtins.bool] in_cluster: Whether the Gateway is running inside the same Kubernetes cluster that is represented by the Kubernetes Resource. Default is `true`.
         :param pulumi.Input[_builtins.bool] is_visible: Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
         :param pulumi.Input[_builtins.str] name: The name of the Kubernetes Resource.
-        :param pulumi.Input['TwingateKubernetesResourceProtocolsArgs'] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param pulumi.Input[_builtins.str] remote_network_id: The ID of the Remote Network the Kubernetes Resource belongs to.
         :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of key-value pair tags to set on this resource.
@@ -308,11 +286,6 @@ class _TwingateKubernetesResourceState:
             pulumi.set(__self__, "is_visible", is_visible)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if protocols is not None:
-            warnings.warn("""This argument is deprecated and will be removed in a future release.""", DeprecationWarning)
-            pulumi.log.warn("""protocols is deprecated: This argument is deprecated and will be removed in a future release.""")
-        if protocols is not None:
-            pulumi.set(__self__, "protocols", protocols)
         if remote_network_id is not None:
             pulumi.set(__self__, "remote_network_id", remote_network_id)
         if security_policy_id is not None:
@@ -441,19 +414,6 @@ class _TwingateKubernetesResourceState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""This argument is deprecated and will be removed in a future release.""")
-    def protocols(self) -> pulumi.Input[Optional['TwingateKubernetesResourceProtocolsArgs']]:
-        """
-        Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-        """
-        return pulumi.get(self, "protocols")
-
-    @protocols.setter
-    def protocols(self, value: pulumi.Input[Optional['TwingateKubernetesResourceProtocolsArgs']]):
-        pulumi.set(self, "protocols", value)
-
-    @_builtins.property
     @pulumi.getter(name="remoteNetworkId")
     def remote_network_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -506,7 +466,6 @@ class TwingateKubernetesResource(pulumi.CustomResource):
                  in_cluster: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 protocols: pulumi.Input[Optional[Union['TwingateKubernetesResourceProtocolsArgs', 'TwingateKubernetesResourceProtocolsArgsDict']]] = None,
                  remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -555,7 +514,6 @@ class TwingateKubernetesResource(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] in_cluster: Whether the Gateway is running inside the same Kubernetes cluster that is represented by the Kubernetes Resource. Default is `true`.
         :param pulumi.Input[_builtins.bool] is_visible: Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
         :param pulumi.Input[_builtins.str] name: The name of the Kubernetes Resource.
-        :param pulumi.Input[Union['TwingateKubernetesResourceProtocolsArgs', 'TwingateKubernetesResourceProtocolsArgsDict']] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param pulumi.Input[_builtins.str] remote_network_id: The ID of the Remote Network the Kubernetes Resource belongs to.
         :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of key-value pair tags to set on this resource.
@@ -623,7 +581,6 @@ class TwingateKubernetesResource(pulumi.CustomResource):
                  in_cluster: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 protocols: pulumi.Input[Optional[Union['TwingateKubernetesResourceProtocolsArgs', 'TwingateKubernetesResourceProtocolsArgsDict']]] = None,
                  remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -648,7 +605,6 @@ class TwingateKubernetesResource(pulumi.CustomResource):
             __props__.__dict__["in_cluster"] = in_cluster
             __props__.__dict__["is_visible"] = is_visible
             __props__.__dict__["name"] = name
-            __props__.__dict__["protocols"] = protocols
             if remote_network_id is None and not opts.urn:
                 raise TypeError("Missing required property 'remote_network_id'")
             __props__.__dict__["remote_network_id"] = remote_network_id
@@ -674,7 +630,6 @@ class TwingateKubernetesResource(pulumi.CustomResource):
             in_cluster: pulumi.Input[Optional[_builtins.bool]] = None,
             is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            protocols: pulumi.Input[Optional[Union['TwingateKubernetesResourceProtocolsArgs', 'TwingateKubernetesResourceProtocolsArgsDict']]] = None,
             remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
             security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'TwingateKubernetesResource':
@@ -695,7 +650,6 @@ class TwingateKubernetesResource(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] in_cluster: Whether the Gateway is running inside the same Kubernetes cluster that is represented by the Kubernetes Resource. Default is `true`.
         :param pulumi.Input[_builtins.bool] is_visible: Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
         :param pulumi.Input[_builtins.str] name: The name of the Kubernetes Resource.
-        :param pulumi.Input[Union['TwingateKubernetesResourceProtocolsArgs', 'TwingateKubernetesResourceProtocolsArgsDict']] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param pulumi.Input[_builtins.str] remote_network_id: The ID of the Remote Network the Kubernetes Resource belongs to.
         :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of key-value pair tags to set on this resource.
@@ -714,7 +668,6 @@ class TwingateKubernetesResource(pulumi.CustomResource):
         __props__.__dict__["in_cluster"] = in_cluster
         __props__.__dict__["is_visible"] = is_visible
         __props__.__dict__["name"] = name
-        __props__.__dict__["protocols"] = protocols
         __props__.__dict__["remote_network_id"] = remote_network_id
         __props__.__dict__["security_policy_id"] = security_policy_id
         __props__.__dict__["tags"] = tags
@@ -799,15 +752,6 @@ class TwingateKubernetesResource(pulumi.CustomResource):
         The name of the Kubernetes Resource.
         """
         return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""This argument is deprecated and will be removed in a future release.""")
-    def protocols(self) -> pulumi.Output['outputs.TwingateKubernetesResourceProtocols']:
-        """
-        Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
-        """
-        return pulumi.get(self, "protocols")
 
     @_builtins.property
     @pulumi.getter(name="remoteNetworkId")

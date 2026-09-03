@@ -17,7 +17,7 @@
     -->
     <ProjectReference Include="../../sdk/dotnet/Twingate.Twingate.csproj" />
     <!-- Use NuGet package for production -->
-    <!-- <PackageReference Include="Twingate.Twingate" Version="4.2.2" /> -->
+    <!-- <PackageReference Include="Twingate.Twingate" Version="5.0.0" /> -->
   </ItemGroup>
 
   <!-- On Apple Silicon, build native arm64. Forcing osx-x64 requires an x64

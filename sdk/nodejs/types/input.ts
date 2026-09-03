@@ -496,134 +496,6 @@ export interface TwingateDNSFilteringProfileSecurityCategories {
     enableThreatIntelligenceFeeds?: pulumi.Input<boolean | undefined>;
 }
 
-export interface TwingateGatewayConfigKubernetes {
-    /**
-     * List of Kubernetes resources. Accepts full twingate*kubernetes*resource references.
-     */
-    resources?: pulumi.Input<pulumi.Input<inputs.TwingateGatewayConfigKubernetesResource>[] | undefined>;
-}
-
-export interface TwingateGatewayConfigKubernetesResource {
-    address: pulumi.Input<string>;
-    inCluster: pulumi.Input<boolean>;
-    name: pulumi.Input<string>;
-}
-
-export interface TwingateGatewayConfigSsh {
-    /**
-     * SSH CA configuration. Specify either vault.address or private*key*file, not both.
-     */
-    ca?: pulumi.Input<inputs.TwingateGatewayConfigSshCa | undefined>;
-    /**
-     * SSH gateway settings. All fields are optional and fall back to built-in defaults.
-     */
-    gateway?: pulumi.Input<inputs.TwingateGatewayConfigSshGateway | undefined>;
-    /**
-     * List of SSH resources. Accepts full twingate*ssh*resource references.
-     */
-    resources?: pulumi.Input<pulumi.Input<inputs.TwingateGatewayConfigSshResource>[] | undefined>;
-}
-
-export interface TwingateGatewayConfigSshCa {
-    /**
-     * Path to the SSH CA private key file. Can't be used together with vault.address.
-     */
-    privateKeyFile?: pulumi.Input<string | undefined>;
-    /**
-     * Vault SSH CA configuration.
-     */
-    vault?: pulumi.Input<inputs.TwingateGatewayConfigSshCaVault | undefined>;
-}
-
-export interface TwingateGatewayConfigSshCaVault {
-    /**
-     * Vault server address. Can't be used together with ca.private*key*file.
-     */
-    address?: pulumi.Input<string | undefined>;
-    /**
-     * Vault authentication configuration.
-     */
-    auth?: pulumi.Input<inputs.TwingateGatewayConfigSshCaVaultAuth | undefined>;
-    /**
-     * Path to the Vault CA bundle file. Default: "/etc/ssl/vault-ca.crt".
-     */
-    caBundleFile?: pulumi.Input<string | undefined>;
-    /**
-     * Vault SSH secrets engine mount path. Default: "ssh".
-     */
-    mount?: pulumi.Input<string | undefined>;
-    /**
-     * Vault role for signing certificates. Default: "gateway".
-     */
-    role?: pulumi.Input<string | undefined>;
-}
-
-export interface TwingateGatewayConfigSshCaVaultAuth {
-    /**
-     * GCP authentication for Vault. Can't be used together with token.
-     */
-    gcp?: pulumi.Input<inputs.TwingateGatewayConfigSshCaVaultAuthGcp | undefined>;
-    /**
-     * Vault token used for authentication. Can't be used together with gcp.
-     */
-    token?: pulumi.Input<string | undefined>;
-}
-
-export interface TwingateGatewayConfigSshCaVaultAuthGcp {
-    /**
-     * Vault GCP auth mount path. Default: "gcp".
-     */
-    mount?: pulumi.Input<string | undefined>;
-    /**
-     * GCP IAM role for Vault GCP authentication.
-     */
-    role?: pulumi.Input<string | undefined>;
-    /**
-     * Service account email. Required when type is "iam".
-     */
-    serviceAccountEmail?: pulumi.Input<string | undefined>;
-    /**
-     * GCP authentication type for Vault (e.g. "iam" or "gce"). When set to "iam", service*account*email is required.
-     */
-    type?: pulumi.Input<string | undefined>;
-}
-
-export interface TwingateGatewayConfigSshGateway {
-    /**
-     * Host certificate TTL. Default: "24h".
-     */
-    hostCertTtl?: pulumi.Input<string | undefined>;
-    /**
-     * SSH key type. Default: "ed25519".
-     */
-    keyType?: pulumi.Input<string | undefined>;
-    /**
-     * User certificate TTL. Default: "5m".
-     */
-    userCertTtl?: pulumi.Input<string | undefined>;
-    /**
-     * SSH gateway username. Default: "gateway".
-     */
-    username?: pulumi.Input<string | undefined>;
-}
-
-export interface TwingateGatewayConfigSshResource {
-    address: pulumi.Input<string>;
-    name: pulumi.Input<string>;
-    username: pulumi.Input<string>;
-}
-
-export interface TwingateGatewayConfigTls {
-    /**
-     * Path to the TLS certificate file. Default: "/etc/gateway/tls.crt".
-     */
-    certificateFile?: pulumi.Input<string | undefined>;
-    /**
-     * Path to the TLS private key file. Default: "/etc/gateway/tls.key".
-     */
-    privateKeyFile?: pulumi.Input<string | undefined>;
-}
-
 export interface TwingateKubernetesResourceAccessGroup {
     /**
      * Restrict access according to JIT access policy
@@ -667,37 +539,6 @@ export interface TwingateKubernetesResourceAccessPolicy {
      * This will set the accessPolicy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
      */
     mode?: pulumi.Input<string | undefined>;
-}
-
-export interface TwingateKubernetesResourceProtocols {
-    /**
-     * Whether to allow ICMP (ping) traffic
-     */
-    allowIcmp?: pulumi.Input<boolean | undefined>;
-    tcp?: pulumi.Input<inputs.TwingateKubernetesResourceProtocolsTcp | undefined>;
-    udp?: pulumi.Input<inputs.TwingateKubernetesResourceProtocolsUdp | undefined>;
-}
-
-export interface TwingateKubernetesResourceProtocolsTcp {
-    /**
-     * Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
-     */
-    policy?: pulumi.Input<string | undefined>;
-    /**
-     * List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
-     */
-    ports?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-}
-
-export interface TwingateKubernetesResourceProtocolsUdp {
-    /**
-     * Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
-     */
-    policy?: pulumi.Input<string | undefined>;
-    /**
-     * List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
-     */
-    ports?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface TwingateResourceAccessGroup {
@@ -828,35 +669,63 @@ export interface TwingateSSHResourceAccessPolicy {
     mode?: pulumi.Input<string | undefined>;
 }
 
-export interface TwingateSSHResourceProtocols {
+export interface TwingateWebAppResourceAccessGroup {
     /**
-     * Whether to allow ICMP (ping) traffic
+     * Restrict access according to JIT access policy
      */
-    allowIcmp?: pulumi.Input<boolean | undefined>;
-    tcp?: pulumi.Input<inputs.TwingateSSHResourceProtocolsTcp | undefined>;
-    udp?: pulumi.Input<inputs.TwingateSSHResourceProtocolsUdp | undefined>;
+    accessPolicies?: pulumi.Input<pulumi.Input<inputs.TwingateWebAppResourceAccessGroupAccessPolicy>[] | undefined>;
+    /**
+     * Group ID that will have permission to access the Resource.
+     */
+    groupId?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of a `twingate.getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
+     */
+    securityPolicyId?: pulumi.Input<string | undefined>;
 }
 
-export interface TwingateSSHResourceProtocolsTcp {
+export interface TwingateWebAppResourceAccessGroupAccessPolicy {
     /**
-     * Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+     * This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
      */
-    policy?: pulumi.Input<string | undefined>;
+    approvalMode?: pulumi.Input<string | undefined>;
     /**
-     * List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+     * This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
      */
-    ports?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    duration?: pulumi.Input<string | undefined>;
+    /**
+     * This will set the accessPolicy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+     */
+    mode?: pulumi.Input<string | undefined>;
 }
 
-export interface TwingateSSHResourceProtocolsUdp {
+export interface TwingateWebAppResourceAccessPolicy {
     /**
-     * Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
+     * This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
      */
-    policy?: pulumi.Input<string | undefined>;
+    approvalMode?: pulumi.Input<string | undefined>;
     /**
-     * List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
+     * This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
      */
-    ports?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    duration?: pulumi.Input<string | undefined>;
+    /**
+     * This will set the accessPolicy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+     */
+    mode?: pulumi.Input<string | undefined>;
+}
+
+export interface TwingateWebAppResourceDownstream {
+    /**
+     * The port number. Must be between 1 and 65535 inclusive.
+     */
+    port: pulumi.Input<number>;
+}
+
+export interface TwingateWebAppResourceUpstream {
+    /**
+     * The port number. Must be between 1 and 65535 inclusive.
+     */
+    port: pulumi.Input<number>;
 }
 export namespace config {
 }

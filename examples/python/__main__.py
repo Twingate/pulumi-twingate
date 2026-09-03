@@ -202,57 +202,41 @@ gateway = tg.TwingateGateway(
 )
 
 # SSH Resource reachable through the Gateway.
-ssh_resource = tg.TwingateSSHResource(
+tg.TwingateSSHResource(
     "ssh_resource_py",
     name="Bastion SSH PY",
     address="bastion.internal.example.com",
     remote_network_id=remote_network.id,
     gateway_id=gateway.id,
-    username="ubuntu",
     access_groups=[
         {
             "group_id": tg_group.id,
         },
     ],
-    protocols={
-        "tcp": {
-            "policy": "RESTRICTED",
-            "ports": ["22"],
-        },
-    },
 )
 
-# Rendered gateway config (e.g. for the gateway runtime to consume).
-gateway_config = tg.TwingateGatewayConfig(
-    "gateway_config_py",
-    port=8443,
-    metrics_port=9090,
-    ssh={
-        "gateway": {
-            "username": "gateway",
-            "key_type": "ed25519",
-            "user_cert_ttl": "5m",
-            "host_cert_ttl": "24h",
-        },
-        "ca": {
-            "private_key_file": "/etc/gateway/ssh-ca.key",
-        },
-        "resources": [
-            {
-                "name": ssh_resource.name,
-                "address": ssh_resource.address,
-                "username": "ubuntu",
-            },
-        ],
+# Web App Resource reachable through the Gateway (added in provider v5).
+web_app_resource = tg.TwingateWebAppResource(
+    "web_app_resource_py",
+    name="Internal Wiki PY",
+    address="wiki.internal.example.com",
+    remote_network_id=remote_network.id,
+    gateway_id=gateway.id,
+    upstream={
+        "port": 8443,
     },
-    tls={
-        "certificate_file": "/etc/gateway/tls.crt",
-        "private_key_file": "/etc/gateway/tls.key",
+    downstream={
+        "port": 443,
     },
+    access_groups=[
+        {
+            "group_id": tg_group.id,
+        },
+    ],
 )
 
 pulumi.export("gateway_id", gateway.id)
-pulumi.export("gateway_config_content", gateway_config.content)
+pulumi.export("web_app_resource_id", web_app_resource.id)
 
 # ---------------------------------------------------------------------------
 # Twingate User

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/Twingate/pulumi-twingate/sdk/v4/go/twingate/internal"
+	"github.com/Twingate/pulumi-twingate/sdk/v5/go/twingate/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -1968,1599 +1968,6 @@ func (o TwingateDNSFilteringProfileSecurityCategoriesPtrOutput) EnableThreatInte
 	}).(pulumi.BoolPtrOutput)
 }
 
-type TwingateGatewayConfigKubernetes struct {
-	// List of Kubernetes resources. Accepts full twingate*kubernetes*resource references.
-	Resources []TwingateGatewayConfigKubernetesResource `pulumi:"resources"`
-}
-
-// TwingateGatewayConfigKubernetesInput is an input type that accepts TwingateGatewayConfigKubernetesArgs and TwingateGatewayConfigKubernetesOutput values.
-// You can construct a concrete instance of `TwingateGatewayConfigKubernetesInput` via:
-//
-//	TwingateGatewayConfigKubernetesArgs{...}
-type TwingateGatewayConfigKubernetesInput interface {
-	pulumi.Input
-
-	ToTwingateGatewayConfigKubernetesOutput() TwingateGatewayConfigKubernetesOutput
-	ToTwingateGatewayConfigKubernetesOutputWithContext(context.Context) TwingateGatewayConfigKubernetesOutput
-}
-
-type TwingateGatewayConfigKubernetesArgs struct {
-	// List of Kubernetes resources. Accepts full twingate*kubernetes*resource references.
-	Resources TwingateGatewayConfigKubernetesResourceArrayInput `pulumi:"resources"`
-}
-
-func (TwingateGatewayConfigKubernetesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateGatewayConfigKubernetes)(nil)).Elem()
-}
-
-func (i TwingateGatewayConfigKubernetesArgs) ToTwingateGatewayConfigKubernetesOutput() TwingateGatewayConfigKubernetesOutput {
-	return i.ToTwingateGatewayConfigKubernetesOutputWithContext(context.Background())
-}
-
-func (i TwingateGatewayConfigKubernetesArgs) ToTwingateGatewayConfigKubernetesOutputWithContext(ctx context.Context) TwingateGatewayConfigKubernetesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateGatewayConfigKubernetesOutput)
-}
-
-func (i TwingateGatewayConfigKubernetesArgs) ToTwingateGatewayConfigKubernetesPtrOutput() TwingateGatewayConfigKubernetesPtrOutput {
-	return i.ToTwingateGatewayConfigKubernetesPtrOutputWithContext(context.Background())
-}
-
-func (i TwingateGatewayConfigKubernetesArgs) ToTwingateGatewayConfigKubernetesPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigKubernetesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateGatewayConfigKubernetesOutput).ToTwingateGatewayConfigKubernetesPtrOutputWithContext(ctx)
-}
-
-// TwingateGatewayConfigKubernetesPtrInput is an input type that accepts TwingateGatewayConfigKubernetesArgs, TwingateGatewayConfigKubernetesPtr and TwingateGatewayConfigKubernetesPtrOutput values.
-// You can construct a concrete instance of `TwingateGatewayConfigKubernetesPtrInput` via:
-//
-//	        TwingateGatewayConfigKubernetesArgs{...}
-//
-//	or:
-//
-//	        nil
-type TwingateGatewayConfigKubernetesPtrInput interface {
-	pulumi.Input
-
-	ToTwingateGatewayConfigKubernetesPtrOutput() TwingateGatewayConfigKubernetesPtrOutput
-	ToTwingateGatewayConfigKubernetesPtrOutputWithContext(context.Context) TwingateGatewayConfigKubernetesPtrOutput
-}
-
-type twingateGatewayConfigKubernetesPtrType TwingateGatewayConfigKubernetesArgs
-
-func TwingateGatewayConfigKubernetesPtr(v *TwingateGatewayConfigKubernetesArgs) TwingateGatewayConfigKubernetesPtrInput {
-	return (*twingateGatewayConfigKubernetesPtrType)(v)
-}
-
-func (*twingateGatewayConfigKubernetesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TwingateGatewayConfigKubernetes)(nil)).Elem()
-}
-
-func (i *twingateGatewayConfigKubernetesPtrType) ToTwingateGatewayConfigKubernetesPtrOutput() TwingateGatewayConfigKubernetesPtrOutput {
-	return i.ToTwingateGatewayConfigKubernetesPtrOutputWithContext(context.Background())
-}
-
-func (i *twingateGatewayConfigKubernetesPtrType) ToTwingateGatewayConfigKubernetesPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigKubernetesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateGatewayConfigKubernetesPtrOutput)
-}
-
-type TwingateGatewayConfigKubernetesOutput struct{ *pulumi.OutputState }
-
-func (TwingateGatewayConfigKubernetesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateGatewayConfigKubernetes)(nil)).Elem()
-}
-
-func (o TwingateGatewayConfigKubernetesOutput) ToTwingateGatewayConfigKubernetesOutput() TwingateGatewayConfigKubernetesOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigKubernetesOutput) ToTwingateGatewayConfigKubernetesOutputWithContext(ctx context.Context) TwingateGatewayConfigKubernetesOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigKubernetesOutput) ToTwingateGatewayConfigKubernetesPtrOutput() TwingateGatewayConfigKubernetesPtrOutput {
-	return o.ToTwingateGatewayConfigKubernetesPtrOutputWithContext(context.Background())
-}
-
-func (o TwingateGatewayConfigKubernetesOutput) ToTwingateGatewayConfigKubernetesPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigKubernetesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TwingateGatewayConfigKubernetes) *TwingateGatewayConfigKubernetes {
-		return &v
-	}).(TwingateGatewayConfigKubernetesPtrOutput)
-}
-
-// List of Kubernetes resources. Accepts full twingate*kubernetes*resource references.
-func (o TwingateGatewayConfigKubernetesOutput) Resources() TwingateGatewayConfigKubernetesResourceArrayOutput {
-	return o.ApplyT(func(v TwingateGatewayConfigKubernetes) []TwingateGatewayConfigKubernetesResource { return v.Resources }).(TwingateGatewayConfigKubernetesResourceArrayOutput)
-}
-
-type TwingateGatewayConfigKubernetesPtrOutput struct{ *pulumi.OutputState }
-
-func (TwingateGatewayConfigKubernetesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TwingateGatewayConfigKubernetes)(nil)).Elem()
-}
-
-func (o TwingateGatewayConfigKubernetesPtrOutput) ToTwingateGatewayConfigKubernetesPtrOutput() TwingateGatewayConfigKubernetesPtrOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigKubernetesPtrOutput) ToTwingateGatewayConfigKubernetesPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigKubernetesPtrOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigKubernetesPtrOutput) Elem() TwingateGatewayConfigKubernetesOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigKubernetes) TwingateGatewayConfigKubernetes {
-		if v != nil {
-			return *v
-		}
-		var ret TwingateGatewayConfigKubernetes
-		return ret
-	}).(TwingateGatewayConfigKubernetesOutput)
-}
-
-// List of Kubernetes resources. Accepts full twingate*kubernetes*resource references.
-func (o TwingateGatewayConfigKubernetesPtrOutput) Resources() TwingateGatewayConfigKubernetesResourceArrayOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigKubernetes) []TwingateGatewayConfigKubernetesResource {
-		if v == nil {
-			return nil
-		}
-		return v.Resources
-	}).(TwingateGatewayConfigKubernetesResourceArrayOutput)
-}
-
-type TwingateGatewayConfigKubernetesResource struct {
-	Address   string `pulumi:"address"`
-	InCluster bool   `pulumi:"inCluster"`
-	Name      string `pulumi:"name"`
-}
-
-// TwingateGatewayConfigKubernetesResourceInput is an input type that accepts TwingateGatewayConfigKubernetesResourceArgs and TwingateGatewayConfigKubernetesResourceOutput values.
-// You can construct a concrete instance of `TwingateGatewayConfigKubernetesResourceInput` via:
-//
-//	TwingateGatewayConfigKubernetesResourceArgs{...}
-type TwingateGatewayConfigKubernetesResourceInput interface {
-	pulumi.Input
-
-	ToTwingateGatewayConfigKubernetesResourceOutput() TwingateGatewayConfigKubernetesResourceOutput
-	ToTwingateGatewayConfigKubernetesResourceOutputWithContext(context.Context) TwingateGatewayConfigKubernetesResourceOutput
-}
-
-type TwingateGatewayConfigKubernetesResourceArgs struct {
-	Address   pulumi.StringInput `pulumi:"address"`
-	InCluster pulumi.BoolInput   `pulumi:"inCluster"`
-	Name      pulumi.StringInput `pulumi:"name"`
-}
-
-func (TwingateGatewayConfigKubernetesResourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateGatewayConfigKubernetesResource)(nil)).Elem()
-}
-
-func (i TwingateGatewayConfigKubernetesResourceArgs) ToTwingateGatewayConfigKubernetesResourceOutput() TwingateGatewayConfigKubernetesResourceOutput {
-	return i.ToTwingateGatewayConfigKubernetesResourceOutputWithContext(context.Background())
-}
-
-func (i TwingateGatewayConfigKubernetesResourceArgs) ToTwingateGatewayConfigKubernetesResourceOutputWithContext(ctx context.Context) TwingateGatewayConfigKubernetesResourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateGatewayConfigKubernetesResourceOutput)
-}
-
-// TwingateGatewayConfigKubernetesResourceArrayInput is an input type that accepts TwingateGatewayConfigKubernetesResourceArray and TwingateGatewayConfigKubernetesResourceArrayOutput values.
-// You can construct a concrete instance of `TwingateGatewayConfigKubernetesResourceArrayInput` via:
-//
-//	TwingateGatewayConfigKubernetesResourceArray{ TwingateGatewayConfigKubernetesResourceArgs{...} }
-type TwingateGatewayConfigKubernetesResourceArrayInput interface {
-	pulumi.Input
-
-	ToTwingateGatewayConfigKubernetesResourceArrayOutput() TwingateGatewayConfigKubernetesResourceArrayOutput
-	ToTwingateGatewayConfigKubernetesResourceArrayOutputWithContext(context.Context) TwingateGatewayConfigKubernetesResourceArrayOutput
-}
-
-type TwingateGatewayConfigKubernetesResourceArray []TwingateGatewayConfigKubernetesResourceInput
-
-func (TwingateGatewayConfigKubernetesResourceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TwingateGatewayConfigKubernetesResource)(nil)).Elem()
-}
-
-func (i TwingateGatewayConfigKubernetesResourceArray) ToTwingateGatewayConfigKubernetesResourceArrayOutput() TwingateGatewayConfigKubernetesResourceArrayOutput {
-	return i.ToTwingateGatewayConfigKubernetesResourceArrayOutputWithContext(context.Background())
-}
-
-func (i TwingateGatewayConfigKubernetesResourceArray) ToTwingateGatewayConfigKubernetesResourceArrayOutputWithContext(ctx context.Context) TwingateGatewayConfigKubernetesResourceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateGatewayConfigKubernetesResourceArrayOutput)
-}
-
-type TwingateGatewayConfigKubernetesResourceOutput struct{ *pulumi.OutputState }
-
-func (TwingateGatewayConfigKubernetesResourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateGatewayConfigKubernetesResource)(nil)).Elem()
-}
-
-func (o TwingateGatewayConfigKubernetesResourceOutput) ToTwingateGatewayConfigKubernetesResourceOutput() TwingateGatewayConfigKubernetesResourceOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigKubernetesResourceOutput) ToTwingateGatewayConfigKubernetesResourceOutputWithContext(ctx context.Context) TwingateGatewayConfigKubernetesResourceOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigKubernetesResourceOutput) Address() pulumi.StringOutput {
-	return o.ApplyT(func(v TwingateGatewayConfigKubernetesResource) string { return v.Address }).(pulumi.StringOutput)
-}
-
-func (o TwingateGatewayConfigKubernetesResourceOutput) InCluster() pulumi.BoolOutput {
-	return o.ApplyT(func(v TwingateGatewayConfigKubernetesResource) bool { return v.InCluster }).(pulumi.BoolOutput)
-}
-
-func (o TwingateGatewayConfigKubernetesResourceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v TwingateGatewayConfigKubernetesResource) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type TwingateGatewayConfigKubernetesResourceArrayOutput struct{ *pulumi.OutputState }
-
-func (TwingateGatewayConfigKubernetesResourceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TwingateGatewayConfigKubernetesResource)(nil)).Elem()
-}
-
-func (o TwingateGatewayConfigKubernetesResourceArrayOutput) ToTwingateGatewayConfigKubernetesResourceArrayOutput() TwingateGatewayConfigKubernetesResourceArrayOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigKubernetesResourceArrayOutput) ToTwingateGatewayConfigKubernetesResourceArrayOutputWithContext(ctx context.Context) TwingateGatewayConfigKubernetesResourceArrayOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigKubernetesResourceArrayOutput) Index(i pulumi.IntInput) TwingateGatewayConfigKubernetesResourceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TwingateGatewayConfigKubernetesResource {
-		return vs[0].([]TwingateGatewayConfigKubernetesResource)[vs[1].(int)]
-	}).(TwingateGatewayConfigKubernetesResourceOutput)
-}
-
-type TwingateGatewayConfigSsh struct {
-	// SSH CA configuration. Specify either vault.address or private*key*file, not both.
-	Ca *TwingateGatewayConfigSshCa `pulumi:"ca"`
-	// SSH gateway settings. All fields are optional and fall back to built-in defaults.
-	Gateway *TwingateGatewayConfigSshGateway `pulumi:"gateway"`
-	// List of SSH resources. Accepts full twingate*ssh*resource references.
-	Resources []TwingateGatewayConfigSshResource `pulumi:"resources"`
-}
-
-// TwingateGatewayConfigSshInput is an input type that accepts TwingateGatewayConfigSshArgs and TwingateGatewayConfigSshOutput values.
-// You can construct a concrete instance of `TwingateGatewayConfigSshInput` via:
-//
-//	TwingateGatewayConfigSshArgs{...}
-type TwingateGatewayConfigSshInput interface {
-	pulumi.Input
-
-	ToTwingateGatewayConfigSshOutput() TwingateGatewayConfigSshOutput
-	ToTwingateGatewayConfigSshOutputWithContext(context.Context) TwingateGatewayConfigSshOutput
-}
-
-type TwingateGatewayConfigSshArgs struct {
-	// SSH CA configuration. Specify either vault.address or private*key*file, not both.
-	Ca TwingateGatewayConfigSshCaPtrInput `pulumi:"ca"`
-	// SSH gateway settings. All fields are optional and fall back to built-in defaults.
-	Gateway TwingateGatewayConfigSshGatewayPtrInput `pulumi:"gateway"`
-	// List of SSH resources. Accepts full twingate*ssh*resource references.
-	Resources TwingateGatewayConfigSshResourceArrayInput `pulumi:"resources"`
-}
-
-func (TwingateGatewayConfigSshArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateGatewayConfigSsh)(nil)).Elem()
-}
-
-func (i TwingateGatewayConfigSshArgs) ToTwingateGatewayConfigSshOutput() TwingateGatewayConfigSshOutput {
-	return i.ToTwingateGatewayConfigSshOutputWithContext(context.Background())
-}
-
-func (i TwingateGatewayConfigSshArgs) ToTwingateGatewayConfigSshOutputWithContext(ctx context.Context) TwingateGatewayConfigSshOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateGatewayConfigSshOutput)
-}
-
-func (i TwingateGatewayConfigSshArgs) ToTwingateGatewayConfigSshPtrOutput() TwingateGatewayConfigSshPtrOutput {
-	return i.ToTwingateGatewayConfigSshPtrOutputWithContext(context.Background())
-}
-
-func (i TwingateGatewayConfigSshArgs) ToTwingateGatewayConfigSshPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigSshPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateGatewayConfigSshOutput).ToTwingateGatewayConfigSshPtrOutputWithContext(ctx)
-}
-
-// TwingateGatewayConfigSshPtrInput is an input type that accepts TwingateGatewayConfigSshArgs, TwingateGatewayConfigSshPtr and TwingateGatewayConfigSshPtrOutput values.
-// You can construct a concrete instance of `TwingateGatewayConfigSshPtrInput` via:
-//
-//	        TwingateGatewayConfigSshArgs{...}
-//
-//	or:
-//
-//	        nil
-type TwingateGatewayConfigSshPtrInput interface {
-	pulumi.Input
-
-	ToTwingateGatewayConfigSshPtrOutput() TwingateGatewayConfigSshPtrOutput
-	ToTwingateGatewayConfigSshPtrOutputWithContext(context.Context) TwingateGatewayConfigSshPtrOutput
-}
-
-type twingateGatewayConfigSshPtrType TwingateGatewayConfigSshArgs
-
-func TwingateGatewayConfigSshPtr(v *TwingateGatewayConfigSshArgs) TwingateGatewayConfigSshPtrInput {
-	return (*twingateGatewayConfigSshPtrType)(v)
-}
-
-func (*twingateGatewayConfigSshPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TwingateGatewayConfigSsh)(nil)).Elem()
-}
-
-func (i *twingateGatewayConfigSshPtrType) ToTwingateGatewayConfigSshPtrOutput() TwingateGatewayConfigSshPtrOutput {
-	return i.ToTwingateGatewayConfigSshPtrOutputWithContext(context.Background())
-}
-
-func (i *twingateGatewayConfigSshPtrType) ToTwingateGatewayConfigSshPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigSshPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateGatewayConfigSshPtrOutput)
-}
-
-type TwingateGatewayConfigSshOutput struct{ *pulumi.OutputState }
-
-func (TwingateGatewayConfigSshOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateGatewayConfigSsh)(nil)).Elem()
-}
-
-func (o TwingateGatewayConfigSshOutput) ToTwingateGatewayConfigSshOutput() TwingateGatewayConfigSshOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigSshOutput) ToTwingateGatewayConfigSshOutputWithContext(ctx context.Context) TwingateGatewayConfigSshOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigSshOutput) ToTwingateGatewayConfigSshPtrOutput() TwingateGatewayConfigSshPtrOutput {
-	return o.ToTwingateGatewayConfigSshPtrOutputWithContext(context.Background())
-}
-
-func (o TwingateGatewayConfigSshOutput) ToTwingateGatewayConfigSshPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigSshPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TwingateGatewayConfigSsh) *TwingateGatewayConfigSsh {
-		return &v
-	}).(TwingateGatewayConfigSshPtrOutput)
-}
-
-// SSH CA configuration. Specify either vault.address or private*key*file, not both.
-func (o TwingateGatewayConfigSshOutput) Ca() TwingateGatewayConfigSshCaPtrOutput {
-	return o.ApplyT(func(v TwingateGatewayConfigSsh) *TwingateGatewayConfigSshCa { return v.Ca }).(TwingateGatewayConfigSshCaPtrOutput)
-}
-
-// SSH gateway settings. All fields are optional and fall back to built-in defaults.
-func (o TwingateGatewayConfigSshOutput) Gateway() TwingateGatewayConfigSshGatewayPtrOutput {
-	return o.ApplyT(func(v TwingateGatewayConfigSsh) *TwingateGatewayConfigSshGateway { return v.Gateway }).(TwingateGatewayConfigSshGatewayPtrOutput)
-}
-
-// List of SSH resources. Accepts full twingate*ssh*resource references.
-func (o TwingateGatewayConfigSshOutput) Resources() TwingateGatewayConfigSshResourceArrayOutput {
-	return o.ApplyT(func(v TwingateGatewayConfigSsh) []TwingateGatewayConfigSshResource { return v.Resources }).(TwingateGatewayConfigSshResourceArrayOutput)
-}
-
-type TwingateGatewayConfigSshPtrOutput struct{ *pulumi.OutputState }
-
-func (TwingateGatewayConfigSshPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TwingateGatewayConfigSsh)(nil)).Elem()
-}
-
-func (o TwingateGatewayConfigSshPtrOutput) ToTwingateGatewayConfigSshPtrOutput() TwingateGatewayConfigSshPtrOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigSshPtrOutput) ToTwingateGatewayConfigSshPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigSshPtrOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigSshPtrOutput) Elem() TwingateGatewayConfigSshOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigSsh) TwingateGatewayConfigSsh {
-		if v != nil {
-			return *v
-		}
-		var ret TwingateGatewayConfigSsh
-		return ret
-	}).(TwingateGatewayConfigSshOutput)
-}
-
-// SSH CA configuration. Specify either vault.address or private*key*file, not both.
-func (o TwingateGatewayConfigSshPtrOutput) Ca() TwingateGatewayConfigSshCaPtrOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigSsh) *TwingateGatewayConfigSshCa {
-		if v == nil {
-			return nil
-		}
-		return v.Ca
-	}).(TwingateGatewayConfigSshCaPtrOutput)
-}
-
-// SSH gateway settings. All fields are optional and fall back to built-in defaults.
-func (o TwingateGatewayConfigSshPtrOutput) Gateway() TwingateGatewayConfigSshGatewayPtrOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigSsh) *TwingateGatewayConfigSshGateway {
-		if v == nil {
-			return nil
-		}
-		return v.Gateway
-	}).(TwingateGatewayConfigSshGatewayPtrOutput)
-}
-
-// List of SSH resources. Accepts full twingate*ssh*resource references.
-func (o TwingateGatewayConfigSshPtrOutput) Resources() TwingateGatewayConfigSshResourceArrayOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigSsh) []TwingateGatewayConfigSshResource {
-		if v == nil {
-			return nil
-		}
-		return v.Resources
-	}).(TwingateGatewayConfigSshResourceArrayOutput)
-}
-
-type TwingateGatewayConfigSshCa struct {
-	// Path to the SSH CA private key file. Can't be used together with vault.address.
-	PrivateKeyFile *string `pulumi:"privateKeyFile"`
-	// Vault SSH CA configuration.
-	Vault *TwingateGatewayConfigSshCaVault `pulumi:"vault"`
-}
-
-// TwingateGatewayConfigSshCaInput is an input type that accepts TwingateGatewayConfigSshCaArgs and TwingateGatewayConfigSshCaOutput values.
-// You can construct a concrete instance of `TwingateGatewayConfigSshCaInput` via:
-//
-//	TwingateGatewayConfigSshCaArgs{...}
-type TwingateGatewayConfigSshCaInput interface {
-	pulumi.Input
-
-	ToTwingateGatewayConfigSshCaOutput() TwingateGatewayConfigSshCaOutput
-	ToTwingateGatewayConfigSshCaOutputWithContext(context.Context) TwingateGatewayConfigSshCaOutput
-}
-
-type TwingateGatewayConfigSshCaArgs struct {
-	// Path to the SSH CA private key file. Can't be used together with vault.address.
-	PrivateKeyFile pulumi.StringPtrInput `pulumi:"privateKeyFile"`
-	// Vault SSH CA configuration.
-	Vault TwingateGatewayConfigSshCaVaultPtrInput `pulumi:"vault"`
-}
-
-func (TwingateGatewayConfigSshCaArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateGatewayConfigSshCa)(nil)).Elem()
-}
-
-func (i TwingateGatewayConfigSshCaArgs) ToTwingateGatewayConfigSshCaOutput() TwingateGatewayConfigSshCaOutput {
-	return i.ToTwingateGatewayConfigSshCaOutputWithContext(context.Background())
-}
-
-func (i TwingateGatewayConfigSshCaArgs) ToTwingateGatewayConfigSshCaOutputWithContext(ctx context.Context) TwingateGatewayConfigSshCaOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateGatewayConfigSshCaOutput)
-}
-
-func (i TwingateGatewayConfigSshCaArgs) ToTwingateGatewayConfigSshCaPtrOutput() TwingateGatewayConfigSshCaPtrOutput {
-	return i.ToTwingateGatewayConfigSshCaPtrOutputWithContext(context.Background())
-}
-
-func (i TwingateGatewayConfigSshCaArgs) ToTwingateGatewayConfigSshCaPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigSshCaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateGatewayConfigSshCaOutput).ToTwingateGatewayConfigSshCaPtrOutputWithContext(ctx)
-}
-
-// TwingateGatewayConfigSshCaPtrInput is an input type that accepts TwingateGatewayConfigSshCaArgs, TwingateGatewayConfigSshCaPtr and TwingateGatewayConfigSshCaPtrOutput values.
-// You can construct a concrete instance of `TwingateGatewayConfigSshCaPtrInput` via:
-//
-//	        TwingateGatewayConfigSshCaArgs{...}
-//
-//	or:
-//
-//	        nil
-type TwingateGatewayConfigSshCaPtrInput interface {
-	pulumi.Input
-
-	ToTwingateGatewayConfigSshCaPtrOutput() TwingateGatewayConfigSshCaPtrOutput
-	ToTwingateGatewayConfigSshCaPtrOutputWithContext(context.Context) TwingateGatewayConfigSshCaPtrOutput
-}
-
-type twingateGatewayConfigSshCaPtrType TwingateGatewayConfigSshCaArgs
-
-func TwingateGatewayConfigSshCaPtr(v *TwingateGatewayConfigSshCaArgs) TwingateGatewayConfigSshCaPtrInput {
-	return (*twingateGatewayConfigSshCaPtrType)(v)
-}
-
-func (*twingateGatewayConfigSshCaPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TwingateGatewayConfigSshCa)(nil)).Elem()
-}
-
-func (i *twingateGatewayConfigSshCaPtrType) ToTwingateGatewayConfigSshCaPtrOutput() TwingateGatewayConfigSshCaPtrOutput {
-	return i.ToTwingateGatewayConfigSshCaPtrOutputWithContext(context.Background())
-}
-
-func (i *twingateGatewayConfigSshCaPtrType) ToTwingateGatewayConfigSshCaPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigSshCaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateGatewayConfigSshCaPtrOutput)
-}
-
-type TwingateGatewayConfigSshCaOutput struct{ *pulumi.OutputState }
-
-func (TwingateGatewayConfigSshCaOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateGatewayConfigSshCa)(nil)).Elem()
-}
-
-func (o TwingateGatewayConfigSshCaOutput) ToTwingateGatewayConfigSshCaOutput() TwingateGatewayConfigSshCaOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigSshCaOutput) ToTwingateGatewayConfigSshCaOutputWithContext(ctx context.Context) TwingateGatewayConfigSshCaOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigSshCaOutput) ToTwingateGatewayConfigSshCaPtrOutput() TwingateGatewayConfigSshCaPtrOutput {
-	return o.ToTwingateGatewayConfigSshCaPtrOutputWithContext(context.Background())
-}
-
-func (o TwingateGatewayConfigSshCaOutput) ToTwingateGatewayConfigSshCaPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigSshCaPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TwingateGatewayConfigSshCa) *TwingateGatewayConfigSshCa {
-		return &v
-	}).(TwingateGatewayConfigSshCaPtrOutput)
-}
-
-// Path to the SSH CA private key file. Can't be used together with vault.address.
-func (o TwingateGatewayConfigSshCaOutput) PrivateKeyFile() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TwingateGatewayConfigSshCa) *string { return v.PrivateKeyFile }).(pulumi.StringPtrOutput)
-}
-
-// Vault SSH CA configuration.
-func (o TwingateGatewayConfigSshCaOutput) Vault() TwingateGatewayConfigSshCaVaultPtrOutput {
-	return o.ApplyT(func(v TwingateGatewayConfigSshCa) *TwingateGatewayConfigSshCaVault { return v.Vault }).(TwingateGatewayConfigSshCaVaultPtrOutput)
-}
-
-type TwingateGatewayConfigSshCaPtrOutput struct{ *pulumi.OutputState }
-
-func (TwingateGatewayConfigSshCaPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TwingateGatewayConfigSshCa)(nil)).Elem()
-}
-
-func (o TwingateGatewayConfigSshCaPtrOutput) ToTwingateGatewayConfigSshCaPtrOutput() TwingateGatewayConfigSshCaPtrOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigSshCaPtrOutput) ToTwingateGatewayConfigSshCaPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigSshCaPtrOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigSshCaPtrOutput) Elem() TwingateGatewayConfigSshCaOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigSshCa) TwingateGatewayConfigSshCa {
-		if v != nil {
-			return *v
-		}
-		var ret TwingateGatewayConfigSshCa
-		return ret
-	}).(TwingateGatewayConfigSshCaOutput)
-}
-
-// Path to the SSH CA private key file. Can't be used together with vault.address.
-func (o TwingateGatewayConfigSshCaPtrOutput) PrivateKeyFile() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigSshCa) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PrivateKeyFile
-	}).(pulumi.StringPtrOutput)
-}
-
-// Vault SSH CA configuration.
-func (o TwingateGatewayConfigSshCaPtrOutput) Vault() TwingateGatewayConfigSshCaVaultPtrOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigSshCa) *TwingateGatewayConfigSshCaVault {
-		if v == nil {
-			return nil
-		}
-		return v.Vault
-	}).(TwingateGatewayConfigSshCaVaultPtrOutput)
-}
-
-type TwingateGatewayConfigSshCaVault struct {
-	// Vault server address. Can't be used together with ca.private*key*file.
-	Address *string `pulumi:"address"`
-	// Vault authentication configuration.
-	Auth *TwingateGatewayConfigSshCaVaultAuth `pulumi:"auth"`
-	// Path to the Vault CA bundle file. Default: "/etc/ssl/vault-ca.crt".
-	CaBundleFile *string `pulumi:"caBundleFile"`
-	// Vault SSH secrets engine mount path. Default: "ssh".
-	Mount *string `pulumi:"mount"`
-	// Vault role for signing certificates. Default: "gateway".
-	Role *string `pulumi:"role"`
-}
-
-// TwingateGatewayConfigSshCaVaultInput is an input type that accepts TwingateGatewayConfigSshCaVaultArgs and TwingateGatewayConfigSshCaVaultOutput values.
-// You can construct a concrete instance of `TwingateGatewayConfigSshCaVaultInput` via:
-//
-//	TwingateGatewayConfigSshCaVaultArgs{...}
-type TwingateGatewayConfigSshCaVaultInput interface {
-	pulumi.Input
-
-	ToTwingateGatewayConfigSshCaVaultOutput() TwingateGatewayConfigSshCaVaultOutput
-	ToTwingateGatewayConfigSshCaVaultOutputWithContext(context.Context) TwingateGatewayConfigSshCaVaultOutput
-}
-
-type TwingateGatewayConfigSshCaVaultArgs struct {
-	// Vault server address. Can't be used together with ca.private*key*file.
-	Address pulumi.StringPtrInput `pulumi:"address"`
-	// Vault authentication configuration.
-	Auth TwingateGatewayConfigSshCaVaultAuthPtrInput `pulumi:"auth"`
-	// Path to the Vault CA bundle file. Default: "/etc/ssl/vault-ca.crt".
-	CaBundleFile pulumi.StringPtrInput `pulumi:"caBundleFile"`
-	// Vault SSH secrets engine mount path. Default: "ssh".
-	Mount pulumi.StringPtrInput `pulumi:"mount"`
-	// Vault role for signing certificates. Default: "gateway".
-	Role pulumi.StringPtrInput `pulumi:"role"`
-}
-
-func (TwingateGatewayConfigSshCaVaultArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateGatewayConfigSshCaVault)(nil)).Elem()
-}
-
-func (i TwingateGatewayConfigSshCaVaultArgs) ToTwingateGatewayConfigSshCaVaultOutput() TwingateGatewayConfigSshCaVaultOutput {
-	return i.ToTwingateGatewayConfigSshCaVaultOutputWithContext(context.Background())
-}
-
-func (i TwingateGatewayConfigSshCaVaultArgs) ToTwingateGatewayConfigSshCaVaultOutputWithContext(ctx context.Context) TwingateGatewayConfigSshCaVaultOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateGatewayConfigSshCaVaultOutput)
-}
-
-func (i TwingateGatewayConfigSshCaVaultArgs) ToTwingateGatewayConfigSshCaVaultPtrOutput() TwingateGatewayConfigSshCaVaultPtrOutput {
-	return i.ToTwingateGatewayConfigSshCaVaultPtrOutputWithContext(context.Background())
-}
-
-func (i TwingateGatewayConfigSshCaVaultArgs) ToTwingateGatewayConfigSshCaVaultPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigSshCaVaultPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateGatewayConfigSshCaVaultOutput).ToTwingateGatewayConfigSshCaVaultPtrOutputWithContext(ctx)
-}
-
-// TwingateGatewayConfigSshCaVaultPtrInput is an input type that accepts TwingateGatewayConfigSshCaVaultArgs, TwingateGatewayConfigSshCaVaultPtr and TwingateGatewayConfigSshCaVaultPtrOutput values.
-// You can construct a concrete instance of `TwingateGatewayConfigSshCaVaultPtrInput` via:
-//
-//	        TwingateGatewayConfigSshCaVaultArgs{...}
-//
-//	or:
-//
-//	        nil
-type TwingateGatewayConfigSshCaVaultPtrInput interface {
-	pulumi.Input
-
-	ToTwingateGatewayConfigSshCaVaultPtrOutput() TwingateGatewayConfigSshCaVaultPtrOutput
-	ToTwingateGatewayConfigSshCaVaultPtrOutputWithContext(context.Context) TwingateGatewayConfigSshCaVaultPtrOutput
-}
-
-type twingateGatewayConfigSshCaVaultPtrType TwingateGatewayConfigSshCaVaultArgs
-
-func TwingateGatewayConfigSshCaVaultPtr(v *TwingateGatewayConfigSshCaVaultArgs) TwingateGatewayConfigSshCaVaultPtrInput {
-	return (*twingateGatewayConfigSshCaVaultPtrType)(v)
-}
-
-func (*twingateGatewayConfigSshCaVaultPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TwingateGatewayConfigSshCaVault)(nil)).Elem()
-}
-
-func (i *twingateGatewayConfigSshCaVaultPtrType) ToTwingateGatewayConfigSshCaVaultPtrOutput() TwingateGatewayConfigSshCaVaultPtrOutput {
-	return i.ToTwingateGatewayConfigSshCaVaultPtrOutputWithContext(context.Background())
-}
-
-func (i *twingateGatewayConfigSshCaVaultPtrType) ToTwingateGatewayConfigSshCaVaultPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigSshCaVaultPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateGatewayConfigSshCaVaultPtrOutput)
-}
-
-type TwingateGatewayConfigSshCaVaultOutput struct{ *pulumi.OutputState }
-
-func (TwingateGatewayConfigSshCaVaultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateGatewayConfigSshCaVault)(nil)).Elem()
-}
-
-func (o TwingateGatewayConfigSshCaVaultOutput) ToTwingateGatewayConfigSshCaVaultOutput() TwingateGatewayConfigSshCaVaultOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigSshCaVaultOutput) ToTwingateGatewayConfigSshCaVaultOutputWithContext(ctx context.Context) TwingateGatewayConfigSshCaVaultOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigSshCaVaultOutput) ToTwingateGatewayConfigSshCaVaultPtrOutput() TwingateGatewayConfigSshCaVaultPtrOutput {
-	return o.ToTwingateGatewayConfigSshCaVaultPtrOutputWithContext(context.Background())
-}
-
-func (o TwingateGatewayConfigSshCaVaultOutput) ToTwingateGatewayConfigSshCaVaultPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigSshCaVaultPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TwingateGatewayConfigSshCaVault) *TwingateGatewayConfigSshCaVault {
-		return &v
-	}).(TwingateGatewayConfigSshCaVaultPtrOutput)
-}
-
-// Vault server address. Can't be used together with ca.private*key*file.
-func (o TwingateGatewayConfigSshCaVaultOutput) Address() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TwingateGatewayConfigSshCaVault) *string { return v.Address }).(pulumi.StringPtrOutput)
-}
-
-// Vault authentication configuration.
-func (o TwingateGatewayConfigSshCaVaultOutput) Auth() TwingateGatewayConfigSshCaVaultAuthPtrOutput {
-	return o.ApplyT(func(v TwingateGatewayConfigSshCaVault) *TwingateGatewayConfigSshCaVaultAuth { return v.Auth }).(TwingateGatewayConfigSshCaVaultAuthPtrOutput)
-}
-
-// Path to the Vault CA bundle file. Default: "/etc/ssl/vault-ca.crt".
-func (o TwingateGatewayConfigSshCaVaultOutput) CaBundleFile() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TwingateGatewayConfigSshCaVault) *string { return v.CaBundleFile }).(pulumi.StringPtrOutput)
-}
-
-// Vault SSH secrets engine mount path. Default: "ssh".
-func (o TwingateGatewayConfigSshCaVaultOutput) Mount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TwingateGatewayConfigSshCaVault) *string { return v.Mount }).(pulumi.StringPtrOutput)
-}
-
-// Vault role for signing certificates. Default: "gateway".
-func (o TwingateGatewayConfigSshCaVaultOutput) Role() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TwingateGatewayConfigSshCaVault) *string { return v.Role }).(pulumi.StringPtrOutput)
-}
-
-type TwingateGatewayConfigSshCaVaultPtrOutput struct{ *pulumi.OutputState }
-
-func (TwingateGatewayConfigSshCaVaultPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TwingateGatewayConfigSshCaVault)(nil)).Elem()
-}
-
-func (o TwingateGatewayConfigSshCaVaultPtrOutput) ToTwingateGatewayConfigSshCaVaultPtrOutput() TwingateGatewayConfigSshCaVaultPtrOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigSshCaVaultPtrOutput) ToTwingateGatewayConfigSshCaVaultPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigSshCaVaultPtrOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigSshCaVaultPtrOutput) Elem() TwingateGatewayConfigSshCaVaultOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigSshCaVault) TwingateGatewayConfigSshCaVault {
-		if v != nil {
-			return *v
-		}
-		var ret TwingateGatewayConfigSshCaVault
-		return ret
-	}).(TwingateGatewayConfigSshCaVaultOutput)
-}
-
-// Vault server address. Can't be used together with ca.private*key*file.
-func (o TwingateGatewayConfigSshCaVaultPtrOutput) Address() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigSshCaVault) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Address
-	}).(pulumi.StringPtrOutput)
-}
-
-// Vault authentication configuration.
-func (o TwingateGatewayConfigSshCaVaultPtrOutput) Auth() TwingateGatewayConfigSshCaVaultAuthPtrOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigSshCaVault) *TwingateGatewayConfigSshCaVaultAuth {
-		if v == nil {
-			return nil
-		}
-		return v.Auth
-	}).(TwingateGatewayConfigSshCaVaultAuthPtrOutput)
-}
-
-// Path to the Vault CA bundle file. Default: "/etc/ssl/vault-ca.crt".
-func (o TwingateGatewayConfigSshCaVaultPtrOutput) CaBundleFile() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigSshCaVault) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CaBundleFile
-	}).(pulumi.StringPtrOutput)
-}
-
-// Vault SSH secrets engine mount path. Default: "ssh".
-func (o TwingateGatewayConfigSshCaVaultPtrOutput) Mount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigSshCaVault) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Mount
-	}).(pulumi.StringPtrOutput)
-}
-
-// Vault role for signing certificates. Default: "gateway".
-func (o TwingateGatewayConfigSshCaVaultPtrOutput) Role() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigSshCaVault) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Role
-	}).(pulumi.StringPtrOutput)
-}
-
-type TwingateGatewayConfigSshCaVaultAuth struct {
-	// GCP authentication for Vault. Can't be used together with token.
-	Gcp *TwingateGatewayConfigSshCaVaultAuthGcp `pulumi:"gcp"`
-	// Vault token used for authentication. Can't be used together with gcp.
-	Token *string `pulumi:"token"`
-}
-
-// TwingateGatewayConfigSshCaVaultAuthInput is an input type that accepts TwingateGatewayConfigSshCaVaultAuthArgs and TwingateGatewayConfigSshCaVaultAuthOutput values.
-// You can construct a concrete instance of `TwingateGatewayConfigSshCaVaultAuthInput` via:
-//
-//	TwingateGatewayConfigSshCaVaultAuthArgs{...}
-type TwingateGatewayConfigSshCaVaultAuthInput interface {
-	pulumi.Input
-
-	ToTwingateGatewayConfigSshCaVaultAuthOutput() TwingateGatewayConfigSshCaVaultAuthOutput
-	ToTwingateGatewayConfigSshCaVaultAuthOutputWithContext(context.Context) TwingateGatewayConfigSshCaVaultAuthOutput
-}
-
-type TwingateGatewayConfigSshCaVaultAuthArgs struct {
-	// GCP authentication for Vault. Can't be used together with token.
-	Gcp TwingateGatewayConfigSshCaVaultAuthGcpPtrInput `pulumi:"gcp"`
-	// Vault token used for authentication. Can't be used together with gcp.
-	Token pulumi.StringPtrInput `pulumi:"token"`
-}
-
-func (TwingateGatewayConfigSshCaVaultAuthArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateGatewayConfigSshCaVaultAuth)(nil)).Elem()
-}
-
-func (i TwingateGatewayConfigSshCaVaultAuthArgs) ToTwingateGatewayConfigSshCaVaultAuthOutput() TwingateGatewayConfigSshCaVaultAuthOutput {
-	return i.ToTwingateGatewayConfigSshCaVaultAuthOutputWithContext(context.Background())
-}
-
-func (i TwingateGatewayConfigSshCaVaultAuthArgs) ToTwingateGatewayConfigSshCaVaultAuthOutputWithContext(ctx context.Context) TwingateGatewayConfigSshCaVaultAuthOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateGatewayConfigSshCaVaultAuthOutput)
-}
-
-func (i TwingateGatewayConfigSshCaVaultAuthArgs) ToTwingateGatewayConfigSshCaVaultAuthPtrOutput() TwingateGatewayConfigSshCaVaultAuthPtrOutput {
-	return i.ToTwingateGatewayConfigSshCaVaultAuthPtrOutputWithContext(context.Background())
-}
-
-func (i TwingateGatewayConfigSshCaVaultAuthArgs) ToTwingateGatewayConfigSshCaVaultAuthPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigSshCaVaultAuthPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateGatewayConfigSshCaVaultAuthOutput).ToTwingateGatewayConfigSshCaVaultAuthPtrOutputWithContext(ctx)
-}
-
-// TwingateGatewayConfigSshCaVaultAuthPtrInput is an input type that accepts TwingateGatewayConfigSshCaVaultAuthArgs, TwingateGatewayConfigSshCaVaultAuthPtr and TwingateGatewayConfigSshCaVaultAuthPtrOutput values.
-// You can construct a concrete instance of `TwingateGatewayConfigSshCaVaultAuthPtrInput` via:
-//
-//	        TwingateGatewayConfigSshCaVaultAuthArgs{...}
-//
-//	or:
-//
-//	        nil
-type TwingateGatewayConfigSshCaVaultAuthPtrInput interface {
-	pulumi.Input
-
-	ToTwingateGatewayConfigSshCaVaultAuthPtrOutput() TwingateGatewayConfigSshCaVaultAuthPtrOutput
-	ToTwingateGatewayConfigSshCaVaultAuthPtrOutputWithContext(context.Context) TwingateGatewayConfigSshCaVaultAuthPtrOutput
-}
-
-type twingateGatewayConfigSshCaVaultAuthPtrType TwingateGatewayConfigSshCaVaultAuthArgs
-
-func TwingateGatewayConfigSshCaVaultAuthPtr(v *TwingateGatewayConfigSshCaVaultAuthArgs) TwingateGatewayConfigSshCaVaultAuthPtrInput {
-	return (*twingateGatewayConfigSshCaVaultAuthPtrType)(v)
-}
-
-func (*twingateGatewayConfigSshCaVaultAuthPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TwingateGatewayConfigSshCaVaultAuth)(nil)).Elem()
-}
-
-func (i *twingateGatewayConfigSshCaVaultAuthPtrType) ToTwingateGatewayConfigSshCaVaultAuthPtrOutput() TwingateGatewayConfigSshCaVaultAuthPtrOutput {
-	return i.ToTwingateGatewayConfigSshCaVaultAuthPtrOutputWithContext(context.Background())
-}
-
-func (i *twingateGatewayConfigSshCaVaultAuthPtrType) ToTwingateGatewayConfigSshCaVaultAuthPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigSshCaVaultAuthPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateGatewayConfigSshCaVaultAuthPtrOutput)
-}
-
-type TwingateGatewayConfigSshCaVaultAuthOutput struct{ *pulumi.OutputState }
-
-func (TwingateGatewayConfigSshCaVaultAuthOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateGatewayConfigSshCaVaultAuth)(nil)).Elem()
-}
-
-func (o TwingateGatewayConfigSshCaVaultAuthOutput) ToTwingateGatewayConfigSshCaVaultAuthOutput() TwingateGatewayConfigSshCaVaultAuthOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigSshCaVaultAuthOutput) ToTwingateGatewayConfigSshCaVaultAuthOutputWithContext(ctx context.Context) TwingateGatewayConfigSshCaVaultAuthOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigSshCaVaultAuthOutput) ToTwingateGatewayConfigSshCaVaultAuthPtrOutput() TwingateGatewayConfigSshCaVaultAuthPtrOutput {
-	return o.ToTwingateGatewayConfigSshCaVaultAuthPtrOutputWithContext(context.Background())
-}
-
-func (o TwingateGatewayConfigSshCaVaultAuthOutput) ToTwingateGatewayConfigSshCaVaultAuthPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigSshCaVaultAuthPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TwingateGatewayConfigSshCaVaultAuth) *TwingateGatewayConfigSshCaVaultAuth {
-		return &v
-	}).(TwingateGatewayConfigSshCaVaultAuthPtrOutput)
-}
-
-// GCP authentication for Vault. Can't be used together with token.
-func (o TwingateGatewayConfigSshCaVaultAuthOutput) Gcp() TwingateGatewayConfigSshCaVaultAuthGcpPtrOutput {
-	return o.ApplyT(func(v TwingateGatewayConfigSshCaVaultAuth) *TwingateGatewayConfigSshCaVaultAuthGcp { return v.Gcp }).(TwingateGatewayConfigSshCaVaultAuthGcpPtrOutput)
-}
-
-// Vault token used for authentication. Can't be used together with gcp.
-func (o TwingateGatewayConfigSshCaVaultAuthOutput) Token() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TwingateGatewayConfigSshCaVaultAuth) *string { return v.Token }).(pulumi.StringPtrOutput)
-}
-
-type TwingateGatewayConfigSshCaVaultAuthPtrOutput struct{ *pulumi.OutputState }
-
-func (TwingateGatewayConfigSshCaVaultAuthPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TwingateGatewayConfigSshCaVaultAuth)(nil)).Elem()
-}
-
-func (o TwingateGatewayConfigSshCaVaultAuthPtrOutput) ToTwingateGatewayConfigSshCaVaultAuthPtrOutput() TwingateGatewayConfigSshCaVaultAuthPtrOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigSshCaVaultAuthPtrOutput) ToTwingateGatewayConfigSshCaVaultAuthPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigSshCaVaultAuthPtrOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigSshCaVaultAuthPtrOutput) Elem() TwingateGatewayConfigSshCaVaultAuthOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigSshCaVaultAuth) TwingateGatewayConfigSshCaVaultAuth {
-		if v != nil {
-			return *v
-		}
-		var ret TwingateGatewayConfigSshCaVaultAuth
-		return ret
-	}).(TwingateGatewayConfigSshCaVaultAuthOutput)
-}
-
-// GCP authentication for Vault. Can't be used together with token.
-func (o TwingateGatewayConfigSshCaVaultAuthPtrOutput) Gcp() TwingateGatewayConfigSshCaVaultAuthGcpPtrOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigSshCaVaultAuth) *TwingateGatewayConfigSshCaVaultAuthGcp {
-		if v == nil {
-			return nil
-		}
-		return v.Gcp
-	}).(TwingateGatewayConfigSshCaVaultAuthGcpPtrOutput)
-}
-
-// Vault token used for authentication. Can't be used together with gcp.
-func (o TwingateGatewayConfigSshCaVaultAuthPtrOutput) Token() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigSshCaVaultAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Token
-	}).(pulumi.StringPtrOutput)
-}
-
-type TwingateGatewayConfigSshCaVaultAuthGcp struct {
-	// Vault GCP auth mount path. Default: "gcp".
-	Mount *string `pulumi:"mount"`
-	// GCP IAM role for Vault GCP authentication.
-	Role *string `pulumi:"role"`
-	// Service account email. Required when type is "iam".
-	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
-	// GCP authentication type for Vault (e.g. "iam" or "gce"). When set to "iam", service*account*email is required.
-	Type *string `pulumi:"type"`
-}
-
-// TwingateGatewayConfigSshCaVaultAuthGcpInput is an input type that accepts TwingateGatewayConfigSshCaVaultAuthGcpArgs and TwingateGatewayConfigSshCaVaultAuthGcpOutput values.
-// You can construct a concrete instance of `TwingateGatewayConfigSshCaVaultAuthGcpInput` via:
-//
-//	TwingateGatewayConfigSshCaVaultAuthGcpArgs{...}
-type TwingateGatewayConfigSshCaVaultAuthGcpInput interface {
-	pulumi.Input
-
-	ToTwingateGatewayConfigSshCaVaultAuthGcpOutput() TwingateGatewayConfigSshCaVaultAuthGcpOutput
-	ToTwingateGatewayConfigSshCaVaultAuthGcpOutputWithContext(context.Context) TwingateGatewayConfigSshCaVaultAuthGcpOutput
-}
-
-type TwingateGatewayConfigSshCaVaultAuthGcpArgs struct {
-	// Vault GCP auth mount path. Default: "gcp".
-	Mount pulumi.StringPtrInput `pulumi:"mount"`
-	// GCP IAM role for Vault GCP authentication.
-	Role pulumi.StringPtrInput `pulumi:"role"`
-	// Service account email. Required when type is "iam".
-	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
-	// GCP authentication type for Vault (e.g. "iam" or "gce"). When set to "iam", service*account*email is required.
-	Type pulumi.StringPtrInput `pulumi:"type"`
-}
-
-func (TwingateGatewayConfigSshCaVaultAuthGcpArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateGatewayConfigSshCaVaultAuthGcp)(nil)).Elem()
-}
-
-func (i TwingateGatewayConfigSshCaVaultAuthGcpArgs) ToTwingateGatewayConfigSshCaVaultAuthGcpOutput() TwingateGatewayConfigSshCaVaultAuthGcpOutput {
-	return i.ToTwingateGatewayConfigSshCaVaultAuthGcpOutputWithContext(context.Background())
-}
-
-func (i TwingateGatewayConfigSshCaVaultAuthGcpArgs) ToTwingateGatewayConfigSshCaVaultAuthGcpOutputWithContext(ctx context.Context) TwingateGatewayConfigSshCaVaultAuthGcpOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateGatewayConfigSshCaVaultAuthGcpOutput)
-}
-
-func (i TwingateGatewayConfigSshCaVaultAuthGcpArgs) ToTwingateGatewayConfigSshCaVaultAuthGcpPtrOutput() TwingateGatewayConfigSshCaVaultAuthGcpPtrOutput {
-	return i.ToTwingateGatewayConfigSshCaVaultAuthGcpPtrOutputWithContext(context.Background())
-}
-
-func (i TwingateGatewayConfigSshCaVaultAuthGcpArgs) ToTwingateGatewayConfigSshCaVaultAuthGcpPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigSshCaVaultAuthGcpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateGatewayConfigSshCaVaultAuthGcpOutput).ToTwingateGatewayConfigSshCaVaultAuthGcpPtrOutputWithContext(ctx)
-}
-
-// TwingateGatewayConfigSshCaVaultAuthGcpPtrInput is an input type that accepts TwingateGatewayConfigSshCaVaultAuthGcpArgs, TwingateGatewayConfigSshCaVaultAuthGcpPtr and TwingateGatewayConfigSshCaVaultAuthGcpPtrOutput values.
-// You can construct a concrete instance of `TwingateGatewayConfigSshCaVaultAuthGcpPtrInput` via:
-//
-//	        TwingateGatewayConfigSshCaVaultAuthGcpArgs{...}
-//
-//	or:
-//
-//	        nil
-type TwingateGatewayConfigSshCaVaultAuthGcpPtrInput interface {
-	pulumi.Input
-
-	ToTwingateGatewayConfigSshCaVaultAuthGcpPtrOutput() TwingateGatewayConfigSshCaVaultAuthGcpPtrOutput
-	ToTwingateGatewayConfigSshCaVaultAuthGcpPtrOutputWithContext(context.Context) TwingateGatewayConfigSshCaVaultAuthGcpPtrOutput
-}
-
-type twingateGatewayConfigSshCaVaultAuthGcpPtrType TwingateGatewayConfigSshCaVaultAuthGcpArgs
-
-func TwingateGatewayConfigSshCaVaultAuthGcpPtr(v *TwingateGatewayConfigSshCaVaultAuthGcpArgs) TwingateGatewayConfigSshCaVaultAuthGcpPtrInput {
-	return (*twingateGatewayConfigSshCaVaultAuthGcpPtrType)(v)
-}
-
-func (*twingateGatewayConfigSshCaVaultAuthGcpPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TwingateGatewayConfigSshCaVaultAuthGcp)(nil)).Elem()
-}
-
-func (i *twingateGatewayConfigSshCaVaultAuthGcpPtrType) ToTwingateGatewayConfigSshCaVaultAuthGcpPtrOutput() TwingateGatewayConfigSshCaVaultAuthGcpPtrOutput {
-	return i.ToTwingateGatewayConfigSshCaVaultAuthGcpPtrOutputWithContext(context.Background())
-}
-
-func (i *twingateGatewayConfigSshCaVaultAuthGcpPtrType) ToTwingateGatewayConfigSshCaVaultAuthGcpPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigSshCaVaultAuthGcpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateGatewayConfigSshCaVaultAuthGcpPtrOutput)
-}
-
-type TwingateGatewayConfigSshCaVaultAuthGcpOutput struct{ *pulumi.OutputState }
-
-func (TwingateGatewayConfigSshCaVaultAuthGcpOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateGatewayConfigSshCaVaultAuthGcp)(nil)).Elem()
-}
-
-func (o TwingateGatewayConfigSshCaVaultAuthGcpOutput) ToTwingateGatewayConfigSshCaVaultAuthGcpOutput() TwingateGatewayConfigSshCaVaultAuthGcpOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigSshCaVaultAuthGcpOutput) ToTwingateGatewayConfigSshCaVaultAuthGcpOutputWithContext(ctx context.Context) TwingateGatewayConfigSshCaVaultAuthGcpOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigSshCaVaultAuthGcpOutput) ToTwingateGatewayConfigSshCaVaultAuthGcpPtrOutput() TwingateGatewayConfigSshCaVaultAuthGcpPtrOutput {
-	return o.ToTwingateGatewayConfigSshCaVaultAuthGcpPtrOutputWithContext(context.Background())
-}
-
-func (o TwingateGatewayConfigSshCaVaultAuthGcpOutput) ToTwingateGatewayConfigSshCaVaultAuthGcpPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigSshCaVaultAuthGcpPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TwingateGatewayConfigSshCaVaultAuthGcp) *TwingateGatewayConfigSshCaVaultAuthGcp {
-		return &v
-	}).(TwingateGatewayConfigSshCaVaultAuthGcpPtrOutput)
-}
-
-// Vault GCP auth mount path. Default: "gcp".
-func (o TwingateGatewayConfigSshCaVaultAuthGcpOutput) Mount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TwingateGatewayConfigSshCaVaultAuthGcp) *string { return v.Mount }).(pulumi.StringPtrOutput)
-}
-
-// GCP IAM role for Vault GCP authentication.
-func (o TwingateGatewayConfigSshCaVaultAuthGcpOutput) Role() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TwingateGatewayConfigSshCaVaultAuthGcp) *string { return v.Role }).(pulumi.StringPtrOutput)
-}
-
-// Service account email. Required when type is "iam".
-func (o TwingateGatewayConfigSshCaVaultAuthGcpOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TwingateGatewayConfigSshCaVaultAuthGcp) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
-}
-
-// GCP authentication type for Vault (e.g. "iam" or "gce"). When set to "iam", service*account*email is required.
-func (o TwingateGatewayConfigSshCaVaultAuthGcpOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TwingateGatewayConfigSshCaVaultAuthGcp) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-type TwingateGatewayConfigSshCaVaultAuthGcpPtrOutput struct{ *pulumi.OutputState }
-
-func (TwingateGatewayConfigSshCaVaultAuthGcpPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TwingateGatewayConfigSshCaVaultAuthGcp)(nil)).Elem()
-}
-
-func (o TwingateGatewayConfigSshCaVaultAuthGcpPtrOutput) ToTwingateGatewayConfigSshCaVaultAuthGcpPtrOutput() TwingateGatewayConfigSshCaVaultAuthGcpPtrOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigSshCaVaultAuthGcpPtrOutput) ToTwingateGatewayConfigSshCaVaultAuthGcpPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigSshCaVaultAuthGcpPtrOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigSshCaVaultAuthGcpPtrOutput) Elem() TwingateGatewayConfigSshCaVaultAuthGcpOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigSshCaVaultAuthGcp) TwingateGatewayConfigSshCaVaultAuthGcp {
-		if v != nil {
-			return *v
-		}
-		var ret TwingateGatewayConfigSshCaVaultAuthGcp
-		return ret
-	}).(TwingateGatewayConfigSshCaVaultAuthGcpOutput)
-}
-
-// Vault GCP auth mount path. Default: "gcp".
-func (o TwingateGatewayConfigSshCaVaultAuthGcpPtrOutput) Mount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigSshCaVaultAuthGcp) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Mount
-	}).(pulumi.StringPtrOutput)
-}
-
-// GCP IAM role for Vault GCP authentication.
-func (o TwingateGatewayConfigSshCaVaultAuthGcpPtrOutput) Role() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigSshCaVaultAuthGcp) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Role
-	}).(pulumi.StringPtrOutput)
-}
-
-// Service account email. Required when type is "iam".
-func (o TwingateGatewayConfigSshCaVaultAuthGcpPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigSshCaVaultAuthGcp) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceAccountEmail
-	}).(pulumi.StringPtrOutput)
-}
-
-// GCP authentication type for Vault (e.g. "iam" or "gce"). When set to "iam", service*account*email is required.
-func (o TwingateGatewayConfigSshCaVaultAuthGcpPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigSshCaVaultAuthGcp) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-type TwingateGatewayConfigSshGateway struct {
-	// Host certificate TTL. Default: "24h".
-	HostCertTtl *string `pulumi:"hostCertTtl"`
-	// SSH key type. Default: "ed25519".
-	KeyType *string `pulumi:"keyType"`
-	// User certificate TTL. Default: "5m".
-	UserCertTtl *string `pulumi:"userCertTtl"`
-	// SSH gateway username. Default: "gateway".
-	Username *string `pulumi:"username"`
-}
-
-// TwingateGatewayConfigSshGatewayInput is an input type that accepts TwingateGatewayConfigSshGatewayArgs and TwingateGatewayConfigSshGatewayOutput values.
-// You can construct a concrete instance of `TwingateGatewayConfigSshGatewayInput` via:
-//
-//	TwingateGatewayConfigSshGatewayArgs{...}
-type TwingateGatewayConfigSshGatewayInput interface {
-	pulumi.Input
-
-	ToTwingateGatewayConfigSshGatewayOutput() TwingateGatewayConfigSshGatewayOutput
-	ToTwingateGatewayConfigSshGatewayOutputWithContext(context.Context) TwingateGatewayConfigSshGatewayOutput
-}
-
-type TwingateGatewayConfigSshGatewayArgs struct {
-	// Host certificate TTL. Default: "24h".
-	HostCertTtl pulumi.StringPtrInput `pulumi:"hostCertTtl"`
-	// SSH key type. Default: "ed25519".
-	KeyType pulumi.StringPtrInput `pulumi:"keyType"`
-	// User certificate TTL. Default: "5m".
-	UserCertTtl pulumi.StringPtrInput `pulumi:"userCertTtl"`
-	// SSH gateway username. Default: "gateway".
-	Username pulumi.StringPtrInput `pulumi:"username"`
-}
-
-func (TwingateGatewayConfigSshGatewayArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateGatewayConfigSshGateway)(nil)).Elem()
-}
-
-func (i TwingateGatewayConfigSshGatewayArgs) ToTwingateGatewayConfigSshGatewayOutput() TwingateGatewayConfigSshGatewayOutput {
-	return i.ToTwingateGatewayConfigSshGatewayOutputWithContext(context.Background())
-}
-
-func (i TwingateGatewayConfigSshGatewayArgs) ToTwingateGatewayConfigSshGatewayOutputWithContext(ctx context.Context) TwingateGatewayConfigSshGatewayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateGatewayConfigSshGatewayOutput)
-}
-
-func (i TwingateGatewayConfigSshGatewayArgs) ToTwingateGatewayConfigSshGatewayPtrOutput() TwingateGatewayConfigSshGatewayPtrOutput {
-	return i.ToTwingateGatewayConfigSshGatewayPtrOutputWithContext(context.Background())
-}
-
-func (i TwingateGatewayConfigSshGatewayArgs) ToTwingateGatewayConfigSshGatewayPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigSshGatewayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateGatewayConfigSshGatewayOutput).ToTwingateGatewayConfigSshGatewayPtrOutputWithContext(ctx)
-}
-
-// TwingateGatewayConfigSshGatewayPtrInput is an input type that accepts TwingateGatewayConfigSshGatewayArgs, TwingateGatewayConfigSshGatewayPtr and TwingateGatewayConfigSshGatewayPtrOutput values.
-// You can construct a concrete instance of `TwingateGatewayConfigSshGatewayPtrInput` via:
-//
-//	        TwingateGatewayConfigSshGatewayArgs{...}
-//
-//	or:
-//
-//	        nil
-type TwingateGatewayConfigSshGatewayPtrInput interface {
-	pulumi.Input
-
-	ToTwingateGatewayConfigSshGatewayPtrOutput() TwingateGatewayConfigSshGatewayPtrOutput
-	ToTwingateGatewayConfigSshGatewayPtrOutputWithContext(context.Context) TwingateGatewayConfigSshGatewayPtrOutput
-}
-
-type twingateGatewayConfigSshGatewayPtrType TwingateGatewayConfigSshGatewayArgs
-
-func TwingateGatewayConfigSshGatewayPtr(v *TwingateGatewayConfigSshGatewayArgs) TwingateGatewayConfigSshGatewayPtrInput {
-	return (*twingateGatewayConfigSshGatewayPtrType)(v)
-}
-
-func (*twingateGatewayConfigSshGatewayPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TwingateGatewayConfigSshGateway)(nil)).Elem()
-}
-
-func (i *twingateGatewayConfigSshGatewayPtrType) ToTwingateGatewayConfigSshGatewayPtrOutput() TwingateGatewayConfigSshGatewayPtrOutput {
-	return i.ToTwingateGatewayConfigSshGatewayPtrOutputWithContext(context.Background())
-}
-
-func (i *twingateGatewayConfigSshGatewayPtrType) ToTwingateGatewayConfigSshGatewayPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigSshGatewayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateGatewayConfigSshGatewayPtrOutput)
-}
-
-type TwingateGatewayConfigSshGatewayOutput struct{ *pulumi.OutputState }
-
-func (TwingateGatewayConfigSshGatewayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateGatewayConfigSshGateway)(nil)).Elem()
-}
-
-func (o TwingateGatewayConfigSshGatewayOutput) ToTwingateGatewayConfigSshGatewayOutput() TwingateGatewayConfigSshGatewayOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigSshGatewayOutput) ToTwingateGatewayConfigSshGatewayOutputWithContext(ctx context.Context) TwingateGatewayConfigSshGatewayOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigSshGatewayOutput) ToTwingateGatewayConfigSshGatewayPtrOutput() TwingateGatewayConfigSshGatewayPtrOutput {
-	return o.ToTwingateGatewayConfigSshGatewayPtrOutputWithContext(context.Background())
-}
-
-func (o TwingateGatewayConfigSshGatewayOutput) ToTwingateGatewayConfigSshGatewayPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigSshGatewayPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TwingateGatewayConfigSshGateway) *TwingateGatewayConfigSshGateway {
-		return &v
-	}).(TwingateGatewayConfigSshGatewayPtrOutput)
-}
-
-// Host certificate TTL. Default: "24h".
-func (o TwingateGatewayConfigSshGatewayOutput) HostCertTtl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TwingateGatewayConfigSshGateway) *string { return v.HostCertTtl }).(pulumi.StringPtrOutput)
-}
-
-// SSH key type. Default: "ed25519".
-func (o TwingateGatewayConfigSshGatewayOutput) KeyType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TwingateGatewayConfigSshGateway) *string { return v.KeyType }).(pulumi.StringPtrOutput)
-}
-
-// User certificate TTL. Default: "5m".
-func (o TwingateGatewayConfigSshGatewayOutput) UserCertTtl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TwingateGatewayConfigSshGateway) *string { return v.UserCertTtl }).(pulumi.StringPtrOutput)
-}
-
-// SSH gateway username. Default: "gateway".
-func (o TwingateGatewayConfigSshGatewayOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TwingateGatewayConfigSshGateway) *string { return v.Username }).(pulumi.StringPtrOutput)
-}
-
-type TwingateGatewayConfigSshGatewayPtrOutput struct{ *pulumi.OutputState }
-
-func (TwingateGatewayConfigSshGatewayPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TwingateGatewayConfigSshGateway)(nil)).Elem()
-}
-
-func (o TwingateGatewayConfigSshGatewayPtrOutput) ToTwingateGatewayConfigSshGatewayPtrOutput() TwingateGatewayConfigSshGatewayPtrOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigSshGatewayPtrOutput) ToTwingateGatewayConfigSshGatewayPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigSshGatewayPtrOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigSshGatewayPtrOutput) Elem() TwingateGatewayConfigSshGatewayOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigSshGateway) TwingateGatewayConfigSshGateway {
-		if v != nil {
-			return *v
-		}
-		var ret TwingateGatewayConfigSshGateway
-		return ret
-	}).(TwingateGatewayConfigSshGatewayOutput)
-}
-
-// Host certificate TTL. Default: "24h".
-func (o TwingateGatewayConfigSshGatewayPtrOutput) HostCertTtl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigSshGateway) *string {
-		if v == nil {
-			return nil
-		}
-		return v.HostCertTtl
-	}).(pulumi.StringPtrOutput)
-}
-
-// SSH key type. Default: "ed25519".
-func (o TwingateGatewayConfigSshGatewayPtrOutput) KeyType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigSshGateway) *string {
-		if v == nil {
-			return nil
-		}
-		return v.KeyType
-	}).(pulumi.StringPtrOutput)
-}
-
-// User certificate TTL. Default: "5m".
-func (o TwingateGatewayConfigSshGatewayPtrOutput) UserCertTtl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigSshGateway) *string {
-		if v == nil {
-			return nil
-		}
-		return v.UserCertTtl
-	}).(pulumi.StringPtrOutput)
-}
-
-// SSH gateway username. Default: "gateway".
-func (o TwingateGatewayConfigSshGatewayPtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigSshGateway) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Username
-	}).(pulumi.StringPtrOutput)
-}
-
-type TwingateGatewayConfigSshResource struct {
-	Address  string `pulumi:"address"`
-	Name     string `pulumi:"name"`
-	Username string `pulumi:"username"`
-}
-
-// TwingateGatewayConfigSshResourceInput is an input type that accepts TwingateGatewayConfigSshResourceArgs and TwingateGatewayConfigSshResourceOutput values.
-// You can construct a concrete instance of `TwingateGatewayConfigSshResourceInput` via:
-//
-//	TwingateGatewayConfigSshResourceArgs{...}
-type TwingateGatewayConfigSshResourceInput interface {
-	pulumi.Input
-
-	ToTwingateGatewayConfigSshResourceOutput() TwingateGatewayConfigSshResourceOutput
-	ToTwingateGatewayConfigSshResourceOutputWithContext(context.Context) TwingateGatewayConfigSshResourceOutput
-}
-
-type TwingateGatewayConfigSshResourceArgs struct {
-	Address  pulumi.StringInput `pulumi:"address"`
-	Name     pulumi.StringInput `pulumi:"name"`
-	Username pulumi.StringInput `pulumi:"username"`
-}
-
-func (TwingateGatewayConfigSshResourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateGatewayConfigSshResource)(nil)).Elem()
-}
-
-func (i TwingateGatewayConfigSshResourceArgs) ToTwingateGatewayConfigSshResourceOutput() TwingateGatewayConfigSshResourceOutput {
-	return i.ToTwingateGatewayConfigSshResourceOutputWithContext(context.Background())
-}
-
-func (i TwingateGatewayConfigSshResourceArgs) ToTwingateGatewayConfigSshResourceOutputWithContext(ctx context.Context) TwingateGatewayConfigSshResourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateGatewayConfigSshResourceOutput)
-}
-
-// TwingateGatewayConfigSshResourceArrayInput is an input type that accepts TwingateGatewayConfigSshResourceArray and TwingateGatewayConfigSshResourceArrayOutput values.
-// You can construct a concrete instance of `TwingateGatewayConfigSshResourceArrayInput` via:
-//
-//	TwingateGatewayConfigSshResourceArray{ TwingateGatewayConfigSshResourceArgs{...} }
-type TwingateGatewayConfigSshResourceArrayInput interface {
-	pulumi.Input
-
-	ToTwingateGatewayConfigSshResourceArrayOutput() TwingateGatewayConfigSshResourceArrayOutput
-	ToTwingateGatewayConfigSshResourceArrayOutputWithContext(context.Context) TwingateGatewayConfigSshResourceArrayOutput
-}
-
-type TwingateGatewayConfigSshResourceArray []TwingateGatewayConfigSshResourceInput
-
-func (TwingateGatewayConfigSshResourceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TwingateGatewayConfigSshResource)(nil)).Elem()
-}
-
-func (i TwingateGatewayConfigSshResourceArray) ToTwingateGatewayConfigSshResourceArrayOutput() TwingateGatewayConfigSshResourceArrayOutput {
-	return i.ToTwingateGatewayConfigSshResourceArrayOutputWithContext(context.Background())
-}
-
-func (i TwingateGatewayConfigSshResourceArray) ToTwingateGatewayConfigSshResourceArrayOutputWithContext(ctx context.Context) TwingateGatewayConfigSshResourceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateGatewayConfigSshResourceArrayOutput)
-}
-
-type TwingateGatewayConfigSshResourceOutput struct{ *pulumi.OutputState }
-
-func (TwingateGatewayConfigSshResourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateGatewayConfigSshResource)(nil)).Elem()
-}
-
-func (o TwingateGatewayConfigSshResourceOutput) ToTwingateGatewayConfigSshResourceOutput() TwingateGatewayConfigSshResourceOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigSshResourceOutput) ToTwingateGatewayConfigSshResourceOutputWithContext(ctx context.Context) TwingateGatewayConfigSshResourceOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigSshResourceOutput) Address() pulumi.StringOutput {
-	return o.ApplyT(func(v TwingateGatewayConfigSshResource) string { return v.Address }).(pulumi.StringOutput)
-}
-
-func (o TwingateGatewayConfigSshResourceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v TwingateGatewayConfigSshResource) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o TwingateGatewayConfigSshResourceOutput) Username() pulumi.StringOutput {
-	return o.ApplyT(func(v TwingateGatewayConfigSshResource) string { return v.Username }).(pulumi.StringOutput)
-}
-
-type TwingateGatewayConfigSshResourceArrayOutput struct{ *pulumi.OutputState }
-
-func (TwingateGatewayConfigSshResourceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TwingateGatewayConfigSshResource)(nil)).Elem()
-}
-
-func (o TwingateGatewayConfigSshResourceArrayOutput) ToTwingateGatewayConfigSshResourceArrayOutput() TwingateGatewayConfigSshResourceArrayOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigSshResourceArrayOutput) ToTwingateGatewayConfigSshResourceArrayOutputWithContext(ctx context.Context) TwingateGatewayConfigSshResourceArrayOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigSshResourceArrayOutput) Index(i pulumi.IntInput) TwingateGatewayConfigSshResourceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TwingateGatewayConfigSshResource {
-		return vs[0].([]TwingateGatewayConfigSshResource)[vs[1].(int)]
-	}).(TwingateGatewayConfigSshResourceOutput)
-}
-
-type TwingateGatewayConfigTls struct {
-	// Path to the TLS certificate file. Default: "/etc/gateway/tls.crt".
-	CertificateFile *string `pulumi:"certificateFile"`
-	// Path to the TLS private key file. Default: "/etc/gateway/tls.key".
-	PrivateKeyFile *string `pulumi:"privateKeyFile"`
-}
-
-// TwingateGatewayConfigTlsInput is an input type that accepts TwingateGatewayConfigTlsArgs and TwingateGatewayConfigTlsOutput values.
-// You can construct a concrete instance of `TwingateGatewayConfigTlsInput` via:
-//
-//	TwingateGatewayConfigTlsArgs{...}
-type TwingateGatewayConfigTlsInput interface {
-	pulumi.Input
-
-	ToTwingateGatewayConfigTlsOutput() TwingateGatewayConfigTlsOutput
-	ToTwingateGatewayConfigTlsOutputWithContext(context.Context) TwingateGatewayConfigTlsOutput
-}
-
-type TwingateGatewayConfigTlsArgs struct {
-	// Path to the TLS certificate file. Default: "/etc/gateway/tls.crt".
-	CertificateFile pulumi.StringPtrInput `pulumi:"certificateFile"`
-	// Path to the TLS private key file. Default: "/etc/gateway/tls.key".
-	PrivateKeyFile pulumi.StringPtrInput `pulumi:"privateKeyFile"`
-}
-
-func (TwingateGatewayConfigTlsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateGatewayConfigTls)(nil)).Elem()
-}
-
-func (i TwingateGatewayConfigTlsArgs) ToTwingateGatewayConfigTlsOutput() TwingateGatewayConfigTlsOutput {
-	return i.ToTwingateGatewayConfigTlsOutputWithContext(context.Background())
-}
-
-func (i TwingateGatewayConfigTlsArgs) ToTwingateGatewayConfigTlsOutputWithContext(ctx context.Context) TwingateGatewayConfigTlsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateGatewayConfigTlsOutput)
-}
-
-func (i TwingateGatewayConfigTlsArgs) ToTwingateGatewayConfigTlsPtrOutput() TwingateGatewayConfigTlsPtrOutput {
-	return i.ToTwingateGatewayConfigTlsPtrOutputWithContext(context.Background())
-}
-
-func (i TwingateGatewayConfigTlsArgs) ToTwingateGatewayConfigTlsPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigTlsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateGatewayConfigTlsOutput).ToTwingateGatewayConfigTlsPtrOutputWithContext(ctx)
-}
-
-// TwingateGatewayConfigTlsPtrInput is an input type that accepts TwingateGatewayConfigTlsArgs, TwingateGatewayConfigTlsPtr and TwingateGatewayConfigTlsPtrOutput values.
-// You can construct a concrete instance of `TwingateGatewayConfigTlsPtrInput` via:
-//
-//	        TwingateGatewayConfigTlsArgs{...}
-//
-//	or:
-//
-//	        nil
-type TwingateGatewayConfigTlsPtrInput interface {
-	pulumi.Input
-
-	ToTwingateGatewayConfigTlsPtrOutput() TwingateGatewayConfigTlsPtrOutput
-	ToTwingateGatewayConfigTlsPtrOutputWithContext(context.Context) TwingateGatewayConfigTlsPtrOutput
-}
-
-type twingateGatewayConfigTlsPtrType TwingateGatewayConfigTlsArgs
-
-func TwingateGatewayConfigTlsPtr(v *TwingateGatewayConfigTlsArgs) TwingateGatewayConfigTlsPtrInput {
-	return (*twingateGatewayConfigTlsPtrType)(v)
-}
-
-func (*twingateGatewayConfigTlsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TwingateGatewayConfigTls)(nil)).Elem()
-}
-
-func (i *twingateGatewayConfigTlsPtrType) ToTwingateGatewayConfigTlsPtrOutput() TwingateGatewayConfigTlsPtrOutput {
-	return i.ToTwingateGatewayConfigTlsPtrOutputWithContext(context.Background())
-}
-
-func (i *twingateGatewayConfigTlsPtrType) ToTwingateGatewayConfigTlsPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigTlsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateGatewayConfigTlsPtrOutput)
-}
-
-type TwingateGatewayConfigTlsOutput struct{ *pulumi.OutputState }
-
-func (TwingateGatewayConfigTlsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateGatewayConfigTls)(nil)).Elem()
-}
-
-func (o TwingateGatewayConfigTlsOutput) ToTwingateGatewayConfigTlsOutput() TwingateGatewayConfigTlsOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigTlsOutput) ToTwingateGatewayConfigTlsOutputWithContext(ctx context.Context) TwingateGatewayConfigTlsOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigTlsOutput) ToTwingateGatewayConfigTlsPtrOutput() TwingateGatewayConfigTlsPtrOutput {
-	return o.ToTwingateGatewayConfigTlsPtrOutputWithContext(context.Background())
-}
-
-func (o TwingateGatewayConfigTlsOutput) ToTwingateGatewayConfigTlsPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigTlsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TwingateGatewayConfigTls) *TwingateGatewayConfigTls {
-		return &v
-	}).(TwingateGatewayConfigTlsPtrOutput)
-}
-
-// Path to the TLS certificate file. Default: "/etc/gateway/tls.crt".
-func (o TwingateGatewayConfigTlsOutput) CertificateFile() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TwingateGatewayConfigTls) *string { return v.CertificateFile }).(pulumi.StringPtrOutput)
-}
-
-// Path to the TLS private key file. Default: "/etc/gateway/tls.key".
-func (o TwingateGatewayConfigTlsOutput) PrivateKeyFile() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TwingateGatewayConfigTls) *string { return v.PrivateKeyFile }).(pulumi.StringPtrOutput)
-}
-
-type TwingateGatewayConfigTlsPtrOutput struct{ *pulumi.OutputState }
-
-func (TwingateGatewayConfigTlsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TwingateGatewayConfigTls)(nil)).Elem()
-}
-
-func (o TwingateGatewayConfigTlsPtrOutput) ToTwingateGatewayConfigTlsPtrOutput() TwingateGatewayConfigTlsPtrOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigTlsPtrOutput) ToTwingateGatewayConfigTlsPtrOutputWithContext(ctx context.Context) TwingateGatewayConfigTlsPtrOutput {
-	return o
-}
-
-func (o TwingateGatewayConfigTlsPtrOutput) Elem() TwingateGatewayConfigTlsOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigTls) TwingateGatewayConfigTls {
-		if v != nil {
-			return *v
-		}
-		var ret TwingateGatewayConfigTls
-		return ret
-	}).(TwingateGatewayConfigTlsOutput)
-}
-
-// Path to the TLS certificate file. Default: "/etc/gateway/tls.crt".
-func (o TwingateGatewayConfigTlsPtrOutput) CertificateFile() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigTls) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CertificateFile
-	}).(pulumi.StringPtrOutput)
-}
-
-// Path to the TLS private key file. Default: "/etc/gateway/tls.key".
-func (o TwingateGatewayConfigTlsPtrOutput) PrivateKeyFile() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TwingateGatewayConfigTls) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PrivateKeyFile
-	}).(pulumi.StringPtrOutput)
-}
-
 type TwingateKubernetesResourceAccessGroup struct {
 	// Restrict access according to JIT access policy
 	AccessPolicies []TwingateKubernetesResourceAccessGroupAccessPolicy `pulumi:"accessPolicies"`
@@ -3906,485 +2313,6 @@ func (o TwingateKubernetesResourceAccessPolicyArrayOutput) Index(i pulumi.IntInp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TwingateKubernetesResourceAccessPolicy {
 		return vs[0].([]TwingateKubernetesResourceAccessPolicy)[vs[1].(int)]
 	}).(TwingateKubernetesResourceAccessPolicyOutput)
-}
-
-type TwingateKubernetesResourceProtocols struct {
-	// Whether to allow ICMP (ping) traffic
-	AllowIcmp *bool                                   `pulumi:"allowIcmp"`
-	Tcp       *TwingateKubernetesResourceProtocolsTcp `pulumi:"tcp"`
-	Udp       *TwingateKubernetesResourceProtocolsUdp `pulumi:"udp"`
-}
-
-// TwingateKubernetesResourceProtocolsInput is an input type that accepts TwingateKubernetesResourceProtocolsArgs and TwingateKubernetesResourceProtocolsOutput values.
-// You can construct a concrete instance of `TwingateKubernetesResourceProtocolsInput` via:
-//
-//	TwingateKubernetesResourceProtocolsArgs{...}
-type TwingateKubernetesResourceProtocolsInput interface {
-	pulumi.Input
-
-	ToTwingateKubernetesResourceProtocolsOutput() TwingateKubernetesResourceProtocolsOutput
-	ToTwingateKubernetesResourceProtocolsOutputWithContext(context.Context) TwingateKubernetesResourceProtocolsOutput
-}
-
-type TwingateKubernetesResourceProtocolsArgs struct {
-	// Whether to allow ICMP (ping) traffic
-	AllowIcmp pulumi.BoolPtrInput                            `pulumi:"allowIcmp"`
-	Tcp       TwingateKubernetesResourceProtocolsTcpPtrInput `pulumi:"tcp"`
-	Udp       TwingateKubernetesResourceProtocolsUdpPtrInput `pulumi:"udp"`
-}
-
-func (TwingateKubernetesResourceProtocolsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateKubernetesResourceProtocols)(nil)).Elem()
-}
-
-func (i TwingateKubernetesResourceProtocolsArgs) ToTwingateKubernetesResourceProtocolsOutput() TwingateKubernetesResourceProtocolsOutput {
-	return i.ToTwingateKubernetesResourceProtocolsOutputWithContext(context.Background())
-}
-
-func (i TwingateKubernetesResourceProtocolsArgs) ToTwingateKubernetesResourceProtocolsOutputWithContext(ctx context.Context) TwingateKubernetesResourceProtocolsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateKubernetesResourceProtocolsOutput)
-}
-
-func (i TwingateKubernetesResourceProtocolsArgs) ToTwingateKubernetesResourceProtocolsPtrOutput() TwingateKubernetesResourceProtocolsPtrOutput {
-	return i.ToTwingateKubernetesResourceProtocolsPtrOutputWithContext(context.Background())
-}
-
-func (i TwingateKubernetesResourceProtocolsArgs) ToTwingateKubernetesResourceProtocolsPtrOutputWithContext(ctx context.Context) TwingateKubernetesResourceProtocolsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateKubernetesResourceProtocolsOutput).ToTwingateKubernetesResourceProtocolsPtrOutputWithContext(ctx)
-}
-
-// TwingateKubernetesResourceProtocolsPtrInput is an input type that accepts TwingateKubernetesResourceProtocolsArgs, TwingateKubernetesResourceProtocolsPtr and TwingateKubernetesResourceProtocolsPtrOutput values.
-// You can construct a concrete instance of `TwingateKubernetesResourceProtocolsPtrInput` via:
-//
-//	        TwingateKubernetesResourceProtocolsArgs{...}
-//
-//	or:
-//
-//	        nil
-type TwingateKubernetesResourceProtocolsPtrInput interface {
-	pulumi.Input
-
-	ToTwingateKubernetesResourceProtocolsPtrOutput() TwingateKubernetesResourceProtocolsPtrOutput
-	ToTwingateKubernetesResourceProtocolsPtrOutputWithContext(context.Context) TwingateKubernetesResourceProtocolsPtrOutput
-}
-
-type twingateKubernetesResourceProtocolsPtrType TwingateKubernetesResourceProtocolsArgs
-
-func TwingateKubernetesResourceProtocolsPtr(v *TwingateKubernetesResourceProtocolsArgs) TwingateKubernetesResourceProtocolsPtrInput {
-	return (*twingateKubernetesResourceProtocolsPtrType)(v)
-}
-
-func (*twingateKubernetesResourceProtocolsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TwingateKubernetesResourceProtocols)(nil)).Elem()
-}
-
-func (i *twingateKubernetesResourceProtocolsPtrType) ToTwingateKubernetesResourceProtocolsPtrOutput() TwingateKubernetesResourceProtocolsPtrOutput {
-	return i.ToTwingateKubernetesResourceProtocolsPtrOutputWithContext(context.Background())
-}
-
-func (i *twingateKubernetesResourceProtocolsPtrType) ToTwingateKubernetesResourceProtocolsPtrOutputWithContext(ctx context.Context) TwingateKubernetesResourceProtocolsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateKubernetesResourceProtocolsPtrOutput)
-}
-
-type TwingateKubernetesResourceProtocolsOutput struct{ *pulumi.OutputState }
-
-func (TwingateKubernetesResourceProtocolsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateKubernetesResourceProtocols)(nil)).Elem()
-}
-
-func (o TwingateKubernetesResourceProtocolsOutput) ToTwingateKubernetesResourceProtocolsOutput() TwingateKubernetesResourceProtocolsOutput {
-	return o
-}
-
-func (o TwingateKubernetesResourceProtocolsOutput) ToTwingateKubernetesResourceProtocolsOutputWithContext(ctx context.Context) TwingateKubernetesResourceProtocolsOutput {
-	return o
-}
-
-func (o TwingateKubernetesResourceProtocolsOutput) ToTwingateKubernetesResourceProtocolsPtrOutput() TwingateKubernetesResourceProtocolsPtrOutput {
-	return o.ToTwingateKubernetesResourceProtocolsPtrOutputWithContext(context.Background())
-}
-
-func (o TwingateKubernetesResourceProtocolsOutput) ToTwingateKubernetesResourceProtocolsPtrOutputWithContext(ctx context.Context) TwingateKubernetesResourceProtocolsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TwingateKubernetesResourceProtocols) *TwingateKubernetesResourceProtocols {
-		return &v
-	}).(TwingateKubernetesResourceProtocolsPtrOutput)
-}
-
-// Whether to allow ICMP (ping) traffic
-func (o TwingateKubernetesResourceProtocolsOutput) AllowIcmp() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v TwingateKubernetesResourceProtocols) *bool { return v.AllowIcmp }).(pulumi.BoolPtrOutput)
-}
-
-func (o TwingateKubernetesResourceProtocolsOutput) Tcp() TwingateKubernetesResourceProtocolsTcpPtrOutput {
-	return o.ApplyT(func(v TwingateKubernetesResourceProtocols) *TwingateKubernetesResourceProtocolsTcp { return v.Tcp }).(TwingateKubernetesResourceProtocolsTcpPtrOutput)
-}
-
-func (o TwingateKubernetesResourceProtocolsOutput) Udp() TwingateKubernetesResourceProtocolsUdpPtrOutput {
-	return o.ApplyT(func(v TwingateKubernetesResourceProtocols) *TwingateKubernetesResourceProtocolsUdp { return v.Udp }).(TwingateKubernetesResourceProtocolsUdpPtrOutput)
-}
-
-type TwingateKubernetesResourceProtocolsPtrOutput struct{ *pulumi.OutputState }
-
-func (TwingateKubernetesResourceProtocolsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TwingateKubernetesResourceProtocols)(nil)).Elem()
-}
-
-func (o TwingateKubernetesResourceProtocolsPtrOutput) ToTwingateKubernetesResourceProtocolsPtrOutput() TwingateKubernetesResourceProtocolsPtrOutput {
-	return o
-}
-
-func (o TwingateKubernetesResourceProtocolsPtrOutput) ToTwingateKubernetesResourceProtocolsPtrOutputWithContext(ctx context.Context) TwingateKubernetesResourceProtocolsPtrOutput {
-	return o
-}
-
-func (o TwingateKubernetesResourceProtocolsPtrOutput) Elem() TwingateKubernetesResourceProtocolsOutput {
-	return o.ApplyT(func(v *TwingateKubernetesResourceProtocols) TwingateKubernetesResourceProtocols {
-		if v != nil {
-			return *v
-		}
-		var ret TwingateKubernetesResourceProtocols
-		return ret
-	}).(TwingateKubernetesResourceProtocolsOutput)
-}
-
-// Whether to allow ICMP (ping) traffic
-func (o TwingateKubernetesResourceProtocolsPtrOutput) AllowIcmp() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TwingateKubernetesResourceProtocols) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AllowIcmp
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o TwingateKubernetesResourceProtocolsPtrOutput) Tcp() TwingateKubernetesResourceProtocolsTcpPtrOutput {
-	return o.ApplyT(func(v *TwingateKubernetesResourceProtocols) *TwingateKubernetesResourceProtocolsTcp {
-		if v == nil {
-			return nil
-		}
-		return v.Tcp
-	}).(TwingateKubernetesResourceProtocolsTcpPtrOutput)
-}
-
-func (o TwingateKubernetesResourceProtocolsPtrOutput) Udp() TwingateKubernetesResourceProtocolsUdpPtrOutput {
-	return o.ApplyT(func(v *TwingateKubernetesResourceProtocols) *TwingateKubernetesResourceProtocolsUdp {
-		if v == nil {
-			return nil
-		}
-		return v.Udp
-	}).(TwingateKubernetesResourceProtocolsUdpPtrOutput)
-}
-
-type TwingateKubernetesResourceProtocolsTcp struct {
-	// Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
-	Policy *string `pulumi:"policy"`
-	// List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
-	Ports []string `pulumi:"ports"`
-}
-
-// TwingateKubernetesResourceProtocolsTcpInput is an input type that accepts TwingateKubernetesResourceProtocolsTcpArgs and TwingateKubernetesResourceProtocolsTcpOutput values.
-// You can construct a concrete instance of `TwingateKubernetesResourceProtocolsTcpInput` via:
-//
-//	TwingateKubernetesResourceProtocolsTcpArgs{...}
-type TwingateKubernetesResourceProtocolsTcpInput interface {
-	pulumi.Input
-
-	ToTwingateKubernetesResourceProtocolsTcpOutput() TwingateKubernetesResourceProtocolsTcpOutput
-	ToTwingateKubernetesResourceProtocolsTcpOutputWithContext(context.Context) TwingateKubernetesResourceProtocolsTcpOutput
-}
-
-type TwingateKubernetesResourceProtocolsTcpArgs struct {
-	// Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
-	Policy pulumi.StringPtrInput `pulumi:"policy"`
-	// List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
-	Ports pulumi.StringArrayInput `pulumi:"ports"`
-}
-
-func (TwingateKubernetesResourceProtocolsTcpArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateKubernetesResourceProtocolsTcp)(nil)).Elem()
-}
-
-func (i TwingateKubernetesResourceProtocolsTcpArgs) ToTwingateKubernetesResourceProtocolsTcpOutput() TwingateKubernetesResourceProtocolsTcpOutput {
-	return i.ToTwingateKubernetesResourceProtocolsTcpOutputWithContext(context.Background())
-}
-
-func (i TwingateKubernetesResourceProtocolsTcpArgs) ToTwingateKubernetesResourceProtocolsTcpOutputWithContext(ctx context.Context) TwingateKubernetesResourceProtocolsTcpOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateKubernetesResourceProtocolsTcpOutput)
-}
-
-func (i TwingateKubernetesResourceProtocolsTcpArgs) ToTwingateKubernetesResourceProtocolsTcpPtrOutput() TwingateKubernetesResourceProtocolsTcpPtrOutput {
-	return i.ToTwingateKubernetesResourceProtocolsTcpPtrOutputWithContext(context.Background())
-}
-
-func (i TwingateKubernetesResourceProtocolsTcpArgs) ToTwingateKubernetesResourceProtocolsTcpPtrOutputWithContext(ctx context.Context) TwingateKubernetesResourceProtocolsTcpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateKubernetesResourceProtocolsTcpOutput).ToTwingateKubernetesResourceProtocolsTcpPtrOutputWithContext(ctx)
-}
-
-// TwingateKubernetesResourceProtocolsTcpPtrInput is an input type that accepts TwingateKubernetesResourceProtocolsTcpArgs, TwingateKubernetesResourceProtocolsTcpPtr and TwingateKubernetesResourceProtocolsTcpPtrOutput values.
-// You can construct a concrete instance of `TwingateKubernetesResourceProtocolsTcpPtrInput` via:
-//
-//	        TwingateKubernetesResourceProtocolsTcpArgs{...}
-//
-//	or:
-//
-//	        nil
-type TwingateKubernetesResourceProtocolsTcpPtrInput interface {
-	pulumi.Input
-
-	ToTwingateKubernetesResourceProtocolsTcpPtrOutput() TwingateKubernetesResourceProtocolsTcpPtrOutput
-	ToTwingateKubernetesResourceProtocolsTcpPtrOutputWithContext(context.Context) TwingateKubernetesResourceProtocolsTcpPtrOutput
-}
-
-type twingateKubernetesResourceProtocolsTcpPtrType TwingateKubernetesResourceProtocolsTcpArgs
-
-func TwingateKubernetesResourceProtocolsTcpPtr(v *TwingateKubernetesResourceProtocolsTcpArgs) TwingateKubernetesResourceProtocolsTcpPtrInput {
-	return (*twingateKubernetesResourceProtocolsTcpPtrType)(v)
-}
-
-func (*twingateKubernetesResourceProtocolsTcpPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TwingateKubernetesResourceProtocolsTcp)(nil)).Elem()
-}
-
-func (i *twingateKubernetesResourceProtocolsTcpPtrType) ToTwingateKubernetesResourceProtocolsTcpPtrOutput() TwingateKubernetesResourceProtocolsTcpPtrOutput {
-	return i.ToTwingateKubernetesResourceProtocolsTcpPtrOutputWithContext(context.Background())
-}
-
-func (i *twingateKubernetesResourceProtocolsTcpPtrType) ToTwingateKubernetesResourceProtocolsTcpPtrOutputWithContext(ctx context.Context) TwingateKubernetesResourceProtocolsTcpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateKubernetesResourceProtocolsTcpPtrOutput)
-}
-
-type TwingateKubernetesResourceProtocolsTcpOutput struct{ *pulumi.OutputState }
-
-func (TwingateKubernetesResourceProtocolsTcpOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateKubernetesResourceProtocolsTcp)(nil)).Elem()
-}
-
-func (o TwingateKubernetesResourceProtocolsTcpOutput) ToTwingateKubernetesResourceProtocolsTcpOutput() TwingateKubernetesResourceProtocolsTcpOutput {
-	return o
-}
-
-func (o TwingateKubernetesResourceProtocolsTcpOutput) ToTwingateKubernetesResourceProtocolsTcpOutputWithContext(ctx context.Context) TwingateKubernetesResourceProtocolsTcpOutput {
-	return o
-}
-
-func (o TwingateKubernetesResourceProtocolsTcpOutput) ToTwingateKubernetesResourceProtocolsTcpPtrOutput() TwingateKubernetesResourceProtocolsTcpPtrOutput {
-	return o.ToTwingateKubernetesResourceProtocolsTcpPtrOutputWithContext(context.Background())
-}
-
-func (o TwingateKubernetesResourceProtocolsTcpOutput) ToTwingateKubernetesResourceProtocolsTcpPtrOutputWithContext(ctx context.Context) TwingateKubernetesResourceProtocolsTcpPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TwingateKubernetesResourceProtocolsTcp) *TwingateKubernetesResourceProtocolsTcp {
-		return &v
-	}).(TwingateKubernetesResourceProtocolsTcpPtrOutput)
-}
-
-// Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
-func (o TwingateKubernetesResourceProtocolsTcpOutput) Policy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TwingateKubernetesResourceProtocolsTcp) *string { return v.Policy }).(pulumi.StringPtrOutput)
-}
-
-// List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
-func (o TwingateKubernetesResourceProtocolsTcpOutput) Ports() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v TwingateKubernetesResourceProtocolsTcp) []string { return v.Ports }).(pulumi.StringArrayOutput)
-}
-
-type TwingateKubernetesResourceProtocolsTcpPtrOutput struct{ *pulumi.OutputState }
-
-func (TwingateKubernetesResourceProtocolsTcpPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TwingateKubernetesResourceProtocolsTcp)(nil)).Elem()
-}
-
-func (o TwingateKubernetesResourceProtocolsTcpPtrOutput) ToTwingateKubernetesResourceProtocolsTcpPtrOutput() TwingateKubernetesResourceProtocolsTcpPtrOutput {
-	return o
-}
-
-func (o TwingateKubernetesResourceProtocolsTcpPtrOutput) ToTwingateKubernetesResourceProtocolsTcpPtrOutputWithContext(ctx context.Context) TwingateKubernetesResourceProtocolsTcpPtrOutput {
-	return o
-}
-
-func (o TwingateKubernetesResourceProtocolsTcpPtrOutput) Elem() TwingateKubernetesResourceProtocolsTcpOutput {
-	return o.ApplyT(func(v *TwingateKubernetesResourceProtocolsTcp) TwingateKubernetesResourceProtocolsTcp {
-		if v != nil {
-			return *v
-		}
-		var ret TwingateKubernetesResourceProtocolsTcp
-		return ret
-	}).(TwingateKubernetesResourceProtocolsTcpOutput)
-}
-
-// Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
-func (o TwingateKubernetesResourceProtocolsTcpPtrOutput) Policy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TwingateKubernetesResourceProtocolsTcp) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Policy
-	}).(pulumi.StringPtrOutput)
-}
-
-// List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
-func (o TwingateKubernetesResourceProtocolsTcpPtrOutput) Ports() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TwingateKubernetesResourceProtocolsTcp) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Ports
-	}).(pulumi.StringArrayOutput)
-}
-
-type TwingateKubernetesResourceProtocolsUdp struct {
-	// Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
-	Policy *string `pulumi:"policy"`
-	// List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
-	Ports []string `pulumi:"ports"`
-}
-
-// TwingateKubernetesResourceProtocolsUdpInput is an input type that accepts TwingateKubernetesResourceProtocolsUdpArgs and TwingateKubernetesResourceProtocolsUdpOutput values.
-// You can construct a concrete instance of `TwingateKubernetesResourceProtocolsUdpInput` via:
-//
-//	TwingateKubernetesResourceProtocolsUdpArgs{...}
-type TwingateKubernetesResourceProtocolsUdpInput interface {
-	pulumi.Input
-
-	ToTwingateKubernetesResourceProtocolsUdpOutput() TwingateKubernetesResourceProtocolsUdpOutput
-	ToTwingateKubernetesResourceProtocolsUdpOutputWithContext(context.Context) TwingateKubernetesResourceProtocolsUdpOutput
-}
-
-type TwingateKubernetesResourceProtocolsUdpArgs struct {
-	// Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
-	Policy pulumi.StringPtrInput `pulumi:"policy"`
-	// List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
-	Ports pulumi.StringArrayInput `pulumi:"ports"`
-}
-
-func (TwingateKubernetesResourceProtocolsUdpArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateKubernetesResourceProtocolsUdp)(nil)).Elem()
-}
-
-func (i TwingateKubernetesResourceProtocolsUdpArgs) ToTwingateKubernetesResourceProtocolsUdpOutput() TwingateKubernetesResourceProtocolsUdpOutput {
-	return i.ToTwingateKubernetesResourceProtocolsUdpOutputWithContext(context.Background())
-}
-
-func (i TwingateKubernetesResourceProtocolsUdpArgs) ToTwingateKubernetesResourceProtocolsUdpOutputWithContext(ctx context.Context) TwingateKubernetesResourceProtocolsUdpOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateKubernetesResourceProtocolsUdpOutput)
-}
-
-func (i TwingateKubernetesResourceProtocolsUdpArgs) ToTwingateKubernetesResourceProtocolsUdpPtrOutput() TwingateKubernetesResourceProtocolsUdpPtrOutput {
-	return i.ToTwingateKubernetesResourceProtocolsUdpPtrOutputWithContext(context.Background())
-}
-
-func (i TwingateKubernetesResourceProtocolsUdpArgs) ToTwingateKubernetesResourceProtocolsUdpPtrOutputWithContext(ctx context.Context) TwingateKubernetesResourceProtocolsUdpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateKubernetesResourceProtocolsUdpOutput).ToTwingateKubernetesResourceProtocolsUdpPtrOutputWithContext(ctx)
-}
-
-// TwingateKubernetesResourceProtocolsUdpPtrInput is an input type that accepts TwingateKubernetesResourceProtocolsUdpArgs, TwingateKubernetesResourceProtocolsUdpPtr and TwingateKubernetesResourceProtocolsUdpPtrOutput values.
-// You can construct a concrete instance of `TwingateKubernetesResourceProtocolsUdpPtrInput` via:
-//
-//	        TwingateKubernetesResourceProtocolsUdpArgs{...}
-//
-//	or:
-//
-//	        nil
-type TwingateKubernetesResourceProtocolsUdpPtrInput interface {
-	pulumi.Input
-
-	ToTwingateKubernetesResourceProtocolsUdpPtrOutput() TwingateKubernetesResourceProtocolsUdpPtrOutput
-	ToTwingateKubernetesResourceProtocolsUdpPtrOutputWithContext(context.Context) TwingateKubernetesResourceProtocolsUdpPtrOutput
-}
-
-type twingateKubernetesResourceProtocolsUdpPtrType TwingateKubernetesResourceProtocolsUdpArgs
-
-func TwingateKubernetesResourceProtocolsUdpPtr(v *TwingateKubernetesResourceProtocolsUdpArgs) TwingateKubernetesResourceProtocolsUdpPtrInput {
-	return (*twingateKubernetesResourceProtocolsUdpPtrType)(v)
-}
-
-func (*twingateKubernetesResourceProtocolsUdpPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TwingateKubernetesResourceProtocolsUdp)(nil)).Elem()
-}
-
-func (i *twingateKubernetesResourceProtocolsUdpPtrType) ToTwingateKubernetesResourceProtocolsUdpPtrOutput() TwingateKubernetesResourceProtocolsUdpPtrOutput {
-	return i.ToTwingateKubernetesResourceProtocolsUdpPtrOutputWithContext(context.Background())
-}
-
-func (i *twingateKubernetesResourceProtocolsUdpPtrType) ToTwingateKubernetesResourceProtocolsUdpPtrOutputWithContext(ctx context.Context) TwingateKubernetesResourceProtocolsUdpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateKubernetesResourceProtocolsUdpPtrOutput)
-}
-
-type TwingateKubernetesResourceProtocolsUdpOutput struct{ *pulumi.OutputState }
-
-func (TwingateKubernetesResourceProtocolsUdpOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateKubernetesResourceProtocolsUdp)(nil)).Elem()
-}
-
-func (o TwingateKubernetesResourceProtocolsUdpOutput) ToTwingateKubernetesResourceProtocolsUdpOutput() TwingateKubernetesResourceProtocolsUdpOutput {
-	return o
-}
-
-func (o TwingateKubernetesResourceProtocolsUdpOutput) ToTwingateKubernetesResourceProtocolsUdpOutputWithContext(ctx context.Context) TwingateKubernetesResourceProtocolsUdpOutput {
-	return o
-}
-
-func (o TwingateKubernetesResourceProtocolsUdpOutput) ToTwingateKubernetesResourceProtocolsUdpPtrOutput() TwingateKubernetesResourceProtocolsUdpPtrOutput {
-	return o.ToTwingateKubernetesResourceProtocolsUdpPtrOutputWithContext(context.Background())
-}
-
-func (o TwingateKubernetesResourceProtocolsUdpOutput) ToTwingateKubernetesResourceProtocolsUdpPtrOutputWithContext(ctx context.Context) TwingateKubernetesResourceProtocolsUdpPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TwingateKubernetesResourceProtocolsUdp) *TwingateKubernetesResourceProtocolsUdp {
-		return &v
-	}).(TwingateKubernetesResourceProtocolsUdpPtrOutput)
-}
-
-// Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
-func (o TwingateKubernetesResourceProtocolsUdpOutput) Policy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TwingateKubernetesResourceProtocolsUdp) *string { return v.Policy }).(pulumi.StringPtrOutput)
-}
-
-// List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
-func (o TwingateKubernetesResourceProtocolsUdpOutput) Ports() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v TwingateKubernetesResourceProtocolsUdp) []string { return v.Ports }).(pulumi.StringArrayOutput)
-}
-
-type TwingateKubernetesResourceProtocolsUdpPtrOutput struct{ *pulumi.OutputState }
-
-func (TwingateKubernetesResourceProtocolsUdpPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TwingateKubernetesResourceProtocolsUdp)(nil)).Elem()
-}
-
-func (o TwingateKubernetesResourceProtocolsUdpPtrOutput) ToTwingateKubernetesResourceProtocolsUdpPtrOutput() TwingateKubernetesResourceProtocolsUdpPtrOutput {
-	return o
-}
-
-func (o TwingateKubernetesResourceProtocolsUdpPtrOutput) ToTwingateKubernetesResourceProtocolsUdpPtrOutputWithContext(ctx context.Context) TwingateKubernetesResourceProtocolsUdpPtrOutput {
-	return o
-}
-
-func (o TwingateKubernetesResourceProtocolsUdpPtrOutput) Elem() TwingateKubernetesResourceProtocolsUdpOutput {
-	return o.ApplyT(func(v *TwingateKubernetesResourceProtocolsUdp) TwingateKubernetesResourceProtocolsUdp {
-		if v != nil {
-			return *v
-		}
-		var ret TwingateKubernetesResourceProtocolsUdp
-		return ret
-	}).(TwingateKubernetesResourceProtocolsUdpOutput)
-}
-
-// Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
-func (o TwingateKubernetesResourceProtocolsUdpPtrOutput) Policy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TwingateKubernetesResourceProtocolsUdp) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Policy
-	}).(pulumi.StringPtrOutput)
-}
-
-// List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
-func (o TwingateKubernetesResourceProtocolsUdpPtrOutput) Ports() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TwingateKubernetesResourceProtocolsUdp) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Ports
-	}).(pulumi.StringArrayOutput)
 }
 
 type TwingateResourceAccessGroup struct {
@@ -5655,483 +3583,625 @@ func (o TwingateSSHResourceAccessPolicyArrayOutput) Index(i pulumi.IntInput) Twi
 	}).(TwingateSSHResourceAccessPolicyOutput)
 }
 
-type TwingateSSHResourceProtocols struct {
-	// Whether to allow ICMP (ping) traffic
-	AllowIcmp *bool                            `pulumi:"allowIcmp"`
-	Tcp       *TwingateSSHResourceProtocolsTcp `pulumi:"tcp"`
-	Udp       *TwingateSSHResourceProtocolsUdp `pulumi:"udp"`
+type TwingateWebAppResourceAccessGroup struct {
+	// Restrict access according to JIT access policy
+	AccessPolicies []TwingateWebAppResourceAccessGroupAccessPolicy `pulumi:"accessPolicies"`
+	// Group ID that will have permission to access the Resource.
+	GroupId *string `pulumi:"groupId"`
+	// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
+	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 }
 
-// TwingateSSHResourceProtocolsInput is an input type that accepts TwingateSSHResourceProtocolsArgs and TwingateSSHResourceProtocolsOutput values.
-// You can construct a concrete instance of `TwingateSSHResourceProtocolsInput` via:
+// TwingateWebAppResourceAccessGroupInput is an input type that accepts TwingateWebAppResourceAccessGroupArgs and TwingateWebAppResourceAccessGroupOutput values.
+// You can construct a concrete instance of `TwingateWebAppResourceAccessGroupInput` via:
 //
-//	TwingateSSHResourceProtocolsArgs{...}
-type TwingateSSHResourceProtocolsInput interface {
+//	TwingateWebAppResourceAccessGroupArgs{...}
+type TwingateWebAppResourceAccessGroupInput interface {
 	pulumi.Input
 
-	ToTwingateSSHResourceProtocolsOutput() TwingateSSHResourceProtocolsOutput
-	ToTwingateSSHResourceProtocolsOutputWithContext(context.Context) TwingateSSHResourceProtocolsOutput
+	ToTwingateWebAppResourceAccessGroupOutput() TwingateWebAppResourceAccessGroupOutput
+	ToTwingateWebAppResourceAccessGroupOutputWithContext(context.Context) TwingateWebAppResourceAccessGroupOutput
 }
 
-type TwingateSSHResourceProtocolsArgs struct {
-	// Whether to allow ICMP (ping) traffic
-	AllowIcmp pulumi.BoolPtrInput                     `pulumi:"allowIcmp"`
-	Tcp       TwingateSSHResourceProtocolsTcpPtrInput `pulumi:"tcp"`
-	Udp       TwingateSSHResourceProtocolsUdpPtrInput `pulumi:"udp"`
+type TwingateWebAppResourceAccessGroupArgs struct {
+	// Restrict access according to JIT access policy
+	AccessPolicies TwingateWebAppResourceAccessGroupAccessPolicyArrayInput `pulumi:"accessPolicies"`
+	// Group ID that will have permission to access the Resource.
+	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
+	// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
+	SecurityPolicyId pulumi.StringPtrInput `pulumi:"securityPolicyId"`
 }
 
-func (TwingateSSHResourceProtocolsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateSSHResourceProtocols)(nil)).Elem()
+func (TwingateWebAppResourceAccessGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateWebAppResourceAccessGroup)(nil)).Elem()
 }
 
-func (i TwingateSSHResourceProtocolsArgs) ToTwingateSSHResourceProtocolsOutput() TwingateSSHResourceProtocolsOutput {
-	return i.ToTwingateSSHResourceProtocolsOutputWithContext(context.Background())
+func (i TwingateWebAppResourceAccessGroupArgs) ToTwingateWebAppResourceAccessGroupOutput() TwingateWebAppResourceAccessGroupOutput {
+	return i.ToTwingateWebAppResourceAccessGroupOutputWithContext(context.Background())
 }
 
-func (i TwingateSSHResourceProtocolsArgs) ToTwingateSSHResourceProtocolsOutputWithContext(ctx context.Context) TwingateSSHResourceProtocolsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateSSHResourceProtocolsOutput)
+func (i TwingateWebAppResourceAccessGroupArgs) ToTwingateWebAppResourceAccessGroupOutputWithContext(ctx context.Context) TwingateWebAppResourceAccessGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateWebAppResourceAccessGroupOutput)
 }
 
-func (i TwingateSSHResourceProtocolsArgs) ToTwingateSSHResourceProtocolsPtrOutput() TwingateSSHResourceProtocolsPtrOutput {
-	return i.ToTwingateSSHResourceProtocolsPtrOutputWithContext(context.Background())
-}
-
-func (i TwingateSSHResourceProtocolsArgs) ToTwingateSSHResourceProtocolsPtrOutputWithContext(ctx context.Context) TwingateSSHResourceProtocolsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateSSHResourceProtocolsOutput).ToTwingateSSHResourceProtocolsPtrOutputWithContext(ctx)
-}
-
-// TwingateSSHResourceProtocolsPtrInput is an input type that accepts TwingateSSHResourceProtocolsArgs, TwingateSSHResourceProtocolsPtr and TwingateSSHResourceProtocolsPtrOutput values.
-// You can construct a concrete instance of `TwingateSSHResourceProtocolsPtrInput` via:
+// TwingateWebAppResourceAccessGroupArrayInput is an input type that accepts TwingateWebAppResourceAccessGroupArray and TwingateWebAppResourceAccessGroupArrayOutput values.
+// You can construct a concrete instance of `TwingateWebAppResourceAccessGroupArrayInput` via:
 //
-//	        TwingateSSHResourceProtocolsArgs{...}
+//	TwingateWebAppResourceAccessGroupArray{ TwingateWebAppResourceAccessGroupArgs{...} }
+type TwingateWebAppResourceAccessGroupArrayInput interface {
+	pulumi.Input
+
+	ToTwingateWebAppResourceAccessGroupArrayOutput() TwingateWebAppResourceAccessGroupArrayOutput
+	ToTwingateWebAppResourceAccessGroupArrayOutputWithContext(context.Context) TwingateWebAppResourceAccessGroupArrayOutput
+}
+
+type TwingateWebAppResourceAccessGroupArray []TwingateWebAppResourceAccessGroupInput
+
+func (TwingateWebAppResourceAccessGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TwingateWebAppResourceAccessGroup)(nil)).Elem()
+}
+
+func (i TwingateWebAppResourceAccessGroupArray) ToTwingateWebAppResourceAccessGroupArrayOutput() TwingateWebAppResourceAccessGroupArrayOutput {
+	return i.ToTwingateWebAppResourceAccessGroupArrayOutputWithContext(context.Background())
+}
+
+func (i TwingateWebAppResourceAccessGroupArray) ToTwingateWebAppResourceAccessGroupArrayOutputWithContext(ctx context.Context) TwingateWebAppResourceAccessGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateWebAppResourceAccessGroupArrayOutput)
+}
+
+type TwingateWebAppResourceAccessGroupOutput struct{ *pulumi.OutputState }
+
+func (TwingateWebAppResourceAccessGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateWebAppResourceAccessGroup)(nil)).Elem()
+}
+
+func (o TwingateWebAppResourceAccessGroupOutput) ToTwingateWebAppResourceAccessGroupOutput() TwingateWebAppResourceAccessGroupOutput {
+	return o
+}
+
+func (o TwingateWebAppResourceAccessGroupOutput) ToTwingateWebAppResourceAccessGroupOutputWithContext(ctx context.Context) TwingateWebAppResourceAccessGroupOutput {
+	return o
+}
+
+// Restrict access according to JIT access policy
+func (o TwingateWebAppResourceAccessGroupOutput) AccessPolicies() TwingateWebAppResourceAccessGroupAccessPolicyArrayOutput {
+	return o.ApplyT(func(v TwingateWebAppResourceAccessGroup) []TwingateWebAppResourceAccessGroupAccessPolicy {
+		return v.AccessPolicies
+	}).(TwingateWebAppResourceAccessGroupAccessPolicyArrayOutput)
+}
+
+// Group ID that will have permission to access the Resource.
+func (o TwingateWebAppResourceAccessGroupOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TwingateWebAppResourceAccessGroup) *string { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of a `getTwingateSecurityPolicy` to use as the access policy for the group IDs in the access block. Default is 'Null' which points to `Default Policy` on Admin console.
+func (o TwingateWebAppResourceAccessGroupOutput) SecurityPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TwingateWebAppResourceAccessGroup) *string { return v.SecurityPolicyId }).(pulumi.StringPtrOutput)
+}
+
+type TwingateWebAppResourceAccessGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (TwingateWebAppResourceAccessGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TwingateWebAppResourceAccessGroup)(nil)).Elem()
+}
+
+func (o TwingateWebAppResourceAccessGroupArrayOutput) ToTwingateWebAppResourceAccessGroupArrayOutput() TwingateWebAppResourceAccessGroupArrayOutput {
+	return o
+}
+
+func (o TwingateWebAppResourceAccessGroupArrayOutput) ToTwingateWebAppResourceAccessGroupArrayOutputWithContext(ctx context.Context) TwingateWebAppResourceAccessGroupArrayOutput {
+	return o
+}
+
+func (o TwingateWebAppResourceAccessGroupArrayOutput) Index(i pulumi.IntInput) TwingateWebAppResourceAccessGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TwingateWebAppResourceAccessGroup {
+		return vs[0].([]TwingateWebAppResourceAccessGroup)[vs[1].(int)]
+	}).(TwingateWebAppResourceAccessGroupOutput)
+}
+
+type TwingateWebAppResourceAccessGroupAccessPolicy struct {
+	// This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+	ApprovalMode *string `pulumi:"approvalMode"`
+	// This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+	Duration *string `pulumi:"duration"`
+	// This will set the accessPolicy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+	Mode *string `pulumi:"mode"`
+}
+
+// TwingateWebAppResourceAccessGroupAccessPolicyInput is an input type that accepts TwingateWebAppResourceAccessGroupAccessPolicyArgs and TwingateWebAppResourceAccessGroupAccessPolicyOutput values.
+// You can construct a concrete instance of `TwingateWebAppResourceAccessGroupAccessPolicyInput` via:
+//
+//	TwingateWebAppResourceAccessGroupAccessPolicyArgs{...}
+type TwingateWebAppResourceAccessGroupAccessPolicyInput interface {
+	pulumi.Input
+
+	ToTwingateWebAppResourceAccessGroupAccessPolicyOutput() TwingateWebAppResourceAccessGroupAccessPolicyOutput
+	ToTwingateWebAppResourceAccessGroupAccessPolicyOutputWithContext(context.Context) TwingateWebAppResourceAccessGroupAccessPolicyOutput
+}
+
+type TwingateWebAppResourceAccessGroupAccessPolicyArgs struct {
+	// This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+	ApprovalMode pulumi.StringPtrInput `pulumi:"approvalMode"`
+	// This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+	Duration pulumi.StringPtrInput `pulumi:"duration"`
+	// This will set the accessPolicy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+}
+
+func (TwingateWebAppResourceAccessGroupAccessPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateWebAppResourceAccessGroupAccessPolicy)(nil)).Elem()
+}
+
+func (i TwingateWebAppResourceAccessGroupAccessPolicyArgs) ToTwingateWebAppResourceAccessGroupAccessPolicyOutput() TwingateWebAppResourceAccessGroupAccessPolicyOutput {
+	return i.ToTwingateWebAppResourceAccessGroupAccessPolicyOutputWithContext(context.Background())
+}
+
+func (i TwingateWebAppResourceAccessGroupAccessPolicyArgs) ToTwingateWebAppResourceAccessGroupAccessPolicyOutputWithContext(ctx context.Context) TwingateWebAppResourceAccessGroupAccessPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateWebAppResourceAccessGroupAccessPolicyOutput)
+}
+
+// TwingateWebAppResourceAccessGroupAccessPolicyArrayInput is an input type that accepts TwingateWebAppResourceAccessGroupAccessPolicyArray and TwingateWebAppResourceAccessGroupAccessPolicyArrayOutput values.
+// You can construct a concrete instance of `TwingateWebAppResourceAccessGroupAccessPolicyArrayInput` via:
+//
+//	TwingateWebAppResourceAccessGroupAccessPolicyArray{ TwingateWebAppResourceAccessGroupAccessPolicyArgs{...} }
+type TwingateWebAppResourceAccessGroupAccessPolicyArrayInput interface {
+	pulumi.Input
+
+	ToTwingateWebAppResourceAccessGroupAccessPolicyArrayOutput() TwingateWebAppResourceAccessGroupAccessPolicyArrayOutput
+	ToTwingateWebAppResourceAccessGroupAccessPolicyArrayOutputWithContext(context.Context) TwingateWebAppResourceAccessGroupAccessPolicyArrayOutput
+}
+
+type TwingateWebAppResourceAccessGroupAccessPolicyArray []TwingateWebAppResourceAccessGroupAccessPolicyInput
+
+func (TwingateWebAppResourceAccessGroupAccessPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TwingateWebAppResourceAccessGroupAccessPolicy)(nil)).Elem()
+}
+
+func (i TwingateWebAppResourceAccessGroupAccessPolicyArray) ToTwingateWebAppResourceAccessGroupAccessPolicyArrayOutput() TwingateWebAppResourceAccessGroupAccessPolicyArrayOutput {
+	return i.ToTwingateWebAppResourceAccessGroupAccessPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i TwingateWebAppResourceAccessGroupAccessPolicyArray) ToTwingateWebAppResourceAccessGroupAccessPolicyArrayOutputWithContext(ctx context.Context) TwingateWebAppResourceAccessGroupAccessPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateWebAppResourceAccessGroupAccessPolicyArrayOutput)
+}
+
+type TwingateWebAppResourceAccessGroupAccessPolicyOutput struct{ *pulumi.OutputState }
+
+func (TwingateWebAppResourceAccessGroupAccessPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateWebAppResourceAccessGroupAccessPolicy)(nil)).Elem()
+}
+
+func (o TwingateWebAppResourceAccessGroupAccessPolicyOutput) ToTwingateWebAppResourceAccessGroupAccessPolicyOutput() TwingateWebAppResourceAccessGroupAccessPolicyOutput {
+	return o
+}
+
+func (o TwingateWebAppResourceAccessGroupAccessPolicyOutput) ToTwingateWebAppResourceAccessGroupAccessPolicyOutputWithContext(ctx context.Context) TwingateWebAppResourceAccessGroupAccessPolicyOutput {
+	return o
+}
+
+// This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+func (o TwingateWebAppResourceAccessGroupAccessPolicyOutput) ApprovalMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TwingateWebAppResourceAccessGroupAccessPolicy) *string { return v.ApprovalMode }).(pulumi.StringPtrOutput)
+}
+
+// This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+func (o TwingateWebAppResourceAccessGroupAccessPolicyOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TwingateWebAppResourceAccessGroupAccessPolicy) *string { return v.Duration }).(pulumi.StringPtrOutput)
+}
+
+// This will set the accessPolicy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+func (o TwingateWebAppResourceAccessGroupAccessPolicyOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TwingateWebAppResourceAccessGroupAccessPolicy) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+type TwingateWebAppResourceAccessGroupAccessPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (TwingateWebAppResourceAccessGroupAccessPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TwingateWebAppResourceAccessGroupAccessPolicy)(nil)).Elem()
+}
+
+func (o TwingateWebAppResourceAccessGroupAccessPolicyArrayOutput) ToTwingateWebAppResourceAccessGroupAccessPolicyArrayOutput() TwingateWebAppResourceAccessGroupAccessPolicyArrayOutput {
+	return o
+}
+
+func (o TwingateWebAppResourceAccessGroupAccessPolicyArrayOutput) ToTwingateWebAppResourceAccessGroupAccessPolicyArrayOutputWithContext(ctx context.Context) TwingateWebAppResourceAccessGroupAccessPolicyArrayOutput {
+	return o
+}
+
+func (o TwingateWebAppResourceAccessGroupAccessPolicyArrayOutput) Index(i pulumi.IntInput) TwingateWebAppResourceAccessGroupAccessPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TwingateWebAppResourceAccessGroupAccessPolicy {
+		return vs[0].([]TwingateWebAppResourceAccessGroupAccessPolicy)[vs[1].(int)]
+	}).(TwingateWebAppResourceAccessGroupAccessPolicyOutput)
+}
+
+type TwingateWebAppResourceAccessPolicy struct {
+	// This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+	ApprovalMode *string `pulumi:"approvalMode"`
+	// This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+	Duration *string `pulumi:"duration"`
+	// This will set the accessPolicy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+	Mode *string `pulumi:"mode"`
+}
+
+// TwingateWebAppResourceAccessPolicyInput is an input type that accepts TwingateWebAppResourceAccessPolicyArgs and TwingateWebAppResourceAccessPolicyOutput values.
+// You can construct a concrete instance of `TwingateWebAppResourceAccessPolicyInput` via:
+//
+//	TwingateWebAppResourceAccessPolicyArgs{...}
+type TwingateWebAppResourceAccessPolicyInput interface {
+	pulumi.Input
+
+	ToTwingateWebAppResourceAccessPolicyOutput() TwingateWebAppResourceAccessPolicyOutput
+	ToTwingateWebAppResourceAccessPolicyOutputWithContext(context.Context) TwingateWebAppResourceAccessPolicyOutput
+}
+
+type TwingateWebAppResourceAccessPolicyArgs struct {
+	// This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+	ApprovalMode pulumi.StringPtrInput `pulumi:"approvalMode"`
+	// This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+	Duration pulumi.StringPtrInput `pulumi:"duration"`
+	// This will set the accessPolicy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+}
+
+func (TwingateWebAppResourceAccessPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateWebAppResourceAccessPolicy)(nil)).Elem()
+}
+
+func (i TwingateWebAppResourceAccessPolicyArgs) ToTwingateWebAppResourceAccessPolicyOutput() TwingateWebAppResourceAccessPolicyOutput {
+	return i.ToTwingateWebAppResourceAccessPolicyOutputWithContext(context.Background())
+}
+
+func (i TwingateWebAppResourceAccessPolicyArgs) ToTwingateWebAppResourceAccessPolicyOutputWithContext(ctx context.Context) TwingateWebAppResourceAccessPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateWebAppResourceAccessPolicyOutput)
+}
+
+// TwingateWebAppResourceAccessPolicyArrayInput is an input type that accepts TwingateWebAppResourceAccessPolicyArray and TwingateWebAppResourceAccessPolicyArrayOutput values.
+// You can construct a concrete instance of `TwingateWebAppResourceAccessPolicyArrayInput` via:
+//
+//	TwingateWebAppResourceAccessPolicyArray{ TwingateWebAppResourceAccessPolicyArgs{...} }
+type TwingateWebAppResourceAccessPolicyArrayInput interface {
+	pulumi.Input
+
+	ToTwingateWebAppResourceAccessPolicyArrayOutput() TwingateWebAppResourceAccessPolicyArrayOutput
+	ToTwingateWebAppResourceAccessPolicyArrayOutputWithContext(context.Context) TwingateWebAppResourceAccessPolicyArrayOutput
+}
+
+type TwingateWebAppResourceAccessPolicyArray []TwingateWebAppResourceAccessPolicyInput
+
+func (TwingateWebAppResourceAccessPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TwingateWebAppResourceAccessPolicy)(nil)).Elem()
+}
+
+func (i TwingateWebAppResourceAccessPolicyArray) ToTwingateWebAppResourceAccessPolicyArrayOutput() TwingateWebAppResourceAccessPolicyArrayOutput {
+	return i.ToTwingateWebAppResourceAccessPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i TwingateWebAppResourceAccessPolicyArray) ToTwingateWebAppResourceAccessPolicyArrayOutputWithContext(ctx context.Context) TwingateWebAppResourceAccessPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateWebAppResourceAccessPolicyArrayOutput)
+}
+
+type TwingateWebAppResourceAccessPolicyOutput struct{ *pulumi.OutputState }
+
+func (TwingateWebAppResourceAccessPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateWebAppResourceAccessPolicy)(nil)).Elem()
+}
+
+func (o TwingateWebAppResourceAccessPolicyOutput) ToTwingateWebAppResourceAccessPolicyOutput() TwingateWebAppResourceAccessPolicyOutput {
+	return o
+}
+
+func (o TwingateWebAppResourceAccessPolicyOutput) ToTwingateWebAppResourceAccessPolicyOutputWithContext(ctx context.Context) TwingateWebAppResourceAccessPolicyOutput {
+	return o
+}
+
+// This will set the approval model for the policy. The valid values are `AUTOMATIC` and `MANUAL`.
+func (o TwingateWebAppResourceAccessPolicyOutput) ApprovalMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TwingateWebAppResourceAccessPolicy) *string { return v.ApprovalMode }).(pulumi.StringPtrOutput)
+}
+
+// This will set the access duration for the policy. Duration must be between 1 hour and 365 days. Examples of valid values include `1h` and `2d`.
+func (o TwingateWebAppResourceAccessPolicyOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TwingateWebAppResourceAccessPolicy) *string { return v.Duration }).(pulumi.StringPtrOutput)
+}
+
+// This will set the accessPolicy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
+func (o TwingateWebAppResourceAccessPolicyOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TwingateWebAppResourceAccessPolicy) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+type TwingateWebAppResourceAccessPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (TwingateWebAppResourceAccessPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TwingateWebAppResourceAccessPolicy)(nil)).Elem()
+}
+
+func (o TwingateWebAppResourceAccessPolicyArrayOutput) ToTwingateWebAppResourceAccessPolicyArrayOutput() TwingateWebAppResourceAccessPolicyArrayOutput {
+	return o
+}
+
+func (o TwingateWebAppResourceAccessPolicyArrayOutput) ToTwingateWebAppResourceAccessPolicyArrayOutputWithContext(ctx context.Context) TwingateWebAppResourceAccessPolicyArrayOutput {
+	return o
+}
+
+func (o TwingateWebAppResourceAccessPolicyArrayOutput) Index(i pulumi.IntInput) TwingateWebAppResourceAccessPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TwingateWebAppResourceAccessPolicy {
+		return vs[0].([]TwingateWebAppResourceAccessPolicy)[vs[1].(int)]
+	}).(TwingateWebAppResourceAccessPolicyOutput)
+}
+
+type TwingateWebAppResourceDownstream struct {
+	// The port number. Must be between 1 and 65535 inclusive.
+	Port int `pulumi:"port"`
+}
+
+// TwingateWebAppResourceDownstreamInput is an input type that accepts TwingateWebAppResourceDownstreamArgs and TwingateWebAppResourceDownstreamOutput values.
+// You can construct a concrete instance of `TwingateWebAppResourceDownstreamInput` via:
+//
+//	TwingateWebAppResourceDownstreamArgs{...}
+type TwingateWebAppResourceDownstreamInput interface {
+	pulumi.Input
+
+	ToTwingateWebAppResourceDownstreamOutput() TwingateWebAppResourceDownstreamOutput
+	ToTwingateWebAppResourceDownstreamOutputWithContext(context.Context) TwingateWebAppResourceDownstreamOutput
+}
+
+type TwingateWebAppResourceDownstreamArgs struct {
+	// The port number. Must be between 1 and 65535 inclusive.
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (TwingateWebAppResourceDownstreamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateWebAppResourceDownstream)(nil)).Elem()
+}
+
+func (i TwingateWebAppResourceDownstreamArgs) ToTwingateWebAppResourceDownstreamOutput() TwingateWebAppResourceDownstreamOutput {
+	return i.ToTwingateWebAppResourceDownstreamOutputWithContext(context.Background())
+}
+
+func (i TwingateWebAppResourceDownstreamArgs) ToTwingateWebAppResourceDownstreamOutputWithContext(ctx context.Context) TwingateWebAppResourceDownstreamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateWebAppResourceDownstreamOutput)
+}
+
+func (i TwingateWebAppResourceDownstreamArgs) ToTwingateWebAppResourceDownstreamPtrOutput() TwingateWebAppResourceDownstreamPtrOutput {
+	return i.ToTwingateWebAppResourceDownstreamPtrOutputWithContext(context.Background())
+}
+
+func (i TwingateWebAppResourceDownstreamArgs) ToTwingateWebAppResourceDownstreamPtrOutputWithContext(ctx context.Context) TwingateWebAppResourceDownstreamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateWebAppResourceDownstreamOutput).ToTwingateWebAppResourceDownstreamPtrOutputWithContext(ctx)
+}
+
+// TwingateWebAppResourceDownstreamPtrInput is an input type that accepts TwingateWebAppResourceDownstreamArgs, TwingateWebAppResourceDownstreamPtr and TwingateWebAppResourceDownstreamPtrOutput values.
+// You can construct a concrete instance of `TwingateWebAppResourceDownstreamPtrInput` via:
+//
+//	        TwingateWebAppResourceDownstreamArgs{...}
 //
 //	or:
 //
 //	        nil
-type TwingateSSHResourceProtocolsPtrInput interface {
+type TwingateWebAppResourceDownstreamPtrInput interface {
 	pulumi.Input
 
-	ToTwingateSSHResourceProtocolsPtrOutput() TwingateSSHResourceProtocolsPtrOutput
-	ToTwingateSSHResourceProtocolsPtrOutputWithContext(context.Context) TwingateSSHResourceProtocolsPtrOutput
+	ToTwingateWebAppResourceDownstreamPtrOutput() TwingateWebAppResourceDownstreamPtrOutput
+	ToTwingateWebAppResourceDownstreamPtrOutputWithContext(context.Context) TwingateWebAppResourceDownstreamPtrOutput
 }
 
-type twingateSSHResourceProtocolsPtrType TwingateSSHResourceProtocolsArgs
+type twingateWebAppResourceDownstreamPtrType TwingateWebAppResourceDownstreamArgs
 
-func TwingateSSHResourceProtocolsPtr(v *TwingateSSHResourceProtocolsArgs) TwingateSSHResourceProtocolsPtrInput {
-	return (*twingateSSHResourceProtocolsPtrType)(v)
+func TwingateWebAppResourceDownstreamPtr(v *TwingateWebAppResourceDownstreamArgs) TwingateWebAppResourceDownstreamPtrInput {
+	return (*twingateWebAppResourceDownstreamPtrType)(v)
 }
 
-func (*twingateSSHResourceProtocolsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TwingateSSHResourceProtocols)(nil)).Elem()
+func (*twingateWebAppResourceDownstreamPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TwingateWebAppResourceDownstream)(nil)).Elem()
 }
 
-func (i *twingateSSHResourceProtocolsPtrType) ToTwingateSSHResourceProtocolsPtrOutput() TwingateSSHResourceProtocolsPtrOutput {
-	return i.ToTwingateSSHResourceProtocolsPtrOutputWithContext(context.Background())
+func (i *twingateWebAppResourceDownstreamPtrType) ToTwingateWebAppResourceDownstreamPtrOutput() TwingateWebAppResourceDownstreamPtrOutput {
+	return i.ToTwingateWebAppResourceDownstreamPtrOutputWithContext(context.Background())
 }
 
-func (i *twingateSSHResourceProtocolsPtrType) ToTwingateSSHResourceProtocolsPtrOutputWithContext(ctx context.Context) TwingateSSHResourceProtocolsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateSSHResourceProtocolsPtrOutput)
+func (i *twingateWebAppResourceDownstreamPtrType) ToTwingateWebAppResourceDownstreamPtrOutputWithContext(ctx context.Context) TwingateWebAppResourceDownstreamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateWebAppResourceDownstreamPtrOutput)
 }
 
-type TwingateSSHResourceProtocolsOutput struct{ *pulumi.OutputState }
+type TwingateWebAppResourceDownstreamOutput struct{ *pulumi.OutputState }
 
-func (TwingateSSHResourceProtocolsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateSSHResourceProtocols)(nil)).Elem()
+func (TwingateWebAppResourceDownstreamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateWebAppResourceDownstream)(nil)).Elem()
 }
 
-func (o TwingateSSHResourceProtocolsOutput) ToTwingateSSHResourceProtocolsOutput() TwingateSSHResourceProtocolsOutput {
+func (o TwingateWebAppResourceDownstreamOutput) ToTwingateWebAppResourceDownstreamOutput() TwingateWebAppResourceDownstreamOutput {
 	return o
 }
 
-func (o TwingateSSHResourceProtocolsOutput) ToTwingateSSHResourceProtocolsOutputWithContext(ctx context.Context) TwingateSSHResourceProtocolsOutput {
+func (o TwingateWebAppResourceDownstreamOutput) ToTwingateWebAppResourceDownstreamOutputWithContext(ctx context.Context) TwingateWebAppResourceDownstreamOutput {
 	return o
 }
 
-func (o TwingateSSHResourceProtocolsOutput) ToTwingateSSHResourceProtocolsPtrOutput() TwingateSSHResourceProtocolsPtrOutput {
-	return o.ToTwingateSSHResourceProtocolsPtrOutputWithContext(context.Background())
+func (o TwingateWebAppResourceDownstreamOutput) ToTwingateWebAppResourceDownstreamPtrOutput() TwingateWebAppResourceDownstreamPtrOutput {
+	return o.ToTwingateWebAppResourceDownstreamPtrOutputWithContext(context.Background())
 }
 
-func (o TwingateSSHResourceProtocolsOutput) ToTwingateSSHResourceProtocolsPtrOutputWithContext(ctx context.Context) TwingateSSHResourceProtocolsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TwingateSSHResourceProtocols) *TwingateSSHResourceProtocols {
+func (o TwingateWebAppResourceDownstreamOutput) ToTwingateWebAppResourceDownstreamPtrOutputWithContext(ctx context.Context) TwingateWebAppResourceDownstreamPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TwingateWebAppResourceDownstream) *TwingateWebAppResourceDownstream {
 		return &v
-	}).(TwingateSSHResourceProtocolsPtrOutput)
+	}).(TwingateWebAppResourceDownstreamPtrOutput)
 }
 
-// Whether to allow ICMP (ping) traffic
-func (o TwingateSSHResourceProtocolsOutput) AllowIcmp() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v TwingateSSHResourceProtocols) *bool { return v.AllowIcmp }).(pulumi.BoolPtrOutput)
+// The port number. Must be between 1 and 65535 inclusive.
+func (o TwingateWebAppResourceDownstreamOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v TwingateWebAppResourceDownstream) int { return v.Port }).(pulumi.IntOutput)
 }
 
-func (o TwingateSSHResourceProtocolsOutput) Tcp() TwingateSSHResourceProtocolsTcpPtrOutput {
-	return o.ApplyT(func(v TwingateSSHResourceProtocols) *TwingateSSHResourceProtocolsTcp { return v.Tcp }).(TwingateSSHResourceProtocolsTcpPtrOutput)
+type TwingateWebAppResourceDownstreamPtrOutput struct{ *pulumi.OutputState }
+
+func (TwingateWebAppResourceDownstreamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TwingateWebAppResourceDownstream)(nil)).Elem()
 }
 
-func (o TwingateSSHResourceProtocolsOutput) Udp() TwingateSSHResourceProtocolsUdpPtrOutput {
-	return o.ApplyT(func(v TwingateSSHResourceProtocols) *TwingateSSHResourceProtocolsUdp { return v.Udp }).(TwingateSSHResourceProtocolsUdpPtrOutput)
-}
-
-type TwingateSSHResourceProtocolsPtrOutput struct{ *pulumi.OutputState }
-
-func (TwingateSSHResourceProtocolsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TwingateSSHResourceProtocols)(nil)).Elem()
-}
-
-func (o TwingateSSHResourceProtocolsPtrOutput) ToTwingateSSHResourceProtocolsPtrOutput() TwingateSSHResourceProtocolsPtrOutput {
+func (o TwingateWebAppResourceDownstreamPtrOutput) ToTwingateWebAppResourceDownstreamPtrOutput() TwingateWebAppResourceDownstreamPtrOutput {
 	return o
 }
 
-func (o TwingateSSHResourceProtocolsPtrOutput) ToTwingateSSHResourceProtocolsPtrOutputWithContext(ctx context.Context) TwingateSSHResourceProtocolsPtrOutput {
+func (o TwingateWebAppResourceDownstreamPtrOutput) ToTwingateWebAppResourceDownstreamPtrOutputWithContext(ctx context.Context) TwingateWebAppResourceDownstreamPtrOutput {
 	return o
 }
 
-func (o TwingateSSHResourceProtocolsPtrOutput) Elem() TwingateSSHResourceProtocolsOutput {
-	return o.ApplyT(func(v *TwingateSSHResourceProtocols) TwingateSSHResourceProtocols {
+func (o TwingateWebAppResourceDownstreamPtrOutput) Elem() TwingateWebAppResourceDownstreamOutput {
+	return o.ApplyT(func(v *TwingateWebAppResourceDownstream) TwingateWebAppResourceDownstream {
 		if v != nil {
 			return *v
 		}
-		var ret TwingateSSHResourceProtocols
+		var ret TwingateWebAppResourceDownstream
 		return ret
-	}).(TwingateSSHResourceProtocolsOutput)
+	}).(TwingateWebAppResourceDownstreamOutput)
 }
 
-// Whether to allow ICMP (ping) traffic
-func (o TwingateSSHResourceProtocolsPtrOutput) AllowIcmp() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TwingateSSHResourceProtocols) *bool {
+// The port number. Must be between 1 and 65535 inclusive.
+func (o TwingateWebAppResourceDownstreamPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TwingateWebAppResourceDownstream) *int {
 		if v == nil {
 			return nil
 		}
-		return v.AllowIcmp
-	}).(pulumi.BoolPtrOutput)
+		return &v.Port
+	}).(pulumi.IntPtrOutput)
 }
 
-func (o TwingateSSHResourceProtocolsPtrOutput) Tcp() TwingateSSHResourceProtocolsTcpPtrOutput {
-	return o.ApplyT(func(v *TwingateSSHResourceProtocols) *TwingateSSHResourceProtocolsTcp {
-		if v == nil {
-			return nil
-		}
-		return v.Tcp
-	}).(TwingateSSHResourceProtocolsTcpPtrOutput)
+type TwingateWebAppResourceUpstream struct {
+	// The port number. Must be between 1 and 65535 inclusive.
+	Port int `pulumi:"port"`
 }
 
-func (o TwingateSSHResourceProtocolsPtrOutput) Udp() TwingateSSHResourceProtocolsUdpPtrOutput {
-	return o.ApplyT(func(v *TwingateSSHResourceProtocols) *TwingateSSHResourceProtocolsUdp {
-		if v == nil {
-			return nil
-		}
-		return v.Udp
-	}).(TwingateSSHResourceProtocolsUdpPtrOutput)
-}
-
-type TwingateSSHResourceProtocolsTcp struct {
-	// Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
-	Policy *string `pulumi:"policy"`
-	// List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
-	Ports []string `pulumi:"ports"`
-}
-
-// TwingateSSHResourceProtocolsTcpInput is an input type that accepts TwingateSSHResourceProtocolsTcpArgs and TwingateSSHResourceProtocolsTcpOutput values.
-// You can construct a concrete instance of `TwingateSSHResourceProtocolsTcpInput` via:
+// TwingateWebAppResourceUpstreamInput is an input type that accepts TwingateWebAppResourceUpstreamArgs and TwingateWebAppResourceUpstreamOutput values.
+// You can construct a concrete instance of `TwingateWebAppResourceUpstreamInput` via:
 //
-//	TwingateSSHResourceProtocolsTcpArgs{...}
-type TwingateSSHResourceProtocolsTcpInput interface {
+//	TwingateWebAppResourceUpstreamArgs{...}
+type TwingateWebAppResourceUpstreamInput interface {
 	pulumi.Input
 
-	ToTwingateSSHResourceProtocolsTcpOutput() TwingateSSHResourceProtocolsTcpOutput
-	ToTwingateSSHResourceProtocolsTcpOutputWithContext(context.Context) TwingateSSHResourceProtocolsTcpOutput
+	ToTwingateWebAppResourceUpstreamOutput() TwingateWebAppResourceUpstreamOutput
+	ToTwingateWebAppResourceUpstreamOutputWithContext(context.Context) TwingateWebAppResourceUpstreamOutput
 }
 
-type TwingateSSHResourceProtocolsTcpArgs struct {
-	// Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
-	Policy pulumi.StringPtrInput `pulumi:"policy"`
-	// List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
-	Ports pulumi.StringArrayInput `pulumi:"ports"`
+type TwingateWebAppResourceUpstreamArgs struct {
+	// The port number. Must be between 1 and 65535 inclusive.
+	Port pulumi.IntInput `pulumi:"port"`
 }
 
-func (TwingateSSHResourceProtocolsTcpArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateSSHResourceProtocolsTcp)(nil)).Elem()
+func (TwingateWebAppResourceUpstreamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateWebAppResourceUpstream)(nil)).Elem()
 }
 
-func (i TwingateSSHResourceProtocolsTcpArgs) ToTwingateSSHResourceProtocolsTcpOutput() TwingateSSHResourceProtocolsTcpOutput {
-	return i.ToTwingateSSHResourceProtocolsTcpOutputWithContext(context.Background())
+func (i TwingateWebAppResourceUpstreamArgs) ToTwingateWebAppResourceUpstreamOutput() TwingateWebAppResourceUpstreamOutput {
+	return i.ToTwingateWebAppResourceUpstreamOutputWithContext(context.Background())
 }
 
-func (i TwingateSSHResourceProtocolsTcpArgs) ToTwingateSSHResourceProtocolsTcpOutputWithContext(ctx context.Context) TwingateSSHResourceProtocolsTcpOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateSSHResourceProtocolsTcpOutput)
+func (i TwingateWebAppResourceUpstreamArgs) ToTwingateWebAppResourceUpstreamOutputWithContext(ctx context.Context) TwingateWebAppResourceUpstreamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateWebAppResourceUpstreamOutput)
 }
 
-func (i TwingateSSHResourceProtocolsTcpArgs) ToTwingateSSHResourceProtocolsTcpPtrOutput() TwingateSSHResourceProtocolsTcpPtrOutput {
-	return i.ToTwingateSSHResourceProtocolsTcpPtrOutputWithContext(context.Background())
+func (i TwingateWebAppResourceUpstreamArgs) ToTwingateWebAppResourceUpstreamPtrOutput() TwingateWebAppResourceUpstreamPtrOutput {
+	return i.ToTwingateWebAppResourceUpstreamPtrOutputWithContext(context.Background())
 }
 
-func (i TwingateSSHResourceProtocolsTcpArgs) ToTwingateSSHResourceProtocolsTcpPtrOutputWithContext(ctx context.Context) TwingateSSHResourceProtocolsTcpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateSSHResourceProtocolsTcpOutput).ToTwingateSSHResourceProtocolsTcpPtrOutputWithContext(ctx)
+func (i TwingateWebAppResourceUpstreamArgs) ToTwingateWebAppResourceUpstreamPtrOutputWithContext(ctx context.Context) TwingateWebAppResourceUpstreamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateWebAppResourceUpstreamOutput).ToTwingateWebAppResourceUpstreamPtrOutputWithContext(ctx)
 }
 
-// TwingateSSHResourceProtocolsTcpPtrInput is an input type that accepts TwingateSSHResourceProtocolsTcpArgs, TwingateSSHResourceProtocolsTcpPtr and TwingateSSHResourceProtocolsTcpPtrOutput values.
-// You can construct a concrete instance of `TwingateSSHResourceProtocolsTcpPtrInput` via:
+// TwingateWebAppResourceUpstreamPtrInput is an input type that accepts TwingateWebAppResourceUpstreamArgs, TwingateWebAppResourceUpstreamPtr and TwingateWebAppResourceUpstreamPtrOutput values.
+// You can construct a concrete instance of `TwingateWebAppResourceUpstreamPtrInput` via:
 //
-//	        TwingateSSHResourceProtocolsTcpArgs{...}
+//	        TwingateWebAppResourceUpstreamArgs{...}
 //
 //	or:
 //
 //	        nil
-type TwingateSSHResourceProtocolsTcpPtrInput interface {
+type TwingateWebAppResourceUpstreamPtrInput interface {
 	pulumi.Input
 
-	ToTwingateSSHResourceProtocolsTcpPtrOutput() TwingateSSHResourceProtocolsTcpPtrOutput
-	ToTwingateSSHResourceProtocolsTcpPtrOutputWithContext(context.Context) TwingateSSHResourceProtocolsTcpPtrOutput
+	ToTwingateWebAppResourceUpstreamPtrOutput() TwingateWebAppResourceUpstreamPtrOutput
+	ToTwingateWebAppResourceUpstreamPtrOutputWithContext(context.Context) TwingateWebAppResourceUpstreamPtrOutput
 }
 
-type twingateSSHResourceProtocolsTcpPtrType TwingateSSHResourceProtocolsTcpArgs
+type twingateWebAppResourceUpstreamPtrType TwingateWebAppResourceUpstreamArgs
 
-func TwingateSSHResourceProtocolsTcpPtr(v *TwingateSSHResourceProtocolsTcpArgs) TwingateSSHResourceProtocolsTcpPtrInput {
-	return (*twingateSSHResourceProtocolsTcpPtrType)(v)
+func TwingateWebAppResourceUpstreamPtr(v *TwingateWebAppResourceUpstreamArgs) TwingateWebAppResourceUpstreamPtrInput {
+	return (*twingateWebAppResourceUpstreamPtrType)(v)
 }
 
-func (*twingateSSHResourceProtocolsTcpPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TwingateSSHResourceProtocolsTcp)(nil)).Elem()
+func (*twingateWebAppResourceUpstreamPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TwingateWebAppResourceUpstream)(nil)).Elem()
 }
 
-func (i *twingateSSHResourceProtocolsTcpPtrType) ToTwingateSSHResourceProtocolsTcpPtrOutput() TwingateSSHResourceProtocolsTcpPtrOutput {
-	return i.ToTwingateSSHResourceProtocolsTcpPtrOutputWithContext(context.Background())
+func (i *twingateWebAppResourceUpstreamPtrType) ToTwingateWebAppResourceUpstreamPtrOutput() TwingateWebAppResourceUpstreamPtrOutput {
+	return i.ToTwingateWebAppResourceUpstreamPtrOutputWithContext(context.Background())
 }
 
-func (i *twingateSSHResourceProtocolsTcpPtrType) ToTwingateSSHResourceProtocolsTcpPtrOutputWithContext(ctx context.Context) TwingateSSHResourceProtocolsTcpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateSSHResourceProtocolsTcpPtrOutput)
+func (i *twingateWebAppResourceUpstreamPtrType) ToTwingateWebAppResourceUpstreamPtrOutputWithContext(ctx context.Context) TwingateWebAppResourceUpstreamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateWebAppResourceUpstreamPtrOutput)
 }
 
-type TwingateSSHResourceProtocolsTcpOutput struct{ *pulumi.OutputState }
+type TwingateWebAppResourceUpstreamOutput struct{ *pulumi.OutputState }
 
-func (TwingateSSHResourceProtocolsTcpOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateSSHResourceProtocolsTcp)(nil)).Elem()
+func (TwingateWebAppResourceUpstreamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateWebAppResourceUpstream)(nil)).Elem()
 }
 
-func (o TwingateSSHResourceProtocolsTcpOutput) ToTwingateSSHResourceProtocolsTcpOutput() TwingateSSHResourceProtocolsTcpOutput {
+func (o TwingateWebAppResourceUpstreamOutput) ToTwingateWebAppResourceUpstreamOutput() TwingateWebAppResourceUpstreamOutput {
 	return o
 }
 
-func (o TwingateSSHResourceProtocolsTcpOutput) ToTwingateSSHResourceProtocolsTcpOutputWithContext(ctx context.Context) TwingateSSHResourceProtocolsTcpOutput {
+func (o TwingateWebAppResourceUpstreamOutput) ToTwingateWebAppResourceUpstreamOutputWithContext(ctx context.Context) TwingateWebAppResourceUpstreamOutput {
 	return o
 }
 
-func (o TwingateSSHResourceProtocolsTcpOutput) ToTwingateSSHResourceProtocolsTcpPtrOutput() TwingateSSHResourceProtocolsTcpPtrOutput {
-	return o.ToTwingateSSHResourceProtocolsTcpPtrOutputWithContext(context.Background())
+func (o TwingateWebAppResourceUpstreamOutput) ToTwingateWebAppResourceUpstreamPtrOutput() TwingateWebAppResourceUpstreamPtrOutput {
+	return o.ToTwingateWebAppResourceUpstreamPtrOutputWithContext(context.Background())
 }
 
-func (o TwingateSSHResourceProtocolsTcpOutput) ToTwingateSSHResourceProtocolsTcpPtrOutputWithContext(ctx context.Context) TwingateSSHResourceProtocolsTcpPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TwingateSSHResourceProtocolsTcp) *TwingateSSHResourceProtocolsTcp {
+func (o TwingateWebAppResourceUpstreamOutput) ToTwingateWebAppResourceUpstreamPtrOutputWithContext(ctx context.Context) TwingateWebAppResourceUpstreamPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TwingateWebAppResourceUpstream) *TwingateWebAppResourceUpstream {
 		return &v
-	}).(TwingateSSHResourceProtocolsTcpPtrOutput)
+	}).(TwingateWebAppResourceUpstreamPtrOutput)
 }
 
-// Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
-func (o TwingateSSHResourceProtocolsTcpOutput) Policy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TwingateSSHResourceProtocolsTcp) *string { return v.Policy }).(pulumi.StringPtrOutput)
+// The port number. Must be between 1 and 65535 inclusive.
+func (o TwingateWebAppResourceUpstreamOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v TwingateWebAppResourceUpstream) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
-func (o TwingateSSHResourceProtocolsTcpOutput) Ports() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v TwingateSSHResourceProtocolsTcp) []string { return v.Ports }).(pulumi.StringArrayOutput)
+type TwingateWebAppResourceUpstreamPtrOutput struct{ *pulumi.OutputState }
+
+func (TwingateWebAppResourceUpstreamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TwingateWebAppResourceUpstream)(nil)).Elem()
 }
 
-type TwingateSSHResourceProtocolsTcpPtrOutput struct{ *pulumi.OutputState }
-
-func (TwingateSSHResourceProtocolsTcpPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TwingateSSHResourceProtocolsTcp)(nil)).Elem()
-}
-
-func (o TwingateSSHResourceProtocolsTcpPtrOutput) ToTwingateSSHResourceProtocolsTcpPtrOutput() TwingateSSHResourceProtocolsTcpPtrOutput {
+func (o TwingateWebAppResourceUpstreamPtrOutput) ToTwingateWebAppResourceUpstreamPtrOutput() TwingateWebAppResourceUpstreamPtrOutput {
 	return o
 }
 
-func (o TwingateSSHResourceProtocolsTcpPtrOutput) ToTwingateSSHResourceProtocolsTcpPtrOutputWithContext(ctx context.Context) TwingateSSHResourceProtocolsTcpPtrOutput {
+func (o TwingateWebAppResourceUpstreamPtrOutput) ToTwingateWebAppResourceUpstreamPtrOutputWithContext(ctx context.Context) TwingateWebAppResourceUpstreamPtrOutput {
 	return o
 }
 
-func (o TwingateSSHResourceProtocolsTcpPtrOutput) Elem() TwingateSSHResourceProtocolsTcpOutput {
-	return o.ApplyT(func(v *TwingateSSHResourceProtocolsTcp) TwingateSSHResourceProtocolsTcp {
+func (o TwingateWebAppResourceUpstreamPtrOutput) Elem() TwingateWebAppResourceUpstreamOutput {
+	return o.ApplyT(func(v *TwingateWebAppResourceUpstream) TwingateWebAppResourceUpstream {
 		if v != nil {
 			return *v
 		}
-		var ret TwingateSSHResourceProtocolsTcp
+		var ret TwingateWebAppResourceUpstream
 		return ret
-	}).(TwingateSSHResourceProtocolsTcpOutput)
+	}).(TwingateWebAppResourceUpstreamOutput)
 }
 
-// Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
-func (o TwingateSSHResourceProtocolsTcpPtrOutput) Policy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TwingateSSHResourceProtocolsTcp) *string {
+// The port number. Must be between 1 and 65535 inclusive.
+func (o TwingateWebAppResourceUpstreamPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TwingateWebAppResourceUpstream) *int {
 		if v == nil {
 			return nil
 		}
-		return v.Policy
-	}).(pulumi.StringPtrOutput)
-}
-
-// List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
-func (o TwingateSSHResourceProtocolsTcpPtrOutput) Ports() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TwingateSSHResourceProtocolsTcp) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Ports
-	}).(pulumi.StringArrayOutput)
-}
-
-type TwingateSSHResourceProtocolsUdp struct {
-	// Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
-	Policy *string `pulumi:"policy"`
-	// List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
-	Ports []string `pulumi:"ports"`
-}
-
-// TwingateSSHResourceProtocolsUdpInput is an input type that accepts TwingateSSHResourceProtocolsUdpArgs and TwingateSSHResourceProtocolsUdpOutput values.
-// You can construct a concrete instance of `TwingateSSHResourceProtocolsUdpInput` via:
-//
-//	TwingateSSHResourceProtocolsUdpArgs{...}
-type TwingateSSHResourceProtocolsUdpInput interface {
-	pulumi.Input
-
-	ToTwingateSSHResourceProtocolsUdpOutput() TwingateSSHResourceProtocolsUdpOutput
-	ToTwingateSSHResourceProtocolsUdpOutputWithContext(context.Context) TwingateSSHResourceProtocolsUdpOutput
-}
-
-type TwingateSSHResourceProtocolsUdpArgs struct {
-	// Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
-	Policy pulumi.StringPtrInput `pulumi:"policy"`
-	// List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
-	Ports pulumi.StringArrayInput `pulumi:"ports"`
-}
-
-func (TwingateSSHResourceProtocolsUdpArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateSSHResourceProtocolsUdp)(nil)).Elem()
-}
-
-func (i TwingateSSHResourceProtocolsUdpArgs) ToTwingateSSHResourceProtocolsUdpOutput() TwingateSSHResourceProtocolsUdpOutput {
-	return i.ToTwingateSSHResourceProtocolsUdpOutputWithContext(context.Background())
-}
-
-func (i TwingateSSHResourceProtocolsUdpArgs) ToTwingateSSHResourceProtocolsUdpOutputWithContext(ctx context.Context) TwingateSSHResourceProtocolsUdpOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateSSHResourceProtocolsUdpOutput)
-}
-
-func (i TwingateSSHResourceProtocolsUdpArgs) ToTwingateSSHResourceProtocolsUdpPtrOutput() TwingateSSHResourceProtocolsUdpPtrOutput {
-	return i.ToTwingateSSHResourceProtocolsUdpPtrOutputWithContext(context.Background())
-}
-
-func (i TwingateSSHResourceProtocolsUdpArgs) ToTwingateSSHResourceProtocolsUdpPtrOutputWithContext(ctx context.Context) TwingateSSHResourceProtocolsUdpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateSSHResourceProtocolsUdpOutput).ToTwingateSSHResourceProtocolsUdpPtrOutputWithContext(ctx)
-}
-
-// TwingateSSHResourceProtocolsUdpPtrInput is an input type that accepts TwingateSSHResourceProtocolsUdpArgs, TwingateSSHResourceProtocolsUdpPtr and TwingateSSHResourceProtocolsUdpPtrOutput values.
-// You can construct a concrete instance of `TwingateSSHResourceProtocolsUdpPtrInput` via:
-//
-//	        TwingateSSHResourceProtocolsUdpArgs{...}
-//
-//	or:
-//
-//	        nil
-type TwingateSSHResourceProtocolsUdpPtrInput interface {
-	pulumi.Input
-
-	ToTwingateSSHResourceProtocolsUdpPtrOutput() TwingateSSHResourceProtocolsUdpPtrOutput
-	ToTwingateSSHResourceProtocolsUdpPtrOutputWithContext(context.Context) TwingateSSHResourceProtocolsUdpPtrOutput
-}
-
-type twingateSSHResourceProtocolsUdpPtrType TwingateSSHResourceProtocolsUdpArgs
-
-func TwingateSSHResourceProtocolsUdpPtr(v *TwingateSSHResourceProtocolsUdpArgs) TwingateSSHResourceProtocolsUdpPtrInput {
-	return (*twingateSSHResourceProtocolsUdpPtrType)(v)
-}
-
-func (*twingateSSHResourceProtocolsUdpPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TwingateSSHResourceProtocolsUdp)(nil)).Elem()
-}
-
-func (i *twingateSSHResourceProtocolsUdpPtrType) ToTwingateSSHResourceProtocolsUdpPtrOutput() TwingateSSHResourceProtocolsUdpPtrOutput {
-	return i.ToTwingateSSHResourceProtocolsUdpPtrOutputWithContext(context.Background())
-}
-
-func (i *twingateSSHResourceProtocolsUdpPtrType) ToTwingateSSHResourceProtocolsUdpPtrOutputWithContext(ctx context.Context) TwingateSSHResourceProtocolsUdpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TwingateSSHResourceProtocolsUdpPtrOutput)
-}
-
-type TwingateSSHResourceProtocolsUdpOutput struct{ *pulumi.OutputState }
-
-func (TwingateSSHResourceProtocolsUdpOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TwingateSSHResourceProtocolsUdp)(nil)).Elem()
-}
-
-func (o TwingateSSHResourceProtocolsUdpOutput) ToTwingateSSHResourceProtocolsUdpOutput() TwingateSSHResourceProtocolsUdpOutput {
-	return o
-}
-
-func (o TwingateSSHResourceProtocolsUdpOutput) ToTwingateSSHResourceProtocolsUdpOutputWithContext(ctx context.Context) TwingateSSHResourceProtocolsUdpOutput {
-	return o
-}
-
-func (o TwingateSSHResourceProtocolsUdpOutput) ToTwingateSSHResourceProtocolsUdpPtrOutput() TwingateSSHResourceProtocolsUdpPtrOutput {
-	return o.ToTwingateSSHResourceProtocolsUdpPtrOutputWithContext(context.Background())
-}
-
-func (o TwingateSSHResourceProtocolsUdpOutput) ToTwingateSSHResourceProtocolsUdpPtrOutputWithContext(ctx context.Context) TwingateSSHResourceProtocolsUdpPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TwingateSSHResourceProtocolsUdp) *TwingateSSHResourceProtocolsUdp {
-		return &v
-	}).(TwingateSSHResourceProtocolsUdpPtrOutput)
-}
-
-// Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
-func (o TwingateSSHResourceProtocolsUdpOutput) Policy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TwingateSSHResourceProtocolsUdp) *string { return v.Policy }).(pulumi.StringPtrOutput)
-}
-
-// List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
-func (o TwingateSSHResourceProtocolsUdpOutput) Ports() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v TwingateSSHResourceProtocolsUdp) []string { return v.Ports }).(pulumi.StringArrayOutput)
-}
-
-type TwingateSSHResourceProtocolsUdpPtrOutput struct{ *pulumi.OutputState }
-
-func (TwingateSSHResourceProtocolsUdpPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TwingateSSHResourceProtocolsUdp)(nil)).Elem()
-}
-
-func (o TwingateSSHResourceProtocolsUdpPtrOutput) ToTwingateSSHResourceProtocolsUdpPtrOutput() TwingateSSHResourceProtocolsUdpPtrOutput {
-	return o
-}
-
-func (o TwingateSSHResourceProtocolsUdpPtrOutput) ToTwingateSSHResourceProtocolsUdpPtrOutputWithContext(ctx context.Context) TwingateSSHResourceProtocolsUdpPtrOutput {
-	return o
-}
-
-func (o TwingateSSHResourceProtocolsUdpPtrOutput) Elem() TwingateSSHResourceProtocolsUdpOutput {
-	return o.ApplyT(func(v *TwingateSSHResourceProtocolsUdp) TwingateSSHResourceProtocolsUdp {
-		if v != nil {
-			return *v
-		}
-		var ret TwingateSSHResourceProtocolsUdp
-		return ret
-	}).(TwingateSSHResourceProtocolsUdpOutput)
-}
-
-// Whether to allow or deny all ports, or restrict protocol access within certain port ranges: Can be `RESTRICTED` (only listed ports are allowed), `ALLOW_ALL`, or `DENY_ALL`
-func (o TwingateSSHResourceProtocolsUdpPtrOutput) Policy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TwingateSSHResourceProtocolsUdp) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Policy
-	}).(pulumi.StringPtrOutput)
-}
-
-// List of port ranges between 1 and 65535 inclusive, in the format `100-200` for a range, or `8080` for a single port
-func (o TwingateSSHResourceProtocolsUdpPtrOutput) Ports() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TwingateSSHResourceProtocolsUdp) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Ports
-	}).(pulumi.StringArrayOutput)
+		return &v.Port
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetTwingateConnectorsConnector struct {
@@ -8787,38 +6857,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateDNSFilteringProfilePrivacyCategoriesPtrInput)(nil)).Elem(), TwingateDNSFilteringProfilePrivacyCategoriesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateDNSFilteringProfileSecurityCategoriesInput)(nil)).Elem(), TwingateDNSFilteringProfileSecurityCategoriesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateDNSFilteringProfileSecurityCategoriesPtrInput)(nil)).Elem(), TwingateDNSFilteringProfileSecurityCategoriesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateGatewayConfigKubernetesInput)(nil)).Elem(), TwingateGatewayConfigKubernetesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateGatewayConfigKubernetesPtrInput)(nil)).Elem(), TwingateGatewayConfigKubernetesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateGatewayConfigKubernetesResourceInput)(nil)).Elem(), TwingateGatewayConfigKubernetesResourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateGatewayConfigKubernetesResourceArrayInput)(nil)).Elem(), TwingateGatewayConfigKubernetesResourceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateGatewayConfigSshInput)(nil)).Elem(), TwingateGatewayConfigSshArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateGatewayConfigSshPtrInput)(nil)).Elem(), TwingateGatewayConfigSshArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateGatewayConfigSshCaInput)(nil)).Elem(), TwingateGatewayConfigSshCaArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateGatewayConfigSshCaPtrInput)(nil)).Elem(), TwingateGatewayConfigSshCaArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateGatewayConfigSshCaVaultInput)(nil)).Elem(), TwingateGatewayConfigSshCaVaultArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateGatewayConfigSshCaVaultPtrInput)(nil)).Elem(), TwingateGatewayConfigSshCaVaultArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateGatewayConfigSshCaVaultAuthInput)(nil)).Elem(), TwingateGatewayConfigSshCaVaultAuthArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateGatewayConfigSshCaVaultAuthPtrInput)(nil)).Elem(), TwingateGatewayConfigSshCaVaultAuthArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateGatewayConfigSshCaVaultAuthGcpInput)(nil)).Elem(), TwingateGatewayConfigSshCaVaultAuthGcpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateGatewayConfigSshCaVaultAuthGcpPtrInput)(nil)).Elem(), TwingateGatewayConfigSshCaVaultAuthGcpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateGatewayConfigSshGatewayInput)(nil)).Elem(), TwingateGatewayConfigSshGatewayArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateGatewayConfigSshGatewayPtrInput)(nil)).Elem(), TwingateGatewayConfigSshGatewayArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateGatewayConfigSshResourceInput)(nil)).Elem(), TwingateGatewayConfigSshResourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateGatewayConfigSshResourceArrayInput)(nil)).Elem(), TwingateGatewayConfigSshResourceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateGatewayConfigTlsInput)(nil)).Elem(), TwingateGatewayConfigTlsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateGatewayConfigTlsPtrInput)(nil)).Elem(), TwingateGatewayConfigTlsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateKubernetesResourceAccessGroupInput)(nil)).Elem(), TwingateKubernetesResourceAccessGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateKubernetesResourceAccessGroupArrayInput)(nil)).Elem(), TwingateKubernetesResourceAccessGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateKubernetesResourceAccessGroupAccessPolicyInput)(nil)).Elem(), TwingateKubernetesResourceAccessGroupAccessPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateKubernetesResourceAccessGroupAccessPolicyArrayInput)(nil)).Elem(), TwingateKubernetesResourceAccessGroupAccessPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateKubernetesResourceAccessPolicyInput)(nil)).Elem(), TwingateKubernetesResourceAccessPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateKubernetesResourceAccessPolicyArrayInput)(nil)).Elem(), TwingateKubernetesResourceAccessPolicyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateKubernetesResourceProtocolsInput)(nil)).Elem(), TwingateKubernetesResourceProtocolsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateKubernetesResourceProtocolsPtrInput)(nil)).Elem(), TwingateKubernetesResourceProtocolsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateKubernetesResourceProtocolsTcpInput)(nil)).Elem(), TwingateKubernetesResourceProtocolsTcpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateKubernetesResourceProtocolsTcpPtrInput)(nil)).Elem(), TwingateKubernetesResourceProtocolsTcpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateKubernetesResourceProtocolsUdpInput)(nil)).Elem(), TwingateKubernetesResourceProtocolsUdpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateKubernetesResourceProtocolsUdpPtrInput)(nil)).Elem(), TwingateKubernetesResourceProtocolsUdpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateResourceAccessGroupInput)(nil)).Elem(), TwingateResourceAccessGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateResourceAccessGroupArrayInput)(nil)).Elem(), TwingateResourceAccessGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateResourceAccessGroupAccessPolicyInput)(nil)).Elem(), TwingateResourceAccessGroupAccessPolicyArgs{})
@@ -8839,12 +6883,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateSSHResourceAccessGroupAccessPolicyArrayInput)(nil)).Elem(), TwingateSSHResourceAccessGroupAccessPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateSSHResourceAccessPolicyInput)(nil)).Elem(), TwingateSSHResourceAccessPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateSSHResourceAccessPolicyArrayInput)(nil)).Elem(), TwingateSSHResourceAccessPolicyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateSSHResourceProtocolsInput)(nil)).Elem(), TwingateSSHResourceProtocolsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateSSHResourceProtocolsPtrInput)(nil)).Elem(), TwingateSSHResourceProtocolsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateSSHResourceProtocolsTcpInput)(nil)).Elem(), TwingateSSHResourceProtocolsTcpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateSSHResourceProtocolsTcpPtrInput)(nil)).Elem(), TwingateSSHResourceProtocolsTcpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateSSHResourceProtocolsUdpInput)(nil)).Elem(), TwingateSSHResourceProtocolsUdpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TwingateSSHResourceProtocolsUdpPtrInput)(nil)).Elem(), TwingateSSHResourceProtocolsUdpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateWebAppResourceAccessGroupInput)(nil)).Elem(), TwingateWebAppResourceAccessGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateWebAppResourceAccessGroupArrayInput)(nil)).Elem(), TwingateWebAppResourceAccessGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateWebAppResourceAccessGroupAccessPolicyInput)(nil)).Elem(), TwingateWebAppResourceAccessGroupAccessPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateWebAppResourceAccessGroupAccessPolicyArrayInput)(nil)).Elem(), TwingateWebAppResourceAccessGroupAccessPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateWebAppResourceAccessPolicyInput)(nil)).Elem(), TwingateWebAppResourceAccessPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateWebAppResourceAccessPolicyArrayInput)(nil)).Elem(), TwingateWebAppResourceAccessPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateWebAppResourceDownstreamInput)(nil)).Elem(), TwingateWebAppResourceDownstreamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateWebAppResourceDownstreamPtrInput)(nil)).Elem(), TwingateWebAppResourceDownstreamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateWebAppResourceUpstreamInput)(nil)).Elem(), TwingateWebAppResourceUpstreamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateWebAppResourceUpstreamPtrInput)(nil)).Elem(), TwingateWebAppResourceUpstreamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTwingateConnectorsConnectorInput)(nil)).Elem(), GetTwingateConnectorsConnectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTwingateConnectorsConnectorArrayInput)(nil)).Elem(), GetTwingateConnectorsConnectorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTwingateDNSFilteringProfileAllowedDomainsInput)(nil)).Elem(), GetTwingateDNSFilteringProfileAllowedDomainsArgs{})
@@ -8896,38 +6944,12 @@ func init() {
 	pulumi.RegisterOutputType(TwingateDNSFilteringProfilePrivacyCategoriesPtrOutput{})
 	pulumi.RegisterOutputType(TwingateDNSFilteringProfileSecurityCategoriesOutput{})
 	pulumi.RegisterOutputType(TwingateDNSFilteringProfileSecurityCategoriesPtrOutput{})
-	pulumi.RegisterOutputType(TwingateGatewayConfigKubernetesOutput{})
-	pulumi.RegisterOutputType(TwingateGatewayConfigKubernetesPtrOutput{})
-	pulumi.RegisterOutputType(TwingateGatewayConfigKubernetesResourceOutput{})
-	pulumi.RegisterOutputType(TwingateGatewayConfigKubernetesResourceArrayOutput{})
-	pulumi.RegisterOutputType(TwingateGatewayConfigSshOutput{})
-	pulumi.RegisterOutputType(TwingateGatewayConfigSshPtrOutput{})
-	pulumi.RegisterOutputType(TwingateGatewayConfigSshCaOutput{})
-	pulumi.RegisterOutputType(TwingateGatewayConfigSshCaPtrOutput{})
-	pulumi.RegisterOutputType(TwingateGatewayConfigSshCaVaultOutput{})
-	pulumi.RegisterOutputType(TwingateGatewayConfigSshCaVaultPtrOutput{})
-	pulumi.RegisterOutputType(TwingateGatewayConfigSshCaVaultAuthOutput{})
-	pulumi.RegisterOutputType(TwingateGatewayConfigSshCaVaultAuthPtrOutput{})
-	pulumi.RegisterOutputType(TwingateGatewayConfigSshCaVaultAuthGcpOutput{})
-	pulumi.RegisterOutputType(TwingateGatewayConfigSshCaVaultAuthGcpPtrOutput{})
-	pulumi.RegisterOutputType(TwingateGatewayConfigSshGatewayOutput{})
-	pulumi.RegisterOutputType(TwingateGatewayConfigSshGatewayPtrOutput{})
-	pulumi.RegisterOutputType(TwingateGatewayConfigSshResourceOutput{})
-	pulumi.RegisterOutputType(TwingateGatewayConfigSshResourceArrayOutput{})
-	pulumi.RegisterOutputType(TwingateGatewayConfigTlsOutput{})
-	pulumi.RegisterOutputType(TwingateGatewayConfigTlsPtrOutput{})
 	pulumi.RegisterOutputType(TwingateKubernetesResourceAccessGroupOutput{})
 	pulumi.RegisterOutputType(TwingateKubernetesResourceAccessGroupArrayOutput{})
 	pulumi.RegisterOutputType(TwingateKubernetesResourceAccessGroupAccessPolicyOutput{})
 	pulumi.RegisterOutputType(TwingateKubernetesResourceAccessGroupAccessPolicyArrayOutput{})
 	pulumi.RegisterOutputType(TwingateKubernetesResourceAccessPolicyOutput{})
 	pulumi.RegisterOutputType(TwingateKubernetesResourceAccessPolicyArrayOutput{})
-	pulumi.RegisterOutputType(TwingateKubernetesResourceProtocolsOutput{})
-	pulumi.RegisterOutputType(TwingateKubernetesResourceProtocolsPtrOutput{})
-	pulumi.RegisterOutputType(TwingateKubernetesResourceProtocolsTcpOutput{})
-	pulumi.RegisterOutputType(TwingateKubernetesResourceProtocolsTcpPtrOutput{})
-	pulumi.RegisterOutputType(TwingateKubernetesResourceProtocolsUdpOutput{})
-	pulumi.RegisterOutputType(TwingateKubernetesResourceProtocolsUdpPtrOutput{})
 	pulumi.RegisterOutputType(TwingateResourceAccessGroupOutput{})
 	pulumi.RegisterOutputType(TwingateResourceAccessGroupArrayOutput{})
 	pulumi.RegisterOutputType(TwingateResourceAccessGroupAccessPolicyOutput{})
@@ -8948,12 +6970,16 @@ func init() {
 	pulumi.RegisterOutputType(TwingateSSHResourceAccessGroupAccessPolicyArrayOutput{})
 	pulumi.RegisterOutputType(TwingateSSHResourceAccessPolicyOutput{})
 	pulumi.RegisterOutputType(TwingateSSHResourceAccessPolicyArrayOutput{})
-	pulumi.RegisterOutputType(TwingateSSHResourceProtocolsOutput{})
-	pulumi.RegisterOutputType(TwingateSSHResourceProtocolsPtrOutput{})
-	pulumi.RegisterOutputType(TwingateSSHResourceProtocolsTcpOutput{})
-	pulumi.RegisterOutputType(TwingateSSHResourceProtocolsTcpPtrOutput{})
-	pulumi.RegisterOutputType(TwingateSSHResourceProtocolsUdpOutput{})
-	pulumi.RegisterOutputType(TwingateSSHResourceProtocolsUdpPtrOutput{})
+	pulumi.RegisterOutputType(TwingateWebAppResourceAccessGroupOutput{})
+	pulumi.RegisterOutputType(TwingateWebAppResourceAccessGroupArrayOutput{})
+	pulumi.RegisterOutputType(TwingateWebAppResourceAccessGroupAccessPolicyOutput{})
+	pulumi.RegisterOutputType(TwingateWebAppResourceAccessGroupAccessPolicyArrayOutput{})
+	pulumi.RegisterOutputType(TwingateWebAppResourceAccessPolicyOutput{})
+	pulumi.RegisterOutputType(TwingateWebAppResourceAccessPolicyArrayOutput{})
+	pulumi.RegisterOutputType(TwingateWebAppResourceDownstreamOutput{})
+	pulumi.RegisterOutputType(TwingateWebAppResourceDownstreamPtrOutput{})
+	pulumi.RegisterOutputType(TwingateWebAppResourceUpstreamOutput{})
+	pulumi.RegisterOutputType(TwingateWebAppResourceUpstreamPtrOutput{})
 	pulumi.RegisterOutputType(GetTwingateConnectorsConnectorOutput{})
 	pulumi.RegisterOutputType(GetTwingateConnectorsConnectorArrayOutput{})
 	pulumi.RegisterOutputType(GetTwingateDNSFilteringProfileAllowedDomainsOutput{})
