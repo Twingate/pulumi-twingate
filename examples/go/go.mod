@@ -4,7 +4,7 @@ go 1.25.11
 
 require (
 	github.com/Twingate/pulumi-twingate/sdk/v5 v5.0.0
-	github.com/pulumi/pulumi-tls/sdk/v5 v5.5.1
+	github.com/pulumi/pulumi-tls/sdk/v5 v5.6.0
 	github.com/pulumi/pulumi/sdk/v3 v3.259.0
 )
 
