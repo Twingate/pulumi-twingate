@@ -1,11 +1,11 @@
 module github.com/Twingate/pulumi-twingate/provider
 
-go 1.26
+go 1.26.6
 
 require (
 	github.com/Twingate/terraform-provider-twingate/v5 v5.0.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.137.0
-	github.com/pulumi/pulumi/sdk/v3 v3.259.0
+	github.com/pulumi/pulumi/sdk/v3 v3.261.0
 )
 
 require (
