@@ -536,9 +536,9 @@ class TwingateResource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateResourceAccessGroupArgs', 'TwingateResourceAccessGroupArgsDict']]]]] = None,
-                 access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateResourceAccessPolicyArgs', 'TwingateResourceAccessPolicyArgsDict']]]]] = None,
-                 access_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateResourceAccessServiceArgs', 'TwingateResourceAccessServiceArgsDict']]]]] = None,
+                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateResourceAccessGroupArgs', 'TwingateResourceAccessGroupArgsDict', 'outputs.TwingateResourceAccessGroup']]]]] = None,
+                 access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateResourceAccessPolicyArgs', 'TwingateResourceAccessPolicyArgsDict', 'outputs.TwingateResourceAccessPolicy']]]]] = None,
+                 access_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateResourceAccessServiceArgs', 'TwingateResourceAccessServiceArgsDict', 'outputs.TwingateResourceAccessService']]]]] = None,
                  address: pulumi.Input[Optional[_builtins.str]] = None,
                  alias: pulumi.Input[Optional[_builtins.str]] = None,
                  is_active: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -546,7 +546,7 @@ class TwingateResource(pulumi.CustomResource):
                  is_browser_shortcut_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 protocols: pulumi.Input[Optional[Union['TwingateResourceProtocolsArgs', 'TwingateResourceProtocolsArgsDict']]] = None,
+                 protocols: pulumi.Input[Optional[Union['TwingateResourceProtocolsArgs', 'TwingateResourceProtocolsArgsDict', 'outputs.TwingateResourceProtocols']]] = None,
                  remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
                  routing_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -557,6 +557,8 @@ class TwingateResource(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         ```sh
         $ pulumi import twingate:index/twingateResource:TwingateResource resource UmVzb3VyY2U6MzQwNDQ3
         ```
@@ -564,9 +566,9 @@ class TwingateResource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessGroupArgs', 'TwingateResourceAccessGroupArgsDict']]]] access_groups: Restrict access to certain group
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessPolicyArgs', 'TwingateResourceAccessPolicyArgsDict']]]] access_policies: Restrict access according to JIT access policy
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessServiceArgs', 'TwingateResourceAccessServiceArgsDict']]]] access_services: Restrict access to certain service account
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessGroupArgs', 'TwingateResourceAccessGroupArgsDict', 'outputs.TwingateResourceAccessGroup']]]] access_groups: Restrict access to certain group
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessPolicyArgs', 'TwingateResourceAccessPolicyArgsDict', 'outputs.TwingateResourceAccessPolicy']]]] access_policies: Restrict access according to JIT access policy
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessServiceArgs', 'TwingateResourceAccessServiceArgsDict', 'outputs.TwingateResourceAccessService']]]] access_services: Restrict access to certain service account
         :param pulumi.Input[_builtins.str] address: The Resource's IP/CIDR or FQDN/DNS zone
         :param pulumi.Input[_builtins.str] alias: Set a DNS alias address for the Resource. Must be a DNS-valid name string.
         :param pulumi.Input[_builtins.bool] is_active: Set the resource as active or inactive. Default is `true`.
@@ -574,7 +576,7 @@ class TwingateResource(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] is_browser_shortcut_enabled: Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
         :param pulumi.Input[_builtins.bool] is_visible: Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
         :param pulumi.Input[_builtins.str] name: The name of the Resource
-        :param pulumi.Input[Union['TwingateResourceProtocolsArgs', 'TwingateResourceProtocolsArgsDict']] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
+        :param pulumi.Input[Union['TwingateResourceProtocolsArgs', 'TwingateResourceProtocolsArgsDict', 'outputs.TwingateResourceProtocols']] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param pulumi.Input[_builtins.str] remote_network_id: Remote Network ID where the Resource lives
         :param pulumi.Input[_builtins.str] routing_mode: Controls whether traffic to this Resource is routed through Twingate or bypassed. Valid values are `THROUGH_TWINGATE` (default) and `BYPASS_TWINGATE`. `BYPASS_TWINGATE` requires a Resource with no security policy, a non-wildcard address and cannot have port restrictions.
         :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
@@ -590,6 +592,8 @@ class TwingateResource(pulumi.CustomResource):
         Resources in Twingate represent servers on the private network that clients can connect to. Resources can be defined by IP, CIDR range, FQDN, or DNS zone. For more information, see the Twingate [documentation](https://docs.twingate.com/docs/resources-and-access-nodes).
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         ```sh
         $ pulumi import twingate:index/twingateResource:TwingateResource resource UmVzb3VyY2U6MzQwNDQ3
@@ -611,9 +615,9 @@ class TwingateResource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateResourceAccessGroupArgs', 'TwingateResourceAccessGroupArgsDict']]]]] = None,
-                 access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateResourceAccessPolicyArgs', 'TwingateResourceAccessPolicyArgsDict']]]]] = None,
-                 access_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateResourceAccessServiceArgs', 'TwingateResourceAccessServiceArgsDict']]]]] = None,
+                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateResourceAccessGroupArgs', 'TwingateResourceAccessGroupArgsDict', 'outputs.TwingateResourceAccessGroup']]]]] = None,
+                 access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateResourceAccessPolicyArgs', 'TwingateResourceAccessPolicyArgsDict', 'outputs.TwingateResourceAccessPolicy']]]]] = None,
+                 access_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateResourceAccessServiceArgs', 'TwingateResourceAccessServiceArgsDict', 'outputs.TwingateResourceAccessService']]]]] = None,
                  address: pulumi.Input[Optional[_builtins.str]] = None,
                  alias: pulumi.Input[Optional[_builtins.str]] = None,
                  is_active: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -621,7 +625,7 @@ class TwingateResource(pulumi.CustomResource):
                  is_browser_shortcut_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 protocols: pulumi.Input[Optional[Union['TwingateResourceProtocolsArgs', 'TwingateResourceProtocolsArgsDict']]] = None,
+                 protocols: pulumi.Input[Optional[Union['TwingateResourceProtocolsArgs', 'TwingateResourceProtocolsArgsDict', 'outputs.TwingateResourceProtocols']]] = None,
                  remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
                  routing_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -665,9 +669,9 @@ class TwingateResource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateResourceAccessGroupArgs', 'TwingateResourceAccessGroupArgsDict']]]]] = None,
-            access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateResourceAccessPolicyArgs', 'TwingateResourceAccessPolicyArgsDict']]]]] = None,
-            access_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateResourceAccessServiceArgs', 'TwingateResourceAccessServiceArgsDict']]]]] = None,
+            access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateResourceAccessGroupArgs', 'TwingateResourceAccessGroupArgsDict', 'outputs.TwingateResourceAccessGroup']]]]] = None,
+            access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateResourceAccessPolicyArgs', 'TwingateResourceAccessPolicyArgsDict', 'outputs.TwingateResourceAccessPolicy']]]]] = None,
+            access_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateResourceAccessServiceArgs', 'TwingateResourceAccessServiceArgsDict', 'outputs.TwingateResourceAccessService']]]]] = None,
             address: pulumi.Input[Optional[_builtins.str]] = None,
             alias: pulumi.Input[Optional[_builtins.str]] = None,
             is_active: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -675,7 +679,7 @@ class TwingateResource(pulumi.CustomResource):
             is_browser_shortcut_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            protocols: pulumi.Input[Optional[Union['TwingateResourceProtocolsArgs', 'TwingateResourceProtocolsArgsDict']]] = None,
+            protocols: pulumi.Input[Optional[Union['TwingateResourceProtocolsArgs', 'TwingateResourceProtocolsArgsDict', 'outputs.TwingateResourceProtocols']]] = None,
             remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
             routing_mode: pulumi.Input[Optional[_builtins.str]] = None,
             security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -688,9 +692,9 @@ class TwingateResource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessGroupArgs', 'TwingateResourceAccessGroupArgsDict']]]] access_groups: Restrict access to certain group
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessPolicyArgs', 'TwingateResourceAccessPolicyArgsDict']]]] access_policies: Restrict access according to JIT access policy
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessServiceArgs', 'TwingateResourceAccessServiceArgsDict']]]] access_services: Restrict access to certain service account
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessGroupArgs', 'TwingateResourceAccessGroupArgsDict', 'outputs.TwingateResourceAccessGroup']]]] access_groups: Restrict access to certain group
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessPolicyArgs', 'TwingateResourceAccessPolicyArgsDict', 'outputs.TwingateResourceAccessPolicy']]]] access_policies: Restrict access according to JIT access policy
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateResourceAccessServiceArgs', 'TwingateResourceAccessServiceArgsDict', 'outputs.TwingateResourceAccessService']]]] access_services: Restrict access to certain service account
         :param pulumi.Input[_builtins.str] address: The Resource's IP/CIDR or FQDN/DNS zone
         :param pulumi.Input[_builtins.str] alias: Set a DNS alias address for the Resource. Must be a DNS-valid name string.
         :param pulumi.Input[_builtins.bool] is_active: Set the resource as active or inactive. Default is `true`.
@@ -698,7 +702,7 @@ class TwingateResource(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] is_browser_shortcut_enabled: Controls whether an "Open in Browser" shortcut will be shown for this Resource in the Twingate Client. Default is `false`.
         :param pulumi.Input[_builtins.bool] is_visible: Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
         :param pulumi.Input[_builtins.str] name: The name of the Resource
-        :param pulumi.Input[Union['TwingateResourceProtocolsArgs', 'TwingateResourceProtocolsArgsDict']] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
+        :param pulumi.Input[Union['TwingateResourceProtocolsArgs', 'TwingateResourceProtocolsArgsDict', 'outputs.TwingateResourceProtocols']] protocols: Restrict access to certain protocols and ports. By default or when this argument is not defined, there is no restriction, and all protocols and ports are allowed.
         :param pulumi.Input[_builtins.str] remote_network_id: Remote Network ID where the Resource lives
         :param pulumi.Input[_builtins.str] routing_mode: Controls whether traffic to this Resource is routed through Twingate or bypassed. Valid values are `THROUGH_TWINGATE` (default) and `BYPASS_TWINGATE`. `BYPASS_TWINGATE` requires a Resource with no security policy, a non-wildcard address and cannot have port restrictions.
         :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.

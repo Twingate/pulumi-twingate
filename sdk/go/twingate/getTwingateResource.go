@@ -75,12 +75,8 @@ type LookupTwingateResourceResult struct {
 }
 
 func LookupTwingateResourceOutput(ctx *pulumi.Context, args LookupTwingateResourceOutputArgs, opts ...pulumi.InvokeOption) LookupTwingateResourceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTwingateResourceResultOutput, error) {
-			args := v.(LookupTwingateResourceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("twingate:index/getTwingateResource:getTwingateResource", args, LookupTwingateResourceResultOutput{}, options).(LookupTwingateResourceResultOutput), nil
-		}).(LookupTwingateResourceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("twingate:index/getTwingateResource:getTwingateResource", args, LookupTwingateResourceResultOutput{}, options).(LookupTwingateResourceResultOutput)
 }
 
 // A collection of arguments for invoking getTwingateResource.

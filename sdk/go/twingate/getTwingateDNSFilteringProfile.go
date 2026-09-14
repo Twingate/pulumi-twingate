@@ -89,12 +89,8 @@ type LookupTwingateDNSFilteringProfileResult struct {
 }
 
 func LookupTwingateDNSFilteringProfileOutput(ctx *pulumi.Context, args LookupTwingateDNSFilteringProfileOutputArgs, opts ...pulumi.InvokeOption) LookupTwingateDNSFilteringProfileResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTwingateDNSFilteringProfileResultOutput, error) {
-			args := v.(LookupTwingateDNSFilteringProfileArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("twingate:index/getTwingateDNSFilteringProfile:getTwingateDNSFilteringProfile", args, LookupTwingateDNSFilteringProfileResultOutput{}, options).(LookupTwingateDNSFilteringProfileResultOutput), nil
-		}).(LookupTwingateDNSFilteringProfileResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("twingate:index/getTwingateDNSFilteringProfile:getTwingateDNSFilteringProfile", args, LookupTwingateDNSFilteringProfileResultOutput{}, options).(LookupTwingateDNSFilteringProfileResultOutput)
 }
 
 // A collection of arguments for invoking getTwingateDNSFilteringProfile.

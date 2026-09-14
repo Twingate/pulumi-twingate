@@ -67,12 +67,8 @@ type GetTwingateSyncToS3Result struct {
 }
 
 func GetTwingateSyncToS3Output(ctx *pulumi.Context, args GetTwingateSyncToS3OutputArgs, opts ...pulumi.InvokeOption) GetTwingateSyncToS3ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTwingateSyncToS3ResultOutput, error) {
-			args := v.(GetTwingateSyncToS3Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("twingate:index/getTwingateSyncToS3:getTwingateSyncToS3", args, GetTwingateSyncToS3ResultOutput{}, options).(GetTwingateSyncToS3ResultOutput), nil
-		}).(GetTwingateSyncToS3ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("twingate:index/getTwingateSyncToS3:getTwingateSyncToS3", args, GetTwingateSyncToS3ResultOutput{}, options).(GetTwingateSyncToS3ResultOutput)
 }
 
 // A collection of arguments for invoking getTwingateSyncToS3.

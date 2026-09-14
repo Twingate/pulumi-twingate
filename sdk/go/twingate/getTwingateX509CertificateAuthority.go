@@ -65,12 +65,8 @@ type LookupTwingateX509CertificateAuthorityResult struct {
 }
 
 func LookupTwingateX509CertificateAuthorityOutput(ctx *pulumi.Context, args LookupTwingateX509CertificateAuthorityOutputArgs, opts ...pulumi.InvokeOption) LookupTwingateX509CertificateAuthorityResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTwingateX509CertificateAuthorityResultOutput, error) {
-			args := v.(LookupTwingateX509CertificateAuthorityArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("twingate:index/getTwingateX509CertificateAuthority:getTwingateX509CertificateAuthority", args, LookupTwingateX509CertificateAuthorityResultOutput{}, options).(LookupTwingateX509CertificateAuthorityResultOutput), nil
-		}).(LookupTwingateX509CertificateAuthorityResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("twingate:index/getTwingateX509CertificateAuthority:getTwingateX509CertificateAuthority", args, LookupTwingateX509CertificateAuthorityResultOutput{}, options).(LookupTwingateX509CertificateAuthorityResultOutput)
 }
 
 // A collection of arguments for invoking getTwingateX509CertificateAuthority.
