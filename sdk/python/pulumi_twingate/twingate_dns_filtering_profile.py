@@ -329,15 +329,15 @@ class TwingateDNSFilteringProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allowed_domains: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileAllowedDomainsArgs', 'TwingateDNSFilteringProfileAllowedDomainsArgsDict']]] = None,
-                 content_categories: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileContentCategoriesArgs', 'TwingateDNSFilteringProfileContentCategoriesArgsDict']]] = None,
-                 denied_domains: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileDeniedDomainsArgs', 'TwingateDNSFilteringProfileDeniedDomainsArgsDict']]] = None,
+                 allowed_domains: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileAllowedDomainsArgs', 'TwingateDNSFilteringProfileAllowedDomainsArgsDict', 'outputs.TwingateDNSFilteringProfileAllowedDomains']]] = None,
+                 content_categories: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileContentCategoriesArgs', 'TwingateDNSFilteringProfileContentCategoriesArgsDict', 'outputs.TwingateDNSFilteringProfileContentCategories']]] = None,
+                 denied_domains: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileDeniedDomainsArgs', 'TwingateDNSFilteringProfileDeniedDomainsArgsDict', 'outputs.TwingateDNSFilteringProfileDeniedDomains']]] = None,
                  fallback_method: pulumi.Input[Optional[_builtins.str]] = None,
                  groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  priority: pulumi.Input[Optional[_builtins.float]] = None,
-                 privacy_categories: pulumi.Input[Optional[Union['TwingateDNSFilteringProfilePrivacyCategoriesArgs', 'TwingateDNSFilteringProfilePrivacyCategoriesArgsDict']]] = None,
-                 security_categories: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileSecurityCategoriesArgs', 'TwingateDNSFilteringProfileSecurityCategoriesArgsDict']]] = None,
+                 privacy_categories: pulumi.Input[Optional[Union['TwingateDNSFilteringProfilePrivacyCategoriesArgs', 'TwingateDNSFilteringProfilePrivacyCategoriesArgsDict', 'outputs.TwingateDNSFilteringProfilePrivacyCategories']]] = None,
+                 security_categories: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileSecurityCategoriesArgs', 'TwingateDNSFilteringProfileSecurityCategoriesArgsDict', 'outputs.TwingateDNSFilteringProfileSecurityCategories']]] = None,
                  __props__=None):
         """
         DNS filtering gives you the ability to control what websites your users can access. DNS filtering is only available on certain plans. For more information, see Twingate's [documentation](https://www.twingate.com/docs/dns-filtering). DNS filtering must be enabled for this resources to work. If DNS filtering isn't enabled, the provider will throw an error.
@@ -382,6 +382,8 @@ class TwingateDNSFilteringProfile(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         ```sh
         $ pulumi import twingate:index/twingateDNSFilteringProfile:TwingateDNSFilteringProfile example RG5zRmlsdGVyaW5nUHJvZmlsZToxY2I4YzM0YTc0
         ```
@@ -389,15 +391,15 @@ class TwingateDNSFilteringProfile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['TwingateDNSFilteringProfileAllowedDomainsArgs', 'TwingateDNSFilteringProfileAllowedDomainsArgsDict']] allowed_domains: A block with the following attributes.
-        :param pulumi.Input[Union['TwingateDNSFilteringProfileContentCategoriesArgs', 'TwingateDNSFilteringProfileContentCategoriesArgsDict']] content_categories: A block with the following attributes.
-        :param pulumi.Input[Union['TwingateDNSFilteringProfileDeniedDomainsArgs', 'TwingateDNSFilteringProfileDeniedDomainsArgsDict']] denied_domains: A block with the following attributes.
+        :param pulumi.Input[Union['TwingateDNSFilteringProfileAllowedDomainsArgs', 'TwingateDNSFilteringProfileAllowedDomainsArgsDict', 'outputs.TwingateDNSFilteringProfileAllowedDomains']] allowed_domains: A block with the following attributes.
+        :param pulumi.Input[Union['TwingateDNSFilteringProfileContentCategoriesArgs', 'TwingateDNSFilteringProfileContentCategoriesArgsDict', 'outputs.TwingateDNSFilteringProfileContentCategories']] content_categories: A block with the following attributes.
+        :param pulumi.Input[Union['TwingateDNSFilteringProfileDeniedDomainsArgs', 'TwingateDNSFilteringProfileDeniedDomainsArgsDict', 'outputs.TwingateDNSFilteringProfileDeniedDomains']] denied_domains: A block with the following attributes.
         :param pulumi.Input[_builtins.str] fallback_method: The DNS filtering profile's fallback method. One of "AUTO" or "STRICT". Defaults to "STRICT".
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] groups: A set of group IDs that have this as their DNS filtering profile. Defaults to an empty set.
         :param pulumi.Input[_builtins.str] name: The DNS filtering profile's name.
         :param pulumi.Input[_builtins.float] priority: A floating point number representing the profile's priority.
-        :param pulumi.Input[Union['TwingateDNSFilteringProfilePrivacyCategoriesArgs', 'TwingateDNSFilteringProfilePrivacyCategoriesArgsDict']] privacy_categories: A block with the following attributes.
-        :param pulumi.Input[Union['TwingateDNSFilteringProfileSecurityCategoriesArgs', 'TwingateDNSFilteringProfileSecurityCategoriesArgsDict']] security_categories: A block with the following attributes.
+        :param pulumi.Input[Union['TwingateDNSFilteringProfilePrivacyCategoriesArgs', 'TwingateDNSFilteringProfilePrivacyCategoriesArgsDict', 'outputs.TwingateDNSFilteringProfilePrivacyCategories']] privacy_categories: A block with the following attributes.
+        :param pulumi.Input[Union['TwingateDNSFilteringProfileSecurityCategoriesArgs', 'TwingateDNSFilteringProfileSecurityCategoriesArgsDict', 'outputs.TwingateDNSFilteringProfileSecurityCategories']] security_categories: A block with the following attributes.
         """
         ...
     @overload
@@ -448,6 +450,8 @@ class TwingateDNSFilteringProfile(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         ```sh
         $ pulumi import twingate:index/twingateDNSFilteringProfile:TwingateDNSFilteringProfile example RG5zRmlsdGVyaW5nUHJvZmlsZToxY2I4YzM0YTc0
         ```
@@ -468,15 +472,15 @@ class TwingateDNSFilteringProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allowed_domains: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileAllowedDomainsArgs', 'TwingateDNSFilteringProfileAllowedDomainsArgsDict']]] = None,
-                 content_categories: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileContentCategoriesArgs', 'TwingateDNSFilteringProfileContentCategoriesArgsDict']]] = None,
-                 denied_domains: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileDeniedDomainsArgs', 'TwingateDNSFilteringProfileDeniedDomainsArgsDict']]] = None,
+                 allowed_domains: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileAllowedDomainsArgs', 'TwingateDNSFilteringProfileAllowedDomainsArgsDict', 'outputs.TwingateDNSFilteringProfileAllowedDomains']]] = None,
+                 content_categories: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileContentCategoriesArgs', 'TwingateDNSFilteringProfileContentCategoriesArgsDict', 'outputs.TwingateDNSFilteringProfileContentCategories']]] = None,
+                 denied_domains: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileDeniedDomainsArgs', 'TwingateDNSFilteringProfileDeniedDomainsArgsDict', 'outputs.TwingateDNSFilteringProfileDeniedDomains']]] = None,
                  fallback_method: pulumi.Input[Optional[_builtins.str]] = None,
                  groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  priority: pulumi.Input[Optional[_builtins.float]] = None,
-                 privacy_categories: pulumi.Input[Optional[Union['TwingateDNSFilteringProfilePrivacyCategoriesArgs', 'TwingateDNSFilteringProfilePrivacyCategoriesArgsDict']]] = None,
-                 security_categories: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileSecurityCategoriesArgs', 'TwingateDNSFilteringProfileSecurityCategoriesArgsDict']]] = None,
+                 privacy_categories: pulumi.Input[Optional[Union['TwingateDNSFilteringProfilePrivacyCategoriesArgs', 'TwingateDNSFilteringProfilePrivacyCategoriesArgsDict', 'outputs.TwingateDNSFilteringProfilePrivacyCategories']]] = None,
+                 security_categories: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileSecurityCategoriesArgs', 'TwingateDNSFilteringProfileSecurityCategoriesArgsDict', 'outputs.TwingateDNSFilteringProfileSecurityCategories']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -507,15 +511,15 @@ class TwingateDNSFilteringProfile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allowed_domains: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileAllowedDomainsArgs', 'TwingateDNSFilteringProfileAllowedDomainsArgsDict']]] = None,
-            content_categories: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileContentCategoriesArgs', 'TwingateDNSFilteringProfileContentCategoriesArgsDict']]] = None,
-            denied_domains: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileDeniedDomainsArgs', 'TwingateDNSFilteringProfileDeniedDomainsArgsDict']]] = None,
+            allowed_domains: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileAllowedDomainsArgs', 'TwingateDNSFilteringProfileAllowedDomainsArgsDict', 'outputs.TwingateDNSFilteringProfileAllowedDomains']]] = None,
+            content_categories: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileContentCategoriesArgs', 'TwingateDNSFilteringProfileContentCategoriesArgsDict', 'outputs.TwingateDNSFilteringProfileContentCategories']]] = None,
+            denied_domains: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileDeniedDomainsArgs', 'TwingateDNSFilteringProfileDeniedDomainsArgsDict', 'outputs.TwingateDNSFilteringProfileDeniedDomains']]] = None,
             fallback_method: pulumi.Input[Optional[_builtins.str]] = None,
             groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             priority: pulumi.Input[Optional[_builtins.float]] = None,
-            privacy_categories: pulumi.Input[Optional[Union['TwingateDNSFilteringProfilePrivacyCategoriesArgs', 'TwingateDNSFilteringProfilePrivacyCategoriesArgsDict']]] = None,
-            security_categories: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileSecurityCategoriesArgs', 'TwingateDNSFilteringProfileSecurityCategoriesArgsDict']]] = None) -> 'TwingateDNSFilteringProfile':
+            privacy_categories: pulumi.Input[Optional[Union['TwingateDNSFilteringProfilePrivacyCategoriesArgs', 'TwingateDNSFilteringProfilePrivacyCategoriesArgsDict', 'outputs.TwingateDNSFilteringProfilePrivacyCategories']]] = None,
+            security_categories: pulumi.Input[Optional[Union['TwingateDNSFilteringProfileSecurityCategoriesArgs', 'TwingateDNSFilteringProfileSecurityCategoriesArgsDict', 'outputs.TwingateDNSFilteringProfileSecurityCategories']]] = None) -> 'TwingateDNSFilteringProfile':
         """
         Get an existing TwingateDNSFilteringProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -523,15 +527,15 @@ class TwingateDNSFilteringProfile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['TwingateDNSFilteringProfileAllowedDomainsArgs', 'TwingateDNSFilteringProfileAllowedDomainsArgsDict']] allowed_domains: A block with the following attributes.
-        :param pulumi.Input[Union['TwingateDNSFilteringProfileContentCategoriesArgs', 'TwingateDNSFilteringProfileContentCategoriesArgsDict']] content_categories: A block with the following attributes.
-        :param pulumi.Input[Union['TwingateDNSFilteringProfileDeniedDomainsArgs', 'TwingateDNSFilteringProfileDeniedDomainsArgsDict']] denied_domains: A block with the following attributes.
+        :param pulumi.Input[Union['TwingateDNSFilteringProfileAllowedDomainsArgs', 'TwingateDNSFilteringProfileAllowedDomainsArgsDict', 'outputs.TwingateDNSFilteringProfileAllowedDomains']] allowed_domains: A block with the following attributes.
+        :param pulumi.Input[Union['TwingateDNSFilteringProfileContentCategoriesArgs', 'TwingateDNSFilteringProfileContentCategoriesArgsDict', 'outputs.TwingateDNSFilteringProfileContentCategories']] content_categories: A block with the following attributes.
+        :param pulumi.Input[Union['TwingateDNSFilteringProfileDeniedDomainsArgs', 'TwingateDNSFilteringProfileDeniedDomainsArgsDict', 'outputs.TwingateDNSFilteringProfileDeniedDomains']] denied_domains: A block with the following attributes.
         :param pulumi.Input[_builtins.str] fallback_method: The DNS filtering profile's fallback method. One of "AUTO" or "STRICT". Defaults to "STRICT".
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] groups: A set of group IDs that have this as their DNS filtering profile. Defaults to an empty set.
         :param pulumi.Input[_builtins.str] name: The DNS filtering profile's name.
         :param pulumi.Input[_builtins.float] priority: A floating point number representing the profile's priority.
-        :param pulumi.Input[Union['TwingateDNSFilteringProfilePrivacyCategoriesArgs', 'TwingateDNSFilteringProfilePrivacyCategoriesArgsDict']] privacy_categories: A block with the following attributes.
-        :param pulumi.Input[Union['TwingateDNSFilteringProfileSecurityCategoriesArgs', 'TwingateDNSFilteringProfileSecurityCategoriesArgsDict']] security_categories: A block with the following attributes.
+        :param pulumi.Input[Union['TwingateDNSFilteringProfilePrivacyCategoriesArgs', 'TwingateDNSFilteringProfilePrivacyCategoriesArgsDict', 'outputs.TwingateDNSFilteringProfilePrivacyCategories']] privacy_categories: A block with the following attributes.
+        :param pulumi.Input[Union['TwingateDNSFilteringProfileSecurityCategoriesArgs', 'TwingateDNSFilteringProfileSecurityCategoriesArgsDict', 'outputs.TwingateDNSFilteringProfileSecurityCategories']] security_categories: A block with the following attributes.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -69,12 +69,8 @@ type LookupTwingateGatewayResult struct {
 }
 
 func LookupTwingateGatewayOutput(ctx *pulumi.Context, args LookupTwingateGatewayOutputArgs, opts ...pulumi.InvokeOption) LookupTwingateGatewayResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTwingateGatewayResultOutput, error) {
-			args := v.(LookupTwingateGatewayArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("twingate:index/getTwingateGateway:getTwingateGateway", args, LookupTwingateGatewayResultOutput{}, options).(LookupTwingateGatewayResultOutput), nil
-		}).(LookupTwingateGatewayResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("twingate:index/getTwingateGateway:getTwingateGateway", args, LookupTwingateGatewayResultOutput{}, options).(LookupTwingateGatewayResultOutput)
 }
 
 // A collection of arguments for invoking getTwingateGateway.

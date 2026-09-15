@@ -159,12 +159,12 @@ class AwaitableGetTwingateDNSFilteringProfileResult(GetTwingateDNSFilteringProfi
             security_categories=self.security_categories)
 
 
-def get_twingate_dns_filtering_profile(allowed_domains: Optional[Union['GetTwingateDNSFilteringProfileAllowedDomainsArgs', 'GetTwingateDNSFilteringProfileAllowedDomainsArgsDict']] = None,
-                                       content_categories: Optional[Union['GetTwingateDNSFilteringProfileContentCategoriesArgs', 'GetTwingateDNSFilteringProfileContentCategoriesArgsDict']] = None,
-                                       denied_domains: Optional[Union['GetTwingateDNSFilteringProfileDeniedDomainsArgs', 'GetTwingateDNSFilteringProfileDeniedDomainsArgsDict']] = None,
+def get_twingate_dns_filtering_profile(allowed_domains: Optional[Union['GetTwingateDNSFilteringProfileAllowedDomainsArgs', 'GetTwingateDNSFilteringProfileAllowedDomainsArgsDict', 'outputs.GetTwingateDNSFilteringProfileAllowedDomainsResult']] = None,
+                                       content_categories: Optional[Union['GetTwingateDNSFilteringProfileContentCategoriesArgs', 'GetTwingateDNSFilteringProfileContentCategoriesArgsDict', 'outputs.GetTwingateDNSFilteringProfileContentCategoriesResult']] = None,
+                                       denied_domains: Optional[Union['GetTwingateDNSFilteringProfileDeniedDomainsArgs', 'GetTwingateDNSFilteringProfileDeniedDomainsArgsDict', 'outputs.GetTwingateDNSFilteringProfileDeniedDomainsResult']] = None,
                                        id: Optional[_builtins.str] = None,
-                                       privacy_categories: Optional[Union['GetTwingateDNSFilteringProfilePrivacyCategoriesArgs', 'GetTwingateDNSFilteringProfilePrivacyCategoriesArgsDict']] = None,
-                                       security_categories: Optional[Union['GetTwingateDNSFilteringProfileSecurityCategoriesArgs', 'GetTwingateDNSFilteringProfileSecurityCategoriesArgsDict']] = None,
+                                       privacy_categories: Optional[Union['GetTwingateDNSFilteringProfilePrivacyCategoriesArgs', 'GetTwingateDNSFilteringProfilePrivacyCategoriesArgsDict', 'outputs.GetTwingateDNSFilteringProfilePrivacyCategoriesResult']] = None,
+                                       security_categories: Optional[Union['GetTwingateDNSFilteringProfileSecurityCategoriesArgs', 'GetTwingateDNSFilteringProfileSecurityCategoriesArgsDict', 'outputs.GetTwingateDNSFilteringProfileSecurityCategoriesResult']] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTwingateDNSFilteringProfileResult:
     """
     DNS filtering gives you the ability to control what websites your users can access. DNS filtering is only available on certain plans. For more information, see Twingate's [documentation](https://www.twingate.com/docs/dns-filtering). DNS filtering must be enabled for this data source to work. If DNS filtering isn't enabled, the provider will throw an error.
@@ -179,12 +179,12 @@ def get_twingate_dns_filtering_profile(allowed_domains: Optional[Union['GetTwing
     ```
 
 
-    :param Union['GetTwingateDNSFilteringProfileAllowedDomainsArgs', 'GetTwingateDNSFilteringProfileAllowedDomainsArgsDict'] allowed_domains: A block with the following attributes.
-    :param Union['GetTwingateDNSFilteringProfileContentCategoriesArgs', 'GetTwingateDNSFilteringProfileContentCategoriesArgsDict'] content_categories: A block with the following attributes.
-    :param Union['GetTwingateDNSFilteringProfileDeniedDomainsArgs', 'GetTwingateDNSFilteringProfileDeniedDomainsArgsDict'] denied_domains: A block with the following attributes.
+    :param Union['GetTwingateDNSFilteringProfileAllowedDomainsArgs', 'GetTwingateDNSFilteringProfileAllowedDomainsArgsDict', 'outputs.GetTwingateDNSFilteringProfileAllowedDomainsResult'] allowed_domains: A block with the following attributes.
+    :param Union['GetTwingateDNSFilteringProfileContentCategoriesArgs', 'GetTwingateDNSFilteringProfileContentCategoriesArgsDict', 'outputs.GetTwingateDNSFilteringProfileContentCategoriesResult'] content_categories: A block with the following attributes.
+    :param Union['GetTwingateDNSFilteringProfileDeniedDomainsArgs', 'GetTwingateDNSFilteringProfileDeniedDomainsArgsDict', 'outputs.GetTwingateDNSFilteringProfileDeniedDomainsResult'] denied_domains: A block with the following attributes.
     :param _builtins.str id: The DNS filtering profile's ID.
-    :param Union['GetTwingateDNSFilteringProfilePrivacyCategoriesArgs', 'GetTwingateDNSFilteringProfilePrivacyCategoriesArgsDict'] privacy_categories: A block with the following attributes.
-    :param Union['GetTwingateDNSFilteringProfileSecurityCategoriesArgs', 'GetTwingateDNSFilteringProfileSecurityCategoriesArgsDict'] security_categories: A block with the following attributes.
+    :param Union['GetTwingateDNSFilteringProfilePrivacyCategoriesArgs', 'GetTwingateDNSFilteringProfilePrivacyCategoriesArgsDict', 'outputs.GetTwingateDNSFilteringProfilePrivacyCategoriesResult'] privacy_categories: A block with the following attributes.
+    :param Union['GetTwingateDNSFilteringProfileSecurityCategoriesArgs', 'GetTwingateDNSFilteringProfileSecurityCategoriesArgsDict', 'outputs.GetTwingateDNSFilteringProfileSecurityCategoriesResult'] security_categories: A block with the following attributes.
     """
     __args__ = dict()
     __args__['allowedDomains'] = allowed_domains
@@ -207,12 +207,12 @@ def get_twingate_dns_filtering_profile(allowed_domains: Optional[Union['GetTwing
         priority=pulumi.get(__ret__, 'priority'),
         privacy_categories=pulumi.get(__ret__, 'privacy_categories'),
         security_categories=pulumi.get(__ret__, 'security_categories'))
-def get_twingate_dns_filtering_profile_output(allowed_domains: pulumi.Input[Optional[Optional[Union['GetTwingateDNSFilteringProfileAllowedDomainsArgs', 'GetTwingateDNSFilteringProfileAllowedDomainsArgsDict']]]] = None,
-                                              content_categories: pulumi.Input[Optional[Optional[Union['GetTwingateDNSFilteringProfileContentCategoriesArgs', 'GetTwingateDNSFilteringProfileContentCategoriesArgsDict']]]] = None,
-                                              denied_domains: pulumi.Input[Optional[Optional[Union['GetTwingateDNSFilteringProfileDeniedDomainsArgs', 'GetTwingateDNSFilteringProfileDeniedDomainsArgsDict']]]] = None,
+def get_twingate_dns_filtering_profile_output(allowed_domains: pulumi.Input[Optional[Optional[Union['GetTwingateDNSFilteringProfileAllowedDomainsArgs', 'GetTwingateDNSFilteringProfileAllowedDomainsArgsDict', 'outputs.GetTwingateDNSFilteringProfileAllowedDomainsResult']]]] = None,
+                                              content_categories: pulumi.Input[Optional[Optional[Union['GetTwingateDNSFilteringProfileContentCategoriesArgs', 'GetTwingateDNSFilteringProfileContentCategoriesArgsDict', 'outputs.GetTwingateDNSFilteringProfileContentCategoriesResult']]]] = None,
+                                              denied_domains: pulumi.Input[Optional[Optional[Union['GetTwingateDNSFilteringProfileDeniedDomainsArgs', 'GetTwingateDNSFilteringProfileDeniedDomainsArgsDict', 'outputs.GetTwingateDNSFilteringProfileDeniedDomainsResult']]]] = None,
                                               id: pulumi.Input[Optional[_builtins.str]] = None,
-                                              privacy_categories: pulumi.Input[Optional[Optional[Union['GetTwingateDNSFilteringProfilePrivacyCategoriesArgs', 'GetTwingateDNSFilteringProfilePrivacyCategoriesArgsDict']]]] = None,
-                                              security_categories: pulumi.Input[Optional[Optional[Union['GetTwingateDNSFilteringProfileSecurityCategoriesArgs', 'GetTwingateDNSFilteringProfileSecurityCategoriesArgsDict']]]] = None,
+                                              privacy_categories: pulumi.Input[Optional[Optional[Union['GetTwingateDNSFilteringProfilePrivacyCategoriesArgs', 'GetTwingateDNSFilteringProfilePrivacyCategoriesArgsDict', 'outputs.GetTwingateDNSFilteringProfilePrivacyCategoriesResult']]]] = None,
+                                              security_categories: pulumi.Input[Optional[Optional[Union['GetTwingateDNSFilteringProfileSecurityCategoriesArgs', 'GetTwingateDNSFilteringProfileSecurityCategoriesArgsDict', 'outputs.GetTwingateDNSFilteringProfileSecurityCategoriesResult']]]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTwingateDNSFilteringProfileResult]:
     """
     DNS filtering gives you the ability to control what websites your users can access. DNS filtering is only available on certain plans. For more information, see Twingate's [documentation](https://www.twingate.com/docs/dns-filtering). DNS filtering must be enabled for this data source to work. If DNS filtering isn't enabled, the provider will throw an error.
@@ -227,12 +227,12 @@ def get_twingate_dns_filtering_profile_output(allowed_domains: pulumi.Input[Opti
     ```
 
 
-    :param Union['GetTwingateDNSFilteringProfileAllowedDomainsArgs', 'GetTwingateDNSFilteringProfileAllowedDomainsArgsDict'] allowed_domains: A block with the following attributes.
-    :param Union['GetTwingateDNSFilteringProfileContentCategoriesArgs', 'GetTwingateDNSFilteringProfileContentCategoriesArgsDict'] content_categories: A block with the following attributes.
-    :param Union['GetTwingateDNSFilteringProfileDeniedDomainsArgs', 'GetTwingateDNSFilteringProfileDeniedDomainsArgsDict'] denied_domains: A block with the following attributes.
+    :param Union['GetTwingateDNSFilteringProfileAllowedDomainsArgs', 'GetTwingateDNSFilteringProfileAllowedDomainsArgsDict', 'outputs.GetTwingateDNSFilteringProfileAllowedDomainsResult'] allowed_domains: A block with the following attributes.
+    :param Union['GetTwingateDNSFilteringProfileContentCategoriesArgs', 'GetTwingateDNSFilteringProfileContentCategoriesArgsDict', 'outputs.GetTwingateDNSFilteringProfileContentCategoriesResult'] content_categories: A block with the following attributes.
+    :param Union['GetTwingateDNSFilteringProfileDeniedDomainsArgs', 'GetTwingateDNSFilteringProfileDeniedDomainsArgsDict', 'outputs.GetTwingateDNSFilteringProfileDeniedDomainsResult'] denied_domains: A block with the following attributes.
     :param _builtins.str id: The DNS filtering profile's ID.
-    :param Union['GetTwingateDNSFilteringProfilePrivacyCategoriesArgs', 'GetTwingateDNSFilteringProfilePrivacyCategoriesArgsDict'] privacy_categories: A block with the following attributes.
-    :param Union['GetTwingateDNSFilteringProfileSecurityCategoriesArgs', 'GetTwingateDNSFilteringProfileSecurityCategoriesArgsDict'] security_categories: A block with the following attributes.
+    :param Union['GetTwingateDNSFilteringProfilePrivacyCategoriesArgs', 'GetTwingateDNSFilteringProfilePrivacyCategoriesArgsDict', 'outputs.GetTwingateDNSFilteringProfilePrivacyCategoriesResult'] privacy_categories: A block with the following attributes.
+    :param Union['GetTwingateDNSFilteringProfileSecurityCategoriesArgs', 'GetTwingateDNSFilteringProfileSecurityCategoriesArgsDict', 'outputs.GetTwingateDNSFilteringProfileSecurityCategoriesResult'] security_categories: A block with the following attributes.
     """
     __args__ = dict()
     __args__['allowedDomains'] = allowed_domains

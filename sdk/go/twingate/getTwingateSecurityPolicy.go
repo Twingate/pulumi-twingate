@@ -65,12 +65,8 @@ type GetTwingateSecurityPolicyResult struct {
 }
 
 func GetTwingateSecurityPolicyOutput(ctx *pulumi.Context, args GetTwingateSecurityPolicyOutputArgs, opts ...pulumi.InvokeOption) GetTwingateSecurityPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTwingateSecurityPolicyResultOutput, error) {
-			args := v.(GetTwingateSecurityPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("twingate:index/getTwingateSecurityPolicy:getTwingateSecurityPolicy", args, GetTwingateSecurityPolicyResultOutput{}, options).(GetTwingateSecurityPolicyResultOutput), nil
-		}).(GetTwingateSecurityPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("twingate:index/getTwingateSecurityPolicy:getTwingateSecurityPolicy", args, GetTwingateSecurityPolicyResultOutput{}, options).(GetTwingateSecurityPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getTwingateSecurityPolicy.

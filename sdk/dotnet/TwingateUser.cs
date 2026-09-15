@@ -36,6 +36,8 @@ namespace Twingate.Twingate
     /// 
     /// ## Import
     /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
     /// ```sh
     /// $ pulumi import twingate:index/twingateUser:TwingateUser user VXNlcjo1ODk3MTM=
     /// ```

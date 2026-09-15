@@ -85,12 +85,8 @@ type GetTwingateRemoteNetworksResult struct {
 }
 
 func GetTwingateRemoteNetworksOutput(ctx *pulumi.Context, args GetTwingateRemoteNetworksOutputArgs, opts ...pulumi.InvokeOption) GetTwingateRemoteNetworksResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTwingateRemoteNetworksResultOutput, error) {
-			args := v.(GetTwingateRemoteNetworksArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("twingate:index/getTwingateRemoteNetworks:getTwingateRemoteNetworks", args, GetTwingateRemoteNetworksResultOutput{}, options).(GetTwingateRemoteNetworksResultOutput), nil
-		}).(GetTwingateRemoteNetworksResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("twingate:index/getTwingateRemoteNetworks:getTwingateRemoteNetworks", args, GetTwingateRemoteNetworksResultOutput{}, options).(GetTwingateRemoteNetworksResultOutput)
 }
 
 // A collection of arguments for invoking getTwingateRemoteNetworks.

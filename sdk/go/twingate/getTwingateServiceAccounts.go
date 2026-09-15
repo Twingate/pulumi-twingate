@@ -85,12 +85,8 @@ type GetTwingateServiceAccountsResult struct {
 }
 
 func GetTwingateServiceAccountsOutput(ctx *pulumi.Context, args GetTwingateServiceAccountsOutputArgs, opts ...pulumi.InvokeOption) GetTwingateServiceAccountsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTwingateServiceAccountsResultOutput, error) {
-			args := v.(GetTwingateServiceAccountsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("twingate:index/getTwingateServiceAccounts:getTwingateServiceAccounts", args, GetTwingateServiceAccountsResultOutput{}, options).(GetTwingateServiceAccountsResultOutput), nil
-		}).(GetTwingateServiceAccountsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("twingate:index/getTwingateServiceAccounts:getTwingateServiceAccounts", args, GetTwingateServiceAccountsResultOutput{}, options).(GetTwingateServiceAccountsResultOutput)
 }
 
 // A collection of arguments for invoking getTwingateServiceAccounts.

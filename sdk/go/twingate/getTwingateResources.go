@@ -89,12 +89,8 @@ type GetTwingateResourcesResult struct {
 }
 
 func GetTwingateResourcesOutput(ctx *pulumi.Context, args GetTwingateResourcesOutputArgs, opts ...pulumi.InvokeOption) GetTwingateResourcesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTwingateResourcesResultOutput, error) {
-			args := v.(GetTwingateResourcesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("twingate:index/getTwingateResources:getTwingateResources", args, GetTwingateResourcesResultOutput{}, options).(GetTwingateResourcesResultOutput), nil
-		}).(GetTwingateResourcesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("twingate:index/getTwingateResources:getTwingateResources", args, GetTwingateResourcesResultOutput{}, options).(GetTwingateResourcesResultOutput)
 }
 
 // A collection of arguments for invoking getTwingateResources.

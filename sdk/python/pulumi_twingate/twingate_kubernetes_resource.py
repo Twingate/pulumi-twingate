@@ -456,8 +456,8 @@ class TwingateKubernetesResource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessGroupArgs', 'TwingateKubernetesResourceAccessGroupArgsDict']]]]] = None,
-                 access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessPolicyArgs', 'TwingateKubernetesResourceAccessPolicyArgsDict']]]]] = None,
+                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessGroupArgs', 'TwingateKubernetesResourceAccessGroupArgsDict', 'outputs.TwingateKubernetesResourceAccessGroup']]]]] = None,
+                 access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessPolicyArgs', 'TwingateKubernetesResourceAccessPolicyArgsDict', 'outputs.TwingateKubernetesResourceAccessPolicy']]]]] = None,
                  address: pulumi.Input[Optional[_builtins.str]] = None,
                  alias: pulumi.Input[Optional[_builtins.str]] = None,
                  bearer_token_file: pulumi.Input[Optional[_builtins.str]] = None,
@@ -504,8 +504,8 @@ class TwingateKubernetesResource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessGroupArgs', 'TwingateKubernetesResourceAccessGroupArgsDict']]]] access_groups: Restrict access to certain group
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessPolicyArgs', 'TwingateKubernetesResourceAccessPolicyArgsDict']]]] access_policies: Restrict access according to JIT access policy
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessGroupArgs', 'TwingateKubernetesResourceAccessGroupArgsDict', 'outputs.TwingateKubernetesResourceAccessGroup']]]] access_groups: Restrict access to certain group
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessPolicyArgs', 'TwingateKubernetesResourceAccessPolicyArgsDict', 'outputs.TwingateKubernetesResourceAccessPolicy']]]] access_policies: Restrict access according to JIT access policy
         :param pulumi.Input[_builtins.str] address: The address of the Kubernetes Resource (IP or FQDN).
         :param pulumi.Input[_builtins.str] alias: Set a DNS alias address for the Resource. Must be a DNS-valid name string.
         :param pulumi.Input[_builtins.str] bearer_token_file: Path to bearer token file.
@@ -571,8 +571,8 @@ class TwingateKubernetesResource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessGroupArgs', 'TwingateKubernetesResourceAccessGroupArgsDict']]]]] = None,
-                 access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessPolicyArgs', 'TwingateKubernetesResourceAccessPolicyArgsDict']]]]] = None,
+                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessGroupArgs', 'TwingateKubernetesResourceAccessGroupArgsDict', 'outputs.TwingateKubernetesResourceAccessGroup']]]]] = None,
+                 access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessPolicyArgs', 'TwingateKubernetesResourceAccessPolicyArgsDict', 'outputs.TwingateKubernetesResourceAccessPolicy']]]]] = None,
                  address: pulumi.Input[Optional[_builtins.str]] = None,
                  alias: pulumi.Input[Optional[_builtins.str]] = None,
                  bearer_token_file: pulumi.Input[Optional[_builtins.str]] = None,
@@ -620,8 +620,8 @@ class TwingateKubernetesResource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessGroupArgs', 'TwingateKubernetesResourceAccessGroupArgsDict']]]]] = None,
-            access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessPolicyArgs', 'TwingateKubernetesResourceAccessPolicyArgsDict']]]]] = None,
+            access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessGroupArgs', 'TwingateKubernetesResourceAccessGroupArgsDict', 'outputs.TwingateKubernetesResourceAccessGroup']]]]] = None,
+            access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessPolicyArgs', 'TwingateKubernetesResourceAccessPolicyArgsDict', 'outputs.TwingateKubernetesResourceAccessPolicy']]]]] = None,
             address: pulumi.Input[Optional[_builtins.str]] = None,
             alias: pulumi.Input[Optional[_builtins.str]] = None,
             bearer_token_file: pulumi.Input[Optional[_builtins.str]] = None,
@@ -640,8 +640,8 @@ class TwingateKubernetesResource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessGroupArgs', 'TwingateKubernetesResourceAccessGroupArgsDict']]]] access_groups: Restrict access to certain group
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessPolicyArgs', 'TwingateKubernetesResourceAccessPolicyArgsDict']]]] access_policies: Restrict access according to JIT access policy
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessGroupArgs', 'TwingateKubernetesResourceAccessGroupArgsDict', 'outputs.TwingateKubernetesResourceAccessGroup']]]] access_groups: Restrict access to certain group
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessPolicyArgs', 'TwingateKubernetesResourceAccessPolicyArgsDict', 'outputs.TwingateKubernetesResourceAccessPolicy']]]] access_policies: Restrict access according to JIT access policy
         :param pulumi.Input[_builtins.str] address: The address of the Kubernetes Resource (IP or FQDN).
         :param pulumi.Input[_builtins.str] alias: Set a DNS alias address for the Resource. Must be a DNS-valid name string.
         :param pulumi.Input[_builtins.str] bearer_token_file: Path to bearer token file.

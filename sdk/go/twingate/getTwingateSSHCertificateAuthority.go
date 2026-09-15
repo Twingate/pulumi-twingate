@@ -65,12 +65,8 @@ type LookupTwingateSSHCertificateAuthorityResult struct {
 }
 
 func LookupTwingateSSHCertificateAuthorityOutput(ctx *pulumi.Context, args LookupTwingateSSHCertificateAuthorityOutputArgs, opts ...pulumi.InvokeOption) LookupTwingateSSHCertificateAuthorityResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTwingateSSHCertificateAuthorityResultOutput, error) {
-			args := v.(LookupTwingateSSHCertificateAuthorityArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("twingate:index/getTwingateSSHCertificateAuthority:getTwingateSSHCertificateAuthority", args, LookupTwingateSSHCertificateAuthorityResultOutput{}, options).(LookupTwingateSSHCertificateAuthorityResultOutput), nil
-		}).(LookupTwingateSSHCertificateAuthorityResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("twingate:index/getTwingateSSHCertificateAuthority:getTwingateSSHCertificateAuthority", args, LookupTwingateSSHCertificateAuthorityResultOutput{}, options).(LookupTwingateSSHCertificateAuthorityResultOutput)
 }
 
 // A collection of arguments for invoking getTwingateSSHCertificateAuthority.

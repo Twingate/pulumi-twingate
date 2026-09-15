@@ -71,12 +71,8 @@ type LookupTwingateUserResult struct {
 }
 
 func LookupTwingateUserOutput(ctx *pulumi.Context, args LookupTwingateUserOutputArgs, opts ...pulumi.InvokeOption) LookupTwingateUserResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTwingateUserResultOutput, error) {
-			args := v.(LookupTwingateUserArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("twingate:index/getTwingateUser:getTwingateUser", args, LookupTwingateUserResultOutput{}, options).(LookupTwingateUserResultOutput), nil
-		}).(LookupTwingateUserResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("twingate:index/getTwingateUser:getTwingateUser", args, LookupTwingateUserResultOutput{}, options).(LookupTwingateUserResultOutput)
 }
 
 // A collection of arguments for invoking getTwingateUser.

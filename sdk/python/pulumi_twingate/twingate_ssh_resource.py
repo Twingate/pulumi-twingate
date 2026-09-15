@@ -359,8 +359,8 @@ class TwingateSSHResource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessGroupArgs', 'TwingateSSHResourceAccessGroupArgsDict']]]]] = None,
-                 access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessPolicyArgs', 'TwingateSSHResourceAccessPolicyArgsDict']]]]] = None,
+                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessGroupArgs', 'TwingateSSHResourceAccessGroupArgsDict', 'outputs.TwingateSSHResourceAccessGroup']]]]] = None,
+                 access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessPolicyArgs', 'TwingateSSHResourceAccessPolicyArgsDict', 'outputs.TwingateSSHResourceAccessPolicy']]]]] = None,
                  address: pulumi.Input[Optional[_builtins.str]] = None,
                  alias: pulumi.Input[Optional[_builtins.str]] = None,
                  gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -403,8 +403,8 @@ class TwingateSSHResource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessGroupArgs', 'TwingateSSHResourceAccessGroupArgsDict']]]] access_groups: Restrict access to certain group
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessPolicyArgs', 'TwingateSSHResourceAccessPolicyArgsDict']]]] access_policies: Restrict access according to JIT access policy
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessGroupArgs', 'TwingateSSHResourceAccessGroupArgsDict', 'outputs.TwingateSSHResourceAccessGroup']]]] access_groups: Restrict access to certain group
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessPolicyArgs', 'TwingateSSHResourceAccessPolicyArgsDict', 'outputs.TwingateSSHResourceAccessPolicy']]]] access_policies: Restrict access according to JIT access policy
         :param pulumi.Input[_builtins.str] address: The address of the SSH Resource (IP or FQDN).
         :param pulumi.Input[_builtins.str] alias: Set a DNS alias address for the Resource. Must be a DNS-valid name string.
         :param pulumi.Input[_builtins.str] gateway_id: The ID of the Gateway used to access this SSH Resource.
@@ -466,8 +466,8 @@ class TwingateSSHResource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessGroupArgs', 'TwingateSSHResourceAccessGroupArgsDict']]]]] = None,
-                 access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessPolicyArgs', 'TwingateSSHResourceAccessPolicyArgsDict']]]]] = None,
+                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessGroupArgs', 'TwingateSSHResourceAccessGroupArgsDict', 'outputs.TwingateSSHResourceAccessGroup']]]]] = None,
+                 access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessPolicyArgs', 'TwingateSSHResourceAccessPolicyArgsDict', 'outputs.TwingateSSHResourceAccessPolicy']]]]] = None,
                  address: pulumi.Input[Optional[_builtins.str]] = None,
                  alias: pulumi.Input[Optional[_builtins.str]] = None,
                  gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -511,8 +511,8 @@ class TwingateSSHResource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessGroupArgs', 'TwingateSSHResourceAccessGroupArgsDict']]]]] = None,
-            access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessPolicyArgs', 'TwingateSSHResourceAccessPolicyArgsDict']]]]] = None,
+            access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessGroupArgs', 'TwingateSSHResourceAccessGroupArgsDict', 'outputs.TwingateSSHResourceAccessGroup']]]]] = None,
+            access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessPolicyArgs', 'TwingateSSHResourceAccessPolicyArgsDict', 'outputs.TwingateSSHResourceAccessPolicy']]]]] = None,
             address: pulumi.Input[Optional[_builtins.str]] = None,
             alias: pulumi.Input[Optional[_builtins.str]] = None,
             gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -528,8 +528,8 @@ class TwingateSSHResource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessGroupArgs', 'TwingateSSHResourceAccessGroupArgsDict']]]] access_groups: Restrict access to certain group
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessPolicyArgs', 'TwingateSSHResourceAccessPolicyArgsDict']]]] access_policies: Restrict access according to JIT access policy
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessGroupArgs', 'TwingateSSHResourceAccessGroupArgsDict', 'outputs.TwingateSSHResourceAccessGroup']]]] access_groups: Restrict access to certain group
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateSSHResourceAccessPolicyArgs', 'TwingateSSHResourceAccessPolicyArgsDict', 'outputs.TwingateSSHResourceAccessPolicy']]]] access_policies: Restrict access according to JIT access policy
         :param pulumi.Input[_builtins.str] address: The address of the SSH Resource (IP or FQDN).
         :param pulumi.Input[_builtins.str] alias: Set a DNS alias address for the Resource. Must be a DNS-valid name string.
         :param pulumi.Input[_builtins.str] gateway_id: The ID of the Gateway used to access this SSH Resource.

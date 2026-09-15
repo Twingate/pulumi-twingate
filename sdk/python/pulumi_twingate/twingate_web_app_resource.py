@@ -453,11 +453,11 @@ class TwingateWebAppResource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateWebAppResourceAccessGroupArgs', 'TwingateWebAppResourceAccessGroupArgsDict']]]]] = None,
-                 access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateWebAppResourceAccessPolicyArgs', 'TwingateWebAppResourceAccessPolicyArgsDict']]]]] = None,
+                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateWebAppResourceAccessGroupArgs', 'TwingateWebAppResourceAccessGroupArgsDict', 'outputs.TwingateWebAppResourceAccessGroup']]]]] = None,
+                 access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateWebAppResourceAccessPolicyArgs', 'TwingateWebAppResourceAccessPolicyArgsDict', 'outputs.TwingateWebAppResourceAccessPolicy']]]]] = None,
                  address: pulumi.Input[Optional[_builtins.str]] = None,
                  alias: pulumi.Input[Optional[_builtins.str]] = None,
-                 downstream: pulumi.Input[Optional[Union['TwingateWebAppResourceDownstreamArgs', 'TwingateWebAppResourceDownstreamArgsDict']]] = None,
+                 downstream: pulumi.Input[Optional[Union['TwingateWebAppResourceDownstreamArgs', 'TwingateWebAppResourceDownstreamArgsDict', 'outputs.TwingateWebAppResourceDownstream']]] = None,
                  gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -465,7 +465,7 @@ class TwingateWebAppResource(pulumi.CustomResource):
                  request_header_rewrites: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 upstream: pulumi.Input[Optional[Union['TwingateWebAppResourceUpstreamArgs', 'TwingateWebAppResourceUpstreamArgsDict']]] = None,
+                 upstream: pulumi.Input[Optional[Union['TwingateWebAppResourceUpstreamArgs', 'TwingateWebAppResourceUpstreamArgsDict', 'outputs.TwingateWebAppResourceUpstream']]] = None,
                  __props__=None):
         """
         Web App Resources are Twingate resources accessed via a Gateway.
@@ -505,11 +505,11 @@ class TwingateWebAppResource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateWebAppResourceAccessGroupArgs', 'TwingateWebAppResourceAccessGroupArgsDict']]]] access_groups: Restrict access to certain group
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateWebAppResourceAccessPolicyArgs', 'TwingateWebAppResourceAccessPolicyArgsDict']]]] access_policies: Restrict access according to JIT access policy
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateWebAppResourceAccessGroupArgs', 'TwingateWebAppResourceAccessGroupArgsDict', 'outputs.TwingateWebAppResourceAccessGroup']]]] access_groups: Restrict access to certain group
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateWebAppResourceAccessPolicyArgs', 'TwingateWebAppResourceAccessPolicyArgsDict', 'outputs.TwingateWebAppResourceAccessPolicy']]]] access_policies: Restrict access according to JIT access policy
         :param pulumi.Input[_builtins.str] address: The address of the Web App Resource (IP or FQDN).
         :param pulumi.Input[_builtins.str] alias: Set a DNS alias address for the Resource. Must be a DNS-valid name string.
-        :param pulumi.Input[Union['TwingateWebAppResourceDownstreamArgs', 'TwingateWebAppResourceDownstreamArgsDict']] downstream: The downstream configuration. The connection between the protocol client and the Gateway.
+        :param pulumi.Input[Union['TwingateWebAppResourceDownstreamArgs', 'TwingateWebAppResourceDownstreamArgsDict', 'outputs.TwingateWebAppResourceDownstream']] downstream: The downstream configuration. The connection between the protocol client and the Gateway.
         :param pulumi.Input[_builtins.str] gateway_id: The ID of the Gateway used to access this Web App Resource.
         :param pulumi.Input[_builtins.bool] is_visible: Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
         :param pulumi.Input[_builtins.str] name: The name of the Web App Resource.
@@ -517,7 +517,7 @@ class TwingateWebAppResource(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] request_header_rewrites: A map of HTTP headers to rewrite on requests forwarded to the upstream resource. Header names are compared case-insensitively.
         :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of key-value pair tags to set on this resource.
-        :param pulumi.Input[Union['TwingateWebAppResourceUpstreamArgs', 'TwingateWebAppResourceUpstreamArgsDict']] upstream: The upstream configuration. The connection between the Gateway and the upstream resource.
+        :param pulumi.Input[Union['TwingateWebAppResourceUpstreamArgs', 'TwingateWebAppResourceUpstreamArgsDict', 'outputs.TwingateWebAppResourceUpstream']] upstream: The upstream configuration. The connection between the Gateway and the upstream resource.
         """
         ...
     @overload
@@ -576,11 +576,11 @@ class TwingateWebAppResource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateWebAppResourceAccessGroupArgs', 'TwingateWebAppResourceAccessGroupArgsDict']]]]] = None,
-                 access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateWebAppResourceAccessPolicyArgs', 'TwingateWebAppResourceAccessPolicyArgsDict']]]]] = None,
+                 access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateWebAppResourceAccessGroupArgs', 'TwingateWebAppResourceAccessGroupArgsDict', 'outputs.TwingateWebAppResourceAccessGroup']]]]] = None,
+                 access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateWebAppResourceAccessPolicyArgs', 'TwingateWebAppResourceAccessPolicyArgsDict', 'outputs.TwingateWebAppResourceAccessPolicy']]]]] = None,
                  address: pulumi.Input[Optional[_builtins.str]] = None,
                  alias: pulumi.Input[Optional[_builtins.str]] = None,
-                 downstream: pulumi.Input[Optional[Union['TwingateWebAppResourceDownstreamArgs', 'TwingateWebAppResourceDownstreamArgsDict']]] = None,
+                 downstream: pulumi.Input[Optional[Union['TwingateWebAppResourceDownstreamArgs', 'TwingateWebAppResourceDownstreamArgsDict', 'outputs.TwingateWebAppResourceDownstream']]] = None,
                  gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -588,7 +588,7 @@ class TwingateWebAppResource(pulumi.CustomResource):
                  request_header_rewrites: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 upstream: pulumi.Input[Optional[Union['TwingateWebAppResourceUpstreamArgs', 'TwingateWebAppResourceUpstreamArgsDict']]] = None,
+                 upstream: pulumi.Input[Optional[Union['TwingateWebAppResourceUpstreamArgs', 'TwingateWebAppResourceUpstreamArgsDict', 'outputs.TwingateWebAppResourceUpstream']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -631,11 +631,11 @@ class TwingateWebAppResource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateWebAppResourceAccessGroupArgs', 'TwingateWebAppResourceAccessGroupArgsDict']]]]] = None,
-            access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateWebAppResourceAccessPolicyArgs', 'TwingateWebAppResourceAccessPolicyArgsDict']]]]] = None,
+            access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateWebAppResourceAccessGroupArgs', 'TwingateWebAppResourceAccessGroupArgsDict', 'outputs.TwingateWebAppResourceAccessGroup']]]]] = None,
+            access_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TwingateWebAppResourceAccessPolicyArgs', 'TwingateWebAppResourceAccessPolicyArgsDict', 'outputs.TwingateWebAppResourceAccessPolicy']]]]] = None,
             address: pulumi.Input[Optional[_builtins.str]] = None,
             alias: pulumi.Input[Optional[_builtins.str]] = None,
-            downstream: pulumi.Input[Optional[Union['TwingateWebAppResourceDownstreamArgs', 'TwingateWebAppResourceDownstreamArgsDict']]] = None,
+            downstream: pulumi.Input[Optional[Union['TwingateWebAppResourceDownstreamArgs', 'TwingateWebAppResourceDownstreamArgsDict', 'outputs.TwingateWebAppResourceDownstream']]] = None,
             gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
             is_visible: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -643,7 +643,7 @@ class TwingateWebAppResource(pulumi.CustomResource):
             request_header_rewrites: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            upstream: pulumi.Input[Optional[Union['TwingateWebAppResourceUpstreamArgs', 'TwingateWebAppResourceUpstreamArgsDict']]] = None) -> 'TwingateWebAppResource':
+            upstream: pulumi.Input[Optional[Union['TwingateWebAppResourceUpstreamArgs', 'TwingateWebAppResourceUpstreamArgsDict', 'outputs.TwingateWebAppResourceUpstream']]] = None) -> 'TwingateWebAppResource':
         """
         Get an existing TwingateWebAppResource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -651,11 +651,11 @@ class TwingateWebAppResource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateWebAppResourceAccessGroupArgs', 'TwingateWebAppResourceAccessGroupArgsDict']]]] access_groups: Restrict access to certain group
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateWebAppResourceAccessPolicyArgs', 'TwingateWebAppResourceAccessPolicyArgsDict']]]] access_policies: Restrict access according to JIT access policy
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateWebAppResourceAccessGroupArgs', 'TwingateWebAppResourceAccessGroupArgsDict', 'outputs.TwingateWebAppResourceAccessGroup']]]] access_groups: Restrict access to certain group
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateWebAppResourceAccessPolicyArgs', 'TwingateWebAppResourceAccessPolicyArgsDict', 'outputs.TwingateWebAppResourceAccessPolicy']]]] access_policies: Restrict access according to JIT access policy
         :param pulumi.Input[_builtins.str] address: The address of the Web App Resource (IP or FQDN).
         :param pulumi.Input[_builtins.str] alias: Set a DNS alias address for the Resource. Must be a DNS-valid name string.
-        :param pulumi.Input[Union['TwingateWebAppResourceDownstreamArgs', 'TwingateWebAppResourceDownstreamArgsDict']] downstream: The downstream configuration. The connection between the protocol client and the Gateway.
+        :param pulumi.Input[Union['TwingateWebAppResourceDownstreamArgs', 'TwingateWebAppResourceDownstreamArgsDict', 'outputs.TwingateWebAppResourceDownstream']] downstream: The downstream configuration. The connection between the protocol client and the Gateway.
         :param pulumi.Input[_builtins.str] gateway_id: The ID of the Gateway used to access this Web App Resource.
         :param pulumi.Input[_builtins.bool] is_visible: Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
         :param pulumi.Input[_builtins.str] name: The name of the Web App Resource.
@@ -663,7 +663,7 @@ class TwingateWebAppResource(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] request_header_rewrites: A map of HTTP headers to rewrite on requests forwarded to the upstream resource. Header names are compared case-insensitively.
         :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of key-value pair tags to set on this resource.
-        :param pulumi.Input[Union['TwingateWebAppResourceUpstreamArgs', 'TwingateWebAppResourceUpstreamArgsDict']] upstream: The upstream configuration. The connection between the Gateway and the upstream resource.
+        :param pulumi.Input[Union['TwingateWebAppResourceUpstreamArgs', 'TwingateWebAppResourceUpstreamArgsDict', 'outputs.TwingateWebAppResourceUpstream']] upstream: The upstream configuration. The connection between the Gateway and the upstream resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -28,6 +28,7 @@ export function getTwingateGroups(args?: GetTwingateGroupsArgs, opts?: pulumi.In
         "name": args.name,
         "nameContains": args.nameContains,
         "nameExclude": args.nameExclude,
+        "nameIns": args.nameIns,
         "namePrefix": args.namePrefix,
         "nameRegexp": args.nameRegexp,
         "nameSuffix": args.nameSuffix,
@@ -55,6 +56,10 @@ export interface GetTwingateGroupsArgs {
      * Match when the exact value does not exist in the name of the group.
      */
     nameExclude?: string;
+    /**
+     * Returns only groups that exactly match one of the names in the list.
+     */
+    nameIns?: string[];
     /**
      * The name of the group must start with the value.
      */
@@ -102,6 +107,10 @@ export interface GetTwingateGroupsResult {
      */
     readonly nameExclude?: string;
     /**
+     * Returns only groups that exactly match one of the names in the list.
+     */
+    readonly nameIns?: string[];
+    /**
      * The name of the group must start with the value.
      */
     readonly namePrefix?: string;
@@ -140,6 +149,7 @@ export function getTwingateGroupsOutput(args?: GetTwingateGroupsOutputArgs, opts
         "name": args.name,
         "nameContains": args.nameContains,
         "nameExclude": args.nameExclude,
+        "nameIns": args.nameIns,
         "namePrefix": args.namePrefix,
         "nameRegexp": args.nameRegexp,
         "nameSuffix": args.nameSuffix,
@@ -167,6 +177,10 @@ export interface GetTwingateGroupsOutputArgs {
      * Match when the exact value does not exist in the name of the group.
      */
     nameExclude?: pulumi.Input<string | undefined>;
+    /**
+     * Returns only groups that exactly match one of the names in the list.
+     */
+    nameIns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the group must start with the value.
      */

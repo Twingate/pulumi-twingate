@@ -92,7 +92,7 @@ class ProviderCacheArgsDict(TypedDict):
     """
     Specifies whether the provider should cache groups. The default value is `true`.
     """
-    groups_filter: NotRequired[pulumi.Input[Optional['ProviderCacheGroupsFilterArgs']]]
+    groups_filter: NotRequired[pulumi.Input[Optional['ProviderCacheGroupsFilterArgsDict']]]
     """
     Specifies the filter for the groups to be cached.
     """
@@ -100,7 +100,7 @@ class ProviderCacheArgsDict(TypedDict):
     """
     Specifies whether the provider should cache resources. The default value is `true`.
     """
-    resources_filter: NotRequired[pulumi.Input[Optional['ProviderCacheResourcesFilterArgs']]]
+    resources_filter: NotRequired[pulumi.Input[Optional['ProviderCacheResourcesFilterArgsDict']]]
     """
     Specifies the filter for the resources to be cached.
     """
@@ -1109,7 +1109,7 @@ class TwingateDNSFilteringProfileSecurityCategoriesArgs:
 
 
 class TwingateKubernetesResourceAccessGroupArgsDict(TypedDict):
-    access_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TwingateKubernetesResourceAccessGroupAccessPolicyArgs']]]]]
+    access_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TwingateKubernetesResourceAccessGroupAccessPolicyArgsDict']]]]]
     """
     Restrict access according to JIT access policy
     """
@@ -1316,7 +1316,7 @@ class TwingateKubernetesResourceAccessPolicyArgs:
 
 
 class TwingateResourceAccessGroupArgsDict(TypedDict):
-    access_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TwingateResourceAccessGroupAccessPolicyArgs']]]]]
+    access_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TwingateResourceAccessGroupAccessPolicyArgsDict']]]]]
     """
     Restrict access according to JIT access policy
     """
@@ -1556,8 +1556,8 @@ class TwingateResourceProtocolsArgsDict(TypedDict):
     """
     Whether to allow ICMP (ping) traffic
     """
-    tcp: NotRequired[pulumi.Input[Optional['TwingateResourceProtocolsTcpArgs']]]
-    udp: NotRequired[pulumi.Input[Optional['TwingateResourceProtocolsUdpArgs']]]
+    tcp: NotRequired[pulumi.Input[Optional['TwingateResourceProtocolsTcpArgsDict']]]
+    udp: NotRequired[pulumi.Input[Optional['TwingateResourceProtocolsUdpArgsDict']]]
 
 @pulumi.input_type
 class TwingateResourceProtocolsArgs:
@@ -1705,7 +1705,7 @@ class TwingateResourceProtocolsUdpArgs:
 
 
 class TwingateSSHResourceAccessGroupArgsDict(TypedDict):
-    access_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TwingateSSHResourceAccessGroupAccessPolicyArgs']]]]]
+    access_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TwingateSSHResourceAccessGroupAccessPolicyArgsDict']]]]]
     """
     Restrict access according to JIT access policy
     """
@@ -1912,7 +1912,7 @@ class TwingateSSHResourceAccessPolicyArgs:
 
 
 class TwingateWebAppResourceAccessGroupArgsDict(TypedDict):
-    access_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TwingateWebAppResourceAccessGroupAccessPolicyArgs']]]]]
+    access_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TwingateWebAppResourceAccessGroupAccessPolicyArgsDict']]]]]
     """
     Restrict access according to JIT access policy
     """
