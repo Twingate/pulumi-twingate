@@ -93,13 +93,13 @@ namespace Twingate.Twingate
         public Output<string?> Alias { get; private set; } = null!;
 
         /// <summary>
-        /// Path to bearer token file.
+        /// Path to bearer token file. It's required when `InCluster` is set to `False`.
         /// </summary>
         [Output("bearerTokenFile")]
         public Output<string> BearerTokenFile { get; private set; } = null!;
 
         /// <summary>
-        /// Path to CA certificate file.
+        /// Path to CA certificate file. It's required when `InCluster` is set to `False`.
         /// </summary>
         [Output("caFile")]
         public Output<string> CaFile { get; private set; } = null!;
@@ -145,6 +145,12 @@ namespace Twingate.Twingate
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+        /// </summary>
+        [Output("tagsAll")]
+        public Output<ImmutableDictionary<string, string>> TagsAll { get; private set; } = null!;
 
 
         /// <summary>
@@ -230,13 +236,13 @@ namespace Twingate.Twingate
         public Input<string>? Alias { get; set; }
 
         /// <summary>
-        /// Path to bearer token file.
+        /// Path to bearer token file. It's required when `InCluster` is set to `False`.
         /// </summary>
         [Input("bearerTokenFile")]
         public Input<string>? BearerTokenFile { get; set; }
 
         /// <summary>
-        /// Path to CA certificate file.
+        /// Path to CA certificate file. It's required when `InCluster` is set to `False`.
         /// </summary>
         [Input("caFile")]
         public Input<string>? CaFile { get; set; }
@@ -334,13 +340,13 @@ namespace Twingate.Twingate
         public Input<string>? Alias { get; set; }
 
         /// <summary>
-        /// Path to bearer token file.
+        /// Path to bearer token file. It's required when `InCluster` is set to `False`.
         /// </summary>
         [Input("bearerTokenFile")]
         public Input<string>? BearerTokenFile { get; set; }
 
         /// <summary>
-        /// Path to CA certificate file.
+        /// Path to CA certificate file. It's required when `InCluster` is set to `False`.
         /// </summary>
         [Input("caFile")]
         public Input<string>? CaFile { get; set; }
@@ -391,6 +397,18 @@ namespace Twingate.Twingate
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
+        }
+
+        [Input("tagsAll")]
+        private InputMap<string>? _tagsAll;
+
+        /// <summary>
+        /// A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+        /// </summary>
+        public InputMap<string> TagsAll
+        {
+            get => _tagsAll ?? (_tagsAll = new InputMap<string>());
+            set => _tagsAll = value;
         }
 
         public TwingateKubernetesResourceState()

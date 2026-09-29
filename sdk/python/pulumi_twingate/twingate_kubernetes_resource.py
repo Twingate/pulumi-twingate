@@ -43,8 +43,8 @@ class TwingateKubernetesResourceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['TwingateKubernetesResourceAccessPolicyArgs']]] access_policies: Restrict access according to JIT access policy
         :param pulumi.Input[_builtins.str] address: The address of the Kubernetes Resource (IP or FQDN).
         :param pulumi.Input[_builtins.str] alias: Set a DNS alias address for the Resource. Must be a DNS-valid name string.
-        :param pulumi.Input[_builtins.str] bearer_token_file: Path to bearer token file.
-        :param pulumi.Input[_builtins.str] ca_file: Path to CA certificate file.
+        :param pulumi.Input[_builtins.str] bearer_token_file: Path to bearer token file. It's required when `in_cluster` is set to `false`.
+        :param pulumi.Input[_builtins.str] ca_file: Path to CA certificate file. It's required when `in_cluster` is set to `false`.
         :param pulumi.Input[_builtins.bool] in_cluster: Whether the Gateway is running inside the same Kubernetes cluster that is represented by the Kubernetes Resource. Default is `true`.
         :param pulumi.Input[_builtins.bool] is_visible: Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
         :param pulumi.Input[_builtins.str] name: The name of the Kubernetes Resource.
@@ -152,7 +152,7 @@ class TwingateKubernetesResourceArgs:
     @pulumi.getter(name="bearerTokenFile")
     def bearer_token_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Path to bearer token file.
+        Path to bearer token file. It's required when `in_cluster` is set to `false`.
         """
         return pulumi.get(self, "bearer_token_file")
 
@@ -164,7 +164,7 @@ class TwingateKubernetesResourceArgs:
     @pulumi.getter(name="caFile")
     def ca_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Path to CA certificate file.
+        Path to CA certificate file. It's required when `in_cluster` is set to `false`.
         """
         return pulumi.get(self, "ca_file")
 
@@ -248,7 +248,8 @@ class _TwingateKubernetesResourceState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tags_all: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering TwingateKubernetesResource resources.
 
@@ -256,8 +257,8 @@ class _TwingateKubernetesResourceState:
         :param pulumi.Input[Sequence[pulumi.Input['TwingateKubernetesResourceAccessPolicyArgs']]] access_policies: Restrict access according to JIT access policy
         :param pulumi.Input[_builtins.str] address: The address of the Kubernetes Resource (IP or FQDN).
         :param pulumi.Input[_builtins.str] alias: Set a DNS alias address for the Resource. Must be a DNS-valid name string.
-        :param pulumi.Input[_builtins.str] bearer_token_file: Path to bearer token file.
-        :param pulumi.Input[_builtins.str] ca_file: Path to CA certificate file.
+        :param pulumi.Input[_builtins.str] bearer_token_file: Path to bearer token file. It's required when `in_cluster` is set to `false`.
+        :param pulumi.Input[_builtins.str] ca_file: Path to CA certificate file. It's required when `in_cluster` is set to `false`.
         :param pulumi.Input[_builtins.str] gateway_id: The ID of the Gateway used to access this Kubernetes Resource.
         :param pulumi.Input[_builtins.bool] in_cluster: Whether the Gateway is running inside the same Kubernetes cluster that is represented by the Kubernetes Resource. Default is `true`.
         :param pulumi.Input[_builtins.bool] is_visible: Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
@@ -265,6 +266,7 @@ class _TwingateKubernetesResourceState:
         :param pulumi.Input[_builtins.str] remote_network_id: The ID of the Remote Network the Kubernetes Resource belongs to.
         :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of key-value pair tags to set on this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags_all: A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
         """
         if access_groups is not None:
             pulumi.set(__self__, "access_groups", access_groups)
@@ -292,6 +294,8 @@ class _TwingateKubernetesResourceState:
             pulumi.set(__self__, "security_policy_id", security_policy_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tags_all is not None:
+            pulumi.set(__self__, "tags_all", tags_all)
 
     @_builtins.property
     @pulumi.getter(name="accessGroups")
@@ -345,7 +349,7 @@ class _TwingateKubernetesResourceState:
     @pulumi.getter(name="bearerTokenFile")
     def bearer_token_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Path to bearer token file.
+        Path to bearer token file. It's required when `in_cluster` is set to `false`.
         """
         return pulumi.get(self, "bearer_token_file")
 
@@ -357,7 +361,7 @@ class _TwingateKubernetesResourceState:
     @pulumi.getter(name="caFile")
     def ca_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Path to CA certificate file.
+        Path to CA certificate file. It's required when `in_cluster` is set to `false`.
         """
         return pulumi.get(self, "ca_file")
 
@@ -449,6 +453,18 @@ class _TwingateKubernetesResourceState:
     def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
+    @_builtins.property
+    @pulumi.getter(name="tagsAll")
+    def tags_all(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+        """
+        return pulumi.get(self, "tags_all")
+
+    @tags_all.setter
+    def tags_all(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags_all", value)
+
 
 @pulumi.type_token("twingate:index/twingateKubernetesResource:TwingateKubernetesResource")
 class TwingateKubernetesResource(pulumi.CustomResource):
@@ -508,8 +524,8 @@ class TwingateKubernetesResource(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessPolicyArgs', 'TwingateKubernetesResourceAccessPolicyArgsDict', 'outputs.TwingateKubernetesResourceAccessPolicy']]]] access_policies: Restrict access according to JIT access policy
         :param pulumi.Input[_builtins.str] address: The address of the Kubernetes Resource (IP or FQDN).
         :param pulumi.Input[_builtins.str] alias: Set a DNS alias address for the Resource. Must be a DNS-valid name string.
-        :param pulumi.Input[_builtins.str] bearer_token_file: Path to bearer token file.
-        :param pulumi.Input[_builtins.str] ca_file: Path to CA certificate file.
+        :param pulumi.Input[_builtins.str] bearer_token_file: Path to bearer token file. It's required when `in_cluster` is set to `false`.
+        :param pulumi.Input[_builtins.str] ca_file: Path to CA certificate file. It's required when `in_cluster` is set to `false`.
         :param pulumi.Input[_builtins.str] gateway_id: The ID of the Gateway used to access this Kubernetes Resource.
         :param pulumi.Input[_builtins.bool] in_cluster: Whether the Gateway is running inside the same Kubernetes cluster that is represented by the Kubernetes Resource. Default is `true`.
         :param pulumi.Input[_builtins.bool] is_visible: Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
@@ -610,6 +626,7 @@ class TwingateKubernetesResource(pulumi.CustomResource):
             __props__.__dict__["remote_network_id"] = remote_network_id
             __props__.__dict__["security_policy_id"] = security_policy_id
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["tags_all"] = None
         super(TwingateKubernetesResource, __self__).__init__(
             'twingate:index/twingateKubernetesResource:TwingateKubernetesResource',
             resource_name,
@@ -632,7 +649,8 @@ class TwingateKubernetesResource(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
             security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
-            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'TwingateKubernetesResource':
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            tags_all: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'TwingateKubernetesResource':
         """
         Get an existing TwingateKubernetesResource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -644,8 +662,8 @@ class TwingateKubernetesResource(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['TwingateKubernetesResourceAccessPolicyArgs', 'TwingateKubernetesResourceAccessPolicyArgsDict', 'outputs.TwingateKubernetesResourceAccessPolicy']]]] access_policies: Restrict access according to JIT access policy
         :param pulumi.Input[_builtins.str] address: The address of the Kubernetes Resource (IP or FQDN).
         :param pulumi.Input[_builtins.str] alias: Set a DNS alias address for the Resource. Must be a DNS-valid name string.
-        :param pulumi.Input[_builtins.str] bearer_token_file: Path to bearer token file.
-        :param pulumi.Input[_builtins.str] ca_file: Path to CA certificate file.
+        :param pulumi.Input[_builtins.str] bearer_token_file: Path to bearer token file. It's required when `in_cluster` is set to `false`.
+        :param pulumi.Input[_builtins.str] ca_file: Path to CA certificate file. It's required when `in_cluster` is set to `false`.
         :param pulumi.Input[_builtins.str] gateway_id: The ID of the Gateway used to access this Kubernetes Resource.
         :param pulumi.Input[_builtins.bool] in_cluster: Whether the Gateway is running inside the same Kubernetes cluster that is represented by the Kubernetes Resource. Default is `true`.
         :param pulumi.Input[_builtins.bool] is_visible: Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
@@ -653,6 +671,7 @@ class TwingateKubernetesResource(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] remote_network_id: The ID of the Remote Network the Kubernetes Resource belongs to.
         :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of key-value pair tags to set on this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags_all: A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -671,6 +690,7 @@ class TwingateKubernetesResource(pulumi.CustomResource):
         __props__.__dict__["remote_network_id"] = remote_network_id
         __props__.__dict__["security_policy_id"] = security_policy_id
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["tags_all"] = tags_all
         return TwingateKubernetesResource(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -709,7 +729,7 @@ class TwingateKubernetesResource(pulumi.CustomResource):
     @pulumi.getter(name="bearerTokenFile")
     def bearer_token_file(self) -> pulumi.Output[_builtins.str]:
         """
-        Path to bearer token file.
+        Path to bearer token file. It's required when `in_cluster` is set to `false`.
         """
         return pulumi.get(self, "bearer_token_file")
 
@@ -717,7 +737,7 @@ class TwingateKubernetesResource(pulumi.CustomResource):
     @pulumi.getter(name="caFile")
     def ca_file(self) -> pulumi.Output[_builtins.str]:
         """
-        Path to CA certificate file.
+        Path to CA certificate file. It's required when `in_cluster` is set to `false`.
         """
         return pulumi.get(self, "ca_file")
 
@@ -776,4 +796,12 @@ class TwingateKubernetesResource(pulumi.CustomResource):
         A map of key-value pair tags to set on this resource.
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="tagsAll")
+    def tags_all(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+        """
+        return pulumi.get(self, "tags_all")
 

@@ -127,6 +127,12 @@ namespace Twingate.Twingate
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+        /// </summary>
+        [Output("tagsAll")]
+        public Output<ImmutableDictionary<string, string>> TagsAll { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a TwingateSSHResource resource with the given unique name, arguments, and options.
@@ -336,6 +342,18 @@ namespace Twingate.Twingate
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
+        }
+
+        [Input("tagsAll")]
+        private InputMap<string>? _tagsAll;
+
+        /// <summary>
+        /// A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+        /// </summary>
+        public InputMap<string> TagsAll
+        {
+            get => _tagsAll ?? (_tagsAll = new InputMap<string>());
+            set => _tagsAll = value;
         }
 
         public TwingateSSHResourceState()

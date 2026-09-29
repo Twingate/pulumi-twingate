@@ -196,7 +196,8 @@ class _TwingateSSHResourceState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tags_all: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering TwingateSSHResource resources.
 
@@ -210,6 +211,7 @@ class _TwingateSSHResourceState:
         :param pulumi.Input[_builtins.str] remote_network_id: The ID of the Remote Network the SSH Resource belongs to.
         :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of key-value pair tags to set on this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags_all: A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
         """
         if access_groups is not None:
             pulumi.set(__self__, "access_groups", access_groups)
@@ -231,6 +233,8 @@ class _TwingateSSHResourceState:
             pulumi.set(__self__, "security_policy_id", security_policy_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tags_all is not None:
+            pulumi.set(__self__, "tags_all", tags_all)
 
     @_builtins.property
     @pulumi.getter(name="accessGroups")
@@ -351,6 +355,18 @@ class _TwingateSSHResourceState:
     @tags.setter
     def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tagsAll")
+    def tags_all(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+        """
+        return pulumi.get(self, "tags_all")
+
+    @tags_all.setter
+    def tags_all(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags_all", value)
 
 
 @pulumi.type_token("twingate:index/twingateSSHResource:TwingateSSHResource")
@@ -501,6 +517,7 @@ class TwingateSSHResource(pulumi.CustomResource):
             __props__.__dict__["remote_network_id"] = remote_network_id
             __props__.__dict__["security_policy_id"] = security_policy_id
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["tags_all"] = None
         super(TwingateSSHResource, __self__).__init__(
             'twingate:index/twingateSSHResource:TwingateSSHResource',
             resource_name,
@@ -520,7 +537,8 @@ class TwingateSSHResource(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             remote_network_id: pulumi.Input[Optional[_builtins.str]] = None,
             security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
-            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'TwingateSSHResource':
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            tags_all: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'TwingateSSHResource':
         """
         Get an existing TwingateSSHResource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -538,6 +556,7 @@ class TwingateSSHResource(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] remote_network_id: The ID of the Remote Network the SSH Resource belongs to.
         :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of key-value pair tags to set on this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags_all: A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -553,6 +572,7 @@ class TwingateSSHResource(pulumi.CustomResource):
         __props__.__dict__["remote_network_id"] = remote_network_id
         __props__.__dict__["security_policy_id"] = security_policy_id
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["tags_all"] = tags_all
         return TwingateSSHResource(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -634,4 +654,12 @@ class TwingateSSHResource(pulumi.CustomResource):
         A map of key-value pair tags to set on this resource.
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="tagsAll")
+    def tags_all(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+        """
+        return pulumi.get(self, "tags_all")
 
