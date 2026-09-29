@@ -91,9 +91,9 @@ type TwingateKubernetesResource struct {
 	Address pulumi.StringOutput `pulumi:"address"`
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
 	Alias pulumi.StringPtrOutput `pulumi:"alias"`
-	// Path to bearer token file.
+	// Path to bearer token file. It's required when `inCluster` is set to `false`.
 	BearerTokenFile pulumi.StringOutput `pulumi:"bearerTokenFile"`
-	// Path to CA certificate file.
+	// Path to CA certificate file. It's required when `inCluster` is set to `false`.
 	CaFile pulumi.StringOutput `pulumi:"caFile"`
 	// The ID of the Gateway used to access this Kubernetes Resource.
 	GatewayId pulumi.StringOutput `pulumi:"gatewayId"`
@@ -109,6 +109,8 @@ type TwingateKubernetesResource struct {
 	SecurityPolicyId pulumi.StringOutput `pulumi:"securityPolicyId"`
 	// A map of key-value pair tags to set on this resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+	TagsAll pulumi.StringMapOutput `pulumi:"tagsAll"`
 }
 
 // NewTwingateKubernetesResource registers a new resource with the given unique name, arguments, and options.
@@ -155,9 +157,9 @@ type twingateKubernetesResourceState struct {
 	Address *string `pulumi:"address"`
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
 	Alias *string `pulumi:"alias"`
-	// Path to bearer token file.
+	// Path to bearer token file. It's required when `inCluster` is set to `false`.
 	BearerTokenFile *string `pulumi:"bearerTokenFile"`
-	// Path to CA certificate file.
+	// Path to CA certificate file. It's required when `inCluster` is set to `false`.
 	CaFile *string `pulumi:"caFile"`
 	// The ID of the Gateway used to access this Kubernetes Resource.
 	GatewayId *string `pulumi:"gatewayId"`
@@ -173,6 +175,8 @@ type twingateKubernetesResourceState struct {
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 	// A map of key-value pair tags to set on this resource.
 	Tags map[string]string `pulumi:"tags"`
+	// A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+	TagsAll map[string]string `pulumi:"tagsAll"`
 }
 
 type TwingateKubernetesResourceState struct {
@@ -184,9 +188,9 @@ type TwingateKubernetesResourceState struct {
 	Address pulumi.StringPtrInput
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
 	Alias pulumi.StringPtrInput
-	// Path to bearer token file.
+	// Path to bearer token file. It's required when `inCluster` is set to `false`.
 	BearerTokenFile pulumi.StringPtrInput
-	// Path to CA certificate file.
+	// Path to CA certificate file. It's required when `inCluster` is set to `false`.
 	CaFile pulumi.StringPtrInput
 	// The ID of the Gateway used to access this Kubernetes Resource.
 	GatewayId pulumi.StringPtrInput
@@ -202,6 +206,8 @@ type TwingateKubernetesResourceState struct {
 	SecurityPolicyId pulumi.StringPtrInput
 	// A map of key-value pair tags to set on this resource.
 	Tags pulumi.StringMapInput
+	// A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+	TagsAll pulumi.StringMapInput
 }
 
 func (TwingateKubernetesResourceState) ElementType() reflect.Type {
@@ -217,9 +223,9 @@ type twingateKubernetesResourceArgs struct {
 	Address *string `pulumi:"address"`
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
 	Alias *string `pulumi:"alias"`
-	// Path to bearer token file.
+	// Path to bearer token file. It's required when `inCluster` is set to `false`.
 	BearerTokenFile *string `pulumi:"bearerTokenFile"`
-	// Path to CA certificate file.
+	// Path to CA certificate file. It's required when `inCluster` is set to `false`.
 	CaFile *string `pulumi:"caFile"`
 	// The ID of the Gateway used to access this Kubernetes Resource.
 	GatewayId string `pulumi:"gatewayId"`
@@ -247,9 +253,9 @@ type TwingateKubernetesResourceArgs struct {
 	Address pulumi.StringPtrInput
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
 	Alias pulumi.StringPtrInput
-	// Path to bearer token file.
+	// Path to bearer token file. It's required when `inCluster` is set to `false`.
 	BearerTokenFile pulumi.StringPtrInput
-	// Path to CA certificate file.
+	// Path to CA certificate file. It's required when `inCluster` is set to `false`.
 	CaFile pulumi.StringPtrInput
 	// The ID of the Gateway used to access this Kubernetes Resource.
 	GatewayId pulumi.StringInput
@@ -378,12 +384,12 @@ func (o TwingateKubernetesResourceOutput) Alias() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TwingateKubernetesResource) pulumi.StringPtrOutput { return v.Alias }).(pulumi.StringPtrOutput)
 }
 
-// Path to bearer token file.
+// Path to bearer token file. It's required when `inCluster` is set to `false`.
 func (o TwingateKubernetesResourceOutput) BearerTokenFile() pulumi.StringOutput {
 	return o.ApplyT(func(v *TwingateKubernetesResource) pulumi.StringOutput { return v.BearerTokenFile }).(pulumi.StringOutput)
 }
 
-// Path to CA certificate file.
+// Path to CA certificate file. It's required when `inCluster` is set to `false`.
 func (o TwingateKubernetesResourceOutput) CaFile() pulumi.StringOutput {
 	return o.ApplyT(func(v *TwingateKubernetesResource) pulumi.StringOutput { return v.CaFile }).(pulumi.StringOutput)
 }
@@ -421,6 +427,11 @@ func (o TwingateKubernetesResourceOutput) SecurityPolicyId() pulumi.StringOutput
 // A map of key-value pair tags to set on this resource.
 func (o TwingateKubernetesResourceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *TwingateKubernetesResource) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+func (o TwingateKubernetesResourceOutput) TagsAll() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TwingateKubernetesResource) pulumi.StringMapOutput { return v.TagsAll }).(pulumi.StringMapOutput)
 }
 
 type TwingateKubernetesResourceArrayOutput struct{ *pulumi.OutputState }

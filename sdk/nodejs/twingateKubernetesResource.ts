@@ -88,11 +88,11 @@ export class TwingateKubernetesResource extends pulumi.CustomResource {
      */
     declare public readonly alias: pulumi.Output<string | undefined>;
     /**
-     * Path to bearer token file.
+     * Path to bearer token file. It's required when `inCluster` is set to `false`.
      */
     declare public readonly bearerTokenFile: pulumi.Output<string>;
     /**
-     * Path to CA certificate file.
+     * Path to CA certificate file. It's required when `inCluster` is set to `false`.
      */
     declare public readonly caFile: pulumi.Output<string>;
     /**
@@ -123,6 +123,10 @@ export class TwingateKubernetesResource extends pulumi.CustomResource {
      * A map of key-value pair tags to set on this resource.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string}>;
+    /**
+     * A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+     */
+    declare public /*out*/ readonly tagsAll: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a TwingateKubernetesResource resource with the given unique name, arguments, and options.
@@ -150,6 +154,7 @@ export class TwingateKubernetesResource extends pulumi.CustomResource {
             resourceInputs["remoteNetworkId"] = state?.remoteNetworkId;
             resourceInputs["securityPolicyId"] = state?.securityPolicyId;
             resourceInputs["tags"] = state?.tags;
+            resourceInputs["tagsAll"] = state?.tagsAll;
         } else {
             const args = argsOrState as TwingateKubernetesResourceArgs | undefined;
             if (args?.gatewayId === undefined && !opts.urn) {
@@ -171,6 +176,7 @@ export class TwingateKubernetesResource extends pulumi.CustomResource {
             resourceInputs["remoteNetworkId"] = args?.remoteNetworkId;
             resourceInputs["securityPolicyId"] = args?.securityPolicyId;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["tagsAll"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TwingateKubernetesResource.__pulumiType, name, resourceInputs, opts);
@@ -198,11 +204,11 @@ export interface TwingateKubernetesResourceState {
      */
     alias?: pulumi.Input<string | undefined>;
     /**
-     * Path to bearer token file.
+     * Path to bearer token file. It's required when `inCluster` is set to `false`.
      */
     bearerTokenFile?: pulumi.Input<string | undefined>;
     /**
-     * Path to CA certificate file.
+     * Path to CA certificate file. It's required when `inCluster` is set to `false`.
      */
     caFile?: pulumi.Input<string | undefined>;
     /**
@@ -233,6 +239,10 @@ export interface TwingateKubernetesResourceState {
      * A map of key-value pair tags to set on this resource.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+     */
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -256,11 +266,11 @@ export interface TwingateKubernetesResourceArgs {
      */
     alias?: pulumi.Input<string | undefined>;
     /**
-     * Path to bearer token file.
+     * Path to bearer token file. It's required when `inCluster` is set to `false`.
      */
     bearerTokenFile?: pulumi.Input<string | undefined>;
     /**
-     * Path to CA certificate file.
+     * Path to CA certificate file. It's required when `inCluster` is set to `false`.
      */
     caFile?: pulumi.Input<string | undefined>;
     /**

@@ -110,6 +110,10 @@ export class TwingateSSHResource extends pulumi.CustomResource {
      * A map of key-value pair tags to set on this resource.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string}>;
+    /**
+     * A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+     */
+    declare public /*out*/ readonly tagsAll: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a TwingateSSHResource resource with the given unique name, arguments, and options.
@@ -134,6 +138,7 @@ export class TwingateSSHResource extends pulumi.CustomResource {
             resourceInputs["remoteNetworkId"] = state?.remoteNetworkId;
             resourceInputs["securityPolicyId"] = state?.securityPolicyId;
             resourceInputs["tags"] = state?.tags;
+            resourceInputs["tagsAll"] = state?.tagsAll;
         } else {
             const args = argsOrState as TwingateSSHResourceArgs | undefined;
             if (args?.address === undefined && !opts.urn) {
@@ -155,6 +160,7 @@ export class TwingateSSHResource extends pulumi.CustomResource {
             resourceInputs["remoteNetworkId"] = args?.remoteNetworkId;
             resourceInputs["securityPolicyId"] = args?.securityPolicyId;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["tagsAll"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TwingateSSHResource.__pulumiType, name, resourceInputs, opts);
@@ -205,6 +211,10 @@ export interface TwingateSSHResourceState {
      * A map of key-value pair tags to set on this resource.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+     */
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**

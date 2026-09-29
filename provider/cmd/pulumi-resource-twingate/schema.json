@@ -2095,11 +2095,11 @@
                 },
                 "bearerTokenFile": {
                     "type": "string",
-                    "description": "Path to bearer token file.\n"
+                    "description": "Path to bearer token file. It's required when \u003cspan pulumi-lang-nodejs=\"`inCluster`\" pulumi-lang-dotnet=\"`InCluster`\" pulumi-lang-go=\"`inCluster`\" pulumi-lang-python=\"`in_cluster`\" pulumi-lang-yaml=\"`inCluster`\" pulumi-lang-java=\"`inCluster`\" pulumi-lang-hcl=\"`in_cluster`\"\u003e`inCluster`\u003c/span\u003e is set to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
                 },
                 "caFile": {
                     "type": "string",
-                    "description": "Path to CA certificate file.\n"
+                    "description": "Path to CA certificate file. It's required when \u003cspan pulumi-lang-nodejs=\"`inCluster`\" pulumi-lang-dotnet=\"`InCluster`\" pulumi-lang-go=\"`inCluster`\" pulumi-lang-python=\"`in_cluster`\" pulumi-lang-yaml=\"`inCluster`\" pulumi-lang-java=\"`inCluster`\" pulumi-lang-hcl=\"`in_cluster`\"\u003e`inCluster`\u003c/span\u003e is set to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
                 },
                 "gatewayId": {
                     "type": "string",
@@ -2131,6 +2131,13 @@
                         "type": "string"
                     },
                     "description": "A map of key-value pair tags to set on this resource.\n"
+                },
+                "tagsAll": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.\n"
                 }
             },
             "required": [
@@ -2143,7 +2150,8 @@
                 "name",
                 "remoteNetworkId",
                 "securityPolicyId",
-                "tags"
+                "tags",
+                "tagsAll"
             ],
             "inputProperties": {
                 "accessGroups": {
@@ -2170,11 +2178,11 @@
                 },
                 "bearerTokenFile": {
                     "type": "string",
-                    "description": "Path to bearer token file.\n"
+                    "description": "Path to bearer token file. It's required when \u003cspan pulumi-lang-nodejs=\"`inCluster`\" pulumi-lang-dotnet=\"`InCluster`\" pulumi-lang-go=\"`inCluster`\" pulumi-lang-python=\"`in_cluster`\" pulumi-lang-yaml=\"`inCluster`\" pulumi-lang-java=\"`inCluster`\" pulumi-lang-hcl=\"`in_cluster`\"\u003e`inCluster`\u003c/span\u003e is set to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
                 },
                 "caFile": {
                     "type": "string",
-                    "description": "Path to CA certificate file.\n"
+                    "description": "Path to CA certificate file. It's required when \u003cspan pulumi-lang-nodejs=\"`inCluster`\" pulumi-lang-dotnet=\"`InCluster`\" pulumi-lang-go=\"`inCluster`\" pulumi-lang-python=\"`in_cluster`\" pulumi-lang-yaml=\"`inCluster`\" pulumi-lang-java=\"`inCluster`\" pulumi-lang-hcl=\"`in_cluster`\"\u003e`inCluster`\u003c/span\u003e is set to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
                 },
                 "gatewayId": {
                     "type": "string",
@@ -2239,11 +2247,11 @@
                     },
                     "bearerTokenFile": {
                         "type": "string",
-                        "description": "Path to bearer token file.\n"
+                        "description": "Path to bearer token file. It's required when \u003cspan pulumi-lang-nodejs=\"`inCluster`\" pulumi-lang-dotnet=\"`InCluster`\" pulumi-lang-go=\"`inCluster`\" pulumi-lang-python=\"`in_cluster`\" pulumi-lang-yaml=\"`inCluster`\" pulumi-lang-java=\"`inCluster`\" pulumi-lang-hcl=\"`in_cluster`\"\u003e`inCluster`\u003c/span\u003e is set to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
                     },
                     "caFile": {
                         "type": "string",
-                        "description": "Path to CA certificate file.\n"
+                        "description": "Path to CA certificate file. It's required when \u003cspan pulumi-lang-nodejs=\"`inCluster`\" pulumi-lang-dotnet=\"`InCluster`\" pulumi-lang-go=\"`inCluster`\" pulumi-lang-python=\"`in_cluster`\" pulumi-lang-yaml=\"`inCluster`\" pulumi-lang-java=\"`inCluster`\" pulumi-lang-hcl=\"`in_cluster`\"\u003e`inCluster`\u003c/span\u003e is set to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
                     },
                     "gatewayId": {
                         "type": "string",
@@ -2275,6 +2283,13 @@
                             "type": "string"
                         },
                         "description": "A map of key-value pair tags to set on this resource.\n"
+                    },
+                    "tagsAll": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.\n"
                     }
                 },
                 "type": "object"
@@ -2699,6 +2714,13 @@
                         "type": "string"
                     },
                     "description": "A map of key-value pair tags to set on this resource.\n"
+                },
+                "tagsAll": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.\n"
                 }
             },
             "required": [
@@ -2708,7 +2730,8 @@
                 "name",
                 "remoteNetworkId",
                 "securityPolicyId",
-                "tags"
+                "tags",
+                "tagsAll"
             ],
             "inputProperties": {
                 "accessGroups": {
@@ -2817,6 +2840,13 @@
                             "type": "string"
                         },
                         "description": "A map of key-value pair tags to set on this resource.\n"
+                    },
+                    "tagsAll": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.\n"
                     }
                 },
                 "type": "object"
@@ -3098,6 +3128,13 @@
                     },
                     "description": "A map of key-value pair tags to set on this resource.\n"
                 },
+                "tagsAll": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.\n"
+                },
                 "upstream": {
                     "$ref": "#/types/twingate:index/TwingateWebAppResourceUpstream:TwingateWebAppResourceUpstream",
                     "description": "The upstream configuration. The connection between the Gateway and the upstream resource.\n"
@@ -3112,6 +3149,7 @@
                 "remoteNetworkId",
                 "securityPolicyId",
                 "tags",
+                "tagsAll",
                 "upstream"
             ],
             "inputProperties": {
@@ -3249,6 +3287,13 @@
                             "type": "string"
                         },
                         "description": "A map of key-value pair tags to set on this resource.\n"
+                    },
+                    "tagsAll": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.\n"
                     },
                     "upstream": {
                         "$ref": "#/types/twingate:index/TwingateWebAppResourceUpstream:TwingateWebAppResourceUpstream",

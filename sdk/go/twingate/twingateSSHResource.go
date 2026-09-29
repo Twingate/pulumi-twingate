@@ -102,6 +102,8 @@ type TwingateSSHResource struct {
 	SecurityPolicyId pulumi.StringOutput `pulumi:"securityPolicyId"`
 	// A map of key-value pair tags to set on this resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+	TagsAll pulumi.StringMapOutput `pulumi:"tagsAll"`
 }
 
 // NewTwingateSSHResource registers a new resource with the given unique name, arguments, and options.
@@ -163,6 +165,8 @@ type twingateSSHResourceState struct {
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 	// A map of key-value pair tags to set on this resource.
 	Tags map[string]string `pulumi:"tags"`
+	// A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+	TagsAll map[string]string `pulumi:"tagsAll"`
 }
 
 type TwingateSSHResourceState struct {
@@ -186,6 +190,8 @@ type TwingateSSHResourceState struct {
 	SecurityPolicyId pulumi.StringPtrInput
 	// A map of key-value pair tags to set on this resource.
 	Tags pulumi.StringMapInput
+	// A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+	TagsAll pulumi.StringMapInput
 }
 
 func (TwingateSSHResourceState) ElementType() reflect.Type {
@@ -374,6 +380,11 @@ func (o TwingateSSHResourceOutput) SecurityPolicyId() pulumi.StringOutput {
 // A map of key-value pair tags to set on this resource.
 func (o TwingateSSHResourceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *TwingateSSHResource) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+func (o TwingateSSHResourceOutput) TagsAll() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TwingateSSHResource) pulumi.StringMapOutput { return v.TagsAll }).(pulumi.StringMapOutput)
 }
 
 type TwingateSSHResourceArrayOutput struct{ *pulumi.OutputState }

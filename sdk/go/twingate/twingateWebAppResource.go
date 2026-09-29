@@ -107,6 +107,8 @@ type TwingateWebAppResource struct {
 	SecurityPolicyId pulumi.StringOutput `pulumi:"securityPolicyId"`
 	// A map of key-value pair tags to set on this resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+	TagsAll pulumi.StringMapOutput `pulumi:"tagsAll"`
 	// The upstream configuration. The connection between the Gateway and the upstream resource.
 	Upstream TwingateWebAppResourceUpstreamOutput `pulumi:"upstream"`
 }
@@ -180,6 +182,8 @@ type twingateWebAppResourceState struct {
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 	// A map of key-value pair tags to set on this resource.
 	Tags map[string]string `pulumi:"tags"`
+	// A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+	TagsAll map[string]string `pulumi:"tagsAll"`
 	// The upstream configuration. The connection between the Gateway and the upstream resource.
 	Upstream *TwingateWebAppResourceUpstream `pulumi:"upstream"`
 }
@@ -209,6 +213,8 @@ type TwingateWebAppResourceState struct {
 	SecurityPolicyId pulumi.StringPtrInput
 	// A map of key-value pair tags to set on this resource.
 	Tags pulumi.StringMapInput
+	// A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+	TagsAll pulumi.StringMapInput
 	// The upstream configuration. The connection between the Gateway and the upstream resource.
 	Upstream TwingateWebAppResourceUpstreamPtrInput
 }
@@ -421,6 +427,11 @@ func (o TwingateWebAppResourceOutput) SecurityPolicyId() pulumi.StringOutput {
 // A map of key-value pair tags to set on this resource.
 func (o TwingateWebAppResourceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *TwingateWebAppResource) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+func (o TwingateWebAppResourceOutput) TagsAll() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TwingateWebAppResource) pulumi.StringMapOutput { return v.TagsAll }).(pulumi.StringMapOutput)
 }
 
 // The upstream configuration. The connection between the Gateway and the upstream resource.

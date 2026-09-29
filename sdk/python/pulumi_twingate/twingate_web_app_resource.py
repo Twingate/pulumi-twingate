@@ -245,6 +245,7 @@ class _TwingateWebAppResourceState:
                  request_header_rewrites: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tags_all: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  upstream: pulumi.Input[Optional['TwingateWebAppResourceUpstreamArgs']] = None):
         """
         Input properties used for looking up and filtering TwingateWebAppResource resources.
@@ -261,6 +262,7 @@ class _TwingateWebAppResourceState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] request_header_rewrites: A map of HTTP headers to rewrite on requests forwarded to the upstream resource. Header names are compared case-insensitively.
         :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of key-value pair tags to set on this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags_all: A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
         :param pulumi.Input['TwingateWebAppResourceUpstreamArgs'] upstream: The upstream configuration. The connection between the Gateway and the upstream resource.
         """
         if access_groups is not None:
@@ -287,6 +289,8 @@ class _TwingateWebAppResourceState:
             pulumi.set(__self__, "security_policy_id", security_policy_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tags_all is not None:
+            pulumi.set(__self__, "tags_all", tags_all)
         if upstream is not None:
             pulumi.set(__self__, "upstream", upstream)
 
@@ -433,6 +437,18 @@ class _TwingateWebAppResourceState:
     @tags.setter
     def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tagsAll")
+    def tags_all(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+        """
+        return pulumi.get(self, "tags_all")
+
+    @tags_all.setter
+    def tags_all(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags_all", value)
 
     @_builtins.property
     @pulumi.getter
@@ -621,6 +637,7 @@ class TwingateWebAppResource(pulumi.CustomResource):
             if upstream is None and not opts.urn:
                 raise TypeError("Missing required property 'upstream'")
             __props__.__dict__["upstream"] = upstream
+            __props__.__dict__["tags_all"] = None
         super(TwingateWebAppResource, __self__).__init__(
             'twingate:index/twingateWebAppResource:TwingateWebAppResource',
             resource_name,
@@ -643,6 +660,7 @@ class TwingateWebAppResource(pulumi.CustomResource):
             request_header_rewrites: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            tags_all: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             upstream: pulumi.Input[Optional[Union['TwingateWebAppResourceUpstreamArgs', 'TwingateWebAppResourceUpstreamArgsDict', 'outputs.TwingateWebAppResourceUpstream']]] = None) -> 'TwingateWebAppResource':
         """
         Get an existing TwingateWebAppResource resource's state with the given name, id, and optional extra
@@ -663,6 +681,7 @@ class TwingateWebAppResource(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] request_header_rewrites: A map of HTTP headers to rewrite on requests forwarded to the upstream resource. Header names are compared case-insensitively.
         :param pulumi.Input[_builtins.str] security_policy_id: The ID of a `get_twingate_security_policy` to set as this Resource's Security Policy. Default is 'Null' which points to `Default Policy` on Admin console.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of key-value pair tags to set on this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags_all: A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
         :param pulumi.Input[Union['TwingateWebAppResourceUpstreamArgs', 'TwingateWebAppResourceUpstreamArgsDict', 'outputs.TwingateWebAppResourceUpstream']] upstream: The upstream configuration. The connection between the Gateway and the upstream resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -681,6 +700,7 @@ class TwingateWebAppResource(pulumi.CustomResource):
         __props__.__dict__["request_header_rewrites"] = request_header_rewrites
         __props__.__dict__["security_policy_id"] = security_policy_id
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["tags_all"] = tags_all
         __props__.__dict__["upstream"] = upstream
         return TwingateWebAppResource(resource_name, opts=opts, __props__=__props__)
 
@@ -779,6 +799,14 @@ class TwingateWebAppResource(pulumi.CustomResource):
         A map of key-value pair tags to set on this resource.
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="tagsAll")
+    def tags_all(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+        """
+        return pulumi.get(self, "tags_all")
 
     @_builtins.property
     @pulumi.getter

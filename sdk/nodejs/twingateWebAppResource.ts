@@ -123,6 +123,10 @@ export class TwingateWebAppResource extends pulumi.CustomResource {
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     /**
+     * A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+     */
+    declare public /*out*/ readonly tagsAll: pulumi.Output<{[key: string]: string}>;
+    /**
      * The upstream configuration. The connection between the Gateway and the upstream resource.
      */
     declare public readonly upstream: pulumi.Output<outputs.TwingateWebAppResourceUpstream>;
@@ -152,6 +156,7 @@ export class TwingateWebAppResource extends pulumi.CustomResource {
             resourceInputs["requestHeaderRewrites"] = state?.requestHeaderRewrites;
             resourceInputs["securityPolicyId"] = state?.securityPolicyId;
             resourceInputs["tags"] = state?.tags;
+            resourceInputs["tagsAll"] = state?.tagsAll;
             resourceInputs["upstream"] = state?.upstream;
         } else {
             const args = argsOrState as TwingateWebAppResourceArgs | undefined;
@@ -183,6 +188,7 @@ export class TwingateWebAppResource extends pulumi.CustomResource {
             resourceInputs["securityPolicyId"] = args?.securityPolicyId;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["upstream"] = args?.upstream;
+            resourceInputs["tagsAll"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TwingateWebAppResource.__pulumiType, name, resourceInputs, opts);
@@ -241,6 +247,10 @@ export interface TwingateWebAppResourceState {
      * A map of key-value pair tags to set on this resource.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
+     */
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The upstream configuration. The connection between the Gateway and the upstream resource.
      */
