@@ -39,6 +39,12 @@ import * as utilities from "./utilities";
  *     alias: "test.int",
  *     remoteNetworkId: prod.id,
  *     address: "10.128.0.105",
+ *     downstream: {
+ *         port: 2222,
+ *     },
+ *     upstream: {
+ *         port: 22,
+ *     },
  * });
  * ```
  */
@@ -87,6 +93,10 @@ export class TwingateSSHResource extends pulumi.CustomResource {
      */
     declare public readonly alias: pulumi.Output<string | undefined>;
     /**
+     * The downstream configuration. The connection between the SSH client and the Gateway.
+     */
+    declare public readonly downstream: pulumi.Output<outputs.TwingateSSHResourceDownstream>;
+    /**
      * The ID of the Gateway used to access this SSH Resource.
      */
     declare public readonly gatewayId: pulumi.Output<string>;
@@ -114,6 +124,10 @@ export class TwingateSSHResource extends pulumi.CustomResource {
      * A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
      */
     declare public /*out*/ readonly tagsAll: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The upstream configuration. The connection between the Gateway and the SSH server.
+     */
+    declare public readonly upstream: pulumi.Output<outputs.TwingateSSHResourceUpstream>;
 
     /**
      * Create a TwingateSSHResource resource with the given unique name, arguments, and options.
@@ -132,6 +146,7 @@ export class TwingateSSHResource extends pulumi.CustomResource {
             resourceInputs["accessPolicies"] = state?.accessPolicies;
             resourceInputs["address"] = state?.address;
             resourceInputs["alias"] = state?.alias;
+            resourceInputs["downstream"] = state?.downstream;
             resourceInputs["gatewayId"] = state?.gatewayId;
             resourceInputs["isVisible"] = state?.isVisible;
             resourceInputs["name"] = state?.name;
@@ -139,6 +154,7 @@ export class TwingateSSHResource extends pulumi.CustomResource {
             resourceInputs["securityPolicyId"] = state?.securityPolicyId;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["tagsAll"] = state?.tagsAll;
+            resourceInputs["upstream"] = state?.upstream;
         } else {
             const args = argsOrState as TwingateSSHResourceArgs | undefined;
             if (args?.address === undefined && !opts.urn) {
@@ -154,12 +170,14 @@ export class TwingateSSHResource extends pulumi.CustomResource {
             resourceInputs["accessPolicies"] = args?.accessPolicies;
             resourceInputs["address"] = args?.address;
             resourceInputs["alias"] = args?.alias;
+            resourceInputs["downstream"] = args?.downstream;
             resourceInputs["gatewayId"] = args?.gatewayId;
             resourceInputs["isVisible"] = args?.isVisible;
             resourceInputs["name"] = args?.name;
             resourceInputs["remoteNetworkId"] = args?.remoteNetworkId;
             resourceInputs["securityPolicyId"] = args?.securityPolicyId;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["upstream"] = args?.upstream;
             resourceInputs["tagsAll"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -188,6 +206,10 @@ export interface TwingateSSHResourceState {
      */
     alias?: pulumi.Input<string | undefined>;
     /**
+     * The downstream configuration. The connection between the SSH client and the Gateway.
+     */
+    downstream?: pulumi.Input<inputs.TwingateSSHResourceDownstream | undefined>;
+    /**
      * The ID of the Gateway used to access this SSH Resource.
      */
     gatewayId?: pulumi.Input<string | undefined>;
@@ -215,6 +237,10 @@ export interface TwingateSSHResourceState {
      * A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
      */
     tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * The upstream configuration. The connection between the Gateway and the SSH server.
+     */
+    upstream?: pulumi.Input<inputs.TwingateSSHResourceUpstream | undefined>;
 }
 
 /**
@@ -237,6 +263,10 @@ export interface TwingateSSHResourceArgs {
      * Set a DNS alias address for the Resource. Must be a DNS-valid name string.
      */
     alias?: pulumi.Input<string | undefined>;
+    /**
+     * The downstream configuration. The connection between the SSH client and the Gateway.
+     */
+    downstream?: pulumi.Input<inputs.TwingateSSHResourceDownstream | undefined>;
     /**
      * The ID of the Gateway used to access this SSH Resource.
      */
@@ -261,4 +291,8 @@ export interface TwingateSSHResourceArgs {
      * A map of key-value pair tags to set on this resource.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * The upstream configuration. The connection between the Gateway and the SSH server.
+     */
+    upstream?: pulumi.Input<inputs.TwingateSSHResourceUpstream | undefined>;
 }

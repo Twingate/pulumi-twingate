@@ -59,6 +59,14 @@ namespace Twingate.Twingate
     ///         Alias = "test.int",
     ///         RemoteNetworkId = prod.Id,
     ///         Address = "10.128.0.105",
+    ///         Downstream = new Twingate.Inputs.TwingateSSHResourceDownstreamArgs
+    ///         {
+    ///             Port = 2222,
+    ///         },
+    ///         Upstream = new Twingate.Inputs.TwingateSSHResourceUpstreamArgs
+    ///         {
+    ///             Port = 22,
+    ///         },
     ///     });
     /// 
     /// });
@@ -90,6 +98,12 @@ namespace Twingate.Twingate
         /// </summary>
         [Output("alias")]
         public Output<string?> Alias { get; private set; } = null!;
+
+        /// <summary>
+        /// The downstream configuration. The connection between the SSH client and the Gateway.
+        /// </summary>
+        [Output("downstream")]
+        public Output<Outputs.TwingateSSHResourceDownstream> Downstream { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the Gateway used to access this SSH Resource.
@@ -132,6 +146,12 @@ namespace Twingate.Twingate
         /// </summary>
         [Output("tagsAll")]
         public Output<ImmutableDictionary<string, string>> TagsAll { get; private set; } = null!;
+
+        /// <summary>
+        /// The upstream configuration. The connection between the Gateway and the SSH server.
+        /// </summary>
+        [Output("upstream")]
+        public Output<Outputs.TwingateSSHResourceUpstream> Upstream { get; private set; } = null!;
 
 
         /// <summary>
@@ -217,6 +237,12 @@ namespace Twingate.Twingate
         public Input<string>? Alias { get; set; }
 
         /// <summary>
+        /// The downstream configuration. The connection between the SSH client and the Gateway.
+        /// </summary>
+        [Input("downstream")]
+        public Input<Inputs.TwingateSSHResourceDownstreamArgs>? Downstream { get; set; }
+
+        /// <summary>
         /// The ID of the Gateway used to access this SSH Resource.
         /// </summary>
         [Input("gatewayId", required: true)]
@@ -257,6 +283,12 @@ namespace Twingate.Twingate
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// The upstream configuration. The connection between the Gateway and the SSH server.
+        /// </summary>
+        [Input("upstream")]
+        public Input<Inputs.TwingateSSHResourceUpstreamArgs>? Upstream { get; set; }
 
         public TwingateSSHResourceArgs()
         {
@@ -301,6 +333,12 @@ namespace Twingate.Twingate
         /// </summary>
         [Input("alias")]
         public Input<string>? Alias { get; set; }
+
+        /// <summary>
+        /// The downstream configuration. The connection between the SSH client and the Gateway.
+        /// </summary>
+        [Input("downstream")]
+        public Input<Inputs.TwingateSSHResourceDownstreamGetArgs>? Downstream { get; set; }
 
         /// <summary>
         /// The ID of the Gateway used to access this SSH Resource.
@@ -355,6 +393,12 @@ namespace Twingate.Twingate
             get => _tagsAll ?? (_tagsAll = new InputMap<string>());
             set => _tagsAll = value;
         }
+
+        /// <summary>
+        /// The upstream configuration. The connection between the Gateway and the SSH server.
+        /// </summary>
+        [Input("upstream")]
+        public Input<Inputs.TwingateSSHResourceUpstreamGetArgs>? Upstream { get; set; }
 
         public TwingateSSHResourceState()
         {

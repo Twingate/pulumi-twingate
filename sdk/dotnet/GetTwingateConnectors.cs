@@ -106,6 +106,18 @@ namespace Twingate.Twingate
         [Input("nameExclude")]
         public string? NameExclude { get; set; }
 
+        [Input("nameIns")]
+        private List<string>? _nameIns;
+
+        /// <summary>
+        /// Returns only connectors that exactly match one of the names in the list.
+        /// </summary>
+        public List<string> NameIns
+        {
+            get => _nameIns ?? (_nameIns = new List<string>());
+            set => _nameIns = value;
+        }
+
         /// <summary>
         /// The name of the connector must start with the value.
         /// </summary>
@@ -149,6 +161,18 @@ namespace Twingate.Twingate
         /// </summary>
         [Input("nameExclude")]
         public Input<string>? NameExclude { get; set; }
+
+        [Input("nameIns")]
+        private InputList<string>? _nameIns;
+
+        /// <summary>
+        /// Returns only connectors that exactly match one of the names in the list.
+        /// </summary>
+        public InputList<string> NameIns
+        {
+            get => _nameIns ?? (_nameIns = new InputList<string>());
+            set => _nameIns = value;
+        }
 
         /// <summary>
         /// The name of the connector must start with the value.
@@ -199,6 +223,10 @@ namespace Twingate.Twingate
         /// </summary>
         public readonly string? NameExclude;
         /// <summary>
+        /// Returns only connectors that exactly match one of the names in the list.
+        /// </summary>
+        public readonly ImmutableArray<string> NameIns;
+        /// <summary>
         /// The name of the connector must start with the value.
         /// </summary>
         public readonly string? NamePrefix;
@@ -223,6 +251,8 @@ namespace Twingate.Twingate
 
             string? nameExclude,
 
+            ImmutableArray<string> nameIns,
+
             string? namePrefix,
 
             string? nameRegexp,
@@ -234,6 +264,7 @@ namespace Twingate.Twingate
             Name = name;
             NameContains = nameContains;
             NameExclude = nameExclude;
+            NameIns = nameIns;
             NamePrefix = namePrefix;
             NameRegexp = nameRegexp;
             NameSuffix = nameSuffix;

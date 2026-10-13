@@ -16,11 +16,11 @@ var _ = internal.GetEnvOrDefault
 type Cache struct {
 	// Specifies whether the provider should cache groups. The default value is `true`.
 	GroupsEnabled *bool `pulumi:"groupsEnabled"`
-	// Specifies the filter for the groups to be cached.
+	// Specifies the filter for the groups to be cached. This filter also scopes what the `getTwingateGroups` datasource can return: lookups are answered from the cache when any cached group matches, so groups excluded by this filter are not returned.
 	GroupsFilter *CacheGroupsFilter `pulumi:"groupsFilter"`
 	// Specifies whether the provider should cache resources. The default value is `true`.
 	ResourceEnabled *bool `pulumi:"resourceEnabled"`
-	// Specifies the filter for the resources to be cached.
+	// Specifies the filter for the resources to be cached. This filter also scopes what the `getTwingateResources` datasource can return: lookups are answered from the cache when any cached resource matches, so resources excluded by this filter are not returned.
 	ResourcesFilter *CacheResourcesFilter `pulumi:"resourcesFilter"`
 }
 
@@ -38,11 +38,11 @@ type CacheInput interface {
 type CacheArgs struct {
 	// Specifies whether the provider should cache groups. The default value is `true`.
 	GroupsEnabled pulumi.BoolPtrInput `pulumi:"groupsEnabled"`
-	// Specifies the filter for the groups to be cached.
+	// Specifies the filter for the groups to be cached. This filter also scopes what the `getTwingateGroups` datasource can return: lookups are answered from the cache when any cached group matches, so groups excluded by this filter are not returned.
 	GroupsFilter CacheGroupsFilterPtrInput `pulumi:"groupsFilter"`
 	// Specifies whether the provider should cache resources. The default value is `true`.
 	ResourceEnabled pulumi.BoolPtrInput `pulumi:"resourceEnabled"`
-	// Specifies the filter for the resources to be cached.
+	// Specifies the filter for the resources to be cached. This filter also scopes what the `getTwingateResources` datasource can return: lookups are answered from the cache when any cached resource matches, so resources excluded by this filter are not returned.
 	ResourcesFilter CacheResourcesFilterPtrInput `pulumi:"resourcesFilter"`
 }
 
@@ -77,7 +77,7 @@ func (o CacheOutput) GroupsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Cache) *bool { return v.GroupsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the filter for the groups to be cached.
+// Specifies the filter for the groups to be cached. This filter also scopes what the `getTwingateGroups` datasource can return: lookups are answered from the cache when any cached group matches, so groups excluded by this filter are not returned.
 func (o CacheOutput) GroupsFilter() CacheGroupsFilterPtrOutput {
 	return o.ApplyT(func(v Cache) *CacheGroupsFilter { return v.GroupsFilter }).(CacheGroupsFilterPtrOutput)
 }
@@ -87,7 +87,7 @@ func (o CacheOutput) ResourceEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Cache) *bool { return v.ResourceEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the filter for the resources to be cached.
+// Specifies the filter for the resources to be cached. This filter also scopes what the `getTwingateResources` datasource can return: lookups are answered from the cache when any cached resource matches, so resources excluded by this filter are not returned.
 func (o CacheOutput) ResourcesFilter() CacheResourcesFilterPtrOutput {
 	return o.ApplyT(func(v Cache) *CacheResourcesFilter { return v.ResourcesFilter }).(CacheResourcesFilterPtrOutput)
 }

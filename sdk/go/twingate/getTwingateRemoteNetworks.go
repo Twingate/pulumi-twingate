@@ -56,6 +56,8 @@ type GetTwingateRemoteNetworksArgs struct {
 	NameContains *string `pulumi:"nameContains"`
 	// Match when the exact value does not exist in the name of the remote network.
 	NameExclude *string `pulumi:"nameExclude"`
+	// Returns only remote networks that exactly match one of the names in the list.
+	NameIns []string `pulumi:"nameIns"`
 	// The name of the remote network must start with the value.
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The regular expression match of the name of the remote network.
@@ -74,6 +76,8 @@ type GetTwingateRemoteNetworksResult struct {
 	NameContains *string `pulumi:"nameContains"`
 	// Match when the exact value does not exist in the name of the remote network.
 	NameExclude *string `pulumi:"nameExclude"`
+	// Returns only remote networks that exactly match one of the names in the list.
+	NameIns []string `pulumi:"nameIns"`
 	// The name of the remote network must start with the value.
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The regular expression match of the name of the remote network.
@@ -97,6 +101,8 @@ type GetTwingateRemoteNetworksOutputArgs struct {
 	NameContains pulumi.StringPtrInput `pulumi:"nameContains"`
 	// Match when the exact value does not exist in the name of the remote network.
 	NameExclude pulumi.StringPtrInput `pulumi:"nameExclude"`
+	// Returns only remote networks that exactly match one of the names in the list.
+	NameIns pulumi.StringArrayInput `pulumi:"nameIns"`
 	// The name of the remote network must start with the value.
 	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
 	// The regular expression match of the name of the remote network.
@@ -142,6 +148,11 @@ func (o GetTwingateRemoteNetworksResultOutput) NameContains() pulumi.StringPtrOu
 // Match when the exact value does not exist in the name of the remote network.
 func (o GetTwingateRemoteNetworksResultOutput) NameExclude() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTwingateRemoteNetworksResult) *string { return v.NameExclude }).(pulumi.StringPtrOutput)
+}
+
+// Returns only remote networks that exactly match one of the names in the list.
+func (o GetTwingateRemoteNetworksResultOutput) NameIns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTwingateRemoteNetworksResult) []string { return v.NameIns }).(pulumi.StringArrayOutput)
 }
 
 // The name of the remote network must start with the value.

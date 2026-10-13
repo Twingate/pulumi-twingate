@@ -59,6 +59,10 @@ __all__ = [
     'TwingateSSHResourceAccessGroupAccessPolicyArgsDict',
     'TwingateSSHResourceAccessPolicyArgs',
     'TwingateSSHResourceAccessPolicyArgsDict',
+    'TwingateSSHResourceDownstreamArgs',
+    'TwingateSSHResourceDownstreamArgsDict',
+    'TwingateSSHResourceUpstreamArgs',
+    'TwingateSSHResourceUpstreamArgsDict',
     'TwingateWebAppResourceAccessGroupArgs',
     'TwingateWebAppResourceAccessGroupArgsDict',
     'TwingateWebAppResourceAccessGroupAccessPolicyArgs',
@@ -94,7 +98,7 @@ class ProviderCacheArgsDict(TypedDict):
     """
     groups_filter: NotRequired[pulumi.Input[Optional['ProviderCacheGroupsFilterArgsDict']]]
     """
-    Specifies the filter for the groups to be cached.
+    Specifies the filter for the groups to be cached. This filter also scopes what the `get_twingate_groups` datasource can return: lookups are answered from the cache when any cached group matches, so groups excluded by this filter are not returned.
     """
     resource_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -102,7 +106,7 @@ class ProviderCacheArgsDict(TypedDict):
     """
     resources_filter: NotRequired[pulumi.Input[Optional['ProviderCacheResourcesFilterArgsDict']]]
     """
-    Specifies the filter for the resources to be cached.
+    Specifies the filter for the resources to be cached. This filter also scopes what the `get_twingate_resources` datasource can return: lookups are answered from the cache when any cached resource matches, so resources excluded by this filter are not returned.
     """
 
 @pulumi.input_type
@@ -114,9 +118,9 @@ class ProviderCacheArgs:
                  resources_filter: pulumi.Input[Optional['ProviderCacheResourcesFilterArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] groups_enabled: Specifies whether the provider should cache groups. The default value is `true`.
-        :param pulumi.Input['ProviderCacheGroupsFilterArgs'] groups_filter: Specifies the filter for the groups to be cached.
+        :param pulumi.Input['ProviderCacheGroupsFilterArgs'] groups_filter: Specifies the filter for the groups to be cached. This filter also scopes what the `get_twingate_groups` datasource can return: lookups are answered from the cache when any cached group matches, so groups excluded by this filter are not returned.
         :param pulumi.Input[_builtins.bool] resource_enabled: Specifies whether the provider should cache resources. The default value is `true`.
-        :param pulumi.Input['ProviderCacheResourcesFilterArgs'] resources_filter: Specifies the filter for the resources to be cached.
+        :param pulumi.Input['ProviderCacheResourcesFilterArgs'] resources_filter: Specifies the filter for the resources to be cached. This filter also scopes what the `get_twingate_resources` datasource can return: lookups are answered from the cache when any cached resource matches, so resources excluded by this filter are not returned.
         """
         if groups_enabled is not None:
             pulumi.set(__self__, "groups_enabled", groups_enabled)
@@ -143,7 +147,7 @@ class ProviderCacheArgs:
     @pulumi.getter(name="groupsFilter")
     def groups_filter(self) -> pulumi.Input[Optional['ProviderCacheGroupsFilterArgs']]:
         """
-        Specifies the filter for the groups to be cached.
+        Specifies the filter for the groups to be cached. This filter also scopes what the `get_twingate_groups` datasource can return: lookups are answered from the cache when any cached group matches, so groups excluded by this filter are not returned.
         """
         return pulumi.get(self, "groups_filter")
 
@@ -167,7 +171,7 @@ class ProviderCacheArgs:
     @pulumi.getter(name="resourcesFilter")
     def resources_filter(self) -> pulumi.Input[Optional['ProviderCacheResourcesFilterArgs']]:
         """
-        Specifies the filter for the resources to be cached.
+        Specifies the filter for the resources to be cached. This filter also scopes what the `get_twingate_resources` datasource can return: lookups are answered from the cache when any cached resource matches, so resources excluded by this filter are not returned.
         """
         return pulumi.get(self, "resources_filter")
 
@@ -1909,6 +1913,64 @@ class TwingateSSHResourceAccessPolicyArgs:
     @mode.setter
     def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
+
+
+class TwingateSSHResourceDownstreamArgsDict(TypedDict):
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The port number. Must be between 1 and 65535 inclusive. Defaults to `22`.
+    """
+
+@pulumi.input_type
+class TwingateSSHResourceDownstreamArgs:
+    def __init__(__self__, *,
+                 port: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] port: The port number. Must be between 1 and 65535 inclusive. Defaults to `22`.
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The port number. Must be between 1 and 65535 inclusive. Defaults to `22`.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "port", value)
+
+
+class TwingateSSHResourceUpstreamArgsDict(TypedDict):
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The port number. Must be between 1 and 65535 inclusive. Defaults to `22`.
+    """
+
+@pulumi.input_type
+class TwingateSSHResourceUpstreamArgs:
+    def __init__(__self__, *,
+                 port: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] port: The port number. Must be between 1 and 65535 inclusive. Defaults to `22`.
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The port number. Must be between 1 and 65535 inclusive. Defaults to `22`.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "port", value)
 
 
 class TwingateWebAppResourceAccessGroupArgsDict(TypedDict):

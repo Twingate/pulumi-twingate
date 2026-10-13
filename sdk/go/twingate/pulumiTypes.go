@@ -16,11 +16,11 @@ var _ = internal.GetEnvOrDefault
 type ProviderCache struct {
 	// Specifies whether the provider should cache groups. The default value is `true`.
 	GroupsEnabled *bool `pulumi:"groupsEnabled"`
-	// Specifies the filter for the groups to be cached.
+	// Specifies the filter for the groups to be cached. This filter also scopes what the `getTwingateGroups` datasource can return: lookups are answered from the cache when any cached group matches, so groups excluded by this filter are not returned.
 	GroupsFilter *ProviderCacheGroupsFilter `pulumi:"groupsFilter"`
 	// Specifies whether the provider should cache resources. The default value is `true`.
 	ResourceEnabled *bool `pulumi:"resourceEnabled"`
-	// Specifies the filter for the resources to be cached.
+	// Specifies the filter for the resources to be cached. This filter also scopes what the `getTwingateResources` datasource can return: lookups are answered from the cache when any cached resource matches, so resources excluded by this filter are not returned.
 	ResourcesFilter *ProviderCacheResourcesFilter `pulumi:"resourcesFilter"`
 }
 
@@ -38,11 +38,11 @@ type ProviderCacheInput interface {
 type ProviderCacheArgs struct {
 	// Specifies whether the provider should cache groups. The default value is `true`.
 	GroupsEnabled pulumi.BoolPtrInput `pulumi:"groupsEnabled"`
-	// Specifies the filter for the groups to be cached.
+	// Specifies the filter for the groups to be cached. This filter also scopes what the `getTwingateGroups` datasource can return: lookups are answered from the cache when any cached group matches, so groups excluded by this filter are not returned.
 	GroupsFilter ProviderCacheGroupsFilterPtrInput `pulumi:"groupsFilter"`
 	// Specifies whether the provider should cache resources. The default value is `true`.
 	ResourceEnabled pulumi.BoolPtrInput `pulumi:"resourceEnabled"`
-	// Specifies the filter for the resources to be cached.
+	// Specifies the filter for the resources to be cached. This filter also scopes what the `getTwingateResources` datasource can return: lookups are answered from the cache when any cached resource matches, so resources excluded by this filter are not returned.
 	ResourcesFilter ProviderCacheResourcesFilterPtrInput `pulumi:"resourcesFilter"`
 }
 
@@ -128,7 +128,7 @@ func (o ProviderCacheOutput) GroupsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProviderCache) *bool { return v.GroupsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the filter for the groups to be cached.
+// Specifies the filter for the groups to be cached. This filter also scopes what the `getTwingateGroups` datasource can return: lookups are answered from the cache when any cached group matches, so groups excluded by this filter are not returned.
 func (o ProviderCacheOutput) GroupsFilter() ProviderCacheGroupsFilterPtrOutput {
 	return o.ApplyT(func(v ProviderCache) *ProviderCacheGroupsFilter { return v.GroupsFilter }).(ProviderCacheGroupsFilterPtrOutput)
 }
@@ -138,7 +138,7 @@ func (o ProviderCacheOutput) ResourceEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProviderCache) *bool { return v.ResourceEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the filter for the resources to be cached.
+// Specifies the filter for the resources to be cached. This filter also scopes what the `getTwingateResources` datasource can return: lookups are answered from the cache when any cached resource matches, so resources excluded by this filter are not returned.
 func (o ProviderCacheOutput) ResourcesFilter() ProviderCacheResourcesFilterPtrOutput {
 	return o.ApplyT(func(v ProviderCache) *ProviderCacheResourcesFilter { return v.ResourcesFilter }).(ProviderCacheResourcesFilterPtrOutput)
 }
@@ -177,7 +177,7 @@ func (o ProviderCachePtrOutput) GroupsEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the filter for the groups to be cached.
+// Specifies the filter for the groups to be cached. This filter also scopes what the `getTwingateGroups` datasource can return: lookups are answered from the cache when any cached group matches, so groups excluded by this filter are not returned.
 func (o ProviderCachePtrOutput) GroupsFilter() ProviderCacheGroupsFilterPtrOutput {
 	return o.ApplyT(func(v *ProviderCache) *ProviderCacheGroupsFilter {
 		if v == nil {
@@ -197,7 +197,7 @@ func (o ProviderCachePtrOutput) ResourceEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the filter for the resources to be cached.
+// Specifies the filter for the resources to be cached. This filter also scopes what the `getTwingateResources` datasource can return: lookups are answered from the cache when any cached resource matches, so resources excluded by this filter are not returned.
 func (o ProviderCachePtrOutput) ResourcesFilter() ProviderCacheResourcesFilterPtrOutput {
 	return o.ApplyT(func(v *ProviderCache) *ProviderCacheResourcesFilter {
 		if v == nil {
@@ -3583,6 +3583,280 @@ func (o TwingateSSHResourceAccessPolicyArrayOutput) Index(i pulumi.IntInput) Twi
 	}).(TwingateSSHResourceAccessPolicyOutput)
 }
 
+type TwingateSSHResourceDownstream struct {
+	// The port number. Must be between 1 and 65535 inclusive. Defaults to `22`.
+	Port *int `pulumi:"port"`
+}
+
+// TwingateSSHResourceDownstreamInput is an input type that accepts TwingateSSHResourceDownstreamArgs and TwingateSSHResourceDownstreamOutput values.
+// You can construct a concrete instance of `TwingateSSHResourceDownstreamInput` via:
+//
+//	TwingateSSHResourceDownstreamArgs{...}
+type TwingateSSHResourceDownstreamInput interface {
+	pulumi.Input
+
+	ToTwingateSSHResourceDownstreamOutput() TwingateSSHResourceDownstreamOutput
+	ToTwingateSSHResourceDownstreamOutputWithContext(context.Context) TwingateSSHResourceDownstreamOutput
+}
+
+type TwingateSSHResourceDownstreamArgs struct {
+	// The port number. Must be between 1 and 65535 inclusive. Defaults to `22`.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (TwingateSSHResourceDownstreamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateSSHResourceDownstream)(nil)).Elem()
+}
+
+func (i TwingateSSHResourceDownstreamArgs) ToTwingateSSHResourceDownstreamOutput() TwingateSSHResourceDownstreamOutput {
+	return i.ToTwingateSSHResourceDownstreamOutputWithContext(context.Background())
+}
+
+func (i TwingateSSHResourceDownstreamArgs) ToTwingateSSHResourceDownstreamOutputWithContext(ctx context.Context) TwingateSSHResourceDownstreamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateSSHResourceDownstreamOutput)
+}
+
+func (i TwingateSSHResourceDownstreamArgs) ToTwingateSSHResourceDownstreamPtrOutput() TwingateSSHResourceDownstreamPtrOutput {
+	return i.ToTwingateSSHResourceDownstreamPtrOutputWithContext(context.Background())
+}
+
+func (i TwingateSSHResourceDownstreamArgs) ToTwingateSSHResourceDownstreamPtrOutputWithContext(ctx context.Context) TwingateSSHResourceDownstreamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateSSHResourceDownstreamOutput).ToTwingateSSHResourceDownstreamPtrOutputWithContext(ctx)
+}
+
+// TwingateSSHResourceDownstreamPtrInput is an input type that accepts TwingateSSHResourceDownstreamArgs, TwingateSSHResourceDownstreamPtr and TwingateSSHResourceDownstreamPtrOutput values.
+// You can construct a concrete instance of `TwingateSSHResourceDownstreamPtrInput` via:
+//
+//	        TwingateSSHResourceDownstreamArgs{...}
+//
+//	or:
+//
+//	        nil
+type TwingateSSHResourceDownstreamPtrInput interface {
+	pulumi.Input
+
+	ToTwingateSSHResourceDownstreamPtrOutput() TwingateSSHResourceDownstreamPtrOutput
+	ToTwingateSSHResourceDownstreamPtrOutputWithContext(context.Context) TwingateSSHResourceDownstreamPtrOutput
+}
+
+type twingateSSHResourceDownstreamPtrType TwingateSSHResourceDownstreamArgs
+
+func TwingateSSHResourceDownstreamPtr(v *TwingateSSHResourceDownstreamArgs) TwingateSSHResourceDownstreamPtrInput {
+	return (*twingateSSHResourceDownstreamPtrType)(v)
+}
+
+func (*twingateSSHResourceDownstreamPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TwingateSSHResourceDownstream)(nil)).Elem()
+}
+
+func (i *twingateSSHResourceDownstreamPtrType) ToTwingateSSHResourceDownstreamPtrOutput() TwingateSSHResourceDownstreamPtrOutput {
+	return i.ToTwingateSSHResourceDownstreamPtrOutputWithContext(context.Background())
+}
+
+func (i *twingateSSHResourceDownstreamPtrType) ToTwingateSSHResourceDownstreamPtrOutputWithContext(ctx context.Context) TwingateSSHResourceDownstreamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateSSHResourceDownstreamPtrOutput)
+}
+
+type TwingateSSHResourceDownstreamOutput struct{ *pulumi.OutputState }
+
+func (TwingateSSHResourceDownstreamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateSSHResourceDownstream)(nil)).Elem()
+}
+
+func (o TwingateSSHResourceDownstreamOutput) ToTwingateSSHResourceDownstreamOutput() TwingateSSHResourceDownstreamOutput {
+	return o
+}
+
+func (o TwingateSSHResourceDownstreamOutput) ToTwingateSSHResourceDownstreamOutputWithContext(ctx context.Context) TwingateSSHResourceDownstreamOutput {
+	return o
+}
+
+func (o TwingateSSHResourceDownstreamOutput) ToTwingateSSHResourceDownstreamPtrOutput() TwingateSSHResourceDownstreamPtrOutput {
+	return o.ToTwingateSSHResourceDownstreamPtrOutputWithContext(context.Background())
+}
+
+func (o TwingateSSHResourceDownstreamOutput) ToTwingateSSHResourceDownstreamPtrOutputWithContext(ctx context.Context) TwingateSSHResourceDownstreamPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TwingateSSHResourceDownstream) *TwingateSSHResourceDownstream {
+		return &v
+	}).(TwingateSSHResourceDownstreamPtrOutput)
+}
+
+// The port number. Must be between 1 and 65535 inclusive. Defaults to `22`.
+func (o TwingateSSHResourceDownstreamOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TwingateSSHResourceDownstream) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type TwingateSSHResourceDownstreamPtrOutput struct{ *pulumi.OutputState }
+
+func (TwingateSSHResourceDownstreamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TwingateSSHResourceDownstream)(nil)).Elem()
+}
+
+func (o TwingateSSHResourceDownstreamPtrOutput) ToTwingateSSHResourceDownstreamPtrOutput() TwingateSSHResourceDownstreamPtrOutput {
+	return o
+}
+
+func (o TwingateSSHResourceDownstreamPtrOutput) ToTwingateSSHResourceDownstreamPtrOutputWithContext(ctx context.Context) TwingateSSHResourceDownstreamPtrOutput {
+	return o
+}
+
+func (o TwingateSSHResourceDownstreamPtrOutput) Elem() TwingateSSHResourceDownstreamOutput {
+	return o.ApplyT(func(v *TwingateSSHResourceDownstream) TwingateSSHResourceDownstream {
+		if v != nil {
+			return *v
+		}
+		var ret TwingateSSHResourceDownstream
+		return ret
+	}).(TwingateSSHResourceDownstreamOutput)
+}
+
+// The port number. Must be between 1 and 65535 inclusive. Defaults to `22`.
+func (o TwingateSSHResourceDownstreamPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TwingateSSHResourceDownstream) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+type TwingateSSHResourceUpstream struct {
+	// The port number. Must be between 1 and 65535 inclusive. Defaults to `22`.
+	Port *int `pulumi:"port"`
+}
+
+// TwingateSSHResourceUpstreamInput is an input type that accepts TwingateSSHResourceUpstreamArgs and TwingateSSHResourceUpstreamOutput values.
+// You can construct a concrete instance of `TwingateSSHResourceUpstreamInput` via:
+//
+//	TwingateSSHResourceUpstreamArgs{...}
+type TwingateSSHResourceUpstreamInput interface {
+	pulumi.Input
+
+	ToTwingateSSHResourceUpstreamOutput() TwingateSSHResourceUpstreamOutput
+	ToTwingateSSHResourceUpstreamOutputWithContext(context.Context) TwingateSSHResourceUpstreamOutput
+}
+
+type TwingateSSHResourceUpstreamArgs struct {
+	// The port number. Must be between 1 and 65535 inclusive. Defaults to `22`.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (TwingateSSHResourceUpstreamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateSSHResourceUpstream)(nil)).Elem()
+}
+
+func (i TwingateSSHResourceUpstreamArgs) ToTwingateSSHResourceUpstreamOutput() TwingateSSHResourceUpstreamOutput {
+	return i.ToTwingateSSHResourceUpstreamOutputWithContext(context.Background())
+}
+
+func (i TwingateSSHResourceUpstreamArgs) ToTwingateSSHResourceUpstreamOutputWithContext(ctx context.Context) TwingateSSHResourceUpstreamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateSSHResourceUpstreamOutput)
+}
+
+func (i TwingateSSHResourceUpstreamArgs) ToTwingateSSHResourceUpstreamPtrOutput() TwingateSSHResourceUpstreamPtrOutput {
+	return i.ToTwingateSSHResourceUpstreamPtrOutputWithContext(context.Background())
+}
+
+func (i TwingateSSHResourceUpstreamArgs) ToTwingateSSHResourceUpstreamPtrOutputWithContext(ctx context.Context) TwingateSSHResourceUpstreamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateSSHResourceUpstreamOutput).ToTwingateSSHResourceUpstreamPtrOutputWithContext(ctx)
+}
+
+// TwingateSSHResourceUpstreamPtrInput is an input type that accepts TwingateSSHResourceUpstreamArgs, TwingateSSHResourceUpstreamPtr and TwingateSSHResourceUpstreamPtrOutput values.
+// You can construct a concrete instance of `TwingateSSHResourceUpstreamPtrInput` via:
+//
+//	        TwingateSSHResourceUpstreamArgs{...}
+//
+//	or:
+//
+//	        nil
+type TwingateSSHResourceUpstreamPtrInput interface {
+	pulumi.Input
+
+	ToTwingateSSHResourceUpstreamPtrOutput() TwingateSSHResourceUpstreamPtrOutput
+	ToTwingateSSHResourceUpstreamPtrOutputWithContext(context.Context) TwingateSSHResourceUpstreamPtrOutput
+}
+
+type twingateSSHResourceUpstreamPtrType TwingateSSHResourceUpstreamArgs
+
+func TwingateSSHResourceUpstreamPtr(v *TwingateSSHResourceUpstreamArgs) TwingateSSHResourceUpstreamPtrInput {
+	return (*twingateSSHResourceUpstreamPtrType)(v)
+}
+
+func (*twingateSSHResourceUpstreamPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TwingateSSHResourceUpstream)(nil)).Elem()
+}
+
+func (i *twingateSSHResourceUpstreamPtrType) ToTwingateSSHResourceUpstreamPtrOutput() TwingateSSHResourceUpstreamPtrOutput {
+	return i.ToTwingateSSHResourceUpstreamPtrOutputWithContext(context.Background())
+}
+
+func (i *twingateSSHResourceUpstreamPtrType) ToTwingateSSHResourceUpstreamPtrOutputWithContext(ctx context.Context) TwingateSSHResourceUpstreamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TwingateSSHResourceUpstreamPtrOutput)
+}
+
+type TwingateSSHResourceUpstreamOutput struct{ *pulumi.OutputState }
+
+func (TwingateSSHResourceUpstreamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TwingateSSHResourceUpstream)(nil)).Elem()
+}
+
+func (o TwingateSSHResourceUpstreamOutput) ToTwingateSSHResourceUpstreamOutput() TwingateSSHResourceUpstreamOutput {
+	return o
+}
+
+func (o TwingateSSHResourceUpstreamOutput) ToTwingateSSHResourceUpstreamOutputWithContext(ctx context.Context) TwingateSSHResourceUpstreamOutput {
+	return o
+}
+
+func (o TwingateSSHResourceUpstreamOutput) ToTwingateSSHResourceUpstreamPtrOutput() TwingateSSHResourceUpstreamPtrOutput {
+	return o.ToTwingateSSHResourceUpstreamPtrOutputWithContext(context.Background())
+}
+
+func (o TwingateSSHResourceUpstreamOutput) ToTwingateSSHResourceUpstreamPtrOutputWithContext(ctx context.Context) TwingateSSHResourceUpstreamPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TwingateSSHResourceUpstream) *TwingateSSHResourceUpstream {
+		return &v
+	}).(TwingateSSHResourceUpstreamPtrOutput)
+}
+
+// The port number. Must be between 1 and 65535 inclusive. Defaults to `22`.
+func (o TwingateSSHResourceUpstreamOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TwingateSSHResourceUpstream) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type TwingateSSHResourceUpstreamPtrOutput struct{ *pulumi.OutputState }
+
+func (TwingateSSHResourceUpstreamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TwingateSSHResourceUpstream)(nil)).Elem()
+}
+
+func (o TwingateSSHResourceUpstreamPtrOutput) ToTwingateSSHResourceUpstreamPtrOutput() TwingateSSHResourceUpstreamPtrOutput {
+	return o
+}
+
+func (o TwingateSSHResourceUpstreamPtrOutput) ToTwingateSSHResourceUpstreamPtrOutputWithContext(ctx context.Context) TwingateSSHResourceUpstreamPtrOutput {
+	return o
+}
+
+func (o TwingateSSHResourceUpstreamPtrOutput) Elem() TwingateSSHResourceUpstreamOutput {
+	return o.ApplyT(func(v *TwingateSSHResourceUpstream) TwingateSSHResourceUpstream {
+		if v != nil {
+			return *v
+		}
+		var ret TwingateSSHResourceUpstream
+		return ret
+	}).(TwingateSSHResourceUpstreamOutput)
+}
+
+// The port number. Must be between 1 and 65535 inclusive. Defaults to `22`.
+func (o TwingateSSHResourceUpstreamPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TwingateSSHResourceUpstream) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
 type TwingateWebAppResourceAccessGroup struct {
 	// Restrict access according to JIT access policy
 	AccessPolicies []TwingateWebAppResourceAccessGroupAccessPolicy `pulumi:"accessPolicies"`
@@ -6883,6 +7157,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateSSHResourceAccessGroupAccessPolicyArrayInput)(nil)).Elem(), TwingateSSHResourceAccessGroupAccessPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateSSHResourceAccessPolicyInput)(nil)).Elem(), TwingateSSHResourceAccessPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateSSHResourceAccessPolicyArrayInput)(nil)).Elem(), TwingateSSHResourceAccessPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateSSHResourceDownstreamInput)(nil)).Elem(), TwingateSSHResourceDownstreamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateSSHResourceDownstreamPtrInput)(nil)).Elem(), TwingateSSHResourceDownstreamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateSSHResourceUpstreamInput)(nil)).Elem(), TwingateSSHResourceUpstreamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TwingateSSHResourceUpstreamPtrInput)(nil)).Elem(), TwingateSSHResourceUpstreamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateWebAppResourceAccessGroupInput)(nil)).Elem(), TwingateWebAppResourceAccessGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateWebAppResourceAccessGroupArrayInput)(nil)).Elem(), TwingateWebAppResourceAccessGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TwingateWebAppResourceAccessGroupAccessPolicyInput)(nil)).Elem(), TwingateWebAppResourceAccessGroupAccessPolicyArgs{})
@@ -6970,6 +7248,10 @@ func init() {
 	pulumi.RegisterOutputType(TwingateSSHResourceAccessGroupAccessPolicyArrayOutput{})
 	pulumi.RegisterOutputType(TwingateSSHResourceAccessPolicyOutput{})
 	pulumi.RegisterOutputType(TwingateSSHResourceAccessPolicyArrayOutput{})
+	pulumi.RegisterOutputType(TwingateSSHResourceDownstreamOutput{})
+	pulumi.RegisterOutputType(TwingateSSHResourceDownstreamPtrOutput{})
+	pulumi.RegisterOutputType(TwingateSSHResourceUpstreamOutput{})
+	pulumi.RegisterOutputType(TwingateSSHResourceUpstreamPtrOutput{})
 	pulumi.RegisterOutputType(TwingateWebAppResourceAccessGroupOutput{})
 	pulumi.RegisterOutputType(TwingateWebAppResourceAccessGroupArrayOutput{})
 	pulumi.RegisterOutputType(TwingateWebAppResourceAccessGroupAccessPolicyOutput{})

@@ -27,6 +27,7 @@ export function getTwingateSecurityPolicies(args?: GetTwingateSecurityPoliciesAr
         "name": args.name,
         "nameContains": args.nameContains,
         "nameExclude": args.nameExclude,
+        "nameIns": args.nameIns,
         "namePrefix": args.namePrefix,
         "nameRegexp": args.nameRegexp,
         "nameSuffix": args.nameSuffix,
@@ -49,6 +50,10 @@ export interface GetTwingateSecurityPoliciesArgs {
      * Match when the exact value does not exist in the name of the security policy.
      */
     nameExclude?: string;
+    /**
+     * Returns only security policies that exactly match one of the names in the list.
+     */
+    nameIns?: string[];
     /**
      * The name of the security policy must start with the value.
      */
@@ -84,6 +89,10 @@ export interface GetTwingateSecurityPoliciesResult {
      */
     readonly nameExclude?: string;
     /**
+     * Returns only security policies that exactly match one of the names in the list.
+     */
+    readonly nameIns?: string[];
+    /**
      * The name of the security policy must start with the value.
      */
     readonly namePrefix?: string;
@@ -118,6 +127,7 @@ export function getTwingateSecurityPoliciesOutput(args?: GetTwingateSecurityPoli
         "name": args.name,
         "nameContains": args.nameContains,
         "nameExclude": args.nameExclude,
+        "nameIns": args.nameIns,
         "namePrefix": args.namePrefix,
         "nameRegexp": args.nameRegexp,
         "nameSuffix": args.nameSuffix,
@@ -140,6 +150,10 @@ export interface GetTwingateSecurityPoliciesOutputArgs {
      * Match when the exact value does not exist in the name of the security policy.
      */
     nameExclude?: pulumi.Input<string | undefined>;
+    /**
+     * Returns only security policies that exactly match one of the names in the list.
+     */
+    nameIns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the security policy must start with the value.
      */

@@ -27,7 +27,7 @@ class GetTwingateUsersResult:
     """
     A collection of values returned by getTwingateUsers.
     """
-    def __init__(__self__, email=None, email_contains=None, email_exclude=None, email_prefix=None, email_regexp=None, email_suffix=None, first_name=None, first_name_contains=None, first_name_exclude=None, first_name_prefix=None, first_name_regexp=None, first_name_suffix=None, id=None, last_name=None, last_name_contains=None, last_name_exclude=None, last_name_prefix=None, last_name_regexp=None, last_name_suffix=None, roles=None, users=None):
+    def __init__(__self__, email=None, email_contains=None, email_exclude=None, email_ins=None, email_prefix=None, email_regexp=None, email_suffix=None, first_name=None, first_name_contains=None, first_name_exclude=None, first_name_prefix=None, first_name_regexp=None, first_name_suffix=None, id=None, last_name=None, last_name_contains=None, last_name_exclude=None, last_name_prefix=None, last_name_regexp=None, last_name_suffix=None, roles=None, users=None):
         if email and not isinstance(email, str):
             raise TypeError("Expected argument 'email' to be a str")
         pulumi.set(__self__, "email", email)
@@ -37,6 +37,9 @@ class GetTwingateUsersResult:
         if email_exclude and not isinstance(email_exclude, str):
             raise TypeError("Expected argument 'email_exclude' to be a str")
         pulumi.set(__self__, "email_exclude", email_exclude)
+        if email_ins and not isinstance(email_ins, list):
+            raise TypeError("Expected argument 'email_ins' to be a list")
+        pulumi.set(__self__, "email_ins", email_ins)
         if email_prefix and not isinstance(email_prefix, str):
             raise TypeError("Expected argument 'email_prefix' to be a str")
         pulumi.set(__self__, "email_prefix", email_prefix)
@@ -115,6 +118,14 @@ class GetTwingateUsersResult:
         Match when the value does not exist in the email of the user.
         """
         return pulumi.get(self, "email_exclude")
+
+    @_builtins.property
+    @pulumi.getter(name="emailIns")
+    def email_ins(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Returns only users that exactly match one of the emails in the list.
+        """
+        return pulumi.get(self, "email_ins")
 
     @_builtins.property
     @pulumi.getter(name="emailPrefix")
@@ -267,6 +278,7 @@ class AwaitableGetTwingateUsersResult(GetTwingateUsersResult):
             email=self.email,
             email_contains=self.email_contains,
             email_exclude=self.email_exclude,
+            email_ins=self.email_ins,
             email_prefix=self.email_prefix,
             email_regexp=self.email_regexp,
             email_suffix=self.email_suffix,
@@ -290,6 +302,7 @@ class AwaitableGetTwingateUsersResult(GetTwingateUsersResult):
 def get_twingate_users(email: Optional[_builtins.str] = None,
                        email_contains: Optional[_builtins.str] = None,
                        email_exclude: Optional[_builtins.str] = None,
+                       email_ins: Optional[Sequence[_builtins.str]] = None,
                        email_prefix: Optional[_builtins.str] = None,
                        email_regexp: Optional[_builtins.str] = None,
                        email_suffix: Optional[_builtins.str] = None,
@@ -323,6 +336,7 @@ def get_twingate_users(email: Optional[_builtins.str] = None,
     :param _builtins.str email: Returns only users that exactly match this email.
     :param _builtins.str email_contains: Match when the value exist in the email of the user.
     :param _builtins.str email_exclude: Match when the value does not exist in the email of the user.
+    :param Sequence[_builtins.str] email_ins: Returns only users that exactly match one of the emails in the list.
     :param _builtins.str email_prefix: The email of the user must start with the value.
     :param _builtins.str email_regexp: The regular expression match of the email of the user.
     :param _builtins.str email_suffix: The email of the user must end with the value.
@@ -344,6 +358,7 @@ def get_twingate_users(email: Optional[_builtins.str] = None,
     __args__['email'] = email
     __args__['emailContains'] = email_contains
     __args__['emailExclude'] = email_exclude
+    __args__['emailIns'] = email_ins
     __args__['emailPrefix'] = email_prefix
     __args__['emailRegexp'] = email_regexp
     __args__['emailSuffix'] = email_suffix
@@ -367,6 +382,7 @@ def get_twingate_users(email: Optional[_builtins.str] = None,
         email=pulumi.get(__ret__, 'email'),
         email_contains=pulumi.get(__ret__, 'email_contains'),
         email_exclude=pulumi.get(__ret__, 'email_exclude'),
+        email_ins=pulumi.get(__ret__, 'email_ins'),
         email_prefix=pulumi.get(__ret__, 'email_prefix'),
         email_regexp=pulumi.get(__ret__, 'email_regexp'),
         email_suffix=pulumi.get(__ret__, 'email_suffix'),
@@ -388,6 +404,7 @@ def get_twingate_users(email: Optional[_builtins.str] = None,
 def get_twingate_users_output(email: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               email_contains: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               email_exclude: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              email_ins: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                               email_prefix: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               email_regexp: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               email_suffix: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -421,6 +438,7 @@ def get_twingate_users_output(email: pulumi.Input[Optional[Optional[_builtins.st
     :param _builtins.str email: Returns only users that exactly match this email.
     :param _builtins.str email_contains: Match when the value exist in the email of the user.
     :param _builtins.str email_exclude: Match when the value does not exist in the email of the user.
+    :param Sequence[_builtins.str] email_ins: Returns only users that exactly match one of the emails in the list.
     :param _builtins.str email_prefix: The email of the user must start with the value.
     :param _builtins.str email_regexp: The regular expression match of the email of the user.
     :param _builtins.str email_suffix: The email of the user must end with the value.
@@ -442,6 +460,7 @@ def get_twingate_users_output(email: pulumi.Input[Optional[Optional[_builtins.st
     __args__['email'] = email
     __args__['emailContains'] = email_contains
     __args__['emailExclude'] = email_exclude
+    __args__['emailIns'] = email_ins
     __args__['emailPrefix'] = email_prefix
     __args__['emailRegexp'] = email_regexp
     __args__['emailSuffix'] = email_suffix
@@ -464,6 +483,7 @@ def get_twingate_users_output(email: pulumi.Input[Optional[Optional[_builtins.st
         email=pulumi.get(__response__, 'email'),
         email_contains=pulumi.get(__response__, 'email_contains'),
         email_exclude=pulumi.get(__response__, 'email_exclude'),
+        email_ins=pulumi.get(__response__, 'email_ins'),
         email_prefix=pulumi.get(__response__, 'email_prefix'),
         email_regexp=pulumi.get(__response__, 'email_regexp'),
         email_suffix=pulumi.get(__response__, 'email_suffix'),

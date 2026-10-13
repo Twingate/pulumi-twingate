@@ -56,6 +56,8 @@ type GetTwingateSecurityPoliciesArgs struct {
 	NameContains *string `pulumi:"nameContains"`
 	// Match when the exact value does not exist in the name of the security policy.
 	NameExclude *string `pulumi:"nameExclude"`
+	// Returns only security policies that exactly match one of the names in the list.
+	NameIns []string `pulumi:"nameIns"`
 	// The name of the security policy must start with the value.
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The regular expression match of the name of the security policy.
@@ -74,6 +76,8 @@ type GetTwingateSecurityPoliciesResult struct {
 	NameContains *string `pulumi:"nameContains"`
 	// Match when the exact value does not exist in the name of the security policy.
 	NameExclude *string `pulumi:"nameExclude"`
+	// Returns only security policies that exactly match one of the names in the list.
+	NameIns []string `pulumi:"nameIns"`
 	// The name of the security policy must start with the value.
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The regular expression match of the name of the security policy.
@@ -96,6 +100,8 @@ type GetTwingateSecurityPoliciesOutputArgs struct {
 	NameContains pulumi.StringPtrInput `pulumi:"nameContains"`
 	// Match when the exact value does not exist in the name of the security policy.
 	NameExclude pulumi.StringPtrInput `pulumi:"nameExclude"`
+	// Returns only security policies that exactly match one of the names in the list.
+	NameIns pulumi.StringArrayInput `pulumi:"nameIns"`
 	// The name of the security policy must start with the value.
 	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
 	// The regular expression match of the name of the security policy.
@@ -141,6 +147,11 @@ func (o GetTwingateSecurityPoliciesResultOutput) NameContains() pulumi.StringPtr
 // Match when the exact value does not exist in the name of the security policy.
 func (o GetTwingateSecurityPoliciesResultOutput) NameExclude() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTwingateSecurityPoliciesResult) *string { return v.NameExclude }).(pulumi.StringPtrOutput)
+}
+
+// Returns only security policies that exactly match one of the names in the list.
+func (o GetTwingateSecurityPoliciesResultOutput) NameIns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTwingateSecurityPoliciesResult) []string { return v.NameIns }).(pulumi.StringArrayOutput)
 }
 
 // The name of the security policy must start with the value.

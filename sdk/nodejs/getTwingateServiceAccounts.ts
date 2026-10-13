@@ -27,6 +27,7 @@ export function getTwingateServiceAccounts(args?: GetTwingateServiceAccountsArgs
         "name": args.name,
         "nameContains": args.nameContains,
         "nameExclude": args.nameExclude,
+        "nameIns": args.nameIns,
         "namePrefix": args.namePrefix,
         "nameRegexp": args.nameRegexp,
         "nameSuffix": args.nameSuffix,
@@ -49,6 +50,10 @@ export interface GetTwingateServiceAccountsArgs {
      * Match when the exact value does not exist in the name of the service account.
      */
     nameExclude?: string;
+    /**
+     * Returns only service accounts that exactly match one of the names in the list.
+     */
+    nameIns?: string[];
     /**
      * The name of the service account must start with the value.
      */
@@ -83,6 +88,10 @@ export interface GetTwingateServiceAccountsResult {
      * Match when the exact value does not exist in the name of the service account.
      */
     readonly nameExclude?: string;
+    /**
+     * Returns only service accounts that exactly match one of the names in the list.
+     */
+    readonly nameIns?: string[];
     /**
      * The name of the service account must start with the value.
      */
@@ -121,6 +130,7 @@ export function getTwingateServiceAccountsOutput(args?: GetTwingateServiceAccoun
         "name": args.name,
         "nameContains": args.nameContains,
         "nameExclude": args.nameExclude,
+        "nameIns": args.nameIns,
         "namePrefix": args.namePrefix,
         "nameRegexp": args.nameRegexp,
         "nameSuffix": args.nameSuffix,
@@ -143,6 +153,10 @@ export interface GetTwingateServiceAccountsOutputArgs {
      * Match when the exact value does not exist in the name of the service account.
      */
     nameExclude?: pulumi.Input<string | undefined>;
+    /**
+     * Returns only service accounts that exactly match one of the names in the list.
+     */
+    nameIns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the service account must start with the value.
      */

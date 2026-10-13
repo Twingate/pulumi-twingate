@@ -31,9 +31,9 @@ class Cache(dict):
                  resources_filter: Optional['outputs.CacheResourcesFilter'] = None):
         """
         :param _builtins.bool groups_enabled: Specifies whether the provider should cache groups. The default value is `true`.
-        :param 'CacheGroupsFilterArgs' groups_filter: Specifies the filter for the groups to be cached.
+        :param 'CacheGroupsFilterArgs' groups_filter: Specifies the filter for the groups to be cached. This filter also scopes what the `get_twingate_groups` datasource can return: lookups are answered from the cache when any cached group matches, so groups excluded by this filter are not returned.
         :param _builtins.bool resource_enabled: Specifies whether the provider should cache resources. The default value is `true`.
-        :param 'CacheResourcesFilterArgs' resources_filter: Specifies the filter for the resources to be cached.
+        :param 'CacheResourcesFilterArgs' resources_filter: Specifies the filter for the resources to be cached. This filter also scopes what the `get_twingate_resources` datasource can return: lookups are answered from the cache when any cached resource matches, so resources excluded by this filter are not returned.
         """
         if groups_enabled is not None:
             pulumi.set(__self__, "groups_enabled", groups_enabled)
@@ -56,7 +56,7 @@ class Cache(dict):
     @pulumi.getter(name="groupsFilter")
     def groups_filter(self) -> Optional['outputs.CacheGroupsFilter']:
         """
-        Specifies the filter for the groups to be cached.
+        Specifies the filter for the groups to be cached. This filter also scopes what the `get_twingate_groups` datasource can return: lookups are answered from the cache when any cached group matches, so groups excluded by this filter are not returned.
         """
         return pulumi.get(self, "groups_filter")
 
@@ -72,7 +72,7 @@ class Cache(dict):
     @pulumi.getter(name="resourcesFilter")
     def resources_filter(self) -> Optional['outputs.CacheResourcesFilter']:
         """
-        Specifies the filter for the resources to be cached.
+        Specifies the filter for the resources to be cached. This filter also scopes what the `get_twingate_resources` datasource can return: lookups are answered from the cache when any cached resource matches, so resources excluded by this filter are not returned.
         """
         return pulumi.get(self, "resources_filter")
 

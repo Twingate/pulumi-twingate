@@ -287,7 +287,7 @@ export interface ProviderCache {
      */
     groupsEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * Specifies the filter for the groups to be cached.
+     * Specifies the filter for the groups to be cached. This filter also scopes what the `twingate.getTwingateGroups` datasource can return: lookups are answered from the cache when any cached group matches, so groups excluded by this filter are not returned.
      */
     groupsFilter?: pulumi.Input<inputs.ProviderCacheGroupsFilter | undefined>;
     /**
@@ -295,7 +295,7 @@ export interface ProviderCache {
      */
     resourceEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * Specifies the filter for the resources to be cached.
+     * Specifies the filter for the resources to be cached. This filter also scopes what the `twingate.getTwingateResources` datasource can return: lookups are answered from the cache when any cached resource matches, so resources excluded by this filter are not returned.
      */
     resourcesFilter?: pulumi.Input<inputs.ProviderCacheResourcesFilter | undefined>;
 }
@@ -667,6 +667,20 @@ export interface TwingateSSHResourceAccessPolicy {
      * This will set the accessPolicy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
      */
     mode?: pulumi.Input<string | undefined>;
+}
+
+export interface TwingateSSHResourceDownstream {
+    /**
+     * The port number. Must be between 1 and 65535 inclusive. Defaults to `22`.
+     */
+    port?: pulumi.Input<number | undefined>;
+}
+
+export interface TwingateSSHResourceUpstream {
+    /**
+     * The port number. Must be between 1 and 65535 inclusive. Defaults to `22`.
+     */
+    port?: pulumi.Input<number | undefined>;
 }
 
 export interface TwingateWebAppResourceAccessGroup {

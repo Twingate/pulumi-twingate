@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Resources in Twingate represent servers on the private network that clients can connect to. Resources can be defined by IP, CIDR range, FQDN, or DNS zone. For more information, see the Twingate [documentation](https://docs.twingate.com/docs/resources-and-access-nodes).
+ * Resources in Twingate represent servers on the private network that clients can connect to. Resources can be defined by IP, CIDR range, FQDN, or DNS zone. For more information, see the Twingate [documentation](https://docs.twingate.com/docs/resources-and-access-nodes). When the provider is configured with a cache filter for this type, lookups are answered from the cache whenever any cached object matches, so objects excluded by that filter are not returned. See the provider `cache` documentation.
  *
  * ## Example Usage
  *
@@ -27,6 +27,7 @@ export function getTwingateResources(args?: GetTwingateResourcesArgs, opts?: pul
         "name": args.name,
         "nameContains": args.nameContains,
         "nameExclude": args.nameExclude,
+        "nameIns": args.nameIns,
         "namePrefix": args.namePrefix,
         "nameRegexp": args.nameRegexp,
         "nameSuffix": args.nameSuffix,
@@ -50,6 +51,10 @@ export interface GetTwingateResourcesArgs {
      * Match when the exact value does not exist in the name of the resource.
      */
     nameExclude?: string;
+    /**
+     * Returns only resources that exactly match one of the names in the list.
+     */
+    nameIns?: string[];
     /**
      * The name of the resource must start with the value.
      */
@@ -89,6 +94,10 @@ export interface GetTwingateResourcesResult {
      */
     readonly nameExclude?: string;
     /**
+     * Returns only resources that exactly match one of the names in the list.
+     */
+    readonly nameIns?: string[];
+    /**
      * The name of the resource must start with the value.
      */
     readonly namePrefix?: string;
@@ -110,7 +119,7 @@ export interface GetTwingateResourcesResult {
     readonly tags?: {[key: string]: string};
 }
 /**
- * Resources in Twingate represent servers on the private network that clients can connect to. Resources can be defined by IP, CIDR range, FQDN, or DNS zone. For more information, see the Twingate [documentation](https://docs.twingate.com/docs/resources-and-access-nodes).
+ * Resources in Twingate represent servers on the private network that clients can connect to. Resources can be defined by IP, CIDR range, FQDN, or DNS zone. For more information, see the Twingate [documentation](https://docs.twingate.com/docs/resources-and-access-nodes). When the provider is configured with a cache filter for this type, lookups are answered from the cache whenever any cached object matches, so objects excluded by that filter are not returned. See the provider `cache` documentation.
  *
  * ## Example Usage
  *
@@ -130,6 +139,7 @@ export function getTwingateResourcesOutput(args?: GetTwingateResourcesOutputArgs
         "name": args.name,
         "nameContains": args.nameContains,
         "nameExclude": args.nameExclude,
+        "nameIns": args.nameIns,
         "namePrefix": args.namePrefix,
         "nameRegexp": args.nameRegexp,
         "nameSuffix": args.nameSuffix,
@@ -153,6 +163,10 @@ export interface GetTwingateResourcesOutputArgs {
      * Match when the exact value does not exist in the name of the resource.
      */
     nameExclude?: pulumi.Input<string | undefined>;
+    /**
+     * Returns only resources that exactly match one of the names in the list.
+     */
+    nameIns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the resource must start with the value.
      */

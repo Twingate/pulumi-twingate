@@ -13,7 +13,7 @@ namespace Twingate.Twingate
     public static class GetTwingateGroups
     {
         /// <summary>
-        /// Groups are how users are authorized to access Resources. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/groups).
+        /// Groups are how users are authorized to access Resources. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/groups). When the provider is configured with a cache filter for this type, lookups are answered from the cache whenever any cached object matches, so objects excluded by that filter are not returned. See the provider `Cache` documentation.
         /// 
         /// ## Example Usage
         /// 
@@ -37,7 +37,7 @@ namespace Twingate.Twingate
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTwingateGroupsResult>("twingate:index/getTwingateGroups:getTwingateGroups", args ?? new GetTwingateGroupsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Groups are how users are authorized to access Resources. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/groups).
+        /// Groups are how users are authorized to access Resources. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/groups). When the provider is configured with a cache filter for this type, lookups are answered from the cache whenever any cached object matches, so objects excluded by that filter are not returned. See the provider `Cache` documentation.
         /// 
         /// ## Example Usage
         /// 
@@ -61,7 +61,7 @@ namespace Twingate.Twingate
             => global::Pulumi.Deployment.Instance.Invoke<GetTwingateGroupsResult>("twingate:index/getTwingateGroups:getTwingateGroups", args ?? new GetTwingateGroupsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Groups are how users are authorized to access Resources. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/groups).
+        /// Groups are how users are authorized to access Resources. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/groups). When the provider is configured with a cache filter for this type, lookups are answered from the cache whenever any cached object matches, so objects excluded by that filter are not returned. See the provider `Cache` documentation.
         /// 
         /// ## Example Usage
         /// 
