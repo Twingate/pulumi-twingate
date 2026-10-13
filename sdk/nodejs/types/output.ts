@@ -627,6 +627,20 @@ export interface TwingateSSHResourceAccessPolicy {
     mode: string;
 }
 
+export interface TwingateSSHResourceDownstream {
+    /**
+     * The port number. Must be between 1 and 65535 inclusive. Defaults to `22`.
+     */
+    port: number;
+}
+
+export interface TwingateSSHResourceUpstream {
+    /**
+     * The port number. Must be between 1 and 65535 inclusive. Defaults to `22`.
+     */
+    port: number;
+}
+
 export interface TwingateWebAppResourceAccessGroup {
     /**
      * Restrict access according to JIT access policy
@@ -693,7 +707,7 @@ export namespace config {
          */
         groupsEnabled?: boolean;
         /**
-         * Specifies the filter for the groups to be cached.
+         * Specifies the filter for the groups to be cached. This filter also scopes what the `twingate.getTwingateGroups` datasource can return: lookups are answered from the cache when any cached group matches, so groups excluded by this filter are not returned.
          */
         groupsFilter?: outputs.config.CacheGroupsFilter;
         /**
@@ -701,7 +715,7 @@ export namespace config {
          */
         resourceEnabled?: boolean;
         /**
-         * Specifies the filter for the resources to be cached.
+         * Specifies the filter for the resources to be cached. This filter also scopes what the `twingate.getTwingateResources` datasource can return: lookups are answered from the cache when any cached resource matches, so resources excluded by this filter are not returned.
          */
         resourcesFilter?: outputs.config.CacheResourcesFilter;
     }

@@ -278,6 +278,14 @@ func main() {
 					GroupId: group.ID(),
 				},
 			},
+			// Downstream/upstream ports (provider v5.1.0). Both default to 22 when
+			// omitted; removing a block resets that side back to 22.
+			Downstream: &twingate.TwingateSSHResourceDownstreamArgs{
+				Port: pulumi.Int(2222),
+			},
+			Upstream: &twingate.TwingateSSHResourceUpstreamArgs{
+				Port: pulumi.Int(22),
+			},
 		})
 		if err != nil {
 			return err

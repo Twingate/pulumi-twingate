@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resources in Twingate represent servers on the private network that clients can connect to. Resources can be defined by IP, CIDR range, FQDN, or DNS zone. For more information, see the Twingate [documentation](https://docs.twingate.com/docs/resources-and-access-nodes).
+// Resources in Twingate represent servers on the private network that clients can connect to. Resources can be defined by IP, CIDR range, FQDN, or DNS zone. For more information, see the Twingate [documentation](https://docs.twingate.com/docs/resources-and-access-nodes). When the provider is configured with a cache filter for this type, lookups are answered from the cache whenever any cached object matches, so objects excluded by that filter are not returned. See the provider `cache` documentation.
 //
 // ## Example Usage
 //
@@ -56,6 +56,8 @@ type GetTwingateResourcesArgs struct {
 	NameContains *string `pulumi:"nameContains"`
 	// Match when the exact value does not exist in the name of the resource.
 	NameExclude *string `pulumi:"nameExclude"`
+	// Returns only resources that exactly match one of the names in the list.
+	NameIns []string `pulumi:"nameIns"`
 	// The name of the resource must start with the value.
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The regular expression match of the name of the resource.
@@ -76,6 +78,8 @@ type GetTwingateResourcesResult struct {
 	NameContains *string `pulumi:"nameContains"`
 	// Match when the exact value does not exist in the name of the resource.
 	NameExclude *string `pulumi:"nameExclude"`
+	// Returns only resources that exactly match one of the names in the list.
+	NameIns []string `pulumi:"nameIns"`
 	// The name of the resource must start with the value.
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The regular expression match of the name of the resource.
@@ -101,6 +105,8 @@ type GetTwingateResourcesOutputArgs struct {
 	NameContains pulumi.StringPtrInput `pulumi:"nameContains"`
 	// Match when the exact value does not exist in the name of the resource.
 	NameExclude pulumi.StringPtrInput `pulumi:"nameExclude"`
+	// Returns only resources that exactly match one of the names in the list.
+	NameIns pulumi.StringArrayInput `pulumi:"nameIns"`
 	// The name of the resource must start with the value.
 	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
 	// The regular expression match of the name of the resource.
@@ -148,6 +154,11 @@ func (o GetTwingateResourcesResultOutput) NameContains() pulumi.StringPtrOutput 
 // Match when the exact value does not exist in the name of the resource.
 func (o GetTwingateResourcesResultOutput) NameExclude() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTwingateResourcesResult) *string { return v.NameExclude }).(pulumi.StringPtrOutput)
+}
+
+// Returns only resources that exactly match one of the names in the list.
+func (o GetTwingateResourcesResultOutput) NameIns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTwingateResourcesResult) []string { return v.NameIns }).(pulumi.StringArrayOutput)
 }
 
 // The name of the resource must start with the value.

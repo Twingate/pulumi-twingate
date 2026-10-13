@@ -25,6 +25,7 @@ export function getTwingateUsers(args?: GetTwingateUsersArgs, opts?: pulumi.Invo
         "email": args.email,
         "emailContains": args.emailContains,
         "emailExclude": args.emailExclude,
+        "emailIns": args.emailIns,
         "emailPrefix": args.emailPrefix,
         "emailRegexp": args.emailRegexp,
         "emailSuffix": args.emailSuffix,
@@ -60,6 +61,10 @@ export interface GetTwingateUsersArgs {
      * Match when the value does not exist in the email of the user.
      */
     emailExclude?: string;
+    /**
+     * Returns only users that exactly match one of the emails in the list.
+     */
+    emailIns?: string[];
     /**
      * The email of the user must start with the value.
      */
@@ -142,6 +147,10 @@ export interface GetTwingateUsersResult {
      * Match when the value does not exist in the email of the user.
      */
     readonly emailExclude?: string;
+    /**
+     * Returns only users that exactly match one of the emails in the list.
+     */
+    readonly emailIns?: string[];
     /**
      * The email of the user must start with the value.
      */
@@ -231,6 +240,7 @@ export function getTwingateUsersOutput(args?: GetTwingateUsersOutputArgs, opts?:
         "email": args.email,
         "emailContains": args.emailContains,
         "emailExclude": args.emailExclude,
+        "emailIns": args.emailIns,
         "emailPrefix": args.emailPrefix,
         "emailRegexp": args.emailRegexp,
         "emailSuffix": args.emailSuffix,
@@ -266,6 +276,10 @@ export interface GetTwingateUsersOutputArgs {
      * Match when the value does not exist in the email of the user.
      */
     emailExclude?: pulumi.Input<string | undefined>;
+    /**
+     * Returns only users that exactly match one of the emails in the list.
+     */
+    emailIns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The email of the user must start with the value.
      */

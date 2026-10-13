@@ -97,6 +97,18 @@ namespace Twingate.Twingate
         [Input("emailExclude")]
         public string? EmailExclude { get; set; }
 
+        [Input("emailIns")]
+        private List<string>? _emailIns;
+
+        /// <summary>
+        /// Returns only users that exactly match one of the emails in the list.
+        /// </summary>
+        public List<string> EmailIns
+        {
+            get => _emailIns ?? (_emailIns = new List<string>());
+            set => _emailIns = value;
+        }
+
         /// <summary>
         /// The email of the user must start with the value.
         /// </summary>
@@ -225,6 +237,18 @@ namespace Twingate.Twingate
         [Input("emailExclude")]
         public Input<string>? EmailExclude { get; set; }
 
+        [Input("emailIns")]
+        private InputList<string>? _emailIns;
+
+        /// <summary>
+        /// Returns only users that exactly match one of the emails in the list.
+        /// </summary>
+        public InputList<string> EmailIns
+        {
+            get => _emailIns ?? (_emailIns = new InputList<string>());
+            set => _emailIns = value;
+        }
+
         /// <summary>
         /// The email of the user must start with the value.
         /// </summary>
@@ -350,6 +374,10 @@ namespace Twingate.Twingate
         /// </summary>
         public readonly string? EmailExclude;
         /// <summary>
+        /// Returns only users that exactly match one of the emails in the list.
+        /// </summary>
+        public readonly ImmutableArray<string> EmailIns;
+        /// <summary>
         /// The email of the user must start with the value.
         /// </summary>
         public readonly string? EmailPrefix;
@@ -427,6 +455,8 @@ namespace Twingate.Twingate
 
             string? emailExclude,
 
+            ImmutableArray<string> emailIns,
+
             string? emailPrefix,
 
             string? emailRegexp,
@@ -466,6 +496,7 @@ namespace Twingate.Twingate
             Email = email;
             EmailContains = emailContains;
             EmailExclude = emailExclude;
+            EmailIns = emailIns;
             EmailPrefix = emailPrefix;
             EmailRegexp = emailRegexp;
             EmailSuffix = emailSuffix;

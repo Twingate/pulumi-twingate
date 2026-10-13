@@ -70,6 +70,12 @@ import (
 //				Alias:           pulumi.String("test.int"),
 //				RemoteNetworkId: prod.ID().ToIDOutput().ToStringOutput(),
 //				Address:         pulumi.String("10.128.0.105"),
+//				Downstream: &twingate.TwingateSSHResourceDownstreamArgs{
+//					Port: pulumi.Int(2222),
+//				},
+//				Upstream: &twingate.TwingateSSHResourceUpstreamArgs{
+//					Port: pulumi.Int(22),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -90,6 +96,8 @@ type TwingateSSHResource struct {
 	Address pulumi.StringOutput `pulumi:"address"`
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
 	Alias pulumi.StringPtrOutput `pulumi:"alias"`
+	// The downstream configuration. The connection between the SSH client and the Gateway.
+	Downstream TwingateSSHResourceDownstreamOutput `pulumi:"downstream"`
 	// The ID of the Gateway used to access this SSH Resource.
 	GatewayId pulumi.StringOutput `pulumi:"gatewayId"`
 	// Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
@@ -104,6 +112,8 @@ type TwingateSSHResource struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
 	TagsAll pulumi.StringMapOutput `pulumi:"tagsAll"`
+	// The upstream configuration. The connection between the Gateway and the SSH server.
+	Upstream TwingateSSHResourceUpstreamOutput `pulumi:"upstream"`
 }
 
 // NewTwingateSSHResource registers a new resource with the given unique name, arguments, and options.
@@ -153,6 +163,8 @@ type twingateSSHResourceState struct {
 	Address *string `pulumi:"address"`
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
 	Alias *string `pulumi:"alias"`
+	// The downstream configuration. The connection between the SSH client and the Gateway.
+	Downstream *TwingateSSHResourceDownstream `pulumi:"downstream"`
 	// The ID of the Gateway used to access this SSH Resource.
 	GatewayId *string `pulumi:"gatewayId"`
 	// Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
@@ -167,6 +179,8 @@ type twingateSSHResourceState struct {
 	Tags map[string]string `pulumi:"tags"`
 	// A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
 	TagsAll map[string]string `pulumi:"tagsAll"`
+	// The upstream configuration. The connection between the Gateway and the SSH server.
+	Upstream *TwingateSSHResourceUpstream `pulumi:"upstream"`
 }
 
 type TwingateSSHResourceState struct {
@@ -178,6 +192,8 @@ type TwingateSSHResourceState struct {
 	Address pulumi.StringPtrInput
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
 	Alias pulumi.StringPtrInput
+	// The downstream configuration. The connection between the SSH client and the Gateway.
+	Downstream TwingateSSHResourceDownstreamPtrInput
 	// The ID of the Gateway used to access this SSH Resource.
 	GatewayId pulumi.StringPtrInput
 	// Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
@@ -192,6 +208,8 @@ type TwingateSSHResourceState struct {
 	Tags pulumi.StringMapInput
 	// A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
 	TagsAll pulumi.StringMapInput
+	// The upstream configuration. The connection between the Gateway and the SSH server.
+	Upstream TwingateSSHResourceUpstreamPtrInput
 }
 
 func (TwingateSSHResourceState) ElementType() reflect.Type {
@@ -207,6 +225,8 @@ type twingateSSHResourceArgs struct {
 	Address string `pulumi:"address"`
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
 	Alias *string `pulumi:"alias"`
+	// The downstream configuration. The connection between the SSH client and the Gateway.
+	Downstream *TwingateSSHResourceDownstream `pulumi:"downstream"`
 	// The ID of the Gateway used to access this SSH Resource.
 	GatewayId string `pulumi:"gatewayId"`
 	// Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
@@ -219,6 +239,8 @@ type twingateSSHResourceArgs struct {
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 	// A map of key-value pair tags to set on this resource.
 	Tags map[string]string `pulumi:"tags"`
+	// The upstream configuration. The connection between the Gateway and the SSH server.
+	Upstream *TwingateSSHResourceUpstream `pulumi:"upstream"`
 }
 
 // The set of arguments for constructing a TwingateSSHResource resource.
@@ -231,6 +253,8 @@ type TwingateSSHResourceArgs struct {
 	Address pulumi.StringInput
 	// Set a DNS alias address for the Resource. Must be a DNS-valid name string.
 	Alias pulumi.StringPtrInput
+	// The downstream configuration. The connection between the SSH client and the Gateway.
+	Downstream TwingateSSHResourceDownstreamPtrInput
 	// The ID of the Gateway used to access this SSH Resource.
 	GatewayId pulumi.StringInput
 	// Controls whether this Resource will be visible in the main Resource list in the Twingate Client. Default is `true`.
@@ -243,6 +267,8 @@ type TwingateSSHResourceArgs struct {
 	SecurityPolicyId pulumi.StringPtrInput
 	// A map of key-value pair tags to set on this resource.
 	Tags pulumi.StringMapInput
+	// The upstream configuration. The connection between the Gateway and the SSH server.
+	Upstream TwingateSSHResourceUpstreamPtrInput
 }
 
 func (TwingateSSHResourceArgs) ElementType() reflect.Type {
@@ -352,6 +378,11 @@ func (o TwingateSSHResourceOutput) Alias() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TwingateSSHResource) pulumi.StringPtrOutput { return v.Alias }).(pulumi.StringPtrOutput)
 }
 
+// The downstream configuration. The connection between the SSH client and the Gateway.
+func (o TwingateSSHResourceOutput) Downstream() TwingateSSHResourceDownstreamOutput {
+	return o.ApplyT(func(v *TwingateSSHResource) TwingateSSHResourceDownstreamOutput { return v.Downstream }).(TwingateSSHResourceDownstreamOutput)
+}
+
 // The ID of the Gateway used to access this SSH Resource.
 func (o TwingateSSHResourceOutput) GatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TwingateSSHResource) pulumi.StringOutput { return v.GatewayId }).(pulumi.StringOutput)
@@ -385,6 +416,11 @@ func (o TwingateSSHResourceOutput) Tags() pulumi.StringMapOutput {
 // A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.
 func (o TwingateSSHResourceOutput) TagsAll() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *TwingateSSHResource) pulumi.StringMapOutput { return v.TagsAll }).(pulumi.StringMapOutput)
+}
+
+// The upstream configuration. The connection between the Gateway and the SSH server.
+func (o TwingateSSHResourceOutput) Upstream() TwingateSSHResourceUpstreamOutput {
+	return o.ApplyT(func(v *TwingateSSHResource) TwingateSSHResourceUpstreamOutput { return v.Upstream }).(TwingateSSHResourceUpstreamOutput)
 }
 
 type TwingateSSHResourceArrayOutput struct{ *pulumi.OutputState }

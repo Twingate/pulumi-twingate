@@ -20,7 +20,7 @@ namespace Twingate.Twingate.Inputs
         public Input<bool>? GroupsEnabled { get; set; }
 
         /// <summary>
-        /// Specifies the filter for the groups to be cached.
+        /// Specifies the filter for the groups to be cached. This filter also scopes what the `twingate.getTwingateGroups` datasource can return: lookups are answered from the cache when any cached group matches, so groups excluded by this filter are not returned.
         /// </summary>
         [Input("groupsFilter")]
         public Input<Inputs.ProviderCacheGroupsFilterArgs>? GroupsFilter { get; set; }
@@ -32,7 +32,7 @@ namespace Twingate.Twingate.Inputs
         public Input<bool>? ResourceEnabled { get; set; }
 
         /// <summary>
-        /// Specifies the filter for the resources to be cached.
+        /// Specifies the filter for the resources to be cached. This filter also scopes what the `twingate.getTwingateResources` datasource can return: lookups are answered from the cache when any cached resource matches, so resources excluded by this filter are not returned.
         /// </summary>
         [Input("resourcesFilter")]
         public Input<Inputs.ProviderCacheResourcesFilterArgs>? ResourcesFilter { get; set; }

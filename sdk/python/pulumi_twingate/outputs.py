@@ -34,6 +34,8 @@ __all__ = [
     'TwingateSSHResourceAccessGroup',
     'TwingateSSHResourceAccessGroupAccessPolicy',
     'TwingateSSHResourceAccessPolicy',
+    'TwingateSSHResourceDownstream',
+    'TwingateSSHResourceUpstream',
     'TwingateWebAppResourceAccessGroup',
     'TwingateWebAppResourceAccessGroupAccessPolicy',
     'TwingateWebAppResourceAccessPolicy',
@@ -1215,6 +1217,44 @@ class TwingateSSHResourceAccessPolicy(dict):
         This will set the access_policy mode for the policy. The valid values are `MANUAL`, `AUTO_LOCK` and `ACCESS_REQUEST`.
         """
         return pulumi.get(self, "mode")
+
+
+@pulumi.output_type
+class TwingateSSHResourceDownstream(dict):
+    def __init__(__self__, *,
+                 port: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int port: The port number. Must be between 1 and 65535 inclusive. Defaults to `22`.
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        The port number. Must be between 1 and 65535 inclusive. Defaults to `22`.
+        """
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class TwingateSSHResourceUpstream(dict):
+    def __init__(__self__, *,
+                 port: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int port: The port number. Must be between 1 and 65535 inclusive. Defaults to `22`.
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        The port number. Must be between 1 and 65535 inclusive. Defaults to `22`.
+        """
+        return pulumi.get(self, "port")
 
 
 @pulumi.output_type

@@ -56,6 +56,8 @@ type GetTwingateConnectorsArgs struct {
 	NameContains *string `pulumi:"nameContains"`
 	// Match when the exact value does not exist in the name of the connector.
 	NameExclude *string `pulumi:"nameExclude"`
+	// Returns only connectors that exactly match one of the names in the list.
+	NameIns []string `pulumi:"nameIns"`
 	// The name of the connector must start with the value.
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The regular expression match of the name of the connector.
@@ -76,6 +78,8 @@ type GetTwingateConnectorsResult struct {
 	NameContains *string `pulumi:"nameContains"`
 	// Match when the exact value does not exist in the name of the connector.
 	NameExclude *string `pulumi:"nameExclude"`
+	// Returns only connectors that exactly match one of the names in the list.
+	NameIns []string `pulumi:"nameIns"`
 	// The name of the connector must start with the value.
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The regular expression match of the name of the connector.
@@ -97,6 +101,8 @@ type GetTwingateConnectorsOutputArgs struct {
 	NameContains pulumi.StringPtrInput `pulumi:"nameContains"`
 	// Match when the exact value does not exist in the name of the connector.
 	NameExclude pulumi.StringPtrInput `pulumi:"nameExclude"`
+	// Returns only connectors that exactly match one of the names in the list.
+	NameIns pulumi.StringArrayInput `pulumi:"nameIns"`
 	// The name of the connector must start with the value.
 	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
 	// The regular expression match of the name of the connector.
@@ -147,6 +153,11 @@ func (o GetTwingateConnectorsResultOutput) NameContains() pulumi.StringPtrOutput
 // Match when the exact value does not exist in the name of the connector.
 func (o GetTwingateConnectorsResultOutput) NameExclude() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTwingateConnectorsResult) *string { return v.NameExclude }).(pulumi.StringPtrOutput)
+}
+
+// Returns only connectors that exactly match one of the names in the list.
+func (o GetTwingateConnectorsResultOutput) NameIns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTwingateConnectorsResult) []string { return v.NameIns }).(pulumi.StringArrayOutput)
 }
 
 // The name of the connector must start with the value.

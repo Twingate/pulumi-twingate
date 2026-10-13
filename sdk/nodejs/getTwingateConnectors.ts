@@ -27,6 +27,7 @@ export function getTwingateConnectors(args?: GetTwingateConnectorsArgs, opts?: p
         "name": args.name,
         "nameContains": args.nameContains,
         "nameExclude": args.nameExclude,
+        "nameIns": args.nameIns,
         "namePrefix": args.namePrefix,
         "nameRegexp": args.nameRegexp,
         "nameSuffix": args.nameSuffix,
@@ -49,6 +50,10 @@ export interface GetTwingateConnectorsArgs {
      * Match when the exact value does not exist in the name of the connector.
      */
     nameExclude?: string;
+    /**
+     * Returns only connectors that exactly match one of the names in the list.
+     */
+    nameIns?: string[];
     /**
      * The name of the connector must start with the value.
      */
@@ -88,6 +93,10 @@ export interface GetTwingateConnectorsResult {
      */
     readonly nameExclude?: string;
     /**
+     * Returns only connectors that exactly match one of the names in the list.
+     */
+    readonly nameIns?: string[];
+    /**
      * The name of the connector must start with the value.
      */
     readonly namePrefix?: string;
@@ -121,6 +130,7 @@ export function getTwingateConnectorsOutput(args?: GetTwingateConnectorsOutputAr
         "name": args.name,
         "nameContains": args.nameContains,
         "nameExclude": args.nameExclude,
+        "nameIns": args.nameIns,
         "namePrefix": args.namePrefix,
         "nameRegexp": args.nameRegexp,
         "nameSuffix": args.nameSuffix,
@@ -143,6 +153,10 @@ export interface GetTwingateConnectorsOutputArgs {
      * Match when the exact value does not exist in the name of the connector.
      */
     nameExclude?: pulumi.Input<string | undefined>;
+    /**
+     * Returns only connectors that exactly match one of the names in the list.
+     */
+    nameIns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the connector must start with the value.
      */

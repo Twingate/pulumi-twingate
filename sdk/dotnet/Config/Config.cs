@@ -120,7 +120,7 @@ namespace Twingate.Twingate
             /// </summary>
                 public bool? GroupsEnabled { get; set; }
             /// <summary>
-            /// Specifies the filter for the groups to be cached.
+            /// Specifies the filter for the groups to be cached. This filter also scopes what the `twingate.getTwingateGroups` datasource can return: lookups are answered from the cache when any cached group matches, so groups excluded by this filter are not returned.
             /// </summary>
                 public Twingate.Config.Types.CacheGroupsFilter? GroupsFilter { get; set; } = null!;
             /// <summary>
@@ -128,7 +128,7 @@ namespace Twingate.Twingate
             /// </summary>
                 public bool? ResourceEnabled { get; set; }
             /// <summary>
-            /// Specifies the filter for the resources to be cached.
+            /// Specifies the filter for the resources to be cached. This filter also scopes what the `twingate.getTwingateResources` datasource can return: lookups are answered from the cache when any cached resource matches, so resources excluded by this filter are not returned.
             /// </summary>
                 public Twingate.Config.Types.CacheResourcesFilter? ResourcesFilter { get; set; } = null!;
             }

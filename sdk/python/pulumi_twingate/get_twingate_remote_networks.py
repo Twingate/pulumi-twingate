@@ -27,7 +27,7 @@ class GetTwingateRemoteNetworksResult:
     """
     A collection of values returned by getTwingateRemoteNetworks.
     """
-    def __init__(__self__, id=None, name=None, name_contains=None, name_exclude=None, name_prefix=None, name_regexp=None, name_suffix=None, remote_networks=None):
+    def __init__(__self__, id=None, name=None, name_contains=None, name_exclude=None, name_ins=None, name_prefix=None, name_regexp=None, name_suffix=None, remote_networks=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -40,6 +40,9 @@ class GetTwingateRemoteNetworksResult:
         if name_exclude and not isinstance(name_exclude, str):
             raise TypeError("Expected argument 'name_exclude' to be a str")
         pulumi.set(__self__, "name_exclude", name_exclude)
+        if name_ins and not isinstance(name_ins, list):
+            raise TypeError("Expected argument 'name_ins' to be a list")
+        pulumi.set(__self__, "name_ins", name_ins)
         if name_prefix and not isinstance(name_prefix, str):
             raise TypeError("Expected argument 'name_prefix' to be a str")
         pulumi.set(__self__, "name_prefix", name_prefix)
@@ -86,6 +89,14 @@ class GetTwingateRemoteNetworksResult:
         return pulumi.get(self, "name_exclude")
 
     @_builtins.property
+    @pulumi.getter(name="nameIns")
+    def name_ins(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Returns only remote networks that exactly match one of the names in the list.
+        """
+        return pulumi.get(self, "name_ins")
+
+    @_builtins.property
     @pulumi.getter(name="namePrefix")
     def name_prefix(self) -> Optional[_builtins.str]:
         """
@@ -128,6 +139,7 @@ class AwaitableGetTwingateRemoteNetworksResult(GetTwingateRemoteNetworksResult):
             name=self.name,
             name_contains=self.name_contains,
             name_exclude=self.name_exclude,
+            name_ins=self.name_ins,
             name_prefix=self.name_prefix,
             name_regexp=self.name_regexp,
             name_suffix=self.name_suffix,
@@ -137,6 +149,7 @@ class AwaitableGetTwingateRemoteNetworksResult(GetTwingateRemoteNetworksResult):
 def get_twingate_remote_networks(name: Optional[_builtins.str] = None,
                                  name_contains: Optional[_builtins.str] = None,
                                  name_exclude: Optional[_builtins.str] = None,
+                                 name_ins: Optional[Sequence[_builtins.str]] = None,
                                  name_prefix: Optional[_builtins.str] = None,
                                  name_regexp: Optional[_builtins.str] = None,
                                  name_suffix: Optional[_builtins.str] = None,
@@ -157,6 +170,7 @@ def get_twingate_remote_networks(name: Optional[_builtins.str] = None,
     :param _builtins.str name: Returns only remote networks that exactly match this name. If no options are passed it will return all remote networks. Only one option can be used at a time.
     :param _builtins.str name_contains: Match when the value exist in the name of the remote network.
     :param _builtins.str name_exclude: Match when the exact value does not exist in the name of the remote network.
+    :param Sequence[_builtins.str] name_ins: Returns only remote networks that exactly match one of the names in the list.
     :param _builtins.str name_prefix: The name of the remote network must start with the value.
     :param _builtins.str name_regexp: The regular expression match of the name of the remote network.
     :param _builtins.str name_suffix: The name of the remote network must end with the value.
@@ -165,6 +179,7 @@ def get_twingate_remote_networks(name: Optional[_builtins.str] = None,
     __args__['name'] = name
     __args__['nameContains'] = name_contains
     __args__['nameExclude'] = name_exclude
+    __args__['nameIns'] = name_ins
     __args__['namePrefix'] = name_prefix
     __args__['nameRegexp'] = name_regexp
     __args__['nameSuffix'] = name_suffix
@@ -176,6 +191,7 @@ def get_twingate_remote_networks(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         name_contains=pulumi.get(__ret__, 'name_contains'),
         name_exclude=pulumi.get(__ret__, 'name_exclude'),
+        name_ins=pulumi.get(__ret__, 'name_ins'),
         name_prefix=pulumi.get(__ret__, 'name_prefix'),
         name_regexp=pulumi.get(__ret__, 'name_regexp'),
         name_suffix=pulumi.get(__ret__, 'name_suffix'),
@@ -183,6 +199,7 @@ def get_twingate_remote_networks(name: Optional[_builtins.str] = None,
 def get_twingate_remote_networks_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         name_contains: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         name_exclude: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        name_ins: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                         name_prefix: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         name_regexp: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         name_suffix: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -203,6 +220,7 @@ def get_twingate_remote_networks_output(name: pulumi.Input[Optional[Optional[_bu
     :param _builtins.str name: Returns only remote networks that exactly match this name. If no options are passed it will return all remote networks. Only one option can be used at a time.
     :param _builtins.str name_contains: Match when the value exist in the name of the remote network.
     :param _builtins.str name_exclude: Match when the exact value does not exist in the name of the remote network.
+    :param Sequence[_builtins.str] name_ins: Returns only remote networks that exactly match one of the names in the list.
     :param _builtins.str name_prefix: The name of the remote network must start with the value.
     :param _builtins.str name_regexp: The regular expression match of the name of the remote network.
     :param _builtins.str name_suffix: The name of the remote network must end with the value.
@@ -211,6 +229,7 @@ def get_twingate_remote_networks_output(name: pulumi.Input[Optional[Optional[_bu
     __args__['name'] = name
     __args__['nameContains'] = name_contains
     __args__['nameExclude'] = name_exclude
+    __args__['nameIns'] = name_ins
     __args__['namePrefix'] = name_prefix
     __args__['nameRegexp'] = name_regexp
     __args__['nameSuffix'] = name_suffix
@@ -221,6 +240,7 @@ def get_twingate_remote_networks_output(name: pulumi.Input[Optional[Optional[_bu
         name=pulumi.get(__response__, 'name'),
         name_contains=pulumi.get(__response__, 'name_contains'),
         name_exclude=pulumi.get(__response__, 'name_exclude'),
+        name_ins=pulumi.get(__response__, 'name_ins'),
         name_prefix=pulumi.get(__response__, 'name_prefix'),
         name_regexp=pulumi.get(__response__, 'name_regexp'),
         name_suffix=pulumi.get(__response__, 'name_suffix'),

@@ -181,7 +181,7 @@ def get_twingate_groups(is_active: Optional[_builtins.bool] = None,
                         types: Optional[Sequence[_builtins.str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTwingateGroupsResult:
     """
-    Groups are how users are authorized to access Resources. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/groups).
+    Groups are how users are authorized to access Resources. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/groups). When the provider is configured with a cache filter for this type, lookups are answered from the cache whenever any cached object matches, so objects excluded by that filter are not returned. See the provider `cache` documentation.
 
     ## Example Usage
 
@@ -239,7 +239,7 @@ def get_twingate_groups_output(is_active: pulumi.Input[Optional[Optional[_builti
                                types: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTwingateGroupsResult]:
     """
-    Groups are how users are authorized to access Resources. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/groups).
+    Groups are how users are authorized to access Resources. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/groups). When the provider is configured with a cache filter for this type, lookups are answered from the cache whenever any cached object matches, so objects excluded by that filter are not returned. See the provider `cache` documentation.
 
     ## Example Usage
 

@@ -54,6 +54,8 @@ type GetTwingateUsersArgs struct {
 	EmailContains *string `pulumi:"emailContains"`
 	// Match when the value does not exist in the email of the user.
 	EmailExclude *string `pulumi:"emailExclude"`
+	// Returns only users that exactly match one of the emails in the list.
+	EmailIns []string `pulumi:"emailIns"`
 	// The email of the user must start with the value.
 	EmailPrefix *string `pulumi:"emailPrefix"`
 	// The regular expression match of the email of the user.
@@ -96,6 +98,8 @@ type GetTwingateUsersResult struct {
 	EmailContains *string `pulumi:"emailContains"`
 	// Match when the value does not exist in the email of the user.
 	EmailExclude *string `pulumi:"emailExclude"`
+	// Returns only users that exactly match one of the emails in the list.
+	EmailIns []string `pulumi:"emailIns"`
 	// The email of the user must start with the value.
 	EmailPrefix *string `pulumi:"emailPrefix"`
 	// The regular expression match of the email of the user.
@@ -146,6 +150,8 @@ type GetTwingateUsersOutputArgs struct {
 	EmailContains pulumi.StringPtrInput `pulumi:"emailContains"`
 	// Match when the value does not exist in the email of the user.
 	EmailExclude pulumi.StringPtrInput `pulumi:"emailExclude"`
+	// Returns only users that exactly match one of the emails in the list.
+	EmailIns pulumi.StringArrayInput `pulumi:"emailIns"`
 	// The email of the user must start with the value.
 	EmailPrefix pulumi.StringPtrInput `pulumi:"emailPrefix"`
 	// The regular expression match of the email of the user.
@@ -212,6 +218,11 @@ func (o GetTwingateUsersResultOutput) EmailContains() pulumi.StringPtrOutput {
 // Match when the value does not exist in the email of the user.
 func (o GetTwingateUsersResultOutput) EmailExclude() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTwingateUsersResult) *string { return v.EmailExclude }).(pulumi.StringPtrOutput)
+}
+
+// Returns only users that exactly match one of the emails in the list.
+func (o GetTwingateUsersResultOutput) EmailIns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTwingateUsersResult) []string { return v.EmailIns }).(pulumi.StringArrayOutput)
 }
 
 // The email of the user must start with the value.

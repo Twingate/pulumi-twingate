@@ -27,6 +27,7 @@ export function getTwingateRemoteNetworks(args?: GetTwingateRemoteNetworksArgs, 
         "name": args.name,
         "nameContains": args.nameContains,
         "nameExclude": args.nameExclude,
+        "nameIns": args.nameIns,
         "namePrefix": args.namePrefix,
         "nameRegexp": args.nameRegexp,
         "nameSuffix": args.nameSuffix,
@@ -49,6 +50,10 @@ export interface GetTwingateRemoteNetworksArgs {
      * Match when the exact value does not exist in the name of the remote network.
      */
     nameExclude?: string;
+    /**
+     * Returns only remote networks that exactly match one of the names in the list.
+     */
+    nameIns?: string[];
     /**
      * The name of the remote network must start with the value.
      */
@@ -83,6 +88,10 @@ export interface GetTwingateRemoteNetworksResult {
      * Match when the exact value does not exist in the name of the remote network.
      */
     readonly nameExclude?: string;
+    /**
+     * Returns only remote networks that exactly match one of the names in the list.
+     */
+    readonly nameIns?: string[];
     /**
      * The name of the remote network must start with the value.
      */
@@ -121,6 +130,7 @@ export function getTwingateRemoteNetworksOutput(args?: GetTwingateRemoteNetworks
         "name": args.name,
         "nameContains": args.nameContains,
         "nameExclude": args.nameExclude,
+        "nameIns": args.nameIns,
         "namePrefix": args.namePrefix,
         "nameRegexp": args.nameRegexp,
         "nameSuffix": args.nameSuffix,
@@ -143,6 +153,10 @@ export interface GetTwingateRemoteNetworksOutputArgs {
      * Match when the exact value does not exist in the name of the remote network.
      */
     nameExclude?: pulumi.Input<string | undefined>;
+    /**
+     * Returns only remote networks that exactly match one of the names in the list.
+     */
+    nameIns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the remote network must start with the value.
      */
