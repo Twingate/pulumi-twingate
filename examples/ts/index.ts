@@ -211,6 +211,10 @@ new tg.TwingateSSHResource("ssh_resource_js", {
             groupId: tgGroup.id,
         },
     ],
+    // Downstream/upstream ports (provider v5.1.0). Both default to 22 when
+    // omitted; removing a block resets that side back to 22.
+    downstream: { port: 2222 },
+    upstream: { port: 22 },
 });
 
 // Web App Resource reachable through the Gateway (added in provider v5).
