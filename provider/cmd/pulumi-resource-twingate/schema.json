@@ -96,7 +96,7 @@
                 },
                 "groupsFilter": {
                     "$ref": "#/types/twingate:config/cacheGroupsFilter:cacheGroupsFilter",
-                    "description": "Specifies the filter for the groups to be cached.\n"
+                    "description": "Specifies the filter for the groups to be cached. This filter also scopes what the \u003cspan pulumi-lang-nodejs=\"`twingate.getTwingateGroups`\" pulumi-lang-dotnet=\"`twingate.getTwingateGroups`\" pulumi-lang-go=\"`getTwingateGroups`\" pulumi-lang-python=\"`get_twingate_groups`\" pulumi-lang-yaml=\"`twingate.getTwingateGroups`\" pulumi-lang-java=\"`twingate.getTwingateGroups`\" pulumi-lang-hcl=\"`data.twingate_groups`\"\u003e`twingate.getTwingateGroups`\u003c/span\u003e datasource can return: lookups are answered from the cache when any cached group matches, so groups excluded by this filter are not returned.\n"
                 },
                 "resourceEnabled": {
                     "type": "boolean",
@@ -104,7 +104,7 @@
                 },
                 "resourcesFilter": {
                     "$ref": "#/types/twingate:config/cacheResourcesFilter:cacheResourcesFilter",
-                    "description": "Specifies the filter for the resources to be cached.\n"
+                    "description": "Specifies the filter for the resources to be cached. This filter also scopes what the \u003cspan pulumi-lang-nodejs=\"`twingate.getTwingateResources`\" pulumi-lang-dotnet=\"`twingate.getTwingateResources`\" pulumi-lang-go=\"`getTwingateResources`\" pulumi-lang-python=\"`get_twingate_resources`\" pulumi-lang-yaml=\"`twingate.getTwingateResources`\" pulumi-lang-java=\"`twingate.getTwingateResources`\" pulumi-lang-hcl=\"`data.twingate_resources`\"\u003e`twingate.getTwingateResources`\u003c/span\u003e datasource can return: lookups are answered from the cache when any cached resource matches, so resources excluded by this filter are not returned.\n"
                 }
             },
             "type": "object"
@@ -213,7 +213,7 @@
                 },
                 "groupsFilter": {
                     "$ref": "#/types/twingate:index/ProviderCacheGroupsFilter:ProviderCacheGroupsFilter",
-                    "description": "Specifies the filter for the groups to be cached.\n"
+                    "description": "Specifies the filter for the groups to be cached. This filter also scopes what the \u003cspan pulumi-lang-nodejs=\"`twingate.getTwingateGroups`\" pulumi-lang-dotnet=\"`twingate.getTwingateGroups`\" pulumi-lang-go=\"`getTwingateGroups`\" pulumi-lang-python=\"`get_twingate_groups`\" pulumi-lang-yaml=\"`twingate.getTwingateGroups`\" pulumi-lang-java=\"`twingate.getTwingateGroups`\" pulumi-lang-hcl=\"`data.twingate_groups`\"\u003e`twingate.getTwingateGroups`\u003c/span\u003e datasource can return: lookups are answered from the cache when any cached group matches, so groups excluded by this filter are not returned.\n"
                 },
                 "resourceEnabled": {
                     "type": "boolean",
@@ -221,7 +221,7 @@
                 },
                 "resourcesFilter": {
                     "$ref": "#/types/twingate:index/ProviderCacheResourcesFilter:ProviderCacheResourcesFilter",
-                    "description": "Specifies the filter for the resources to be cached.\n"
+                    "description": "Specifies the filter for the resources to be cached. This filter also scopes what the \u003cspan pulumi-lang-nodejs=\"`twingate.getTwingateResources`\" pulumi-lang-dotnet=\"`twingate.getTwingateResources`\" pulumi-lang-go=\"`getTwingateResources`\" pulumi-lang-python=\"`get_twingate_resources`\" pulumi-lang-yaml=\"`twingate.getTwingateResources`\" pulumi-lang-java=\"`twingate.getTwingateResources`\" pulumi-lang-hcl=\"`data.twingate_resources`\"\u003e`twingate.getTwingateResources`\u003c/span\u003e datasource can return: lookups are answered from the cache when any cached resource matches, so resources excluded by this filter are not returned.\n"
                 }
             },
             "type": "object"
@@ -832,6 +832,38 @@
                         "approvalMode",
                         "duration",
                         "mode"
+                    ]
+                }
+            }
+        },
+        "twingate:index/TwingateSSHResourceDownstream:TwingateSSHResourceDownstream": {
+            "properties": {
+                "port": {
+                    "type": "integer",
+                    "description": "The port number. Must be between 1 and 65535 inclusive. Defaults to \u003cspan pulumi-lang-nodejs=\"`22`\" pulumi-lang-dotnet=\"`22`\" pulumi-lang-go=\"`22`\" pulumi-lang-python=\"`22`\" pulumi-lang-yaml=\"`22`\" pulumi-lang-java=\"`22`\" pulumi-lang-hcl=\"`22`\"\u003e`22`\u003c/span\u003e.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "port"
+                    ]
+                }
+            }
+        },
+        "twingate:index/TwingateSSHResourceUpstream:TwingateSSHResourceUpstream": {
+            "properties": {
+                "port": {
+                    "type": "integer",
+                    "description": "The port number. Must be between 1 and 65535 inclusive. Defaults to \u003cspan pulumi-lang-nodejs=\"`22`\" pulumi-lang-dotnet=\"`22`\" pulumi-lang-go=\"`22`\" pulumi-lang-python=\"`22`\" pulumi-lang-yaml=\"`22`\" pulumi-lang-java=\"`22`\" pulumi-lang-hcl=\"`22`\"\u003e`22`\u003c/span\u003e.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "port"
                     ]
                 }
             }
@@ -2664,7 +2696,7 @@
             }
         },
         "twingate:index/twingateSSHResource:TwingateSSHResource": {
-            "description": "SSH Resources are Twingate resources accessed via a Gateway.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as std from \"@pulumi/std\";\nimport * as twingate from \"@twingate/pulumi-twingate\";\n\nconst prod = new twingate.TwingateRemoteNetwork(\"prod\", {name: \"Production Network\"});\nconst tls = new twingate.TwingateX509CertificateAuthority(\"tls\", {\n    name: \"My TLS CA\",\n    certificate: std.file({\n        input: \"ca.pem\",\n    }).then(invoke =\u003e invoke.result),\n});\nconst ssh = new twingate.TwingateSSHCertificateAuthority(\"ssh\", {\n    name: \"My SSH CA\",\n    publicKey: \"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIr+Aj3O8csUrFRNWS7wViafil3rMlZ0glQ/OZ0CjCti\",\n});\nconst main = new twingate.TwingateGateway(\"main\", {\n    remoteNetworkId: prod.id,\n    address: \"10.0.0.1:8443\",\n    x509CaId: tls.id,\n    sshCaId: ssh.id,\n});\nconst sshServer = new twingate.TwingateSSHResource(\"ssh_server\", {\n    name: \"SSH Server\",\n    gatewayId: main.id,\n    alias: \"test.int\",\n    remoteNetworkId: prod.id,\n    address: \"10.128.0.105\",\n});\n```\n```python\nimport pulumi\nimport pulumi_std as std\nimport pulumi_twingate as twingate\n\nprod = twingate.TwingateRemoteNetwork(\"prod\", name=\"Production Network\")\ntls = twingate.TwingateX509CertificateAuthority(\"tls\",\n    name=\"My TLS CA\",\n    certificate=std.file(input=\"ca.pem\").result)\nssh = twingate.TwingateSSHCertificateAuthority(\"ssh\",\n    name=\"My SSH CA\",\n    public_key=\"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIr+Aj3O8csUrFRNWS7wViafil3rMlZ0glQ/OZ0CjCti\")\nmain = twingate.TwingateGateway(\"main\",\n    remote_network_id=prod.id,\n    address=\"10.0.0.1:8443\",\n    x509_ca_id=tls.id,\n    ssh_ca_id=ssh.id)\nssh_server = twingate.TwingateSSHResource(\"ssh_server\",\n    name=\"SSH Server\",\n    gateway_id=main.id,\n    alias=\"test.int\",\n    remote_network_id=prod.id,\n    address=\"10.128.0.105\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Std = Pulumi.Std;\nusing Twingate = Twingate.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var prod = new Twingate.TwingateRemoteNetwork(\"prod\", new()\n    {\n        Name = \"Production Network\",\n    });\n\n    var tls = new Twingate.TwingateX509CertificateAuthority(\"tls\", new()\n    {\n        Name = \"My TLS CA\",\n        Certificate = Std.File.Invoke(new()\n        {\n            Input = \"ca.pem\",\n        }).Apply(invoke =\u003e invoke.Result),\n    });\n\n    var ssh = new Twingate.TwingateSSHCertificateAuthority(\"ssh\", new()\n    {\n        Name = \"My SSH CA\",\n        PublicKey = \"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIr+Aj3O8csUrFRNWS7wViafil3rMlZ0glQ/OZ0CjCti\",\n    });\n\n    var main = new Twingate.TwingateGateway(\"main\", new()\n    {\n        RemoteNetworkId = prod.Id,\n        Address = \"10.0.0.1:8443\",\n        X509CaId = tls.Id,\n        SshCaId = ssh.Id,\n    });\n\n    var sshServer = new Twingate.TwingateSSHResource(\"ssh_server\", new()\n    {\n        Name = \"SSH Server\",\n        GatewayId = main.Id,\n        Alias = \"test.int\",\n        RemoteNetworkId = prod.Id,\n        Address = \"10.128.0.105\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/v5/go/twingate\"\n\t\"github.com/pulumi/pulumi-std/sdk/v2/go/std\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprod, err := twingate.NewTwingateRemoteNetwork(ctx, \"prod\", \u0026twingate.TwingateRemoteNetworkArgs{\n\t\t\tName: pulumi.String(\"Production Network\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tinvokeFile, err := std.File(ctx, \u0026std.FileArgs{\n\t\t\tInput: \"ca.pem\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttls, err := twingate.NewTwingateX509CertificateAuthority(ctx, \"tls\", \u0026twingate.TwingateX509CertificateAuthorityArgs{\n\t\t\tName:        pulumi.String(\"My TLS CA\"),\n\t\t\tCertificate: pulumi.String(invokeFile.Result),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tssh, err := twingate.NewTwingateSSHCertificateAuthority(ctx, \"ssh\", \u0026twingate.TwingateSSHCertificateAuthorityArgs{\n\t\t\tName:      pulumi.String(\"My SSH CA\"),\n\t\t\tPublicKey: pulumi.String(\"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIr+Aj3O8csUrFRNWS7wViafil3rMlZ0glQ/OZ0CjCti\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmain, err := twingate.NewTwingateGateway(ctx, \"main\", \u0026twingate.TwingateGatewayArgs{\n\t\t\tRemoteNetworkId: prod.ID().ToIDOutput().ToStringOutput(),\n\t\t\tAddress:         pulumi.String(\"10.0.0.1:8443\"),\n\t\t\tX509CaId:        tls.ID().ToIDOutput().ToStringOutput(),\n\t\t\tSshCaId:         ssh.ID().ToIDOutput().ToStringOutput(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = twingate.NewTwingateSSHResource(ctx, \"ssh_server\", \u0026twingate.TwingateSSHResourceArgs{\n\t\t\tName:            pulumi.String(\"SSH Server\"),\n\t\t\tGatewayId:       main.ID().ToIDOutput().ToStringOutput(),\n\t\t\tAlias:           pulumi.String(\"test.int\"),\n\t\t\tRemoteNetworkId: prod.ID().ToIDOutput().ToStringOutput(),\n\t\t\tAddress:         pulumi.String(\"10.128.0.105\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    std = {\n      source = \"pulumi/std\"\n    }\n    twingate = {\n      source = \"pulumi/twingate\"\n    }\n  }\n}\n\nresource \"twingate_twingateremotenetwork\" \"prod\" {\n  name = \"Production Network\"\n}\nresource \"twingate_twingatex509certificateauthority\" \"tls\" {\n  name        = \"My TLS CA\"\n  certificate = file(\"ca.pem\")\n}\nresource \"twingate_twingatesshcertificateauthority\" \"ssh\" {\n  name       = \"My SSH CA\"\n  public_key = \"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIr+Aj3O8csUrFRNWS7wViafil3rMlZ0glQ/OZ0CjCti\"\n}\nresource \"twingate_twingategateway\" \"main\" {\n  remote_network_id = twingate_twingateremotenetwork.prod.id\n  address           = \"10.0.0.1:8443\"\n  x509_ca_id        = twingate_twingatex509certificateauthority.tls.id\n  ssh_ca_id         = twingate_twingatesshcertificateauthority.ssh.id\n}\nresource \"twingate_twingatesshresource\" \"ssh_server\" {\n  name              = \"SSH Server\"\n  gateway_id        = twingate_twingategateway.main.id\n  alias             = \"test.int\"\n  remote_network_id = twingate_twingateremotenetwork.prod.id\n  address           = \"10.128.0.105\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateRemoteNetwork;\nimport com.pulumi.twingate.TwingateRemoteNetworkArgs;\nimport com.pulumi.twingate.TwingateX509CertificateAuthority;\nimport com.pulumi.twingate.TwingateX509CertificateAuthorityArgs;\nimport com.pulumi.std.StdFunctions;\nimport com.pulumi.std.inputs.FileArgs;\nimport com.pulumi.twingate.TwingateSSHCertificateAuthority;\nimport com.pulumi.twingate.TwingateSSHCertificateAuthorityArgs;\nimport com.pulumi.twingate.TwingateGateway;\nimport com.pulumi.twingate.TwingateGatewayArgs;\nimport com.pulumi.twingate.TwingateSSHResource;\nimport com.pulumi.twingate.TwingateSSHResourceArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var prod = new TwingateRemoteNetwork(\"prod\", TwingateRemoteNetworkArgs.builder()\n            .name(\"Production Network\")\n            .build());\n\n        var tls = new TwingateX509CertificateAuthority(\"tls\", TwingateX509CertificateAuthorityArgs.builder()\n            .name(\"My TLS CA\")\n            .certificate(StdFunctions.file(FileArgs.builder()\n                .input(\"ca.pem\")\n                .build()).result())\n            .build());\n\n        var ssh = new TwingateSSHCertificateAuthority(\"ssh\", TwingateSSHCertificateAuthorityArgs.builder()\n            .name(\"My SSH CA\")\n            .publicKey(\"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIr+Aj3O8csUrFRNWS7wViafil3rMlZ0glQ/OZ0CjCti\")\n            .build());\n\n        var main = new TwingateGateway(\"main\", TwingateGatewayArgs.builder()\n            .remoteNetworkId(prod.id())\n            .address(\"10.0.0.1:8443\")\n            .x509CaId(tls.id())\n            .sshCaId(ssh.id())\n            .build());\n\n        var sshServer = new TwingateSSHResource(\"sshServer\", TwingateSSHResourceArgs.builder()\n            .name(\"SSH Server\")\n            .gatewayId(main.id())\n            .alias(\"test.int\")\n            .remoteNetworkId(prod.id())\n            .address(\"10.128.0.105\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  prod:\n    type: twingate:TwingateRemoteNetwork\n    properties:\n      name: Production Network\n  tls:\n    type: twingate:TwingateX509CertificateAuthority\n    properties:\n      name: My TLS CA\n      certificate:\n        fn::invoke:\n          function: std:file\n          arguments:\n            input: ca.pem\n          return: result\n  ssh:\n    type: twingate:TwingateSSHCertificateAuthority\n    properties:\n      name: My SSH CA\n      publicKey: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIr+Aj3O8csUrFRNWS7wViafil3rMlZ0glQ/OZ0CjCti\n  main:\n    type: twingate:TwingateGateway\n    properties:\n      remoteNetworkId: ${prod.id}\n      address: 10.0.0.1:8443\n      x509CaId: ${tls.id}\n      sshCaId: ${ssh.id}\n  sshServer:\n    type: twingate:TwingateSSHResource\n    name: ssh_server\n    properties:\n      name: SSH Server\n      gatewayId: ${main.id}\n      alias: test.int\n      remoteNetworkId: ${prod.id}\n      address: 10.128.0.105\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "SSH Resources are Twingate resources accessed via a Gateway.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as std from \"@pulumi/std\";\nimport * as twingate from \"@twingate/pulumi-twingate\";\n\nconst prod = new twingate.TwingateRemoteNetwork(\"prod\", {name: \"Production Network\"});\nconst tls = new twingate.TwingateX509CertificateAuthority(\"tls\", {\n    name: \"My TLS CA\",\n    certificate: std.file({\n        input: \"ca.pem\",\n    }).then(invoke =\u003e invoke.result),\n});\nconst ssh = new twingate.TwingateSSHCertificateAuthority(\"ssh\", {\n    name: \"My SSH CA\",\n    publicKey: \"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIr+Aj3O8csUrFRNWS7wViafil3rMlZ0glQ/OZ0CjCti\",\n});\nconst main = new twingate.TwingateGateway(\"main\", {\n    remoteNetworkId: prod.id,\n    address: \"10.0.0.1:8443\",\n    x509CaId: tls.id,\n    sshCaId: ssh.id,\n});\nconst sshServer = new twingate.TwingateSSHResource(\"ssh_server\", {\n    name: \"SSH Server\",\n    gatewayId: main.id,\n    alias: \"test.int\",\n    remoteNetworkId: prod.id,\n    address: \"10.128.0.105\",\n    downstream: {\n        port: 2222,\n    },\n    upstream: {\n        port: 22,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_std as std\nimport pulumi_twingate as twingate\n\nprod = twingate.TwingateRemoteNetwork(\"prod\", name=\"Production Network\")\ntls = twingate.TwingateX509CertificateAuthority(\"tls\",\n    name=\"My TLS CA\",\n    certificate=std.file(input=\"ca.pem\").result)\nssh = twingate.TwingateSSHCertificateAuthority(\"ssh\",\n    name=\"My SSH CA\",\n    public_key=\"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIr+Aj3O8csUrFRNWS7wViafil3rMlZ0glQ/OZ0CjCti\")\nmain = twingate.TwingateGateway(\"main\",\n    remote_network_id=prod.id,\n    address=\"10.0.0.1:8443\",\n    x509_ca_id=tls.id,\n    ssh_ca_id=ssh.id)\nssh_server = twingate.TwingateSSHResource(\"ssh_server\",\n    name=\"SSH Server\",\n    gateway_id=main.id,\n    alias=\"test.int\",\n    remote_network_id=prod.id,\n    address=\"10.128.0.105\",\n    downstream={\n        \"port\": 2222,\n    },\n    upstream={\n        \"port\": 22,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Std = Pulumi.Std;\nusing Twingate = Twingate.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var prod = new Twingate.TwingateRemoteNetwork(\"prod\", new()\n    {\n        Name = \"Production Network\",\n    });\n\n    var tls = new Twingate.TwingateX509CertificateAuthority(\"tls\", new()\n    {\n        Name = \"My TLS CA\",\n        Certificate = Std.File.Invoke(new()\n        {\n            Input = \"ca.pem\",\n        }).Apply(invoke =\u003e invoke.Result),\n    });\n\n    var ssh = new Twingate.TwingateSSHCertificateAuthority(\"ssh\", new()\n    {\n        Name = \"My SSH CA\",\n        PublicKey = \"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIr+Aj3O8csUrFRNWS7wViafil3rMlZ0glQ/OZ0CjCti\",\n    });\n\n    var main = new Twingate.TwingateGateway(\"main\", new()\n    {\n        RemoteNetworkId = prod.Id,\n        Address = \"10.0.0.1:8443\",\n        X509CaId = tls.Id,\n        SshCaId = ssh.Id,\n    });\n\n    var sshServer = new Twingate.TwingateSSHResource(\"ssh_server\", new()\n    {\n        Name = \"SSH Server\",\n        GatewayId = main.Id,\n        Alias = \"test.int\",\n        RemoteNetworkId = prod.Id,\n        Address = \"10.128.0.105\",\n        Downstream = new Twingate.Inputs.TwingateSSHResourceDownstreamArgs\n        {\n            Port = 2222,\n        },\n        Upstream = new Twingate.Inputs.TwingateSSHResourceUpstreamArgs\n        {\n            Port = 22,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/v5/go/twingate\"\n\t\"github.com/pulumi/pulumi-std/sdk/v2/go/std\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprod, err := twingate.NewTwingateRemoteNetwork(ctx, \"prod\", \u0026twingate.TwingateRemoteNetworkArgs{\n\t\t\tName: pulumi.String(\"Production Network\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tinvokeFile, err := std.File(ctx, \u0026std.FileArgs{\n\t\t\tInput: \"ca.pem\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttls, err := twingate.NewTwingateX509CertificateAuthority(ctx, \"tls\", \u0026twingate.TwingateX509CertificateAuthorityArgs{\n\t\t\tName:        pulumi.String(\"My TLS CA\"),\n\t\t\tCertificate: pulumi.String(invokeFile.Result),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tssh, err := twingate.NewTwingateSSHCertificateAuthority(ctx, \"ssh\", \u0026twingate.TwingateSSHCertificateAuthorityArgs{\n\t\t\tName:      pulumi.String(\"My SSH CA\"),\n\t\t\tPublicKey: pulumi.String(\"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIr+Aj3O8csUrFRNWS7wViafil3rMlZ0glQ/OZ0CjCti\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmain, err := twingate.NewTwingateGateway(ctx, \"main\", \u0026twingate.TwingateGatewayArgs{\n\t\t\tRemoteNetworkId: prod.ID().ToIDOutput().ToStringOutput(),\n\t\t\tAddress:         pulumi.String(\"10.0.0.1:8443\"),\n\t\t\tX509CaId:        tls.ID().ToIDOutput().ToStringOutput(),\n\t\t\tSshCaId:         ssh.ID().ToIDOutput().ToStringOutput(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = twingate.NewTwingateSSHResource(ctx, \"ssh_server\", \u0026twingate.TwingateSSHResourceArgs{\n\t\t\tName:            pulumi.String(\"SSH Server\"),\n\t\t\tGatewayId:       main.ID().ToIDOutput().ToStringOutput(),\n\t\t\tAlias:           pulumi.String(\"test.int\"),\n\t\t\tRemoteNetworkId: prod.ID().ToIDOutput().ToStringOutput(),\n\t\t\tAddress:         pulumi.String(\"10.128.0.105\"),\n\t\t\tDownstream: \u0026twingate.TwingateSSHResourceDownstreamArgs{\n\t\t\t\tPort: pulumi.Int(2222),\n\t\t\t},\n\t\t\tUpstream: \u0026twingate.TwingateSSHResourceUpstreamArgs{\n\t\t\t\tPort: pulumi.Int(22),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    std = {\n      source = \"pulumi/std\"\n    }\n    twingate = {\n      source = \"pulumi/twingate\"\n    }\n  }\n}\n\nresource \"twingate_twingateremotenetwork\" \"prod\" {\n  name = \"Production Network\"\n}\nresource \"twingate_twingatex509certificateauthority\" \"tls\" {\n  name        = \"My TLS CA\"\n  certificate = file(\"ca.pem\")\n}\nresource \"twingate_twingatesshcertificateauthority\" \"ssh\" {\n  name       = \"My SSH CA\"\n  public_key = \"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIr+Aj3O8csUrFRNWS7wViafil3rMlZ0glQ/OZ0CjCti\"\n}\nresource \"twingate_twingategateway\" \"main\" {\n  remote_network_id = twingate_twingateremotenetwork.prod.id\n  address           = \"10.0.0.1:8443\"\n  x509_ca_id        = twingate_twingatex509certificateauthority.tls.id\n  ssh_ca_id         = twingate_twingatesshcertificateauthority.ssh.id\n}\nresource \"twingate_twingatesshresource\" \"ssh_server\" {\n  name              = \"SSH Server\"\n  gateway_id        = twingate_twingategateway.main.id\n  alias             = \"test.int\"\n  remote_network_id = twingate_twingateremotenetwork.prod.id\n  address           = \"10.128.0.105\"\n  downstream = {\n    port = 2222\n  }\n  upstream = {\n    port = 22\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateRemoteNetwork;\nimport com.pulumi.twingate.TwingateRemoteNetworkArgs;\nimport com.pulumi.twingate.TwingateX509CertificateAuthority;\nimport com.pulumi.twingate.TwingateX509CertificateAuthorityArgs;\nimport com.pulumi.std.StdFunctions;\nimport com.pulumi.std.inputs.FileArgs;\nimport com.pulumi.twingate.TwingateSSHCertificateAuthority;\nimport com.pulumi.twingate.TwingateSSHCertificateAuthorityArgs;\nimport com.pulumi.twingate.TwingateGateway;\nimport com.pulumi.twingate.TwingateGatewayArgs;\nimport com.pulumi.twingate.TwingateSSHResource;\nimport com.pulumi.twingate.TwingateSSHResourceArgs;\nimport com.pulumi.twingate.inputs.TwingateSSHResourceDownstreamArgs;\nimport com.pulumi.twingate.inputs.TwingateSSHResourceUpstreamArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var prod = new TwingateRemoteNetwork(\"prod\", TwingateRemoteNetworkArgs.builder()\n            .name(\"Production Network\")\n            .build());\n\n        var tls = new TwingateX509CertificateAuthority(\"tls\", TwingateX509CertificateAuthorityArgs.builder()\n            .name(\"My TLS CA\")\n            .certificate(StdFunctions.file(FileArgs.builder()\n                .input(\"ca.pem\")\n                .build()).result())\n            .build());\n\n        var ssh = new TwingateSSHCertificateAuthority(\"ssh\", TwingateSSHCertificateAuthorityArgs.builder()\n            .name(\"My SSH CA\")\n            .publicKey(\"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIr+Aj3O8csUrFRNWS7wViafil3rMlZ0glQ/OZ0CjCti\")\n            .build());\n\n        var main = new TwingateGateway(\"main\", TwingateGatewayArgs.builder()\n            .remoteNetworkId(prod.id())\n            .address(\"10.0.0.1:8443\")\n            .x509CaId(tls.id())\n            .sshCaId(ssh.id())\n            .build());\n\n        var sshServer = new TwingateSSHResource(\"sshServer\", TwingateSSHResourceArgs.builder()\n            .name(\"SSH Server\")\n            .gatewayId(main.id())\n            .alias(\"test.int\")\n            .remoteNetworkId(prod.id())\n            .address(\"10.128.0.105\")\n            .downstream(TwingateSSHResourceDownstreamArgs.builder()\n                .port(2222)\n                .build())\n            .upstream(TwingateSSHResourceUpstreamArgs.builder()\n                .port(22)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  prod:\n    type: twingate:TwingateRemoteNetwork\n    properties:\n      name: Production Network\n  tls:\n    type: twingate:TwingateX509CertificateAuthority\n    properties:\n      name: My TLS CA\n      certificate:\n        fn::invoke:\n          function: std:file\n          arguments:\n            input: ca.pem\n          return: result\n  ssh:\n    type: twingate:TwingateSSHCertificateAuthority\n    properties:\n      name: My SSH CA\n      publicKey: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIr+Aj3O8csUrFRNWS7wViafil3rMlZ0glQ/OZ0CjCti\n  main:\n    type: twingate:TwingateGateway\n    properties:\n      remoteNetworkId: ${prod.id}\n      address: 10.0.0.1:8443\n      x509CaId: ${tls.id}\n      sshCaId: ${ssh.id}\n  sshServer:\n    type: twingate:TwingateSSHResource\n    name: ssh_server\n    properties:\n      name: SSH Server\n      gatewayId: ${main.id}\n      alias: test.int\n      remoteNetworkId: ${prod.id}\n      address: 10.128.0.105\n      downstream:\n        port: 2222\n      upstream:\n        port: 22\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "accessGroups": {
                     "type": "array",
@@ -2687,6 +2719,10 @@
                 "alias": {
                     "type": "string",
                     "description": "Set a DNS alias address for the Resource. Must be a DNS-valid name string.\n"
+                },
+                "downstream": {
+                    "$ref": "#/types/twingate:index/TwingateSSHResourceDownstream:TwingateSSHResourceDownstream",
+                    "description": "The downstream configuration. The connection between the SSH client and the Gateway.\n"
                 },
                 "gatewayId": {
                     "type": "string",
@@ -2721,17 +2757,23 @@
                         "type": "string"
                     },
                     "description": "A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.\n"
+                },
+                "upstream": {
+                    "$ref": "#/types/twingate:index/TwingateSSHResourceUpstream:TwingateSSHResourceUpstream",
+                    "description": "The upstream configuration. The connection between the Gateway and the SSH server.\n"
                 }
             },
             "required": [
                 "address",
+                "downstream",
                 "gatewayId",
                 "isVisible",
                 "name",
                 "remoteNetworkId",
                 "securityPolicyId",
                 "tags",
-                "tagsAll"
+                "tagsAll",
+                "upstream"
             ],
             "inputProperties": {
                 "accessGroups": {
@@ -2755,6 +2797,10 @@
                 "alias": {
                     "type": "string",
                     "description": "Set a DNS alias address for the Resource. Must be a DNS-valid name string.\n"
+                },
+                "downstream": {
+                    "$ref": "#/types/twingate:index/TwingateSSHResourceDownstream:TwingateSSHResourceDownstream",
+                    "description": "The downstream configuration. The connection between the SSH client and the Gateway.\n"
                 },
                 "gatewayId": {
                     "type": "string",
@@ -2782,6 +2828,10 @@
                         "type": "string"
                     },
                     "description": "A map of key-value pair tags to set on this resource.\n"
+                },
+                "upstream": {
+                    "$ref": "#/types/twingate:index/TwingateSSHResourceUpstream:TwingateSSHResourceUpstream",
+                    "description": "The upstream configuration. The connection between the Gateway and the SSH server.\n"
                 }
             },
             "requiredInputs": [
@@ -2813,6 +2863,10 @@
                     "alias": {
                         "type": "string",
                         "description": "Set a DNS alias address for the Resource. Must be a DNS-valid name string.\n"
+                    },
+                    "downstream": {
+                        "$ref": "#/types/twingate:index/TwingateSSHResourceDownstream:TwingateSSHResourceDownstream",
+                        "description": "The downstream configuration. The connection between the SSH client and the Gateway.\n"
                     },
                     "gatewayId": {
                         "type": "string",
@@ -2847,6 +2901,10 @@
                             "type": "string"
                         },
                         "description": "A map of key-value pairs that represents all tags on this resource, including default tags from provider configuration.\n"
+                    },
+                    "upstream": {
+                        "$ref": "#/types/twingate:index/TwingateSSHResourceUpstream:TwingateSSHResourceUpstream",
+                        "description": "The upstream configuration. The connection between the Gateway and the SSH server.\n"
                     }
                 },
                 "type": "object"
@@ -3479,6 +3537,13 @@
                         "type": "string",
                         "description": "Match when the exact value does not exist in the name of the connector.\n"
                     },
+                    "nameIns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Returns only connectors that exactly match one of the names in the list.\n"
+                    },
                     "namePrefix": {
                         "type": "string",
                         "description": "The name of the connector must start with the value.\n"
@@ -3519,6 +3584,13 @@
                     "nameExclude": {
                         "description": "Match when the exact value does not exist in the name of the connector.\n",
                         "type": "string"
+                    },
+                    "nameIns": {
+                        "description": "Returns only connectors that exactly match one of the names in the list.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
                     },
                     "namePrefix": {
                         "description": "The name of the connector must start with the value.\n",
@@ -3726,7 +3798,7 @@
             }
         },
         "twingate:index/getTwingateGroups:getTwingateGroups": {
-            "description": "Groups are how users are authorized to access Resources. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/groups).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@twingate/pulumi-twingate\";\n\nconst foo = twingate.getTwingateGroups({\n    name: \"\u003cyour group's name\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nfoo = twingate.get_twingate_groups(name=\"\u003cyour group's name\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Twingate.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = Twingate.GetTwingateGroups.Invoke(new()\n    {\n        Name = \"\u003cyour group's name\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/v5/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.GetTwingateGroups(ctx, \u0026twingate.GetTwingateGroupsArgs{\n\t\t\tName: pulumi.StringRef(\"\u003cyour group's name\u003e\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    twingate = {\n      source = \"pulumi/twingate\"\n    }\n  }\n}\n\ndata \"twingate_gettwingategroups\" \"foo\" {\n  name = \"\u003cyour group's name\u003e\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateGroupsArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = TwingateFunctions.getTwingateGroups(GetTwingateGroupsArgs.builder()\n            .name(\"\u003cyour group's name\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      function: twingate:getTwingateGroups\n      arguments:\n        name: \u003cyour group's name\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Groups are how users are authorized to access Resources. For more information, see Twingate's [documentation](https://docs.twingate.com/docs/groups). When the provider is configured with a cache filter for this type, lookups are answered from the cache whenever any cached object matches, so objects excluded by that filter are not returned. See the provider \u003cspan pulumi-lang-nodejs=\"`cache`\" pulumi-lang-dotnet=\"`Cache`\" pulumi-lang-go=\"`cache`\" pulumi-lang-python=\"`cache`\" pulumi-lang-yaml=\"`cache`\" pulumi-lang-java=\"`cache`\" pulumi-lang-hcl=\"`cache`\"\u003e`cache`\u003c/span\u003e documentation.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@twingate/pulumi-twingate\";\n\nconst foo = twingate.getTwingateGroups({\n    name: \"\u003cyour group's name\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nfoo = twingate.get_twingate_groups(name=\"\u003cyour group's name\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Twingate.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = Twingate.GetTwingateGroups.Invoke(new()\n    {\n        Name = \"\u003cyour group's name\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/v5/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.GetTwingateGroups(ctx, \u0026twingate.GetTwingateGroupsArgs{\n\t\t\tName: pulumi.StringRef(\"\u003cyour group's name\u003e\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    twingate = {\n      source = \"pulumi/twingate\"\n    }\n  }\n}\n\ndata \"twingate_gettwingategroups\" \"foo\" {\n  name = \"\u003cyour group's name\u003e\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateGroupsArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = TwingateFunctions.getTwingateGroups(GetTwingateGroupsArgs.builder()\n            .name(\"\u003cyour group's name\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      function: twingate:getTwingateGroups\n      arguments:\n        name: \u003cyour group's name\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getTwingateGroups.\n",
                 "properties": {
@@ -3899,6 +3971,13 @@
                         "type": "string",
                         "description": "Match when the exact value does not exist in the name of the remote network.\n"
                     },
+                    "nameIns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Returns only remote networks that exactly match one of the names in the list.\n"
+                    },
                     "namePrefix": {
                         "type": "string",
                         "description": "The name of the remote network must start with the value.\n"
@@ -3932,6 +4011,13 @@
                     "nameExclude": {
                         "description": "Match when the exact value does not exist in the name of the remote network.\n",
                         "type": "string"
+                    },
+                    "nameIns": {
+                        "description": "Returns only remote networks that exactly match one of the names in the list.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
                     },
                     "namePrefix": {
                         "description": "The name of the remote network must start with the value.\n",
@@ -4026,7 +4112,7 @@
             }
         },
         "twingate:index/getTwingateResources:getTwingateResources": {
-            "description": "Resources in Twingate represent servers on the private network that clients can connect to. Resources can be defined by IP, CIDR range, FQDN, or DNS zone. For more information, see the Twingate [documentation](https://docs.twingate.com/docs/resources-and-access-nodes).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@twingate/pulumi-twingate\";\n\nconst foo = twingate.getTwingateResources({\n    name: \"\u003cyour resource's name\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nfoo = twingate.get_twingate_resources(name=\"\u003cyour resource's name\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Twingate.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = Twingate.GetTwingateResources.Invoke(new()\n    {\n        Name = \"\u003cyour resource's name\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/v5/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.GetTwingateResources(ctx, \u0026twingate.GetTwingateResourcesArgs{\n\t\t\tName: pulumi.StringRef(\"\u003cyour resource's name\u003e\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    twingate = {\n      source = \"pulumi/twingate\"\n    }\n  }\n}\n\ndata \"twingate_gettwingateresources\" \"foo\" {\n  name = \"\u003cyour resource's name\u003e\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateResourcesArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = TwingateFunctions.getTwingateResources(GetTwingateResourcesArgs.builder()\n            .name(\"\u003cyour resource's name\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      function: twingate:getTwingateResources\n      arguments:\n        name: \u003cyour resource's name\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Resources in Twingate represent servers on the private network that clients can connect to. Resources can be defined by IP, CIDR range, FQDN, or DNS zone. For more information, see the Twingate [documentation](https://docs.twingate.com/docs/resources-and-access-nodes). When the provider is configured with a cache filter for this type, lookups are answered from the cache whenever any cached object matches, so objects excluded by that filter are not returned. See the provider \u003cspan pulumi-lang-nodejs=\"`cache`\" pulumi-lang-dotnet=\"`Cache`\" pulumi-lang-go=\"`cache`\" pulumi-lang-python=\"`cache`\" pulumi-lang-yaml=\"`cache`\" pulumi-lang-java=\"`cache`\" pulumi-lang-hcl=\"`cache`\"\u003e`cache`\u003c/span\u003e documentation.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as twingate from \"@twingate/pulumi-twingate\";\n\nconst foo = twingate.getTwingateResources({\n    name: \"\u003cyour resource's name\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_twingate as twingate\n\nfoo = twingate.get_twingate_resources(name=\"\u003cyour resource's name\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Twingate = Twingate.Twingate;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = Twingate.GetTwingateResources.Invoke(new()\n    {\n        Name = \"\u003cyour resource's name\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Twingate/pulumi-twingate/sdk/v5/go/twingate\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := twingate.GetTwingateResources(ctx, \u0026twingate.GetTwingateResourcesArgs{\n\t\t\tName: pulumi.StringRef(\"\u003cyour resource's name\u003e\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    twingate = {\n      source = \"pulumi/twingate\"\n    }\n  }\n}\n\ndata \"twingate_gettwingateresources\" \"foo\" {\n  name = \"\u003cyour resource's name\u003e\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.twingate.TwingateFunctions;\nimport com.pulumi.twingate.inputs.GetTwingateResourcesArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = TwingateFunctions.getTwingateResources(GetTwingateResourcesArgs.builder()\n            .name(\"\u003cyour resource's name\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      function: twingate:getTwingateResources\n      arguments:\n        name: \u003cyour resource's name\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getTwingateResources.\n",
                 "properties": {
@@ -4041,6 +4127,13 @@
                     "nameExclude": {
                         "type": "string",
                         "description": "Match when the exact value does not exist in the name of the resource.\n"
+                    },
+                    "nameIns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Returns only resources that exactly match one of the names in the list.\n"
                     },
                     "namePrefix": {
                         "type": "string",
@@ -4082,6 +4175,13 @@
                     "nameExclude": {
                         "description": "Match when the exact value does not exist in the name of the resource.\n",
                         "type": "string"
+                    },
+                    "nameIns": {
+                        "description": "Returns only resources that exactly match one of the names in the list.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
                     },
                     "namePrefix": {
                         "description": "The name of the resource must start with the value.\n",
@@ -4173,6 +4273,13 @@
                         "type": "string",
                         "description": "Match when the exact value does not exist in the name of the security policy.\n"
                     },
+                    "nameIns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Returns only security policies that exactly match one of the names in the list.\n"
+                    },
                     "namePrefix": {
                         "type": "string",
                         "description": "The name of the security policy must start with the value.\n"
@@ -4206,6 +4313,13 @@
                     "nameExclude": {
                         "description": "Match when the exact value does not exist in the name of the security policy.\n",
                         "type": "string"
+                    },
+                    "nameIns": {
+                        "description": "Returns only security policies that exactly match one of the names in the list.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
                     },
                     "namePrefix": {
                         "description": "The name of the security policy must start with the value.\n",
@@ -4281,6 +4395,13 @@
                         "type": "string",
                         "description": "Match when the exact value does not exist in the name of the service account.\n"
                     },
+                    "nameIns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Returns only service accounts that exactly match one of the names in the list.\n"
+                    },
                     "namePrefix": {
                         "type": "string",
                         "description": "The name of the service account must start with the value.\n"
@@ -4314,6 +4435,13 @@
                     "nameExclude": {
                         "description": "Match when the exact value does not exist in the name of the service account.\n",
                         "type": "string"
+                    },
+                    "nameIns": {
+                        "description": "Returns only service accounts that exactly match one of the names in the list.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
                     },
                     "namePrefix": {
                         "description": "The name of the service account must start with the value.\n",
@@ -4454,6 +4582,13 @@
                         "type": "string",
                         "description": "Match when the value does not exist in the email of the user.\n"
                     },
+                    "emailIns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Returns only users that exactly match one of the emails in the list.\n"
+                    },
                     "emailPrefix": {
                         "type": "string",
                         "description": "The email of the user must start with the value.\n"
@@ -4538,6 +4673,13 @@
                     "emailExclude": {
                         "description": "Match when the value does not exist in the email of the user.\n",
                         "type": "string"
+                    },
+                    "emailIns": {
+                        "description": "Returns only users that exactly match one of the emails in the list.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
                     },
                     "emailPrefix": {
                         "description": "The email of the user must start with the value.\n",
