@@ -5,6 +5,7 @@ go 1.26.6
 require (
 	github.com/Twingate/terraform-provider-twingate/v5 v5.1.1
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.141.0
+	github.com/pulumi/pulumi/pkg/v3 v3.268.0
 	github.com/pulumi/pulumi/sdk/v3 v3.269.0
 )
 
@@ -175,7 +176,6 @@ require (
 	github.com/pulumi/pulumi-hcl v0.18.5 // indirect
 	github.com/pulumi/pulumi-java v1.37.4 // indirect
 	github.com/pulumi/pulumi-yaml v1.38.10 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.268.0 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/rogpeppe/go-internal v1.14.1 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect

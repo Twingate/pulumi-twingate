@@ -31,7 +31,7 @@ namespace Twingate.Twingate.Outputs
         /// </summary>
         public readonly string LastName;
         /// <summary>
-        /// Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
+        /// Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS_REVIEWER, INTERNET_SECURITY, HELPDESK or BILLING.
         /// </summary>
         public readonly string Role;
         /// <summary>

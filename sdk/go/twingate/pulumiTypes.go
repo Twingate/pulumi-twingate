@@ -6979,7 +6979,7 @@ type GetTwingateUsersUser struct {
 	Id string `pulumi:"id"`
 	// The last name of the User
 	LastName string `pulumi:"lastName"`
-	// Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
+	// Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS_REVIEWER, INTERNET_SECURITY, HELPDESK or BILLING.
 	Role string `pulumi:"role"`
 	// Indicates the User's type. Either MANUAL or SYNCED.
 	Type string `pulumi:"type"`
@@ -7005,7 +7005,7 @@ type GetTwingateUsersUserArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The last name of the User
 	LastName pulumi.StringInput `pulumi:"lastName"`
-	// Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
+	// Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS_REVIEWER, INTERNET_SECURITY, HELPDESK or BILLING.
 	Role pulumi.StringInput `pulumi:"role"`
 	// Indicates the User's type. Either MANUAL or SYNCED.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -7082,7 +7082,7 @@ func (o GetTwingateUsersUserOutput) LastName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTwingateUsersUser) string { return v.LastName }).(pulumi.StringOutput)
 }
 
-// Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
+// Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS_REVIEWER, INTERNET_SECURITY, HELPDESK or BILLING.
 func (o GetTwingateUsersUserOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTwingateUsersUser) string { return v.Role }).(pulumi.StringOutput)
 }

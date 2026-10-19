@@ -17,6 +17,7 @@ package twingate
 import (
 	"fmt"
 	"path"
+	"strings"
 
 	// Allow embedding bridge-metadata.json in the provider.
 	_ "embed"
@@ -26,6 +27,7 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	bridgev3 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
+	pschema "github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 
 	"github.com/Twingate/pulumi-twingate/provider/pkg/version"
@@ -104,6 +106,44 @@ func Provider() bridgev3.ProviderInfo {
 			// 		EnvVars: []string{"AWS_REGION", "AWS_DEFAULT_REGION"},
 			// 	},
 			// },
+		},
+		SchemaPostProcessor: func(spec *pschema.PackageSpec) {
+			roleReplacer := strings.NewReplacer(
+				"ACCESS*REVIEWER", "ACCESS_REVIEWER",
+				"INTERNET*SECURITY", "INTERNET_SECURITY",
+			)
+			fixRoleDescriptions := func(properties map[string]pschema.PropertySpec) {
+				for _, name := range []string{"role", "roles"} {
+					property, ok := properties[name]
+					if !ok {
+						continue
+					}
+					property.Description = roleReplacer.Replace(property.Description)
+					properties[name] = property
+				}
+			}
+
+			for name, resource := range spec.Resources {
+				fixRoleDescriptions(resource.Properties)
+				fixRoleDescriptions(resource.InputProperties)
+				if resource.StateInputs != nil {
+					fixRoleDescriptions(resource.StateInputs.Properties)
+				}
+				spec.Resources[name] = resource
+			}
+			for name, function := range spec.Functions {
+				if function.Inputs != nil {
+					fixRoleDescriptions(function.Inputs.Properties)
+				}
+				if function.Outputs != nil {
+					fixRoleDescriptions(function.Outputs.Properties)
+				}
+				spec.Functions[name] = function
+			}
+			for name, typ := range spec.Types {
+				fixRoleDescriptions(typ.Properties)
+				spec.Types[name] = typ
+			}
 		},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*bridgev3.ResourceInfo{

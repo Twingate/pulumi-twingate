@@ -61,7 +61,7 @@ type TwingateUser struct {
 	IsActive pulumi.BoolOutput `pulumi:"isActive"`
 	// The User's last name
 	LastName pulumi.StringOutput `pulumi:"lastName"`
-	// Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
+	// Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS_REVIEWER, INTERNET_SECURITY, HELPDESK or BILLING.
 	Role pulumi.StringOutput `pulumi:"role"`
 	// Determines whether to send an email invitation to the User. True by default.
 	//
@@ -112,7 +112,7 @@ type twingateUserState struct {
 	IsActive *bool `pulumi:"isActive"`
 	// The User's last name
 	LastName *string `pulumi:"lastName"`
-	// Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
+	// Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS_REVIEWER, INTERNET_SECURITY, HELPDESK or BILLING.
 	Role *string `pulumi:"role"`
 	// Determines whether to send an email invitation to the User. True by default.
 	//
@@ -131,7 +131,7 @@ type TwingateUserState struct {
 	IsActive pulumi.BoolPtrInput
 	// The User's last name
 	LastName pulumi.StringPtrInput
-	// Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
+	// Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS_REVIEWER, INTERNET_SECURITY, HELPDESK or BILLING.
 	Role pulumi.StringPtrInput
 	// Determines whether to send an email invitation to the User. True by default.
 	//
@@ -154,7 +154,7 @@ type twingateUserArgs struct {
 	IsActive *bool `pulumi:"isActive"`
 	// The User's last name
 	LastName *string `pulumi:"lastName"`
-	// Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
+	// Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS_REVIEWER, INTERNET_SECURITY, HELPDESK or BILLING.
 	Role *string `pulumi:"role"`
 	// Determines whether to send an email invitation to the User. True by default.
 	//
@@ -172,7 +172,7 @@ type TwingateUserArgs struct {
 	IsActive pulumi.BoolPtrInput
 	// The User's last name
 	LastName pulumi.StringPtrInput
-	// Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
+	// Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS_REVIEWER, INTERNET_SECURITY, HELPDESK or BILLING.
 	Role pulumi.StringPtrInput
 	// Determines whether to send an email invitation to the User. True by default.
 	//
@@ -287,7 +287,7 @@ func (o TwingateUserOutput) LastName() pulumi.StringOutput {
 	return o.ApplyT(func(v *TwingateUser) pulumi.StringOutput { return v.LastName }).(pulumi.StringOutput)
 }
 
-// Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
+// Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS_REVIEWER, INTERNET_SECURITY, HELPDESK or BILLING.
 func (o TwingateUserOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *TwingateUser) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }

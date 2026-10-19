@@ -259,7 +259,7 @@ class GetTwingateUsersResult:
     @pulumi.getter
     def roles(self) -> Optional[Sequence[_builtins.str]]:
         """
-        Returns users that match a list of roles. Valid roles: `ADMIN`, `DEVOPS`, `SUPPORT`, `MEMBER`.
+        Returns users that match a list of roles. Valid roles: ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS_REVIEWER, INTERNET_SECURITY, HELPDESK or BILLING.
         """
         return pulumi.get(self, "roles")
 
@@ -352,7 +352,7 @@ def get_twingate_users(email: Optional[_builtins.str] = None,
     :param _builtins.str last_name_prefix: The last name of the user must start with the value.
     :param _builtins.str last_name_regexp: The regular expression match of the last name of the user.
     :param _builtins.str last_name_suffix: The last name of the user must end with the value.
-    :param Sequence[_builtins.str] roles: Returns users that match a list of roles. Valid roles: `ADMIN`, `DEVOPS`, `SUPPORT`, `MEMBER`.
+    :param Sequence[_builtins.str] roles: Returns users that match a list of roles. Valid roles: ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS_REVIEWER, INTERNET_SECURITY, HELPDESK or BILLING.
     """
     __args__ = dict()
     __args__['email'] = email
@@ -454,7 +454,7 @@ def get_twingate_users_output(email: pulumi.Input[Optional[Optional[_builtins.st
     :param _builtins.str last_name_prefix: The last name of the user must start with the value.
     :param _builtins.str last_name_regexp: The regular expression match of the last name of the user.
     :param _builtins.str last_name_suffix: The last name of the user must end with the value.
-    :param Sequence[_builtins.str] roles: Returns users that match a list of roles. Valid roles: `ADMIN`, `DEVOPS`, `SUPPORT`, `MEMBER`.
+    :param Sequence[_builtins.str] roles: Returns users that match a list of roles. Valid roles: ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS_REVIEWER, INTERNET_SECURITY, HELPDESK or BILLING.
     """
     __args__ = dict()
     __args__['email'] = email

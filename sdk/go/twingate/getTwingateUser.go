@@ -64,7 +64,7 @@ type LookupTwingateUserResult struct {
 	Id string `pulumi:"id"`
 	// The last name of the User
 	LastName string `pulumi:"lastName"`
-	// Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
+	// Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS_REVIEWER, INTERNET_SECURITY, HELPDESK or BILLING.
 	Role string `pulumi:"role"`
 	// Indicates the User's type. Either MANUAL or SYNCED.
 	Type string `pulumi:"type"`
@@ -120,7 +120,7 @@ func (o LookupTwingateUserResultOutput) LastName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTwingateUserResult) string { return v.LastName }).(pulumi.StringOutput)
 }
 
-// Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.
+// Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS_REVIEWER, INTERNET_SECURITY, HELPDESK or BILLING.
 func (o LookupTwingateUserResultOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTwingateUserResult) string { return v.Role }).(pulumi.StringOutput)
 }
