@@ -203,7 +203,7 @@ namespace Twingate.Twingate
         private List<string>? _roles;
 
         /// <summary>
-        /// Returns users that match a list of roles. Valid roles: `ADMIN`, `DEVOPS`, `SUPPORT`, `MEMBER`.
+        /// Returns users that match a list of roles. Valid roles: ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS*REVIEWER, INTERNET*SECURITY, HELPDESK or BILLING.
         /// </summary>
         public List<string> Roles
         {
@@ -343,7 +343,7 @@ namespace Twingate.Twingate
         private InputList<string>? _roles;
 
         /// <summary>
-        /// Returns users that match a list of roles. Valid roles: `ADMIN`, `DEVOPS`, `SUPPORT`, `MEMBER`.
+        /// Returns users that match a list of roles. Valid roles: ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS*REVIEWER, INTERNET*SECURITY, HELPDESK or BILLING.
         /// </summary>
         public InputList<string> Roles
         {
@@ -442,7 +442,7 @@ namespace Twingate.Twingate
         /// </summary>
         public readonly string? LastNameSuffix;
         /// <summary>
-        /// Returns users that match a list of roles. Valid roles: `ADMIN`, `DEVOPS`, `SUPPORT`, `MEMBER`.
+        /// Returns users that match a list of roles. Valid roles: ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS*REVIEWER, INTERNET*SECURITY, HELPDESK or BILLING.
         /// </summary>
         public readonly ImmutableArray<string> Roles;
         public readonly ImmutableArray<Outputs.GetTwingateUsersUserResult> Users;

@@ -86,7 +86,7 @@ type GetTwingateUsersArgs struct {
 	LastNameRegexp *string `pulumi:"lastNameRegexp"`
 	// The last name of the user must end with the value.
 	LastNameSuffix *string `pulumi:"lastNameSuffix"`
-	// Returns users that match a list of roles. Valid roles: `ADMIN`, `DEVOPS`, `SUPPORT`, `MEMBER`.
+	// Returns users that match a list of roles. Valid roles: ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS*REVIEWER, INTERNET*SECURITY, HELPDESK or BILLING.
 	Roles []string `pulumi:"roles"`
 }
 
@@ -132,7 +132,7 @@ type GetTwingateUsersResult struct {
 	LastNameRegexp *string `pulumi:"lastNameRegexp"`
 	// The last name of the user must end with the value.
 	LastNameSuffix *string `pulumi:"lastNameSuffix"`
-	// Returns users that match a list of roles. Valid roles: `ADMIN`, `DEVOPS`, `SUPPORT`, `MEMBER`.
+	// Returns users that match a list of roles. Valid roles: ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS*REVIEWER, INTERNET*SECURITY, HELPDESK or BILLING.
 	Roles []string               `pulumi:"roles"`
 	Users []GetTwingateUsersUser `pulumi:"users"`
 }
@@ -182,7 +182,7 @@ type GetTwingateUsersOutputArgs struct {
 	LastNameRegexp pulumi.StringPtrInput `pulumi:"lastNameRegexp"`
 	// The last name of the user must end with the value.
 	LastNameSuffix pulumi.StringPtrInput `pulumi:"lastNameSuffix"`
-	// Returns users that match a list of roles. Valid roles: `ADMIN`, `DEVOPS`, `SUPPORT`, `MEMBER`.
+	// Returns users that match a list of roles. Valid roles: ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS*REVIEWER, INTERNET*SECURITY, HELPDESK or BILLING.
 	Roles pulumi.StringArrayInput `pulumi:"roles"`
 }
 
@@ -305,7 +305,7 @@ func (o GetTwingateUsersResultOutput) LastNameSuffix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTwingateUsersResult) *string { return v.LastNameSuffix }).(pulumi.StringPtrOutput)
 }
 
-// Returns users that match a list of roles. Valid roles: `ADMIN`, `DEVOPS`, `SUPPORT`, `MEMBER`.
+// Returns users that match a list of roles. Valid roles: ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS*REVIEWER, INTERNET*SECURITY, HELPDESK or BILLING.
 func (o GetTwingateUsersResultOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetTwingateUsersResult) []string { return v.Roles }).(pulumi.StringArrayOutput)
 }

@@ -126,7 +126,7 @@ export interface GetTwingateUsersArgs {
      */
     lastNameSuffix?: string;
     /**
-     * Returns users that match a list of roles. Valid roles: `ADMIN`, `DEVOPS`, `SUPPORT`, `MEMBER`.
+     * Returns users that match a list of roles. Valid roles: ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS*REVIEWER, INTERNET*SECURITY, HELPDESK or BILLING.
      */
     roles?: string[];
 }
@@ -216,7 +216,7 @@ export interface GetTwingateUsersResult {
      */
     readonly lastNameSuffix?: string;
     /**
-     * Returns users that match a list of roles. Valid roles: `ADMIN`, `DEVOPS`, `SUPPORT`, `MEMBER`.
+     * Returns users that match a list of roles. Valid roles: ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS*REVIEWER, INTERNET*SECURITY, HELPDESK or BILLING.
      */
     readonly roles?: string[];
     readonly users: outputs.GetTwingateUsersUser[];
@@ -341,7 +341,7 @@ export interface GetTwingateUsersOutputArgs {
      */
     lastNameSuffix?: pulumi.Input<string | undefined>;
     /**
-     * Returns users that match a list of roles. Valid roles: `ADMIN`, `DEVOPS`, `SUPPORT`, `MEMBER`.
+     * Returns users that match a list of roles. Valid roles: ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS*REVIEWER, INTERNET*SECURITY, HELPDESK or BILLING.
      */
     roles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
