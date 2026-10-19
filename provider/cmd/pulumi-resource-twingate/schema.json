@@ -1554,7 +1554,7 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.\n"
+                    "description": "Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS*REVIEWER, INTERNET*SECURITY, HELPDESK or BILLING.\n"
                 },
                 "type": {
                     "type": "string",
@@ -3036,7 +3036,7 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.\n"
+                    "description": "Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS*REVIEWER, INTERNET*SECURITY, HELPDESK or BILLING.\n"
                 },
                 "sendInvite": {
                     "type": "boolean",
@@ -3076,7 +3076,7 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.\n"
+                    "description": "Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS*REVIEWER, INTERNET*SECURITY, HELPDESK or BILLING.\n"
                 },
                 "sendInvite": {
                     "type": "boolean",
@@ -3108,7 +3108,7 @@
                     },
                     "role": {
                         "type": "string",
-                        "description": "Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.\n"
+                        "description": "Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS*REVIEWER, INTERNET*SECURITY, HELPDESK or BILLING.\n"
                     },
                     "sendInvite": {
                         "type": "boolean",
@@ -4546,7 +4546,7 @@
                         "type": "string"
                     },
                     "role": {
-                        "description": "Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER or ACCESS_REVIEWER.\n",
+                        "description": "Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS*REVIEWER, INTERNET*SECURITY, HELPDESK or BILLING.\n",
                         "type": "string"
                     },
                     "type": {
@@ -4654,7 +4654,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Returns users that match a list of roles. Valid roles: `ADMIN`, `DEVOPS`, `SUPPORT`, `MEMBER`.\n"
+                        "description": "Returns users that match a list of roles. Valid roles: ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS*REVIEWER, INTERNET*SECURITY, HELPDESK or BILLING.\n"
                     }
                 },
                 "type": "object"
@@ -4746,7 +4746,7 @@
                         "type": "string"
                     },
                     "roles": {
-                        "description": "Returns users that match a list of roles. Valid roles: `ADMIN`, `DEVOPS`, `SUPPORT`, `MEMBER`.\n",
+                        "description": "Returns users that match a list of roles. Valid roles: ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS*REVIEWER, INTERNET*SECURITY, HELPDESK or BILLING.\n",
                         "items": {
                             "type": "string"
                         },
