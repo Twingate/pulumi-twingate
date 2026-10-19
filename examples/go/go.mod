@@ -5,7 +5,7 @@ go 1.26.6
 require (
 	github.com/Twingate/pulumi-twingate/sdk/v5 v5.0.0
 	github.com/pulumi/pulumi-tls/sdk/v5 v5.6.1
-	github.com/pulumi/pulumi/sdk/v3 v3.268.0
+	github.com/pulumi/pulumi/sdk/v3 v3.269.0
 )
 
 // Uncomment to use local SDK for development/testing
