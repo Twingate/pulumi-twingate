@@ -330,7 +330,7 @@ export interface GetTwingateUsersUser {
      */
     lastName: string;
     /**
-     * Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS*REVIEWER, INTERNET*SECURITY, HELPDESK or BILLING.
+     * Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS_REVIEWER, INTERNET_SECURITY, HELPDESK or BILLING.
      */
     role: string;
     /**

@@ -2334,7 +2334,7 @@ class GetTwingateUsersUserResult(dict):
         :param _builtins.str first_name: The first name of the User
         :param _builtins.str id: The ID of the User
         :param _builtins.str last_name: The last name of the User
-        :param _builtins.str role: Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS*REVIEWER, INTERNET*SECURITY, HELPDESK or BILLING.
+        :param _builtins.str role: Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS_REVIEWER, INTERNET_SECURITY, HELPDESK or BILLING.
         :param _builtins.str type: Indicates the User's type. Either MANUAL or SYNCED.
         """
         pulumi.set(__self__, "email", email)
@@ -2380,7 +2380,7 @@ class GetTwingateUsersUserResult(dict):
     @pulumi.getter
     def role(self) -> _builtins.str:
         """
-        Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS*REVIEWER, INTERNET*SECURITY, HELPDESK or BILLING.
+        Indicates the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS_REVIEWER, INTERNET_SECURITY, HELPDESK or BILLING.
         """
         return pulumi.get(self, "role")
 
@@ -2391,5 +2391,4 @@ class GetTwingateUsersUserResult(dict):
         Indicates the User's type. Either MANUAL or SYNCED.
         """
         return pulumi.get(self, "type")
-
 

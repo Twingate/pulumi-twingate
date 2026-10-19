@@ -74,7 +74,7 @@ export class TwingateUser extends pulumi.CustomResource {
      */
     declare public readonly lastName: pulumi.Output<string>;
     /**
-     * Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS*REVIEWER, INTERNET*SECURITY, HELPDESK or BILLING.
+     * Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS_REVIEWER, INTERNET_SECURITY, HELPDESK or BILLING.
      */
     declare public readonly role: pulumi.Output<string>;
     /**
@@ -147,7 +147,7 @@ export interface TwingateUserState {
      */
     lastName?: pulumi.Input<string | undefined>;
     /**
-     * Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS*REVIEWER, INTERNET*SECURITY, HELPDESK or BILLING.
+     * Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS_REVIEWER, INTERNET_SECURITY, HELPDESK or BILLING.
      */
     role?: pulumi.Input<string | undefined>;
     /**
@@ -183,7 +183,7 @@ export interface TwingateUserArgs {
      */
     lastName?: pulumi.Input<string | undefined>;
     /**
-     * Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS*REVIEWER, INTERNET*SECURITY, HELPDESK or BILLING.
+     * Determines the User's role. Either ADMIN, DEVOPS, SUPPORT, MEMBER, ACCESS_REVIEWER, INTERNET_SECURITY, HELPDESK or BILLING.
      */
     role?: pulumi.Input<string | undefined>;
     /**
