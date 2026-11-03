@@ -19,6 +19,12 @@ namespace Twingate.Twingate.Inputs
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
 
+        /// <summary>
+        /// How the Gateway verifies TLS on the upstream connection. One of "VERIFY_FULL", "VERIFY_CA", "INSECURE" or "NONE". Defaults to "NONE".
+        /// </summary>
+        [Input("tlsMode")]
+        public Input<string>? TlsMode { get; set; }
+
         public TwingateWebAppResourceUpstreamGetArgs()
         {
         }

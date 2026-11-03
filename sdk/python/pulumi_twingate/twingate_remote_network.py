@@ -25,7 +25,7 @@ class TwingateRemoteNetworkArgs:
         """
         The set of arguments for constructing a TwingateRemoteNetwork resource.
 
-        :param pulumi.Input[_builtins.str] location: The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
+        :param pulumi.Input[_builtins.str] location: The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE_CLOUD, ON_PREMISE, OTHER.
         :param pulumi.Input[_builtins.str] name: The name of the Remote Network
         :param pulumi.Input[_builtins.str] type: The type of the Remote Network. Must be one of the following: REGULAR, EXIT. Defaults to REGULAR.
         """
@@ -40,7 +40,7 @@ class TwingateRemoteNetworkArgs:
     @pulumi.getter
     def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
+        The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE_CLOUD, ON_PREMISE, OTHER.
         """
         return pulumi.get(self, "location")
 
@@ -82,7 +82,7 @@ class _TwingateRemoteNetworkState:
         """
         Input properties used for looking up and filtering TwingateRemoteNetwork resources.
 
-        :param pulumi.Input[_builtins.str] location: The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
+        :param pulumi.Input[_builtins.str] location: The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE_CLOUD, ON_PREMISE, OTHER.
         :param pulumi.Input[_builtins.str] name: The name of the Remote Network
         :param pulumi.Input[_builtins.str] type: The type of the Remote Network. Must be one of the following: REGULAR, EXIT. Defaults to REGULAR.
         """
@@ -97,7 +97,7 @@ class _TwingateRemoteNetworkState:
     @pulumi.getter
     def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
+        The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE_CLOUD, ON_PREMISE, OTHER.
         """
         return pulumi.get(self, "location")
 
@@ -163,7 +163,7 @@ class TwingateRemoteNetwork(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] location: The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
+        :param pulumi.Input[_builtins.str] location: The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE_CLOUD, ON_PREMISE, OTHER.
         :param pulumi.Input[_builtins.str] name: The name of the Remote Network
         :param pulumi.Input[_builtins.str] type: The type of the Remote Network. Must be one of the following: REGULAR, EXIT. Defaults to REGULAR.
         """
@@ -244,7 +244,7 @@ class TwingateRemoteNetwork(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] location: The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
+        :param pulumi.Input[_builtins.str] location: The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE_CLOUD, ON_PREMISE, OTHER.
         :param pulumi.Input[_builtins.str] name: The name of the Remote Network
         :param pulumi.Input[_builtins.str] type: The type of the Remote Network. Must be one of the following: REGULAR, EXIT. Defaults to REGULAR.
         """
@@ -261,7 +261,7 @@ class TwingateRemoteNetwork(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[_builtins.str]:
         """
-        The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
+        The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE_CLOUD, ON_PREMISE, OTHER.
         """
         return pulumi.get(self, "location")
 

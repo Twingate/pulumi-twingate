@@ -72,7 +72,7 @@ namespace Twingate.Twingate
     ///             BlockDisguisedTrackers = true,
     ///         },
     ///         Name = "Example DNS Filtering Profile",
-    ///         Priority = 2,
+    ///         Priority = 2.0,
     ///         FallbackMethod = "AUTO",
     ///         Groups = Std.Toset.Invoke(new()
     ///         {

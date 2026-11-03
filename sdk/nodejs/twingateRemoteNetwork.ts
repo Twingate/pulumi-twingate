@@ -53,7 +53,7 @@ export class TwingateRemoteNetwork extends pulumi.CustomResource {
     }
 
     /**
-     * The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
+     * The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE_CLOUD, ON_PREMISE, OTHER.
      */
     declare public readonly location: pulumi.Output<string>;
     /**
@@ -97,7 +97,7 @@ export class TwingateRemoteNetwork extends pulumi.CustomResource {
  */
 export interface TwingateRemoteNetworkState {
     /**
-     * The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
+     * The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE_CLOUD, ON_PREMISE, OTHER.
      */
     location?: pulumi.Input<string | undefined>;
     /**
@@ -115,7 +115,7 @@ export interface TwingateRemoteNetworkState {
  */
 export interface TwingateRemoteNetworkArgs {
     /**
-     * The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
+     * The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE_CLOUD, ON_PREMISE, OTHER.
      */
     location?: pulumi.Input<string | undefined>;
     /**

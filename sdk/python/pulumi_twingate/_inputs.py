@@ -2185,15 +2185,23 @@ class TwingateWebAppResourceDownstreamArgsDict(TypedDict):
     """
     The port number. Must be between 1 and 65535 inclusive.
     """
+    tls_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    How the Gateway serves TLS on the downstream connection. One of "TLS13" or "NONE". Defaults to "NONE".
+    """
 
 @pulumi.input_type
 class TwingateWebAppResourceDownstreamArgs:
     def __init__(__self__, *,
-                 port: pulumi.Input[_builtins.int]):
+                 port: pulumi.Input[_builtins.int],
+                 tls_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] port: The port number. Must be between 1 and 65535 inclusive.
+        :param pulumi.Input[_builtins.str] tls_mode: How the Gateway serves TLS on the downstream connection. One of "TLS13" or "NONE". Defaults to "NONE".
         """
         pulumi.set(__self__, "port", port)
+        if tls_mode is not None:
+            pulumi.set(__self__, "tls_mode", tls_mode)
 
     @_builtins.property
     @pulumi.getter
@@ -2206,6 +2214,18 @@ class TwingateWebAppResourceDownstreamArgs:
     @port.setter
     def port(self, value: pulumi.Input[_builtins.int]):
         pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tlsMode")
+    def tls_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        How the Gateway serves TLS on the downstream connection. One of "TLS13" or "NONE". Defaults to "NONE".
+        """
+        return pulumi.get(self, "tls_mode")
+
+    @tls_mode.setter
+    def tls_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tls_mode", value)
 
 
 class TwingateWebAppResourceUpstreamArgsDict(TypedDict):
@@ -2213,15 +2233,23 @@ class TwingateWebAppResourceUpstreamArgsDict(TypedDict):
     """
     The port number. Must be between 1 and 65535 inclusive.
     """
+    tls_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    How the Gateway verifies TLS on the upstream connection. One of "VERIFY_FULL", "VERIFY_CA", "INSECURE" or "NONE". Defaults to "NONE".
+    """
 
 @pulumi.input_type
 class TwingateWebAppResourceUpstreamArgs:
     def __init__(__self__, *,
-                 port: pulumi.Input[_builtins.int]):
+                 port: pulumi.Input[_builtins.int],
+                 tls_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] port: The port number. Must be between 1 and 65535 inclusive.
+        :param pulumi.Input[_builtins.str] tls_mode: How the Gateway verifies TLS on the upstream connection. One of "VERIFY_FULL", "VERIFY_CA", "INSECURE" or "NONE". Defaults to "NONE".
         """
         pulumi.set(__self__, "port", port)
+        if tls_mode is not None:
+            pulumi.set(__self__, "tls_mode", tls_mode)
 
     @_builtins.property
     @pulumi.getter
@@ -2234,6 +2262,18 @@ class TwingateWebAppResourceUpstreamArgs:
     @port.setter
     def port(self, value: pulumi.Input[_builtins.int]):
         pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tlsMode")
+    def tls_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        How the Gateway verifies TLS on the upstream connection. One of "VERIFY_FULL", "VERIFY_CA", "INSECURE" or "NONE". Defaults to "NONE".
+        """
+        return pulumi.get(self, "tls_mode")
+
+    @tls_mode.setter
+    def tls_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tls_mode", value)
 
 
 class GetTwingateDNSFilteringProfileAllowedDomainsArgsDict(TypedDict):

@@ -54,11 +54,13 @@ namespace Twingate.Twingate
     ///         Alias = "app.int",
     ///         Downstream = new Twingate.Inputs.TwingateWebAppResourceDownstreamArgs
     ///         {
-    ///             Port = 80,
+    ///             Port = 443,
+    ///             TlsMode = "TLS13",
     ///         },
     ///         Upstream = new Twingate.Inputs.TwingateWebAppResourceUpstreamArgs
     ///         {
-    ///             Port = 8080,
+    ///             Port = 8443,
+    ///             TlsMode = "VERIFY_FULL",
     ///         },
     ///         RequestHeaderRewrites = 
     ///         {

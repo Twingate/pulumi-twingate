@@ -467,3 +467,4 @@ class TwingateUser(pulumi.CustomResource):
         Indicates the User's type. Either MANUAL or SYNCED.
         """
         return pulumi.get(self, "type")
+

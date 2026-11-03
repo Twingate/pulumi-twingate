@@ -35,13 +35,13 @@ import (
 //				return err
 //			}
 //			awsConnector, err := twingate.NewTwingateConnector(ctx, "aws_connector", &twingate.TwingateConnectorArgs{
-//				RemoteNetworkId: awsNetwork.ID().ToIDOutput().ToStringOutput(),
+//				RemoteNetworkId: awsNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = twingate.NewTwingateConnectorTokens(ctx, "aws_connector_tokens", &twingate.TwingateConnectorTokensArgs{
-//				ConnectorId: awsConnector.ID().ToIDOutput().ToStringOutput(),
+//				ConnectorId: awsConnector.ID(),
 //			})
 //			if err != nil {
 //				return err

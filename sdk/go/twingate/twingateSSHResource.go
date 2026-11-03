@@ -56,19 +56,19 @@ import (
 //				return err
 //			}
 //			main, err := twingate.NewTwingateGateway(ctx, "main", &twingate.TwingateGatewayArgs{
-//				RemoteNetworkId: prod.ID().ToIDOutput().ToStringOutput(),
+//				RemoteNetworkId: prod.ID(),
 //				Address:         pulumi.String("10.0.0.1:8443"),
-//				X509CaId:        tls.ID().ToIDOutput().ToStringOutput(),
-//				SshCaId:         ssh.ID().ToIDOutput().ToStringOutput(),
+//				X509CaId:        tls.ID(),
+//				SshCaId:         ssh.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = twingate.NewTwingateSSHResource(ctx, "ssh_server", &twingate.TwingateSSHResourceArgs{
 //				Name:            pulumi.String("SSH Server"),
-//				GatewayId:       main.ID().ToIDOutput().ToStringOutput(),
+//				GatewayId:       main.ID(),
 //				Alias:           pulumi.String("test.int"),
-//				RemoteNetworkId: prod.ID().ToIDOutput().ToStringOutput(),
+//				RemoteNetworkId: prod.ID(),
 //				Address:         pulumi.String("10.128.0.105"),
 //				Downstream: &twingate.TwingateSSHResourceDownstreamArgs{
 //					Port: pulumi.Int(2222),
