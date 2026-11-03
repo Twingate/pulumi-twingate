@@ -17,6 +17,7 @@ package twingate
 import (
 	"fmt"
 	"path"
+	"regexp"
 	"strings"
 
 	// Allow embedding bridge-metadata.json in the provider.
@@ -107,44 +108,7 @@ func Provider() bridgev3.ProviderInfo {
 			// 	},
 			// },
 		},
-		SchemaPostProcessor: func(spec *pschema.PackageSpec) {
-			roleReplacer := strings.NewReplacer(
-				"ACCESS*REVIEWER", "ACCESS_REVIEWER",
-				"INTERNET*SECURITY", "INTERNET_SECURITY",
-			)
-			fixRoleDescriptions := func(properties map[string]pschema.PropertySpec) {
-				for _, name := range []string{"role", "roles"} {
-					property, ok := properties[name]
-					if !ok {
-						continue
-					}
-					property.Description = roleReplacer.Replace(property.Description)
-					properties[name] = property
-				}
-			}
-
-			for name, resource := range spec.Resources {
-				fixRoleDescriptions(resource.Properties)
-				fixRoleDescriptions(resource.InputProperties)
-				if resource.StateInputs != nil {
-					fixRoleDescriptions(resource.StateInputs.Properties)
-				}
-				spec.Resources[name] = resource
-			}
-			for name, function := range spec.Functions {
-				if function.Inputs != nil {
-					fixRoleDescriptions(function.Inputs.Properties)
-				}
-				if function.Outputs != nil {
-					fixRoleDescriptions(function.Outputs.Properties)
-				}
-				spec.Functions[name] = function
-			}
-			for name, typ := range spec.Types {
-				fixRoleDescriptions(typ.Properties)
-				spec.Types[name] = typ
-			}
-		},
+		SchemaPostProcessor:  restoreUnderscoresInDescriptions,
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*bridgev3.ResourceInfo{
 			"twingate_connector":             {Tok: bridgev3.MakeResource(mainPkg, mainMod, "TwingateConnector")},
@@ -258,4 +222,70 @@ func Provider() bridgev3.ProviderInfo {
 	prov.SetAutonaming(255, "-")
 
 	return prov
+}
+
+// emphasizedIdentifier matches an upstream identifier whose underscores the bridge's
+// Markdown rendering turned into emphasis markers, so that VERIFY_FULL reaches the schema
+// as VERIFY*FULL and twingate_service_account as twingate*service*account. Requiring an
+// alphanumeric character on both sides of every asterisk leaves real emphasis (`**NOTE:**`),
+// code in the generated examples (`import * as pulumi`) and regular expressions in the
+// upstream docs (`(.*)(?:/[^/]*)`) untouched.
+var emphasizedIdentifier = regexp.MustCompile(`[A-Za-z0-9]+(?:\*[A-Za-z0-9]+)+`)
+
+// restoreUnderscores puts back the underscores that emphasizedIdentifier describes.
+func restoreUnderscores(description string) string {
+	return emphasizedIdentifier.ReplaceAllStringFunc(description, func(identifier string) string {
+		return strings.ReplaceAll(identifier, "*", "_")
+	})
+}
+
+// restoreUnderscoresInDescriptions repairs every description in the generated schema. It
+// runs over the whole package rather than a list of known identifiers so that docs added
+// upstream are covered without touching this provider.
+func restoreUnderscoresInDescriptions(spec *pschema.PackageSpec) {
+	fixProperties := func(properties map[string]pschema.PropertySpec) {
+		for name, property := range properties {
+			property.Description = restoreUnderscores(property.Description)
+			properties[name] = property
+		}
+	}
+
+	spec.Description = restoreUnderscores(spec.Description)
+	fixProperties(spec.Config.Variables)
+
+	spec.Provider.Description = restoreUnderscores(spec.Provider.Description)
+	fixProperties(spec.Provider.Properties)
+	fixProperties(spec.Provider.InputProperties)
+
+	for name, resource := range spec.Resources {
+		resource.Description = restoreUnderscores(resource.Description)
+		fixProperties(resource.Properties)
+		fixProperties(resource.InputProperties)
+
+		if resource.StateInputs != nil {
+			fixProperties(resource.StateInputs.Properties)
+		}
+
+		spec.Resources[name] = resource
+	}
+
+	for name, function := range spec.Functions {
+		function.Description = restoreUnderscores(function.Description)
+
+		if function.Inputs != nil {
+			fixProperties(function.Inputs.Properties)
+		}
+
+		if function.Outputs != nil {
+			fixProperties(function.Outputs.Properties)
+		}
+
+		spec.Functions[name] = function
+	}
+
+	for name, typ := range spec.Types {
+		typ.Description = restoreUnderscores(typ.Description)
+		fixProperties(typ.Properties)
+		spec.Types[name] = typ
+	}
 }
