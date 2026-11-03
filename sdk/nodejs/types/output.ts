@@ -176,7 +176,7 @@ export interface GetTwingateRemoteNetworksRemoteNetwork {
      */
     id: string;
     /**
-     * The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
+     * The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE_CLOUD, ON_PREMISE, OTHER.
      */
     location: string;
     /**
@@ -299,7 +299,7 @@ export interface GetTwingateServiceAccountsServiceAccount {
      */
     id: string;
     /**
-     * List of twingate*service*account_key IDs that are assigned to the Service Account.
+     * List of twingate_service_account_key IDs that are assigned to the Service Account.
      */
     keyIds: string[];
     /**
@@ -691,6 +691,10 @@ export interface TwingateWebAppResourceDownstream {
      * The port number. Must be between 1 and 65535 inclusive.
      */
     port: number;
+    /**
+     * How the Gateway serves TLS on the downstream connection. One of "TLS13" or "NONE". Defaults to "NONE".
+     */
+    tlsMode: string;
 }
 
 export interface TwingateWebAppResourceUpstream {
@@ -698,6 +702,10 @@ export interface TwingateWebAppResourceUpstream {
      * The port number. Must be between 1 and 65535 inclusive.
      */
     port: number;
+    /**
+     * How the Gateway verifies TLS on the upstream connection. One of "VERIFY_FULL", "VERIFY_CA", "INSECURE" or "NONE". Defaults to "NONE".
+     */
+    tlsMode: string;
 }
 
 export namespace config {

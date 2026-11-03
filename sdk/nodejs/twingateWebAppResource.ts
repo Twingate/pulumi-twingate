@@ -35,10 +35,12 @@ import * as utilities from "./utilities";
  *     address: "internal.acme.com",
  *     alias: "app.int",
  *     downstream: {
- *         port: 80,
+ *         port: 443,
+ *         tlsMode: "TLS13",
  *     },
  *     upstream: {
- *         port: 8080,
+ *         port: 8443,
+ *         tlsMode: "VERIFY_FULL",
  *     },
  *     requestHeaderRewrites: {
  *         "X-Twingate-User": "{{username}}",

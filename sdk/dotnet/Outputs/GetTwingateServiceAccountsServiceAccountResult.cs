@@ -19,7 +19,7 @@ namespace Twingate.Twingate.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// List of twingate*service*account_key IDs that are assigned to the Service Account.
+        /// List of twingate_service_account_key IDs that are assigned to the Service Account.
         /// </summary>
         public readonly ImmutableArray<string> KeyIds;
         /// <summary>

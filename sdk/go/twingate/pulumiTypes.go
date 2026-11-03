@@ -4207,6 +4207,8 @@ func (o TwingateWebAppResourceAccessPolicyArrayOutput) Index(i pulumi.IntInput) 
 type TwingateWebAppResourceDownstream struct {
 	// The port number. Must be between 1 and 65535 inclusive.
 	Port int `pulumi:"port"`
+	// How the Gateway serves TLS on the downstream connection. One of "TLS13" or "NONE". Defaults to "NONE".
+	TlsMode *string `pulumi:"tlsMode"`
 }
 
 // TwingateWebAppResourceDownstreamInput is an input type that accepts TwingateWebAppResourceDownstreamArgs and TwingateWebAppResourceDownstreamOutput values.
@@ -4223,6 +4225,8 @@ type TwingateWebAppResourceDownstreamInput interface {
 type TwingateWebAppResourceDownstreamArgs struct {
 	// The port number. Must be between 1 and 65535 inclusive.
 	Port pulumi.IntInput `pulumi:"port"`
+	// How the Gateway serves TLS on the downstream connection. One of "TLS13" or "NONE". Defaults to "NONE".
+	TlsMode pulumi.StringPtrInput `pulumi:"tlsMode"`
 }
 
 func (TwingateWebAppResourceDownstreamArgs) ElementType() reflect.Type {
@@ -4307,6 +4311,11 @@ func (o TwingateWebAppResourceDownstreamOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v TwingateWebAppResourceDownstream) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// How the Gateway serves TLS on the downstream connection. One of "TLS13" or "NONE". Defaults to "NONE".
+func (o TwingateWebAppResourceDownstreamOutput) TlsMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TwingateWebAppResourceDownstream) *string { return v.TlsMode }).(pulumi.StringPtrOutput)
+}
+
 type TwingateWebAppResourceDownstreamPtrOutput struct{ *pulumi.OutputState }
 
 func (TwingateWebAppResourceDownstreamPtrOutput) ElementType() reflect.Type {
@@ -4341,9 +4350,21 @@ func (o TwingateWebAppResourceDownstreamPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// How the Gateway serves TLS on the downstream connection. One of "TLS13" or "NONE". Defaults to "NONE".
+func (o TwingateWebAppResourceDownstreamPtrOutput) TlsMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TwingateWebAppResourceDownstream) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TlsMode
+	}).(pulumi.StringPtrOutput)
+}
+
 type TwingateWebAppResourceUpstream struct {
 	// The port number. Must be between 1 and 65535 inclusive.
 	Port int `pulumi:"port"`
+	// How the Gateway verifies TLS on the upstream connection. One of "VERIFY_FULL", "VERIFY_CA", "INSECURE" or "NONE". Defaults to "NONE".
+	TlsMode *string `pulumi:"tlsMode"`
 }
 
 // TwingateWebAppResourceUpstreamInput is an input type that accepts TwingateWebAppResourceUpstreamArgs and TwingateWebAppResourceUpstreamOutput values.
@@ -4360,6 +4381,8 @@ type TwingateWebAppResourceUpstreamInput interface {
 type TwingateWebAppResourceUpstreamArgs struct {
 	// The port number. Must be between 1 and 65535 inclusive.
 	Port pulumi.IntInput `pulumi:"port"`
+	// How the Gateway verifies TLS on the upstream connection. One of "VERIFY_FULL", "VERIFY_CA", "INSECURE" or "NONE". Defaults to "NONE".
+	TlsMode pulumi.StringPtrInput `pulumi:"tlsMode"`
 }
 
 func (TwingateWebAppResourceUpstreamArgs) ElementType() reflect.Type {
@@ -4444,6 +4467,11 @@ func (o TwingateWebAppResourceUpstreamOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v TwingateWebAppResourceUpstream) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// How the Gateway verifies TLS on the upstream connection. One of "VERIFY_FULL", "VERIFY_CA", "INSECURE" or "NONE". Defaults to "NONE".
+func (o TwingateWebAppResourceUpstreamOutput) TlsMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TwingateWebAppResourceUpstream) *string { return v.TlsMode }).(pulumi.StringPtrOutput)
+}
+
 type TwingateWebAppResourceUpstreamPtrOutput struct{ *pulumi.OutputState }
 
 func (TwingateWebAppResourceUpstreamPtrOutput) ElementType() reflect.Type {
@@ -4476,6 +4504,16 @@ func (o TwingateWebAppResourceUpstreamPtrOutput) Port() pulumi.IntPtrOutput {
 		}
 		return &v.Port
 	}).(pulumi.IntPtrOutput)
+}
+
+// How the Gateway verifies TLS on the upstream connection. One of "VERIFY_FULL", "VERIFY_CA", "INSECURE" or "NONE". Defaults to "NONE".
+func (o TwingateWebAppResourceUpstreamPtrOutput) TlsMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TwingateWebAppResourceUpstream) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TlsMode
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetTwingateConnectorsConnector struct {
@@ -5803,7 +5841,7 @@ func (o GetTwingateGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetTwingateG
 type GetTwingateRemoteNetworksRemoteNetwork struct {
 	// The ID of the Remote Network.
 	Id string `pulumi:"id"`
-	// The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
+	// The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE_CLOUD, ON_PREMISE, OTHER.
 	Location string `pulumi:"location"`
 	// The name of the Remote Network.
 	Name *string `pulumi:"name"`
@@ -5825,7 +5863,7 @@ type GetTwingateRemoteNetworksRemoteNetworkInput interface {
 type GetTwingateRemoteNetworksRemoteNetworkArgs struct {
 	// The ID of the Remote Network.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
+	// The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE_CLOUD, ON_PREMISE, OTHER.
 	Location pulumi.StringInput `pulumi:"location"`
 	// The name of the Remote Network.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -5889,7 +5927,7 @@ func (o GetTwingateRemoteNetworksRemoteNetworkOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTwingateRemoteNetworksRemoteNetwork) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
+// The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE_CLOUD, ON_PREMISE, OTHER.
 func (o GetTwingateRemoteNetworksRemoteNetworkOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTwingateRemoteNetworksRemoteNetwork) string { return v.Location }).(pulumi.StringOutput)
 }
@@ -6849,7 +6887,7 @@ func (o GetTwingateSecurityPoliciesSecurityPolicyArrayOutput) Index(i pulumi.Int
 type GetTwingateServiceAccountsServiceAccount struct {
 	// ID of the Service Account resource
 	Id string `pulumi:"id"`
-	// List of twingate*service*account_key IDs that are assigned to the Service Account.
+	// List of twingate_service_account_key IDs that are assigned to the Service Account.
 	KeyIds []string `pulumi:"keyIds"`
 	// Name of the Service Account
 	Name string `pulumi:"name"`
@@ -6871,7 +6909,7 @@ type GetTwingateServiceAccountsServiceAccountInput interface {
 type GetTwingateServiceAccountsServiceAccountArgs struct {
 	// ID of the Service Account resource
 	Id pulumi.StringInput `pulumi:"id"`
-	// List of twingate*service*account_key IDs that are assigned to the Service Account.
+	// List of twingate_service_account_key IDs that are assigned to the Service Account.
 	KeyIds pulumi.StringArrayInput `pulumi:"keyIds"`
 	// Name of the Service Account
 	Name pulumi.StringInput `pulumi:"name"`
@@ -6935,7 +6973,7 @@ func (o GetTwingateServiceAccountsServiceAccountOutput) Id() pulumi.StringOutput
 	return o.ApplyT(func(v GetTwingateServiceAccountsServiceAccount) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// List of twingate*service*account_key IDs that are assigned to the Service Account.
+// List of twingate_service_account_key IDs that are assigned to the Service Account.
 func (o GetTwingateServiceAccountsServiceAccountOutput) KeyIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetTwingateServiceAccountsServiceAccount) []string { return v.KeyIds }).(pulumi.StringArrayOutput)
 }

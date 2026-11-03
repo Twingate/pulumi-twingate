@@ -18,11 +18,19 @@ namespace Twingate.Twingate.Outputs
         /// The port number. Must be between 1 and 65535 inclusive.
         /// </summary>
         public readonly int Port;
+        /// <summary>
+        /// How the Gateway verifies TLS on the upstream connection. One of "VERIFY_FULL", "VERIFY_CA", "INSECURE" or "NONE". Defaults to "NONE".
+        /// </summary>
+        public readonly string? TlsMode;
 
         [OutputConstructor]
-        private TwingateWebAppResourceUpstream(int port)
+        private TwingateWebAppResourceUpstream(
+            int port,
+
+            string? tlsMode)
         {
             Port = port;
+            TlsMode = tlsMode;
         }
     }
 }

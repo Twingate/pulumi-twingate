@@ -65,19 +65,19 @@ import (
 //			}
 //			// Gateway with both X.509 and SSH CAs
 //			_, err = twingate.NewTwingateGateway(ctx, "main", &twingate.TwingateGatewayArgs{
-//				RemoteNetworkId: gcp.ID().ToIDOutput().ToStringOutput(),
+//				RemoteNetworkId: gcp.ID(),
 //				Address:         pulumi.String("10.0.0.1:8443"),
-//				X509CaId:        tls.ID().ToIDOutput().ToStringOutput(),
-//				SshCaId:         ssh.ID().ToIDOutput().ToStringOutput(),
+//				X509CaId:        tls.ID(),
+//				SshCaId:         ssh.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Gateway with only X.509 CA (ssh_ca_id is optional)
 //			_, err = twingate.NewTwingateGateway(ctx, "minimal", &twingate.TwingateGatewayArgs{
-//				RemoteNetworkId: gcp.ID().ToIDOutput().ToStringOutput(),
+//				RemoteNetworkId: gcp.ID(),
 //				Address:         pulumi.String("10.0.0.2:9001"),
-//				X509CaId:        tls.ID().ToIDOutput().ToStringOutput(),
+//				X509CaId:        tls.ID(),
 //			})
 //			if err != nil {
 //				return err
