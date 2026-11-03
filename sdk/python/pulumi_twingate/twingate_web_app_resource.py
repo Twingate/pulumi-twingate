@@ -508,10 +508,12 @@ class TwingateWebAppResource(pulumi.CustomResource):
             address="internal.acme.com",
             alias="app.int",
             downstream={
-                "port": 80,
+                "port": 443,
+                "tls_mode": "TLS13",
             },
             upstream={
-                "port": 8080,
+                "port": 8443,
+                "tls_mode": "VERIFY_FULL",
             },
             request_header_rewrites={
                 "X-Twingate-User": "{{username}}",
@@ -566,10 +568,12 @@ class TwingateWebAppResource(pulumi.CustomResource):
             address="internal.acme.com",
             alias="app.int",
             downstream={
-                "port": 80,
+                "port": 443,
+                "tls_mode": "TLS13",
             },
             upstream={
-                "port": 8080,
+                "port": 8443,
+                "tls_mode": "VERIFY_FULL",
             },
             request_header_rewrites={
                 "X-Twingate-User": "{{username}}",

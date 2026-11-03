@@ -43,7 +43,7 @@ namespace Twingate.Twingate
     public partial class TwingateRemoteNetwork : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
+        /// The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE_CLOUD, ON_PREMISE, OTHER.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -108,7 +108,7 @@ namespace Twingate.Twingate
     public sealed class TwingateRemoteNetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
+        /// The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE_CLOUD, ON_PREMISE, OTHER.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -134,7 +134,7 @@ namespace Twingate.Twingate
     public sealed class TwingateRemoteNetworkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
+        /// The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE_CLOUD, ON_PREMISE, OTHER.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

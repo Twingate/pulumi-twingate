@@ -39,7 +39,7 @@ export interface GetTwingateRemoteNetworkResult {
      */
     readonly id?: string;
     /**
-     * The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
+     * The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE_CLOUD, ON_PREMISE, OTHER.
      */
     readonly location: string;
     /**

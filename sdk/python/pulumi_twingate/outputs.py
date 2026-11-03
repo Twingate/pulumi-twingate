@@ -1443,12 +1443,33 @@ class TwingateWebAppResourceAccessPolicy(dict):
 
 @pulumi.output_type
 class TwingateWebAppResourceDownstream(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tlsMode":
+            suggest = "tls_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TwingateWebAppResourceDownstream. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TwingateWebAppResourceDownstream.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TwingateWebAppResourceDownstream.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 port: _builtins.int):
+                 port: _builtins.int,
+                 tls_mode: Optional[_builtins.str] = None):
         """
         :param _builtins.int port: The port number. Must be between 1 and 65535 inclusive.
+        :param _builtins.str tls_mode: How the Gateway serves TLS on the downstream connection. One of "TLS13" or "NONE". Defaults to "NONE".
         """
         pulumi.set(__self__, "port", port)
+        if tls_mode is not None:
+            pulumi.set(__self__, "tls_mode", tls_mode)
 
     @_builtins.property
     @pulumi.getter
@@ -1457,16 +1478,45 @@ class TwingateWebAppResourceDownstream(dict):
         The port number. Must be between 1 and 65535 inclusive.
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="tlsMode")
+    def tls_mode(self) -> Optional[_builtins.str]:
+        """
+        How the Gateway serves TLS on the downstream connection. One of "TLS13" or "NONE". Defaults to "NONE".
+        """
+        return pulumi.get(self, "tls_mode")
 
 
 @pulumi.output_type
 class TwingateWebAppResourceUpstream(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tlsMode":
+            suggest = "tls_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TwingateWebAppResourceUpstream. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TwingateWebAppResourceUpstream.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TwingateWebAppResourceUpstream.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 port: _builtins.int):
+                 port: _builtins.int,
+                 tls_mode: Optional[_builtins.str] = None):
         """
         :param _builtins.int port: The port number. Must be between 1 and 65535 inclusive.
+        :param _builtins.str tls_mode: How the Gateway verifies TLS on the upstream connection. One of "VERIFY_FULL", "VERIFY_CA", "INSECURE" or "NONE". Defaults to "NONE".
         """
         pulumi.set(__self__, "port", port)
+        if tls_mode is not None:
+            pulumi.set(__self__, "tls_mode", tls_mode)
 
     @_builtins.property
     @pulumi.getter
@@ -1475,6 +1525,14 @@ class TwingateWebAppResourceUpstream(dict):
         The port number. Must be between 1 and 65535 inclusive.
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="tlsMode")
+    def tls_mode(self) -> Optional[_builtins.str]:
+        """
+        How the Gateway verifies TLS on the upstream connection. One of "VERIFY_FULL", "VERIFY_CA", "INSECURE" or "NONE". Defaults to "NONE".
+        """
+        return pulumi.get(self, "tls_mode")
 
 
 @pulumi.output_type
@@ -1931,7 +1989,7 @@ class GetTwingateRemoteNetworksRemoteNetworkResult(dict):
                  name: Optional[_builtins.str] = None):
         """
         :param _builtins.str id: The ID of the Remote Network.
-        :param _builtins.str location: The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
+        :param _builtins.str location: The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE_CLOUD, ON_PREMISE, OTHER.
         :param _builtins.str type: The type of the Remote Network. Must be one of the following: REGULAR, EXIT.
         :param _builtins.str name: The name of the Remote Network.
         """
@@ -1953,7 +2011,7 @@ class GetTwingateRemoteNetworksRemoteNetworkResult(dict):
     @pulumi.getter
     def location(self) -> _builtins.str:
         """
-        The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
+        The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE_CLOUD, ON_PREMISE, OTHER.
         """
         return pulumi.get(self, "location")
 
@@ -2278,7 +2336,7 @@ class GetTwingateServiceAccountsServiceAccountResult(dict):
                  resource_ids: Sequence[_builtins.str]):
         """
         :param _builtins.str id: ID of the Service Account resource
-        :param Sequence[_builtins.str] key_ids: List of twingate*service*account_key IDs that are assigned to the Service Account.
+        :param Sequence[_builtins.str] key_ids: List of twingate_service_account_key IDs that are assigned to the Service Account.
         :param _builtins.str name: Name of the Service Account
         :param Sequence[_builtins.str] resource_ids: List of TwingateResource IDs that the Service Account is assigned to.
         """
@@ -2299,7 +2357,7 @@ class GetTwingateServiceAccountsServiceAccountResult(dict):
     @pulumi.getter(name="keyIds")
     def key_ids(self) -> Sequence[_builtins.str]:
         """
-        List of twingate*service*account_key IDs that are assigned to the Service Account.
+        List of twingate_service_account_key IDs that are assigned to the Service Account.
         """
         return pulumi.get(self, "key_ids")
 
@@ -2391,4 +2449,5 @@ class GetTwingateUsersUserResult(dict):
         Indicates the User's type. Either MANUAL or SYNCED.
         """
         return pulumi.get(self, "type")
+
 

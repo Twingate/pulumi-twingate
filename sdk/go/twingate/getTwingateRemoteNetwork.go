@@ -34,7 +34,7 @@ type LookupTwingateRemoteNetworkArgs struct {
 type LookupTwingateRemoteNetworkResult struct {
 	// The ID of the Remote Network
 	Id *string `pulumi:"id"`
-	// The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
+	// The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE_CLOUD, ON_PREMISE, OTHER.
 	Location string `pulumi:"location"`
 	// The name of the Remote Network
 	Name *string `pulumi:"name"`
@@ -79,7 +79,7 @@ func (o LookupTwingateRemoteNetworkResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTwingateRemoteNetworkResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
+// The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE_CLOUD, ON_PREMISE, OTHER.
 func (o LookupTwingateRemoteNetworkResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTwingateRemoteNetworkResult) string { return v.Location }).(pulumi.StringOutput)
 }

@@ -49,7 +49,7 @@ import (
 type TwingateRemoteNetwork struct {
 	pulumi.CustomResourceState
 
-	// The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
+	// The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE_CLOUD, ON_PREMISE, OTHER.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the Remote Network
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -87,7 +87,7 @@ func GetTwingateRemoteNetwork(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TwingateRemoteNetwork resources.
 type twingateRemoteNetworkState struct {
-	// The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
+	// The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE_CLOUD, ON_PREMISE, OTHER.
 	Location *string `pulumi:"location"`
 	// The name of the Remote Network
 	Name *string `pulumi:"name"`
@@ -96,7 +96,7 @@ type twingateRemoteNetworkState struct {
 }
 
 type TwingateRemoteNetworkState struct {
-	// The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
+	// The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE_CLOUD, ON_PREMISE, OTHER.
 	Location pulumi.StringPtrInput
 	// The name of the Remote Network
 	Name pulumi.StringPtrInput
@@ -109,7 +109,7 @@ func (TwingateRemoteNetworkState) ElementType() reflect.Type {
 }
 
 type twingateRemoteNetworkArgs struct {
-	// The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
+	// The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE_CLOUD, ON_PREMISE, OTHER.
 	Location *string `pulumi:"location"`
 	// The name of the Remote Network
 	Name *string `pulumi:"name"`
@@ -119,7 +119,7 @@ type twingateRemoteNetworkArgs struct {
 
 // The set of arguments for constructing a TwingateRemoteNetwork resource.
 type TwingateRemoteNetworkArgs struct {
-	// The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
+	// The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE_CLOUD, ON_PREMISE, OTHER.
 	Location pulumi.StringPtrInput
 	// The name of the Remote Network
 	Name pulumi.StringPtrInput
@@ -214,7 +214,7 @@ func (o TwingateRemoteNetworkOutput) ToTwingateRemoteNetworkOutputWithContext(ct
 	return o
 }
 
-// The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE*CLOUD, ON*PREMISE, OTHER.
+// The location of the Remote Network. Must be one of the following: AWS, AZURE, GOOGLE_CLOUD, ON_PREMISE, OTHER.
 func (o TwingateRemoteNetworkOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *TwingateRemoteNetwork) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

@@ -49,24 +49,26 @@ import (
 //				return err
 //			}
 //			main, err := twingate.NewTwingateGateway(ctx, "main", &twingate.TwingateGatewayArgs{
-//				RemoteNetworkId: prod.ID().ToIDOutput().ToStringOutput(),
+//				RemoteNetworkId: prod.ID(),
 //				Address:         pulumi.String("10.0.0.1:8443"),
-//				X509CaId:        tls.ID().ToIDOutput().ToStringOutput(),
+//				X509CaId:        tls.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = twingate.NewTwingateWebAppResource(ctx, "internal_app", &twingate.TwingateWebAppResourceArgs{
 //				Name:            pulumi.String("Internal App"),
-//				GatewayId:       main.ID().ToIDOutput().ToStringOutput(),
-//				RemoteNetworkId: prod.ID().ToIDOutput().ToStringOutput(),
+//				GatewayId:       main.ID(),
+//				RemoteNetworkId: prod.ID(),
 //				Address:         pulumi.String("internal.acme.com"),
 //				Alias:           pulumi.String("app.int"),
 //				Downstream: &twingate.TwingateWebAppResourceDownstreamArgs{
-//					Port: pulumi.Int(80),
+//					Port:    pulumi.Int(443),
+//					TlsMode: pulumi.String("TLS13"),
 //				},
 //				Upstream: &twingate.TwingateWebAppResourceUpstreamArgs{
-//					Port: pulumi.Int(8080),
+//					Port:    pulumi.Int(8443),
+//					TlsMode: pulumi.String("VERIFY_FULL"),
 //				},
 //				RequestHeaderRewrites: pulumi.StringMap{
 //					"X-Twingate-User": pulumi.String("{{username}}"),

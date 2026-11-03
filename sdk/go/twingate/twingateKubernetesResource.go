@@ -49,9 +49,9 @@ import (
 //				return err
 //			}
 //			main, err := twingate.NewTwingateGateway(ctx, "main", &twingate.TwingateGatewayArgs{
-//				RemoteNetworkId: prod.ID().ToIDOutput().ToStringOutput(),
+//				RemoteNetworkId: prod.ID(),
 //				Address:         pulumi.String("10.0.0.1:8443"),
-//				X509CaId:        tls.ID().ToIDOutput().ToStringOutput(),
+//				X509CaId:        tls.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -59,8 +59,8 @@ import (
 //			// Kubernetes resource accessed via in-cluster DNS
 //			_, err = twingate.NewTwingateKubernetesResource(ctx, "prod_cluster", &twingate.TwingateKubernetesResourceArgs{
 //				Name:            pulumi.String("Production K8s"),
-//				GatewayId:       main.ID().ToIDOutput().ToStringOutput(),
-//				RemoteNetworkId: prod.ID().ToIDOutput().ToStringOutput(),
+//				GatewayId:       main.ID(),
+//				RemoteNetworkId: prod.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -69,8 +69,8 @@ import (
 //			_, err = twingate.NewTwingateKubernetesResource(ctx, "external_cluster", &twingate.TwingateKubernetesResourceArgs{
 //				Name:            pulumi.String("External K8s"),
 //				Address:         pulumi.String("k8s-api.example.com"),
-//				GatewayId:       main.ID().ToIDOutput().ToStringOutput(),
-//				RemoteNetworkId: prod.ID().ToIDOutput().ToStringOutput(),
+//				GatewayId:       main.ID(),
+//				RemoteNetworkId: prod.ID(),
 //			})
 //			if err != nil {
 //				return err

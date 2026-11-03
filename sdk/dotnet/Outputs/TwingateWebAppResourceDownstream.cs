@@ -18,11 +18,19 @@ namespace Twingate.Twingate.Outputs
         /// The port number. Must be between 1 and 65535 inclusive.
         /// </summary>
         public readonly int Port;
+        /// <summary>
+        /// How the Gateway serves TLS on the downstream connection. One of "TLS13" or "NONE". Defaults to "NONE".
+        /// </summary>
+        public readonly string? TlsMode;
 
         [OutputConstructor]
-        private TwingateWebAppResourceDownstream(int port)
+        private TwingateWebAppResourceDownstream(
+            int port,
+
+            string? tlsMode)
         {
             Port = port;
+            TlsMode = tlsMode;
         }
     }
 }

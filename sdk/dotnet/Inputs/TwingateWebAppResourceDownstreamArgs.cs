@@ -19,6 +19,12 @@ namespace Twingate.Twingate.Inputs
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
 
+        /// <summary>
+        /// How the Gateway serves TLS on the downstream connection. One of "TLS13" or "NONE". Defaults to "NONE".
+        /// </summary>
+        [Input("tlsMode")]
+        public Input<string>? TlsMode { get; set; }
+
         public TwingateWebAppResourceDownstreamArgs()
         {
         }
