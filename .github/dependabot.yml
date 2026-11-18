@@ -1,27 +1,40 @@
 version: 2
+# No `docker` entry for /.devcontainer on purpose: its Dockerfile uses
+# `FROM ubuntu:${UBUNTU_VERSION}` (ARG, default `latest`), which Dependabot can't
+# resolve or bump (dependabot-core#4597). The old entry never opened a PR
+# (0 of 561 Dependabot PRs, Mar 2024 - Nov 2026), and `latest` already gets the
+# newest image on every build. To manage it with Dependabot, hardcode
+# a version in FROM (e.g. `ubuntu:26.04`) and re-add the entry.
 updates:
+  # One entry for all Go modules so a shared dependency bump (e.g. go-jose,
+  # pulumi/sdk) lands as one PR instead of one per directory.
+  #
+  # Minor/patch are grouped and auto-merged (automerge-dependabot.yaml).
+  # Majors are left out of the group deliberately: fetch-metadata reports the
+  # HIGHEST semver bump across a grouped PR, so folding a major in would stop
+  # the whole batch from auto-merging. Majors stay as individual PRs.
   - package-ecosystem: "gomod"
-    directory: "/provider"
+    directories:
+      - "/provider"
+      - "/sdk"
+      - "/examples/go"
     schedule:
       interval: "weekly"
-      time: "08:00"
       day: "sunday"
+      time: "08:00"
     labels:
       - "dependencies"
     commit-message:
       prefix: "chore"
       include: "scope"
-  - package-ecosystem: "gomod"
-    directory: "/sdk"
-    schedule:
-      interval: "weekly"
-      day: "sunday"
-      time: "08:00"
-    labels:
-      - "dependencies"
-    commit-message:
-      prefix: "chore"
-      include: "scope"
+    groups:
+      gomod-minor-patch:
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
+
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -33,23 +46,10 @@ updates:
     commit-message:
       prefix: "chore"
       include: "scope"
-  - package-ecosystem: "docker"
-    directory: "/.devcontainer"
-    schedule:
-      interval: "daily"
-    labels:
-    - "dependencies"
-    commit-message:
-      prefix: "chore"
-      include: "scope"
-  - package-ecosystem: "gomod"
-    directory: "/examples/go"
-    schedule:
-      interval: "weekly"
-      time: "08:00"
-      day: "sunday"
-    labels:
-      - "dependencies"
-    commit-message:
-      prefix: "chore"
-      include: "scope"
+    groups:
+      github-actions-minor-patch:
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
