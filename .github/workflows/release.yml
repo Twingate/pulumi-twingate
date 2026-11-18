@@ -9,6 +9,9 @@ on:
       - .devcontainer
       - examples
 
+permissions:
+  contents: read
+
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   PUBLISH_NPM: true
@@ -30,23 +33,23 @@ jobs:
       id-token: write
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Unshallow clone for tags
         run: git fetch --prune --unshallow --tags
 
       - name: Install Go
-        uses: actions/setup-go@v7
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         with:
           go-version: ${{matrix.goversion}}
 
       - name: Install pulumictl
-        uses: jaxxstorm/action-install-gh-release@v3.0.0
+        uses: jaxxstorm/action-install-gh-release@25e24d2d23ae098373794ef1d6faecb48ee52da8 # v3.0.0
         with:
           repo: pulumi/pulumictl
 
       - name: Install pulumi
-        uses: pulumi/actions@v7
+        uses: pulumi/actions@96c7761824268174e0d2a4e8c7d75671eebd24a7 # v7.1.0
         with:
           pulumi-version: v3.218.0
 
@@ -54,10 +57,10 @@ jobs:
         run: echo "GOMODCACHE=$(mktemp -d)" >> $GITHUB_ENV
 
       - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v7
+        uses: goreleaser/goreleaser-action@a4f02ab5355a589de60d917a659ce617ed19b3de # v7.3.0
         with:
           args: -p 3 release --clean
-          version: latest
+          version: "~> v2"
 
     strategy:
       fail-fast: true
@@ -74,41 +77,41 @@ jobs:
       id-token: write  # Required for OIDC/npm provenance
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Unshallow clone for tags
         run: git fetch --prune --unshallow --tags
 
       - name: Install Go
-        uses: actions/setup-go@v7
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         with:
           go-version: ${{ matrix.goversion }}
 
       - name: Install pulumictl
-        uses: jaxxstorm/action-install-gh-release@v3.0.0
+        uses: jaxxstorm/action-install-gh-release@25e24d2d23ae098373794ef1d6faecb48ee52da8 # v3.0.0
         with:
           repo: pulumi/pulumictl
 
       - name: Install pulumi
-        uses: pulumi/actions@v7
+        uses: pulumi/actions@96c7761824268174e0d2a4e8c7d75671eebd24a7 # v7.1.0
         with:
           pulumi-version: v3.218.0
 
       - if: ${{ matrix.language == 'nodejs'}}
         name: Setup Node
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: ${{matrix.nodeversion}}
 
       - if: ${{ matrix.language == 'dotnet'}}
         name: Setup DotNet
-        uses: actions/setup-dotnet@v6
+        uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6.1.0
         with:
           dotnet-version: ${{matrix.dotnetversion}}
 
       - if: ${{ matrix.language == 'java'}}
         name: Setup Java
-        uses: actions/setup-java@v6.2.0
+        uses: actions/setup-java@77dd5b2ce225ea11469928ac317850245a74ae78 # v6.2.0
         with:
           cache: gradle
           distribution: temurin
@@ -116,7 +119,7 @@ jobs:
 
       - if: ${{ matrix.language == 'python'}}
         name: Setup Python
-        uses: actions/setup-python@v7
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: ${{matrix.pythonversion}}
 
@@ -135,7 +138,7 @@ jobs:
 
       - if: ${{ matrix.language == 'python' && env.PUBLISH_PYPI == 'true' }}
         name: Publish package to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
+        uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # v1.14.3
         with:
           packages_dir: ${{github.workspace}}/sdk/python/bin/dist
           skip-existing: true # Skip upload if version already exists on PyPI
@@ -158,7 +161,7 @@ jobs:
           fi
 
       - if: ${{ matrix.language == 'nodejs' && env.PUBLISH_NPM == 'true' }}
-        uses: JS-DevTools/npm-publish@v4
+        uses: JS-DevTools/npm-publish@0fd2f4369c5d6bcfcde6091a7c527d810b9b5c3f # v4.1.5
         with:
           access: "public"
           token: ${{ secrets.NPM_TOKEN }}
@@ -198,7 +201,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
 
